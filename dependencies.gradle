@@ -27,6 +27,7 @@ ext {
     espressoVersion = '2.2.2'
     androidMapsUtilsVersion = '0.4.+'
     crashlyticsSdkVersion = '2.7.1'
+    systembartintVersion = '1.0.3'
 
     appDependencies = [
             support_v4                    : "com.android.support:support-v4:$commonVersion",
@@ -45,6 +46,7 @@ ext {
             rxLifecycle                   : "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycleVersion",
             rxLifecycleAndroidLifecycle   : "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:$rxLifecycleVersion",
             rxLifeCycleComponents         : "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycleVersion",
+            systembartint                 : "com.readystatesoftware.systembartint:systembartint:${systembartintVersion}",
 
             permissionsdispatcher         : "com.github.hotchemi:permissionsdispatcher:$permissionDispatcher",
             permissionsdispatcherprocessor: "com.github.hotchemi:permissionsdispatcher-processor:$permissionDispatcher",

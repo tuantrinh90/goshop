@@ -9,6 +9,8 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
 
+import injection.components.ApplicationComponent;
+import injection.components.DaggerApplicationComponent;
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -18,6 +20,8 @@ public class GoShopApplication extends MultiDexApplication {
     @SuppressLint("StaticFieldLeak")
     private static Context context;
 
+    private static ApplicationComponent mApplicationComponent;
+
     public static Context getAppContext() {
         return GoShopApplication.context;
     }
@@ -26,9 +30,16 @@ public class GoShopApplication extends MultiDexApplication {
     public void onCreate() {
         super.onCreate();
         context = getApplicationContext();
+        initializeComponents();
         setFabric();
         setLeakCanary();
         initRealm();
+    }
+    public static ApplicationComponent getApplicationComponent() {
+        return mApplicationComponent;
+    }
+    private void initializeComponents() {
+        mApplicationComponent = DaggerApplicationComponent.Initializer.init(this);
     }
 
     private void setFabric() {

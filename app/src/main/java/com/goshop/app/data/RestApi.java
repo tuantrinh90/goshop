@@ -1,6 +1,7 @@
 package com.goshop.app.data;
 
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.response.GetWeatherResponse;
 
 import java.util.Observable;
 
@@ -10,6 +11,6 @@ import java.util.Observable;
 
 public interface RestApi {
 
-    io.reactivex.Observable<UserInfo> getUserInfo(String id);
+    io.reactivex.Observable<GetWeatherResponse> getWeather(String id);
 
 }

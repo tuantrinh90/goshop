@@ -1,6 +1,8 @@
 package com.goshop.app.data.source;
 
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.response.GetWeatherResponse;
 
 import io.reactivex.Observable;
 
@@ -11,4 +13,6 @@ import io.reactivex.Observable;
 public interface AccountDataSource {
 
     Observable<UserInfo> getUserInfo(String id);
+
+    Observable<GetWeatherResponse> getWeather();
 }

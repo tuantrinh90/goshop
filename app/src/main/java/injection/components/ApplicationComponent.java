@@ -1,6 +1,7 @@
 package injection.components;
 
 import com.goshop.app.GoShopApplication;
+import com.goshop.app.data.source.AccountDataSource;
 
 import android.app.Application;
 
@@ -10,14 +11,17 @@ import javax.inject.Singleton;
 import dagger.Component;
 import injection.modules.ApplicationModule;
 import injection.modules.NetModule;
-import retrofit2.Retrofit;
+
 
 @Component(modules = {ApplicationModule.class, NetModule.class})
 @Singleton
 public interface ApplicationComponent {
 
-    @Named("DefaultRetrofit")
-    Retrofit defaultRetrofit();
+    @Named("localAccountDataSource")
+    AccountDataSource getLocalAccountDataSource();
+
+    @Named("cloudAccountDataSource")
+    AccountDataSource getCloudAccountDataSource();
 
     Application appliation();
 

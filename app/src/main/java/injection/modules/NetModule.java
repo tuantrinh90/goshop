@@ -3,6 +3,13 @@ package injection.modules;
 import com.google.gson.Gson;
 
 import com.goshop.app.BuildConfig;
+import com.goshop.app.data.LocalApi;
+import com.goshop.app.data.RestApi;
+import com.goshop.app.data.realm.RealmDataSource;
+import com.goshop.app.data.retrofit.RetrofitRestApiImpl;
+import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.data.source.cloud.AccountCloudDataSource;
+import com.goshop.app.data.source.local.AccountLocalDataSource;
 
 import java.util.concurrent.TimeUnit;
 
@@ -73,5 +80,29 @@ public class NetModule {
             .addConverterFactory(GsonConverterFactory.create(gson))
             .build();
     }
+
+    @Provides
+    public LocalApi provideLocalApi(RealmDataSource realmDataSource){
+        return realmDataSource;
+    }
+
+    @Provides
+    public RestApi provideRestApi(@Named("DefaultRetrofit") Retrofit retrofit){
+        return new RetrofitRestApiImpl(retrofit);
+    }
+    
+    @Provides
+    @Named("localAccountDataSource")
+    public AccountDataSource provideLocalAccountDataSource(LocalApi localApi){
+        return new AccountLocalDataSource(localApi);
+    }
+
+    @Provides
+    @Named("cloudAccountDataSource")
+    public AccountDataSource  provideCloudAccountDataSource(RestApi restApi){
+        return new AccountCloudDataSource(restApi);
+    }
+
+
 
 }

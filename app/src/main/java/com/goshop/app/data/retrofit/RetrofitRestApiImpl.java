@@ -1,7 +1,10 @@
 package com.goshop.app.data.retrofit;
 
+import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
-import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.response.GetWeatherResponse;
+
+import javax.inject.Inject;
 
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
@@ -13,13 +16,14 @@ import retrofit2.Retrofit;
 public class RetrofitRestApiImpl implements RestApi {
 
     private RetrofitRestApi retrofitRestApi;
-
+    @Inject
     public RetrofitRestApiImpl(Retrofit retrofit) {
         this.retrofitRestApi = retrofit.create(RetrofitRestApi.class);
     }
 
     @Override
-    public Observable<UserInfo> getUserInfo(String id) {
-        return null;
+    public Observable<GetWeatherResponse> getWeather(String id) {
+        String url= EndpointAddress.getFullUrl(EndpointAddress.USER_INFO);
+        return retrofitRestApi.getWeather(url);
     }
 }

@@ -112,6 +112,7 @@ dependencies {
     compile appDependencies.androidLifecycleRuntime
     compile appDependencies.androidLifecycleExtensions
     compile appDependencies.androidLifecycleCompiler
+    compile appDependencies.systembartint
 
     compile appDependencies.dagger2
     annotationProcessor appDependencies.daggerComiler
@@ -132,6 +133,7 @@ dependencies {
     androidTestCompile(testDependencies.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile 'com.android.support.constraint:constraint-layout:1.0.2'
 }
 
 def ksFile = rootProject.file('keystore.properties')

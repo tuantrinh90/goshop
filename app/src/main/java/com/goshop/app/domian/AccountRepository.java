@@ -1,6 +1,8 @@
 package com.goshop.app.domian;
 
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.response.GetWeatherResponse;
 
 import io.reactivex.Observable;
 
@@ -11,5 +13,7 @@ import io.reactivex.Observable;
 public interface AccountRepository {
 
     Observable<UserInfo> getUserInfo(String id);
-    
+
+    Observable<Weather> getWeather();
+
 }

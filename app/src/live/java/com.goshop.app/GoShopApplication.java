@@ -7,8 +7,12 @@ import com.squareup.leakcanary.LeakCanary;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.support.multidex.MultiDexApplication;
 
+import injection.components.ApplicationComponent;
+import injection.components.DaggerApplicationComponent;
 import io.fabric.sdk.android.Fabric;
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
@@ -17,6 +21,7 @@ public class GoShopApplication extends MultiDexApplication {
 
     @SuppressLint("StaticFieldLeak")
     private static Context context;
+    private static ApplicationComponent mApplicationComponent;
 
     public static Context getAppContext() {
         return GoShopApplication.context;
@@ -29,6 +34,7 @@ public class GoShopApplication extends MultiDexApplication {
         setFabric();
         //TODO (ray) If you need to untangle it
 //        setLeakCanary();
+        initializeComponents();
         initRealm();
     }
 
@@ -53,5 +59,11 @@ public class GoShopApplication extends MultiDexApplication {
         Realm.setDefaultConfiguration(realmConfiguration);
     }
 
+    private void initializeComponents() {
+        mApplicationComponent = DaggerApplicationComponent.Initializer.init(this);
+    }
+    public static ApplicationComponent getApplicationComponent() {
+        return mApplicationComponent;
+    }
 
 }
