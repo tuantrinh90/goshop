@@ -63,7 +63,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
         return null;
     }
 
-    @OnClick({R.id.tv_c, R.id.btn_click_login, R.id.tv_text})
+    @OnClick({R.id.tv_c, R.id.btn_click_login, R.id.tv_text, R.id.btn_click_home})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.tv_c:
@@ -73,6 +73,9 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                 break;
             case R.id.tv_text:
+                break;
+            case R.id.btn_click_home:
+                startActivity(new Intent(HomeActivity.this, MainHomeActivity.class));
                 break;
         }
     }

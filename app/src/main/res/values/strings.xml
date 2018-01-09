@@ -10,4 +10,7 @@
     <string name="login_bottom_describe">New to Go shop?&#160;</string>
     <string name="login_register">Register now.</string>
 
+    <string name="home_item_test_product_name">Manjung Korean Crispy Seaweed(Sea Salt)</string>
+    <string name="home_item_test_product_price">RM 119.00</string>
+
 </resources>

@@ -3,6 +3,8 @@
     package="com.goshop.app">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
 
     <meta-data
         android:name="io.fabric.ApiKey"
@@ -24,6 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
+        <activity android:name=".presentation.home.MainHomeActivity"/>
     </application>
 
 </manifest>
