@@ -16,6 +16,16 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"/>
 
+    <com.goshop.app.common.view.CustomBoldButton
+        android:layout_below="@id/tv_c"
+        android:id="@+id/btn_click_login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="click to login"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
     <com.goshop.app.common.view.CustomBoldTextView
         android:id="@+id/tv_text"
         android:layout_width="wrap_content"

@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">goshop</string>
+    <!--login-->
+    <string name="login_email">Email</string>
+    <string name="login_password">Password</string>
+    <string name="login_login">LOGIN</string>
+    <string name="login_forgot_password">Forgot password?</string>
+    <string name="login_or">OR</string>
+    <string name="login_facebook">Login with Facbook</string>
+    <string name="login_bottom_describe">New to Go shop?&#160;</string>
+    <string name="login_register">Register now.</string>
+
 </resources>
