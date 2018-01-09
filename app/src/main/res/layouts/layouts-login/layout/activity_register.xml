@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar_img_text_img_close"
+    />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_48"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/size_40"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_16">
+
+                <com.goshop.app.common.view.CustomEditText
+                    android:id="@+id/et_register_first_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/register_firstname"
+                    android:layout_weight="1"
+                    android:layout_marginRight="@dimen/size_8"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:padding="@dimen/size_8"
+                    android:background="@drawable/bg_edittext_grayline"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColorHint="@color/pinkishGrey"
+                    android:textColor="@android:color/black"
+                    android:textCursorDrawable="@null"
+                    android:imeOptions="actionNext"/>
+
+                <com.goshop.app.common.view.CustomEditText
+                    android:id="@+id/et_register_last_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:hint="@string/register_lastname"
+                    android:layout_weight="1"
+                    android:maxLines="1"
+                    android:inputType="text"
+                    android:layout_marginLeft="@dimen/size_8"
+                    android:padding="@dimen/size_8"
+                    android:background="@drawable/bg_edittext_grayline"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColorHint="@color/pinkishGrey"
+                    android:textColor="@android:color/black"
+                    android:textCursorDrawable="@null"
+                    android:imeOptions="actionNext"/>
+            </LinearLayout>
+
+
+            <com.goshop.app.common.view.CustomEditText
+                android:id="@+id/et_register_email"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_48"
+                android:background="@drawable/bg_edittext_grayline"
+                android:hint="@string/email"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginLeft="@dimen/size_16"
+                android:layout_marginRight="@dimen/size_16"
+                android:inputType="textEmailAddress"
+                android:maxLines="1"
+                android:padding="@dimen/size_8"
+                android:textSize="@dimen/size_font_16"
+                android:textColorHint="@color/pinkishGrey"
+                android:textColor="@android:color/black"
+                android:textCursorDrawable="@null"
+                android:imeOptions="actionNext"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20">
+                <com.goshop.app.common.view.CustomEditText
+                    android:id="@+id/et_register_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_48"
+                    android:background="@drawable/bg_edittext_grayline"
+                    android:hint="@string/password"
+                    android:inputType="textPassword"
+                    android:layout_marginRight="@dimen/size_16"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:maxLines="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColorHint="@color/pinkishGrey"
+                    android:textColor="@android:color/black"
+                    android:textCursorDrawable="@null"
+                    android:imeOptions="actionNext"/>
+                <ImageView
+                    android:id="@+id/iv_register_eye"
+                    android:layout_width="@dimen/size_24"
+                    android:layout_height="@dimen/size_20"
+                    android:layout_centerVertical="true"
+                    android:layout_alignRight="@id/et_register_password"
+                    android:src="@mipmap/eye"/>
+            </RelativeLayout>
+
+
+            <com.goshop.app.common.view.CustomEditText
+                android:id="@+id/et_register_mobile_number"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_48"
+                android:background="@drawable/bg_edittext_grayline"
+                android:hint="@string/mobile_number"
+                android:inputType="number"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginRight="@dimen/size_16"
+                android:layout_marginLeft="@dimen/size_16"
+                android:padding="@dimen/size_8"
+                android:maxLines="1"
+                android:textSize="@dimen/size_font_16"
+                android:textColorHint="@color/pinkishGrey"
+                android:textColor="@android:color/black"
+                android:textCursorDrawable="@null"
+                android:imeOptions="actionDone"/>
+
+            <CheckBox
+                android:id="@+id/cb_register_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_marginRight="@dimen/size_16"
+                android:layout_marginLeft="@dimen/size_16"
+                android:checked="true"
+                android:text="@string/register_tips_email"
+                android:textColor="@android:color/black"/>
+
+            <CheckBox
+                android:id="@+id/cb_register_sms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_marginRight="@dimen/size_16"
+                android:layout_marginLeft="@dimen/size_16"
+                android:checked="true"
+                android:text="@string/register_tips_sms"
+                android:textColor="@android:color/black"/>
+
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_btn_register"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_48"
+                android:gravity="center"
+                android:text="@string/register"
+                android:padding="@dimen/size_12"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_marginLeft="@dimen/size_16"
+                android:layout_marginRight="@dimen/size_16"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/size_font_18"
+                android:background="@drawable/selector_btn_gray"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size_20"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_16"
+                android:paddingBottom="@dimen/size_60"
+                android:text="@string/register_tips"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@android:color/black"/>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_1"
+                android:background="@color/pinkishGrey"/>
+            <LinearLayout
+                android:id="@+id/ll_register_login"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="@dimen/size_12"
+                android:gravity="center">
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/register_have_account"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColor="@android:color/black"/>
+                <com.goshop.app.common.view.CustomBoldTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

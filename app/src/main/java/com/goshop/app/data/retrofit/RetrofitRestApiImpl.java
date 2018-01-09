@@ -2,7 +2,10 @@ package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
+import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -16,6 +19,7 @@ import retrofit2.Retrofit;
 public class RetrofitRestApiImpl implements RestApi {
 
     private RetrofitRestApi retrofitRestApi;
+
     @Inject
     public RetrofitRestApiImpl(Retrofit retrofit) {
         this.retrofitRestApi = retrofit.create(RetrofitRestApi.class);
@@ -23,7 +27,13 @@ public class RetrofitRestApiImpl implements RestApi {
 
     @Override
     public Observable<GetWeatherResponse> getWeather(String id) {
-        String url= EndpointAddress.getFullUrl(EndpointAddress.USER_INFO);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.USER_INFO);
         return retrofitRestApi.getWeather(url);
+    }
+
+    @Override
+    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.REGISTER);
+        return retrofitRestApi.registerRequest(url, params);
     }
 }

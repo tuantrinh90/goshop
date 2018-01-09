@@ -5,6 +5,8 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.source.AccountDataSource;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
@@ -29,6 +31,11 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<GetWeatherResponse> getWeather() {
+        return null;
+    }
+
+    @Override
+    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
         return null;
     }
 }

@@ -1,11 +1,13 @@
 package injection.modules;
 
-import android.app.Activity;
-import android.support.v4.app.Fragment;
-
 import com.goshop.app.domian.AccountDataRepository;
 import com.goshop.app.presentation.home.HomeContract;
 import com.goshop.app.presentation.home.HomePresenter;
+import com.goshop.app.presentation.login.RegisterContract;
+import com.goshop.app.presentation.login.RegisterPresenter;
+
+import android.app.Activity;
+import android.support.v4.app.Fragment;
 
 import dagger.Module;
 import dagger.Provides;
@@ -18,9 +20,9 @@ import injection.ActivityScope;
 
 public class PresenterModule {
 
-    private Activity mActivity;
-
     private Fragment fragment;
+
+    private Activity mActivity;
 
     public PresenterModule(Activity activity) {
         this.mActivity = activity;
@@ -42,11 +44,17 @@ public class PresenterModule {
         return mActivity;
     }
 
-
     @Provides
     @ActivityScope
     public HomeContract.Presenter provideHomePresenter(AccountDataRepository dataRepository) {
         return new HomePresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public RegisterContract.Presenter provideRegisterPresenter(
+        AccountDataRepository dataRepository) {
+        return new RegisterPresenter(dataRepository);
     }
 
 

@@ -6,6 +6,8 @@ import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.source.AccountDataSource;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
@@ -31,5 +33,10 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<GetWeatherResponse> getWeather() {
         return restApi.getWeather("");
+    }
+
+    @Override
+    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
+        return restApi.registerRequest(params);
     }
 }

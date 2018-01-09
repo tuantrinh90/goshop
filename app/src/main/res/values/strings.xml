@@ -1,3 +1,20 @@
 <resources>
+
     <string name="app_name">goshop</string>
+    <string name="register">Register</string>
+    <string name="register_firstname">First Name</string>
+    <string name="register_lastname">Last Name</string>
+    <string name="email">Email</string>
+    <string name="mobile_number">Mobile Number</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="register_tips_email">Email me the latest shopping news</string>
+    <string name="register_tips_sms">SMS me the latest shopping news</string>
+    <string name="register_tips">By registering account, I confirm that: I have read and agree to
+        the Privacy Policy, Terms and Conditions, Terms of User at Go Shop.
+    </string>
+
+    <string name="register_have_account">Already have an account?</string>
+    <string name="login">Login</string>
+
 </resources>

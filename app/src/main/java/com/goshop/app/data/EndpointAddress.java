@@ -10,6 +10,8 @@ import com.goshop.app.BuildConfig;
 public class EndpointAddress {
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
+    //todo wait for api
+    public static final String REGISTER = "";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

@@ -6,6 +6,8 @@ import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
 
+import java.util.Map;
+
 import javax.inject.Inject;
 import javax.inject.Named;
 
@@ -43,6 +45,11 @@ public class AccountDataRepository implements AccountRepository {
                         return Observable.error(new ServiceApiFail("error"));
                     }
                 });
+    }
+
+    @Override
+    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
+        return accountCloudDataSource.registerRequest(params);
     }
 
     @Override
