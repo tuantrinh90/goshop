@@ -1,6 +1,9 @@
 package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
+import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -38,5 +41,21 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<UserInfo> registerRequest(Map<String, Object> params) {
         return restApi.registerRequest(params);
+    }
+
+    @Override
+    public Observable<ComplementEmailReponse> complementEmailRequest(Map<String, Object> params) {
+        return restApi.complementEmailRequest(params);
+    }
+
+    @Override
+    public Observable<ResetPasswordReponse> resetPasswordRequest(Map<String, Object> params) {
+        return restApi.resetPasswordRequest(params);
+    }
+
+    @Override
+    public Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(
+        Map<String, Object> params) {
+        return restApi.sendConfirmationLinkRequest(params);
     }
 }

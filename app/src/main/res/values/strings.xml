@@ -5,6 +5,7 @@
     <string name="register_firstname">First Name</string>
     <string name="register_lastname">Last Name</string>
     <string name="email">Email</string>
+    <string name="email_format">test@test.com</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="password">Password</string>
     <string name="phone">Phone</string>
@@ -16,5 +17,14 @@
 
     <string name="register_have_account">Already have an account?</string>
     <string name="login">Login</string>
-
+    <string name="complement_email">Complement Email</string>
+    <string name="complement_email_tips">Your email can\'t be got from your Facebook account. In
+        order to finish Facebook connection process, please complement your email as below:
+    </string>
+    <string name="submit">Submit</string>
+    <string name="reset_password_tips">Please enter the email address associated with your account.
+        We will email you a link to reset your password.
+    </string>
+    <string name="reset_password">Reset Password</string>
+    <string name="send_confirmation_link">Send Confirmation Link</string>
 </resources>

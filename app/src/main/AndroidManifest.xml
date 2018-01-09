@@ -22,6 +22,21 @@
 
         <activity android:name=".presentation.login.RegisterActivity"
             android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.login.LoginComplementEmailActivity"
+            android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.login.LoginResetPasswordActivity"
+            android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.login.LoginSendConfirmationLinkActivity"
+            android:theme="@style/WhiteBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>

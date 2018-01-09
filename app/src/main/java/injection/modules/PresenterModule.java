@@ -3,6 +3,12 @@ package injection.modules;
 import com.goshop.app.domian.AccountDataRepository;
 import com.goshop.app.presentation.home.HomeContract;
 import com.goshop.app.presentation.home.HomePresenter;
+import com.goshop.app.presentation.login.LoginComplementEmailContract;
+import com.goshop.app.presentation.login.LoginComplementEmailPresenter;
+import com.goshop.app.presentation.login.LoginResetPasswordContract;
+import com.goshop.app.presentation.login.LoginResetPasswordPresenter;
+import com.goshop.app.presentation.login.LoginSendConfirmationLinkContract;
+import com.goshop.app.presentation.login.LoginSendConfirmationLinkPresenter;
 import com.goshop.app.presentation.login.RegisterContract;
 import com.goshop.app.presentation.login.RegisterPresenter;
 
@@ -57,5 +63,25 @@ public class PresenterModule {
         return new RegisterPresenter(dataRepository);
     }
 
+    @Provides
+    @ActivityScope
+    public LoginComplementEmailContract.Presenter provideLoginComplementEmailPresenter(
+        AccountDataRepository dataRepository) {
+        return new LoginComplementEmailPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public LoginResetPasswordContract.Presenter provideLoginResetPasswordPresenter(
+        AccountDataRepository dataRepository) {
+        return new LoginResetPasswordPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public LoginSendConfirmationLinkContract.Presenter provideLoginSendConfirmationLinkPresenter(
+        AccountDataRepository dataRepository) {
+        return new LoginSendConfirmationLinkPresenter(dataRepository);
+    }
 
 }

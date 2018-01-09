@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
 import android.os.Bundle;
@@ -61,6 +62,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     private boolean isMask = true;
 
+    private ToastUtil toastUtil;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -91,10 +94,13 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             .inject(this);
     }
 
-    private ToastUtil toastUtil;
     @Override
     public void registerSuccess() {
         //TODO(helen)when register success
+        showToast();
+    }
+
+    private void showToast() {
         Toast toast = Toast.makeText(this, "Thanks for registering on GO SHOP", Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toastUtil = ToastUtil.getInstance(this, this, toast);
@@ -116,6 +122,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     public void onRegisterClick(View view) {
         switch (view.getId()) {
             case R.id.tv_btn_register:
+                KeyBoardUtils.hideKeyboard(this);
                 //TODO(helen)wait for api
                 getInputDatas();
                 mPresenter.registerRequest(null);
@@ -124,21 +131,24 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                 startLoginScreen();
                 break;
             case R.id.imageview_left_menu:
-                if(toastUtil != null) {
+                KeyBoardUtils.hideKeyboard(this);
+                if (toastUtil != null) {
                     toastUtil.cancelToast();
                 }
                 finish();
                 break;
             case R.id.imageview_right_menu:
-                if(toastUtil != null) {
+                KeyBoardUtils.hideKeyboard(this);
+                if (toastUtil != null) {
                     toastUtil.cancelToast();
                 }
                 finish();
                 break;
             case R.id.iv_register_eye:
                 isMask = !isMask;
-                if(isMask) {
-                    etRegisterPassword.setInputType(InputType.TYPE_CLASS_TEXT |InputType.TYPE_TEXT_VARIATION_PASSWORD);
+                if (isMask) {
+                    etRegisterPassword.setInputType(
+                        InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
                     etRegisterPassword.setText(etRegisterPassword.getText().toString());
                 } else {
                     etRegisterPassword.setInputType(InputType.TYPE_TEXT_VARIATION_VISIBLE_PASSWORD);

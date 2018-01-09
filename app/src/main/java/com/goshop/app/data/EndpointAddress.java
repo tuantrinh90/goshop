@@ -12,6 +12,13 @@ public class EndpointAddress {
     public static final String USER_INFO = "data/cityinfo/101190408.html";
     //todo wait for api
     public static final String REGISTER = "";
+    //todo wait for api
+    public static final String COMPLEMENT_EMAIL = "";
+    //todo wait for api
+    public static final String RESET_PASSWORD = "";
+
+    //todo wait for api
+    public static final String SEND_CONFIRMATION_LINK = "";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

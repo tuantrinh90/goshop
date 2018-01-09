@@ -1,5 +1,8 @@
 package com.goshop.app.data.retrofit;
 
+import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.SaveUserRequest;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -56,5 +59,23 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<UserInfo> registerRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<ComplementEmailReponse> complementEmailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<ResetPasswordReponse> resetPasswordRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }
