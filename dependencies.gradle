@@ -1,0 +1,82 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    butterkniftVersion = '8.4.0'
+    rxjavaVersion = '2.0.1'
+    retrofitVersion = '2.2.0'
+    okhttpVersion = '3.4.1'
+    glideVersion = '3.7.0'
+    glideOkhttp3Version = '1.4.0'
+    commonVersion = '26.+'
+    daggerVersion = '2.7'
+    rxBindingVersion = '2.0.0'
+    rxLifecycleVersion = '2.2.1'
+    javaxAnnotationVersion = '1.0'
+    multidexVersion = '1.0.0'
+    androidLifecycleVersion = '1.0.0'
+    crashlyticVersion = '2.6.7'
+    leakCanaryVersion = '1.5'
+    constraintlayoutVersion = '1.0.2'
+    permissionDispatcher = '3.0.1'
+    //Testing
+    jUnitVersion = '4.12'
+    espressoVersion = '2.2.2'
+    androidMapsUtilsVersion = '0.4.+'
+    crashlyticsSdkVersion = '2.7.1'
+    systembartintVersion = '1.0.3'
+
+    appDependencies = [
+            support_v4                    : "com.android.support:support-v4:$commonVersion",
+            appcompat_v7                  : "com.android.support:appcompat-v7:$commonVersion",
+            androidDesign                 : "com.android.support:design:$commonVersion",
+            recyclerView                  : "com.android.support:recyclerview-v7:$commonVersion",
+            cardView                      : "com.android.support:cardview-v7:$commonVersion",
+            glide                         : "com.github.bumptech.glide:glide:$glideVersion",
+            glide_okhttp                  : "com.github.bumptech.glide:okhttp3-integration:$glideOkhttp3Version@aar",
+            butternifeCompiler            : "com.jakewharton:butterknife-compiler:$butterkniftVersion",
+            butternife                    : "com.jakewharton:butterknife:$butterkniftVersion",
+            okhttp_logging                : "com.squareup.okhttp3:logging-interceptor:$okhttpVersion",
+            rxJava                        : "io.reactivex.rxjava2:rxjava:$rxjavaVersion",
+            rxAndroid                     : "io.reactivex.rxjava2:rxandroid:$rxjavaVersion",
+            rxBinding                     : "com.jakewharton.rxbinding2:rxbinding:$rxBindingVersion",
+            rxLifecycle                   : "com.trello.rxlifecycle2:rxlifecycle:$rxLifecycleVersion",
+            rxLifecycleAndroidLifecycle   : "com.trello.rxlifecycle2:rxlifecycle-android-lifecycle:$rxLifecycleVersion",
+            rxLifeCycleComponents         : "com.trello.rxlifecycle2:rxlifecycle-components:$rxLifecycleVersion",
+            systembartint                 : "com.readystatesoftware.systembartint:systembartint:${systembartintVersion}",
+
+            permissionsdispatcher         : "com.github.hotchemi:permissionsdispatcher:$permissionDispatcher",
+            permissionsdispatcherprocessor: "com.github.hotchemi:permissionsdispatcher-processor:$permissionDispatcher",
+
+            javaxAnnotation               : "javax.annotation:jsr250-api:$javaxAnnotationVersion",
+            retrofit                      : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            retrofit_gson                 : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            retrofit_rxjava               : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            dagger2                       : "com.google.dagger:dagger:$daggerVersion",
+            daggerComiler                 : "com.google.dagger:dagger-compiler:$daggerVersion",
+
+            androidLifecycleRuntime       : "android.arch.lifecycle:runtime:$androidLifecycleVersion",
+            androidLifecycleExtensions    : "android.arch.lifecycle:extensions:$androidLifecycleVersion",
+            androidLifecycleCompiler      : "android.arch.lifecycle:compiler:$androidLifecycleVersion",
+
+            multiDex                      : "com.android.support:multidex:$multidexVersion",
+            constraintlayout              : "com.android.support.constraint:constraint-layout:$constraintlayoutVersion",
+            crashlyticsSdk                : "com.crashlytics.sdk.android:crashlytics:$crashlyticsSdkVersion@aar"
+
+    ]
+    developmentDependencies = [
+            leakCanaryDebug  : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
+            leakCanaryRelease: "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
+            leakCanaryTest   : "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
+            crashlytic       : "com.crashlytics.sdk.android:crashlytics:${crashlyticVersion}@aar",
+    ]
+
+    testDependencies = [
+            junit   : "junit:junit:${jUnitVersion}",
+            espresso: "com.android.support.test.espresso:espresso-core:${espressoVersion}"
+    ]
+
+}
