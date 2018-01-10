@@ -12,7 +12,7 @@ import io.reactivex.Observable;
 
 public interface AccountDataSource {
 
-    Observable<UserInfo> getUserInfo(String id);
+    Observable<UserInfo> getUserInfo(String username ,String password);
 
     Observable<GetWeatherResponse> getWeather();
 }

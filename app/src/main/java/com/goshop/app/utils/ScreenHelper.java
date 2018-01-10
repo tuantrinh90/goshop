@@ -80,6 +80,10 @@ public class ScreenHelper {
         return ContextCompat.getColor(GoShopApplication.getAppContext(), id);
     }
 
+    public static String getString(int id){
+        return GoShopApplication.getAppContext().getResources().getString(id);
+    }
+
     public static int getWidth(Context paramContext) {
         return getMeasures(paramContext).arg1;
     }

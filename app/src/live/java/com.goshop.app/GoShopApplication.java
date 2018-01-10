@@ -1,8 +1,10 @@
 package com.goshop.app;
 
 import com.crashlytics.android.Crashlytics;
+import com.facebook.FacebookSdk;
 import com.goshop.app.data.realm.EncryptionKey;
 import com.goshop.app.data.realm.SchemaMigration;
+import com.goshop.app.utils.ScreenHelper;
 import com.squareup.leakcanary.LeakCanary;
 
 import android.annotation.SuppressLint;
@@ -32,6 +34,8 @@ public class GoShopApplication extends MultiDexApplication {
         super.onCreate();
         context = getApplicationContext();
         setFabric();
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.setApplicationId(ScreenHelper.getString(R.string.facebook_id));
         //TODO (ray) If you need to untangle it
 //        setLeakCanary();
         initializeComponents();

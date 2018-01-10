@@ -10,6 +10,10 @@
         android:name="io.fabric.ApiKey"
         android:value="your_fabric_api" />
 
+     <meta-data
+         android:name="com.facebook.sdk.ApplicationId"
+         android:value="@string/facebook_id" />
+
     <application
         android:name=".GoShopApplication"
         android:allowBackup="true"
@@ -27,6 +31,16 @@
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.MainHomeActivity"/>
+
+        <!-- FACEBOOK -->
+        <!--<activity-->
+            <!--android:name="com.facebook.FacebookActivity"-->
+            <!--android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"-->
+            <!--android:label="@string/app_name"-->
+            <!--android:theme="@android:style/Theme.Translucent.NoTitleBar"-->
+            <!--/>-->
     </application>
+
+
 
 </manifest>

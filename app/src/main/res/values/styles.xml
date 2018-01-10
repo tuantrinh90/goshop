@@ -36,4 +36,17 @@
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
     </style>
+
+    <style name="textInputEditTheme" parent="AppTheme">
+        <!--TextInputLayout颜色-->
+        <item name="android:textColorHint">@color/hint</item><!--hint-->
+        <item name="colorControlNormal">@color/hint</item><!--底线-->
+        <item name="colorControlActivated">@color/colorAccent</item><!--底线和hint有焦点时-->
+        <item name="colorControlHighlight">@color/colorAccent</item><!--底线和hint有焦点时-->
+    </style>
+
+    <style name="textInputErrorStyle">
+        <!--TextInputLayout错误提示的颜色-->
+        <item name="android:textColor">@color/green_common</item><!--hint-->
+    </style>
 </resources>

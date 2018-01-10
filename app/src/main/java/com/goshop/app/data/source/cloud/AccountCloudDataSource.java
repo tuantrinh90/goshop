@@ -6,9 +6,14 @@ import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.source.AccountDataSource;
 
+import java.util.logging.Logger;
+
 import javax.inject.Inject;
 
 import io.reactivex.Observable;
+import io.reactivex.ObservableEmitter;
+import io.reactivex.ObservableOnSubscribe;
+import io.reactivex.Observer;
 
 /**
  * Created by Ray on 2018/1/5.
@@ -24,8 +29,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<UserInfo> getUserInfo(String id) {
-        return  null;
+    public Observable<UserInfo> getUserInfo(String username,String password) {
+        return  restApi.getUser(username,password);
     }
 
     @Override

@@ -46,8 +46,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<UserInfo> getUserInfo(String id) {
-        return accountCloudDataSource.getUserInfo(id)
+    public Observable<UserInfo> getUserInfo(String username,String password) {
+        return accountCloudDataSource.getUserInfo(username,password)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }
