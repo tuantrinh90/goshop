@@ -5,6 +5,8 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomBoldButton;
 import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
@@ -13,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -34,8 +37,14 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     @BindView(R.id.et_complement_email_email)
     CustomEditText etComplementEmailEmail;
 
+    @BindView(R.id.iv_send_email_delete)
+    ImageView ivSendEmailDelete;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.tv_complement_email_email)
+    CustomTextView tvComplementEmailEmail;
 
     private ToastUtil toastUtil;
 
@@ -60,6 +69,7 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
         //TODO(helen):this is wait for design
         toolbar.setBackgroundColor(getResources().getColor(R.color.pinkishGrey));
         initPresenter();
+        editActionListener();
     }
 
     private void initPresenter() {
@@ -68,6 +78,11 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+    }
+
+    private void editActionListener() {
+        EditTextUtil.deleteImageShowListener(etComplementEmailEmail, ivSendEmailDelete);
+        EditTextUtil.emailFoucsChangedListener(etComplementEmailEmail, tvComplementEmailEmail);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.btn_complement_email_submit})
@@ -81,9 +96,10 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
                 finish();
                 break;
             case R.id.btn_complement_email_submit:
-                KeyBoardUtils.hideKeyboard(this);
+                EditTextUtil.eidtLoseFocus(btnComplementEmailSubmit);
+                String email = etComplementEmailEmail.getText().toString();
                 //TODO(helen)wait for api
-                mPresenter.complementEmailRequest(null);
+                //mPresenter.complementEmailRequest(null);
 
                 break;
         }

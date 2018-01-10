@@ -5,6 +5,8 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomBoldButton;
 import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
@@ -13,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -33,8 +36,14 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
     @BindView(R.id.et_reset_password_email)
     CustomEditText etResetPasswordEmail;
 
+    @BindView(R.id.iv_reset_password_delete)
+    ImageView ivResetPasswordDelete;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.tv_reset_password_email)
+    CustomTextView tvResetPasswordEmail;
 
     private ToastUtil toastUtil;
 
@@ -59,6 +68,7 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
         toolbar.setBackgroundColor(getResources().getColor(R.color.pinkishGrey));
         hideRightMenu();
         initPresenter();
+        editActionListener();
     }
 
     private void initPresenter() {
@@ -67,6 +77,11 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+    }
+
+    private void editActionListener() {
+        EditTextUtil.deleteImageShowListener(etResetPasswordEmail, ivResetPasswordDelete);
+        EditTextUtil.emailFoucsChangedListener(etResetPasswordEmail, tvResetPasswordEmail);
     }
 
     @Override
@@ -94,8 +109,9 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
                 break;
             case R.id.btn_reset_password_submit:
                 //TODO(helen)wait for api
-                KeyBoardUtils.hideKeyboard(this);
-                mPresenter.resetPasswordRequest(null);
+                EditTextUtil.eidtLoseFocus(btnResetPasswordSubmit);
+                String email = etResetPasswordEmail.getText().toString();
+                //mPresenter.resetPasswordRequest(null);
                 break;
         }
     }

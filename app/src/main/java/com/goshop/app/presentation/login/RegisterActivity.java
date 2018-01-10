@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
@@ -15,6 +16,7 @@ import android.text.InputType;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -51,6 +53,24 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     @BindView(R.id.et_register_password)
     CustomEditText etRegisterPassword;
 
+    @BindView(R.id.iv_first_name_delete)
+    ImageView ivFirstNameDelete;
+
+    @BindView(R.id.iv_last_name_delete)
+    ImageView ivLastNameDelete;
+
+    @BindView(R.id.iv_register_email_delete)
+    ImageView ivRegisterEmailDelete;
+
+    @BindView(R.id.iv_register_eye)
+    ImageView ivRegisterEye;
+
+    @BindView(R.id.iv_register_mobile_delete)
+    ImageView ivRegisterMobileDelete;
+
+    @BindView(R.id.iv_register_pwd_delete)
+    ImageView ivRegisterPwdDelete;
+
     @BindView(R.id.ll_register_login)
     LinearLayout llRegisterLogin;
 
@@ -59,6 +79,21 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @BindView(R.id.tv_btn_register)
     CustomTextView tvBtnRegister;
+
+    @BindView(R.id.tv_register_email)
+    CustomTextView tvRegisterEmail;
+
+    @BindView(R.id.tv_register_first_name)
+    CustomTextView tvRegisterFirstName;
+
+    @BindView(R.id.tv_register_last_name)
+    CustomTextView tvRegisterLastName;
+
+    @BindView(R.id.tv_register_mobile)
+    CustomTextView tvRegisterMobile;
+
+    @BindView(R.id.tv_register_pwd)
+    CustomTextView tvRegisterPwd;
 
     private boolean isMask = true;
 
@@ -84,6 +119,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         //TODO(helen):this is wait for design
         toolbar.setBackgroundColor(getResources().getColor(R.color.pinkishGrey));
         initPresenter();
+        editActionListener();
+        checkBoxActionListener();
     }
 
     private void initPresenter() {
@@ -92,6 +129,29 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+    }
+
+    private void editActionListener() {
+        EditTextUtil.deleteImageShowListener(etRegisterFirstName, ivFirstNameDelete);
+        EditTextUtil.deleteImageShowListener(etRegisterLastName, ivLastNameDelete);
+        EditTextUtil.deleteImageShowListener(etRegisterEmail, ivRegisterEmailDelete);
+        EditTextUtil.deleteImageShowListener(etRegisterPassword, ivRegisterPwdDelete);
+        EditTextUtil.deleteImageShowListener(etRegisterMobileNumber, ivRegisterMobileDelete);
+
+        EditTextUtil.foucsChangedListener(etRegisterFirstName, tvRegisterFirstName);
+        EditTextUtil.foucsChangedListener(etRegisterLastName, tvRegisterLastName);
+        EditTextUtil.emailFoucsChangedListener(etRegisterEmail, tvRegisterEmail);
+        EditTextUtil.passwordFoucsChangedListener(etRegisterPassword, tvRegisterPwd);
+        EditTextUtil.mobileFoucsChangedListener(etRegisterMobileNumber, tvRegisterMobile);
+    }
+
+    private void checkBoxActionListener() {
+        cbRegisterEmail.setOnCheckedChangeListener((view, isChecked) -> {
+            EditTextUtil.eidtLoseFocus(cbRegisterEmail);
+        });
+        cbRegisterSms.setOnCheckedChangeListener((view, isChecked) -> {
+            EditTextUtil.eidtLoseFocus(cbRegisterSms);
+        });
     }
 
     @Override
@@ -122,10 +182,10 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     public void onRegisterClick(View view) {
         switch (view.getId()) {
             case R.id.tv_btn_register:
-                KeyBoardUtils.hideKeyboard(this);
+                EditTextUtil.eidtLoseFocus(tvBtnRegister);
                 //TODO(helen)wait for api
-                getInputDatas();
-                mPresenter.registerRequest(null);
+                //getInputDatas();
+                //mPresenter.registerRequest(null);
                 break;
             case R.id.ll_register_login:
                 startLoginScreen();
@@ -160,6 +220,10 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         }
     }
 
+    private void startLoginScreen() {
+        //TODO(helen) it will completed when code merge
+    }
+
     private void getInputDatas() {
         //TODO(helen)wait for api
         String firstName = etRegisterFirstName.getText().toString();
@@ -169,10 +233,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         String mobileNo = etRegisterMobileNumber.getText().toString();
         boolean isSendEmail = cbRegisterEmail.isChecked();
         boolean isSendSms = cbRegisterSms.isChecked();
-    }
-
-    private void startLoginScreen() {
-        //TODO(helen) it will completed when code merge
     }
 
     @Override

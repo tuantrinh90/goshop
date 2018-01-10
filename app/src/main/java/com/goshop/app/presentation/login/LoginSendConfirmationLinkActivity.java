@@ -5,6 +5,8 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomBoldButton;
 import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
@@ -13,6 +15,7 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import butterknife.BindView;
@@ -34,8 +37,14 @@ public class LoginSendConfirmationLinkActivity extends
     @BindView(R.id.et_send_confirmation_link_email)
     CustomEditText etSendConfirmationLinkEmail;
 
+    @BindView(R.id.iv_send_email_delete)
+    ImageView ivSendEmailDelete;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.tv_send_link_email)
+    CustomTextView tvSendLinkEmail;
 
     private ToastUtil toastUtil;
 
@@ -60,6 +69,7 @@ public class LoginSendConfirmationLinkActivity extends
         toolbar.setBackgroundColor(getResources().getColor(R.color.pinkishGrey));
         hideRightMenu();
         initPresenter();
+        editActionListener();
     }
 
     private void initPresenter() {
@@ -68,6 +78,11 @@ public class LoginSendConfirmationLinkActivity extends
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+    }
+
+    private void editActionListener() {
+        EditTextUtil.deleteImageShowListener(etSendConfirmationLinkEmail, ivSendEmailDelete);
+        EditTextUtil.emailFoucsChangedListener(etSendConfirmationLinkEmail, tvSendLinkEmail);
     }
 
     @Override
@@ -93,9 +108,10 @@ public class LoginSendConfirmationLinkActivity extends
                 finish();
                 break;
             case R.id.btn_send_confirmation_link_submit:
-                KeyBoardUtils.hideKeyboard(this);
+                EditTextUtil.eidtLoseFocus(btnSendConfirmationLinkSubmit);
+                String email = etSendConfirmationLinkEmail.getText().toString();
                 //TODO(helen) wait for api
-                mPresenter.sendConfirmationLinkRequest(null);
+                //mPresenter.sendConfirmationLinkRequest(null);
                 break;
         }
     }
@@ -104,4 +120,6 @@ public class LoginSendConfirmationLinkActivity extends
     public void onToastCancel() {
         finish();
     }
+
+
 }
