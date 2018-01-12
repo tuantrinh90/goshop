@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <color name="colorAccent">#EC458B</color>
 
     <color name="brightSkyBlue">#00b6f1</color>
     <color name="pinkishGrey">#bcbcbc</color>
@@ -38,10 +38,14 @@
     <color name="white66FFFFFF">#66FFFFFF</color>
     <color name="whiteffffff">#ffffff</color>
     <color name="sswhite">#85ffffff</color>
+    <color name="whiteTrans45">#73ffffff</color>
+    <color name="whiteTrans59">#99ffffff</color>
+
 
     <!-- 黑色 -->
     <color name="black000000">#000000</color>
     <color name="black222222">#222222</color>
+    <color name="black212121">#212121</color>
     <color name="black111111">#111111</color>
     <color name="black333333">#333333</color>
     <color name="black666666">#666666</color>
@@ -51,6 +55,7 @@
     <color name="black80000000">#80000000</color>
     <color name="black1a1a1a">#1a1a1a</color>
     <color name="blackE3B0B0B0">#E3B0B0B0</color>
+    <color name="blackdf000000">#df000000</color>
     <!-- #000000 87%-->
     <color name="black87">#db000000</color>
     <!-- #000000 54%-->
@@ -62,6 +67,7 @@
     <color name="greyDCDCDC">#DCDCDC</color>
     <color name="edittext_line">#1F000000</color>
     <color name="device_line">#1e000000</color>
+    <color name="parting_line">#1d000000</color>
 
     <color name="grey878787">#878787</color>
     <color name="greyC2C2C2">#e1e1e1</color>
@@ -75,6 +81,7 @@
     <color name="grey444444">#444444</color>
     <color name="greyF0F0F1">#F0F0F1</color>
     <color name="greyE1E1E1">#E1E1E1</color>
+    <color name="greyF1F1F1">#F1F1F1</color>
     <color name="greyCCCCCC">#CCCCCC</color>
     <color name="blue7D66006E" >#7D66006E</color>
     <color name="blueD7D7D7" >#D7D7D7</color>
@@ -102,7 +109,6 @@
     <color name="greyfdfbfe">#fdfbfe</color>
 
     <color name="grey6f6f6f">#6f6f6f</color>
-
     <!-- 绿色 -->
     <color name="green_common">#009E82</color>
 
@@ -185,5 +191,4 @@
     <color name="search_bar_list_line">#21000000</color>
     <color name="my_count_divider_line_color">#20000000</color>
 
->>>>>>> master
 </resources>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <View android:layout_width="match_parent"
+        android:layout_height="@dimen/home_card_layout_part_margin"
+        android:background="@color/greyF1F1F1"
+    />
+    <ImageView
+        android:id="@+id/iv_bottom_slide_header"
+        android:background="@color/colorAccent"
+        android:layout_width="match_parent"
+        android:scaleType="fitXY"
+        android:layout_height="@dimen/home_bottom_slide_header_height"/>
+</LinearLayout>

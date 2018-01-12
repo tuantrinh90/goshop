@@ -1,20 +1,18 @@
 package com.goshop.app.data.model;
 
-import com.chad.library.adapter.base.entity.MultiItemEntity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * Created by img on 2018/1/5.
  */
 
-public class MultipleItem implements MultiItemEntity {
+public class MultipleItem  {
     private int itemType;
     private int spanSize;
     private TopBanner topBanner;
     private List<CenterVideo> centerVideo;
-    private BottomSlide bottomSlide;
+    private List<BottomSlide> bottomSlide;
 
     public MultipleItem(int itemType, int spanSize, String content) {
         this.itemType = itemType;
@@ -45,7 +43,7 @@ public class MultipleItem implements MultiItemEntity {
         this.content = content;
     }
 
-    @Override
+
     public int getItemType() {
         return itemType;
     }
@@ -65,11 +63,11 @@ public class MultipleItem implements MultiItemEntity {
             this.imgs = imgs;
         }
     }
-    public static class CenterVideo implements MultiItemEntity{
+    public static class CenterVideo {
         private int position;
 
         private CenterVideoMsg centerVideoMsg;
-        private CenterVideoList centerVideoList;
+        private List<CenterVideoList> centerVideoList;
         private PrevAndNext prevAndNext;
         private int itemType;
 
@@ -77,7 +75,7 @@ public class MultipleItem implements MultiItemEntity {
             this.itemType = itemType;
         }
 
-        @Override
+
         public int getItemType() {
             return itemType;
         }
@@ -99,11 +97,12 @@ public class MultipleItem implements MultiItemEntity {
             this.centerVideoMsg = centerVideoMsg;
         }
 
-        public CenterVideoList getCenterVideoList() {
+        public List<CenterVideoList> getCenterVideoList() {
             return centerVideoList;
         }
 
-        public void setCenterVideoList(CenterVideoList centerVideoList) {
+        public void setCenterVideoList(
+            List<CenterVideoList> centerVideoList) {
             this.centerVideoList = centerVideoList;
         }
 
@@ -193,9 +192,73 @@ public class MultipleItem implements MultiItemEntity {
     }
 
     public static class BottomSlide{
-        List<BottomSlideItem> bottomSlideItems;
-        public static class BottomSlideItem {
+        private String headImageUrl;
+        private String slideTitle;
+        private List<BottomSlideChild> bottomSlideChildren;
 
+        private int viewType;
+
+        public String getHeadImageUrl() {
+            return headImageUrl;
+        }
+
+        public void setHeadImageUrl(String headImageUrl) {
+            this.headImageUrl = headImageUrl;
+        }
+
+        public String getSlideTitle() {
+            return slideTitle;
+        }
+
+        public void setSlideTitle(String slideTitle) {
+            this.slideTitle = slideTitle;
+        }
+
+
+        public int getViewType() {
+            return viewType;
+        }
+
+        public void setViewType(int viewType) {
+            this.viewType = viewType;
+        }
+
+        public List<BottomSlideChild> getBottomSlideChildren() {
+            return bottomSlideChildren;
+        }
+
+        public void setBottomSlideChildren(
+            List<BottomSlideChild> bottomSlideChildren) {
+            this.bottomSlideChildren = bottomSlideChildren;
+        }
+
+        public static class BottomSlideChild{
+            private String imageUrl;
+            private String productName;
+            private String productPrice;
+            public String getImageUrl() {
+                return imageUrl;
+            }
+
+            public void setImageUrl(String imageUrl) {
+                this.imageUrl = imageUrl;
+            }
+
+            public String getProductName() {
+                return productName;
+            }
+
+            public void setProductName(String productName) {
+                this.productName = productName;
+            }
+
+            public String getProductPrice() {
+                return productPrice;
+            }
+
+            public void setProductPrice(String productPrice) {
+                this.productPrice = productPrice;
+            }
         }
     }
 
@@ -215,11 +278,12 @@ public class MultipleItem implements MultiItemEntity {
         this.centerVideo = centerVideo;
     }
 
-    public BottomSlide getBottomSlide() {
+    public List<BottomSlide> getBottomSlide() {
         return bottomSlide;
     }
 
-    public void setBottomSlide(BottomSlide bottomSlide) {
+    public void setBottomSlide(
+        List<BottomSlide> bottomSlide) {
         this.bottomSlide = bottomSlide;
     }
 }

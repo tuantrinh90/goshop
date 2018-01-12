@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="118dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal"
+        android:padding="@dimen/activity_horizontal_margin"
+        android:background="@color/white"
+        >
+        <ImageView
+            android:id="@+id/iv_center_video_list_icon"
+            android:layout_width="78dp"
+            android:layout_height="78dp"
+            android:background="@mipmap/ic_launcher"
+        />
+
+        <RelativeLayout
+            android:layout_weight="1"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/tv_video_list_name"
+                android:text="@string/home_item_test_product_name"
+                style="@style/homeItemProductName"/>
+            <TextView
+                android:id="@+id/tv_video_last_old_price"
+                android:layout_below="@id/tv_video_list_name"
+                android:layout_marginTop="@dimen/home_list_item_main_and_sub_title_margin"
+                android:text="@string/home_item_test_product_price"
+                style="@style/homeItemProductOldPrice"/>
+            <TextView
+                android:id="@+id/tv_video_list_price"
+                android:layout_below="@id/tv_video_last_old_price"
+                android:textColor="@color/colorAccent"
+                style="@style/homeItemProductPrice"/>
+            <Button
+                android:id="@+id/btn_video_item_buy_now"
+                android:layout_width="88dp"
+                android:layout_height="36dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentBottom="true"
+                android:textSize="14sp"
+                android:text="@string/home_video_item_buy_now"
+                android:fontFamily="sans-serif-medium"
+                android:background="@drawable/big_button_style_config"
+                android:textColor="@color/white"
+            />
+        </RelativeLayout>
+    </LinearLayout>
+    <View
+        style="@style/homeWrapWidthLine"/>
+</LinearLayout>

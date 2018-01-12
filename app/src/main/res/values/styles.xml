@@ -1,6 +1,6 @@
 <resources>
 
-    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -32,8 +32,76 @@
         <item name="android:topDark">@android:color/transparent</item>
     </style>
 
+    <style name="textStyle">
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
     <style name="windowMargin">
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+    </style>
+
+    <style name="homeTopCategoryText">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/colorAccent</item>
+        <item name="android:layout_marginTop">4dp</item>
+
+    </style>
+
+    <style name="homeCenterOnAirTab">
+        <item name="android:layout_weight">4</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@drawable/selector_home_center_video_onair_text</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+    <style name="homeCenterOnAirTabPartingLine">
+        <item name="android:layout_weight">1</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">@string/home_video_onair_tab_fb_parting_line</item>
+        <item name="android:textColor">@color/parting_line</item>
+    </style>
+    <style name="homeWrapWidthLine">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/line_height</item>
+        <item name="android:background">@color/black2c</item>
+    </style>
+
+    <style name="homeItemProductName">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:lineSpacingExtra">4sp</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/blackdf000000</item>
+    </style>
+
+    <style name="homeItemProductOldPrice">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/label_saved</item>
+    </style>
+
+    <style name="homeItemProductPrice">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/blackdf000000</item>
+    </style>
+    
+    <style name="MyEditText" parent="AppTheme">
+        <item name="colorControlNormal">@color/whiteTrans45</item>
+        <item name="colorControlActivated">@color/white</item>
     </style>
 </resources>

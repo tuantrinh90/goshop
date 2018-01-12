@@ -4,60 +4,71 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    app:cardElevation="0dp"
     android:id="@+id/cv_center_onair_content"
     >
-<LinearLayout
+<RelativeLayout
+    android:background="@color/white"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
+
     <TextView
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
         android:layout_gravity="center"
         android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="20sp"
+        android:textColor="@color/blackdf000000"
+        android:fontFamily="sans-serif-medium"
+        android:textSize="22sp"
+        android:layout_centerHorizontal="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/tv_center_onair_title"
-        android:text="On air"
-        android:textAllCaps="true"
+        android:text="@string/home_video_onair"
         />
-    <RelativeLayout
-        android:layout_marginTop="8dp"
+    <LinearLayout
+        android:layout_below="@id/tv_center_onair_title"
+        android:layout_marginTop="@dimen/home_padding"
+        android:layout_marginBottom="@dimen/home_padding"
+        android:orientation="horizontal"
         android:id="@+id/rl_centent_titles"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <TextView
-            android:id="@+id/tv_center_bottom_title2"
-            android:layout_centerInParent="true"
-            android:text=" CH12 "
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
             android:id="@+id/tv_center_bottom_title1"
-            android:layout_toLeftOf="@id/tv_center_bottom_title2"
-            android:text="CH118 /"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:text="@string/home_video_onair_tab_ch118"
+            style="@style/homeCenterOnAirTab" />
+        <TextView
+            style="@style/homeCenterOnAirTabPartingLine"
+        />
+        <TextView
+            android:id="@+id/tv_center_bottom_title2"
+            android:text="@string/home_video_onair_tab_ch120"
+            style="@style/homeCenterOnAirTab" />
+        <TextView
+            style="@style/homeCenterOnAirTabPartingLine"
+        />
         <TextView
             android:id="@+id/tv_center_bottom_title3"
-            android:layout_toRightOf="@id/tv_center_bottom_title2"
-            android:text="/ CH30"
-            android:textSize="16sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+            android:text="@string/home_video_onair_tab_ch303"
+            style="@style/homeCenterOnAirTab" />
+        <TextView
+            style="@style/homeCenterOnAirTabPartingLine"
+        />
+        <TextView
+            android:id="@+id/tv_center_bottom_title4"
+            android:text="@string/home_video_onair_tab_fb_live"
+            style="@style/homeCenterOnAirTab" />
+    </LinearLayout>
 
     <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/rl_centent_titles"
         android:id="@+id/rv_center_on_air_content"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/blue5097DA"
         />
 
-</LinearLayout>
+</RelativeLayout>
 
 </android.support.v7.widget.CardView>
