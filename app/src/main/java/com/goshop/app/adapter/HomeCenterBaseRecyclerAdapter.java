@@ -43,6 +43,7 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         HomeCenterVideoList homeCenterVideoList = (HomeCenterVideoList) holder;
+        //TODO joyson will delete after require
         homeCenterVideoList.rlDownArrows.setOnClickListener(
             v -> Toast.makeText(GoShopApplication.getAppContext(), "down arrows", Toast.LENGTH_SHORT).show());
         homeCenterVideoList.viewVideo

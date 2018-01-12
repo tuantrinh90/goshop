@@ -34,6 +34,7 @@ import butterknife.ButterKnife;
 public class HomeBaseAdapter extends RecyclerView.Adapter {
 
     List<MultipleItem> multipleItems = new ArrayList<>();
+    private static final int SUM_PAGE=4;
 
     public HomeBaseAdapter(List<MultipleItem> data) {
         this.multipleItems = data;
@@ -88,7 +89,7 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return 4;
+        return SUM_PAGE;
     }
 
     static class TopBannerHolder extends RecyclerView.ViewHolder {
@@ -206,7 +207,8 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
 
         @Override
         public void onPageChange(int index) {
-            Toast.makeText(GoShopApplication.getAppContext(), "第" + (index + 1) + "页",
+            //TODO joyson will delete after require
+            Toast.makeText(GoShopApplication.getAppContext(), (index + 1) + "  page",
                 Toast.LENGTH_SHORT).show();
         }
 

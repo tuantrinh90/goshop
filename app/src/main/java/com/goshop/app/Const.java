@@ -17,7 +17,6 @@ public class Const {
 
     public static final int HOME_CENTER_VIDEO_CHILD_VIDEO = 0;
 
-    //    public static final int HOME_CENTER_VIDEO_CHILD_LIST = 1;
     public static final int HOME_CENTER_VIDEO_CHILD_PREV_NEXT = 1;
 
     public static final int BOTTOM_SLIDE_HEADER_IMG = 0;

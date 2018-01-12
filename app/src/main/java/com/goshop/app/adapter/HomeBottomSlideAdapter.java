@@ -118,7 +118,6 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(MultipleItem.BottomSlide bottomSlide) {
-//            tvTitle.setText(bottomSlide.getSlideTitle());
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
             recyclerView

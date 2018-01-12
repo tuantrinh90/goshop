@@ -45,6 +45,7 @@ public class HomeCenterChildViewListAdapter extends RecyclerView.Adapter {
         listHolder.tvVideoListName.setText(centerVideoLists.get(position).getProductName());
         listHolder.tvVideoListOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         listHolder.tvVideoListPrice.setText(centerVideoLists.get(position).getProductPrice());
+        //TODO joyson will delete after require
         listHolder.btnBuyNow.setOnClickListener(
             v -> Toast.makeText(v.getContext(), "buy now", Toast.LENGTH_SHORT).show());
     }
