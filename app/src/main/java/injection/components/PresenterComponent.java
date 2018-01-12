@@ -5,6 +5,7 @@ import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 import com.goshop.app.presentation.login.LoginResetPasswordActivity;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
 import com.goshop.app.presentation.login.RegisterActivity;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 
 import android.app.Activity;
 
@@ -30,4 +31,6 @@ public interface PresenterComponent {
     void inject(LoginResetPasswordActivity resetPasswordActivity);
 
     void inject(LoginSendConfirmationLinkActivity sendConfirmationLinkActivity);
+
+    void inject(ProductDetailActivity productDetailActivity);
 }

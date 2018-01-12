@@ -16,9 +16,10 @@ public class EndpointAddress {
     public static final String COMPLEMENT_EMAIL = "";
     //todo wait for api
     public static final String RESET_PASSWORD = "";
-
     //todo wait for api
     public static final String SEND_CONFIRMATION_LINK = "";
+    //todo wait for api
+    public static final String PRODUCT_DETAIL = "";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

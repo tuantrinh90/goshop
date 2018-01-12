@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/size_16"
+    android:paddingRight="@dimen/size_16"
+    android:paddingTop="@dimen/size_16"
+    android:orientation="horizontal">
+
+    <com.goshop.app.common.view.CustomTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_main_pink"
+        android:text="@string/q"
+        android:textSize="@dimen/size_14"
+        android:paddingRight="@dimen/size_8"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_pdp_qa_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_14"
+            android:textColor="@color/color_main_black"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_pdp_qa_questioner_detail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_pdp_qa_question"
+            android:paddingTop="@dimen/size_2"
+            android:textSize="@dimen/size_12"
+            android:textColor="@color/color_main_grey"/>
+        <LinearLayout
+            android:id="@+id/ll_btn_pdp_qa_answer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_pdp_qa_question"
+            android:layout_alignParentRight="true"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/size_22"
+                android:layout_height="@dimen/size_22"
+                android:src="@mipmap/chat"
+                android:paddingTop="@dimen/size_2"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_4"
+                android:text="@string/answer"
+                android:textSize="@dimen/size_14"
+                android:textColor="@color/color_main_pink"
+            />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/tv_pdp_qa_questioner_detail"
+            android:paddingTop="@dimen/size_14"
+            android:orientation="horizontal">
+
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_main_pink"
+                android:text="@string/a"
+                android:textSize="@dimen/size_14"
+                android:paddingRight="@dimen/size_8"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/size_8"
+                android:orientation="vertical">
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_pdp_qa_answer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_14"
+                    android:textColor="@color/color_main_black"/>
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_pdp_qa_answer_detail"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/tv_pdp_qa_question"
+                    android:paddingTop="@dimen/size_2"
+                    android:textSize="@dimen/size_12"
+                    android:textColor="@color/color_main_grey"/>
+            </LinearLayout>
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>

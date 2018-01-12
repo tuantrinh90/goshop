@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.goshop.app.common.view.CustomTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_14"
+        android:text="@string/view_more"
+        android:textColor="@color/color_main_pink"
+        android:textSize="@dimen/size_font_16"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/color_main_grey"/>
+
+</RelativeLayout>

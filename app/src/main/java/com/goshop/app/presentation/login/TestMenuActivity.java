@@ -2,6 +2,7 @@ package com.goshop.app.presentation.login;
 
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 
 import android.content.Intent;
 import android.view.View;
@@ -30,7 +31,7 @@ public class TestMenuActivity extends BaseActivity {
     }
 
     @OnClick({R.id.btn_test_register, R.id.btn_test_complement_email, R.id
-        .btn_test_forgot_password, R.id.btn_test_send_confirmation_link})
+        .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_pdp})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_register:
@@ -44,6 +45,9 @@ public class TestMenuActivity extends BaseActivity {
                 break;
             case R.id.btn_test_send_confirmation_link:
                 startActivity(new Intent(this, LoginSendConfirmationLinkActivity.class));
+                break;
+            case R.id.btn_test_pdp:
+                startActivity(new Intent(this, ProductDetailActivity.class));
                 break;
         }
     }

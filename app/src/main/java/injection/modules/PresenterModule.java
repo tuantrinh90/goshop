@@ -11,6 +11,8 @@ import com.goshop.app.presentation.login.LoginSendConfirmationLinkContract;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkPresenter;
 import com.goshop.app.presentation.login.RegisterContract;
 import com.goshop.app.presentation.login.RegisterPresenter;
+import com.goshop.app.presentation.shopping.ProductDetailContract;
+import com.goshop.app.presentation.shopping.ProductDetailPresenter;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
@@ -82,6 +84,13 @@ public class PresenterModule {
     public LoginSendConfirmationLinkContract.Presenter provideLoginSendConfirmationLinkPresenter(
         AccountDataRepository dataRepository) {
         return new LoginSendConfirmationLinkPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public ProductDetailContract.Presenter provideProductDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new ProductDetailPresenter(dataRepository);
     }
 
 }

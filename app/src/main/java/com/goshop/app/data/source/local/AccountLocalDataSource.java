@@ -2,6 +2,7 @@ package com.goshop.app.data.source.local;
 
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
@@ -55,6 +56,11 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Override
     public Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(
         Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
         return null;
     }
 }

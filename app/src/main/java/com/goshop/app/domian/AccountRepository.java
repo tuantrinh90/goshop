@@ -1,6 +1,7 @@
 package com.goshop.app.domian;
 
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
@@ -28,5 +29,7 @@ public interface AccountRepository {
     Observable<ResetPasswordReponse> resetPasswordRequest(Map<String, Object> params);
 
     Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(Map<String, Object> params);
+
+    Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
 
 }

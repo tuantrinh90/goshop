@@ -1,6 +1,7 @@
 package com.goshop.app.domian;
 
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
@@ -69,6 +70,11 @@ public class AccountDataRepository implements AccountRepository {
     public Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(
         Map<String, Object> params) {
         return accountCloudDataSource.sendConfirmationLinkRequest(params);
+    }
+
+    @Override
+    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.productDetailRequest(params);
     }
 
     @Override

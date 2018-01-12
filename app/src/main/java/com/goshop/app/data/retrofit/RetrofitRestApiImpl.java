@@ -3,6 +3,7 @@ package com.goshop.app.data.retrofit;
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
@@ -57,5 +58,11 @@ public class RetrofitRestApiImpl implements RestApi {
         Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.SEND_CONFIRMATION_LINK);
         return retrofitRestApi.sendConfirmationLinkRequest(url, params);
+    }
+
+    @Override
+    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PRODUCT_DETAIL);
+        return retrofitRestApi.productDetailRequest(url, params);
     }
 }
