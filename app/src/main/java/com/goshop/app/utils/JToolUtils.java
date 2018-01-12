@@ -1,6 +1,7 @@
 package com.goshop.app.utils;
 
 import com.google.gson.Gson;
+
 import com.orhanobut.logger.Logger;
 
 /**
@@ -8,10 +9,11 @@ import com.orhanobut.logger.Logger;
  */
 
 public class JToolUtils {
+
     //test use : print object
-    public static void printObject(Object object){
-        Gson gson=new Gson();
+    public static void printObject(Object object) {
+        Gson gson = new Gson();
         String result = gson.toJson(object);
-        Logger.e("object json:"+result);
+        Logger.e("object json:" + result);
     }
 }

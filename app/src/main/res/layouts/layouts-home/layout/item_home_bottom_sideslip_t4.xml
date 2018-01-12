@@ -9,15 +9,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_home_bottom_slide"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-    </android.support.v7.widget.RecyclerView>
-    <View
-        android:layout_alignParentBottom="true"
-        style="@style/homeWrapWidthLine"
-    />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_home_bottom_slide"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        </android.support.v7.widget.RecyclerView>
+        <View
+            android:layout_alignParentBottom="true"
+            style="@style/homeWrapWidthLine"
+        />
     </RelativeLayout>
 
 </android.support.v7.widget.CardView>

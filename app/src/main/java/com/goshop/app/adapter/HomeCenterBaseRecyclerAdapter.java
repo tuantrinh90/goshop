@@ -23,15 +23,17 @@ import butterknife.ButterKnife;
  * Created by img on 2018/1/5.
  */
 public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
-    List<MultipleItem.CenterVideo> centerVideos=new ArrayList<>();
+
+    List<MultipleItem.CenterVideo> centerVideos = new ArrayList<>();
 
     public HomeCenterBaseRecyclerAdapter(
         List<MultipleItem.CenterVideo> centerVideos) {
         this.centerVideos = centerVideos;
     }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder viewHolder=null;
+        RecyclerView.ViewHolder viewHolder = null;
         View centerVideo = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_home_center_video_adapter_t3_inside, parent, false);
         viewHolder = new HomeCenterVideoList(centerVideo);
@@ -40,29 +42,33 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        HomeCenterVideoList homeCenterVideoList= (HomeCenterVideoList) holder;
-        homeCenterVideoList.rlDownArrows.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Toast.makeText(GoShopApplication.getAppContext(),"向下",Toast.LENGTH_SHORT).show();
-            }
-        });
-        homeCenterVideoList.viewVideo.setText(centerVideos.get(position).getCenterVideoMsg().getVideoMsg());
-        homeCenterVideoList.recyclerView.setLayoutManager(new LinearLayoutManager(homeCenterVideoList.recyclerView.getContext()));
-        homeCenterVideoList.recyclerView.setAdapter(new HomeCenterChildViewListAdapter(centerVideos.get(position).getCenterVideoList()));
+        HomeCenterVideoList homeCenterVideoList = (HomeCenterVideoList) holder;
+        homeCenterVideoList.rlDownArrows.setOnClickListener(
+            v -> Toast.makeText(GoShopApplication.getAppContext(), "down arrows", Toast.LENGTH_SHORT).show());
+        homeCenterVideoList.viewVideo
+            .setText(centerVideos.get(position).getCenterVideoMsg().getVideoMsg());
+        homeCenterVideoList.recyclerView.setLayoutManager(
+            new LinearLayoutManager(homeCenterVideoList.recyclerView.getContext()));
+        homeCenterVideoList.recyclerView.setAdapter(
+            new HomeCenterChildViewListAdapter(centerVideos.get(position).getCenterVideoList()));
     }
 
     @Override
     public int getItemCount() {
         return centerVideos.size();
     }
-    static class HomeCenterVideoList extends RecyclerView.ViewHolder{
+
+    static class HomeCenterVideoList extends RecyclerView.ViewHolder {
+
         @BindView(R.id.view_video)
         TextView viewVideo;
+
         @BindView(R.id.rv_home_center_video_list)
         RecyclerView recyclerView;
+
         @BindView(R.id.rl_home_center_bottom_video_down_arrows)
         RelativeLayout rlDownArrows;
+
         public HomeCenterVideoList(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

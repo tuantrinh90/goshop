@@ -7,6 +7,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.data.model.MultipleItem;
 import com.goshop.app.utils.PagingScrollHelper;
+import com.goshop.app.utils.RecyclerUtils;
 import com.goshop.app.widget.BannerAutoPlayHelper;
 import com.orhanobut.logger.Logger;
 
@@ -81,7 +82,7 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
         } else if (holder instanceof CenterVideoHolder) {
             ((CenterVideoHolder) holder).bindingData(multipleItems.get(2), position);
         } else if (holder instanceof BottomSlideHolder) {
-            ((BottomSlideHolder)holder).bindingData(multipleItems.get(3).getBottomSlide());
+            ((BottomSlideHolder) holder).bindingData(multipleItems.get(3).getBottomSlide());
         }
     }
 
@@ -115,12 +116,16 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
     }
 
     static class TopCategoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         @BindView(R.id.ll_home_top_category_category)
         LinearLayout llCategoryCategory;
+
         @BindView(R.id.ll_home_top_category_brands)
         LinearLayout llCategoryBrands;
+
         @BindView(R.id.ll_home_top_category_tv_shows)
         LinearLayout llCategoryTvShows;
+
         @BindView(R.id.ll_home_top_category_gift_card)
         LinearLayout llCategoryGiftCard;
 
@@ -138,7 +143,7 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.ll_home_top_category_category:
                     Logger.e("llCategoryBrands");
                     break;
@@ -157,16 +162,22 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
 
     static class CenterVideoHolder extends RecyclerView.ViewHolder implements PagingScrollHelper
         .onPageChangeListener, View.OnClickListener {
+
         @BindView(R.id.rv_center_on_air_content)
         RecyclerView recyclerView;
+
         @BindView(R.id.tv_center_bottom_title1)
         TextView tvCenterBottomTitle1;
+
         @BindView(R.id.tv_center_bottom_title2)
         TextView tvCenterBottomTitle2;
+
         @BindView(R.id.tv_center_bottom_title3)
         TextView tvCenterBottomTitle3;
+
         @BindView(R.id.tv_center_bottom_title4)
         TextView tvCenterBottomTitle4;
+
         public CenterVideoHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -186,7 +197,7 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
             tvCenterBottomTitle4.setOnClickListener(this);
         }
 
-        void resetTextState(){
+        void resetTextState() {
             tvCenterBottomTitle1.setSelected(false);
             tvCenterBottomTitle2.setSelected(false);
             tvCenterBottomTitle3.setSelected(false);
@@ -201,24 +212,24 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
 
         @Override
         public void onClick(View v) {
-            switch (v.getId()){
+            switch (v.getId()) {
                 case R.id.tv_center_bottom_title1:
-                    recyclerView.smoothScrollToPosition(0);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView,0);
                     resetTextState();
                     tvCenterBottomTitle1.setSelected(true);
                     break;
                 case R.id.tv_center_bottom_title2:
-                    recyclerView.smoothScrollToPosition(1);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView,1);
                     resetTextState();
                     tvCenterBottomTitle2.setSelected(true);
                     break;
                 case R.id.tv_center_bottom_title3:
-                    recyclerView.smoothScrollToPosition(2);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView,2);
                     resetTextState();
                     tvCenterBottomTitle3.setSelected(true);
                     break;
                 case R.id.tv_center_bottom_title4:
-                    recyclerView.smoothScrollToPosition(3);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView,3);
                     resetTextState();
                     tvCenterBottomTitle4.setSelected(true);
                     break;
@@ -227,13 +238,16 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
     }
 
     static class BottomSlideHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.rv_bottom)
         RecyclerView recyclerView;
+
         public BottomSlideHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-        void bindingData(List<MultipleItem.BottomSlide> bottomSlides){
+
+        void bindingData(List<MultipleItem.BottomSlide> bottomSlides) {
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
             recyclerView
                 .setAdapter(new HomeBottomSlideAdapter(bottomSlides));

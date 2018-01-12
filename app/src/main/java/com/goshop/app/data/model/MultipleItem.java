@@ -1,18 +1,24 @@
 package com.goshop.app.data.model;
 
-
 import java.util.List;
 
 /**
  * Created by img on 2018/1/5.
  */
 
-public class MultipleItem  {
+public class MultipleItem {
+
     private int itemType;
+
     private int spanSize;
+
     private TopBanner topBanner;
+
     private List<CenterVideo> centerVideo;
+
     private List<BottomSlide> bottomSlide;
+
+    private String content;
 
     public MultipleItem(int itemType, int spanSize, String content) {
         this.itemType = itemType;
@@ -33,8 +39,6 @@ public class MultipleItem  {
         this.spanSize = spanSize;
     }
 
-    private String content;
-
     public String getContent() {
         return content;
     }
@@ -43,12 +47,37 @@ public class MultipleItem  {
         this.content = content;
     }
 
-
     public int getItemType() {
         return itemType;
     }
 
-    public static class TopBanner{
+    public TopBanner getTopBanner() {
+        return topBanner;
+    }
+
+    public void setTopBanner(TopBanner topBanner) {
+        this.topBanner = topBanner;
+    }
+
+    public List<CenterVideo> getCenterVideo() {
+        return centerVideo;
+    }
+
+    public void setCenterVideo(List<CenterVideo> centerVideo) {
+        this.centerVideo = centerVideo;
+    }
+
+    public List<BottomSlide> getBottomSlide() {
+        return bottomSlide;
+    }
+
+    public void setBottomSlide(
+        List<BottomSlide> bottomSlide) {
+        this.bottomSlide = bottomSlide;
+    }
+
+    public static class TopBanner {
+
         private List<String> imgs;
 
         public TopBanner(List<String> imgs) {
@@ -63,23 +92,26 @@ public class MultipleItem  {
             this.imgs = imgs;
         }
     }
+
     public static class CenterVideo {
+
         private int position;
 
         private CenterVideoMsg centerVideoMsg;
+
         private List<CenterVideoList> centerVideoList;
+
         private PrevAndNext prevAndNext;
+
         private int itemType;
-
-        public void setItemType(int itemType) {
-            this.itemType = itemType;
-        }
-
 
         public int getItemType() {
             return itemType;
         }
 
+        public void setItemType(int itemType) {
+            this.itemType = itemType;
+        }
 
         public int getPosition() {
             return position;
@@ -114,10 +146,9 @@ public class MultipleItem  {
             this.prevAndNext = prevAndNext;
         }
 
-        public static class CenterVideoMsg{
+        public static class CenterVideoMsg {
+
             private String videoMsg;
-
-
 
             public String getVideoMsg() {
                 return videoMsg;
@@ -128,12 +159,15 @@ public class MultipleItem  {
             }
         }
 
-        public static class CenterVideoList{
-            private String imgUrl;
-            private String productName;
-            private String productPrice;
-            private int itemType;
+        public static class CenterVideoList {
 
+            private String imgUrl;
+
+            private String productName;
+
+            private String productPrice;
+
+            private int itemType;
 
             public String getImgUrl() {
                 return imgUrl;
@@ -161,8 +195,11 @@ public class MultipleItem  {
         }
 
         public static class PrevAndNext {
+
             private String imgUrls;
+
             private String productName;
+
             private String productPrice;
 
             public String getImgUrls() {
@@ -191,9 +228,12 @@ public class MultipleItem  {
         }
     }
 
-    public static class BottomSlide{
+    public static class BottomSlide {
+
         private String headImageUrl;
+
         private String slideTitle;
+
         private List<BottomSlideChild> bottomSlideChildren;
 
         private int viewType;
@@ -214,7 +254,6 @@ public class MultipleItem  {
             this.slideTitle = slideTitle;
         }
 
-
         public int getViewType() {
             return viewType;
         }
@@ -232,10 +271,14 @@ public class MultipleItem  {
             this.bottomSlideChildren = bottomSlideChildren;
         }
 
-        public static class BottomSlideChild{
+        public static class BottomSlideChild {
+
             private String imageUrl;
+
             private String productName;
+
             private String productPrice;
+
             public String getImageUrl() {
                 return imageUrl;
             }
@@ -260,30 +303,5 @@ public class MultipleItem  {
                 this.productPrice = productPrice;
             }
         }
-    }
-
-    public TopBanner getTopBanner() {
-        return topBanner;
-    }
-
-    public void setTopBanner(TopBanner topBanner) {
-        this.topBanner = topBanner;
-    }
-
-    public List<CenterVideo> getCenterVideo() {
-        return centerVideo;
-    }
-
-    public void setCenterVideo(List<CenterVideo> centerVideo) {
-        this.centerVideo = centerVideo;
-    }
-
-    public List<BottomSlide> getBottomSlide() {
-        return bottomSlide;
-    }
-
-    public void setBottomSlide(
-        List<BottomSlide> bottomSlide) {
-        this.bottomSlide = bottomSlide;
     }
 }

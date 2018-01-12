@@ -8,7 +8,7 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * 实现RecycleView分页滚动的工具类
+ * implements RecycleView pageing scroll utils
  * Created by zhuguohui on 2016/11/10.
  */
 
@@ -37,13 +37,10 @@ public class PagingScrollHelper {
             throw new IllegalArgumentException("recycleView must be not null");
         }
         mRecyclerView = recycleView;
-        //处理滑动
         recycleView.setOnFlingListener(mOnFlingListener);
-        //设置滚动监听，记录滚动的状态，和总的偏移量
         recycleView.setOnScrollListener(mOnScrollListener);
-        //记录滚动开始的位置
         recycleView.setOnTouchListener(mOnTouchListener);
-        //获取滚动的方向
+        //get scroll direction
         updateLayoutManger();
     }
 
@@ -78,14 +75,14 @@ public class PagingScrollHelper {
             if (mOrientation == ORIENTATION.NULL) {
                 return false;
             }
-            //获取开始滚动时所在页面的index
+            //get scroll page index
             int p = getStartPageIndex();
 
-            //记录滚动开始和结束的位置
+            //mark start and end scroll position
             int endPoint = 0;
             int startPoint = 0;
 
-            //如果是垂直方向
+            //vertical
             if (mOrientation == ORIENTATION.VERTICAL) {
                 startPoint = offsetY;
 
@@ -94,8 +91,7 @@ public class PagingScrollHelper {
                 } else if (velocityY > 0) {
                     p++;
                 }
-                //更具不同的速度判断需要滚动的方向
-                //注意，此处有一个技巧，就是当速度为0的时候就滚动会开始的页面，即实现页面复位
+                //Determine the direction you need to scroll at different speeds.
                 endPoint = p * mRecyclerView.getHeight();
 
             } else {
@@ -112,7 +108,7 @@ public class PagingScrollHelper {
                 endPoint = 0;
             }
 
-            //使用动画处理滚动
+            //use anim to control speed
             if (mAnimator == null) {
                 mAnimator = new ValueAnimator().ofInt(startPoint, endPoint);
 
@@ -124,7 +120,6 @@ public class PagingScrollHelper {
 
                         if (mOrientation == ORIENTATION.VERTICAL) {
                             int dy = nowPoint - offsetY;
-                            //这里通过RecyclerView的scrollBy方法实现滚动。
                             mRecyclerView.scrollBy(0, dy);
                         } else {
                             int dx = nowPoint - offsetX;
@@ -135,7 +130,7 @@ public class PagingScrollHelper {
                 mAnimator.addListener(new AnimatorListenerAdapter() {
                     @Override
                     public void onAnimationEnd(Animator animation) {
-                        //回调监听
+                        //callback
                         if (null != mOnPageChangeListener) {
                             mOnPageChangeListener.onPageChange(getPageIndex());
                         }
@@ -155,13 +150,13 @@ public class PagingScrollHelper {
     public class MyOnScrollListener extends RecyclerView.OnScrollListener {
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
-            //newState==0表示滚动停止，此时需要处理回滚
+            //newState==0 mean scroll stop ，You need to handle the rollback.
             if (newState == 0 && mOrientation != ORIENTATION.NULL) {
                 boolean move;
                 int vX = 0, vY = 0;
                 if (mOrientation == ORIENTATION.VERTICAL) {
                     int absY = Math.abs(offsetY - startY);
-                    //如果滑动的距离超过屏幕的一半表示需要滑动到下一页
+                    //If the sliding distance exceeds half of the screen, you need to slide to the next page.
                     move = absY > recyclerView.getHeight() / 2;
                     vY = 0;
 
@@ -186,7 +181,7 @@ public class PagingScrollHelper {
 
         @Override
         public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-            //滚动结束记录滚动的偏移量
+            //Scroll down to record the offset of the scrolling.
             offsetY += dy;
             offsetX += dx;
         }
@@ -199,7 +194,7 @@ public class PagingScrollHelper {
 
         @Override
         public boolean onTouch(View v, MotionEvent event) {
-            //手指按下的时候记录开始滚动的坐标
+            //Record the coordinates of the beginning of the scroll when the finger is pressed.
             if (event.getAction() == MotionEvent.ACTION_DOWN) {
                 startY = offsetY;
                 startX = offsetX;

@@ -10,7 +10,7 @@
     <string name="home_video_onair_tab_ch120">CH120</string>
     <string name="home_video_onair_tab_ch303">CH303</string>
     <string name="home_video_onair_tab_fb_live">FB LIVE</string>
-    <string name="home_video_onair_tab_fb_parting_line"> / </string>
+    <string name="home_video_onair_tab_fb_parting_line">&#160;/&#160;</string>
     <string name="home_video_item_buy_now">Buy Now</string>
     <string name="home_search_hint">Search products or brands</string>
 

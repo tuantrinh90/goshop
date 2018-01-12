@@ -1,55 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.youth.banner.Banner
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/banner_center_onair_content"
-    >
+>
 
-<LinearLayout
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <TextView
-        android:layout_gravity="center"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/tv_center_onair_title"
-        android:text="On air"
-        />
-    <RelativeLayout
-        android:id="@+id/rl_centent_titles"
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="match_parent">
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_center_onair_title"
+            android:text="On air"
+        />
+        <RelativeLayout
+            android:id="@+id/rl_centent_titles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
 
-        <TextView
-            android:id="@+id/tv_center_bottom_title2"
-            android:layout_centerInParent="true"
-            android:text="CH12"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/tv_center_bottom_title1"
-            android:layout_toLeftOf="@id/tv_center_bottom_title2"
-            android:text="CH118 /"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-        <TextView
-            android:id="@+id/tv_center_bottom_title3"
-            android:layout_toRightOf="@id/tv_center_bottom_title2"
-            android:text="/ CH30"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-    </RelativeLayout>
+            <TextView
+                android:id="@+id/tv_center_bottom_title2"
+                android:layout_centerInParent="true"
+                android:text="CH12"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_center_bottom_title1"
+                android:layout_toLeftOf="@id/tv_center_bottom_title2"
+                android:text="CH118 /"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+            <TextView
+                android:id="@+id/tv_center_bottom_title3"
+                android:layout_toRightOf="@id/tv_center_bottom_title2"
+                android:text="/ CH30"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </RelativeLayout>
 
-    <com.youth.banner.Banner
-        android:id="@+id/banner_center_on_air_content"
-        android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:background="@color/blue5097DA"
+        <com.youth.banner.Banner
+            android:id="@+id/banner_center_on_air_content"
+            android:layout_width="match_parent"
+            android:layout_height="400dp"
+            android:background="@color/blue5097DA"
         />
 
-</LinearLayout>
+    </LinearLayout>
 
 </com.youth.banner.Banner>

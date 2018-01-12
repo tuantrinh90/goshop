@@ -24,14 +24,14 @@ public class MainHomeActivity extends BaseActivity {
 
     }
 
-    private void initToolBar(){
+    private void initToolBar() {
         getToolbar().setBackgroundColor(getResources().getColor(R.color.colorAccent));
 
     }
 
-    private void initRecycler(){
-        HomeBaseAdapter homeBaseAdapter=new HomeBaseAdapter(ServiceData.getBaseData());
-        rvHome.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL,false));
+    private void initRecycler() {
+        HomeBaseAdapter homeBaseAdapter = new HomeBaseAdapter(ServiceData.getBaseData());
+        rvHome.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         rvHome.setAdapter(homeBaseAdapter);
     }
 

@@ -4,7 +4,6 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.data.model.MultipleItem;
-import com.goshop.app.utils.JToolUtils;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,17 +23,18 @@ import butterknife.ButterKnife;
  * Created by img on 2018/1/5.
  */
 public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
-    List<MultipleItem.BottomSlide> bottomSlides=new ArrayList<>();
+
+    List<MultipleItem.BottomSlide> bottomSlides = new ArrayList<>();
 
     public HomeBottomSlideAdapter(
         List<MultipleItem.BottomSlide> bottomSlides) {
         this.bottomSlides = bottomSlides;
-        JToolUtils.printObject(bottomSlides);
     }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder viewHolder=null;
-        switch (viewType){
+        RecyclerView.ViewHolder viewHolder = null;
+        switch (viewType) {
             case Const.BOTTOM_SLIDE_HEADER_IMG:
                 View headerView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_home_bottom_sideslip_header_t4, parent, false);
@@ -62,11 +62,11 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        if (holder instanceof BottomHeaderHolder){
+        if (holder instanceof BottomHeaderHolder) {
             ((BottomHeaderHolder) holder).bindingData(bottomSlides.get(position));
-        }else if (holder instanceof BottomTitleHolder){
+        } else if (holder instanceof BottomTitleHolder) {
             ((BottomTitleHolder) holder).bindingData(bottomSlides.get(position));
-        }else if (holder instanceof BottomBodyHolder){
+        } else if (holder instanceof BottomBodyHolder) {
             ((BottomBodyHolder) holder).bindingData(bottomSlides.get(position));
         }
     }
@@ -75,36 +75,49 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return bottomSlides.size();
     }
-    static class BottomHeaderHolder extends RecyclerView.ViewHolder{
+
+    static class BottomHeaderHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.iv_bottom_slide_header)
         ImageView ivBottomHeader;
+
         public BottomHeaderHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-        void bindingData(MultipleItem.BottomSlide bottomSlide){
-            Glide.with(ivBottomHeader.getContext()).load(bottomSlide.getHeadImageUrl()).into(ivBottomHeader);
+
+        void bindingData(MultipleItem.BottomSlide bottomSlide) {
+            Glide.with(ivBottomHeader.getContext()).load(bottomSlide.getHeadImageUrl())
+                .into(ivBottomHeader);
         }
     }
-    static class BottomTitleHolder extends RecyclerView.ViewHolder{
+
+    static class BottomTitleHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.tv_home_bottom_slide_title)
         TextView tvTitle;
+
         public BottomTitleHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-        void bindingData(MultipleItem.BottomSlide bottomSlide){
+
+        void bindingData(MultipleItem.BottomSlide bottomSlide) {
             tvTitle.setText(bottomSlide.getSlideTitle());
         }
     }
-    static class BottomBodyHolder extends RecyclerView.ViewHolder{
+
+    static class BottomBodyHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.rv_home_bottom_slide)
         RecyclerView recyclerView;
+
         public BottomBodyHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-        void bindingData(MultipleItem.BottomSlide bottomSlide){
+
+        void bindingData(MultipleItem.BottomSlide bottomSlide) {
 //            tvTitle.setText(bottomSlide.getSlideTitle());
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
