@@ -10,6 +10,7 @@ import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.Toolbar;
@@ -117,7 +118,8 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     private void showToast() {
         //todo(helen) wait for design then will replase this hard code
-        Toast toast = Toast.makeText(this, "Thanks for registering on GO SHOP", Toast.LENGTH_LONG);
+        @SuppressLint("ShowToast") Toast toast = Toast
+            .makeText(this, "Thanks for registering on GO SHOP", Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toastUtil = ToastUtil.getInstance(this, this, toast);
         toastUtil.showToastCustomTime(ToastUtil.SHOW_TIME);

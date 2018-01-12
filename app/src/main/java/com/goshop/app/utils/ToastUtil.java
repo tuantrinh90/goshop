@@ -1,5 +1,6 @@
 package com.goshop.app.utils;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.widget.Toast;
 
@@ -16,6 +17,7 @@ public class ToastUtil {
 
     public static final int SHOW_TIME = 3000;
 
+    @SuppressLint("StaticFieldLeak")
     private static ToastUtil instance;
 
     private final Timer cancelTimer = new Timer();

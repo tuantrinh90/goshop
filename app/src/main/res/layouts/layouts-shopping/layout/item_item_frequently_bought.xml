@@ -1,29 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:paddingRight="@dimen/size_16" tools:ignore="RtlSymmetry"
+    android:paddingEnd="@dimen/size_16">
 
     <ImageView
         android:id="@+id/iv_item_item_frequently"
         android:layout_width="@dimen/size_136"
         android:layout_height="@dimen/size_136"
-        android:layout_marginLeft="@dimen/size_16"
-        android:layout_marginRight="@dimen/size_16"/>
+        android:layout_marginRight="@dimen/size_16"
+        android:layout_marginBottom="@dimen/size_8"
+        android:contentDescription="@string/app_name" android:layout_marginEnd="@dimen/size_16"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_item_percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/size_12"
+        android:textSize="@dimen/size_font_14"
         android:paddingBottom="@dimen/size_2"
         android:paddingTop="@dimen/size_2"
         android:paddingRight="@dimen/size_4"
         android:paddingLeft="@dimen/size_4"
         android:layout_alignLeft="@id/iv_item_item_frequently"
         android:layout_alignBottom="@id/iv_item_item_frequently"
-        android:background="@color/color_main_pink"/>
+        android:background="@color/color_main_pink"
+        android:layout_alignStart="@id/iv_item_item_frequently"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_item_title"
@@ -34,20 +38,21 @@
         android:layout_below="@id/iv_item_item_frequently"
         android:textSize="@dimen/size_font_14"
         android:textColor="@color/color_main_black"
-        android:paddingTop="@dimen/size_8"
-    />
+        android:layout_alignStart="@id/iv_item_item_frequently"
+        android:layout_alignEnd="@id/iv_item_item_frequently"/>
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_item_old_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@id/iv_item_item_frequently"
         android:layout_alignRight="@id/iv_item_item_frequently"
-        android:layout_below="@id/iv_item_item_frequently"
+        android:layout_below="@id/tv_item_item_title"
         android:textSize="@dimen/size_font_14"
         android:textColor="@color/color_main_grey"
-        android:paddingTop="@dimen/size_8"
-    />
+        android:paddingTop="@dimen/size_2"
+        android:layout_alignStart="@id/iv_item_item_frequently"
+        android:layout_alignEnd="@id/iv_item_item_frequently"/>
 
     <com.goshop.app.common.view.CustomBoldTextView
         android:id="@+id/tv_item_item_now_price"
@@ -58,9 +63,10 @@
         android:layout_below="@id/tv_item_item_old_price"
         android:textSize="@dimen/size_font_14"
         android:textColor="@color/color_main_black"
-        android:paddingTop="@dimen/size_8"
+        android:paddingTop="@dimen/size_2"
         android:paddingBottom="@dimen/size_8"
-    />
+        android:layout_alignStart="@id/iv_item_item_frequently"
+        android:layout_alignEnd="@id/iv_item_item_frequently"/>
 
 
 </RelativeLayout>

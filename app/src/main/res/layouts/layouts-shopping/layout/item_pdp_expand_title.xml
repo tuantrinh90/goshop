@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="@dimen/size_50"
     android:layout_marginLeft="@dimen/size_16"
     android:layout_marginRight="@dimen/size_16"
-    android:background="@drawable/selector_bg_expand_pdp_title">
+    android:background="@drawable/selector_bg_expand_pdp_title" tools:ignore="Overdraw">
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_pdp_expand"
@@ -14,7 +14,7 @@
         android:layout_centerVertical="true"
         android:text="@string/details"
         android:textAllCaps="true"
-        android:textSize="@dimen/size_18"
+        android:textSize="@dimen/size_font_18"
         android:textColor="@android:color/black"/>
 
     <ImageView
@@ -24,5 +24,5 @@
         android:src="@drawable/selector_image_expand_selected"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"
-        android:contentDescription="@string/app_name"/>
+        android:contentDescription="@string/app_name" android:layout_alignParentEnd="true"/>
 </RelativeLayout>

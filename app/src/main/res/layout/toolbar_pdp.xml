@@ -48,7 +48,8 @@
             android:src="@mipmap/shoppingcart"
             android:layout_toLeftOf="@id/imageview_right_menu"
             android:layout_centerVertical="true"
-            tools:ignore="ContentDescription"/>
+            tools:ignore="ContentDescription" android:layout_marginEnd="@dimen/size_16"
+            android:layout_toStartOf="@id/imageview_right_menu"/>
 
         <com.goshop.app.common.view.CustomBoldTextView
             android:id="@+id/textview_toolbar_title"

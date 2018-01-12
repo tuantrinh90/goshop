@@ -1,26 +1,29 @@
 package com.goshop.app.presentation.model;
 
+import java.util.List;
+
 /**
  * Created by helen on 2018/1/11.
  */
 
 public class PdpBannerVM extends ProductDetailModel {
 
-    private String imageUrl;
+    private List<String> urls;
+
     public PdpBannerVM() {
         super(ProductDetailModel.DETAIL_TOP_BANNER);
     }
 
-    public PdpBannerVM(String imageUrl) {
+    public PdpBannerVM(List<String> urls) {
         super(ProductDetailModel.DETAIL_TOP_BANNER);
-        this.imageUrl = imageUrl;
+        this.urls = urls;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public List<String> getUrls() {
+        return urls;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setUrls(List<String> urls) {
+        this.urls = urls;
     }
 }

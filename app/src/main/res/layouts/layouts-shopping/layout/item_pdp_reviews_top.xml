@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingLeft="@dimen/size_16"
     android:paddingRight="@dimen/size_16">
@@ -17,7 +17,7 @@
         android:paddingTop="@dimen/size_6"
         android:paddingRight="@dimen/size_16"
         android:paddingLeft="@dimen/size_16"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true" android:layout_alignParentEnd="true"/>
 
     <RelativeLayout
         android:id="@+id/rl_review_top_left"
@@ -27,22 +27,26 @@
         android:layout_centerVertical="true"
         android:layout_marginTop="@dimen/size_8"
         android:layout_toLeftOf="@id/tv_btn_pdp_review_top"
-        android:orientation="vertical">
+        android:orientation="vertical" android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/tv_btn_pdp_review_top">
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_pdp_reviews_top_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_main_pink"
-            android:textSize="@dimen/size_12"
-            android:paddingRight="@dimen/size_4"/>
+            android:textSize="@dimen/size_font_14"
+            android:paddingRight="@dimen/size_4" tools:ignore="RtlSymmetry"
+            android:paddingEnd="@dimen/size_4"/>
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/reviews"
             android:layout_toRightOf="@id/tv_pdp_reviews_top_num"
             android:textColor="@color/color_main_black"
-            android:textSize="@dimen/size_12"
-            android:paddingRight="@dimen/size_18"/>
+            android:textSize="@dimen/size_font_14"
+            android:paddingRight="@dimen/size_18" tools:ignore="RtlSymmetry"
+            android:layout_toEndOf="@id/tv_pdp_reviews_top_num"
+            android:paddingEnd="@dimen/size_18"/>
         <RatingBar
             android:id="@+id/ratingbar_pdp_reviews_top"
             android:layout_width="wrap_content"

@@ -2,6 +2,7 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
 import com.goshop.app.presentation.model.PdpBannerVM;
@@ -18,6 +19,8 @@ import com.goshop.app.presentation.model.PdpTopContentVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 
 import android.graphics.Paint;
+import android.support.v4.view.ViewPager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -253,13 +256,20 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     class TopBannerViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.cpci_indicator)
+        CustomPagerCircleIndicator circleIndicator;
+
+        @BindView(R.id.vp_pdp_banner)
+        ViewPager viewPager;
+
         public TopBannerViewHolder(View itemView) {
             super(itemView);
-            //todo(helen) this is wait for complete
-//            ButterKnife.bind(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         void bindingData(PdpBannerVM bannerVM) {
+            viewPager.setAdapter(new PdpBannerAdapter(itemView.getContext(), bannerVM.getUrls()));
+            circleIndicator.setViewPager(viewPager);
         }
     }
 
@@ -327,6 +337,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             //todo(helen) this is wait for complete
 //            ButterKnife.bind(this, itemView);
         }
+
         void bindingData(PdpDetailsContentVM detailsContentVM) {
             //todo(helen) this is wait for complete
         }
@@ -334,13 +345,21 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     class BoughtTogetherViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.recycler_pdp_frequently)
+        RecyclerView recyclerPdpFrequently;
+
         public BoughtTogetherViewHolder(View itemView) {
             super(itemView);
-            //todo(helen) this is wait for complete
-//            ButterKnife.bind(this, itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         void bindingData(PdpFrequentlyBoughtTogetherVM boughtTogetherVM) {
+            LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
+            layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+            recyclerPdpFrequently.setLayoutManager(layoutManager);
+            FrequentlyBoughtAdapter boughtAdapter = new FrequentlyBoughtAdapter(
+                boughtTogetherVM.getDataVMS());
+            recyclerPdpFrequently.setAdapter(boughtAdapter);
         }
     }
 

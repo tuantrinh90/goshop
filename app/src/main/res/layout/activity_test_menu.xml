@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/size_16"
+        android:textSize="@dimen/size_font_16"
         android:layout_margin="@dimen/size_16"
         android:text="@string/register"/>
 
@@ -19,7 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/size_16"
+        android:textSize="@dimen/size_font_16"
         android:layout_margin="@dimen/size_16"
         android:text="@string/complement_email"/>
 
@@ -28,7 +28,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/size_16"
+        android:textSize="@dimen/size_font_16"
         android:layout_margin="@dimen/size_16"
         android:text="@string/reset_password"/>
 
@@ -37,7 +37,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/size_16"
+        android:textSize="@dimen/size_font_16"
         android:layout_margin="@dimen/size_16"
         android:text="@string/send_confirmation_link"/>
 
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/size_16"
+        android:textSize="@dimen/size_font_16"
         android:layout_margin="@dimen/size_16"
         android:text="@string/pdp"/>
 

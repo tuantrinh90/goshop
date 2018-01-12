@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.shopping;
 
+import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.domian.AccountRepository;
@@ -8,6 +9,7 @@ import com.goshop.app.presentation.model.PdpBannerVM;
 import com.goshop.app.presentation.model.PdpDeliveryInfoVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
 import com.goshop.app.presentation.model.PdpFrequentlyBoughtTogetherVM;
+import com.goshop.app.presentation.model.PdpFrequentlyDataVM;
 import com.goshop.app.presentation.model.PdpProductSummaryVM;
 import com.goshop.app.presentation.model.PdpQAContentTopVM;
 import com.goshop.app.presentation.model.PdpQAContentVM;
@@ -64,7 +66,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     private List<ProductDetailModel> getMockData() {
         //todo(helen)wait for complete
         List<ProductDetailModel> detailModels = new ArrayList<>();
-        detailModels.add(new PdpBannerVM());
+        detailModels.addAll(getBannerDatas());
         detailModels.addAll(getTopDatas());
         detailModels.addAll(getSummaryDatas());
         detailModels.addAll(getDeliveryDatas());
@@ -73,6 +75,27 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         detailModels.addAll(getReviewsDatas());
         detailModels.addAll(getAdditionalInfoDatas());
         detailModels.addAll(getFrequentlyBoughtDatas());
+        return detailModels;
+    }
+
+    //todo(helen)this is mock data will delete when get api
+    private List<ProductDetailModel> getBannerDatas() {
+        List<ProductDetailModel> detailModels = new ArrayList<>();
+        List<String> images = new ArrayList<>();
+        images.add(
+            "http://a.hiphotos.baidu" +
+                ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
+        images.add(
+            "http://g.hiphotos.baidu" +
+                ".com/image/pic/item/7aec54e736d12f2ee7ed822044c2d56284356881.jpg");
+        images.add("http://img843.ph.126.net/HQO2EzKsZ30Kvp03799Gyg==/883831426873459781.jpg");
+        images.add(
+            "http://g.hiphotos.baidu" +
+                ".com/image/pic/item/9a504fc2d56285356bd508329aef76c6a7ef63e8.jpg");
+        images.add(
+            "http://a.hiphotos.baidu" +
+                ".com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg");
+        detailModels.add(new PdpBannerVM(images));
         return detailModels;
     }
 
@@ -156,9 +179,20 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     //todo(helen)this is mock data will delete when get api
     private List<ProductDetailModel> getFrequentlyBoughtDatas() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
+        List<PdpFrequentlyDataVM> frequentlyDataVMS = new ArrayList<>();
+        PdpFrequentlyDataVM frequentlyDataVM = new PdpFrequentlyDataVM(
+            "Bloom By Naelofar Hijab (3pcs set)", "", "RM 119.00", "",
+            R.mipmap.bought);
+        PdpFrequentlyDataVM frequentlyDataVM2 = new PdpFrequentlyDataVM(
+            "Bloom By Naelofar Hijab (3pcs set)", "RM 269.00", "RM 119.00", "30% OFF",
+            R.mipmap.bought);
+        frequentlyDataVMS.add(frequentlyDataVM);
+        frequentlyDataVMS.add(frequentlyDataVM2);
+        frequentlyDataVMS.add(frequentlyDataVM);
+        frequentlyDataVMS.add(frequentlyDataVM2);
         detailModels
             .add(new PdpExpandTitleVM(PdpExpandTitleVM.NO_ICON, "FREQUENTLY BOUGHT TOGETHER"));
-        detailModels.add(new PdpFrequentlyBoughtTogetherVM());
+        detailModels.add(new PdpFrequentlyBoughtTogetherVM(frequentlyDataVMS));
         return detailModels;
     }
 
