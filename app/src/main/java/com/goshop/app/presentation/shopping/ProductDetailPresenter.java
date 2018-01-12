@@ -9,8 +9,10 @@ import com.goshop.app.presentation.model.PdpDeliveryInfoVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
 import com.goshop.app.presentation.model.PdpFrequentlyBoughtTogetherVM;
 import com.goshop.app.presentation.model.PdpProductSummaryVM;
+import com.goshop.app.presentation.model.PdpQAContentTopVM;
 import com.goshop.app.presentation.model.PdpQAContentVM;
 import com.goshop.app.presentation.model.PdpReviewsContentVM;
+import com.goshop.app.presentation.model.PdpReviewsTopVM;
 import com.goshop.app.presentation.model.PdpTopContentVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 
@@ -111,11 +113,13 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     private List<ProductDetailModel> getQADatas() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.HAS_ICON, "Q&A", true));
+        detailModels.add(new PdpQAContentTopVM("10", "10"));
         detailModels.add(new PdpQAContentVM(
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
             "By User Name on 1/2/18",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
             "By User Name on 1/2/18"));
+        detailModels.add(new ProductDetailModel(ProductDetailModel.DETAIL_VIEW_MORE));
         return detailModels;
     }
 
@@ -123,12 +127,14 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     private List<ProductDetailModel> getReviewsDatas() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.HAS_ICON, "REVIEWS", true));
+        detailModels.add(new PdpReviewsTopVM("100", 5));
         detailModels.add(new PdpReviewsContentVM(4, "Lorem ipsum dolor sit amet",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
             "By User Name on 1/2/18"));
         detailModels.add(new PdpReviewsContentVM(3, "Lorem ipsum dolor sit amet",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
             "By User Name on 1/2/18"));
+        detailModels.add(new ProductDetailModel(ProductDetailModel.DETAIL_VIEW_MORE));
         return detailModels;
     }
 

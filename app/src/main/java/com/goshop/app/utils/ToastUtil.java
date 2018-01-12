@@ -12,6 +12,10 @@ import java.util.TimerTask;
 
 public class ToastUtil {
 
+    public static final int DELAY_TIME = 0;
+
+    public static final int SHOW_TIME = 3000;
+
     private static ToastUtil instance;
 
     private final Timer cancelTimer = new Timer();
@@ -45,7 +49,7 @@ public class ToastUtil {
             public void run() {
                 toast.show();
             }
-        }, 0, 3000);
+        }, DELAY_TIME, SHOW_TIME);
         cancelTimer.schedule(new TimerTask() {
             @Override
             public void run() {
@@ -63,6 +67,7 @@ public class ToastUtil {
     }
 
     public interface OnToastListener {
+
         void onToastCancel();
     }
 

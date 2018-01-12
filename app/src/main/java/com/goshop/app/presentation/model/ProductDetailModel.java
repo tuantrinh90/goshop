@@ -12,7 +12,7 @@ public class ProductDetailModel {
 
     public static final int DETAIL_EXPAND_TITLE = 3;
 
-    public static final int DETAIL_PRODUCT_SUMMARY = 4;
+    public static final int DETAIL_PRODUCT_SUMMARY_CONTENT = 4;
 
     public static final int DETAIL_DELIVERY_INFO = 5;
 
@@ -29,6 +29,8 @@ public class ProductDetailModel {
     public static final int DETAIL_ADDITIONAL_INFORMATION = 11;
 
     public static final int DETAIL_FREQUENTLY_BOUGHT_TOGETHER = 12;
+
+    public static final int DETAIL_VIEW_MORE = 13;
 
 
     private int viewType;

@@ -35,7 +35,8 @@
 
         <activity android:name=".presentation.login.LoginSendConfirmationLinkActivity"/>
 
-        <activity android:name=".presentation.shopping.ProductDetailActivity"/>
+        <activity android:name=".presentation.shopping.ProductDetailActivity"
+            android:theme="@style/WhiteBackground"/>
 
     </application>
 

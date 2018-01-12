@@ -10,8 +10,10 @@ import com.goshop.app.presentation.model.PdpDetailsContentVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
 import com.goshop.app.presentation.model.PdpFrequentlyBoughtTogetherVM;
 import com.goshop.app.presentation.model.PdpProductSummaryVM;
+import com.goshop.app.presentation.model.PdpQAContentTopVM;
 import com.goshop.app.presentation.model.PdpQAContentVM;
 import com.goshop.app.presentation.model.PdpReviewsContentVM;
+import com.goshop.app.presentation.model.PdpReviewsTopVM;
 import com.goshop.app.presentation.model.PdpTopContentVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 
@@ -23,6 +25,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,16 +37,46 @@ import butterknife.ButterKnife;
 
 public class ProductDetailAdapter extends RecyclerView.Adapter {
 
-    private List<ProductDetailModel> detailModels;
+    private boolean addData = true;
+
+    private List<ProductDetailModel> allDetailModels;
+
+    private List<ProductDetailModel> displayDetailModels;
 
     public ProductDetailAdapter(
         List<ProductDetailModel> detailModels) {
-        this.detailModels = detailModels;
+        allDetailModels = new ArrayList<>();
+        this.displayDetailModels = detailModels;
     }
 
     public void updateDatas(List<ProductDetailModel> detailModels) {
-        this.detailModels.clear();
-        this.detailModels.addAll(detailModels);
+        this.displayDetailModels.clear();
+        this.allDetailModels.clear();
+        this.allDetailModels.addAll(detailModels);
+
+        for (int i = 0; i < allDetailModels.size(); i++) {
+            ProductDetailModel detailModel = allDetailModels.get(i);
+            if (addData) {
+                displayDetailModels.add(detailModel);
+                if (detailModel instanceof PdpExpandTitleVM) {
+                    if (((PdpExpandTitleVM) detailModel)
+                        .getIcon() == PdpExpandTitleVM.HAS_ICON && !((PdpExpandTitleVM) detailModel)
+                        .isExpand()) {
+                        addData = false;
+                    }
+                }
+            } else {
+                if (detailModel instanceof PdpExpandTitleVM) {
+                    addData = true;
+                    displayDetailModels.add(detailModel);
+                    if (((PdpExpandTitleVM) detailModel)
+                        .getIcon() == PdpExpandTitleVM.HAS_ICON && !((PdpExpandTitleVM) detailModel)
+                        .isExpand()) {
+                        addData = false;
+                    }
+                }
+            }
+        }
         notifyDataSetChanged();
     }
 
@@ -62,7 +95,14 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.item_pdp_top_content, parent, false);
                 viewHolder = new TopContentViewHolder(topContentView);
                 break;
-            case ProductDetailModel.DETAIL_PRODUCT_SUMMARY:
+
+            case ProductDetailModel.DETAIL_EXPAND_TITLE:
+                View expandView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_pdp_expand_title, parent, false);
+                viewHolder = new ExpandTitleViewHolder(expandView);
+                break;
+
+            case ProductDetailModel.DETAIL_PRODUCT_SUMMARY_CONTENT:
                 View summaryView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_pdp_product_summary, parent, false);
                 viewHolder = new SummaryViewHolder(summaryView);
@@ -72,11 +112,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.item_pdp_delivery_info, parent, false);
                 viewHolder = new DeliveryViewHolder(deliveryView);
                 break;
-            case ProductDetailModel.DETAIL_EXPAND_TITLE:
-                View expandView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_pdp_expand_title, parent, false);
-                viewHolder = new ExpandTitleViewHolder(expandView);
-                break;
+
             case ProductDetailModel.DETAIL_DETAILS_CONTENT:
                 //todo(helen)this part need decide
                 View detailsContentView = LayoutInflater.from(parent.getContext())
@@ -88,6 +124,17 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.item_pdp_qa_content, parent, false);
                 viewHolder = new QAViewHolder(qaContent);
                 break;
+            case ProductDetailModel.DETAIL_QA_CONTENT_TOP:
+                View qaTopView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_pdp_qa_top, parent, false);
+                viewHolder = new QATopViewHolder(qaTopView);
+                break;
+            case ProductDetailModel.DETAIL_REVIEWS_CONTENT_TOP:
+                View reviewTopView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_pdp_reviews_top, parent, false);
+                viewHolder = new ReviewsTopViewHolder(reviewTopView);
+                break;
+
             case ProductDetailModel.DETAIL_REVIEWS_CONTENT:
                 View reviewsView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_pdp_reviews_content, parent, false);
@@ -103,6 +150,12 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.item_pdp_frequently_bought_together_content, parent, false);
                 viewHolder = new BoughtTogetherViewHolder(boughtView);
                 break;
+
+            case ProductDetailModel.DETAIL_VIEW_MORE:
+                View addMoreView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_view_more, parent, false);
+                viewHolder = new AddMoreViewHolder(addMoreView);
+                break;
         }
         return viewHolder;
     }
@@ -110,50 +163,92 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TopBannerViewHolder) {
-            PdpBannerVM bannerVM = (PdpBannerVM) detailModels.get(position);
+            PdpBannerVM bannerVM = (PdpBannerVM) displayDetailModels.get(position);
             ((TopBannerViewHolder) holder).bindingData(bannerVM);
         } else if (holder instanceof TopContentViewHolder) {
-            PdpTopContentVM topContentVM = (PdpTopContentVM) detailModels.get(position);
+            PdpTopContentVM topContentVM = (PdpTopContentVM) displayDetailModels.get(position);
             ((TopContentViewHolder) holder).bindingData(topContentVM);
         } else if (holder instanceof ExpandTitleViewHolder) {
-            PdpExpandTitleVM expandTitleVM = (PdpExpandTitleVM) detailModels.get(position);
-            ((ExpandTitleViewHolder) holder).bindingData(expandTitleVM);
+            PdpExpandTitleVM expandTitleVM = (PdpExpandTitleVM) displayDetailModels.get(position);
+            ((ExpandTitleViewHolder) holder).bindingData(expandTitleVM, position);
         } else if (holder instanceof SummaryViewHolder) {
-            PdpProductSummaryVM summaryVM = (PdpProductSummaryVM) detailModels.get(position);
+            PdpProductSummaryVM summaryVM = (PdpProductSummaryVM) displayDetailModels.get(position);
             ((SummaryViewHolder) holder).bindingData(summaryVM);
         } else if (holder instanceof DeliveryViewHolder) {
-            PdpDeliveryInfoVM deliveryInfoVM = (PdpDeliveryInfoVM) detailModels.get(position);
+            PdpDeliveryInfoVM deliveryInfoVM = (PdpDeliveryInfoVM) displayDetailModels
+                .get(position);
             ((DeliveryViewHolder) holder).bindingData(deliveryInfoVM);
         } else if (holder instanceof DetailsContentViewHolder) {
             //Todo(helen) this is need decide
-            PdpDetailsContentVM detailsContentVM = (PdpDetailsContentVM) detailModels.get(position);
+            PdpDetailsContentVM detailsContentVM = (PdpDetailsContentVM) displayDetailModels
+                .get(position);
             ((DetailsContentViewHolder) holder).bindingData(detailsContentVM);
         } else if (holder instanceof QAViewHolder) {
-            PdpQAContentVM qaContentVM = (PdpQAContentVM) detailModels.get(position);
+            PdpQAContentVM qaContentVM = (PdpQAContentVM) displayDetailModels.get(position);
             ((QAViewHolder) holder).bindingData(qaContentVM);
+        } else if (holder instanceof QATopViewHolder) {
+            PdpQAContentTopVM qaContentVM = (PdpQAContentTopVM) displayDetailModels.get(position);
+            ((QATopViewHolder) holder).bindingData(qaContentVM);
+        } else if (holder instanceof ReviewsTopViewHolder) {
+            PdpReviewsTopVM reviewsTopVM = (PdpReviewsTopVM) displayDetailModels.get(position);
+            ((ReviewsTopViewHolder) holder).bindingData(reviewsTopVM);
         } else if (holder instanceof ReviewsViewHolder) {
-            PdpReviewsContentVM reviewsContentVM = (PdpReviewsContentVM) detailModels.get(position);
+            PdpReviewsContentVM reviewsContentVM = (PdpReviewsContentVM) displayDetailModels
+                .get(position);
             ((ReviewsViewHolder) holder).bindingData(reviewsContentVM);
         } else if (holder instanceof AdditionalInfoViewHolder) {
             PdpAdditionalInformationVM additionalInformationVM = (PdpAdditionalInformationVM)
-                detailModels
+                displayDetailModels
                     .get(position);
             ((AdditionalInfoViewHolder) holder).bindingData(additionalInformationVM);
         } else if (holder instanceof BoughtTogetherViewHolder) {
-            PdpFrequentlyBoughtTogetherVM togetherVM = (PdpFrequentlyBoughtTogetherVM) detailModels
-                .get(position);
+            PdpFrequentlyBoughtTogetherVM togetherVM = (PdpFrequentlyBoughtTogetherVM)
+                displayDetailModels
+                    .get(position);
             ((BoughtTogetherViewHolder) holder).bindingData(togetherVM);
+        } else if (holder instanceof AddMoreViewHolder) {
+            ((AddMoreViewHolder) holder).bindingData(position);
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        return detailModels.get(position).getViewType();
+        return displayDetailModels.get(position).getViewType();
     }
 
     @Override
     public int getItemCount() {
-        return detailModels.size();
+        return displayDetailModels.size();
+    }
+
+    private void expand(int position) {
+
+        int expandPosition = allDetailModels.indexOf(displayDetailModels.get(position));
+        int insert = position;
+        int count = 0;
+
+        for (int i = expandPosition + 1; i < allDetailModels.size() && allDetailModels.get(i)
+            .getViewType() != ProductDetailModel.DETAIL_EXPAND_TITLE; i++) {
+            count++;
+            insert++;
+            displayDetailModels.add(insert, allDetailModels.get(i));
+        }
+
+        notifyItemRangeInserted(position + 1, count);
+    }
+
+    private void closeUp(int position) {
+
+        int closePosition = allDetailModels.indexOf(displayDetailModels.get(position));
+        int count = 0;
+
+        for (int i = closePosition + 1; i < allDetailModels.size() && allDetailModels.get(i)
+            .getViewType() != ProductDetailModel.DETAIL_EXPAND_TITLE; i++) {
+            count++;
+            displayDetailModels.remove(position + 1);
+        }
+        notifyItemRangeRemoved(position + 1, count);
+
     }
 
     class TopBannerViewHolder extends RecyclerView.ViewHolder {
@@ -180,6 +275,21 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
         void bindingData(PdpProductSummaryVM summaryVM) {
             //todo(helen) this is wait for complete
+        }
+    }
+
+    class AddMoreViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.tv_btn_pdp_add_more)
+        CustomTextView tvBtnPdpAddMore;
+
+        public AddMoreViewHolder(View itemView) {
+            super(itemView);
+        }
+
+        void bindingData(int position) {
+            itemView.setOnClickListener(v -> {
+            });
         }
     }
 
@@ -217,8 +327,8 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             //todo(helen) this is wait for complete
 //            ButterKnife.bind(this, itemView);
         }
-
         void bindingData(PdpDetailsContentVM detailsContentVM) {
+            //todo(helen) this is wait for complete
         }
     }
 
@@ -234,16 +344,38 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         }
     }
 
+    class QATopViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.tv_pdp_qa_top_answers_num)
+        CustomTextView tvPdpQaTopAnswersNum;
+
+        @BindView(R.id.tv_pdp_qa_top_question_num)
+        CustomTextView tvPdpQaTopQuestionNum;
+
+        public QATopViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        void bindingData(PdpQAContentTopVM contentTopVM) {
+            tvPdpQaTopAnswersNum.setText(contentTopVM.getAnswerNum());
+            tvPdpQaTopQuestionNum.setText(contentTopVM.getQuestionNum());
+        }
+    }
+
     class QAViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.tv_pdp_qa_answer)
+        CustomTextView tvPdpQaAnswer;
+
+        @BindView(R.id.tv_pdp_qa_answer_detail)
+        CustomTextView tvPdpQaAnswerDetail;
 
         @BindView(R.id.tv_pdp_qa_question)
         CustomTextView tvPdpQaQuestion;
+
         @BindView(R.id.tv_pdp_qa_questioner_detail)
         CustomTextView tvPdpQaQuestionerDetail;
-        @BindView(R.id.tv_pdp_qa_answer)
-        CustomTextView tvPdpQaAnswer;
-        @BindView(R.id.tv_pdp_qa_answer_detail)
-        CustomTextView tvPdpQaAnswerDetail;
 
         public QAViewHolder(View itemView) {
             super(itemView);
@@ -258,14 +390,36 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         }
     }
 
+    class ReviewsTopViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.ratingbar_pdp_reviews_top)
+        RatingBar ratingBar;
+
+        @BindView(R.id.tv_pdp_reviews_top_num)
+        CustomTextView tvPdpReviewsTopNum;
+
+        public ReviewsTopViewHolder(View itemView) {
+            super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        void bindingData(PdpReviewsTopVM reviewsTopVM) {
+            tvPdpReviewsTopNum.setText(reviewsTopVM.getReviewNum());
+            ratingBar.setRating(reviewsTopVM.getReviewRating());
+        }
+    }
+
     class ReviewsViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.ratingbar_pdp_review_content)
         RatingBar ratingBar;
-        @BindView(R.id.tv_pdp_review_review)
-        CustomBoldTextView tvPdpReviewReview;
+
         @BindView(R.id.tv_pdp_review_info)
         CustomTextView tvPdpReviewInfo;
+
+        @BindView(R.id.tv_pdp_review_review)
+        CustomBoldTextView tvPdpReviewReview;
+
         @BindView(R.id.tv_pdp_reviewer_detail)
         CustomTextView tvPdpReviewerDetail;
 
@@ -333,7 +487,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(PdpExpandTitleVM expandTitleVM) {
+        void bindingData(PdpExpandTitleVM expandTitleVM, int position) {
             //Todo(helen)this wait for complete
             tvItemPdpExpand.setText(expandTitleVM.getTitle());
             if (expandTitleVM.getIcon() == PdpExpandTitleVM.NO_ICON) {
@@ -347,6 +501,11 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
                     expandTitleVM.setExpand(!expandTitleVM.isExpand());
                     ivItemPdpExpand.setSelected(expandTitleVM.isExpand());
                     itemView.setSelected(expandTitleVM.isExpand());
+                    if (expandTitleVM.isExpand()) {
+                        expand(position);
+                    } else {
+                        closeUp(position);
+                    }
                 });
             }
         }

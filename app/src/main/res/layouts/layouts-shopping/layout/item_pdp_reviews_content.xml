@@ -13,6 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/size_28"
         android:progressDrawable="@drawable/bg_rating"
+        android:isIndicator="true"
         android:stepSize="1"
         android:rating="5"
         android:numStars="5"/>

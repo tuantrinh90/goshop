@@ -161,10 +161,11 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     }
 
     private void showToast() {
+        //todo(helen) wait for design then will replase this hard code
         Toast toast = Toast.makeText(this, "Thanks for registering on GO SHOP", Toast.LENGTH_LONG);
         toast.setGravity(Gravity.CENTER, 0, 0);
         toastUtil = ToastUtil.getInstance(this, this, toast);
-        toastUtil.showToastCustomTime(5000);
+        toastUtil.showToastCustomTime(ToastUtil.SHOW_TIME);
     }
 
     @Override

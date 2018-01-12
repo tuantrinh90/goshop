@@ -66,60 +66,6 @@
             android:layout_alignParentTop="true"
             android:layout_above="@id/rl_pdp_bottom"/>
 
-<!--
-        <android.support.v4.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:scrollbars="none"
-            android:layout_above="@id/rl_pdp_bottom"
-            android:paddingRight="@dimen/size_16"
-            android:paddingLeft="@dimen/size_16">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="vertical">
-
-
-                <LinearLayout
-                    android:id="@+id/ll_banner"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_360"
-                    android:background="@color/colorAccent"
-                    android:orientation="vertical">
-                </LinearLayout>
-
-                <com.goshop.app.common.view.CustomBoldTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/size_360"
-                    android:text="@string/pdp_title"
-                    android:textColor="@android:color/black"
-                    android:textSize="@dimen/size_font_20"
-                    android:paddingTop="@dimen/size_18"/>
-                <com.goshop.app.common.view.CustomBoldTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/password"
-                    android:textColor="@color/colorAccent"
-                    android:textSize="@dimen/size_font_20"
-                    android:paddingTop="@dimen/size_8"/>
-
-                <RatingBar
-                    android:id="@+id/ratingbar"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size_16"
-                    android:progressDrawable="@drawable/bg_rating"
-                    android:stepSize="1"
-                    android:rating="5"
-                    android:numStars="5"/>
-
-
-            </LinearLayout>
-
-
-        </android.support.v4.widget.NestedScrollView>
-   -->
-
     </RelativeLayout>
 
 

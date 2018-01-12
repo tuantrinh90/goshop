@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/size_16">
 
     <com.goshop.app.common.view.CustomTextView
-        android:id="@+id/tv_btn_pdp_ask_question"
+        android:id="@+id/tv_btn_pdp_qa_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="@string/ask_a_question"
@@ -24,10 +24,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
-        android:layout_toLeftOf="@id/tv_btn_pdp_ask_question"
+        android:layout_toLeftOf="@id/tv_btn_pdp_qa_top"
         android:orientation="horizontal">
         <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_btn_pdp_aq_question_num"
+            android:id="@+id/tv_pdp_qa_top_question_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_main_pink"
@@ -41,7 +41,7 @@
             android:textSize="@dimen/size_12"
             android:paddingRight="@dimen/size_18"/>
         <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_btn_pdp_aq_answers_num"
+            android:id="@+id/tv_pdp_qa_top_answers_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_main_pink"
