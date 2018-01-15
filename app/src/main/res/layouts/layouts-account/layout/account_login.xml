@@ -27,7 +27,7 @@
             app:errorTextAppearance="@style/textInputErrorStyle"
             android:theme="@style/textInputEditTheme"
             android:layout_height="wrap_content">
-            <EditText
+            <com.goshop.app.common.view.CustomEditText
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
