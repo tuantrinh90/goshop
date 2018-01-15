@@ -21,11 +21,11 @@ import butterknife.ButterKnife;
 /**
  * Created by helen on 2018/1/12.
  */
-public class FrequentlyBoughtAdapter extends RecyclerView.Adapter {
+public class PdpFrequentlyBoughtAdapter extends RecyclerView.Adapter {
 
     private List<PdpFrequentlyDataVM> dataVMS;
 
-    public FrequentlyBoughtAdapter(
+    public PdpFrequentlyBoughtAdapter(
         List<PdpFrequentlyDataVM> dataVMS) {
         this.dataVMS = dataVMS;
     }

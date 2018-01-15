@@ -357,7 +357,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
             layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerPdpFrequently.setLayoutManager(layoutManager);
-            FrequentlyBoughtAdapter boughtAdapter = new FrequentlyBoughtAdapter(
+            PdpFrequentlyBoughtAdapter boughtAdapter = new PdpFrequentlyBoughtAdapter(
                 boughtTogetherVM.getDataVMS());
             recyclerPdpFrequently.setAdapter(boughtAdapter);
         }
