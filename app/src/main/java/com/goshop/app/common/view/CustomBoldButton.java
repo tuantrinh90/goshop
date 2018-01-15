@@ -1,11 +1,11 @@
 package com.goshop.app.common.view;
 
-import android.content.Context;
-import android.graphics.Typeface;
-import android.util.AttributeSet;
-
 import com.goshop.app.common.Typefaces;
 
+import android.content.Context;
+import android.graphics.Typeface;
+import android.text.TextPaint;
+import android.util.AttributeSet;
 
 /**
  * Created by winniseptiani on 3/16/17.
@@ -30,6 +30,8 @@ public class CustomBoldButton extends android.support.v7.widget.AppCompatButton 
     }
 
     private void setFont(Context context) {
+        TextPaint paint = getPaint();
+        paint.setFakeBoldText(true);
         Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_BOLD);
         setTypeface(face);
     }
