@@ -16,18 +16,18 @@
             android:layout_width="@dimen/home_bottom_slide_item_image_w_and_h"
             android:layout_height="@dimen/home_bottom_slide_item_image_w_and_h"
         />
-        <TextView
+        <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_home_bottom_item_name"
             style="@style/homeItemProductName"
             android:text="@string/home_item_test_product_name"
         />
-        <TextView
+        <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_home_bottom_item_old_price"
             android:text="@string/home_item_test_product_price"
             android:layout_marginTop="2dp"
             style="@style/homeItemProductOldPrice"
         />
-        <TextView
+        <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_home_bottom_item_price"
             android:text="@string/home_item_test_product_price"
             android:layout_marginTop="2dp"

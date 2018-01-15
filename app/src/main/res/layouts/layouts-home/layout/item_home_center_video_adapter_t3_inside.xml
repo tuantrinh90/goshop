@@ -6,7 +6,7 @@
     android:id="@+id/ll_center_root"
 >
 
-    <TextView
+    <com.goshop.app.common.view.CustomTextView
         android:id="@+id/view_video"
         android:background="@color/green_common"
         android:layout_width="match_parent"

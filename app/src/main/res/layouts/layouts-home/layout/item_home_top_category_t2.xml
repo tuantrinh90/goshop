@@ -8,7 +8,7 @@
         android:layout_centerHorizontal="true"
         android:layout_width="100dp"
         android:layout_height="100dp"/>
-    <TextView
+    <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_home_top_category_name"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/iv_home_top_category_icon"

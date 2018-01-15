@@ -32,7 +32,7 @@
                     android:layout_height="@dimen/home_category_image_w_and_h"
                     android:background="@mipmap/ic_launcher_round"
                 />
-                <TextView
+                <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
                     android:text="@string/home_second_category"/>
 
@@ -50,7 +50,7 @@
                     android:layout_gravity="center"
                     android:background="@mipmap/ic_launcher_round"
                 />
-                <TextView
+                <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
                     android:text="@string/home_second_tv_shows"/>
 
@@ -68,7 +68,7 @@
                     android:layout_gravity="center"
                     android:background="@mipmap/ic_launcher_round"
                 />
-                <TextView
+                <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
                     android:text="@string/home_second_brand"/>
 
@@ -87,7 +87,7 @@
                     android:layout_gravity="center"
                     android:background="@mipmap/ic_launcher_round"
                 />
-                <TextView
+                <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
                     android:text="@string/home_second_egift_cards"/>
 

@@ -1,25 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#EC458B</color>
 
-    <color name="brightSkyBlue">#00b6f1</color>
     <color name="pinkishGrey">#bcbcbc</color>
 
 
     <color name="appColorPrimary">#ff0000</color>
-    <color name="buttonTextColorPrimary">#ffffff</color>
-
-    <color name="background">#c9c9c9</color>
-    <!-- red -->
-    <color name="red">#D82529</color>
-    <color name="redC2060A">#C2060A</color>
-    <color name="red_common">#C1033D</color>
-    <color name="red_cart_shopping_error">#e24256</color>
 
     <!-- transparent -->
-    <color name="purple66006e">#66006e</color>
     <color name="transparent96FFFFFF">#96FFFFFF</color>
     <color name="transparent00">#00000000</color>
     <color name="transparent7F">#7F000000</color>
@@ -28,7 +18,6 @@
     <color name="transparent5000">#50000000</color>
 
     <color name="black75">#c3000000</color>
-    <color name="purple85">#c366006e</color>
     <!--70% transparent-->
     <color name="black2c">#1f000000</color>
     <color name="blackD0">#7F000000</color>
@@ -80,19 +69,7 @@
     <color name="greyE1E1E1">#E1E1E1</color>
     <color name="greyF1F1F1">#F1F1F1</color>
     <color name="greyCCCCCC">#CCCCCC</color>
-    <color name="blue7D66006E">#7D66006E</color>
-    <color name="blueD7D7D7">#D7D7D7</color>
-    <color name="whiteEAFFFFFF">#EAFFFFFF</color>
-    <color name="grey970508">#970508</color>
-    <color name="greyF7F7F7">#F7F7F7</color>
-    <color name="greyACACAC">#ACACAC</color>
-    <color name="greyB8B8B8">#B8B8B8</color>
-    <color name="gray_3fabac">#3Fabac</color>
-    <color name="gray_weight">#989898</color>
-    <color name="gray_light">#DDDDDD</color>
-    <color name="greyCBC9CC">#CBC9CC</color>
     <color name="greyC888888">#888888</color>
-    <color name="purple4c0052">#4c0052</color>
     <color name="grayf8f8f8">#f8f8f8</color>
     <color name="grayf0f0f0">#f0f0f0</color>
     <color name="grayf2f2f2">#f2f2f2</color>
@@ -103,43 +80,24 @@
     <color name="greyF8F8F8">#F8F8F8</color>
     <color name="greyF0F0F0">#F0F0F0</color>
     <color name="greyfdfbfe">#fdfbfe</color>
-
+    <color name="greyFBFBFB">#FBFBFB</color>
     <color name="grey6f6f6f">#6f6f6f</color>
     <!-- green -->
     <color name="green_common">#009E82</color>
 
-
-    <color name="greyFBFBFB">#FBFBFB</color>
     <!-- blue -->
     <color name="blue4d9cf2">#4d9cf2</color>
     <color name="blue5097DA">#4f005d</color>
 
-    <!--purple-->
-    <color name="label_active">#66006E</color>
-    <color name="purple">#66006E</color>
-    <color name="tranPurple">#FF66006E</color>
-    <color name="purple92018d">#92018d</color>
-    <color name="purple660070">#660070</color>
-    <color name="purple3A0047">#3A0047</color>
-    <color name="purple4f005b">#4f005b</color>
-    <color name="purple4F005D">#4f005d</color>
-    <color name="purple66006E">#66006E</color>
     <!--facebook -->
     <color name="facebook">#3A5899</color>
     <!-- allen -->
-    <color name="grayText">#888888</color>
     <color name="hint">#61000000</color>
     <color name="label_saved">#61000000</color>
 
-    <color name="card_shadow">#10000000</color>
-    <color name="black_de">#DE000000</color>
-    <color name="menu_text">#A4A4A4</color>
     <color name="black">#000000</color>
     <color name="white">#ffffff</color>
-    <color name="big_botton_white">#E3ffffff</color>
     <color name="tranwhite">#86FFFFFF</color>
-    <!-- divider line color #000 12%-->
-    <color name="v2_line">#21000000</color>
 
     <color name="tranblack89">#89000000</color>
     <color name="tranblackDE">#DE000000</color>

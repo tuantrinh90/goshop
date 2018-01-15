@@ -1,7 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="size_121">121dp</dimen>
-    <dimen name="size_8">8dp</dimen>
     <dimen name="home_radius">2dp</dimen>
     <dimen name="home_stroke_border_w">1dp</dimen>
     <!--home-->
