@@ -1,11 +1,11 @@
 package com.goshop.app.common.view;
 
-import android.content.Context;
-import android.graphics.Typeface;
-import android.util.AttributeSet;
-
 import com.goshop.app.common.Typefaces;
 
+import android.content.Context;
+import android.graphics.Typeface;
+import android.text.TextPaint;
+import android.util.AttributeSet;
 
 @SuppressWarnings("ALL")
 public class CustomBoldEditText extends android.support.v7.widget.AppCompatEditText {
@@ -25,8 +25,9 @@ public class CustomBoldEditText extends android.support.v7.widget.AppCompatEditT
         setFont(context);
     }
 
-
     private void setFont(Context context) {
+        TextPaint paint = getPaint();
+        paint.setFakeBoldText(true);
         Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_BOLD);
         setTypeface(face);
     }
