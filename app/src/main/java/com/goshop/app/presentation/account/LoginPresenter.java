@@ -13,7 +13,6 @@ import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.home.HomeContract;
 
 import android.text.TextUtils;
 
@@ -66,6 +65,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
     }
 
+    //TODO facebook sdk code
     @Override
     public CallbackManager initFaceBook(){
         facebookCallbackManager = CallbackManager.Factory.create();

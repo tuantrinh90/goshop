@@ -142,6 +142,7 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
             llCategoryGiftCard.setOnClickListener(this);
         }
 
+        //TODO joyson add temp code
         @Override
         public void onClick(View v) {
             switch (v.getId()) {

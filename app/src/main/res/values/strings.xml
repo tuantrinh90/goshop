@@ -13,6 +13,9 @@
     <string name="home_video_onair_tab_fb_parting_line">&#160;/&#160;</string>
     <string name="home_video_item_buy_now">Buy Now</string>
     <string name="home_search_hint">Search products or brands</string>
+    <string name="home_video_time">11:00-14:30</string>
+    <string name="home_video_prev">prev</string>
+    <string name="home_video_next">next</string>
 
     <!--login-->
     <string name="login_email">Email</string>

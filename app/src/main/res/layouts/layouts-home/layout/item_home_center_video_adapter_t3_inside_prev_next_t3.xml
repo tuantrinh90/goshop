@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="prev"
+            android:text="@string/home_video_prev"
             android:textAllCaps="true"/>
 
         <com.goshop.app.common.view.CustomTextView
@@ -26,7 +26,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_home_center_prev_title"
             android:layout_centerHorizontal="true"
-            android:text="11:00-14:30"
+            android:text="@string/home_video_time"
             android:textAllCaps="true"/>
 
         <RelativeLayout
@@ -75,7 +75,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
-            android:text="prev"
+            android:text="@string/home_video_prev"
             android:textAllCaps="true"/>
 
         <com.goshop.app.common.view.CustomTextView
@@ -84,7 +84,7 @@
             android:layout_height="wrap_content"
             android:layout_below="@+id/tv_home_center_next_title"
             android:layout_centerHorizontal="true"
-            android:text="11:00-14:30"
+            android:text="@string/home_video_time"
             android:textAllCaps="true"/>
 
         <RelativeLayout

@@ -8,14 +8,13 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.utils.JDataUtils;
 import com.goshop.app.utils.ScreenHelper;
+import com.jakewharton.rxbinding2.widget.RxTextView;
 import com.orhanobut.logger.Logger;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputLayout;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.view.View;
@@ -109,51 +108,38 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     private void initView() {
         textEmail.setHintAnimationEnabled(true);
         textEmail.setErrorEnabled(true);
-        textEmail.getEditText().addTextChangedListener(new MyTextWatcher(etEmail));
 
         textPassword.setHintAnimationEnabled(true);
         textPassword.setErrorEnabled(true);
-        textPassword.getEditText().addTextChangedListener(new MyTextWatcher(etPassword));
+
+        rxEditTextChange(etEmail,ivClearMail);
+        rxEditTextChange(etPassword,ivClearPassword);
+
     }
 
-    private class MyTextWatcher implements TextWatcher{
-        private View view;
-
-        public MyTextWatcher(View view) {
-            this.view = view;
-        }
-
-        @Override
-        public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-        }
-
-        @Override
-        public void onTextChanged(CharSequence s, int start, int before, int count) {
-
-        }
-
-        @Override
-        public void afterTextChanged(Editable s) {
-            switch (view.getId()){
-                case R.id.et_email:
-                    isEmail();
-                    if (s.length()!=0 && etEmail.isFocusable()){
-                        ivClearMail.setVisibility(View.VISIBLE);
-                    }else {
-                        ivClearMail.setVisibility(View.GONE);
-                    }
-                    break;
-                case R.id.et_password:
-                   isPassword();
-                    if (s.length() != 0 && etPassword.isFocused()) {
-                        ivClearPassword.setVisibility(View.VISIBLE);
-                    } else {
-                        ivClearPassword.setVisibility(View.INVISIBLE);
-                    }
-                    break;
+    private void rxEditTextChange(EditText editText,ImageView deleteView){
+        RxTextView.textChanges(editText).subscribe(charSequence -> {
+            if (charSequence.length() > 0) {
+                deleteView.setVisibility(View.VISIBLE);
+                deleteView.setOnClickListener(v -> {
+                    editText.setText("");
+                    editText.setFocusable(true);
+                    editText.requestFocus();
+                    deleteView.setVisibility(View.GONE);
+                });
+                switch (editText.getId()){
+                    case R.id.et_email:
+                        isEmail();
+                        break;
+                    case R.id.et_password:
+                        isPassword();
+                        break;
+                }
+            } else {
+                deleteView.setVisibility(View.GONE);
             }
-        }
+
+        });
     }
 
     private boolean isEmail(){
@@ -176,16 +162,10 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         }
     }
 
-    @OnClick({R.id.iv_clear_mail, R.id.iv_clear_password, R.id.iv_visible_password, R.id
+    @OnClick({ R.id.iv_visible_password, R.id
         .btn_login, R.id.tv_forgot_password, R.id.rl_login_facebook,R.id.tv_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_clear_mail:
-                etEmail.setText("");
-                break;
-            case R.id.iv_clear_password:
-                etPassword.setText("");
-                break;
             case R.id.iv_visible_password:
                 if (!TextUtils.isEmpty(etPassword.getText().toString().trim())){
                     if (isVisible){
@@ -207,6 +187,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
             case R.id.tv_forgot_password:
                 break;
             case R.id.rl_login_facebook:
+                //facebook sdk code
                 LoginManager.getInstance().logInWithReadPermissions(this, Arrays
                     .asList("public_profile", "email", "user_friends"));
                 break;
@@ -217,6 +198,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void showLogin(UserInfo userInfo) {
+        //TODO joyson temp code
         Logger.e("resposne:"+userInfo.getUsername());
     }
 

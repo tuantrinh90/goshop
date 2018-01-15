@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger;
 
 public class JToolUtils {
 
-    //test use : print object
+    //TODO joyson test use : print object
     public static void printObject(Object object) {
         Gson gson = new Gson();
         String result = gson.toJson(object);
