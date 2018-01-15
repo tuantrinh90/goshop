@@ -49,7 +49,8 @@
                 android:background="@mipmap/ic_launcher"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true"
-                tools:ignore="ContentDescription" android:layout_alignParentEnd="true"/>
+                tools:ignore="ContentDescription"
+                android:layout_alignParentEnd="true"/>
 
             <RelativeLayout
                 android:layout_marginLeft="@dimen/activity_horizontal_margin"
@@ -61,7 +62,7 @@
                 android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
-                <EditText
+                <com.goshop.app.common.view.CustomEditText
                     android:id="@+id/et_home_search"
                     android:paddingLeft="20dp"
                     android:theme="@style/MyEditText"

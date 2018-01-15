@@ -8,7 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 
 /**
- * implements RecycleView pageing scroll utils
+ * implements RecycleView pageing scroll like viewpager utils
+ * TODO joyson home page may add this class
  * Created by zhuguohui on 2016/11/10.
  */
 
