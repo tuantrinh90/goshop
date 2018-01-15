@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <TextView
+        <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_home_center_prev_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -20,7 +20,7 @@
             android:text="prev"
             android:textAllCaps="true"/>
 
-        <TextView
+        <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_home_center_prev_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -48,13 +48,13 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/background">
 
-                <TextView
+                <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_home_center_prev_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/home_item_test_product_name"/>
 
-                <TextView
+                <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_home_center_prev_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <TextView
+        <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_home_center_next_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -78,7 +78,7 @@
             android:text="prev"
             android:textAllCaps="true"/>
 
-        <TextView
+        <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_home_center_next_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,13 +106,13 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/background">
 
-                <TextView
+                <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_home_center_next_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/home_item_test_product_name"/>
 
-                <TextView
+                <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_home_center_next_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

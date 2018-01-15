@@ -26,22 +26,22 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_video_list_name"
                 android:text="@string/home_item_test_product_name"
                 style="@style/homeItemProductName"/>
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_video_last_old_price"
                 android:layout_below="@id/tv_video_list_name"
                 android:layout_marginTop="@dimen/home_list_item_main_and_sub_title_margin"
                 android:text="@string/home_item_test_product_price"
                 style="@style/homeItemProductOldPrice"/>
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_video_list_price"
                 android:layout_below="@id/tv_video_last_old_price"
                 android:textColor="@color/colorAccent"
                 style="@style/homeItemProductPrice"/>
-            <Button
+            <com.goshop.app.common.view.CustomButton
                 android:id="@+id/btn_video_item_buy_now"
                 android:layout_width="88dp"
                 android:layout_height="36dp"

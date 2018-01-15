@@ -13,7 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
+        <com.goshop.app.common.view.CustomTextView
             android:layout_marginTop="18dp"
             android:layout_gravity="center"
             android:textStyle="bold"
@@ -36,28 +36,28 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_center_bottom_title1"
                 android:text="@string/home_video_onair_tab_ch118"
                 style="@style/homeCenterOnAirTab"/>
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 style="@style/homeCenterOnAirTabPartingLine"
             />
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_center_bottom_title2"
                 android:text="@string/home_video_onair_tab_ch120"
                 style="@style/homeCenterOnAirTab"/>
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 style="@style/homeCenterOnAirTabPartingLine"
             />
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_center_bottom_title3"
                 android:text="@string/home_video_onair_tab_ch303"
                 style="@style/homeCenterOnAirTab"/>
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 style="@style/homeCenterOnAirTabPartingLine"
             />
-            <TextView
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_center_bottom_title4"
                 android:text="@string/home_video_onair_tab_fb_live"
                 style="@style/homeCenterOnAirTab"/>
