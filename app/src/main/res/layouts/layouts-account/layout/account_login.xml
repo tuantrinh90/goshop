@@ -15,175 +15,99 @@
         android:background="@mipmap/ic_launcher"
     />
 
-    <!--login-->
-    <com.goshop.app.common.view.CustomButtomLineRelativeLayout
-        android:id="@+id/rl_login_email"
-        style="@style/windowMargin"
-        android:layout_centerHorizontal="true"
+    <RelativeLayout
+        android:id="@+id/rl_login_root"
         android:layout_below="@id/iv_login_logo"
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
-
-
-        <TextView
-            android:id="@+id/tv_email_text2"
+        android:layout_width="match_parent"
+        style="@style/windowMargin"
+        android:layout_height="wrap_content">
+        <android.support.design.widget.TextInputLayout
+            android:id="@+id/text_email"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/login_email"
-            android:textSize="@dimen/labelTextFontSize"
-            android:textColor="@color/label_saved"
-            android:visibility="invisible"/>
-
-        <TextView
-            android:id="@+id/tv_email_text"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_email_text2"
-            android:text="@string/login_email"
-            android:textSize="@dimen/labelTextFontSize"
-            android:textColor="@color/colorAccent"
-            android:visibility="invisible"/>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_email_text2"
-            android:layout_marginBottom="@dimen/table_lable_margain_bottom"
-            android:layout_marginTop="@dimen/table_lable_margain_top">
-
+            app:errorTextAppearance="@style/textInputErrorStyle"
+            android:theme="@style/textInputEditTheme"
+            android:layout_height="wrap_content">
             <EditText
                 android:id="@+id/et_email"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/iv_clear_mail"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
-                android:background="@null"
+                android:textColor="@color/black"
                 android:hint="@string/login_email"
-                android:paddingRight="5dp"
                 android:singleLine="true"
                 android:textColorHint="@color/hint"
                 android:textSize="@dimen/editTextFontSize"
-                android:textColor="@color/colorAccent"
                 android:textCursorDrawable="@null"
             />
 
-            <ImageView
-                android:id="@+id/iv_clear_mail"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/text_elimination"
-                android:visibility="gone"/>
-        </RelativeLayout>
-    </com.goshop.app.common.view.CustomButtomLineRelativeLayout>
-    <android.support.design.widget.TextInputLayout
-        android:id="@+id/text_email"
-        android:layout_below="@id/rl_login_email"
+        </android.support.design.widget.TextInputLayout>
+        <ImageView
+            android:id="@+id/iv_clear_mail"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:src="@mipmap/text_elimination"
+            android:visibility="gone"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_password_root"
+        android:layout_below="@id/rl_login_root"
+        android:layout_width="match_parent"
         style="@style/windowMargin"
+        android:layout_height="wrap_content">
+
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/text_password"
+
         android:layout_width="match_parent"
         app:errorTextAppearance="@style/textInputErrorStyle"
         android:theme="@style/textInputEditTheme"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content">
         <EditText
-            android:id="@+id/et_email_test"
+            android:id="@+id/et_password"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_toLeftOf="@+id/iv_clear_mail"
+            android:layout_toLeftOf="@+id/iv_visible_password"
             android:layout_centerVertical="true"
             android:textColor="@color/black"
-            android:hint="@string/login_email"
+            android:hint="@string/login_password"
             android:singleLine="true"
+            android:inputType="textPassword"
             android:textColorHint="@color/hint"
             android:textSize="@dimen/editTextFontSize"
             android:textCursorDrawable="@null"
         />
+
     </android.support.design.widget.TextInputLayout>
-
-    <!--password-->
-    <com.goshop.app.common.view.CustomButtomLineRelativeLayout
-        android:layout_centerHorizontal="true"
-        style="@style/windowMargin"
-        android:id="@+id/rl_login_password"
-        android:layout_below="@id/text_email"
-        android:layout_width="fill_parent"
-        android:layout_height="65dp"
-        android:focusable="true"
-        android:focusableInTouchMode="true">
-
-
-        <TextView
-            android:id="@+id/tv_password_text2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="5dp"
-            android:text="@string/login_email"
-            android:textSize="@dimen/labelTextFontSize"
-            android:textColor="@color/label_saved"
-            android:visibility="invisible"/>
-
-        <TextView
-            android:id="@+id/tv_password_text"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_password_text2"
-            android:text="@string/login_password"
-            android:textSize="@dimen/labelTextFontSize"
-            android:textColor="@color/colorAccent"
-            android:visibility="invisible"/>
-
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/tv_password_text2"
-            android:layout_marginBottom="@dimen/table_lable_margain_bottom"
-            android:layout_marginTop="@dimen/table_lable_margain_top">
-
-            <EditText
-                android:id="@+id/et_password"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@+id/iv_clear_password"
-                android:inputType="textPassword"
-                android:layout_centerVertical="true"
-                android:background="@null"
-                android:hint="@string/login_password"
-                android:paddingRight="5dp"
-                android:singleLine="true"
-                android:textColorHint="@color/hint"
-                android:textSize="@dimen/editTextFontSize"
-                android:textColor="@color/colorAccent"
-                android:textCursorDrawable="@null"
-            />
-            <ImageView
-                android:id="@+id/iv_clear_password"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_marginRight="25dp"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:background="@mipmap/text_elimination"
-                android:visibility="visible"/>
-            <ImageView
-                android:id="@+id/iv_visible_password"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_toLeftOf="@id/iv_clear_password"
-                android:background="@mipmap/ic_password_not_visible"
-                />
-        </RelativeLayout>
-    </com.goshop.app.common.view.CustomButtomLineRelativeLayout>
-
+        <ImageView
+            android:id="@+id/iv_visible_password"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:layout_alignParentRight="true"
+            android:background="@mipmap/ic_password_not_visible"
+        />
+        <ImageView
+            android:id="@+id/iv_clear_password"
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginRight="@dimen/home_padding"
+            android:layout_toLeftOf="@id/iv_visible_password"
+            android:layout_alignTop="@id/iv_visible_password"
+            android:src="@mipmap/text_elimination"
+            android:visibility="gone"/>
+    </RelativeLayout>
     <Button
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:id="@+id/btn_login"
         android:layout_centerHorizontal="true"
-        android:layout_below="@id/rl_login_password"
+        android:layout_below="@id/rl_password_root"
         android:text="@string/login_login"
         android:background="@drawable/big_button_style_config"
         android:textColor="@color/whiteffffff"

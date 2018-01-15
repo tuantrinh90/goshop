@@ -113,6 +113,8 @@ dependencies {
     compile appDependencies.androidLifecycleExtensions
     compile appDependencies.androidLifecycleCompiler
     compile appDependencies.systembartint
+    compile appDependencies.logger
+    compile appDependencies.facebook
 
     compile appDependencies.dagger2
     annotationProcessor appDependencies.daggerComiler
@@ -133,11 +135,6 @@ dependencies {
     androidTestCompile(testDependencies.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
-    compile 'com.orhanobut:logger:2.1.1'
-    compile 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
-    compile 'com.youth.banner:banner:1.4.10'
-    compile 'net.grandcentrix.tray:tray:0.12.0'
-    compile 'com.facebook.android:facebook-android-sdk:4.17.0'
 }
 
 def ksFile = rootProject.file('keystore.properties')

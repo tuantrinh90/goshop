@@ -4,6 +4,6 @@
         android:drawable="@drawable/drawable_view_rectangle_point_selected"/>
 
     <item android:state_selected="false"
-        android:drawable="@drawable/drawable_view_rectangle_point_default"/>
+        android:drawable="@drawable/drawable_view_point_default"/>
 
 </selector>

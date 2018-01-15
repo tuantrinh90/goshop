@@ -28,6 +28,8 @@ ext {
     androidMapsUtilsVersion = '0.4.+'
     crashlyticsSdkVersion = '2.7.1'
     systembartintVersion = '1.0.3'
+    loggerVersion = '2.1.1'
+    facebookVersion = '4.17.0'
 
     appDependencies = [
             support_v4                    : "com.android.support:support-v4:$commonVersion",
@@ -64,8 +66,9 @@ ext {
 
             multiDex                      : "com.android.support:multidex:$multidexVersion",
             constraintlayout              : "com.android.support.constraint:constraint-layout:$constraintlayoutVersion",
-            crashlyticsSdk                : "com.crashlytics.sdk.android:crashlytics:$crashlyticsSdkVersion@aar"
-
+            crashlyticsSdk                : "com.crashlytics.sdk.android:crashlytics:$crashlyticsSdkVersion@aar",
+            logger                        : "com.orhanobut:logger:$loggerVersion",
+            facebook                        : "com.facebook.android:facebook-android-sdk:$facebookVersion"
     ]
     developmentDependencies = [
             leakCanaryDebug  : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",

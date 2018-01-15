@@ -1,5 +1,9 @@
 package com.goshop.app.base;
 
+import com.goshop.app.R;
+import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.utils.StatusBarUtils;
+
 import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -8,9 +12,6 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
-import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.utils.StatusBarUtils;
 
 import javax.inject.Inject;
 
@@ -116,5 +117,9 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         if(ivRightMenu!=null){
             ivRightMenu.setVisibility(View.GONE);
         }
+    }
+
+    public Toolbar getToolbar(){
+        return toolbar;
     }
 }
