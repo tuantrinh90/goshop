@@ -21,6 +21,10 @@ public class ServiceData {
     static String productPrice = GoShopApplication.getAppContext().getResources()
         .getString(R.string.home_item_test_product_price);
 
+    /**
+     * TODO this is temp code
+     * @return
+     */
     public static List<MultipleItem> getBaseData() {
         List<MultipleItem> list = new ArrayList<>();
         list.addAll(getTopBannerData());
@@ -30,6 +34,10 @@ public class ServiceData {
         return list;
     }
 
+    /**
+     * TODO this is temp code
+     * @return
+     */
     public static List<MultipleItem> getTopBannerData() {
         List<MultipleItem> list = new ArrayList<>();
         //top banner
@@ -44,6 +52,10 @@ public class ServiceData {
         return list;
     }
 
+    /**
+     * TODO this is temp code
+     * @return
+     */
     public static List<MultipleItem> getContentVideoData() {
         List<MultipleItem> list = new ArrayList<>();
         List<MultipleItem.CenterVideo> centerVideos = new ArrayList<>();
@@ -84,6 +96,10 @@ public class ServiceData {
         return list;
     }
 
+    /**
+     * TODO this is temp code
+     * @return
+     */
     public static List<MultipleItem> getBottomSlidedata() {
         List<MultipleItem> multipleItems = new ArrayList<>();
         MultipleItem bottomSldieItem = new MultipleItem(Const.HOME_CENTER_VIDEO, "");
