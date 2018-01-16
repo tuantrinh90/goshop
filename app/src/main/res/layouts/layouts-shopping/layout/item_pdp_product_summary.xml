@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/size_16"
+    android:paddingRight="@dimen/size_16"
+    android:orientation="vertical">
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_pdp_product_summary_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/product_summary_tips"
+        android:textSize="@dimen/size_font_16"
+        android:paddingBottom="@dimen/size_14"
+    />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/pinkishGrey"/>
+</LinearLayout>

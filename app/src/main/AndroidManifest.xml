@@ -2,11 +2,11 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.goshop.app">
 
-    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <meta-data
         android:name="io.fabric.ApiKey"
-        android:value="your_fabric_api" />
+        android:value="your_fabric_api"/>
 
     <application
         android:name=".GoShopApplication"
@@ -17,12 +17,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".presentation.home.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
+        </activity>
+
+        <activity android:name=".presentation.login.TestMenuActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".presentation.login.RegisterActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.login.LoginComplementEmailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.login.LoginResetPasswordActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.login.LoginSendConfirmationLinkActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.shopping.ProductDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
     </application>
 
 </manifest>

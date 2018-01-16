@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/size_16"
+    android:paddingRight="@dimen/size_16">
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_pdp_top_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/pdp_title"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/size_font_20"
+        android:paddingTop="@dimen/size_18"
+        android:paddingBottom="@dimen/size_8"/>
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_pdp_top_now_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_pdp_top_title"
+        android:text="@string/rm"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/size_font_20"
+        android:paddingBottom="@dimen/size_8"/>
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_pdp_top_old_currency"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_pdp_top_now_currency"
+        android:layout_below="@id/tv_pdp_top_title"
+        android:paddingLeft="@dimen/size_8"
+        android:textColor="@color/pinkishGrey"
+        android:textSize="@dimen/size_font_18" tools:ignore="RtlSymmetry"
+        android:layout_toEndOf="@id/tv_pdp_top_now_currency" android:paddingStart="@dimen/size_8"/>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_pdp_top_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tv_pdp_top_old_currency"
+        android:layout_below="@id/tv_pdp_top_title"
+        android:textColor="@color/colorAccent"
+        android:textSize="@dimen/size_font_18"
+        android:paddingLeft="@dimen/size_8" tools:ignore="RtlSymmetry"
+        android:layout_toEndOf="@id/tv_pdp_top_old_currency" android:paddingStart="@dimen/size_8"/>
+
+    <LinearLayout
+        android:id="@+id/ll_pdp_top_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_pdp_top_now_currency"
+        android:layout_alignParentLeft="true"
+        android:orientation="horizontal" android:layout_alignParentStart="true">
+        <RatingBar
+            android:id="@+id/ratingbar_pdp_top"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/size_30"
+            android:isIndicator="true"
+            android:progressDrawable="@drawable/bg_rating"
+            android:stepSize="1"
+            android:rating="5"
+            android:numStars="5"/>
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_pdp_top_rating_counts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_main_grey"
+            android:textSize="@dimen/size_font_18"
+            android:paddingLeft="@dimen/size_8" tools:ignore="RtlSymmetry"
+            android:paddingStart="@dimen/size_8"/>
+    </LinearLayout>
+
+
+    <ImageView
+        android:id="@+id/iv_pdp_top_tv"
+        android:layout_width="@dimen/size_36"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@id/ll_pdp_top_rating"
+        android:layout_alignBottom="@id/ll_pdp_top_rating"
+        android:background="@color/colorAccent"
+        android:contentDescription="@string/app_name" android:layout_alignParentEnd="true"/>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_pdp_top_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_main_black"
+        android:textSize="@dimen/size_font_14"
+        android:text="@string/in_stock"
+        android:layout_marginBottom="@dimen/size_16"
+        android:layout_marginTop="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingBottom="@dimen/size_4"
+        android:paddingTop="@dimen/size_4"
+        android:layout_below="@id/ll_pdp_top_rating"
+        android:background="@drawable/drawable_round_gray"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/pinkishGrey"
+        android:layout_below="@id/tv_pdp_top_label"/>
+
+    <LinearLayout
+        android:id="@+id/ll_pdp_top_color"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20"
+        android:layout_below="@id/tv_pdp_top_label"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/color"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/size_font_16"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_pdp_top_quantity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20"
+        android:layout_marginBottom="@dimen/size_20"
+        android:layout_below="@id/ll_pdp_top_color"
+        android:orientation="horizontal"
+        android:gravity="center_vertical">
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/quantity"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/size_font_16"/>
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/pinkishGrey"
+        android:layout_below="@id/ll_pdp_top_quantity"/>
+
+</RelativeLayout>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    app:layout_scrollFlags="enterAlways"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:contentInsetEnd="0dp"
+    app:contentInsetStart="0dp"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16">
+
+        <ImageView
+            android:id="@+id/imageview_left_menu"
+            android:layout_width="@dimen/size_40"
+            android:layout_height="@dimen/size_40"
+            android:scaleType="centerInside"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/back"
+            tools:ignore="ContentDescription"
+            android:layout_alignParentStart="true"/>
+
+        <ImageView
+            android:id="@+id/imageview_right_menu"
+            android:layout_width="@dimen/size_18"
+            android:layout_height="@dimen/size_14"
+            android:scaleType="centerInside"
+            android:src="@mipmap/share"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            tools:ignore="ContentDescription"
+            android:layout_alignParentEnd="true"/>
+
+        <ImageView
+            android:id="@+id/imageview_right_menu_left"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_16"
+            android:layout_marginRight="@dimen/size_16"
+            android:scaleType="centerInside"
+            android:src="@mipmap/shoppingcart"
+            android:layout_toLeftOf="@id/imageview_right_menu"
+            android:layout_centerVertical="true"
+            tools:ignore="ContentDescription" android:layout_marginEnd="@dimen/size_16"
+            android:layout_toStartOf="@id/imageview_right_menu"/>
+
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:id="@+id/textview_toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size_10"
+            android:paddingRight="@dimen/size_10"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/size_font_20"
+            android:minLines="1"
+            android:maxLines="1"
+            android:layout_centerInParent="true"
+            android:gravity="center"/>
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>
