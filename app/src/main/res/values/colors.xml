@@ -20,10 +20,10 @@
 
 
     <!--black -->
-    <color name="blackdf000000">#df000000</color>
-    <color name="black2c">#1f000000</color>
     <color name="black">#000000</color>
-    <color name="tranblack89">#89000000</color>
+    <color name="blackTrans89">#89000000</color>
+    <color name="blackTrans12">#1f000000</color>
+    <color name="blackTrans87">#df000000</color>
     <!-- white -->
     <color name="white">#ffffff</color>
     <color name="whiteTrans45">#73ffffff</color>

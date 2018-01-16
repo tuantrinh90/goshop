@@ -82,7 +82,7 @@
     <style name="homeWrapWidthLine">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/line_height</item>
-        <item name="android:background">@color/black2c</item>
+        <item name="android:background">@color/blackTrans12</item>
     </style>
 
     <style name="homeItemProductName">
@@ -92,7 +92,7 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:lineSpacingExtra">4sp</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/blackdf000000</item>
+        <item name="android:textColor">@color/blackTrans87</item>
     </style>
 
     <style name="homeItemProductOldPrice">
@@ -108,7 +108,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/blackdf000000</item>
+        <item name="android:textColor">@color/blackTrans87</item>
     </style>
 
     <style name="MyEditText" parent="AppTheme">
