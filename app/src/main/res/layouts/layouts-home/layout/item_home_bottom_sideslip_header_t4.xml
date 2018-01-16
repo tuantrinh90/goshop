@@ -6,7 +6,7 @@
     android:layout_height="wrap_content">
     <View android:layout_width="match_parent"
         android:layout_height="@dimen/home_card_layout_part_margin"
-        android:background="@color/greyF1F1F1"
+        android:background="@color/grey_common"
     />
     <ImageView
         android:id="@+id/iv_bottom_slide_header"

@@ -37,7 +37,7 @@
     <View
         android:layout_width="2dp"
         android:layout_height="match_parent"
-        android:background="@color/greyF1F1F1"
+        android:background="@color/grey_common"
         android:layout_alignParentRight="true"
         android:layout_marginTop="@dimen/activity_horizontal_margin"
         android:layout_marginBottom="@dimen/activity_horizontal_margin"
