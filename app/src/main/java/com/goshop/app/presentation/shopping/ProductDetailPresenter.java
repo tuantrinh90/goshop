@@ -7,6 +7,7 @@ import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
 import com.goshop.app.presentation.model.PdpBannerVM;
 import com.goshop.app.presentation.model.PdpDeliveryInfoVM;
+import com.goshop.app.presentation.model.PdpDetailsContentVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
 import com.goshop.app.presentation.model.PdpFrequentlyBoughtTogetherVM;
 import com.goshop.app.presentation.model.PdpFrequentlyDataVM;
@@ -128,7 +129,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     private List<ProductDetailModel> getDetailsDatas() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.HAS_ICON, "DETAILS", false));
-        detailModels.add(new PdpProductSummaryVM());
+        detailModels.add(new PdpDetailsContentVM());
         return detailModels;
     }
 

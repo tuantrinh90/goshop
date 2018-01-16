@@ -55,11 +55,7 @@ public class CustomPagerCircleIndicator extends LinearLayout implements ViewPage
         for (int i = 0; i < viewPager.getAdapter().getCount(); i++) {
             View vPoint = LayoutInflater.from(getContext())
                 .inflate(R.layout.item_circle_page_indicator_point, this, false);
-            if (i == 0) {
-                vPoint.setSelected(true);
-            } else {
-                vPoint.setSelected(false);
-            }
+            vPoint.setSelected(i == 0);
             points.add(vPoint);
             addView(vPoint);
         }
@@ -78,11 +74,7 @@ public class CustomPagerCircleIndicator extends LinearLayout implements ViewPage
     private void setPointSelected(int index) {
         for (int i = 0; i < points.size(); i++) {
             View view = points.get(i);
-            if (index == i) {
-                view.setSelected(true);
-            } else {
-                view.setSelected(false);
-            }
+            view.setSelected(index == i);
         }
     }
 

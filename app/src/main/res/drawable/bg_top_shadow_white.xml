@@ -5,28 +5,28 @@
         <shape>
             <padding
                 android:top="@dimen/size_half" />
-            <solid android:color="#00CCCCCC" />
+            <solid android:color="@color/color_shadow_one" />
         </shape>
     </item>
     <item>
         <shape>
             <padding
                 android:top="@dimen/size_half" />
-            <solid android:color="#10CCCCCC" />
+            <solid android:color="@color/color_shadow_two" />
         </shape>
     </item>
     <item>
         <shape>
             <padding
                 android:top="@dimen/size_1" />
-            <solid android:color="#20CCCCCC" />
+            <solid android:color="@color/color_shadow_three" />
         </shape>
     </item>
     <item>
         <shape>
             <padding
                 android:top="@dimen/size_1" />
-            <solid android:color="#40CCCCCC" />
+            <solid android:color="@color/color_shadow_four" />
         </shape>
     </item>
     <!-- Background -->

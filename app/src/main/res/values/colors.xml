@@ -8,5 +8,9 @@
     <color name="color_main_grey">#bcbcbc</color>
     <color name="brightSkyBlue">#00b6f1</color>
     <color name="pinkishGrey">#bcbcbc</color>
+    <color name="color_shadow_one">#00CCCCCC</color>
+    <color name="color_shadow_two">#10CCCCCC</color>
+    <color name="color_shadow_three">#20CCCCCC</color>
+    <color name="color_shadow_four">#40CCCCCC</color>
 
 </resources>

@@ -1,11 +1,11 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.R;
+import com.jakewharton.rxbinding2.view.RxView;
+import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.content.Context;
-import android.text.Editable;
 import android.text.TextUtils;
-import android.text.TextWatcher;
 import android.view.View;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
@@ -23,36 +23,42 @@ import java.util.regex.Pattern;
 public class EditTextUtil {
 
     public static void deleteImageShowListener(EditText targetEditText, ImageView deleteIv) {
-        targetEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (s.length() > 0) {
-                    deleteIv.setVisibility(View.VISIBLE);
-                    deleteIv.setOnClickListener(v -> {
-                        targetEditText.setText("");
-                        targetEditText.setFocusable(true);
-                        targetEditText.requestFocus();
-                        deleteIv.setVisibility(View.GONE);
-                    });
-                } else {
+        RxTextView.textChanges(targetEditText).subscribe(charSequence -> {
+            if (charSequence.length() > 0) {
+                deleteIv.setVisibility(View.VISIBLE);
+                deleteIv.setOnClickListener(v -> {
+                    targetEditText.setText("");
+                    targetEditText.setFocusable(true);
+                    targetEditText.requestFocus();
                     deleteIv.setVisibility(View.GONE);
-                }
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
+                });
+            } else {
+                deleteIv.setVisibility(View.GONE);
             }
         });
     }
 
     public static void foucsChangedListener(EditText targetEdit, TextView titleText) {
 
+        //TODO(helen)this is wait for decide
+        /*RxView.focusChanges(targetEdit).subscribe(hasFoucs->{
+            if (hasFoucs) {
+                titleText.startAnimation(getEnterAnim(targetEdit.getContext()));
+                titleText.setVisibility(View.VISIBLE);
+
+            } else {
+                if (!TextUtils.isEmpty(targetEdit.getText().toString())) {
+                    titleText.startAnimation(getExitAnim(targetEdit.getContext()));
+                    titleText.setVisibility(View.GONE);
+                } else {
+                    titleText.setTextColor(
+                        targetEdit.getContext().getResources().getColor(R.color.colorAccent));
+                    //todo(helen)wait for logic then will add tips on text
+                    titleText.setText("Please input text!");
+                }
+
+            }
+        });*/
         targetEdit.setOnFocusChangeListener((v, hasFoucs) -> {
             if (hasFoucs) {
                 titleText.startAnimation(getEnterAnim(targetEdit.getContext()));
@@ -159,16 +165,16 @@ public class EditTextUtil {
         });
     }
 
+    public static boolean isPassword(String password) {
+        //todo(helen) wait for logical needs
+        return true;
+    }
+
     public static void eidtLoseFocus(View view) {
         view.setFocusable(true);
         view.setFocusableInTouchMode(true);
         view.requestFocus();
         KeyBoardUtils.hideKeyboard(view);
-    }
-
-    public static boolean isPassword(String password) {
-        //todo(helen) wait for logical needs
-        return true;
     }
 
     //todo(helen)just a demo, wait for logical needs

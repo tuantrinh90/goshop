@@ -85,6 +85,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     public void onPdpClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
+                finish();
                 break;
             case R.id.imageview_right_menu:
                 break;
