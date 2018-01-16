@@ -5,4 +5,5 @@
     android:layout_height="8dp"
     android:src="@drawable/selector_image_point_selected"
     android:layout_marginLeft="5dp"
-    android:layout_marginStart="5dp"/>
+    android:layout_marginStart="5dp"
+    android:contentDescription="@string/app_name"/>

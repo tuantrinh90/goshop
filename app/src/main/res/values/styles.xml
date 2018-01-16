@@ -10,6 +10,7 @@
     <style name="SpinnerDropdownStyle" parent="@android:style/Widget.DropDownItem.Spinner">
         <item name="android:background">@android:color/white</item>
     </style>
+
     <style name="ProgressDialogTheme" parent="android:Theme.Holo.Dialog">
         <item name="android:alertDialogStyle">@style/CustomProgressDialogStyle</item>
         <item name="android:windowBackground">@android:color/transparent</item>
@@ -113,6 +114,9 @@
     <style name="MyEditText" parent="AppTheme">
         <item name="colorControlNormal">@color/whiteTrans45</item>
         <item name="colorControlActivated">@color/white</item>
+    </style>
+    <style name="WhiteBackground" parent="AppTheme">
+        <item name="android:windowBackground">@android:color/white</item>
     </style>
 
 </resources>

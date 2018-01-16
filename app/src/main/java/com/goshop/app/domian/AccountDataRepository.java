@@ -1,10 +1,16 @@
 package com.goshop.app.domian;
 
+import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
+
+import java.util.Map;
 
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -47,7 +53,37 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<UserInfo> getUserInfo(String username,String password) {
-        return accountCloudDataSource.getUserInfo(username,password)
+        return accountCloudDataSource.getUserInfo(username, password);
+    }
+
+    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
+        return accountCloudDataSource.registerRequest(params);
+    }
+
+    @Override
+    public Observable<ComplementEmailReponse> complementEmailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.complementEmailRequest(params);
+    }
+
+    @Override
+    public Observable<ResetPasswordReponse> resetPasswordRequest(Map<String, Object> params) {
+        return accountCloudDataSource.resetPasswordRequest(params);
+    }
+
+    @Override
+    public Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(
+        Map<String, Object> params) {
+        return accountCloudDataSource.sendConfirmationLinkRequest(params);
+    }
+
+    @Override
+    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.productDetailRequest(params);
+    }
+
+    @Override
+    public Observable<UserInfo> getUserInfo(String id) {
+        return accountCloudDataSource.getUserInfo(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
     }

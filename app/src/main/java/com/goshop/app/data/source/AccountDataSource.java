@@ -1,8 +1,13 @@
 package com.goshop.app.data.source;
 
+import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
-import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+
+import java.util.Map;
 
 import io.reactivex.Observable;
 
@@ -12,7 +17,19 @@ import io.reactivex.Observable;
 
 public interface AccountDataSource {
 
+    Observable<UserInfo> getUserInfo(String userId);
+
     Observable<UserInfo> getUserInfo(String username ,String password);
 
     Observable<GetWeatherResponse> getWeather();
+
+    Observable<UserInfo> registerRequest(Map<String, Object> params);
+
+    Observable<ComplementEmailReponse> complementEmailRequest(Map<String, Object> params);
+
+    Observable<ResetPasswordReponse> resetPasswordRequest(Map<String, Object> params);
+
+    Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(Map<String, Object> params);
+
+    Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
 }
