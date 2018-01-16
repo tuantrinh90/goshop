@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_center_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/home_padding">
+    <!--prev -->
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_home_center_prev_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/home_video_prev"
+            android:textAllCaps="true"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_home_center_prev_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_home_center_prev_title"
+            android:layout_centerHorizontal="true"
+            android:text="@string/home_video_time"
+            android:textAllCaps="true"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/tv_home_center_prev_time"
+            android:paddingLeft="@dimen/home_padding_half"
+            android:paddingTop="@dimen/home_padding">
+
+            <ImageView
+                android:id="@+id/iv_home_center_prev_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/green_common"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/grey_background">
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_home_center_prev_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_item_test_product_name"/>
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_home_center_prev_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_home_center_prev_name"
+                    android:text="@string/home_item_test_product_price"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+    <!--next -->
+    <RelativeLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1">
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_home_center_next_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:text="@string/home_video_prev"
+            android:textAllCaps="true"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_home_center_next_time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_home_center_next_title"
+            android:layout_centerHorizontal="true"
+            android:text="@string/home_video_time"
+            android:textAllCaps="true"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/tv_home_center_next_time"
+            android:paddingLeft="@dimen/home_padding_half"
+            android:paddingTop="@dimen/home_padding">
+
+            <ImageView
+                android:id="@+id/iv_home_center_next_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@color/green_common"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:background="@color/grey_background">
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_home_center_next_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/home_item_test_product_name"/>
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_home_center_next_price"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/tv_home_center_next_name"
+                    android:text="@string/home_item_test_product_price"/>
+            </RelativeLayout>
+
+        </RelativeLayout>
+    </RelativeLayout>
+</LinearLayout>
+

@@ -52,6 +52,10 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<UserInfo> getUserInfo(String username,String password) {
+        return accountCloudDataSource.getUserInfo(username, password);
+    }
+
     public Observable<UserInfo> registerRequest(Map<String, Object> params) {
         return accountCloudDataSource.registerRequest(params);
     }

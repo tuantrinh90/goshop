@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/home_bottom_slide_item_width"
+    android:layout_height="@dimen/home_bottom_slide_item_height">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+    >
+        <ImageView
+            android:id="@+id/iv_home_bottom_item"
+            android:layout_width="@dimen/home_bottom_slide_item_image_w_and_h"
+            android:layout_height="@dimen/home_bottom_slide_item_image_w_and_h"
+        />
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_home_bottom_item_name"
+            style="@style/homeItemProductName"
+            android:text="@string/home_item_test_product_name"
+        />
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_home_bottom_item_old_price"
+            android:text="@string/home_item_test_product_price"
+            android:layout_marginTop="2dp"
+            style="@style/homeItemProductOldPrice"
+        />
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_home_bottom_item_price"
+            android:text="@string/home_item_test_product_price"
+            android:layout_marginTop="2dp"
+            style="@style/homeItemProductPrice"
+        />
+    </LinearLayout>
+    <View
+        android:layout_width="2dp"
+        android:layout_height="match_parent"
+        android:background="@color/grey_common"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+    />
+</RelativeLayout>

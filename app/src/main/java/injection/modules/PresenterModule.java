@@ -1,6 +1,8 @@
 package injection.modules;
 
 import com.goshop.app.domian.AccountDataRepository;
+import com.goshop.app.presentation.account.LoginContract;
+import com.goshop.app.presentation.account.LoginPresenter;
 import com.goshop.app.presentation.home.HomeContract;
 import com.goshop.app.presentation.home.HomePresenter;
 import com.goshop.app.presentation.login.LoginComplementEmailContract;
@@ -58,6 +60,11 @@ public class PresenterModule {
         return new HomePresenter(dataRepository);
     }
 
+    @Provides
+    @ActivityScope
+    public LoginContract.Presenter provideLoginPresenter(AccountDataRepository dataRepository) {
+        return new LoginPresenter(dataRepository);
+    }
     @Provides
     @ActivityScope
     public RegisterContract.Presenter provideRegisterPresenter(

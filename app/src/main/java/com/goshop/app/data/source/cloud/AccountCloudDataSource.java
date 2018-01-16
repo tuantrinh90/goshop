@@ -29,6 +29,10 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
+    public Observable<UserInfo> getUserInfo(String username,String password) {
+        return restApi.getUser(username, password);
+    }
+
     public Observable<UserInfo> getUserInfo(String id) {
         return null;
     }

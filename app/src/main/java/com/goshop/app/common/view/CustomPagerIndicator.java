@@ -1,5 +1,7 @@
 package com.goshop.app.common.view;
 
+import com.goshop.app.R;
+
 import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
@@ -7,8 +9,6 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
-
-import com.goshop.app.R;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -53,7 +53,7 @@ public class CustomPagerIndicator extends LinearLayout implements ViewPager.OnPa
         if (viewPager.getAdapter() == null || viewPager.getAdapter().getCount() == 1) return;
         for (int i = 0; i < viewPager.getAdapter().getCount(); i++) {
             View vPoint = LayoutInflater.from(getContext())
-                .inflate(R.layout.item_circle_page_indicator_point, this, false);
+                .inflate(R.layout.item_rectangle_page_indicator_point, this, false);
             if (i == 0) {
                 vPoint.setSelected(true);
             } else {

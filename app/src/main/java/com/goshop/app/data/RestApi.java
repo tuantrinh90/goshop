@@ -5,6 +5,7 @@ import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.response.GetUserResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 
 import java.util.Map;
@@ -18,6 +19,8 @@ import io.reactivex.Observable;
 public interface RestApi {
 
     io.reactivex.Observable<GetWeatherResponse> getWeather(String id);
+
+    io.reactivex.Observable<UserInfo> getUser(String username,String password);
 
     io.reactivex.Observable<UserInfo> registerRequest(Map<String, Object> params);
 

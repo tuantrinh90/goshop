@@ -1,8 +1,11 @@
 package com.goshop.app;
 
 import com.crashlytics.android.Crashlytics;
+import com.facebook.FacebookSdk;
 import com.goshop.app.data.realm.EncryptionKey;
 import com.goshop.app.data.realm.SchemaMigration;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 
 import android.annotation.SuppressLint;
@@ -32,10 +35,13 @@ public class GoShopApplication extends MultiDexApplication {
         super.onCreate();
         context = getApplicationContext();
         setFabric();
+        FacebookSdk.sdkInitialize(getApplicationContext());
+        FacebookSdk.setApplicationId(getString(R.string.facebook_id));
         //TODO (ray) If you need to untangle it
 //        setLeakCanary();
         initializeComponents();
         initRealm();
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
     private void setFabric() {

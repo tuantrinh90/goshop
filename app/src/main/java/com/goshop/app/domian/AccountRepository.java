@@ -6,7 +6,6 @@ import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
-import com.goshop.app.data.model.response.GetWeatherResponse;
 
 import java.util.Map;
 
@@ -17,8 +16,9 @@ import io.reactivex.Observable;
  */
 
 public interface AccountRepository {
+    Observable<UserInfo> getUserInfo(String userId);
 
-    Observable<UserInfo> getUserInfo(String id);
+    Observable<UserInfo> getUserInfo(String username,String password);
 
     Observable<Weather> getWeather();
 

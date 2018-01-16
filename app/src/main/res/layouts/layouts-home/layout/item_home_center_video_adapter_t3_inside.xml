@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_center_root"
+>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/view_video"
+        android:background="@color/green_common"
+        android:layout_width="match_parent"
+        android:textColor="@color/black"
+        android:textSize="25sp"
+        android:layout_height="@dimen/home_center_video_height"/>
+    <android.support.v7.widget.RecyclerView
+        android:layout_below="@id/view_video"
+        android:id="@+id/rv_home_center_video_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_home_center_bottom_video_down_arrows"
+        android:layout_below="@id/rv_home_center_video_list"
+        android:layout_width="match_parent"
+        android:layout_height="44dp">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="8dp"
+            android:background="@mipmap/ic_down_arrows"
+            android:layout_centerInParent="true"/>
+        <View
+            android:layout_alignParentBottom="true"
+            style="@style/homeWrapWidthLine"/>
+    </RelativeLayout>
+
+
+</RelativeLayout>

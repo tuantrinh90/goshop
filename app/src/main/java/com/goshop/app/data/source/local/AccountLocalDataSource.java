@@ -29,7 +29,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<UserInfo> getUserInfo(String id) {
+    public Observable<UserInfo> getUserInfo(String userId) {
+        return null;
+    }
+
+    @Override
+    public Observable<UserInfo> getUserInfo(String username,String password) {
         return null;
     }
 

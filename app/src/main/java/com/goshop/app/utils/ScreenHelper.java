@@ -1,10 +1,13 @@
 package com.goshop.app.utils;
 
+import com.goshop.app.GoShopApplication;
+
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Message;
+import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.WindowManager;
@@ -71,6 +74,14 @@ public class ScreenHelper {
         message.arg1 = j;
         message.arg2 = i;
         return message;
+    }
+
+    public static int getColor(int id){
+        return ContextCompat.getColor(GoShopApplication.getAppContext(), id);
+    }
+
+    public static String getString(int id){
+        return GoShopApplication.getAppContext().getResources().getString(id);
     }
 
     public static int getWidth(Context paramContext) {
