@@ -25,7 +25,7 @@ public class MainHomeActivity extends BaseActivity {
     }
 
     private void initToolBar() {
-        getToolbar().setBackgroundColor(getResources().getColor(R.color.colorAccent));
+        getToolbar().setBackgroundColor(getResources().getColor(R.color.whiteTrans18));
 
     }
 
