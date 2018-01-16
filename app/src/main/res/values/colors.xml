@@ -23,9 +23,11 @@
     <color name="black">#000000</color>
     <color name="blackTrans89">#89000000</color>
     <color name="blackTrans12">#1f000000</color>
-    <color name="blackTrans87">#df000000</color>
+    <color name="blackTrans87">#de000000</color>
+    <color name="blackTrans38">#62000000</color>
     <!-- white -->
     <color name="white">#ffffff</color>
+    <color name="whiteTrans18">#2fffffff</color>
     <color name="whiteTrans45">#73ffffff</color>
     <color name="whiteTrans59">#99ffffff</color>
 
@@ -33,8 +35,8 @@
     <color name="edittext_line">#1F000000</color>
     <color name="parting_line">#1d000000</color>
     <color name="grey_background">#c9c9c9</color>
-    <color name="grey_common">#F1F1F1</color>
-    <color name="grey_hint">#61000000</color>
+    <color name="grey_interval">#F1F1F1</color>
+
 
     <!-- green -->
     <color name="green_common">#009E82</color>

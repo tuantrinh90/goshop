@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    app:cardElevation="0dp"
+    app:cardElevation="1dp"
     android:id="@+id/cv_center_onair_content"
 >
     <RelativeLayout
@@ -13,28 +13,35 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.goshop.app.common.view.CustomTextView
-            android:layout_marginTop="18dp"
-            android:layout_gravity="center"
-            android:textStyle="bold"
-            android:textColor="@color/blackTrans87"
-            android:fontFamily="sans-serif-medium"
-            android:textSize="22sp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/tv_center_onair_title"
-            android:text="@string/home_video_onair"
-            android:layout_alignParentTop="true" android:layout_centerHorizontal="true"/>
+        <RelativeLayout
+            android:id="@+id/rl_center_onair_title"
+            android:layout_width="match_parent"
+            android:layout_height="66dp">
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_centerInParent="true"
+                android:textStyle="bold"
+                android:textColor="@color/blackTrans87"
+                android:fontFamily="sans-serif-medium"
+                android:textSize="22sp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/home_video_onair"
+                />
+            <View
+                style="@style/homeWrapWidthLine"
+                android:layout_alignParentBottom="true"
+                />
+
+        </RelativeLayout>
+
         <LinearLayout
-            android:layout_below="@id/tv_center_onair_title"
-            android:layout_marginTop="@dimen/activity_horizontal_margin"
-            android:layout_marginBottom="@dimen/activity_horizontal_margin"
+            android:layout_below="@id/rl_center_onair_title"
             android:layout_marginLeft="@dimen/home_padding"
             android:layout_marginRight="@dimen/home_padding"
             android:orientation="horizontal"
             android:id="@+id/rl_centent_titles"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="60dp">
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_center_bottom_title1"

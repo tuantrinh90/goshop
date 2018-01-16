@@ -17,6 +17,7 @@
     <string name="home_video_time">11:00-14:30</string>
     <string name="home_video_prev">prev</string>
     <string name="home_video_next">next</string>
+    <string name="home_item_price_off">30% OFF</string>
 
     <!--login-->
     <string name="login_email">Email</string>

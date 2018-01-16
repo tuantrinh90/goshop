@@ -11,6 +11,7 @@ import com.goshop.app.utils.RecyclerUtils;
 import com.goshop.app.widget.BannerAutoPlayHelper;
 import com.orhanobut.logger.Logger;
 
+import android.graphics.Typeface;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -200,10 +201,10 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
         }
 
         void resetTextState() {
-            tvCenterBottomTitle1.setSelected(false);
-            tvCenterBottomTitle2.setSelected(false);
-            tvCenterBottomTitle3.setSelected(false);
-            tvCenterBottomTitle4.setSelected(false);
+            tvCenterBottomTitle1.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            tvCenterBottomTitle2.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            tvCenterBottomTitle3.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
+            tvCenterBottomTitle4.setTypeface(Typeface.defaultFromStyle(Typeface.NORMAL));
         }
 
         @Override
@@ -219,22 +220,22 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
                 case R.id.tv_center_bottom_title1:
                     RecyclerUtils.smoothMoveToPosition(recyclerView,0);
                     resetTextState();
-                    tvCenterBottomTitle1.setSelected(true);
+                    tvCenterBottomTitle1.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title2:
                     RecyclerUtils.smoothMoveToPosition(recyclerView,1);
                     resetTextState();
-                    tvCenterBottomTitle2.setSelected(true);
+                    tvCenterBottomTitle2.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title3:
                     RecyclerUtils.smoothMoveToPosition(recyclerView,2);
                     resetTextState();
-                    tvCenterBottomTitle3.setSelected(true);
+                    tvCenterBottomTitle3.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title4:
                     RecyclerUtils.smoothMoveToPosition(recyclerView,3);
                     resetTextState();
-                    tvCenterBottomTitle4.setSelected(true);
+                    tvCenterBottomTitle4.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
             }
         }

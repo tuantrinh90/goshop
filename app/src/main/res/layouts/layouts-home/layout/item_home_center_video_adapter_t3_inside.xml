@@ -13,11 +13,16 @@
         android:textColor="@color/black"
         android:textSize="25sp"
         android:layout_height="@dimen/home_center_video_height"/>
+
     <android.support.v7.widget.RecyclerView
+        android:layout_marginTop="@dimen/home_padding"
         android:layout_below="@id/view_video"
         android:id="@+id/rv_home_center_video_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
+    <View
+        android:layout_alignTop="@id/rv_home_center_video_list"
+        style="@style/homeWrapWidthLine"/>
 
     <RelativeLayout
         android:id="@+id/rl_home_center_bottom_video_down_arrows"

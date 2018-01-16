@@ -1,29 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="118dp">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="@dimen/home_center_video_item_image_w_and_h"
         android:layout_weight="1"
         android:orientation="horizontal"
-        android:padding="@dimen/activity_horizontal_margin"
         android:background="@color/white"
     >
-        <ImageView
-            android:id="@+id/iv_center_video_list_icon"
-            android:layout_width="78dp"
-            android:layout_height="78dp"
-            android:background="@mipmap/ic_launcher"
-        />
+        <RelativeLayout
+            android:layout_width="@dimen/home_center_video_item_image_w_and_h"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/iv_center_video_list_icon"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"
+                android:background="@mipmap/ic_launcher"
+            />
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_home_home_item_sale_symbol"
+                style="@style/homeItemTextSaleSymbol"
+            />
+
+        </RelativeLayout>
+
 
         <RelativeLayout
             android:layout_weight="1"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:padding="@dimen/activity_horizontal_margin"
             android:layout_width="0dp"
             android:layout_height="wrap_content">
             <com.goshop.app.common.view.CustomTextView
@@ -39,7 +49,7 @@
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_video_list_price"
                 android:layout_below="@id/tv_video_last_old_price"
-                android:textColor="@color/colorAccent"
+                android:text="@string/home_item_test_product_price"
                 style="@style/homeItemProductPrice"/>
             <com.goshop.app.common.view.CustomButton
                 android:id="@+id/btn_video_item_buy_now"
@@ -52,10 +62,11 @@
                 android:text="@string/home_video_item_buy_now"
                 android:fontFamily="sans-serif-medium"
                 android:background="@drawable/big_button_style_config"
-                android:textColor="@color/white"
+                android:textColor="@color/blackTrans87"
             />
         </RelativeLayout>
     </LinearLayout>
     <View
+        android:layout_alignParentBottom="true"
         style="@style/homeWrapWidthLine"/>
-</LinearLayout>
+</RelativeLayout>
