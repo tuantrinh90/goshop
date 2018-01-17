@@ -8,6 +8,7 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
@@ -48,7 +49,7 @@ public class ColorSelectorHelper {
         ColorDrawable normal = new ColorDrawable(color);
         GradientDrawable checked = new GradientDrawable();
         checked.setStroke(ScreenHelper.getPxFromDp(radioButton.getContext(), 1),
-            radioButton.getContext().getResources().getColor(R.color.color_main_grey));
+            ContextCompat.getColor(radioButton.getContext(), R.color.color_main_grey));
         checked.setCornerRadius(2);
         checked.setShape(GradientDrawable.RECTANGLE);
         checked.setColor(color);

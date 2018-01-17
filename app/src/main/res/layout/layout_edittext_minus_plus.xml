@@ -23,7 +23,7 @@
         android:background="@mipmap/arrows_square_plus"
         android:contentDescription="@string/app_name"/>
 
-    <EditText
+    <com.goshop.app.common.view.CustomEditText
         android:id="@+id/et_minus_plus"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

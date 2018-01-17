@@ -488,6 +488,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             colorSelectorHelper.createSelector(radioGroupPdpColor, childColors);
             radioGroupPdpColor.setOnCheckedChangeListener(((group, checkedId) -> {
                 switch (checkedId) {
+                    //TODO(helen)this part need to decide
                     case 0:
                         break;
                     case 1:
