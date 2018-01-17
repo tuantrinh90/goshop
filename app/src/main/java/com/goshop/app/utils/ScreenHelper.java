@@ -94,20 +94,12 @@ public class ScreenHelper {
         return message;
     }
 
-    public static int getColor(int id){
+    public static int getColor(int id) {
         return ContextCompat.getColor(GoShopApplication.getAppContext(), id);
     }
 
-    public static String getString(int id){
+    public static String getString(int id) {
         return GoShopApplication.getAppContext().getResources().getString(id);
-    }
-
-    public static int getWidth(Context paramContext) {
-        return getMeasures(paramContext).arg1;
-    }
-
-    public static int getWidth(Activity paramContext) {
-        return getMeasures(paramContext).arg1;
     }
 
     public static int getHeight(Activity paramContext) {

@@ -32,6 +32,8 @@ public class CustomMinusPlusEditText extends RelativeLayout {
     @BindView(R.id.rl_et_minus_plus)
     RelativeLayout layout;
 
+    private static final String placeHolder = "";
+
     public CustomMinusPlusEditText(Context context) {
         super(context);
         initView(context);
@@ -50,7 +52,7 @@ public class CustomMinusPlusEditText extends RelativeLayout {
         if (count != null && !TextUtils.isEmpty(count)) {
             int num = Integer.parseInt(count);
             num++;
-            editText.setText(num + "");
+            editText.setText(num + placeHolder);
             editText.setSelection(editText.getText().length());
         }
     }
@@ -64,7 +66,7 @@ public class CustomMinusPlusEditText extends RelativeLayout {
             } else {
                 num = 1;
             }
-            editText.setText(num + "");
+            editText.setText(num + placeHolder);
             editText.setSelection(editText.getText().length());
         }
     }

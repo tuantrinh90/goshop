@@ -13,13 +13,15 @@
         android:layout_width="@dimen/size_28"
         android:layout_height="@dimen/size_28"
         android:layout_alignParentLeft="true"
-        android:background="@mipmap/arrows_square_minus"/>
+        android:background="@mipmap/arrows_square_minus"
+        android:contentDescription="@string/app_name"/>
     <ImageView
         android:id="@+id/iv_plus"
         android:layout_width="@dimen/size_28"
         android:layout_height="@dimen/size_28"
         android:layout_alignParentRight="true"
-        android:background="@mipmap/arrows_square_plus"/>
+        android:background="@mipmap/arrows_square_plus"
+        android:contentDescription="@string/app_name"/>
 
     <EditText
         android:id="@+id/et_minus_plus"
