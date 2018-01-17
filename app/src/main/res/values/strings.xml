@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">goshop</string>
     <!--home-->
     <string name="home_second_category">Categories</string>
@@ -18,6 +17,23 @@
     <string name="home_video_prev">prev</string>
     <string name="home_video_next">next</string>
 
+    <!--drawlayout-->
+    <string name="openDrawer">Open Drawer</string>
+    <string name="closeDrawer">Close Drawer</string>
+    <string name="home_drawlayout_hey">Hey,&#160;</string>
+    <string name="home_drawlayout_not_sign_up">Sign up / Login</string>
+    <string name="home_drawlayout_sign_up">User Name</string>
+    <string name="home_drawlayout_home">Home</string>
+    <string name="home_drawlayout_category">Categories</string>
+    <string name="home_drawlayout_rewards">Rewards</string>
+    <string name="home_drawlayout_shopping_cart">Shopping Cart</string>
+    <string name="home_drawlayout_my_wishlist">My Wishlist</string>
+    <string name="home_drawlayout_my_orders">My Orders</string>
+    <string name="home_drawlayout_notifications">Notifications</string>
+    <string name="home_drawlayout_help_support">Help &amp; Support</string>
+    <string name="home_drawlayout_settings">Settings</string>
+
+
     <!--login-->
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
@@ -32,6 +48,8 @@
     <string name="loginregister_emailbound_tips_error_email_format">Please enter a valid email address. For example johndoe@domain.com.</string>
     <string name="enter_characters_ignored">"Please enter 4 or more characters. Leading or trailing spaces will be ignored."</string>
 
+
+
     <!--test data-->
     <string name="home_item_test_product_name">Manjung Korean Crispy Seaweed(Sea Salt)</string>
     <string name="home_item_test_product_price">RM 119.00</string>
@@ -41,61 +59,6 @@
     <string name="facebook_id">1287318627981888</string>
     <!-- Facebook Login -->
     <string name="FB_Login_tips_error">Please check the internet, and try again.</string>
-    <string name="register">Register</string>
-    <string name="register_firstname">First Name</string>
-    <string name="register_lastname">Last Name</string>
-    <string name="email">Email</string>
-    <string name="email_format">test@test.com</string>
-    <string name="mobile_number">Mobile Number</string>
-    <string name="password">Password</string>
-    <string name="phone">Phone</string>
-    <string name="register_tips_email">Email me the latest shopping news</string>
-    <string name="register_tips_sms">SMS me the latest shopping news</string>
-    <string name="register_tips">By registering account, I confirm that: I have read and agree to
-        the Privacy Policy, Terms and Conditions, Terms of User at Go Shop.
-    </string>
-
-    <string name="register_have_account">Already have an account?</string>
-    <string name="login">Login</string>
-    <string name="complement_email">Complement Email</string>
-    <string name="complement_email_tips">Your email can\'t be got from your Facebook account. In
-        order to finish Facebook connection process, please complement your email as below:
-    </string>
-    <string name="submit">Submit</string>
-    <string name="reset_password_tips">Please enter the email address associated with your account.
-        We will email you a link to reset your password.
-    </string>
-    <string name="reset_password">Reset Password</string>
-    <string name="send_confirmation_link">Send Confirmation Link</string>
-    
-    <string name="pdp">PDP</string>
-    <string name="pdp_title">Kloken Living Box Value Set Kloken Living Box Value Set</string>
-    <string name="buy_now">Buy Now</string>
-    <string name="add_to_cart">Add to Cart</string>
-    <string name="details">Details</string>
-    <string name="details_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna.</string>
-    <string name="product_summary">Product Summary</string>
-    <string name="product_summary_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna.</string>
-    <string name="color">Color</string>
-    <string name="quantity">Quantity</string>
-    <string name="rm">RM</string>
-    <string name="delivery_info">Delivery Info</string>
-    <string name="delivery_info_tips_overseas">Product deliver from overseas</string>
-    <string name="delivery_info_tips_cash">Cash on Delivery is available</string>
-    <string name="q_a">Q&#38;A</string>
-    <string name="questions">Questions</string>
-    <string name="answers">Answers</string>
-    <string name="answer">Answer</string>
-    <string name="ask_a_question">Ask a Question</string>
-    <string name="q">Q</string>
-    <string name="a">A</string>
-    <string name="reviews">Reviews</string>
-    <string name="write_a_review">Write a Review</string>
-    <string name="view_more">View More</string>
-    <string name="additional_information">Additional Information</string>
-    <string name="frequently_bought_together">Frequently Bought Together</string>
-    <string name="in_stock">In Stock</string>
-    <string name="pdp_additionall_value">N/A</string>
 
 
 </resources>
