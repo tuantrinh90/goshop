@@ -2,7 +2,6 @@ package com.goshop.app.presentation.home;
 
 import com.goshop.app.R;
 import com.goshop.app.adapter.HomeBaseAdapter;
-import com.goshop.app.base.BaseActivity;
 import com.goshop.app.utils.ServiceData;
 
 import android.os.Bundle;
@@ -11,7 +10,7 @@ import android.support.v7.widget.RecyclerView;
 
 import butterknife.BindView;
 
-public class MainHomeActivity extends BaseActivity {
+public class MainHomeActivity extends DrawerLayoutActivity {
 
     @BindView(R.id.rv_home)
     RecyclerView rvHome;
@@ -19,6 +18,7 @@ public class MainHomeActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.layout_home);
         initToolBar();
         initRecycler();
 
@@ -37,7 +37,7 @@ public class MainHomeActivity extends BaseActivity {
 
     @Override
     public int getContentView() {
-        return R.layout.layout_home;
+        return 0;
     }
 
     @Override

@@ -164,6 +164,8 @@ public class DrawerLayoutActivity<T extends BasePresenter> extends BaseActivity<
     }
 
     private void initDrawLayout() {
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         mActionDrawableToggle = new ActionBarDrawerToggle(this, getDrawerLayout(), getToolbar(), R.string.openDrawer, R.string.closeDrawer) {
             @Override
             public void onDrawerOpened(View drawerView) {
