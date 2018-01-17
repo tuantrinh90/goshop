@@ -30,6 +30,7 @@
 
     <dimen name="home_center_video_item_image_w_and_h">107dp</dimen>
 
+    <dimen name="home_bottom_slide_item_external_image_w_and_h">144dp</dimen>
     <dimen name="home_bottom_slide_item_image_w_and_h">128dp</dimen>
     <dimen name="home_list_item_main_and_sub_title_margin">4dp</dimen>
 

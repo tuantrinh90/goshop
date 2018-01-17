@@ -51,16 +51,16 @@
                 android:layout_below="@id/tv_video_last_old_price"
                 android:text="@string/home_item_test_product_price"
                 style="@style/homeItemProductPrice"/>
-            <com.goshop.app.common.view.CustomButton
-                android:id="@+id/btn_video_item_buy_now"
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_video_item_buy_now"
                 android:layout_width="88dp"
                 android:layout_height="36dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                style="?android:attr/borderlessButtonStyle"
+                android:gravity="center"
                 android:textSize="14sp"
                 android:text="@string/home_video_item_buy_now"
-                android:fontFamily="sans-serif-medium"
+                android:fontFamily="sans-serif-light"
                 android:background="@drawable/big_button_style_config"
                 android:textColor="@color/blackTrans87"
             />

@@ -21,13 +21,14 @@
 
     <!--black -->
     <color name="black">#000000</color>
-    <color name="blackTrans89">#89000000</color>
     <color name="blackTrans12">#1f000000</color>
-    <color name="blackTrans87">#de000000</color>
     <color name="blackTrans38">#62000000</color>
+    <color name="blackTrans87">#de000000</color>
+    <color name="blackTrans89">#89000000</color>
     <!-- white -->
     <color name="white">#ffffff</color>
     <color name="whiteTrans18">#2fffffff</color>
+    <color name="whiteTrans41">#69ffffff</color>
     <color name="whiteTrans45">#73ffffff</color>
     <color name="whiteTrans59">#99ffffff</color>
 
