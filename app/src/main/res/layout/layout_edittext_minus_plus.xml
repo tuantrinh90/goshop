@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_et_minus_plus"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_28"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:background="@drawable/bg_et_editable">
+
+    <ImageView
+        android:id="@+id/iv_minus"
+        android:layout_width="@dimen/size_28"
+        android:layout_height="@dimen/size_28"
+        android:layout_alignParentLeft="true"
+        android:background="@mipmap/arrows_square_minus"/>
+    <ImageView
+        android:id="@+id/iv_plus"
+        android:layout_width="@dimen/size_28"
+        android:layout_height="@dimen/size_28"
+        android:layout_alignParentRight="true"
+        android:background="@mipmap/arrows_square_plus"/>
+
+    <EditText
+        android:id="@+id/et_minus_plus"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toLeftOf="@id/iv_plus"
+        android:textCursorDrawable="@null"
+        android:background="@null"
+        android:gravity="center"
+        android:inputType="number"
+        android:layout_marginRight="@dimen/size_8"
+        android:layout_marginLeft="@dimen/size_8"
+        android:layout_toRightOf="@id/iv_minus"/>
+
+</RelativeLayout>

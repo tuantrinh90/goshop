@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
+import com.goshop.app.common.CustomMinusPlusEditText;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.CustomTextView;
@@ -26,6 +27,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RadioGroup;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 
@@ -455,9 +457,21 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_pdp_top_title)
         CustomBoldTextView tvPdpTopTitle;
 
+        @BindView(R.id.mpet_pdp_quantily)
+        CustomMinusPlusEditText mpetPdpQuantily;
+
+        @BindView(R.id.radio_group_pdp_color)
+        RadioGroup radioGroupPdpColor;
+
+        ColorSelectorHelper colorSelectorHelper;
+
+        List<Integer> childColors;
+
         public TopContentViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            colorSelectorHelper = new ColorSelectorHelper();
+            childColors = new ArrayList<>();
         }
 
         void bindingData(PdpTopContentVM contentVM) {
@@ -468,6 +482,20 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             tvPdpTopPercent.setText(contentVM.getPercent());
             tvPdpTopRating.setText(contentVM.getCounts());
             ratingBar.setRating(contentVM.getRatingNum());
+            mpetPdpQuantily.setText(contentVM.getQuantity());
+            childColors.clear();
+            childColors = contentVM.getColors();
+            colorSelectorHelper.createSelector(radioGroupPdpColor, childColors);
+            radioGroupPdpColor.setOnCheckedChangeListener(((group, checkedId) -> {
+                switch (checkedId) {
+                    case 0:
+                        break;
+                    case 1:
+                        break;
+                    case 2:
+                        break;
+                }
+            }));
         }
     }
 
