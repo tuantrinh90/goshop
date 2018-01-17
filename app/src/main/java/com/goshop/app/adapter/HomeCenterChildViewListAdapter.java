@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -46,7 +45,7 @@ public class HomeCenterChildViewListAdapter extends RecyclerView.Adapter {
         listHolder.tvVideoListOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         listHolder.tvVideoListPrice.setText(centerVideoLists.get(position).getProductPrice());
         //TODO joyson will delete after require
-        listHolder.btnBuyNow.setOnClickListener(
+        listHolder.tvBuyNow.setOnClickListener(
             v -> Toast.makeText(v.getContext(), "buy now", Toast.LENGTH_SHORT).show());
     }
 
@@ -69,8 +68,8 @@ public class HomeCenterChildViewListAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_video_list_price)
         TextView tvVideoListPrice;
 
-        @BindView(R.id.btn_video_item_buy_now)
-        Button btnBuyNow;
+        @BindView(R.id.tv_video_item_buy_now)
+        TextView tvBuyNow;
 
         public CenterVideoListHolder(View itemView) {
             super(itemView);

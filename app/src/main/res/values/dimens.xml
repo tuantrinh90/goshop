@@ -20,15 +20,18 @@
 
     <dimen name="home_header_banner_height">240dp</dimen>
     <dimen name="home_center_video_height">202dp</dimen>
-    <dimen name="home_bottom_slide_header_height">146dp</dimen>
+    <dimen name="home_bottom_slide_header_height">129dp</dimen>
 
     <dimen name="home_card_layout_part_margin">18dp</dimen>
     <dimen name="home_bottom_slide_title_margin_top_and_bottom">20dp</dimen>
 
-    <dimen name="home_bottom_slide_item_width">165dp</dimen>
-    <dimen name="home_bottom_slide_item_height">240dp</dimen>
+    <dimen name="home_bottom_slide_item_width">144dp</dimen>
+    <dimen name="home_bottom_slide_item_height">250dp</dimen>
 
-    <dimen name="home_bottom_slide_item_image_w_and_h">135dp</dimen>
+    <dimen name="home_center_video_item_image_w_and_h">107dp</dimen>
+
+    <dimen name="home_bottom_slide_item_external_image_w_and_h">144dp</dimen>
+    <dimen name="home_bottom_slide_item_image_w_and_h">128dp</dimen>
     <dimen name="home_list_item_main_and_sub_title_margin">4dp</dimen>
 
 

@@ -68,7 +68,7 @@
                     android:theme="@style/MyEditText"
                     android:hint="@string/home_search_hint"
                     android:layout_width="match_parent"
-                    android:textColorHint="@color/whiteTrans45"
+                    android:textColorHint="@color/blackTrans38"
                     android:layout_height="match_parent"/>
                 <ImageView
                     android:layout_width="17dp"
