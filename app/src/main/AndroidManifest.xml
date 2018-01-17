@@ -35,6 +35,7 @@
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.MainHomeActivity"/>
+        <activity android:name=".presentation.home.DrawerLayoutActivity"/>
 
         <!-- FACEBOOK -->
         <activity

@@ -4,8 +4,10 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.common.view.CustomEditText;
+import com.orhanobut.logger.Logger;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.v4.widget.DrawerLayout;
@@ -133,7 +135,7 @@ public class DrawerLayoutActivity<T extends BasePresenter> extends BaseActivity<
     ActionBarDrawerToggle mActionDrawableToggle;
     @Override
     public int getContentView() {
-        return 0;
+        return R.layout.activity_drawer_layout;
     }
 
     @Override
@@ -149,7 +151,6 @@ public class DrawerLayoutActivity<T extends BasePresenter> extends BaseActivity<
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        super.setContentView(R.layout.activity_drawer_layout);
         initDrawLayout();
     }
 
@@ -160,7 +161,14 @@ public class DrawerLayoutActivity<T extends BasePresenter> extends BaseActivity<
 
     @Override
     public void setContentView(View view) {
-        flContainer.addView(view);
+        Logger.e("flContainer:"+flContainer+":-view："+view);
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                flContainer.addView(view);
+            }
+        },200);
+
     }
 
     private void initDrawLayout() {

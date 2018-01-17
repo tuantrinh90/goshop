@@ -35,20 +35,6 @@ public class MainHomeActivity extends DrawerLayoutActivity {
         rvHome.setAdapter(homeBaseAdapter);
     }
 
-    @Override
-    public int getContentView() {
-        return 0;
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return null;
-    }
-
-    @Override
-    public void inject() {
-
-    }
 
 
 }
