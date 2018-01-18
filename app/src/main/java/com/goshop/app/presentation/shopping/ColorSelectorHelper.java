@@ -8,8 +8,10 @@ import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.StateListDrawable;
+import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -44,7 +46,6 @@ public class ColorSelectorHelper {
         return selector;
     }
 
-    @SuppressLint("NewApi")
     private void setSelectorDrawable(RadioButton radioButton, int color) {
         ColorDrawable normal = new ColorDrawable(color);
         GradientDrawable checked = new GradientDrawable();
@@ -57,7 +58,11 @@ public class ColorSelectorHelper {
         StateListDrawable drawable = new StateListDrawable();
         drawable.addState(new int[]{android.R.attr.state_checked}, checked);
         drawable.addState(new int[]{-android.R.attr.state_checked}, normal);
-        radioButton.setBackground(drawable);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            radioButton.setBackground(drawable);
+        } else {
+            radioButton.setBackgroundDrawable(drawable);
+        }
     }
 
     private void setSelectorColor(RadioButton radioButton, int normal, int checked) {
