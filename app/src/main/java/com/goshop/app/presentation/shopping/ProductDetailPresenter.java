@@ -103,9 +103,13 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     //todo(helen)this is mock data will delete when get api
     private List<ProductDetailModel> getTopDatas() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
+        List<Integer> colors = new ArrayList<>();
+        colors.add(0xff23f22d);
+        colors.add(0xff23faad);
+        colors.add(0xfa23faaa);
         detailModels
             .add(new PdpTopContentVM("Kloken Living Box Value Set Kloken Living Box Value Set",
-                "RM 199.00", "RM 268.00", "-30%", 4, "(24)", "10"));
+                "RM 199.00", "RM 268.00", "-30%", 4, "(24)", "10", colors));
         return detailModels;
     }
 

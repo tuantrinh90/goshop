@@ -81,7 +81,9 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         rcvPdpDetails.setAdapter(detailAdapter);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu, R.id.imageview_right_menu_left})
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu, R.id
+        .imageview_right_menu_left, R.id.iv_pdp_love, R.id.tv_btn_pdp_buy_now, R.id
+        .tv_btn_pdp_add_to_cart})
     public void onPdpClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -90,6 +92,12 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
             case R.id.imageview_right_menu:
                 break;
             case R.id.imageview_right_menu_left:
+                break;
+            case R.id.tv_btn_pdp_buy_now:
+                break;
+            case R.id.tv_btn_pdp_add_to_cart:
+                break;
+            case R.id.iv_pdp_love:
                 break;
         }
     }

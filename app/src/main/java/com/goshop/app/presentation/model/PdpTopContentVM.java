@@ -1,5 +1,7 @@
 package com.goshop.app.presentation.model;
 
+import java.util.List;
+
 /**
  * Created by helen on 2018/1/11.
  */
@@ -20,12 +22,14 @@ public class PdpTopContentVM extends ProductDetailModel {
 
     private String title;
 
+    private List<Integer> colors;
+
     public PdpTopContentVM() {
         super(ProductDetailModel.DETAIL_TOP_CONTENT);
     }
 
     public PdpTopContentVM(String title, String nowPrice, String oldPrice,
-        String percent, int ratingNum, String counts, String quantity) {
+        String percent, int ratingNum, String counts, String quantity, List<Integer> colors) {
         super(ProductDetailModel.DETAIL_TOP_CONTENT);
         this.title = title;
         this.nowPrice = nowPrice;
@@ -34,6 +38,15 @@ public class PdpTopContentVM extends ProductDetailModel {
         this.ratingNum = ratingNum;
         this.counts = counts;
         this.quantity = quantity;
+        this.colors = colors;
+    }
+
+    public List<Integer> getColors() {
+        return colors;
+    }
+
+    public void setColors(List<Integer> colors) {
+        this.colors = colors;
     }
 
     public String getTitle() {
