@@ -3,17 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.goshop.app">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
     <meta-data
-        android:name="io.fabric.ApiKey"
-        android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
-
-     <meta-data
-         android:name="com.facebook.sdk.ApplicationId"
-         android:value="@string/facebook_id" />
+        android:name="com.facebook.sdk.ApplicationId"
+        android:value="@string/facebook_id"/>
 
     <application
         android:name=".GoShopApplication"
@@ -43,7 +39,7 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            />
+        />
 
         <activity android:name=".presentation.login.RegisterActivity"
             android:theme="@style/WhiteBackground"/>
@@ -61,8 +57,10 @@
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
     </application>
-
 
 
 </manifest>
