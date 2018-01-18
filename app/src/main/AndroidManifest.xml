@@ -9,7 +9,7 @@
 
     <meta-data
         android:name="io.fabric.ApiKey"
-        android:value="your_fabric_api"/>
+        android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
 
      <meta-data
          android:name="com.facebook.sdk.ApplicationId"
@@ -24,14 +24,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".presentation.home.HomeActivity">
+
+        </activity>
+
+        <activity android:name=".presentation.login.TestMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-
-        <activity android:name=".presentation.login.TestMenuActivity">
-
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.MainHomeActivity"/>
@@ -58,6 +58,7 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.shopping.ProductDetailActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
     </application>

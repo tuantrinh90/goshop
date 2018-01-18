@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     android:paddingLeft="@dimen/size_16"
     android:paddingRight="@dimen/size_16">
 
@@ -120,6 +123,10 @@
             android:text="@string/color"
             android:textColor="@android:color/black"
             android:textSize="@dimen/size_font_16"/>
+        <com.goshop.app.common.CustomDynamicRadioGroup
+            android:id="@+id/radio_group_pdp_color"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
     </LinearLayout>
 
     <LinearLayout
@@ -135,8 +142,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/quantity"
+            android:paddingRight="@dimen/size_16"
             android:textColor="@android:color/black"
             android:textSize="@dimen/size_font_16"/>
+
+        <com.goshop.app.common.CustomMinusPlusEditText
+            android:id="@+id/mpet_pdp_quantily"
+            android:layout_width="@dimen/size_112"
+            android:layout_height="wrap_content"/>
 
 
     </LinearLayout>
