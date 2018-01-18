@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.home;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.HomeBaseAdapter;
 import com.goshop.app.base.BaseActivity;
@@ -22,8 +21,6 @@ import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class MainHomeActivity extends BaseActivity {
     @BindView(R.id.et_home_search)
@@ -157,11 +154,7 @@ public class MainHomeActivity extends BaseActivity {
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+
     }
 
     private void initToolBar() {
