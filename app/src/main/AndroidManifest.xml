@@ -60,6 +60,11 @@
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
+
+        <activity android:name=".presentation.search.SearchActivity"
+            android:theme="@style/WhiteBackground"/>
+
+
     </application>
 
 

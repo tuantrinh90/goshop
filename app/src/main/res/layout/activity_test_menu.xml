@@ -50,4 +50,13 @@
         android:layout_margin="@dimen/size_16"
         android:text="@string/pdp"/>
 
+    <com.goshop.app.common.view.CustomBoldButton
+        android:id="@+id/btn_test_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/size_font_16"
+        android:layout_margin="@dimen/size_16"
+        android:text="@string/search"/>
+
 </LinearLayout>

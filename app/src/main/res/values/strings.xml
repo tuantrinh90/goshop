@@ -117,4 +117,12 @@
     <string name="in_stock">In Stock</string>
     <string name="pdp_additionall_value">N/A</string>
 
+
+    <string name="search">Search</string>
+    <string name="search_products">Search products</string>
+    <string name="search_no_data">Your search returns no results.</string>
+    <string name="search_explore">Why not to explore our best sellers</string>
+    <string name="or">or</string>
+
+
 </resources>
