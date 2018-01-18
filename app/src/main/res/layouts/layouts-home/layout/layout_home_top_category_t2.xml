@@ -13,6 +13,7 @@
         android:layout_height="match_parent"
         android:layout_marginBottom="@dimen/home_padding"
         app:cardElevation="1dp"
+        app:cardCornerRadius="0dp"
         app:cardBackgroundColor="@color/white"
     >
         <LinearLayout
@@ -30,7 +31,7 @@
                     android:layout_gravity="center"
                     android:layout_width="@dimen/home_category_image_w_and_h"
                     android:layout_height="@dimen/home_category_image_w_and_h"
-                    android:background="@mipmap/ic_launcher_round"
+                    android:background="@mipmap/ic_home_category"
                 />
                 <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
@@ -48,7 +49,7 @@
                     android:layout_width="@dimen/home_category_image_w_and_h"
                     android:layout_height="@dimen/home_category_image_w_and_h"
                     android:layout_gravity="center"
-                    android:background="@mipmap/ic_launcher_round"
+                    android:background="@mipmap/ic_home_tv_show"
                 />
                 <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
@@ -66,7 +67,7 @@
                     android:layout_width="@dimen/home_category_image_w_and_h"
                     android:layout_height="@dimen/home_category_image_w_and_h"
                     android:layout_gravity="center"
-                    android:background="@mipmap/ic_launcher_round"
+                    android:background="@mipmap/ic_home_brands"
                 />
                 <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
@@ -85,7 +86,7 @@
                     android:layout_width="@dimen/home_category_image_w_and_h"
                     android:layout_height="@dimen/home_category_image_w_and_h"
                     android:layout_gravity="center"
-                    android:background="@mipmap/ic_launcher_round"
+                    android:background="@mipmap/ic_home_gifts"
                 />
                 <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"

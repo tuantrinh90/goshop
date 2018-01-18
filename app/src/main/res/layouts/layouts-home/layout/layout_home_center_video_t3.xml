@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     app:cardElevation="1dp"
+    app:cardCornerRadius="0dp"
     android:id="@+id/cv_center_onair_content"
 >
     <RelativeLayout
@@ -19,7 +20,6 @@
             android:layout_height="66dp">
             <com.goshop.app.common.view.CustomTextView
                 android:layout_centerInParent="true"
-                android:textStyle="bold"
                 android:textColor="@color/blackTrans87"
                 android:fontFamily="sans-serif-medium"
                 android:textSize="22sp"
@@ -47,22 +47,25 @@
                 android:id="@+id/tv_center_bottom_title1"
                 android:text="@string/home_video_onair_tab_ch118"
                 style="@style/homeCenterOnAirTab"/>
-            <com.goshop.app.common.view.CustomTextView
+            <ImageView
                 style="@style/homeCenterOnAirTabPartingLine"
+                android:layout_gravity="center"
             />
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_center_bottom_title2"
                 android:text="@string/home_video_onair_tab_ch120"
                 style="@style/homeCenterOnAirTab"/>
-            <com.goshop.app.common.view.CustomTextView
+            <ImageView
                 style="@style/homeCenterOnAirTabPartingLine"
+                android:layout_gravity="center"
             />
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_center_bottom_title3"
                 android:text="@string/home_video_onair_tab_ch303"
                 style="@style/homeCenterOnAirTab"/>
-            <com.goshop.app.common.view.CustomTextView
+            <ImageView
                 style="@style/homeCenterOnAirTabPartingLine"
+                android:layout_gravity="center"
             />
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_center_bottom_title4"

@@ -1,6 +1,8 @@
 package injection.components;
 
+import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.home.HomeActivity;
+import com.goshop.app.presentation.home.MainHomeActivity;
 import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 import com.goshop.app.presentation.login.LoginResetPasswordActivity;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
@@ -9,7 +11,6 @@ import com.goshop.app.presentation.shopping.ProductDetailActivity;
 
 import android.app.Activity;
 
-import com.goshop.app.presentation.account.LoginActivity;
 import dagger.Component;
 import injection.ActivityScope;
 import injection.modules.PresenterModule;
@@ -24,6 +25,8 @@ public interface PresenterComponent {
     Activity getActivity();
 
     void inject(HomeActivity homeActivity);
+
+    void inject(MainHomeActivity homeActivity);
 
     void inject(LoginActivity loginActivity);
 

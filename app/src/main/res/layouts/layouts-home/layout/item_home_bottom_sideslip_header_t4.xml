@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:cardElevation="1dp"
+        app:cardCornerRadius="0dp"
     >
         <ImageView
             android:id="@+id/iv_bottom_slide_header"

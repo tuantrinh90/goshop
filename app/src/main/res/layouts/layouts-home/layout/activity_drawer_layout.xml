@@ -23,13 +23,12 @@
                 android:layout_height="wrap_content">
                 <include layout="@layout/toolbar_search" />
             </android.support.design.widget.AppBarLayout>
-            <FrameLayout
-                android:id="@+id/flContainer"
-                android:backgroundTint="@color/appColorPrimary"
-                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_home"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/transparent"></FrameLayout>
+                android:layout_height="match_parent">
+
+            </android.support.v7.widget.RecyclerView>
         </android.support.design.widget.CoordinatorLayout>
     </RelativeLayout>
     <include layout="@layout/drawer_layout" />

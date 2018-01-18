@@ -75,7 +75,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
             case R.id.tv_text:
                 break;
             case R.id.btn_click_home:
-                startActivity(new Intent(HomeActivity.this, DrawerLayoutActivity.class));
+                startActivity(new Intent(HomeActivity.this, MainHomeActivity.class));
                 break;
         }
     }

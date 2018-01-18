@@ -15,17 +15,20 @@ public class CustomButton extends android.support.v7.widget.AppCompatButton {
 
     public CustomButton(Context context) {
         super(context);
-        setFont(context);
+//TODO if have font file open this method
+//        setFont(context);
     }
 
     public CustomButton(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setFont(context);
+//TODO if have font file open this method
+//        setFont(context);
     }
 
     public CustomButton(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setFont(context);
+//TODO if have font file open this method
+//        setFont(context);
     }
 
     private void setFont(Context context) {
