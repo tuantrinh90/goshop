@@ -36,11 +36,10 @@
                 android:textSize="18sp"
                 android:text="@string/home_drawlayout_hey"
                 android:layout_height="wrap_content"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.CustomBoldTextView
                 android:id="@+id/tv_user_name"
                 android:layout_width="match_parent"
                 android:maxLines="2"
-                android:textStyle="bold"
                 android:ellipsize="end"
                 android:textSize="18sp"
                 android:text="@string/home_drawlayout_not_sign_up"
