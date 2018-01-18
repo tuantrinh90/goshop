@@ -9,7 +9,7 @@
 
     <meta-data
         android:name="io.fabric.ApiKey"
-        android:value="your_fabric_api"/>
+        android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
 
      <meta-data
          android:name="com.facebook.sdk.ApplicationId"
