@@ -1,18 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:paddingRight="@dimen/size_24"
     android:paddingLeft="@dimen/size_24"
-    android:paddingBottom="@dimen/size_8">
+    android:paddingBottom="@dimen/size_8"
+    tools:ignore="Overdraw">
 
     <ImageView
         android:id="@+id/iv_search_detail"
         android:layout_width="@dimen/size_60"
         android:layout_height="@dimen/size_60"
-        android:background="@mipmap/bought"/>
+        android:background="@mipmap/bought"
+        android:contentDescription="@string/app_name"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_search_detail_title"
@@ -24,7 +27,8 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingTop="@dimen/size_8"
-        android:paddingLeft="@dimen/size_8"/>
+        android:paddingLeft="@dimen/size_8"
+        tools:ignore="RtlSymmetry"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_search_detail_old"
@@ -37,7 +41,8 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingTop="@dimen/size_4"
-        android:paddingLeft="@dimen/size_8"/>
+        android:paddingLeft="@dimen/size_8"
+        tools:ignore="RtlSymmetry"/>
 
     <com.goshop.app.common.view.CustomBoldTextView
         android:id="@+id/tv_search_detail_now"
@@ -50,6 +55,7 @@
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingTop="@dimen/size_4"
-        android:paddingLeft="@dimen/size_8"/>
+        android:paddingLeft="@dimen/size_8"
+        tools:ignore="RtlSymmetry"/>
 
 </RelativeLayout>

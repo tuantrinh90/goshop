@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -22,7 +23,8 @@
                 android:layout_height="wrap_content"
                 android:background="@android:color/white"
                 android:nestedScrollingEnabled="false"
-                android:layout_marginTop="@dimen/size_8"/>
+                android:layout_marginTop="@dimen/size_8"
+                tools:targetApi="lollipop"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_search_result"
                 android:layout_width="match_parent"
@@ -30,7 +32,8 @@
                 android:paddingRight="@dimen/size_10"
                 android:paddingLeft="@dimen/size_10"
                 android:nestedScrollingEnabled="false"
-                android:background="@android:color/white"/>
+                android:background="@android:color/white"
+                tools:targetApi="lollipop"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

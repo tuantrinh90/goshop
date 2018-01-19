@@ -16,20 +16,23 @@
         <ImageView
             android:id="@+id/iv_search_result_detail"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
+            android:layout_height="match_parent"
+            android:contentDescription="@string/app_name"/>
         <ImageView
             android:id="@+id/iv_search_result_tv"
             android:layout_width="@dimen/size_36"
             android:layout_height="@dimen/size_24"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/app_name"/>
 
         <ImageView
             android:id="@+id/iv_search_result_gift"
             android:layout_width="@dimen/size_30"
             android:layout_height="@dimen/size_30"
             android:layout_alignParentRight="true"
-            android:layout_alignParentTop="true"/>
+            android:layout_alignParentTop="true"
+            android:contentDescription="@string/app_name"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_search_result_percent"

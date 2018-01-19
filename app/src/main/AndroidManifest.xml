@@ -7,13 +7,7 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
-    <meta-data
-        android:name="io.fabric.ApiKey"
-        android:value="your_fabric_api"/>
 
-    <meta-data
-        android:name="com.facebook.sdk.ApplicationId"
-        android:value="@string/facebook_id"/>
 
     <application
         android:name=".GoShopApplication"
@@ -23,6 +17,15 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
+
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_id"/>
+
         <activity android:name=".presentation.home.HomeActivity">
 
         </activity>
@@ -60,10 +63,6 @@
         <activity android:name=".presentation.shopping.ProductDetailActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
-
-        <meta-data
-            android:name="io.fabric.ApiKey"
-            android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
 
         <activity android:name=".presentation.search.SearchActivity"
             android:theme="@style/WhiteBackground"/>

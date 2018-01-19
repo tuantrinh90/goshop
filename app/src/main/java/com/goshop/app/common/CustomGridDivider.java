@@ -1,7 +1,6 @@
 package com.goshop.app.common;
 
 import com.goshop.app.R;
-import com.goshop.app.utils.ScreenHelper;
 
 import android.content.Context;
 import android.graphics.Canvas;

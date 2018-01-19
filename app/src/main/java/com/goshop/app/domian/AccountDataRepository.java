@@ -8,7 +8,6 @@ import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
-import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
 
@@ -18,7 +17,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 

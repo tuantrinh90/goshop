@@ -14,7 +14,8 @@
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/size_8"
-        android:background="@mipmap/search"/>
+        android:background="@mipmap/search"
+        android:contentDescription="@string/app_name"/>
 
     <ImageView
         android:id="@+id/iv_search_del"
@@ -25,7 +26,8 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/size_8"
-        android:background="@mipmap/del"/>
+        android:background="@mipmap/del"
+        android:contentDescription="@string/app_name"/>
 
     <com.goshop.app.common.view.CustomEditText
         android:id="@+id/et_search_search"

@@ -102,8 +102,8 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
         RxTextView.editorActionEvents(csetSearch.getEditText())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(textViewEditorActionEvent -> {
-                KeyBoardUtils.hideKeyboard(csetSearch);
                 startSearchResultScreen(csetSearch.getText());
+                KeyBoardUtils.hideKeyboard(csetSearch);
             });
 
         compositeDisposable = new CompositeDisposable();
