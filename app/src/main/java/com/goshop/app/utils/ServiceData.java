@@ -4,6 +4,7 @@ import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.data.model.response.PromotionLandingResponse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -133,6 +134,31 @@ public class ServiceData {
         multipleItems.add(bottomSldieItem);
         return multipleItems;
     }
+
+    public static List<PromotionLandingResponse> getPromotionLandingData(){
+        List<PromotionLandingResponse> promotionLandingResponses=new ArrayList<>();
+        for (int i=0;i<10;i++){
+            PromotionLandingResponse response=new PromotionLandingResponse();
+            response.setImageUrl(Const.HOME_TEST_IMG3);
+            response.setProductCurrentPrice("RM 120.00");
+            response.setProductName("new balabce");
+            response.setProductOldPrice("RM 180.00");
+            if (i%2==0){
+                response.setBest(true);
+                response.setGiftShow(false);
+                response.setNew(true);
+                response.setTvShow(false);
+            }else {
+                response.setBest(false);
+                response.setGiftShow(true);
+                response.setNew(false);
+                response.setTvShow(true);
+            }
+            promotionLandingResponses.add(response);
+        }
+        return promotionLandingResponses;
+    }
+
 
 
 }

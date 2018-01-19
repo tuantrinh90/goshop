@@ -6,11 +6,13 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.presentation.home.PromotionLadingActivity;
 import com.goshop.app.utils.PagingScrollHelper;
 import com.goshop.app.utils.RecyclerUtils;
 import com.goshop.app.widget.BannerAutoPlayHelper;
 import com.orhanobut.logger.Logger;
 
+import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -108,7 +110,13 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
 
         void bindingData(MultipleItem multipleItem, int positon) {
             vpHomeHeader.setAdapter(new SlidingImageAdapter(vpHomeHeader.getContext(),
-                multipleItem.getTopBanner().getImgs()));
+                multipleItem.getTopBanner().getImgs(), new SlidingImageAdapter.IOnClick() {
+                @Override
+                public void onItemClick(View view, int position) {
+                    TopBannerHolder.this.itemView.getContext().startActivity(new Intent(TopBannerHolder.this.itemView.getContext(),
+                        PromotionLadingActivity.class));
+                }
+            }));
             customPagerIndicator.setViewPager(vpHomeHeader);
             BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(vpHomeHeader);
             bannerAutoPlayHelper.autoPlay();

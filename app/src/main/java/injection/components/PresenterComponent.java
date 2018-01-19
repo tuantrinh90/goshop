@@ -29,6 +29,8 @@ public interface PresenterComponent {
 
     void inject(RegisterActivity registerActivity);
 
+//    void inject(PromotionLadingActivity registerActivity);
+
     void inject(LoginComplementEmailActivity complementEmailActivity);
 
     void inject(LoginResetPasswordActivity resetPasswordActivity);

@@ -2,6 +2,7 @@ package com.goshop.app.adapter;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import android.content.Context;
 import android.os.Parcelable;
@@ -23,9 +24,15 @@ public class SlidingImageAdapter extends PagerAdapter {
 
     private List<String> imageUrls;
 
-    public SlidingImageAdapter(Context context, List<String> imageUrls) {
+    interface IOnClick{
+        void onItemClick(View view,int position);
+    }
+    IOnClick iOnClick;
+
+    public SlidingImageAdapter(Context context, List<String> imageUrls,IOnClick iOnClick) {
         this.imageUrls = imageUrls;
         this.context = context;
+        this.iOnClick=iOnClick;
     }
 
     @Override
@@ -41,6 +48,10 @@ public class SlidingImageAdapter extends PagerAdapter {
             .findViewById(R.id.iv_sliding);
         Glide.with(context).load(imageUrls.get(position)).into(imageView);
         view.addView(imageLayout, 0);
+        RxView.clicks(imageView)
+            .subscribe(v -> {
+                iOnClick.onItemClick(imageView,position);
+            });
         return imageLayout;
     }
 
