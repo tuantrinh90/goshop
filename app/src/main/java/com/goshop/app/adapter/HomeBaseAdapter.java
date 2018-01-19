@@ -194,6 +194,7 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
                 .setAdapter(new HomeCenterBaseRecyclerAdapter(multipleItem.getCenterVideo()));
             scrollHelper.setUpRecycleView(recyclerView);
             scrollHelper.setOnPageChangeListener(this);
+            resetTextState();
             tvCenterBottomTitle1.setOnClickListener(this);
             tvCenterBottomTitle2.setOnClickListener(this);
             tvCenterBottomTitle3.setOnClickListener(this);

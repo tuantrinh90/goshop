@@ -6,8 +6,8 @@
 
     <RelativeLayout
         android:id="@+id/rl_item_icon_root"
-        android:layout_width="@dimen/home_center_video_item_image_w_and_h"
-        android:layout_height="@dimen/home_center_video_item_image_w_and_h">
+        android:layout_width="@dimen/home_bottom_slide_item_external_image_w_and_h"
+        android:layout_height="@dimen/home_bottom_slide_item_external_image_w_and_h">
         <RelativeLayout
             android:layout_margin="@dimen/home_padding"
             android:layout_width="wrap_content"
@@ -19,6 +19,8 @@
                     android:id="@+id/iv_home_bottom_item"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
+                    android:layout_centerInParent="true"
+                    android:scaleType="fitXY"
                 />
                 <ImageView
                     android:id="@+id/iv_home_item_tv_symbol"

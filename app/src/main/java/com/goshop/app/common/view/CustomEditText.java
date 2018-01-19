@@ -1,9 +1,10 @@
 package com.goshop.app.common.view;
 
+import com.goshop.app.common.Typefaces;
+
 import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
-import com.goshop.app.common.Typefaces;
 
 /**
  * Created by winniseptiani on 3/16/17.
@@ -14,17 +15,20 @@ public class CustomEditText extends android.support.v7.widget.AppCompatEditText 
 
     public CustomEditText(Context context) {
         super(context);
-        setFont(context);
+//TODO if have font file open this method
+//        setFont(context);
     }
 
     public CustomEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        setFont(context);
+//TODO if have font file open this method
+//        setFont(context);
     }
 
     public CustomEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        setFont(context);
+//TODO if have font file open this method
+//        setFont(context);
     }
     private void setFont(Context context) {
         Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_TEXT);

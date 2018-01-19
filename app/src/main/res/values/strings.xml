@@ -1,5 +1,4 @@
 <resources>
-
     <string name="app_name">goshop</string>
     <!--home-->
     <string name="home_second_category">Categories</string>
@@ -19,6 +18,23 @@
     <string name="home_video_next">next</string>
     <string name="home_item_price_off">30% OFF</string>
 
+    <!--drawlayout-->
+    <string name="openDrawer">Open Drawer</string>
+    <string name="closeDrawer">Close Drawer</string>
+    <string name="home_drawlayout_hey">Hey,&#160;</string>
+    <string name="home_drawlayout_not_sign_up">Sign up / Login</string>
+    <string name="home_drawlayout_sign_up">User Name</string>
+    <string name="home_drawlayout_home">Home</string>
+    <string name="home_drawlayout_category">Categories</string>
+    <string name="home_drawlayout_rewards">Rewards</string>
+    <string name="home_drawlayout_shopping_cart">Shopping Cart</string>
+    <string name="home_drawlayout_my_wishlist">My Wishlist</string>
+    <string name="home_drawlayout_my_orders">My Orders</string>
+    <string name="home_drawlayout_notifications">Notifications</string>
+    <string name="home_drawlayout_help_support">Help &amp; Support</string>
+    <string name="home_drawlayout_settings">Settings</string>
+
+
     <!--login-->
     <string name="login_email">Email</string>
     <string name="login_password">Password</string>
@@ -33,6 +49,8 @@
     <string name="loginregister_emailbound_tips_error_email_format">Please enter a valid email address. For example johndoe@domain.com.</string>
     <string name="enter_characters_ignored">"Please enter 4 or more characters. Leading or trailing spaces will be ignored."</string>
 
+
+
     <!--test data-->
     <string name="home_item_test_product_name">Manjung Korean Crispy Seaweed(Sea Salt)</string>
     <string name="home_item_test_product_price">RM 119.00</string>
@@ -42,6 +60,7 @@
     <string name="facebook_id">1287318627981888</string>
     <!-- Facebook Login -->
     <string name="FB_Login_tips_error">Please check the internet, and try again.</string>
+
     <string name="register">Register</string>
     <string name="register_firstname">First Name</string>
     <string name="register_lastname">Last Name</string>
@@ -68,7 +87,7 @@
     </string>
     <string name="reset_password">Reset Password</string>
     <string name="send_confirmation_link">Send Confirmation Link</string>
-    
+
     <string name="pdp">PDP</string>
     <string name="pdp_title">Kloken Living Box Value Set Kloken Living Box Value Set</string>
     <string name="buy_now">Buy Now</string>
@@ -97,6 +116,5 @@
     <string name="frequently_bought_together">Frequently Bought Together</string>
     <string name="in_stock">In Stock</string>
     <string name="pdp_additionall_value">N/A</string>
-
 
 </resources>
