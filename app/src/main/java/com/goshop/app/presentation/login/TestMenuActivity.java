@@ -3,6 +3,7 @@ package com.goshop.app.presentation.login;
 import com.crashlytics.android.Crashlytics;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 
 import android.content.Intent;
@@ -42,7 +43,8 @@ public class TestMenuActivity extends BaseActivity {
     }
 
     @OnClick({R.id.btn_test_register, R.id.btn_test_complement_email, R.id
-        .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_pdp})
+        .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_pdp, R.id
+        .btn_test_search})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_register:
@@ -59,6 +61,9 @@ public class TestMenuActivity extends BaseActivity {
                 break;
             case R.id.btn_test_pdp:
                 startActivity(new Intent(this, ProductDetailActivity.class));
+                break;
+            case R.id.btn_test_search:
+                startActivity(new Intent(this, SearchActivity.class));
                 break;
         }
     }

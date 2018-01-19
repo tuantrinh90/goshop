@@ -2,6 +2,8 @@ package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
+import com.goshop.app.data.model.SearchFilterResponse;
+import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -74,5 +76,17 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PRODUCT_DETAIL);
         return retrofitRestApi.productDetailRequest(url, params);
+    }
+
+    @Override
+    public Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.SEARCH_FILGER);
+        return retrofitRestApi.searchFilterRequest(url, params);
+    }
+
+    @Override
+    public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.SEARCH_RESULT);
+        return retrofitRestApi.searchResultResponse(url, params);
     }
 }

@@ -275,6 +275,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
         public AddMoreViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         void bindingData(int position) {
