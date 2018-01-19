@@ -41,7 +41,7 @@
         android:textCursorDrawable="@null"
         android:background="@null"
         android:gravity="left"
-        android:inputType="number"
+        android:inputType="text"
         android:imeOptions="actionSearch"/>
 
 </RelativeLayout>

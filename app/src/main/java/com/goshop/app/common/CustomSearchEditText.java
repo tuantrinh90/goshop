@@ -8,6 +8,7 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -41,6 +42,7 @@ public class CustomSearchEditText extends RelativeLayout {
         View searchView = LayoutInflater.from(context)
             .inflate(R.layout.layout_search_image, this, true);
         ButterKnife.bind(this, searchView);
+        editText.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         RxTextView.textChanges(editText).subscribe(charSequence -> {
             if (charSequence.length() > 0) {
                 ivDelete.setVisibility(View.VISIBLE);
@@ -54,7 +56,6 @@ public class CustomSearchEditText extends RelativeLayout {
                 ivDelete.setVisibility(View.GONE);
             }
         });
-
     }
 
     public CustomSearchEditText(Context context, AttributeSet attrs) {

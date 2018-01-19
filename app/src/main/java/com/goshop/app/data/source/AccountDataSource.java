@@ -3,6 +3,8 @@ package com.goshop.app.data.source;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.SearchFilterResponse;
+import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -32,4 +34,8 @@ public interface AccountDataSource {
     Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(Map<String, Object> params);
 
     Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
+
+    Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params);
+
+    Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params);
 }

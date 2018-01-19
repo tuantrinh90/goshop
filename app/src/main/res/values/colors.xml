@@ -5,6 +5,8 @@
     <color name="colorAccent">#EC458B</color>
 
     <color name="color_main_pink">#FF4081</color>
+    <color name="color_main_orange">#ff9911</color>
+    <color name="color_main_green">#22aa11</color>
     <color name="color_main_black">#000000</color>
     <color name="color_main_grey">#bcbcbc</color>
     <color name="brightSkyBlue">#00b6f1</color>
