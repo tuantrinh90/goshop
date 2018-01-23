@@ -48,7 +48,8 @@
         android:textColor="@color/colorAccent"
         android:textSize="@dimen/size_font_18"
         android:paddingLeft="@dimen/size_8" tools:ignore="RtlSymmetry"
-        android:layout_toEndOf="@id/tv_pdp_top_old_currency" android:paddingStart="@dimen/size_8"/>
+        android:layout_toEndOf="@id/tv_pdp_top_old_currency"
+        android:paddingStart="@dimen/size_8"/>
 
     <LinearLayout
         android:id="@+id/ll_pdp_top_rating"
@@ -56,7 +57,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_pdp_top_now_currency"
         android:layout_alignParentLeft="true"
-        android:orientation="horizontal" android:layout_alignParentStart="true">
+        android:orientation="horizontal"
+        android:layout_alignParentStart="true">
         <RatingBar
             android:id="@+id/ratingbar_pdp_top"
             android:layout_width="wrap_content"
@@ -72,7 +74,8 @@
             android:layout_height="wrap_content"
             android:textColor="@color/color_main_grey"
             android:textSize="@dimen/size_font_18"
-            android:paddingLeft="@dimen/size_8" tools:ignore="RtlSymmetry"
+            android:paddingLeft="@dimen/size_8"
+            tools:ignore="RtlSymmetry"
             android:paddingStart="@dimen/size_8"/>
     </LinearLayout>
 
@@ -85,7 +88,8 @@
         android:layout_alignTop="@id/ll_pdp_top_rating"
         android:layout_alignBottom="@id/ll_pdp_top_rating"
         android:background="@color/colorAccent"
-        android:contentDescription="@string/app_name" android:layout_alignParentEnd="true"/>
+        android:contentDescription="@string/app_name"
+        android:layout_alignParentEnd="true"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_pdp_top_label"
@@ -144,7 +148,8 @@
             android:text="@string/quantity"
             android:paddingRight="@dimen/size_16"
             android:textColor="@android:color/black"
-            android:textSize="@dimen/size_font_16"/>
+            android:textSize="@dimen/size_font_16"
+            tools:ignore="RtlSymmetry"/>
 
         <com.goshop.app.common.CustomMinusPlusEditText
             android:id="@+id/mpet_pdp_quantily"

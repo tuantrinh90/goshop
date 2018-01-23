@@ -4,6 +4,8 @@ import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.SearchFilterResponse;
+import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -83,5 +85,15 @@ public class AccountCloudDataSource implements AccountDataSource {
         //TODO joyson temp code
 //        return restApi.promotionBannerRequest(params);
         return ServiceData.getPromotionBannerLists();
+    }
+
+    @Override
+    public Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params) {
+        return restApi.searchFilterRequest(params);
+    }
+
+    @Override
+    public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
+        return restApi.searchResultResponse(params);
     }
 }

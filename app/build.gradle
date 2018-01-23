@@ -32,6 +32,7 @@ android {
     sourceSets {
         main {
             res.srcDirs = [
+                    'src/main/res/layouts/layouts-search',
                     'src/main/res/layouts/layouts-login',
                     'src/main/res/layouts/layouts-home',
                     'src/main/res/layouts/layouts-category',

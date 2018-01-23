@@ -1,7 +1,6 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.R;
-import com.jakewharton.rxbinding2.view.RxView;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.content.Context;

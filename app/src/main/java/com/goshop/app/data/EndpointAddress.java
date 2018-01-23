@@ -21,6 +21,10 @@ public class EndpointAddress {
     //todo wait for api
     public static final String PRODUCT_DETAIL = "";
     //todo wait for api
+    public static final String SEARCH_FILGER = "";
+    //todo wait for api
+    public static final String SEARCH_RESULT = "";
+    //todo wait for api
     public static final String PROMOTION_LIST = "";
     public static final String PROMOTION_BANNER = "";
 

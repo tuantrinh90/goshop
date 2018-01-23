@@ -3,7 +3,6 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.R;
 import com.goshop.app.utils.ScreenHelper;
 
-import android.annotation.SuppressLint;
 import android.content.res.ColorStateList;
 import android.graphics.drawable.ColorDrawable;
 import android.graphics.drawable.GradientDrawable;
@@ -11,7 +10,6 @@ import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;

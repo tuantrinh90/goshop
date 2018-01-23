@@ -3,6 +3,8 @@ package com.goshop.app.data.retrofit;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.SearchFilterResponse;
+import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
@@ -63,7 +65,7 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<Error> loginCreatePinRequest(@Url String fullUrl,
-                                            @FieldMap Map<String, Object> params);
+        @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -93,6 +95,17 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<ProductDetailResponse> productDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<SearchFilterResponse> searchFilterRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<SearchResultResponse> searchResultResponse(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

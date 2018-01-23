@@ -26,7 +26,8 @@
                 android:paddingTop="@dimen/size_40"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
-                android:orientation="horizontal" android:baselineAligned="false">
+                android:orientation="horizontal"
+                android:baselineAligned="false">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -42,7 +43,8 @@
                         android:padding="@dimen/size_8"
                         android:textSize="@dimen/size_font_16"
                         android:textColor="@android:color/black"
-                        android:visibility="gone" android:layout_marginEnd="@dimen/size_8"/>
+                        android:visibility="gone"
+                        android:layout_marginEnd="@dimen/size_8"/>
                 </LinearLayout>
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -58,7 +60,8 @@
                         android:padding="@dimen/size_8"
                         android:textSize="@dimen/size_font_16"
                         android:textColor="@android:color/black"
-                        android:visibility="gone" android:layout_marginEnd="@dimen/size_8"/>
+                        android:visibility="gone"
+                        android:layout_marginEnd="@dimen/size_8"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -69,7 +72,8 @@
                 android:orientation="horizontal"
                 android:paddingTop="@dimen/size_8"
                 android:paddingLeft="@dimen/size_16"
-                android:paddingRight="@dimen/size_16" android:baselineAligned="false">
+                android:paddingRight="@dimen/size_16"
+                android:baselineAligned="false">
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -111,7 +115,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/size_8"
-                    android:layout_weight="1" android:layout_marginStart="@dimen/size_8">
+                    android:layout_weight="1"
+                    android:layout_marginStart="@dimen/size_8">
 
 
                     <com.goshop.app.common.view.CustomEditText

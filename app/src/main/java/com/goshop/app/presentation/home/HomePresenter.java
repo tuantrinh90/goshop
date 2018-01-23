@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;

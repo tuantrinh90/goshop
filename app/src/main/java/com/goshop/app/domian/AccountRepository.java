@@ -3,6 +3,8 @@ package com.goshop.app.domian;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.SearchFilterResponse;
+import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
@@ -18,9 +20,10 @@ import io.reactivex.Observable;
  */
 
 public interface AccountRepository {
+
     Observable<UserInfo> getUserInfo(String userId);
 
-    Observable<UserInfo> getUserInfo(String username,String password);
+    Observable<UserInfo> getUserInfo(String username, String password);
 
     Observable<Weather> getWeather();
 
@@ -37,5 +40,9 @@ public interface AccountRepository {
     Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params);
 
     Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
+
+    Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params);
+
+    Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params);
 
 }
