@@ -4,11 +4,13 @@ import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.MultipleItem;
-import com.goshop.app.data.model.response.PromotionLandingResponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
+
+import io.reactivex.Observable;
 
 /**
  * Created by img on 2018/1/5.
@@ -42,12 +44,23 @@ public class ServiceData {
     public static List<MultipleItem> getTopBannerData() {
         List<MultipleItem> list = new ArrayList<>();
         //top banner
-        List<String> imgs = Arrays.asList(Const.HOME_TEST_IMG1,
-            Const.HOME_TEST_IMG2,
-            Const.HOME_TEST_IMG3);
-        MultipleItem.TopBanner topbanner = new MultipleItem.TopBanner(imgs);
         MultipleItem multipleItemTopBanner = new MultipleItem(Const.HOME_TOP_BANNER, "");
-        multipleItemTopBanner.setTopBanner(topbanner);
+
+        List<MultipleItem.TopBanner> topBanner =new ArrayList<>();
+
+        MultipleItem.TopBanner topbanner1 = new MultipleItem.TopBanner();
+        topbanner1.setImg(Const.HOME_TEST_IMG1);
+        topbanner1.setType(Const.PROMOTION_PAGE_PDP);
+        topBanner.add(topbanner1);
+        MultipleItem.TopBanner topbanner2 = new MultipleItem.TopBanner();
+        topbanner2.setImg(Const.HOME_TEST_IMG2);
+        topbanner2.setType(Const.PROMOTION_PAGE_LIST);
+        topBanner.add(topbanner2);
+        MultipleItem.TopBanner topbanner3 = new MultipleItem.TopBanner();
+        topbanner3.setImg(Const.HOME_TEST_IMG3);
+        topbanner3.setType(Const.PROMOTION_PAGE_BANNER);
+        topBanner.add(topbanner3);
+        multipleItemTopBanner.setTopBanner(topBanner);
         list.add(multipleItemTopBanner);
 
         return list;
@@ -109,10 +122,10 @@ public class ServiceData {
             String headImageUrl = Const.HOME_TEST_IMG3;
             MultipleItem.BottomSlide bottomSlideHeader = new MultipleItem.BottomSlide();
             bottomSlideHeader.setHeadImageUrl(headImageUrl);
-            bottomSlideHeader.setViewType(Const.BOTTOM_SLIDE_HEADER_IMG);
+            bottomSlideHeader.setViewType(Const.HOME_BOTTOM_SLIDE_HEADER_IMG);
             bottomSlides.add(bottomSlideHeader);
             MultipleItem.BottomSlide bottomSlideTitle = new MultipleItem.BottomSlide();
-            bottomSlideTitle.setViewType(Const.BOTTOM_SLIDE_TITLE);
+            bottomSlideTitle.setViewType(Const.HOME_BOTTOM_SLIDE_TITLE);
             bottomSlideTitle.setSlideTitle(GoShopApplication.getAppContext().getResources()
                 .getString(R.string.home_bottom_slide_title));
             bottomSlides.add(bottomSlideTitle);
@@ -126,7 +139,7 @@ public class ServiceData {
                 bottomSlideBody.setImageUrl(Const.HOME_TEST_IMG2);
                 bottomSlideChildren.add(bottomSlideBody);
             }
-            bottomSlideItem.setViewType(Const.BOTTOM_SLIDE_BODY);
+            bottomSlideItem.setViewType(Const.HOME_BOTTOM_SLIDE_BODY);
             bottomSlideItem.setBottomSlideChildren(bottomSlideChildren);
             bottomSlides.add(bottomSlideItem);
         }
@@ -135,14 +148,20 @@ public class ServiceData {
         return multipleItems;
     }
 
-    public static List<PromotionLandingResponse> getPromotionLandingData(){
-        List<PromotionLandingResponse> promotionLandingResponses=new ArrayList<>();
-        for (int i=0;i<10;i++){
-            PromotionLandingResponse response=new PromotionLandingResponse();
+    /**
+     * TODO this is temp code
+     * @return
+     */
+    public static Observable<PromotionListResponse> getPromotionListData(){
+        PromotionListResponse promotionLandingResponses=new PromotionListResponse();
+        List<PromotionListResponse.PromotionItem> promotionItems=new ArrayList<>();
+        for (int i=0;i<20;i++){
+            PromotionListResponse.PromotionItem response=new PromotionListResponse.PromotionItem();
             response.setImageUrl(Const.HOME_TEST_IMG3);
             response.setProductCurrentPrice("RM 120.00");
-            response.setProductName("new balabce");
+            response.setProductName("new balabce new balabce new balabce new balabce new balabce new balabce");
             response.setProductOldPrice("RM 180.00");
+            response.setProductOff("30% OFF");
             if (i%2==0){
                 response.setBest(true);
                 response.setGiftShow(false);
@@ -154,9 +173,23 @@ public class ServiceData {
                 response.setNew(false);
                 response.setTvShow(true);
             }
-            promotionLandingResponses.add(response);
+            promotionItems.add(response);
         }
-        return promotionLandingResponses;
+        promotionLandingResponses.setPromotionItems(promotionItems);
+        promotionLandingResponses.setTitle(GoShopApplication.getAppContext().getString(R.string.promotion_list_symbol));
+        promotionLandingResponses.setBannerUrl(Const.BANNER_IMG1);
+        return Observable.just(promotionLandingResponses);
+    }
+
+    public static Observable<PromotionBannerResponse> getPromotionBannerLists(){
+        PromotionBannerResponse promotionBannerResponse=new PromotionBannerResponse();
+        List<String> imageUrls=new ArrayList<>();
+        imageUrls.add(Const.BANNER_IMG1);
+        imageUrls.add(Const.BANNER_IMG2);
+        imageUrls.add(Const.BANNER_IMG3);
+        imageUrls.add(Const.BANNER_IMG4);
+        promotionBannerResponse.setImageUrl(imageUrls);
+        return Observable.just(promotionBannerResponse);
     }
 
 

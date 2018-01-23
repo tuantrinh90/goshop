@@ -6,7 +6,8 @@ import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
-import com.goshop.app.data.model.response.GetWeatherResponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
 
@@ -16,7 +17,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 
 import io.reactivex.Observable;
-import io.reactivex.Scheduler;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
@@ -86,5 +86,19 @@ public class AccountDataRepository implements AccountRepository {
         return accountCloudDataSource.getUserInfo(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
+        return accountCloudDataSource.promotionListRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
+        return accountCloudDataSource.promotionBannerRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
     }
 }

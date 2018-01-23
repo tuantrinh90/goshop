@@ -1,5 +1,6 @@
 package com.goshop.app.data.model;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ public class MultipleItem {
 
     private int spanSize;
 
-    private TopBanner topBanner;
+    private List<TopBanner> topBanner;
 
     private List<CenterVideo> centerVideo;
 
@@ -51,11 +52,11 @@ public class MultipleItem {
         return itemType;
     }
 
-    public TopBanner getTopBanner() {
+    public List<TopBanner> getTopBanner() {
         return topBanner;
     }
 
-    public void setTopBanner(TopBanner topBanner) {
+    public void setTopBanner(List<TopBanner> topBanner) {
         this.topBanner = topBanner;
     }
 
@@ -76,20 +77,26 @@ public class MultipleItem {
         this.bottomSlide = bottomSlide;
     }
 
-    public static class TopBanner {
+    public static class TopBanner implements Serializable{
 
-        private List<String> imgs;
+        private String img;
+        //search productDetail promotion noSkip
+        private String type;
 
-        public TopBanner(List<String> imgs) {
-            this.imgs = imgs;
+        public String getImg() {
+            return img;
         }
 
-        public List<String> getImgs() {
-            return imgs;
+        public void setImg(String img) {
+            this.img = img;
         }
 
-        public void setImgs(List<String> imgs) {
-            this.imgs = imgs;
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
         }
     }
 
@@ -228,7 +235,7 @@ public class MultipleItem {
         }
     }
 
-    public static class BottomSlide {
+    public static class BottomSlide implements Serializable{
 
         private String headImageUrl;
 

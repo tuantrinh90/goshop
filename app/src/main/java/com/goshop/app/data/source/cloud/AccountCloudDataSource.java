@@ -7,7 +7,10 @@ import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.utils.ServiceData;
 
 import java.util.Map;
 
@@ -66,5 +69,19 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
         return restApi.productDetailRequest(params);
+    }
+
+    @Override
+    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
+        //TODO joyson temp code
+//        return restApi.promotionListRequest(params);
+        return ServiceData.getPromotionListData();
+    }
+
+    @Override
+    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
+        //TODO joyson temp code
+//        return restApi.promotionBannerRequest(params);
+        return ServiceData.getPromotionBannerLists();
     }
 }

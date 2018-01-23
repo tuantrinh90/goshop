@@ -20,6 +20,9 @@ public class EndpointAddress {
     public static final String SEND_CONFIRMATION_LINK = "";
     //todo wait for api
     public static final String PRODUCT_DETAIL = "";
+    //todo wait for api
+    public static final String PROMOTION_LIST = "";
+    public static final String PROMOTION_BANNER = "";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

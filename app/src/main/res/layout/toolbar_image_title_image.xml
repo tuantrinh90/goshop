@@ -19,8 +19,8 @@
 
         <ImageView
             android:id="@+id/imageview_left_menu"
-            android:layout_width="10dp"
-            android:layout_height="10dp"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
             android:scaleType="centerInside"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
@@ -36,7 +36,8 @@
             android:textSize="15sp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            tools:ignore="ContentDescription" android:layout_alignParentEnd="true"/>
+            tools:ignore="ContentDescription"
+            android:layout_alignParentEnd="true"/>
 
         <com.goshop.app.common.view.CustomBoldTextView
             android:id="@+id/textview_toolbar_title"
@@ -44,7 +45,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:textColor="@android:color/white"
+            android:textColor="@color/blackTrans87"
             android:textSize="20sp"
             android:minLines="1"
             android:maxLines="1"

@@ -7,8 +7,9 @@ import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.request.SaveUserRequest;
-import com.goshop.app.data.model.response.GetUserResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.Map;
 
@@ -92,5 +93,17 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<ProductDetailResponse> productDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<PromotionListResponse> promotionListRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<PromotionBannerResponse> promotionBannerRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

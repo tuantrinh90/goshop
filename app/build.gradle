@@ -8,6 +8,12 @@ buildscript {
     }
 }
 apply plugin: 'com.android.application'
+apply plugin: 'io.fabric'
+
+repositories {
+    maven { url 'https://maven.fabric.io/public' }
+}
+
 apply plugin: 'realm-android'
 apply plugin: 'me.tatarka.retrolambda'
 android {
@@ -136,6 +142,9 @@ dependencies {
     androidTestCompile(testDependencies.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
+    compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
+        transitive = true;
+    }
 }
 
 def ksFile = rootProject.file('keystore.properties')

@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="190dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <RelativeLayout
         android:id="@+id/rl_promotion_root"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:layout_margin="@dimen/activity_horizontal_margin"
     >
 
         <RelativeLayout
             android:id="@+id/rl_promotion_image_root"
+            android:gravity="center"
             android:layout_width="@dimen/home_bottom_slide_item_width"
             android:layout_height="@dimen/home_bottom_slide_item_width">
             <ImageView
@@ -81,8 +83,8 @@
 
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_promotion_item_product_name"
-            android:layout_below="@id/rl_promotion_image_root"
-            style="@style/homeItemProductName"/>
+            style="@style/homeItemProductName" android:layout_below="@+id/rl_promotion_image_root"
+            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_promotion_item_product_old_price"
             android:layout_below="@id/tv_promotion_item_product_name"
@@ -91,17 +93,21 @@
             android:id="@+id/tv_promotion_item_product_price"
             android:layout_below="@id/tv_promotion_item_product_old_price"
             style="@style/homeItemProductPrice"/>
-        <View
-            android:id="@+id/view_center_line"
-            android:layout_alignParentRight="true"
-            android:layout_width="@dimen/line_height"
-            android:layout_height="match_parent"
-            style="@style/homeWrapWidthLine"/>
-        <View
-            android:id="@+id/view_bottom_line"
-            android:layout_alignParentBottom="true"
-            style="@style/homeWrapWidthLine"/>
 
     </RelativeLayout>
+
+    <View
+        android:id="@+id/view_bottom_line"
+        android:layout_height="@dimen/line_height"
+        android:layout_alignParentBottom="true"
+        style="@style/homeWrapWidthLine"/>
+    <View
+        android:layout_alignParentRight="true"
+        android:id="@+id/view_center_line"
+        android:layout_width="@dimen/line_height"
+        android:layout_height="235dp"
+        android:layout_marginTop="@dimen/activity_horizontal_margin"
+        android:layout_marginBottom="@dimen/activity_horizontal_margin"
+        style="@style/homeWrapWidthLine"/>
 
 </RelativeLayout>

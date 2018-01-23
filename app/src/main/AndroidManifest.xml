@@ -3,9 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.goshop.app">
 
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
-
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
     <application
         android:name=".GoShopApplication"
@@ -16,19 +15,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".presentation.home.HomeActivity">
-
-        </activity>
-
-        <activity android:name=".presentation.login.TestMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".presentation.login.TestMenuActivity">
+
+        </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.MainHomeActivity"/>
-        <activity android:name=".presentation.home.PromotionLadingActivity"/>
-
+        <activity android:name=".presentation.home.PromotionLandingListActivity"/>
+        <activity android:name=".presentation.home.PromotionBannerActivity"/>
         <!-- FACEBOOK -->
         <activity
             tools:replace="android:theme"
@@ -36,7 +35,7 @@
             android:configChanges="keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"
-            />
+        />
 
         <activity android:name=".presentation.login.RegisterActivity"
             android:theme="@style/WhiteBackground"/>
@@ -54,6 +53,7 @@
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
@@ -63,7 +63,6 @@
             android:value="@string/facebook_id" />
 
     </application>
-
 
 
 </manifest>

@@ -10,6 +10,8 @@ import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.Map;
 
@@ -74,5 +76,17 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PRODUCT_DETAIL);
         return retrofitRestApi.productDetailRequest(url, params);
+    }
+
+    @Override
+    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_LIST);
+        return retrofitRestApi.promotionListRequest(url, params);
+    }
+
+    @Override
+    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_BANNER);
+        return retrofitRestApi.promotionBannerRequest(url, params);
     }
 }

@@ -7,6 +7,8 @@ import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.source.AccountDataSource;
 
 import java.util.Map;
@@ -66,6 +68,16 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
         return null;
     }
 }
