@@ -20,7 +20,7 @@ import java.util.List;
 /**
  * Created by helen on 2018/1/16.
  */
-
+//TODO(helen)this need decide
 public class CategorySelectorHelper {
 
     public CategorySelectorHelper() {

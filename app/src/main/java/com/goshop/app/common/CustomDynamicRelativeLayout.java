@@ -15,13 +15,13 @@ public class CustomDynamicRelativeLayout extends RelativeLayout {
 
     private static final int margin = 16;
 
-    private static final int size_height = 30;
+    private static final int sizeHeight = 30;
 
-    private static final int size_width = 80;
+    private static final int sizeWidth = 80;
 
-    private int child_height;
+    private int childHeight;
 
-    private int child_width;
+    private int childWidth;
 
     private int number30 = 0;
 
@@ -34,8 +34,8 @@ public class CustomDynamicRelativeLayout extends RelativeLayout {
     public CustomDynamicRelativeLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         widthMargin = ScreenHelper.getPxFromDp(context, margin);
-        child_width = ScreenHelper.getPxFromDp(context, size_width);
-        child_height = ScreenHelper.getPxFromDp(context, size_height);
+        childWidth = ScreenHelper.getPxFromDp(context, sizeWidth);
+        childHeight = ScreenHelper.getPxFromDp(context, sizeHeight);
     }
 
     @Override
@@ -50,8 +50,8 @@ public class CustomDynamicRelativeLayout extends RelativeLayout {
             if (child.getVisibility() != View.GONE) {
                 child.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
                 //TODO(helen)this need to decide
-                int width = child_width;//child.getMeasuredWidth();
-                int height = child_height;//child.getMeasuredHeight();
+                int width = childWidth;//child.getMeasuredWidth();
+                int height = childHeight;//child.getMeasuredHeight();
                 x += (width + widthMargin);
                 y = row * (height + widthMargin) + (height + widthMargin);
                 if (x > maxWidth) {
@@ -79,8 +79,8 @@ public class CustomDynamicRelativeLayout extends RelativeLayout {
             final View child = this.getChildAt(i);
             if (child.getVisibility() != View.GONE) {
                 //TODO(helen)this need to decide
-                int width = child_width;//child.getMeasuredWidth();
-                int height = child_height;//child.getMeasuredHeight();
+                int width = childWidth;//child.getMeasuredWidth();
+                int height = childHeight;//child.getMeasuredHeight();
                 x += (width + widthMargin);
                 y = row * (height + widthMargin) + (height + widthMargin);
                 if (x > maxWidth) {
