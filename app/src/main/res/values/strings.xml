@@ -128,6 +128,14 @@
     <string name="detail_new">New</string>
     <string name="filter">Filter</string>
     <string name="new_arrivals">New Arrivals</string>
+    <string name="menu_open">Open</string>
+    <string name="menu_close">Close</string>
+    <string name="clear">Clear</string>
+    <string name="done">Done</string>
+    <string name="price_low_high">Price from Low to High</string>
+    <string name="name_a_z">Name A to Z</string>
+    <string name="promotion">Promotion</string>
+    <string name="price_rm">Price (RM)</string>
 
 
 </resources>

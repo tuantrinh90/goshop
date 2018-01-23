@@ -1,52 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v4.widget.DrawerLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
     android:focusable="true"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:openDrawer="end">
 
     <include
-        layout="@layout/toolbar_search_image"/>
+        layout="@layout/search_result_main_contain"/>
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_44"
-        android:background="@drawable/bg_white_top_bottom_line">
-
-        <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_btn_search_filter"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:layout_alignParentRight="true"
-            android:text="@string/filter"
-            android:paddingRight="@dimen/size_20"
-            android:textColor="@color/color_main_black"
-            android:textSize="@dimen/size_font_14"
-            tools:ignore="RtlSymmetry"/>
-
-        <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_btn_search_arrival"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:gravity="center_vertical"
-            android:text="@string/new_arrivals"
-            android:paddingRight="@dimen/size_18"
-            android:layout_toLeftOf="@id/tv_btn_search_filter"
-            android:textColor="@color/color_main_black"
-            android:textSize="@dimen/size_font_14"
-            tools:ignore="RtlSymmetry"/>
-    </RelativeLayout>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_search_result_display"
+        android:id="@+id/rl_drawer_filter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingRight="@dimen/size_10"
-        android:paddingLeft="@dimen/size_10"
-        android:background="@android:color/white" />
+        android:background="@android:color/white"
+        android:layout_gravity="end"
+        android:fitsSystemWindows="true">
 
-</LinearLayout>
+        <include
+            layout="@layout/layout_filter_menu"/>
+
+    </RelativeLayout>
+
+
+
+</android.support.v4.widget.DrawerLayout>
