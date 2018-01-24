@@ -4,8 +4,14 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.FilterMenuCategoryVM;
+import com.goshop.app.presentation.model.FilterMenuExpandVM;
+import com.goshop.app.presentation.model.FilterMenuModel;
+import com.goshop.app.presentation.model.FilterMenuPriceVM;
 import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SearchResultVM;
+
+import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,6 +55,33 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
 
                 }
             }));
+    }
+
+    @Override
+    public void filterMenuRequest(Map<String, Object> params) {
+        //todo wait for api
+        new Handler().post(()-> mView.showFilterMenu(getFilterMenu()));
+
+    }
+    //todo(helen) this is mock data, please do not delete
+    private List<FilterMenuModel> getFilterMenu() {
+        List<FilterMenuModel> filterMenuModels = new ArrayList<>();
+        filterMenuModels.add(new FilterMenuExpandVM("Category", true));
+        filterMenuModels.add(new FilterMenuCategoryVM(getCategorys()));
+        filterMenuModels.add(new FilterMenuExpandVM("Brands", true));
+        filterMenuModels.add(new FilterMenuPriceVM());
+        return filterMenuModels;
+    }
+    //todo(helen) this is mock data, please do not delete
+    private List<String> getCategorys() {
+        List<String> categorys = new ArrayList<>();
+        categorys.add("Beauty");
+        categorys.add("Fashion");
+        categorys.add("Applicance");
+        categorys.add("Kids & Baby");
+        categorys.add("Digital & Electronic");
+        categorys.add("Living");
+        return categorys;
     }
 
     //todo(helen) this is mock data, please do not delete

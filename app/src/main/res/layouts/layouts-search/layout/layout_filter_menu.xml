@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_filter_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_btn_search_filter_clear"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_16"
+            android:padding="@dimen/size_10"
+            android:text="@string/clear"
+            android:textColor="@color/color_main_pink"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_pink_circle"/>
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_btn_search_filter_done"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_16"
+            android:padding="@dimen/size_10"
+            android:text="@string/done"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:layout_weight="1"
+            android:background="@drawable/bg_btn_pink"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_filter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_filter_menu"/>
+
+</RelativeLayout>
