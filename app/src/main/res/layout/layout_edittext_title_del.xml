@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_et_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/size_font_16"
+        android:visibility="gone"/>
+    <com.goshop.app.common.view.CustomEditText
+        android:id="@+id/et_et_main"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_48"
+        android:background="@drawable/bg_edittext_grayline"
+        android:layout_below="@id/tv_et_title"
+        android:paddingTop="@dimen/size_8"
+        android:paddingBottom="@dimen/size_8"
+        android:maxLines="1"
+        android:textSize="@dimen/size_font_16"
+        android:textColorHint="@color/pinkishGrey"
+        android:textColor="@android:color/black"
+        android:textCursorDrawable="@null"/>
+
+    <LinearLayout
+        android:id="@+id/ll_eye"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tv_et_title"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true">
+        <ImageView
+            android:id="@+id/iv_et_eye"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_20"
+            android:visibility="gone"
+            android:layout_marginLeft="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_8"
+            android:background="@drawable/selector_eye"
+            android:contentDescription="@string/app_name"
+            android:layout_marginStart="@dimen/size_8"/>
+    </LinearLayout>
+
+    <ImageView
+        android:id="@+id/iv_et_del"
+        android:layout_width="@dimen/size_24"
+        android:layout_height="@dimen/size_24"
+        android:layout_below="@id/tv_et_title"
+        android:layout_centerVertical="true"
+        android:layout_toLeftOf="@id/ll_eye"
+        android:layout_marginTop="@dimen/size_8"
+        android:visibility="gone"
+        android:src="@mipmap/del"
+        android:contentDescription="@string/app_name"
+        android:layout_toStartOf="@id/ll_eye"/>
+
+</RelativeLayout>

@@ -55,7 +55,8 @@
             android:id="@+id/cset_search"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_toRightOf="@id/imageview_left_menu"/>
+            android:layout_toRightOf="@id/imageview_left_menu"
+            android:layout_toEndOf="@id/imageview_left_menu"/>
     </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>

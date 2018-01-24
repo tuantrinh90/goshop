@@ -49,7 +49,9 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:src="@mipmap/text_elimination"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -80,7 +82,7 @@
             android:textColorHint="@color/blackTrans38"
             android:textSize="@dimen/editTextFontSize"
             android:textCursorDrawable="@null"
-        />
+            android:layout_toStartOf="@+id/iv_visible_password"/>
 
     </android.support.design.widget.TextInputLayout>
         <ImageView
@@ -91,7 +93,8 @@
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_alignParentRight="true"
             android:background="@mipmap/ic_password_not_visible"
-        />
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_alignParentEnd="true"/>
         <ImageView
             android:id="@+id/iv_clear_password"
             android:layout_width="16dp"
@@ -101,7 +104,9 @@
             android:layout_toLeftOf="@id/iv_visible_password"
             android:layout_alignTop="@id/iv_visible_password"
             android:src="@mipmap/text_elimination"
-            android:visibility="gone"/>
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/home_padding"
+            android:layout_toStartOf="@id/iv_visible_password"/>
     </RelativeLayout>
     <com.goshop.app.common.view.CustomButton
         android:layout_margin="@dimen/activity_horizontal_margin"
@@ -166,7 +171,9 @@
                 android:layout_toRightOf="@id/iv_login_facebook_icon"
                 android:text="@string/login_facebook"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/activity_horizontal_margin"
+                android:layout_toEndOf="@id/iv_login_facebook_icon"/>
         </RelativeLayout>
     </RelativeLayout>
 
@@ -202,7 +209,7 @@
                 android:text="@string/login_register"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold"
-            />
+                android:layout_toEndOf="@id/tv_new_to_shop"/>
         </RelativeLayout>
     </RelativeLayout>
 
