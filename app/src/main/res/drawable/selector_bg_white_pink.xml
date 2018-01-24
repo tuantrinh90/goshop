@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_selected="true"
+        android:drawable="@drawable/drawable_pink"/>
+    <item
+        android:state_selected="false">
+        <layer-list>
+            <item
+                android:right="@dimen/size_16"
+                android:left="@dimen/size_16"
+            >
+                <color android:color="@color/pinkishGrey"/>
+            </item>
+            <item
+                android:bottom="@dimen/size_1">
+                <color android:color="@android:color/white"/>
+            </item>
+        </layer-list>
+    </item>
+</selector>

@@ -31,10 +31,7 @@
         </activity>
 
         <activity android:name=".presentation.login.TestMenuActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.MainHomeActivity"/>
@@ -69,7 +66,13 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.search.SearchResultActivity"
-            android:theme="@style/WhiteBackground"/>
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/WhiteBackground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
 
 
 
