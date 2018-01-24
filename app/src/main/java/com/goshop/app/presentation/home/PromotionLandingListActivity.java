@@ -32,7 +32,12 @@ import injection.modules.PresenterModule;
  * Created by img on 2018/1/18.
  */
 
-public class PromotionLandingListActivity extends BaseActivity<PromotionContract.Presenter> implements PromotionContract.View {
+public class PromotionLandingListActivity extends BaseActivity<PromotionContract.Presenter>
+    implements PromotionContract.View {
+
+    private static final int TOP_BANNER_POS = 0;
+
+    private static final int TOP_FILTER_BAR_POS = 1;
 
     @BindView(R.id.rl_top_condition_bar)
     RelativeLayout rlTopConditionBar;
@@ -43,11 +48,8 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
     @BindView(R.id.imageview_left_menu)
     ImageView imageviewLeftMenu;
 
-    private static final int TOP_BANNER_POS = 0;
-
-    private static final int TOP_FILTER_BAR_POS = 1;
-
     int firstVisibleItemPosition;
+
     private String topBannerUrl;
 
     @Override
@@ -77,9 +79,9 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
         imageviewLeftMenu.setBackgroundResource(R.mipmap.back);
     }
 
-    private void initIntent(){
+    private void initIntent() {
         Intent intent = getIntent();
-        if (intent!=null){
+        if (intent != null) {
             topBannerUrl = intent.getStringExtra(PageIntentUtils.PROMOTION_BANNER_URL);
         }
     }
@@ -98,7 +100,7 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
         });
         recyclerSearchContentList.setLayoutManager(gridLayoutManager);
         PromotionListAdapter promotionLandingHomeAdapter = new PromotionListAdapter(
-            topBannerUrl,datas);
+            topBannerUrl, datas);
         promotionLandingHomeAdapter.setiRecyclerItemClick((view, position) -> {
             switch (view.getId()) {
                 case R.id.ll_promotion_filter:

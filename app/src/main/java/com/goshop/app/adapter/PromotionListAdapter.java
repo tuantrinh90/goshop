@@ -93,7 +93,7 @@ public class PromotionListAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         //topBanner + topFilterBar + datas
-        return 1 + 1 + datas.size();
+        return BANNER_AND_FILTER_BAR_SIZE + datas.size();
     }
 
     @Override
@@ -214,9 +214,9 @@ public class PromotionListAdapter extends RecyclerView.Adapter {
             tvPromotionItemProductOldPrice.setText(response.getProductOldPrice());
             tvPromotionItemProductPrice.setText(response.getProductCurrentPrice());
             //even number show,odd number not show
-            if (position%2==0){
+            if (position % 2 == 0) {
                 viewCenterLine.setVisibility(setViewIsVisible(true));
-            }else {
+            } else {
                 viewCenterLine.setVisibility(setViewIsVisible(false));
             }
         }

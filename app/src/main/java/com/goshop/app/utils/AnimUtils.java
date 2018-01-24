@@ -11,13 +11,16 @@ import android.view.animation.AnimationUtils;
  */
 
 public class AnimUtils {
-    public static void setFilterBarAnim(View view,boolean isShow){
+
+    public static void setFilterBarAnim(View view, boolean isShow) {
         view.clearAnimation();
         Animation animation;
-        if (isShow){
-            animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.anim_filter_bar_show);
-        }else {
-            animation = AnimationUtils.loadAnimation(view.getContext(), R.anim.anim_filter_bar_hidden);
+        if (isShow) {
+            animation = AnimationUtils
+                .loadAnimation(view.getContext(), R.anim.anim_filter_bar_show);
+        } else {
+            animation = AnimationUtils
+                .loadAnimation(view.getContext(), R.anim.anim_filter_bar_hidden);
         }
         animation.setAnimationListener(new Animation.AnimationListener() {
             @Override
@@ -27,9 +30,9 @@ public class AnimUtils {
 
             @Override
             public void onAnimationEnd(Animation animation) {
-                if (isShow){
+                if (isShow) {
                     view.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     view.setVisibility(View.GONE);
                 }
             }

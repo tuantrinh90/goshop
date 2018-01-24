@@ -42,7 +42,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<UserInfo> getUser(String username,String password) {
+    public Observable<UserInfo> getUser(String username, String password) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.USER_INFO);
         GetUserRequest getUserRequest = new GetUserRequest();
         getUserRequest.setUserName(username);

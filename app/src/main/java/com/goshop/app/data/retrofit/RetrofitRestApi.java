@@ -102,6 +102,7 @@ public interface RetrofitRestApi {
     @POST
     Observable<SearchFilterResponse> searchFilterRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST

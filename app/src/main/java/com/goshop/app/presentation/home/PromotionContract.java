@@ -12,6 +12,7 @@ import java.util.Map;
  */
 
 public interface PromotionContract {
+
     interface View extends BaseView {
 
         void showPromotionList(PromotionListResponse response);
@@ -24,7 +25,9 @@ public interface PromotionContract {
     }
 
     interface Presenter extends BasePresenter<PromotionContract.View> {
+
         void getPromotionList(Map<String, Object> params);
+
         void getPromotionBanner(Map<String, Object> params);
     }
 }

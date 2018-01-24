@@ -38,7 +38,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<UserInfo> getUserInfo(String username,String password) {
+    public Observable<UserInfo> getUserInfo(String username, String password) {
         return null;
     }
 

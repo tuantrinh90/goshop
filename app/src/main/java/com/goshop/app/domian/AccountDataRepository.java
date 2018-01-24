@@ -33,28 +33,30 @@ public class AccountDataRepository implements AccountRepository {
     private AccountDataSource accountLocalDataSource;
 
     @Inject
-    public AccountDataRepository(@Named("cloudAccountDataSource") AccountDataSource accountCloudDataSource,@Named("localAccountDataSource") AccountDataSource accountLocalDataSource) {
+    public AccountDataRepository(
+        @Named("cloudAccountDataSource") AccountDataSource accountCloudDataSource,
+        @Named("localAccountDataSource") AccountDataSource accountLocalDataSource) {
         this.accountCloudDataSource = accountCloudDataSource;
         this.accountLocalDataSource = accountLocalDataSource;
     }
 
-
     @Override
     public Observable<Weather> getWeather() {
         return accountCloudDataSource.getWeather()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .flatMap(getWeatherResponse -> {
-                    if(getWeatherResponse!=null&&getWeatherResponse.getWeatherinfo().getCity()!=null){
-                        return Observable.just(getWeatherResponse.getWeatherinfo());
-                    }else {
-                        return Observable.error(new ServiceApiFail("error"));
-                    }
-                });
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .flatMap(getWeatherResponse -> {
+                if (getWeatherResponse != null && getWeatherResponse.getWeatherinfo()
+                    .getCity() != null) {
+                    return Observable.just(getWeatherResponse.getWeatherinfo());
+                } else {
+                    return Observable.error(new ServiceApiFail("error"));
+                }
+            });
     }
 
     @Override
-    public Observable<UserInfo> getUserInfo(String username,String password) {
+    public Observable<UserInfo> getUserInfo(String username, String password) {
         return accountCloudDataSource.getUserInfo(username, password);
     }
 
@@ -96,8 +98,8 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<UserInfo> getUserInfo(String id) {
         return accountCloudDataSource.getUserInfo(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

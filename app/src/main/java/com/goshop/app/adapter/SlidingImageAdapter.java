@@ -20,19 +20,19 @@ import java.util.List;
 
 public class SlidingImageAdapter extends PagerAdapter {
 
+    IOnClick iOnClick;
+
     private Context context;
 
     private List<String> imageUrls;
 
-    interface IOnClick{
-        void onItemClick(View view,int position);
-    }
-    IOnClick iOnClick;
-
-    public SlidingImageAdapter(Context context, List<String> imageUrls,IOnClick iOnClick) {
+    public SlidingImageAdapter(Context context, List<String> imageUrls) {
         this.imageUrls = imageUrls;
         this.context = context;
-        this.iOnClick=iOnClick;
+    }
+
+    public void setiOnClick(IOnClick iOnClick) {
+        this.iOnClick = iOnClick;
     }
 
     @Override
@@ -50,7 +50,7 @@ public class SlidingImageAdapter extends PagerAdapter {
         view.addView(imageLayout, 0);
         RxView.clicks(imageView)
             .subscribe(v -> {
-                iOnClick.onItemClick(imageView,position);
+                iOnClick.onItemClick(imageView, position);
             });
         return imageLayout;
     }
@@ -72,5 +72,10 @@ public class SlidingImageAdapter extends PagerAdapter {
 
     @Override
     public void restoreState(Parcelable state, ClassLoader loader) {
+    }
+
+    interface IOnClick {
+
+        void onItemClick(View view, int position);
     }
 }

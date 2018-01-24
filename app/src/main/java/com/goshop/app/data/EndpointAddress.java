@@ -8,24 +8,34 @@ import com.goshop.app.BuildConfig;
 
 @SuppressWarnings("ALL")
 public class EndpointAddress {
+
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
+
     //todo wait for api
     public static final String REGISTER = "";
+
     //todo wait for api
     public static final String COMPLEMENT_EMAIL = "";
+
     //todo wait for api
     public static final String RESET_PASSWORD = "";
+
     //todo wait for api
     public static final String SEND_CONFIRMATION_LINK = "";
+
     //todo wait for api
     public static final String PRODUCT_DETAIL = "";
+
     //todo wait for api
     public static final String SEARCH_FILGER = "";
+
     //todo wait for api
     public static final String SEARCH_RESULT = "";
+
     //todo wait for api
     public static final String PROMOTION_LIST = "";
+
     public static final String PROMOTION_BANNER = "";
 
     public static String getFullUrl(String endpointUrl) {

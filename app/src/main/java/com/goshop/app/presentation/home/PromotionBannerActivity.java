@@ -27,7 +27,8 @@ import injection.modules.PresenterModule;
  * Created by img on 2018/1/22.
  */
 
-public class PromotionBannerActivity extends BaseActivity<PromotionContract.Presenter>  implements PromotionContract.View{
+public class PromotionBannerActivity extends BaseActivity<PromotionContract.Presenter> implements
+    PromotionContract.View {
 
     @BindView(R.id.recycler_promotion_banner)
     RecyclerView recyclerPromotionBanner;

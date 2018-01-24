@@ -102,11 +102,13 @@ public class ScreenHelper {
         return GoShopApplication.getAppContext().getResources().getString(id);
     }
 
-    public static int getStatusBarHeight(){
+    public static int getStatusBarHeight() {
         int result = 0;
-        int resourceId = GoShopApplication.getAppContext().getResources().getIdentifier("status_bar_height", "dimen", "android");
+        int resourceId = GoShopApplication.getAppContext().getResources()
+            .getIdentifier("status_bar_height", "dimen", "android");
         if (resourceId > 0) {
-            result = GoShopApplication.getAppContext().getResources().getDimensionPixelSize(resourceId);
+            result = GoShopApplication.getAppContext().getResources()
+                .getDimensionPixelSize(resourceId);
         }
         return result;
     }

@@ -17,13 +17,16 @@ import io.reactivex.observers.DisposableObserver;
  * Created by img on 2018/1/23.
  */
 
-public class PromotionPresenter extends RxPresenter<PromotionContract.View> implements PromotionContract.Presenter {
+public class PromotionPresenter extends RxPresenter<PromotionContract.View> implements
+    PromotionContract.Presenter {
+
     AccountRepository accountRepository;
 
     @Inject
     public PromotionPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
+
     @Override
     public void getPromotionList(Map<String, Object> params) {
         mView.showLoadingBar();
@@ -38,9 +41,9 @@ public class PromotionPresenter extends RxPresenter<PromotionContract.View> impl
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    if(throwable instanceof ServiceApiFail){
+                    if (throwable instanceof ServiceApiFail) {
                         mView.showFaildMessage(((ServiceApiFail) throwable).getErrorMessage());
-                    }else{
+                    } else {
                         mView.showNetwordErrorMessage();
                     }
                 }
@@ -67,9 +70,9 @@ public class PromotionPresenter extends RxPresenter<PromotionContract.View> impl
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    if(throwable instanceof ServiceApiFail){
+                    if (throwable instanceof ServiceApiFail) {
                         mView.showFaildMessage(((ServiceApiFail) throwable).getErrorMessage());
-                    }else{
+                    } else {
                         mView.showNetwordErrorMessage();
                     }
                 }

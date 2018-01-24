@@ -7,8 +7,11 @@ import java.util.List;
  */
 
 public class PromotionListResponse {
+
     private List<PromotionItem> promotionItems;
+
     private String bannerUrl;
+
     private String title;
 
     public List<PromotionItem> getPromotionItems() {
@@ -36,15 +39,24 @@ public class PromotionListResponse {
         this.title = title;
     }
 
-    public static class PromotionItem{
+    public static class PromotionItem {
+
         private String imageUrl;
+
         private String productName;
+
         private String productOldPrice;
+
         private String productCurrentPrice;
+
         private String productOff;
+
         private boolean isTvShow;
+
         private boolean isGiftShow;
+
         private boolean isBest;
+
         private boolean isNew;
 
         public String getImageUrl() {
@@ -119,7 +131,6 @@ public class PromotionListResponse {
             isNew = aNew;
         }
     }
-
 
 
 }

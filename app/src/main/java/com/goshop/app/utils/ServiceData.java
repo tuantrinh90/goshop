@@ -26,7 +26,6 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static List<MultipleItem> getBaseData() {
         List<MultipleItem> list = new ArrayList<>();
@@ -39,14 +38,13 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static List<MultipleItem> getTopBannerData() {
         List<MultipleItem> list = new ArrayList<>();
         //top banner
         MultipleItem multipleItemTopBanner = new MultipleItem(Const.HOME_TOP_BANNER, "");
 
-        List<MultipleItem.TopBanner> topBanner =new ArrayList<>();
+        List<MultipleItem.TopBanner> topBanner = new ArrayList<>();
 
         MultipleItem.TopBanner topbanner1 = new MultipleItem.TopBanner();
         topbanner1.setImg(Const.HOME_TEST_IMG1);
@@ -68,7 +66,6 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static List<MultipleItem> getContentVideoData() {
         List<MultipleItem> list = new ArrayList<>();
@@ -112,7 +109,6 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static List<MultipleItem> getBottomSlidedata() {
         List<MultipleItem> multipleItems = new ArrayList<>();
@@ -150,24 +146,25 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
-    public static Observable<PromotionListResponse> getPromotionListData(){
-        PromotionListResponse promotionLandingResponses=new PromotionListResponse();
-        List<PromotionListResponse.PromotionItem> promotionItems=new ArrayList<>();
-        for (int i=0;i<20;i++){
-            PromotionListResponse.PromotionItem response=new PromotionListResponse.PromotionItem();
+    public static Observable<PromotionListResponse> getPromotionListData() {
+        PromotionListResponse promotionLandingResponses = new PromotionListResponse();
+        List<PromotionListResponse.PromotionItem> promotionItems = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            PromotionListResponse.PromotionItem response = new PromotionListResponse
+                .PromotionItem();
             response.setImageUrl(Const.HOME_TEST_IMG3);
             response.setProductCurrentPrice("RM 120.00");
-            response.setProductName("new balabce new balabce new balabce new balabce new balabce new balabce");
+            response.setProductName(
+                "new balabce new balabce new balabce new balabce new balabce new balabce");
             response.setProductOldPrice("RM 180.00");
             response.setProductOff("30% OFF");
-            if (i%2==0){
+            if (i % 2 == 0) {
                 response.setBest(true);
                 response.setGiftShow(false);
                 response.setNew(true);
                 response.setTvShow(false);
-            }else {
+            } else {
                 response.setBest(false);
                 response.setGiftShow(true);
                 response.setNew(false);
@@ -176,14 +173,15 @@ public class ServiceData {
             promotionItems.add(response);
         }
         promotionLandingResponses.setPromotionItems(promotionItems);
-        promotionLandingResponses.setTitle(GoShopApplication.getAppContext().getString(R.string.promotion_list_symbol));
+        promotionLandingResponses
+            .setTitle(GoShopApplication.getAppContext().getString(R.string.promotion_list_symbol));
         promotionLandingResponses.setBannerUrl(Const.BANNER_IMG1);
         return Observable.just(promotionLandingResponses);
     }
 
-    public static Observable<PromotionBannerResponse> getPromotionBannerLists(){
-        PromotionBannerResponse promotionBannerResponse=new PromotionBannerResponse();
-        List<String> imageUrls=new ArrayList<>();
+    public static Observable<PromotionBannerResponse> getPromotionBannerLists() {
+        PromotionBannerResponse promotionBannerResponse = new PromotionBannerResponse();
+        List<String> imageUrls = new ArrayList<>();
         imageUrls.add(Const.BANNER_IMG1);
         imageUrls.add(Const.BANNER_IMG2);
         imageUrls.add(Const.BANNER_IMG3);
@@ -191,7 +189,6 @@ public class ServiceData {
         promotionBannerResponse.setImageUrl(imageUrls);
         return Observable.just(promotionBannerResponse);
     }
-
 
 
 }

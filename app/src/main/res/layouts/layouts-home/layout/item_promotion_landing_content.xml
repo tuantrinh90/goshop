@@ -83,8 +83,9 @@
 
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_promotion_item_product_name"
-            style="@style/homeItemProductName" android:layout_below="@+id/rl_promotion_image_root"
-            android:layout_alignParentLeft="true" android:layout_alignParentStart="true"/>
+            style="@style/homeItemProductName"
+            android:layout_below="@+id/rl_promotion_image_root"
+        />
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_promotion_item_product_old_price"
             android:layout_below="@id/tv_promotion_item_product_name"
