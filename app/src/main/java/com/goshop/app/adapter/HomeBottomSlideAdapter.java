@@ -3,7 +3,7 @@ package com.goshop.app.adapter;
 import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
 import com.goshop.app.R;
-import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.data.model.response.HomeResponse;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,10 +24,10 @@ import butterknife.ButterKnife;
  */
 public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
 
-    List<MultipleItem.BottomSlide> bottomSlides = new ArrayList<>();
+    List<HomeResponse.BottomSlide> bottomSlides = new ArrayList<>();
 
     public HomeBottomSlideAdapter(
-        List<MultipleItem.BottomSlide> bottomSlides) {
+        List<HomeResponse.BottomSlide> bottomSlides) {
         this.bottomSlides = bottomSlides;
     }
 
@@ -86,7 +86,7 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MultipleItem.BottomSlide bottomSlide) {
+        void bindingData(HomeResponse.BottomSlide bottomSlide) {
             Glide.with(ivBottomHeader.getContext()).load(bottomSlide.getHeadImageUrl())
                 .into(ivBottomHeader);
         }
@@ -102,7 +102,7 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MultipleItem.BottomSlide bottomSlide) {
+        void bindingData(HomeResponse.BottomSlide bottomSlide) {
             tvTitle.setText(bottomSlide.getSlideTitle());
         }
     }
@@ -117,7 +117,7 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MultipleItem.BottomSlide bottomSlide) {
+        void bindingData(HomeResponse.BottomSlide bottomSlide) {
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
             recyclerView

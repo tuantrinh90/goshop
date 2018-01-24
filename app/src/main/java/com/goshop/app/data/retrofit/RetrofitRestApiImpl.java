@@ -12,6 +12,7 @@ import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.response.HomeResponse;
 
 import java.util.Map;
 
@@ -51,6 +52,12 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<UserInfo> registerRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.REGISTER);
         return retrofitRestApi.registerRequest(url, params);
+    }
+
+    @Override
+    public Observable<HomeResponse> homeRequest(Map<String, Object> params) {
+        String url=EndpointAddress.getFullUrl(EndpointAddress.HOME_REQUEST);
+        return retrofitRestApi.homeRequest(url,params);
     }
 
     @Override

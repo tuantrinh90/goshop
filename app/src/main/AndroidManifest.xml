@@ -26,7 +26,7 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_id"/>
 
-        <activity android:name=".presentation.home.HomeActivity">
+        <activity android:name=".presentation.home.DemoActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -37,7 +37,7 @@
 
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
-        <activity android:name=".presentation.home.MainHomeActivity"/>
+        <activity android:name=".presentation.home.HomeActivity"/>
 
         <!-- FACEBOOK -->
         <activity
@@ -68,7 +68,9 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.search.SearchResultActivity"
-            android:theme="@style/WhiteBackground"/>
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/WhiteBackground">
+        </activity>
 
 
     </application>

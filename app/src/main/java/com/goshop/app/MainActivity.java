@@ -1,17 +1,17 @@
 package com.goshop.app;
 
-import android.os.Bundle;
-
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomBoldButton;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.data.model.Weather;
-import com.goshop.app.presentation.home.HomeContract;
+import com.goshop.app.presentation.home.DemoContract;
+
+import android.os.Bundle;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainActivity extends BaseActivity implements HomeContract.View {
+public class MainActivity extends BaseActivity implements DemoContract.View {
 
     @BindView(R.id.tv_c)
     CustomBoldButton tvC;
@@ -45,7 +45,7 @@ public class MainActivity extends BaseActivity implements HomeContract.View {
 
     @Override
     public int getContentView() {
-        return R.layout.activity_main;
+        return R.layout.activity_demo;
     }
 
     @Override

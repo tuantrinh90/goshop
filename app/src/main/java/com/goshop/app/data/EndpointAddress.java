@@ -11,6 +11,8 @@ public class EndpointAddress {
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
     //todo wait for api
+    public static final String HOME_REQUEST = "";
+    //todo wait for api
     public static final String REGISTER = "";
     //todo wait for api
     public static final String COMPLEMENT_EMAIL = "";

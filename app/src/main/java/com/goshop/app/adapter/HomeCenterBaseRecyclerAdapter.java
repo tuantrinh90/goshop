@@ -2,7 +2,7 @@ package com.goshop.app.adapter;
 
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
-import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.data.model.response.HomeResponse;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -24,10 +24,10 @@ import butterknife.ButterKnife;
  */
 public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
 
-    List<MultipleItem.CenterVideo> centerVideos = new ArrayList<>();
+    List<HomeResponse.CenterVideo> centerVideos = new ArrayList<>();
 
     public HomeCenterBaseRecyclerAdapter(
-        List<MultipleItem.CenterVideo> centerVideos) {
+        List<HomeResponse.CenterVideo> centerVideos) {
         this.centerVideos = centerVideos;
     }
 

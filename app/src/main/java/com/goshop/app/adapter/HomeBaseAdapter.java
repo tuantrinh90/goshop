@@ -5,7 +5,7 @@ import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomPagerIndicator;
-import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.utils.PagingScrollHelper;
 import com.goshop.app.utils.RecyclerUtils;
 import com.goshop.app.widget.BannerAutoPlayHelper;
@@ -22,7 +22,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,11 +33,11 @@ import butterknife.ButterKnife;
 
 public class HomeBaseAdapter extends RecyclerView.Adapter {
 
-    List<MultipleItem> multipleItems = new ArrayList<>();
+    HomeResponse homeResponse;
     private static final int SUM_PAGE=4;
 
-    public HomeBaseAdapter(List<MultipleItem> data) {
-        this.multipleItems = data;
+    public HomeBaseAdapter(HomeResponse data) {
+        this.homeResponse = data;
     }
 
     @Override
@@ -78,13 +77,13 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof TopBannerHolder) {
-            ((TopBannerHolder) holder).bindingData(multipleItems.get(0), position);
+            ((TopBannerHolder) holder).bindingData(homeResponse.getTopBanner(), position);
         } else if (holder instanceof TopCategoryHolder) {
             ((TopCategoryHolder) holder).bindingData();
         } else if (holder instanceof CenterVideoHolder) {
-            ((CenterVideoHolder) holder).bindingData(multipleItems.get(2), position);
+            ((CenterVideoHolder) holder).bindingData(homeResponse.getCenterVideo(), position);
         } else if (holder instanceof BottomSlideHolder) {
-            ((BottomSlideHolder) holder).bindingData(multipleItems.get(3).getBottomSlide());
+            ((BottomSlideHolder) holder).bindingData(homeResponse.getBottomSlide());
         }
     }
 
@@ -106,13 +105,12 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MultipleItem multipleItem, int positon) {
+        void bindingData(HomeResponse.TopBanner topBanner, int positon) {
             vpHomeHeader.setAdapter(new SlidingImageAdapter(vpHomeHeader.getContext(),
-                multipleItem.getTopBanner().getImgs()));
+                topBanner.getImgs()));
             customPagerIndicator.setViewPager(vpHomeHeader);
             BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(vpHomeHeader);
             bannerAutoPlayHelper.autoPlay();
-            multipleItem.getTopBanner();
         }
 
     }
@@ -186,12 +184,12 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MultipleItem multipleItem, int position) {
+        void bindingData(List<HomeResponse.CenterVideo> centerVideo, int position) {
             PagingScrollHelper scrollHelper = new PagingScrollHelper();
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
             recyclerView
-                .setAdapter(new HomeCenterBaseRecyclerAdapter(multipleItem.getCenterVideo()));
+                .setAdapter(new HomeCenterBaseRecyclerAdapter(centerVideo));
             scrollHelper.setUpRecycleView(recyclerView);
             scrollHelper.setOnPageChangeListener(this);
             resetTextState();
@@ -252,7 +250,7 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(List<MultipleItem.BottomSlide> bottomSlides) {
+        void bindingData(List<HomeResponse.BottomSlide> bottomSlides) {
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext()));
             recyclerView
                 .setAdapter(new HomeBottomSlideAdapter(bottomSlides));

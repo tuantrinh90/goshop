@@ -9,7 +9,9 @@ import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.utils.ServiceData;
 
 import java.util.Map;
 
@@ -47,6 +49,13 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<UserInfo> registerRequest(Map<String, Object> params) {
         return restApi.registerRequest(params);
+    }
+
+    @Override
+    public Observable<HomeResponse> homeRequest(Map<String, Object> params) {
+        //TODO joyson temp code
+//        return restApi.homeRequest(params);
+        return ServiceData.getBaseData();
     }
 
     @Override

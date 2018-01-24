@@ -3,11 +3,14 @@ package com.goshop.app.utils;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.graphics.Point;
 import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
@@ -15,7 +18,10 @@ import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
+import android.widget.TextView;
 
 public class ScreenHelper {
 
@@ -128,5 +134,30 @@ public class ScreenHelper {
         DrawableCompat.setTintList(wrappedDrawable, colorList);
         return wrappedDrawable;
     }
+
+
+    /**
+     * set common btn normal and press style
+     */
+    @SuppressLint("NewApi")
+    public static  void setSoildButtonColorStyle(View view,int defColor,int pressColor){
+        StateListDrawable drawable=new StateListDrawable();
+        GradientDrawable normal= new GradientDrawable();
+        normal.setColor(ContextCompat.getColor(GoShopApplication.getAppContext(),defColor));
+        normal.setCornerRadius(dip2px(GoShopApplication.getAppContext(),2));
+        GradientDrawable  pressed= new GradientDrawable();
+        pressed.setCornerRadius(dip2px(GoShopApplication.getAppContext(),2));
+        pressed.setColor(ContextCompat.getColor(GoShopApplication.getAppContext(),pressColor));
+        drawable.addState(new int[]{android.R.attr.state_pressed,android.R.attr.state_enabled},pressed);
+        drawable.addState(new int[]{android.R.attr.state_enabled},normal);
+        drawable.addState(new int[]{},normal);
+        view.setBackground(drawable);
+        if (view instanceof TextView ){
+            ((TextView)view).setTextColor(ContextCompat.getColor(GoShopApplication.getAppContext(),R.color.white));
+        }else if (view instanceof Button){
+            ((Button)view).setTextColor(ContextCompat.getColor(GoShopApplication.getAppContext(),R.color.white));
+        }
+    }
+
 
 }

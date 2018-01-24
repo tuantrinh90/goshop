@@ -8,6 +8,7 @@ import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+import com.goshop.app.data.model.response.HomeResponse;
 
 import java.util.Map;
 
@@ -26,6 +27,8 @@ public interface AccountDataSource {
     Observable<GetWeatherResponse> getWeather();
 
     Observable<UserInfo> registerRequest(Map<String, Object> params);
+
+    Observable<HomeResponse> homeRequest(Map<String, Object> params);
 
     Observable<ComplementEmailReponse> complementEmailRequest(Map<String, Object> params);
 

@@ -1,6 +1,5 @@
 package com.goshop.app.common.view;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.utils.ScreenHelper;
 

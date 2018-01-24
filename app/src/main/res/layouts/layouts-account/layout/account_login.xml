@@ -6,13 +6,16 @@
     android:layout_width="match_parent"
     android:background="@android:color/white"
     android:layout_height="match_parent">
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar_image_title_image"/>
     <ImageView
         android:id="@+id/iv_login_logo"
+        android:layout_below="@id/toolbar"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="60dp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/ic_launcher"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:background="@mipmap/ic_app_logo"
     />
 
     <RelativeLayout
@@ -109,7 +112,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/rl_password_root"
         android:text="@string/login_login"
-        android:background="@drawable/big_button_style_config"
+        android:background="@drawable/login_button_style_config"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -132,9 +135,7 @@
         android:layout_height="wrap_content">
         <View
             android:layout_centerVertical="true"
-            android:background="@color/colorAccent"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/line_height"/>
+            style="@style/homeWrapWidthLine"/>
         <com.goshop.app.common.view.CustomTextView
             android:text="@string/login_or"
             android:padding="24dp"
@@ -150,24 +151,42 @@
         android:id="@+id/rl_login_facebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-        >
+        <!--<RelativeLayout-->
+            <!--android:id="@+id/"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:layout_centerHorizontal="true"-->
+        <!--&gt;-->
+
+            <!--<com.goshop.app.common.view.CustomButton-->
+                <!--android:id="@+id/btn_login_facebook"-->
+                <!--android:layout_margin="@dimen/activity_horizontal_margin"-->
+                <!--android:layout_centerHorizontal="true"-->
+                <!--android:text="@string/login_facebook"-->
+                <!--android:background="@drawable/login_button_style_config"-->
+                <!--android:textColor="@color/white"-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"/>-->
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_login_facebook"
+                android:layout_margin="@dimen/activity_horizontal_margin"
+                android:layout_centerHorizontal="true"
+                android:text="@string/login_facebook"
+                android:background="@drawable/login_button_style_config"
+                android:textColor="@color/white"
+                android:layout_width="match_parent"
+                android:gravity="center"
+                android:layout_height="45dp"/>
+
             <ImageView
                 android:id="@+id/iv_login_facebook_icon"
                 android:background="@drawable/ic_launcher_background"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="@dimen/size_40"
                 android:layout_width="25dp"
                 android:layout_height="25dp"/>
-            <com.goshop.app.common.view.CustomTextView
-                android:textColor="@color/colorAccent"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_toRightOf="@id/iv_login_facebook_icon"
-                android:text="@string/login_facebook"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"/>
-        </RelativeLayout>
+        <!--</RelativeLayout>-->
     </RelativeLayout>
 
     <RelativeLayout
@@ -176,9 +195,7 @@
         android:layout_height="wrap_content">
         <View
             android:id="@+id/view_bottom_line"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/line_height"
-            android:background="@color/pinkishGrey"
+            style="@style/homeWrapWidthLine"
         />
         <RelativeLayout
             android:layout_margin="10dp"
@@ -192,7 +209,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_bottom_describe"
-                android:textColor="@color/colorAccent"
+                android:textColor="@color/blackTrans87"
             />
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_register"
