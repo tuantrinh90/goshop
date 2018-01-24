@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.adapter.HomeBaseAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.utils.ServiceData;
 
 import android.os.Bundle;
@@ -41,11 +42,14 @@ public class MainHomeActivity extends BaseActivity {
     @BindView(R.id.iv_user_img)
     ImageView ivUserImg;
 
-    @BindView(R.id.tv_user_name)
-    TextView tvUserName;
+    @BindView(R.id.tv_sidemenu_login_name)
+    TextView tvLoginName;
 
-    @BindView(R.id.ll_profile)
-    LinearLayout llProfile;
+    @BindView(R.id.tv_sidemenu_unlogin_name)
+    TextView tvUnloginName;
+
+    @BindView(R.id.rl_profile)
+    RelativeLayout rlProfile;
 
     @BindView(R.id.iv_home)
     ImageView ivHome;
@@ -65,14 +69,14 @@ public class MainHomeActivity extends BaseActivity {
     @BindView(R.id.rl_drawer_categorytree)
     RelativeLayout rlDrawerCategorytree;
 
-    @BindView(R.id.iv_reward)
-    ImageView ivReward;
+    @BindView(R.id.iv_go_loyalty)
+    ImageView ivGoLoyalty;
 
-    @BindView(R.id.tv_reward)
-    TextView tvReward;
+    @BindView(R.id.tv_go_loyalty)
+    TextView tvGoLoyalty;
 
-    @BindView(R.id.rl_drawer_reward)
-    RelativeLayout rlDrawerReward;
+    @BindView(R.id.rl_drawer_go_loyalty)
+    RelativeLayout rlDrawerGoLoyalty;
 
     @BindView(R.id.iv_shopping_cart)
     ImageView ivShoppingCart;
@@ -138,8 +142,19 @@ public class MainHomeActivity extends BaseActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initToolBar();
+        initSlideImgAndText();
         initRecycler();
+        resetSelect();
+    }
 
+    private void initSlideImgAndText() {
+        ivHome.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_home_nor));
+        ivCategoryTree.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_categories_nor));
+        ivGoLoyalty.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_go_loyalty_nor));
+        ivShoppingCart.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_shopping_cart_nor));
+        ivWishlist.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_wishlist_nor));
+        ivOrderlist.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_myorders_nor));
+        ivNotification.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_notification_nor));
     }
 
     @Override
@@ -167,8 +182,8 @@ public class MainHomeActivity extends BaseActivity {
         rvHome.setAdapter(homeBaseAdapter);
     }
 
-    @OnClick({R.id.rl_image_left,R.id.rl_image_right,R.id.ll_profile, R.id.rl_drawer_home, R.id.rl_drawer_categorytree, R.id
-        .rl_drawer_reward, R.id.rl_drawer_shoppingcart, R.id.rl_drawer_wishlist, R.id
+    @OnClick({R.id.rl_image_left,R.id.rl_image_right,R.id.rl_profile, R.id.rl_drawer_home, R.id.rl_drawer_categorytree, R.id
+        .rl_drawer_go_loyalty, R.id.rl_drawer_shoppingcart, R.id.rl_drawer_wishlist, R.id
         .rl_drawer_order, R.id.rl_drawer_notification, R.id.tv_help_support, R.id.tv_setting})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -177,27 +192,92 @@ public class MainHomeActivity extends BaseActivity {
                 break;
             case R.id.rl_image_right:
                 break;
-            case R.id.ll_profile:
+            case R.id.rl_profile:
                 break;
             case R.id.rl_drawer_home:
+                resetSelect();
+                rlDrawerHome.setSelected(true);
+                ivHome.setSelected(true);
+                tvHome.setSelected(true);
                 break;
             case R.id.rl_drawer_categorytree:
+                resetSelect();
+                ivCategoryTree.setSelected(true);
+                tvCategoryTree.setSelected(true);
+                rlDrawerCategorytree.setSelected(true);
                 break;
-            case R.id.rl_drawer_reward:
+            case R.id.rl_drawer_go_loyalty:
+                resetSelect();
+                ivGoLoyalty.setSelected(true);
+                tvGoLoyalty.setSelected(true);
+                rlDrawerGoLoyalty.setSelected(true);
                 break;
             case R.id.rl_drawer_shoppingcart:
+                resetSelect();
+                ivShoppingCart.setSelected(true);
+                tvShoppingCart.setSelected(true);
+                rlDrawerShoppingcart.setSelected(true);
                 break;
             case R.id.rl_drawer_wishlist:
+                resetSelect();
+                ivWishlist.setSelected(true);
+                tvWishlist.setSelected(true);
+                rlDrawerWishlist.setSelected(true);
                 break;
             case R.id.rl_drawer_order:
+                resetSelect();
+                ivOrderlist.setSelected(true);
+                tvOrder.setSelected(true);
+                rlDrawerOrder.setSelected(true);
                 break;
             case R.id.rl_drawer_notification:
+                resetSelect();
+                ivNotification.setSelected(true);
+                tvNotification.setSelected(true);
+                rlDrawerNotification.setSelected(true);
                 break;
             case R.id.tv_help_support:
+                resetSelect();
+                tvHelpSupport.setSelected(true);
                 break;
             case R.id.tv_setting:
+                resetSelect();
+                tvSetting.setSelected(true);
                 break;
         }
+    }
+
+    private void resetSelect(){
+        ivHome.setSelected(false);
+        tvHome.setSelected(false);
+        rlDrawerHome.setSelected(false);
+
+        ivCategoryTree.setSelected(false);
+        tvCategoryTree.setSelected(false);
+        rlDrawerCategorytree.setSelected(false);
+
+        ivGoLoyalty.setSelected(false);
+        tvGoLoyalty.setSelected(false);
+        rlDrawerGoLoyalty.setSelected(false);
+
+        ivShoppingCart.setSelected(false);
+        tvShoppingCart.setSelected(false);
+        rlDrawerShoppingcart.setSelected(false);
+
+        ivWishlist.setSelected(false);
+        tvWishlist.setSelected(false);
+        rlDrawerWishlist.setSelected(false);
+
+        ivOrderlist.setSelected(false);
+        tvOrder.setSelected(false);
+        rlDrawerOrder.setSelected(false);
+
+        ivNotification.setSelected(false);
+        tvNotification.setSelected(false);
+        rlDrawerNotification.setSelected(false);
+
+        tvHelpSupport.setSelected(false);
+        tvSetting.setSelected(false);
     }
 
     public DrawerLayout getDrawerLayout() {

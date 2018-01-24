@@ -21,12 +21,15 @@
 
 
     <color name="transparent">#00000000</color>
+    <color name="transparent20">#33000000</color>
     <!--black -->
     <color name="black">#000000</color>
     <color name="blackTrans12">#1f000000</color>
     <color name="blackTrans38">#62000000</color>
+    <color name="blackTrans54">#8a000000</color>
     <color name="blackTrans87">#de000000</color>
-    <color name="blackTrans89">#89000000</color>
+    <color name="blackStatusBar">#494949</color>
+
     <!-- white -->
     <color name="white">#ffffff</color>
     <color name="whiteTrans18">#2fffffff</color>
@@ -39,6 +42,9 @@
     <color name="parting_line">#1d000000</color>
     <color name="grey_background">#c9c9c9</color>
     <color name="grey_interval">#F1F1F1</color>
+    <color name="grey_slidemenu_selected_bg">#26cccccc</color>
+
+
 
 
     <!-- green -->
