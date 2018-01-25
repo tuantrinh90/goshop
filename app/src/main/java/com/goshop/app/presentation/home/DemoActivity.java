@@ -30,11 +30,13 @@ public class DemoActivity extends BaseActivity<DemoContract.Presenter> implement
 
     @Override
     public void showWeather(Weather weather) {
+        //TODO temp code
         Toast.makeText(this, "wather:" + weather.getTemp1(), Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void showNetwordErrorMessage() {
+        //TODO temp code
         Toast.makeText(this, "netword error", Toast.LENGTH_LONG).show();
     }
 

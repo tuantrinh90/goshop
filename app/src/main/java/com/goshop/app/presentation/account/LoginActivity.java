@@ -264,8 +264,4 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         Toast.makeText(this, ScreenHelper.getString(R.string.FB_Login_tips_error),
             Toast.LENGTH_SHORT).show();
     }
-
-    @OnClick()
-    public void onViewClicked() {
-    }
 }
