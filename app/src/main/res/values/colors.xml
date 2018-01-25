@@ -52,8 +52,8 @@
 
     <!--facebook -->
     <color name="facebook">#3A5899</color>
-
-
+    <color name="transparent60Percent">#99000000</color>
+    <color name="transparent80Percent">#CC000000</color>
 
 
 </resources>

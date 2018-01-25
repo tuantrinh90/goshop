@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:CustomTitleDelEditText="http://schemas.android.com/apk/res-auto"
     android:focusableInTouchMode="true"
     android:focusable="true"
     android:orientation="vertical">
@@ -10,61 +11,31 @@
     <include
         layout="@layout/toolbar_img_text_img_close"/>
 
-    <RelativeLayout
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/color_main_grey"/>
+
+    <com.goshop.app.common.CustomTitleDelEditText
+        android:id="@+id/ctd_et_confirmation_link"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_20"
-        android:layout_marginRight="@dimen/size_16"
-        android:layout_marginLeft="@dimen/size_16">
+        android:layout_marginTop="@dimen/size_40"
+        android:layout_marginLeft="@dimen/size_20"
+        android:layout_marginRight="@dimen/size_20"
+        CustomTitleDelEditText:et_hint="@string/email_format"
+    />
 
-        <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_send_link_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:textColor="@android:color/black"
-            android:textSize="@dimen/size_font_16"
-            android:text="@string/email"
-            android:visibility="gone"/>
-
-        <com.goshop.app.common.view.CustomEditText
-            android:id="@+id/et_send_confirmation_link_email"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_48"
-            android:layout_below="@id/tv_send_link_email"
-            android:background="@drawable/bg_edittext_grayline"
-            android:hint="@string/email_format"
-            android:inputType="textEmailAddress"
-            android:padding="@dimen/size_8"
-            android:maxLines="1"
-            android:textSize="@dimen/size_font_16"
-            android:textColorHint="@color/pinkishGrey"
-            android:textColor="@android:color/black"
-            android:textCursorDrawable="@null"
-            android:imeOptions="actionDone"/>
-
-        <ImageView
-            android:id="@+id/iv_send_email_delete"
-            android:layout_width="@dimen/size_24"
-            android:layout_height="@dimen/size_24"
-            android:layout_below="@id/tv_send_link_email"
-            android:layout_centerVertical="true"
-            android:layout_alignParentRight="true"
-            android:layout_marginTop="@dimen/size_8"
-            android:visibility="gone"
-            android:src="@mipmap/del"
-            android:contentDescription="@string/app_name" android:layout_alignParentEnd="true"/>
-
-    </RelativeLayout>
-
-
-    <com.goshop.app.common.view.CustomBoldButton
-        android:id="@+id/btn_send_confirmation_link_submit"
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_btn_send_confirmation_link_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/selector_btn_gray"
-        android:layout_marginTop="@dimen/size_30"
-        android:layout_marginLeft="@dimen/size_16"
-        android:layout_marginRight="@dimen/size_16"
+        android:background="@drawable/bg_btn_round_pink"
+        android:layout_marginTop="@dimen/size_54"
+        android:layout_marginLeft="@dimen/size_20"
+        android:layout_marginRight="@dimen/size_20"
+        android:padding="@dimen/size_12"
+        android:gravity="center"
         android:textColor="@android:color/white"
         android:text="@string/submit"
         android:textSize="@dimen/size_font_18"/>

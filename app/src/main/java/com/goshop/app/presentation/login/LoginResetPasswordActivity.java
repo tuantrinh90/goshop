@@ -3,21 +3,19 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldButton;
-import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.CustomTitleDelEditText;
+import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.view.inputmethod.EditorInfo;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -31,20 +29,11 @@ import injection.modules.PresenterModule;
 public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordContract
     .Presenter> implements LoginResetPasswordContract.View, ToastUtil.OnToastListener {
 
-    @BindView(R.id.btn_reset_password_submit)
-    CustomBoldButton btnResetPasswordSubmit;
+    @BindView(R.id.ctd_et_reset_pwd)
+    CustomTitleDelEditText ctdEtResetPwd;
 
-    @BindView(R.id.et_reset_password_email)
-    CustomEditText etResetPasswordEmail;
-
-    @BindView(R.id.iv_reset_password_delete)
-    ImageView ivResetPasswordDelete;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.tv_reset_password_email)
-    CustomTextView tvResetPasswordEmail;
+    @BindView(R.id.tv_btn_reset_password_submit)
+    CustomBoldTextView tvBtnResetPasswordSubmit;
 
     private ToastUtil toastUtil;
 
@@ -65,11 +54,10 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
 
     @Override
     public void inject() {
-        //TODO(helen):this is wait for design
-        toolbar.setBackgroundColor(getResources().getColor(R.color.pinkishGrey));
         hideRightMenu();
         initPresenter();
-        editActionListener();
+        initEditText();
+        toastUtil = new ToastUtil(this, this);
     }
 
     private void initPresenter() {
@@ -80,9 +68,10 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
             .inject(this);
     }
 
-    private void editActionListener() {
-        EditTextUtil.deleteImageShowListener(etResetPasswordEmail, ivResetPasswordDelete);
-        EditTextUtil.emailFoucsChangedListener(etResetPasswordEmail, tvResetPasswordEmail);
+    private void initEditText() {
+        ctdEtResetPwd.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        ctdEtResetPwd.initImeOptions(EditorInfo.IME_ACTION_DONE);
+        ctdEtResetPwd.focusListener(CustomTitleDelEditText.EDITTEXT_EMAIL);
     }
 
     @Override
@@ -92,15 +81,10 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
     }
 
     private void showToast() {
-        //todo(helen) wait for design then will replase this hard code
-        @SuppressLint("ShowToast") Toast toast = Toast
-            .makeText(this, "Thanks for registering on GO SHOP", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toastUtil = ToastUtil.getInstance(this, this, toast);
-        toastUtil.showToastCustomTime(ToastUtil.SHOW_TIME);
+        toastUtil.showResetToast();
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.btn_reset_password_submit})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_reset_password_submit})
     public void onResetPwdClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -110,11 +94,14 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
                 }
                 finish();
                 break;
-            case R.id.btn_reset_password_submit:
+            case R.id.tv_btn_reset_password_submit:
                 //TODO(helen)wait for api
-                EditTextUtil.eidtLoseFocus(btnResetPasswordSubmit);
-                String email = etResetPasswordEmail.getText().toString();
-                //mPresenter.resetPasswordRequest(null);
+                EditTextUtil.eidtLoseFocus(tvBtnResetPasswordSubmit);
+                String email = ctdEtResetPwd.getText();
+                if(!TextUtils.isEmpty(email)) {
+                    mPresenter.resetPasswordRequest(null);
+                }
+
                 break;
         }
     }

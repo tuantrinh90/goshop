@@ -178,6 +178,12 @@
     <style name="WhiteBackground" parent="AppTheme">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
+    
+    <declare-styleable name="CustomTitleDelEditText">
+        <attr name="et_hint" format="reference" />
+        <attr name="et_password" format="boolean" />
+
+    </declare-styleable>
 
 
     <style name="PopMenuAnimation">

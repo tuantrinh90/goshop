@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/rl_layout_search"
     android:layout_width="match_parent"
     android:background="@drawable/drawable_white_bottom_line"
@@ -15,7 +16,9 @@
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/size_8"
         android:background="@mipmap/search"
-        android:contentDescription="@string/app_name"/>
+        android:contentDescription="@string/app_name"
+        android:layout_alignParentStart="true"
+        android:layout_marginStart="@dimen/size_8"/>
 
     <ImageView
         android:id="@+id/iv_search_del"
@@ -27,7 +30,9 @@
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/size_8"
         android:background="@mipmap/del"
-        android:contentDescription="@string/app_name"/>
+        android:contentDescription="@string/app_name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/size_8"/>
 
     <com.goshop.app.common.view.CustomEditText
         android:id="@+id/et_search_search"
@@ -44,6 +49,9 @@
         android:background="@null"
         android:gravity="left"
         android:inputType="text"
-        android:imeOptions="actionSearch"/>
+        android:imeOptions="actionSearch"
+        android:layout_toEndOf="@id/iv_search_left"
+        android:layout_toStartOf="@id/iv_search_del"
+        tools:ignore="RtlHardcoded"/>
 
 </RelativeLayout>
