@@ -1,7 +1,12 @@
 package com.goshop.app.utils;
 
-import android.annotation.SuppressLint;
+import com.goshop.app.R;
+import com.goshop.app.presentation.login.LoginComplementEmailActivity;
+
 import android.content.Context;
+import android.view.Gravity;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.Toast;
 
 import java.util.Timer;
@@ -17,35 +22,47 @@ public class ToastUtil {
 
     public static final int SHOW_TIME = 3000;
 
-    @SuppressLint("StaticFieldLeak")
-    private static ToastUtil instance;
-
     private final Timer cancelTimer = new Timer();
 
     private final Timer timer = new Timer();
-
-    private Context context;
 
     private Toast toast;
 
     private OnToastListener toastListener;
 
-    private ToastUtil(Context context, OnToastListener toastListener, Toast toast) {
+    private Context context;
+
+    public ToastUtil(Context context, OnToastListener toastListener) {
         this.context = context;
         this.toastListener = toastListener;
-        this.toast = toast;
+        this.toast = new Toast(context);
     }
 
-    public static ToastUtil getInstance(Context context, OnToastListener toastListener,
-        Toast toast) {
-        if (instance == null) {
-            return new ToastUtil(context, toastListener, toast);
-        }
-        return instance;
+    public void showThanksToast() {
+        View toastView = LayoutInflater.from(context)
+            .inflate(R.layout.layout_toast_complement, null);
+        toast.setView(toastView);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        showToastCustomTime(SHOW_TIME);
     }
 
-    public void showToastCustomTime(final int cnt) {
+    public void showResetToast() {
+        View toastView = LayoutInflater.from(context)
+            .inflate(R.layout.layout_toast_reset, null);
+        toast.setView(toastView);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        showToastCustomTime(SHOW_TIME);
+    }
 
+    public void showLinkToast() {
+        View toastView = LayoutInflater.from(context)
+            .inflate(R.layout.layout_toast_link, null);
+        toast.setView(toastView);
+        toast.setGravity(Gravity.CENTER, 0, 0);
+        showToastCustomTime(SHOW_TIME);
+    }
+
+    private void showToastCustomTime(final int cnt) {
         timer.schedule(new TimerTask() {
             @Override
             public void run() {

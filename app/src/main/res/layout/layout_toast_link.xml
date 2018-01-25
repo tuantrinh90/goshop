@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.goshop.app.common.view.CustomTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/size_38"
+    android:gravity="center"
+    android:paddingRight="@dimen/size_28"
+    android:paddingLeft="@dimen/size_28"
+    android:paddingTop="@dimen/size_24"
+    android:paddingBottom="@dimen/size_24"
+    android:background="@drawable/drawable_translate_round"
+    android:textColor="@android:color/white"
+    android:textSize="@dimen/size_font_14"
+    android:text="@string/email_is_sent"/>
+
