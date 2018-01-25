@@ -3,7 +3,6 @@ package com.goshop.app.utils;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 
-import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.res.ColorStateList;
@@ -150,7 +149,6 @@ public class ScreenHelper {
     /**
      * set common btn normal and press style
      */
-    @SuppressLint("NewApi")
     public static  void setSoildButtonColorStyle(View view,int defColor,int pressColor){
         StateListDrawable drawable=new StateListDrawable();
         GradientDrawable normal= new GradientDrawable();
@@ -162,7 +160,11 @@ public class ScreenHelper {
         drawable.addState(new int[]{android.R.attr.state_pressed,android.R.attr.state_enabled},pressed);
         drawable.addState(new int[]{android.R.attr.state_enabled},normal);
         drawable.addState(new int[]{},normal);
-        view.setBackground(drawable);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            view.setBackground(drawable);
+        } else {
+            view.setBackgroundDrawable(drawable);
+        }
         if (view instanceof TextView ){
             ((TextView)view).setTextColor(ContextCompat.getColor(GoShopApplication.getAppContext(),R.color.white));
         }else if (view instanceof Button){
