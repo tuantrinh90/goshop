@@ -8,6 +8,8 @@ import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
 
@@ -31,28 +33,30 @@ public class AccountDataRepository implements AccountRepository {
     private AccountDataSource accountLocalDataSource;
 
     @Inject
-    public AccountDataRepository(@Named("cloudAccountDataSource") AccountDataSource accountCloudDataSource,@Named("localAccountDataSource") AccountDataSource accountLocalDataSource) {
+    public AccountDataRepository(
+        @Named("cloudAccountDataSource") AccountDataSource accountCloudDataSource,
+        @Named("localAccountDataSource") AccountDataSource accountLocalDataSource) {
         this.accountCloudDataSource = accountCloudDataSource;
         this.accountLocalDataSource = accountLocalDataSource;
     }
 
-
     @Override
     public Observable<Weather> getWeather() {
         return accountCloudDataSource.getWeather()
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .flatMap(getWeatherResponse -> {
-                    if(getWeatherResponse!=null&&getWeatherResponse.getWeatherinfo().getCity()!=null){
-                        return Observable.just(getWeatherResponse.getWeatherinfo());
-                    }else {
-                        return Observable.error(new ServiceApiFail("error"));
-                    }
-                });
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .flatMap(getWeatherResponse -> {
+                if (getWeatherResponse != null && getWeatherResponse.getWeatherinfo()
+                    .getCity() != null) {
+                    return Observable.just(getWeatherResponse.getWeatherinfo());
+                } else {
+                    return Observable.error(new ServiceApiFail("error"));
+                }
+            });
     }
 
     @Override
-    public Observable<UserInfo> getUserInfo(String username,String password) {
+    public Observable<UserInfo> getUserInfo(String username, String password) {
         return accountCloudDataSource.getUserInfo(username, password);
     }
 
@@ -94,7 +98,21 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<UserInfo> getUserInfo(String id) {
         return accountCloudDataSource.getUserInfo(id)
-                .subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread());
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
+        return accountCloudDataSource.promotionListRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
+        return accountCloudDataSource.promotionBannerRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
     }
 }

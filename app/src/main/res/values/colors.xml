@@ -10,6 +10,12 @@
     <color name="color_main_black">#000000</color>
     <color name="color_main_grey">#bcbcbc</color>
     <color name="brightSkyBlue">#00b6f1</color>
+    <color name="bluePoor">#00A9AC</color>
+    <color name="blueNormal">#27A9E1</color>
+    <color name="blueDark">#00609D</color>
+
+    <color name="yellowNormal">#FBAF3F</color>
+
     <color name="pinkishGrey">#bcbcbc</color>
     <color name="color_shadow_one">#00CCCCCC</color>
     <color name="color_shadow_two">#10CCCCCC</color>
@@ -42,7 +48,7 @@
 
 
     <!-- green -->
-    <color name="green_common">#009E82</color>
+    <color name="green_common">#8CC63E</color>
 
     <!--facebook -->
     <color name="facebook">#3A5899</color>

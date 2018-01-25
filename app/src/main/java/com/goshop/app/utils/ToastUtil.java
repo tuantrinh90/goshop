@@ -1,7 +1,6 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.R;
-import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 
 import android.content.Context;
 import android.view.Gravity;

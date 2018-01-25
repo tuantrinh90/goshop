@@ -8,6 +8,8 @@ import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.Map;
 
@@ -34,6 +36,10 @@ public interface AccountRepository {
     Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(Map<String, Object> params);
 
     Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
+
+    Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params);
+
+    Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
 
     Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params);
 

@@ -2,6 +2,8 @@ package injection.components;
 
 import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.home.HomeActivity;
+import com.goshop.app.presentation.home.PromotionBannerActivity;
+import com.goshop.app.presentation.home.PromotionLandingListActivity;
 import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 import com.goshop.app.presentation.login.LoginResetPasswordActivity;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
@@ -30,6 +32,10 @@ public interface PresenterComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(RegisterActivity registerActivity);
+
+    void inject(PromotionLandingListActivity promotionLandingListActivity);
+
+    void inject(PromotionBannerActivity promotionBannerActivity);
 
     void inject(LoginComplementEmailActivity complementEmailActivity);
 

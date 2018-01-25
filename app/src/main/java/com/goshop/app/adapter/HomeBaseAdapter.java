@@ -6,6 +6,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.utils.PageIntentUtils;
 import com.goshop.app.utils.PagingScrollHelper;
 import com.goshop.app.utils.RecyclerUtils;
 import com.goshop.app.widget.BannerAutoPlayHelper;
@@ -34,8 +35,9 @@ import butterknife.ButterKnife;
 
 public class HomeBaseAdapter extends RecyclerView.Adapter {
 
+    private static final int SUM_PAGE = 4;
+
     List<MultipleItem> multipleItems = new ArrayList<>();
-    private static final int SUM_PAGE=4;
 
     public HomeBaseAdapter(List<MultipleItem> data) {
         this.multipleItems = data;
@@ -65,7 +67,6 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.layout_home_bottom_sideslip_list_t4, parent, false);
                 viewHolder = new BottomSlideHolder(bottomSlide);
                 break;
-
         }
         return viewHolder;
     }
@@ -107,14 +108,28 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(MultipleItem multipleItem, int positon) {
-            vpHomeHeader.setAdapter(new SlidingImageAdapter(vpHomeHeader.getContext(),
-                multipleItem.getTopBanner().getImgs()));
+            SlidingImageAdapter slidingImageAdapter = new SlidingImageAdapter(
+                vpHomeHeader.getContext(), getImgs(multipleItem.getTopBanner()));
+            slidingImageAdapter.setiOnClick((view, position) -> {
+                PageIntentUtils.skipBannerPromotion(TopBannerHolder.this.itemView.getContext(),
+                    multipleItem.getTopBanner().get(position));
+            });
+            vpHomeHeader.setAdapter(slidingImageAdapter);
             customPagerIndicator.setViewPager(vpHomeHeader);
             BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(vpHomeHeader);
             bannerAutoPlayHelper.autoPlay();
             multipleItem.getTopBanner();
         }
 
+        private List<String> getImgs(List<MultipleItem.TopBanner> banners) {
+            List<String> imgs = new ArrayList<>();
+            if (banners != null) {
+                for (MultipleItem.TopBanner topBanner : banners) {
+                    imgs.add(topBanner.getImg());
+                }
+            }
+            return imgs;
+        }
     }
 
     static class TopCategoryHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
@@ -219,22 +234,22 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.tv_center_bottom_title1:
-                    RecyclerUtils.smoothMoveToPosition(recyclerView,0);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView, 0);
                     resetTextState();
                     tvCenterBottomTitle1.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title2:
-                    RecyclerUtils.smoothMoveToPosition(recyclerView,1);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView, 1);
                     resetTextState();
                     tvCenterBottomTitle2.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title3:
-                    RecyclerUtils.smoothMoveToPosition(recyclerView,2);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView, 2);
                     resetTextState();
                     tvCenterBottomTitle3.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title4:
-                    RecyclerUtils.smoothMoveToPosition(recyclerView,3);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView, 3);
                     resetTextState();
                     tvCenterBottomTitle4.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;

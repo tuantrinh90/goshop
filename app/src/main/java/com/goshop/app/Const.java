@@ -19,11 +19,27 @@ public class Const {
 
     public static final int HOME_CENTER_VIDEO_CHILD_PREV_NEXT = 1;
 
-    public static final int BOTTOM_SLIDE_HEADER_IMG = 0;
+    public static final int HOME_BOTTOM_SLIDE_HEADER_IMG = 0;
 
-    public static final int BOTTOM_SLIDE_TITLE = 1;
+    public static final int HOME_BOTTOM_SLIDE_TITLE = 1;
 
-    public static final int BOTTOM_SLIDE_BODY = 2;
+    public static final int HOME_BOTTOM_SLIDE_BODY = 2;
+
+    //PROMOTION_list
+    public static final int PROMOTION_TOP_BANNER = 0;
+
+    public static final int PROMOTION_TOP_BAR = 1;
+
+    public static final int PROMOTION_CONTENT_ITEM = 2;
+
+    //type-banner
+    public static final int PROMOTION_LIST_BANNER = 1;
+
+    public static final String PROMOTION_PAGE_LIST = "promotion_list";
+
+    public static final String PROMOTION_PAGE_BANNER = "promotion_banner";
+
+    public static final String PROMOTION_PAGE_PDP = "promotion_pdp";
 
     public static final String HOME_TEST_IMG1 = "http://a.hiphotos.baidu" +
         ".com/image/pic/item/500fd9f9d72a6059f550a1832334349b023bbae3.jpg";
@@ -35,6 +51,22 @@ public class Const {
     public static final String HOME_TEST_IMG3 = "http://c.hiphotos.baidu" +
         ".com/image/h%3D300/sign=f6ca0729e0f81a4c3932eac9e72b6029" +
         "/2e2eb9389b504fc22f9b0558eedde71191ef6da3.jpg";
+
+    public static final String BANNER_IMG1 = "http://d.hiphotos.baidu" +
+        ".com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg";
+
+    public static final String BANNER_IMG2 = "https://ss2.bdstatic" +
+        ".com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=4007582788,1260918218&fm=27&gp=0.jpg";
+
+    public static final String BANNER_IMG3 = "https://timgsa.baidu" +
+        ".com/timg?image&quality=80&size=b9999_10000&sec=1516621936571&di" +
+        "=e2cf5d33c41142d0280f9be19d9654ea&imgtype=0&src=http%3A%2F%2Fimg.zcool" +
+        ".cn%2Fcommunity%2F01ac39597adf9da8012193a352df31.jpg";
+
+    public static final String BANNER_IMG4 = "https://timgsa.baidu" +
+        ".com/timg?image&quality=80&size=b9999_10000&sec=1517216680&di" +
+        "=cddfe97f096714e6b8f62cbe030ceafa&imgtype=jpg&er=1&src=http%3A%2F%2Fimg.zcool" +
+        ".cn%2Fcommunity%2F014fa5582d5ae2a84a0e282b39f87e.jpg";
 
 
 }

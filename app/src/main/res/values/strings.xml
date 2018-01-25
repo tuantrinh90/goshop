@@ -54,6 +54,14 @@
     </string>
 
 
+    <!--promotion landing-->
+    <string name="promotion_new_arrivals">New Arrivals</string>
+    <string name="promotion_filter">Filter</string>
+    <string name="promotion_item_new_symbol">new</string>
+    <string name="promotion_item_best_symbol">best</string>
+    <string name="promotion_list_symbol">promotion list</string>
+    <string name="promotion_banner_symbol">promotion banner</string>
+
     <!--test data-->
     <string name="home_item_test_product_name">Manjung Korean Crispy Seaweed(Sea Salt)</string>
     <string name="home_item_test_product_price">RM 119.00</string>

@@ -8,6 +8,8 @@ import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.Map;
 
@@ -38,4 +40,8 @@ public interface AccountDataSource {
     Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params);
 
     Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params);
+
+    Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params);
+
+    Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
 }
