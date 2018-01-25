@@ -13,6 +13,8 @@ import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.Map;
 
@@ -41,7 +43,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<UserInfo> getUser(String username,String password) {
+    public Observable<UserInfo> getUser(String username, String password) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.USER_INFO);
         GetUserRequest getUserRequest = new GetUserRequest();
         getUserRequest.setUserName(username);
@@ -95,5 +97,17 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.SEARCH_RESULT);
         return retrofitRestApi.searchResultResponse(url, params);
+    }
+
+    @Override
+    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_LIST);
+        return retrofitRestApi.promotionListRequest(url, params);
+    }
+
+    @Override
+    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_BANNER);
+        return retrofitRestApi.promotionBannerRequest(url, params);
     }
 }

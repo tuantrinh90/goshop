@@ -4,6 +4,8 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.utils.PageIntentUtils;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -35,17 +37,17 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
         switch (viewType) {
-            case Const.BOTTOM_SLIDE_HEADER_IMG:
+            case Const.HOME_BOTTOM_SLIDE_HEADER_IMG:
                 View headerView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_home_bottom_sideslip_header_t4, parent, false);
                 viewHolder = new BottomHeaderHolder(headerView);
                 break;
-            case Const.BOTTOM_SLIDE_TITLE:
+            case Const.HOME_BOTTOM_SLIDE_TITLE:
                 View titleView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_home_bottom_sideslip_title_t4, parent, false);
                 viewHolder = new BottomTitleHolder(titleView);
                 break;
-            case Const.BOTTOM_SLIDE_BODY:
+            case Const.HOME_BOTTOM_SLIDE_BODY:
                 View bodyView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_home_bottom_sideslip_t4, parent, false);
                 viewHolder = new BottomBodyHolder(bodyView);
@@ -63,7 +65,7 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof BottomHeaderHolder) {
-            ((BottomHeaderHolder) holder).bindingData(bottomSlides.get(position));
+            ((BottomHeaderHolder) holder).bindingData(bottomSlides.get(position),position);
         } else if (holder instanceof BottomTitleHolder) {
             ((BottomTitleHolder) holder).bindingData(bottomSlides.get(position));
         } else if (holder instanceof BottomBodyHolder) {
@@ -86,10 +88,14 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(HomeResponse.BottomSlide bottomSlide) {
+        void bindingData(HomeResponse.BottomSlide bottomSlide,int position) {
             Glide.with(ivBottomHeader.getContext()).load(bottomSlide.getHeadImageUrl())
                 .into(ivBottomHeader);
+            RxView.clicks(ivBottomHeader).subscribe(v -> {
+                PageIntentUtils.skipBannerPromotion(ivBottomHeader.getContext(), bottomSlide,position);
+            });
         }
+
     }
 
     static class BottomTitleHolder extends RecyclerView.ViewHolder {

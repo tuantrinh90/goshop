@@ -4,6 +4,8 @@ import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.PromotionBannerResponse;
+import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +27,6 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static Observable<HomeResponse> getBaseData() {
         HomeResponse topBannerData = getTopBannerData();
@@ -44,7 +45,8 @@ public class ServiceData {
         List<String> imgs = Arrays.asList(Const.HOME_TEST_IMG1,
             Const.HOME_TEST_IMG2,
             Const.HOME_TEST_IMG3);
-        HomeResponse.TopBanner topbanner = new HomeResponse.TopBanner(imgs);
+        HomeResponse.TopBanner topbanner = new HomeResponse.TopBanner();
+        topbanner.setImgs(imgs);
         homeResponse.setTopBanner(topbanner);
         return homeResponse;
     }
@@ -98,10 +100,10 @@ public class ServiceData {
             String headImageUrl = Const.HOME_TEST_IMG3;
             HomeResponse.BottomSlide bottomSlideHeader = new HomeResponse.BottomSlide();
             bottomSlideHeader.setHeadImageUrl(headImageUrl);
-            bottomSlideHeader.setViewType(Const.BOTTOM_SLIDE_HEADER_IMG);
+            bottomSlideHeader.setViewType(Const.HOME_BOTTOM_SLIDE_HEADER_IMG);
             bottomSlides.add(bottomSlideHeader);
             HomeResponse.BottomSlide bottomSlideTitle = new HomeResponse.BottomSlide();
-            bottomSlideTitle.setViewType(Const.BOTTOM_SLIDE_TITLE);
+            bottomSlideTitle.setViewType(Const.HOME_BOTTOM_SLIDE_TITLE);
             bottomSlideTitle.setSlideTitle(GoShopApplication.getAppContext().getResources()
                 .getString(R.string.home_bottom_slide_title));
             bottomSlides.add(bottomSlideTitle);
@@ -115,12 +117,58 @@ public class ServiceData {
                 bottomSlideBody.setImageUrl(Const.HOME_TEST_IMG2);
                 bottomSlideChildren.add(bottomSlideBody);
             }
-            bottomSlideItem.setViewType(Const.BOTTOM_SLIDE_BODY);
+            bottomSlideItem.setViewType(Const.HOME_BOTTOM_SLIDE_BODY);
             bottomSlideItem.setBottomSlideChildren(bottomSlideChildren);
             bottomSlides.add(bottomSlideItem);
         }
         homeResponse.setBottomSlide(bottomSlides);
         return homeResponse;
+    }
+
+    /**
+     * TODO this is temp code
+     */
+    public static Observable<PromotionListResponse> getPromotionListData() {
+        PromotionListResponse promotionLandingResponses = new PromotionListResponse();
+        List<PromotionListResponse.PromotionItem> promotionItems = new ArrayList<>();
+        for (int i = 0; i < 20; i++) {
+            PromotionListResponse.PromotionItem response = new PromotionListResponse
+                .PromotionItem();
+            response.setImageUrl(Const.HOME_TEST_IMG3);
+            response.setProductCurrentPrice("RM 120.00");
+            response.setProductName(
+                "new balabce new balabce new balabce new balabce new balabce new balabce");
+            response.setProductOldPrice("RM 180.00");
+            response.setProductOff("30% OFF");
+            if (i % 2 == 0) {
+                response.setBest(true);
+                response.setGiftShow(false);
+                response.setNew(true);
+                response.setTvShow(false);
+            } else {
+                response.setBest(false);
+                response.setGiftShow(true);
+                response.setNew(false);
+                response.setTvShow(true);
+            }
+            promotionItems.add(response);
+        }
+        promotionLandingResponses.setPromotionItems(promotionItems);
+        promotionLandingResponses
+            .setTitle(GoShopApplication.getAppContext().getString(R.string.promotion_list_symbol));
+        promotionLandingResponses.setBannerUrl(Const.BANNER_IMG1);
+        return Observable.just(promotionLandingResponses);
+    }
+
+    public static Observable<PromotionBannerResponse> getPromotionBannerLists() {
+        PromotionBannerResponse promotionBannerResponse = new PromotionBannerResponse();
+        List<String> imageUrls = new ArrayList<>();
+        imageUrls.add(Const.BANNER_IMG1);
+        imageUrls.add(Const.BANNER_IMG2);
+        imageUrls.add(Const.BANNER_IMG3);
+        imageUrls.add(Const.BANNER_IMG4);
+        promotionBannerResponse.setImageUrl(imageUrls);
+        return Observable.just(promotionBannerResponse);
     }
 
 

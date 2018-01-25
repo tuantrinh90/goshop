@@ -111,6 +111,8 @@
         <item name="android:lineSpacingExtra">4sp</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/blackTrans87</item>
+        <item name="android:text">@string/home_item_test_product_name</item>
+
     </style>
 
     <style name="homeItemProductOldPrice">
@@ -119,6 +121,7 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">12sp</item>
         <item name="android:textColor">@color/blackTrans38</item>
+        <item name="android:text">@string/home_item_test_product_price</item>
     </style>
 
     <style name="homeItemProductPrice">
@@ -127,6 +130,7 @@
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/blackTrans87</item>
+        <item name="android:text">@string/home_item_test_product_price</item>
     </style>
 
     <style name="homeSlideItemBg">
@@ -187,6 +191,12 @@
     <style name="WhiteBackground" parent="AppTheme">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
+    
+    <declare-styleable name="CustomTitleDelEditText">
+        <attr name="et_hint" format="reference" />
+        <attr name="et_password" format="boolean" />
+
+    </declare-styleable>
 
 
     <style name="PopMenuAnimation">

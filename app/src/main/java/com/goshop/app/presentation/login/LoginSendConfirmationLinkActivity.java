@@ -3,21 +3,19 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.CustomTitleDelEditText;
 import com.goshop.app.common.view.CustomBoldButton;
-import com.goshop.app.common.view.CustomEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.view.inputmethod.EditorInfo;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -32,20 +30,11 @@ public class LoginSendConfirmationLinkActivity extends
     BaseActivity<LoginSendConfirmationLinkContract.Presenter> implements
     LoginSendConfirmationLinkContract.View, ToastUtil.OnToastListener {
 
-    @BindView(R.id.btn_send_confirmation_link_submit)
-    CustomBoldButton btnSendConfirmationLinkSubmit;
+    @BindView(R.id.ctd_et_confirmation_link)
+    CustomTitleDelEditText ctdEtConfirmationLink;
 
-    @BindView(R.id.et_send_confirmation_link_email)
-    CustomEditText etSendConfirmationLinkEmail;
-
-    @BindView(R.id.iv_send_email_delete)
-    ImageView ivSendEmailDelete;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.tv_send_link_email)
-    CustomTextView tvSendLinkEmail;
+    @BindView(R.id.tv_btn_send_confirmation_link_submit)
+    CustomBoldTextView tvBtnSendConfirmationLinkSubmit;
 
     private ToastUtil toastUtil;
 
@@ -66,11 +55,10 @@ public class LoginSendConfirmationLinkActivity extends
 
     @Override
     public void inject() {
-        //TODO(helen):this is wait for design
-        toolbar.setBackgroundColor(getResources().getColor(R.color.pinkishGrey));
         hideRightMenu();
         initPresenter();
-        editActionListener();
+        initEditText();
+        toastUtil = new ToastUtil(this, this);
     }
 
     private void initPresenter() {
@@ -81,9 +69,10 @@ public class LoginSendConfirmationLinkActivity extends
             .inject(this);
     }
 
-    private void editActionListener() {
-        EditTextUtil.deleteImageShowListener(etSendConfirmationLinkEmail, ivSendEmailDelete);
-        EditTextUtil.emailFoucsChangedListener(etSendConfirmationLinkEmail, tvSendLinkEmail);
+    private void initEditText() {
+        ctdEtConfirmationLink.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        ctdEtConfirmationLink.initImeOptions(EditorInfo.IME_ACTION_DONE);
+        ctdEtConfirmationLink.focusListener(CustomTitleDelEditText.EDITTEXT_EMAIL);
     }
 
     @Override
@@ -92,15 +81,10 @@ public class LoginSendConfirmationLinkActivity extends
     }
 
     private void showToast() {
-        //todo(helen) wait for design then will replase this hard code
-        @SuppressLint("ShowToast") Toast toast = Toast
-            .makeText(this, "Thanks for registering on GO SHOP", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toastUtil = ToastUtil.getInstance(this, this, toast);
-        toastUtil.showToastCustomTime(ToastUtil.SHOW_TIME);
+        toastUtil.showLinkToast();
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.btn_send_confirmation_link_submit})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_send_confirmation_link_submit})
     public void onSendConfirmationLinkClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -110,11 +94,14 @@ public class LoginSendConfirmationLinkActivity extends
                 }
                 finish();
                 break;
-            case R.id.btn_send_confirmation_link_submit:
-                EditTextUtil.eidtLoseFocus(btnSendConfirmationLinkSubmit);
-                String email = etSendConfirmationLinkEmail.getText().toString();
-                //TODO(helen) wait for api
-                //mPresenter.sendConfirmationLinkRequest(null);
+            case R.id.tv_btn_send_confirmation_link_submit:
+                EditTextUtil.eidtLoseFocus(tvBtnSendConfirmationLinkSubmit);
+                String email = ctdEtConfirmationLink.getText();
+                if(!TextUtils.isEmpty(email)) {
+                    //TODO(helen) wait for api
+                    mPresenter.sendConfirmationLinkRequest(null);
+                }
+
                 break;
         }
     }

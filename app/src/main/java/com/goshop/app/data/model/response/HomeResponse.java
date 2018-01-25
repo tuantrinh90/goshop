@@ -1,5 +1,6 @@
 package com.goshop.app.data.model.response;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -65,13 +66,11 @@ public class HomeResponse {
         this.bottomSlide = bottomSlide;
     }
 
-    public static class TopBanner {
+    public static class TopBanner implements Serializable{
 
         private List<String> imgs;
-
-        public TopBanner(List<String> imgs) {
-            this.imgs = imgs;
-        }
+        //search productDetail promotion noSkip
+        private String type;
 
         public List<String> getImgs() {
             return imgs;
@@ -79,6 +78,14 @@ public class HomeResponse {
 
         public void setImgs(List<String> imgs) {
             this.imgs = imgs;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
         }
     }
 
@@ -217,7 +224,7 @@ public class HomeResponse {
         }
     }
 
-    public static class BottomSlide {
+    public static class BottomSlide implements Serializable{
 
         private String headImageUrl;
 

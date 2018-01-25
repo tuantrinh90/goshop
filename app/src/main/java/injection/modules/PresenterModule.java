@@ -7,6 +7,8 @@ import com.goshop.app.presentation.home.DemoContract;
 import com.goshop.app.presentation.home.DemoPresenter;
 import com.goshop.app.presentation.home.HomeContract;
 import com.goshop.app.presentation.home.HomePresenter;
+import com.goshop.app.presentation.home.PromotionContract;
+import com.goshop.app.presentation.home.PromotionPresenter;
 import com.goshop.app.presentation.login.LoginComplementEmailContract;
 import com.goshop.app.presentation.login.LoginComplementEmailPresenter;
 import com.goshop.app.presentation.login.LoginResetPasswordContract;
@@ -124,6 +126,13 @@ public class PresenterModule {
     public SearchResultContract.Presenter provideSearchResultPresenter(
         AccountDataRepository dataRepository) {
         return new SearchResultPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public PromotionContract.Presenter providePromotionPresenter(
+        AccountDataRepository dataRepository) {
+        return new PromotionPresenter(dataRepository);
     }
 
 }

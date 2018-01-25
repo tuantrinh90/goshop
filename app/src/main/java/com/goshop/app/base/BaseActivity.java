@@ -35,7 +35,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
 
     @BindView(R.id.imageview_left_menu)
     @Nullable
-    ImageView tvLeftMenu;
+    ImageView ivLeftMenu;
 
     @BindView(R.id.imageview_right_menu)
     @Nullable
@@ -108,8 +108,8 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         if(ivRightMenu!=null){
             ivRightMenu.setVisibility(View.GONE);
         }
-        if(tvLeftMenu!=null) {
-            tvLeftMenu.setVisibility(View.GONE);
+        if(ivLeftMenu !=null) {
+            ivLeftMenu.setVisibility(View.GONE);
         }
     }
 

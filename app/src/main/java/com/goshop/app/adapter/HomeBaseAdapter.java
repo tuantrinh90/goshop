@@ -6,6 +6,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.utils.PageIntentUtils;
 import com.goshop.app.utils.PagingScrollHelper;
 import com.goshop.app.utils.RecyclerUtils;
 import com.goshop.app.widget.BannerAutoPlayHelper;
@@ -33,8 +34,9 @@ import butterknife.ButterKnife;
 
 public class HomeBaseAdapter extends RecyclerView.Adapter {
 
+    private static final int SUM_PAGE = 4;
+
     HomeResponse homeResponse;
-    private static final int SUM_PAGE=4;
 
     public HomeBaseAdapter(HomeResponse data) {
         this.homeResponse = data;
@@ -106,8 +108,12 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(HomeResponse.TopBanner topBanner, int positon) {
-            vpHomeHeader.setAdapter(new SlidingImageAdapter(vpHomeHeader.getContext(),
-                topBanner.getImgs()));
+            SlidingImageAdapter slidingImageAdapter = new SlidingImageAdapter(
+                vpHomeHeader.getContext(),
+                topBanner.getImgs());
+            slidingImageAdapter.setiOnClick((view, position) -> PageIntentUtils
+                .skipBannerPromotion(vpHomeHeader.getContext(), topBanner, position));
+            vpHomeHeader.setAdapter(slidingImageAdapter);
             customPagerIndicator.setViewPager(vpHomeHeader);
             BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(vpHomeHeader);
             bannerAutoPlayHelper.autoPlay();
@@ -217,22 +223,22 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.tv_center_bottom_title1:
-                    RecyclerUtils.smoothMoveToPosition(recyclerView,0);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView, 0);
                     resetTextState();
                     tvCenterBottomTitle1.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title2:
-                    RecyclerUtils.smoothMoveToPosition(recyclerView,1);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView, 1);
                     resetTextState();
                     tvCenterBottomTitle2.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title3:
-                    RecyclerUtils.smoothMoveToPosition(recyclerView,2);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView, 2);
                     resetTextState();
                     tvCenterBottomTitle3.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;
                 case R.id.tv_center_bottom_title4:
-                    RecyclerUtils.smoothMoveToPosition(recyclerView,3);
+                    RecyclerUtils.smoothMoveToPosition(recyclerView, 3);
                     resetTextState();
                     tvCenterBottomTitle4.setTypeface(Typeface.defaultFromStyle(Typeface.BOLD));
                     break;

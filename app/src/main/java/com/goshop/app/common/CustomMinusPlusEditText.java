@@ -49,7 +49,7 @@ public class CustomMinusPlusEditText extends RelativeLayout {
 
     private void plus() {
         String count = editText.getText().toString();
-        if (count != null && !TextUtils.isEmpty(count)) {
+        if (!TextUtils.isEmpty(count)) {
             int num = Integer.parseInt(count);
             num++;
             editText.setText(num + placeHolder);
@@ -59,7 +59,7 @@ public class CustomMinusPlusEditText extends RelativeLayout {
 
     private void minus() {
         String count = editText.getText().toString();
-        if (count != null && !TextUtils.isEmpty(count)) {
+        if (!TextUtils.isEmpty(count)) {
             int num = Integer.parseInt(count);
             if (num > 1) {
                 num--;

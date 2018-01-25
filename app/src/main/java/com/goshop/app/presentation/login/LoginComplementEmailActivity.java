@@ -3,21 +3,18 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldButton;
-import com.goshop.app.common.view.CustomEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.CustomTitleDelEditText;
+import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.view.inputmethod.EditorInfo;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -32,20 +29,11 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     .Presenter> implements
     LoginComplementEmailContract.View, ToastUtil.OnToastListener {
 
-    @BindView(R.id.btn_complement_email_submit)
-    CustomBoldButton btnComplementEmailSubmit;
+    @BindView(R.id.ctd_et_complement_email)
+    CustomTitleDelEditText ctdEtComplementEmail;
 
-    @BindView(R.id.et_complement_email_email)
-    CustomEditText etComplementEmailEmail;
-
-    @BindView(R.id.iv_send_email_delete)
-    ImageView ivSendEmailDelete;
-
-    @BindView(R.id.toolbar)
-    Toolbar toolbar;
-
-    @BindView(R.id.tv_complement_email_email)
-    CustomTextView tvComplementEmailEmail;
+    @BindView(R.id.tv_btn_complement_email_submit)
+    CustomBoldTextView tvBtnComplementEmailSubmit;
 
     private ToastUtil toastUtil;
 
@@ -61,16 +49,15 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     @Override
     public String getScreenTitle() {
-        return getResources().getString(R.string.complement_email);
+        return getResources().getString(R.string.whoops_email);
     }
 
     @Override
     public void inject() {
         hideRightMenu();
-        //TODO(helen):this is wait for design
-        toolbar.setBackgroundColor(getResources().getColor(R.color.pinkishGrey));
         initPresenter();
-        editActionListener();
+        initEditText();
+        toastUtil = new ToastUtil(this, this);
     }
 
     private void initPresenter() {
@@ -81,12 +68,13 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
             .inject(this);
     }
 
-    private void editActionListener() {
-        EditTextUtil.deleteImageShowListener(etComplementEmailEmail, ivSendEmailDelete);
-        EditTextUtil.emailFoucsChangedListener(etComplementEmailEmail, tvComplementEmailEmail);
+    private void initEditText() {
+        ctdEtComplementEmail.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        ctdEtComplementEmail.initImeOptions(EditorInfo.IME_ACTION_DONE);
+        ctdEtComplementEmail.focusListener(CustomTitleDelEditText.EDITTEXT_EMAIL);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.btn_complement_email_submit})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_complement_email_submit})
     public void onComplementEmailClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -96,11 +84,13 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
                 }
                 finish();
                 break;
-            case R.id.btn_complement_email_submit:
-                EditTextUtil.eidtLoseFocus(btnComplementEmailSubmit);
-                String email = etComplementEmailEmail.getText().toString();
-                //TODO(helen)wait for api
-                //mPresenter.complementEmailRequest(null);
+            case R.id.tv_btn_complement_email_submit:
+                EditTextUtil.eidtLoseFocus(tvBtnComplementEmailSubmit);
+                String email = ctdEtComplementEmail.getText();
+                if (!TextUtils.isEmpty(email)) {
+                    //TODO(helen)wait for api
+                    mPresenter.complementEmailRequest(null);
+                }
 
                 break;
         }
@@ -117,12 +107,7 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     }
 
     private void showToast() {
-        //todo(helen) wait for design then will replase this hard code
-        @SuppressLint("ShowToast") Toast toast = Toast
-            .makeText(this, "Thanks for registering on GO SHOP", Toast.LENGTH_LONG);
-        toast.setGravity(Gravity.CENTER, 0, 0);
-        toastUtil = ToastUtil.getInstance(this, this, toast);
-        toastUtil.showToastCustomTime(ToastUtil.SHOW_TIME);
+        toastUtil.showThanksToast();
     }
 
     @Override

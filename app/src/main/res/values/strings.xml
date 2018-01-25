@@ -46,10 +46,21 @@
     <string name="login_register">Register now.</string>
 
     <string name="required_field">This is a required field.</string>
-    <string name="loginregister_emailbound_tips_error_email_format">Please enter a valid email address. For example johndoe@domain.com.</string>
-    <string name="enter_characters_ignored">"Please enter 4 or more characters. Leading or trailing spaces will be ignored."</string>
+    <string name="loginregister_emailbound_tips_error_email_format">Please enter a valid email
+        address. For example johndoe@domain.com.
+    </string>
+    <string name="enter_characters_ignored">"Please enter 4 or more characters. Leading or trailing
+        spaces will be ignored."
+    </string>
 
 
+    <!--promotion landing-->
+    <string name="promotion_new_arrivals">New Arrivals</string>
+    <string name="promotion_filter">Filter</string>
+    <string name="promotion_item_new_symbol">new</string>
+    <string name="promotion_item_best_symbol">best</string>
+    <string name="promotion_list_symbol">promotion list</string>
+    <string name="promotion_banner_symbol">promotion banner</string>
 
     <!--test data-->
     <string name="home_item_test_product_name">Manjung Korean Crispy Seaweed(Sea Salt)</string>
@@ -68,6 +79,7 @@
     <string name="email_format">test@test.com</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="password">Password</string>
+    <string name="confirmation_password">Password Confirmation</string>
     <string name="phone">Phone</string>
     <string name="register_tips_email">Email me the latest shopping news</string>
     <string name="register_tips_sms">SMS me the latest shopping news</string>
@@ -93,9 +105,19 @@
     <string name="buy_now">Buy Now</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="details">Details</string>
-    <string name="details_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna.</string>
+    <string name="details_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam
+        velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit
+        elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit,
+        et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet
+        quis magna.
+    </string>
     <string name="product_summary">Product Summary</string>
-    <string name="product_summary_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis pretium sit amet quis magna.</string>
+    <string name="product_summary_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Nulla quam velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus,
+        ac blandit elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris
+        molestie elit, et lacinia ipsum quam nec dui. Quisque nec mauris sit amet elit iaculis
+        pretium sit amet quis magna.
+    </string>
     <string name="color">Color</string>
     <string name="quantity">Quantity</string>
     <string name="rm">RM</string>
@@ -128,6 +150,7 @@
     <string name="detail_new">New</string>
     <string name="filter">Filter</string>
     <string name="new_arrivals">New Arrivals</string>
+
     <string name="menu_open">Open</string>
     <string name="menu_close">Close</string>
     <string name="clear">Clear</string>
@@ -136,6 +159,26 @@
     <string name="name_a_z">Name A to Z</string>
     <string name="promotion">Promotion</string>
     <string name="price_rm">Price (RM)</string>
+
+    <string name="whoops_email">Whoops, email please!</string>
+    <string name="thanks_for_registering">Thanks for registering on GO SHOP</string>
+    <string name="thanks_for_registering_content">We have sent an account confirmation link to your
+        email "test@test.com". Please check your email to confirm your acocount to finish the
+        registration process.
+    </string>
+
+    <string name="reset_content">If there is an account associated with test@test.com you will
+        receive an email with a link to reset your password.
+    </string>
+    <string name="email_is_sent">Email is Sent</string>
+    <string name="title_optional">Title (Optional)</string>
+    <string name="gender">Gender</string>
+    <string name="optional">(Optional)</string>
+    <string name="male">Male</string>
+    <string name="female">Female</string>
+    <string name="date_of_birth">Date of Birth</string>
+    <string name="language_optional">Language (Optional)</string>
+>>>>>>> update new design
 
 
 </resources>

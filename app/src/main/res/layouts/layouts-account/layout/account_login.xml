@@ -151,42 +151,24 @@
         android:id="@+id/rl_login_facebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <!--<RelativeLayout-->
-            <!--android:id="@+id/"-->
-            <!--android:layout_width="wrap_content"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_centerHorizontal="true"-->
-        <!--&gt;-->
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_login_facebook"
+            android:layout_margin="@dimen/activity_horizontal_margin"
+            android:layout_centerHorizontal="true"
+            android:text="@string/login_facebook"
+            android:background="@drawable/login_button_style_config"
+            android:textColor="@color/white"
+            android:layout_width="match_parent"
+            android:gravity="center"
+            android:layout_height="45dp"/>
 
-            <!--<com.goshop.app.common.view.CustomButton-->
-                <!--android:id="@+id/btn_login_facebook"-->
-                <!--android:layout_margin="@dimen/activity_horizontal_margin"-->
-                <!--android:layout_centerHorizontal="true"-->
-                <!--android:text="@string/login_facebook"-->
-                <!--android:background="@drawable/login_button_style_config"-->
-                <!--android:textColor="@color/white"-->
-                <!--android:layout_width="match_parent"-->
-                <!--android:layout_height="wrap_content"/>-->
-
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/tv_login_facebook"
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:layout_centerHorizontal="true"
-                android:text="@string/login_facebook"
-                android:background="@drawable/login_button_style_config"
-                android:textColor="@color/white"
-                android:layout_width="match_parent"
-                android:gravity="center"
-                android:layout_height="45dp"/>
-
-            <ImageView
-                android:id="@+id/iv_login_facebook_icon"
-                android:background="@drawable/ic_launcher_background"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="@dimen/size_40"
-                android:layout_width="25dp"
-                android:layout_height="25dp"/>
-        <!--</RelativeLayout>-->
+        <ImageView
+            android:id="@+id/iv_login_facebook_icon"
+            android:background="@drawable/ic_launcher_background"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/size_40"
+            android:layout_width="25dp"
+            android:layout_height="25dp"/>
     </RelativeLayout>
 
     <RelativeLayout
