@@ -3,6 +3,7 @@ package com.goshop.app.common;
 import com.goshop.app.R;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -36,12 +37,13 @@ public class CustomMinusPlusEditText extends RelativeLayout {
 
     public CustomMinusPlusEditText(Context context) {
         super(context);
-        initView(context);
+        initView(context, null);
     }
 
-    private void initView(Context context) {
+    private void initView(Context context, AttributeSet attrs) {
         View editView = LayoutInflater.from(context)
             .inflate(R.layout.layout_edittext_minus_plus, this, true);
+
         ButterKnife.bind(this, editView);
         ivPlus.setOnClickListener(v -> plus());
         ivMinus.setOnClickListener(v -> minus());
@@ -73,12 +75,12 @@ public class CustomMinusPlusEditText extends RelativeLayout {
 
     public CustomMinusPlusEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        initView(context);
+        initView(context, attrs);
     }
 
     public CustomMinusPlusEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        initView(context);
+        initView(context, attrs);
     }
 
     public String getText() {
@@ -87,6 +89,18 @@ public class CustomMinusPlusEditText extends RelativeLayout {
 
     public void setText(String text) {
         editText.setText(text);
+    }
+
+    public void setEditBackGround(int resource) {
+        layout.setBackgroundResource(resource);
+    }
+
+    public void setMinusBackGround(int resource) {
+        ivMinus.setBackgroundResource(resource);
+    }
+
+    public void setPlusBackGround(int resource) {
+        ivPlus.setBackgroundResource(resource);
     }
 
 

@@ -8,6 +8,7 @@ import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
+import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -47,7 +48,8 @@ public class TestMenuActivity extends BaseActivity {
 
     @OnClick({R.id.btn_test_register, R.id.btn_test_complement_email, R.id
         .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_changepwd,
-        R.id.btn_test_editprofile, R.id.btn_test_pdp, R.id.btn_test_my_address})
+        R.id.btn_test_editprofile, R.id.btn_test_pdp, R.id.btn_test_my_address,  R.id
+        .btn_test_search, R.id.btn_test_cart})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_register:
@@ -76,6 +78,10 @@ public class TestMenuActivity extends BaseActivity {
                 break;
             case R.id.btn_test_my_address:
                 startActivity(new Intent(this, MyAddressBookActivity.class));
+
+            case R.id.btn_test_cart:
+                startActivity(new Intent(this, ShoppingCartActivity.class));
+
                 break;
         }
     }

@@ -183,6 +183,7 @@
     <string name="female">Female</string>
     <string name="date_of_birth">Date of Birth</string>
     <string name="language_optional">Language (Optional)</string>
+
     <string name="race_optional">Race (Optional)</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="save">Save</string>
@@ -214,5 +215,16 @@
        <item>Third</item>
    </string-array>
 
+    <string name="shopping_cart">Shopping Cart</string>
+    <string name="discount_code">Discount Code</string>
+    <string name="apply">Apply</string>
+    <string name="sub_total">Sub Total:</string>
+    <string name="shipping_fee">Shipping Fee:</string>
+    <string name="disscount">Disscount:</string>
+    <string name="grand_total">Grand Total</string>
+    <string name="proceed_to_checkout">Proceed to Checkout</string>
+    <string name="demo_cart_price1">RM 12.00</string>
+    <string name="demo_cart_price2">- RM 12.00</string>
+    <string name="demo_cart_price3">RM 36.00</string>
 
 </resources>

@@ -23,11 +23,13 @@ public class EndpointAddress {
     //todo wait for api
     public static final String HOME_REQUEST = "";
 
+    //todo wait for api
     public static final String MY_ADDRESS = "";
 
     //todo wait for api
     public static final String PRODUCT_DETAIL = "";
 
+    //todo wait for api
     public static final String PROMOTION_BANNER = "";
 
     //todo wait for api
@@ -47,6 +49,8 @@ public class EndpointAddress {
 
     //todo wait for api
     public static final String SEND_CONFIRMATION_LINK = "";
+
+    public static final String SHOPPINT_CART = "";
 
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";

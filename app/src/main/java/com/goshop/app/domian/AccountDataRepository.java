@@ -9,6 +9,7 @@ import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -124,6 +125,9 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.addAddressRequest(params);
+    }
+    public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
+        return accountCloudDataSource.shoppingCartRequest(params);
     }
 
     @Override
