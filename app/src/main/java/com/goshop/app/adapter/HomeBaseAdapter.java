@@ -23,6 +23,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -107,17 +108,28 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(HomeResponse.TopBanner topBanner, int positon) {
+        void bindingData(List<HomeResponse.TopBanner> topBanners, int positon) {
             SlidingImageAdapter slidingImageAdapter = new SlidingImageAdapter(
                 vpHomeHeader.getContext(),
-                topBanner.getImgs());
+                getImgs(topBanners));
             slidingImageAdapter.setiOnClick((view, position) -> PageIntentUtils
-                .skipBannerPromotion(vpHomeHeader.getContext(), topBanner, position));
+                .skipBannerPromotion(vpHomeHeader.getContext(), topBanners.get(position)));
             vpHomeHeader.setAdapter(slidingImageAdapter);
             customPagerIndicator.setViewPager(vpHomeHeader);
             BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(vpHomeHeader);
             bannerAutoPlayHelper.autoPlay();
         }
+
+        private List<String> getImgs(List<HomeResponse.TopBanner> banners) {
+            List<String> imgs = new ArrayList<>();
+            if (banners != null) {
+                for (HomeResponse.TopBanner topBanner : banners) {
+                    imgs.add(topBanner.getImg());
+                }
+            }
+            return imgs;
+        }
+
 
     }
 

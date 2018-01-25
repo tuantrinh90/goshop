@@ -41,13 +41,27 @@ public class ServiceData {
      */
     public static HomeResponse getTopBannerData() {
         HomeResponse homeResponse=new HomeResponse();
+        List<HomeResponse.TopBanner> topBanners = new ArrayList<>();
         //top banner
         List<String> imgs = Arrays.asList(Const.HOME_TEST_IMG1,
             Const.HOME_TEST_IMG2,
             Const.HOME_TEST_IMG3);
-        HomeResponse.TopBanner topbanner = new HomeResponse.TopBanner();
-        topbanner.setImgs(imgs);
-        homeResponse.setTopBanner(topbanner);
+        HomeResponse.TopBanner topbanner1 = new HomeResponse.TopBanner();
+        topbanner1.setImg(Const.HOME_TEST_IMG1);
+        topbanner1.setType(Const.PROMOTION_PAGE_PDP);
+        topBanners.add(topbanner1);
+
+        HomeResponse.TopBanner topbanner2 = new HomeResponse.TopBanner();
+        topbanner2.setImg(Const.HOME_TEST_IMG2);
+        topbanner2.setType(Const.PROMOTION_PAGE_LIST);
+        topBanners.add(topbanner2);
+
+        HomeResponse.TopBanner topbanner3 = new HomeResponse.TopBanner();
+        topbanner3.setImg(Const.HOME_TEST_IMG3);
+        topbanner3.setType(Const.PROMOTION_PAGE_BANNER);
+        topBanners.add(topbanner3);
+
+        homeResponse.setTopBanner(topBanners);
         return homeResponse;
     }
 

@@ -18,7 +18,7 @@ public class PageIntentUtils {
 
     public static final String PROMOTION_BANNER_URL = "PROMOTION_BANNER_URL";
 
-    public static void skipBannerPromotion(Context context, Serializable serializable,int position) {
+    public static void skipBannerPromotion(Context context, Serializable serializable) {
         //Home TopBanner click
         if (serializable instanceof HomeResponse.TopBanner) {
             HomeResponse.TopBanner topBanner = (HomeResponse.TopBanner) serializable;
@@ -28,13 +28,13 @@ public class PageIntentUtils {
                 case Const.PROMOTION_PAGE_BANNER:
                     Intent bannerIntent = new Intent();
                     bannerIntent.setClass(context, PromotionBannerActivity.class);
-                    bannerIntent.putExtra(PROMOTION_BANNER_URL, topBanner.getImgs().get(position));
+                    bannerIntent.putExtra(PROMOTION_BANNER_URL, topBanner.getImg());
                     context.startActivity(bannerIntent);
                     break;
                 case Const.PROMOTION_PAGE_LIST:
                     Intent listIntent = new Intent();
                     listIntent.setClass(context, PromotionLandingListActivity.class);
-                    listIntent.putExtra(PROMOTION_BANNER_URL, topBanner.getImgs().get(position));
+                    listIntent.putExtra(PROMOTION_BANNER_URL, topBanner.getImg());
                     context.startActivity(listIntent);
                     break;
             }

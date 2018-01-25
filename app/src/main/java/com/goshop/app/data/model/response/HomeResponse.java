@@ -13,7 +13,7 @@ public class HomeResponse {
 
     private int spanSize;
 
-    private TopBanner topBanner;
+    private List<TopBanner> topBanner;
 
     private List<CenterVideo> centerVideo;
 
@@ -41,11 +41,12 @@ public class HomeResponse {
         return itemType;
     }
 
-    public TopBanner getTopBanner() {
+    public List<TopBanner> getTopBanner() {
         return topBanner;
     }
 
-    public void setTopBanner(TopBanner topBanner) {
+    public void setTopBanner(
+        List<TopBanner> topBanner) {
         this.topBanner = topBanner;
     }
 
@@ -68,16 +69,16 @@ public class HomeResponse {
 
     public static class TopBanner implements Serializable{
 
-        private List<String> imgs;
+        private String img;
         //search productDetail promotion noSkip
         private String type;
 
-        public List<String> getImgs() {
-            return imgs;
+        public String getImg() {
+            return img;
         }
 
-        public void setImgs(List<String> imgs) {
-            this.imgs = imgs;
+        public void setImg(String img) {
+            this.img = img;
         }
 
         public String getType() {
