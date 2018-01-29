@@ -39,7 +39,6 @@
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.HomeActivity"/>
 
-        <activity android:name=".presentation.home.MainHomeActivity"/>
         <activity android:name=".presentation.home.PromotionLandingListActivity"/>
         <activity android:name=".presentation.home.PromotionBannerActivity"/>
         <!-- FACEBOOK -->

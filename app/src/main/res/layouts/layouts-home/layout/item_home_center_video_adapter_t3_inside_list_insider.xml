@@ -53,16 +53,12 @@
                 style="@style/homeItemProductPrice"/>
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_video_item_buy_now"
+                style="@style/btnStyle"
                 android:layout_width="88dp"
                 android:layout_height="36dp"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
-                android:gravity="center"
-                android:textSize="14sp"
                 android:text="@string/home_video_item_buy_now"
-                android:fontFamily="sans-serif-light"
-                android:background="@drawable/big_button_style_config"
-                android:textColor="@color/blackTrans87"
             />
         </RelativeLayout>
     </LinearLayout>

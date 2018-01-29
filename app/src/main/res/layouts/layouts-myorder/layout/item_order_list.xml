@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <!--order number and status-->
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <View
+        android:layout_height="12dp"
+        style="@style/homeWrapWidthLine"
+    />
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_order_num"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_order_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <View style="@style/homeWrapWidthLine"
+        />
+</LinearLayout>
+<LinearLayout
+    android:id="@+id/ll_order_content"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+</LinearLayout>
+
+
+
+</LinearLayout>
