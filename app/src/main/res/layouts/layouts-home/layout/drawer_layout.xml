@@ -64,7 +64,7 @@
                 style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_home"
-                    android:background="@mipmap/ic_slidemenu_home_nor"
+                    android:background="@drawable/selector_slidemenu_home_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_home"
@@ -78,7 +78,7 @@
                 style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_category_tree"
-                    android:background="@mipmap/ic_slidemenu_categories_nor"
+                    android:background="@drawable/selector_slidemenu_category_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_category_tree"
@@ -92,7 +92,7 @@
                 style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_go_loyalty"
-                    android:background="@mipmap/ic_slidemenu_go_loyalty_nor"
+                    android:background="@drawable/selector_slidemenu_go_loyalty_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_go_loyalty"
@@ -106,7 +106,7 @@
                 style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_shopping_cart"
-                    android:background="@mipmap/ic_slidemenu_shopping_cart_nor"
+                    android:background="@drawable/selector_slidemenu_shopping_cart_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_shopping_cart"
@@ -127,7 +127,7 @@
                 style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_wishlist"
-                    android:background="@mipmap/ic_slidemenu_wishlist_nor"
+                    android:background="@drawable/selector_slidemenu_my_wishlist_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_wishlist"
@@ -146,7 +146,7 @@
                 style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_orderlist"
-                    android:background="@mipmap/ic_slidemenu_myorders_nor"
+                    android:background="@drawable/selector_slidemenu_my_orders_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_order"
@@ -160,7 +160,7 @@
                 style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_notification"
-                    android:background="@mipmap/ic_slidemenu_notification_nor"
+                    android:background="@drawable/selector_slidemenu_notifications_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_notification"

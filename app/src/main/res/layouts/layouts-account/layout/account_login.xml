@@ -112,7 +112,7 @@
         android:layout_centerHorizontal="true"
         android:layout_below="@id/rl_password_root"
         android:text="@string/login_login"
-        android:background="@drawable/login_button_style_config"
+        android:background="@drawable/selector_login_login_button"
         android:textColor="@color/white"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
@@ -156,7 +156,7 @@
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:layout_centerHorizontal="true"
             android:text="@string/login_facebook"
-            android:background="@drawable/login_button_style_config"
+            android:background="@drawable/selector_login_facebook_button"
             android:textColor="@color/white"
             android:layout_width="match_parent"
             android:gravity="center"

@@ -1,26 +1,17 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.GoShopApplication;
-import com.goshop.app.R;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.res.ColorStateList;
 import android.graphics.Point;
-import android.graphics.drawable.Drawable;
-import android.graphics.drawable.GradientDrawable;
-import android.graphics.drawable.StateListDrawable;
 import android.os.Build;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.DrawableCompat;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
-import android.view.View;
 import android.view.WindowManager;
-import android.widget.Button;
-import android.widget.TextView;
 
 public class ScreenHelper {
 
@@ -129,48 +120,5 @@ public class ScreenHelper {
     public static int getHeight(Context paramContext) {
         return getMeasures(paramContext).arg2;
     }
-
-    public static Drawable getThemeIconSelector(int drawableId){
-        Drawable drawable=ContextCompat.getDrawable(GoShopApplication.getAppContext(), drawableId);
-        int pressColor= ContextCompat.getColor(GoShopApplication.getAppContext(), R.color.colorAccent);
-        int defaultColor = ContextCompat.getColor(GoShopApplication.getAppContext(), R.color.blackTrans54);
-        int[] colors = new int[] {pressColor, defaultColor,defaultColor};
-        int[][] states = new int[3][];
-        states[0] = new int[] { android.R.attr.state_enabled, android.R.attr.state_selected };
-        states[1] = new int[] { android.R.attr.state_enabled };
-        states[2] = new int[] {};
-        ColorStateList colorList = new ColorStateList(states, colors);
-        final Drawable wrappedDrawable = DrawableCompat.wrap(drawable);
-        DrawableCompat.setTintList(wrappedDrawable, colorList);
-        return wrappedDrawable;
-    }
-
-
-    /**
-     * set common btn normal and press style
-     */
-    public static  void setSoildButtonColorStyle(View view,int defColor,int pressColor){
-        StateListDrawable drawable=new StateListDrawable();
-        GradientDrawable normal= new GradientDrawable();
-        normal.setColor(ContextCompat.getColor(GoShopApplication.getAppContext(),defColor));
-        normal.setCornerRadius(dip2px(GoShopApplication.getAppContext(),2));
-        GradientDrawable  pressed= new GradientDrawable();
-        pressed.setCornerRadius(dip2px(GoShopApplication.getAppContext(),2));
-        pressed.setColor(ContextCompat.getColor(GoShopApplication.getAppContext(),pressColor));
-        drawable.addState(new int[]{android.R.attr.state_pressed,android.R.attr.state_enabled},pressed);
-        drawable.addState(new int[]{android.R.attr.state_enabled},normal);
-        drawable.addState(new int[]{},normal);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            view.setBackground(drawable);
-        } else {
-            view.setBackgroundDrawable(drawable);
-        }
-        if (view instanceof TextView ){
-            ((TextView)view).setTextColor(ContextCompat.getColor(GoShopApplication.getAppContext(),R.color.white));
-        }else if (view instanceof Button){
-            ((Button)view).setTextColor(ContextCompat.getColor(GoShopApplication.getAppContext(),R.color.white));
-        }
-    }
-
 
 }
