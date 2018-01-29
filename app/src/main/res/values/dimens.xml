@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="home_radius">2dp</dimen>
+    <dimen name="common_radius">2dp</dimen>
     <dimen name="home_stroke_border_w">1dp</dimen>
     <!--home-->
     <dimen name="toolbar_height">56dp</dimen>

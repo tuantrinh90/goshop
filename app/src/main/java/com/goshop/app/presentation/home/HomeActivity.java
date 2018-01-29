@@ -6,7 +6,6 @@ import com.goshop.app.adapter.HomeBaseAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.data.model.response.HomeResponse;
-import com.goshop.app.utils.ScreenHelper;
 
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -147,19 +146,8 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initToolBar();
-        initSlideImgAndText();
         resetSelect();
         mPresenter.getHome(new HashMap<>());
-    }
-
-    private void initSlideImgAndText() {
-        ivHome.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_home_nor));
-        ivCategoryTree.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_categories_nor));
-        ivGoLoyalty.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_go_loyalty_nor));
-        ivShoppingCart.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_shopping_cart_nor));
-        ivWishlist.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_wishlist_nor));
-        ivOrderlist.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_myorders_nor));
-        ivNotification.setImageDrawable(ScreenHelper.getThemeIconSelector(R.mipmap.ic_slidemenu_notification_nor));
     }
 
     @Override

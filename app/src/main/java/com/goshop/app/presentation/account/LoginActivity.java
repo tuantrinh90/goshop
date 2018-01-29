@@ -141,9 +141,6 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     }
 
     private void initView() {
-        ScreenHelper.setSoildButtonColorStyle(btnLogin, R.color.colorAccent, R.color.colorAccent);
-        ScreenHelper.setSoildButtonColorStyle(tvLoginFacebook, R.color.facebook, R.color.facebook);
-
         textEmail.setHintAnimationEnabled(true);
         textEmail.setErrorEnabled(true);
 
