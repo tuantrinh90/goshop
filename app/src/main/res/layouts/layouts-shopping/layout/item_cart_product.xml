@@ -13,7 +13,8 @@
         android:background="@mipmap/bought"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginTop="@dimen/size_16"
-        android:layout_marginBottom="@dimen/size_16"/>
+        android:layout_marginBottom="@dimen/size_16"
+        android:contentDescription="@string/app_name"/>
 
     <ImageView
         android:id="@+id/iv_item_cart_menu"
@@ -22,7 +23,8 @@
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/iv_item_cart_product"
         android:layout_marginRight="@dimen/size_16"
-        android:background="@mipmap/icon_menu"/>
+        android:background="@mipmap/icon_menu"
+        android:contentDescription="@string/app_name"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_cart_title"
