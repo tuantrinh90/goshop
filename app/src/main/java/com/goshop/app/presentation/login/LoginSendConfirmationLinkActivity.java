@@ -4,7 +4,6 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomTitleDelEditText;
-import com.goshop.app.common.view.CustomBoldButton;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;

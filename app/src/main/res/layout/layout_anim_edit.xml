@@ -32,6 +32,7 @@
         android:layout_marginTop="@dimen/size_12"
         android:layout_alignParentRight="true"
         android:visibility="gone"
-        android:background="@mipmap/del"/>
+        android:background="@mipmap/del"
+        android:contentDescription="@string/app_name"/>
 
 </RelativeLayout>

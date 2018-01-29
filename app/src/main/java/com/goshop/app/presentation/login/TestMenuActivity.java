@@ -3,7 +3,6 @@ package com.goshop.app.presentation.login;
 import com.crashlytics.android.Crashlytics;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.presentation.account.AddAddressActivity;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
@@ -47,7 +46,8 @@ public class TestMenuActivity extends BaseActivity {
     }
 
     @OnClick({R.id.btn_test_register, R.id.btn_test_complement_email, R.id
-        .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_pdp, R.id.btn_test_my_address})
+        .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_changepwd,
+        R.id.btn_test_editprofile, R.id.btn_test_pdp, R.id.btn_test_my_address})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_register:

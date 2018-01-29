@@ -114,13 +114,9 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
                 rbAddressBookDefault.setChecked(false);
             }
 
-            llAddressBookEdit.setOnClickListener(v -> {
-                addressBookClickListener.editAddress(addressVM);
-            });
+            llAddressBookEdit.setOnClickListener(v -> addressBookClickListener.editAddress(addressVM));
 
-            llAddressBookRemove.setOnClickListener(v -> {
-                addressBookClickListener.removeAddress(addressVM);
-            });
+            llAddressBookRemove.setOnClickListener(v -> addressBookClickListener.removeAddress(addressVM));
         }
     }
 }
