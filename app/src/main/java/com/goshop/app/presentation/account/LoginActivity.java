@@ -5,6 +5,7 @@ import com.facebook.login.LoginManager;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.utils.JDataUtils;
 import com.goshop.app.utils.ScreenHelper;
@@ -91,6 +92,15 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     boolean isVisible;
 
+    @BindView(R.id.rl_password_root)
+    RelativeLayout rlPasswordRoot;
+
+    @BindView(R.id.tv_login_facebook)
+    CustomTextView tvLoginFacebook;
+
+    @BindView(R.id.imageview_right_menu)
+    ImageView imageviewRightMenu;
+
     private CallbackManager facebookCallbackManager;
 
     @Override
@@ -116,7 +126,12 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         facebookCallbackManager = mPresenter.initFaceBook();
+        initTitleBar();
         initView();
+    }
+
+    private void initTitleBar() {
+        imageviewRightMenu.setBackgroundResource(R.mipmap.close);
     }
 
     @Override
@@ -186,7 +201,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     }
 
     @OnClick({R.id.iv_visible_password, R.id
-        .btn_login, R.id.tv_forgot_password, R.id.rl_login_facebook, R.id.tv_register})
+        .btn_login, R.id.tv_forgot_password, R.id.rl_login_facebook, R.id.tv_register,R.id.imageview_right_menu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_visible_password:
@@ -218,6 +233,10 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                 break;
             case R.id.tv_register:
                 break;
+            case R.id.imageview_right_menu:
+                finish();
+                break;
+
         }
     }
 

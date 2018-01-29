@@ -86,7 +86,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
     }
 
     private void setStatusBar() {
-        StatusBarUtils.setStatusBarColor(this, R.color.colorPrimaryDark);
+        StatusBarUtils.setStatusBarColor(this, R.color.blackStatusBar);
     }
 
     public void showLoadingBar() {

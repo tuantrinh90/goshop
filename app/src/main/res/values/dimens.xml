@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="home_radius">2dp</dimen>
+    <dimen name="common_radius">2dp</dimen>
     <dimen name="home_stroke_border_w">1dp</dimen>
     <!--home-->
     <dimen name="toolbar_height">56dp</dimen>
@@ -35,6 +35,7 @@
     <dimen name="home_bottom_slide_item_image_w_and_h">128dp</dimen>
     <dimen name="home_list_item_main_and_sub_title_margin">4dp</dimen>
 
+    <dimen name="home_slide_menu_item_height">52dp</dimen>
 
     <!--size-->
     <dimen name="size_0">0dp</dimen>

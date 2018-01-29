@@ -11,54 +11,60 @@
         android:layout_width="match_parent"
         android:layout_gravity="start"
         android:layout_height="match_parent">
-        <LinearLayout
+        <!--top user head portrait-->
+        <RelativeLayout
             android:focusableInTouchMode="true"
             android:focusable="true"
-            android:id="@+id/ll_profile"
+            android:id="@+id/rl_profile"
             android:layout_width="match_parent"
             android:gravity="center"
             android:paddingLeft="@dimen/activity_horizontal_margin"
             android:paddingRight="@dimen/activity_horizontal_margin"
             android:orientation="horizontal"
-            android:background="@color/color_main_grey"
-            android:layout_height="130dp">
+            android:background="@mipmap/ic_slidemenu_bg"
+            android:layout_height="150dp">
             <ImageView
                 android:id="@+id/iv_user_img"
-                android:layout_width="18dp"
-                android:layout_height="18dp"
-                android:visibility="gone"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:visibility="visible"
                 android:scaleType="fitCenter"
                 android:layout_centerVertical="true"
-                android:background="@mipmap/ic_launcher"/>
+                android:background="@mipmap/ic_slidemenu_user_nor"/>
             <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_sidemenu_login_name"
+                android:layout_below="@id/iv_user_img"
+                android:layout_marginTop="@dimen/activity_horizontal_margin"
+                android:fontFamily="sans-serif-medium"
                 android:layout_width="wrap_content"
                 android:ellipsize="end"
-                android:textSize="18sp"
+                android:textSize="14sp"
                 android:text="@string/home_drawlayout_hey"
+                android:textColor="@color/white"
                 android:layout_height="wrap_content"/>
             <com.goshop.app.common.view.CustomBoldTextView
-                android:id="@+id/tv_user_name"
+                android:id="@+id/tv_sidemenu_unlogin_name"
                 android:layout_width="match_parent"
                 android:maxLines="2"
                 android:ellipsize="end"
                 android:textSize="18sp"
+                android:fontFamily="sans-serif-medium"
+                android:textColor="@color/white"
+                android:layout_centerVertical="true"
                 android:text="@string/home_drawlayout_not_sign_up"
                 android:layout_height="wrap_content"/>
-        </LinearLayout>
+        </RelativeLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:orientation="vertical"
-            android:paddingTop="8dp"
             android:background="@color/white"
             android:layout_height="match_parent">
             <RelativeLayout
                 android:id="@+id/rl_drawer_home"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="44dp">
+                style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_home"
+                    android:background="@drawable/selector_slidemenu_home_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_home"
@@ -69,12 +75,10 @@
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_drawer_categorytree"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="44dp">
+                style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_category_tree"
+                    android:background="@drawable/selector_slidemenu_category_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_category_tree"
@@ -84,29 +88,25 @@
 
             </RelativeLayout>
             <RelativeLayout
-                android:id="@+id/rl_drawer_reward"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="44dp">
+                android:id="@+id/rl_drawer_go_loyalty"
+                style="@style/homeSlideItemBg">
                 <ImageView
-                    android:id="@+id/iv_reward"
+                    android:id="@+id/iv_go_loyalty"
+                    android:background="@drawable/selector_slidemenu_go_loyalty_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
-                    android:id="@+id/tv_reward"
-                    android:layout_toRightOf="@+id/iv_reward"
+                    android:id="@+id/tv_go_loyalty"
+                    android:layout_toRightOf="@+id/iv_go_loyalty"
                     android:text="@string/home_drawlayout_rewards"
                     style="@style/homeSlideItemText"/>
             </RelativeLayout>
 
             <RelativeLayout
                 android:id="@+id/rl_drawer_shoppingcart"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="44dp">
+                style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_shopping_cart"
+                    android:background="@drawable/selector_slidemenu_shopping_cart_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_shopping_cart"
@@ -124,12 +124,10 @@
 
             <RelativeLayout
                 android:id="@+id/rl_drawer_wishlist"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="44dp">
+                style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_wishlist"
+                    android:background="@drawable/selector_slidemenu_my_wishlist_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_wishlist"
@@ -145,12 +143,10 @@
 
             <RelativeLayout
                 android:id="@+id/rl_drawer_order"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="44dp">
+                style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_orderlist"
+                    android:background="@drawable/selector_slidemenu_my_orders_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_order"
@@ -161,12 +157,10 @@
 
             <RelativeLayout
                 android:id="@+id/rl_drawer_notification"
-                android:paddingLeft="@dimen/activity_horizontal_margin"
-                android:paddingRight="@dimen/activity_horizontal_margin"
-                android:layout_width="match_parent"
-                android:layout_height="44dp">
+                style="@style/homeSlideItemBg">
                 <ImageView
                     android:id="@+id/iv_notification"
+                    android:background="@drawable/selector_slidemenu_notifications_icon"
                     style="@style/homeSlideItemImage"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_notification"
@@ -177,6 +171,14 @@
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_notification_num"
                     style="@style/homeSlideItemTextNum"/>
+                <View
+
+                    style="@style/homeSlideItemTextNum"
+                    android:visibility="visible"
+                    android:background="@drawable/drawable_slidemenu_hint_point"
+                    android:layout_width="@dimen/size_8"
+                    android:layout_height="@dimen/size_8"/>
+
             </RelativeLayout>
 
             <View

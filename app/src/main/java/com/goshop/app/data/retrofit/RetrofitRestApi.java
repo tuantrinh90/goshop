@@ -10,6 +10,7 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.request.SaveUserRequest;
 import com.goshop.app.data.model.response.GetWeatherResponse;
+import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
@@ -59,6 +60,12 @@ public interface RetrofitRestApi {
     @Headers(CONTENT_TYPE_JSON)
     @POST
     Observable<UserInfo> saveUserInfo(@Url String url, @Body SaveUserRequest saveUserRequest);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<HomeResponse> homeRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
 
     //TODO  this is an example
     @FormUrlEncoded

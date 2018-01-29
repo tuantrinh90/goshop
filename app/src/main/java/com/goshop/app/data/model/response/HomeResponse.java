@@ -1,4 +1,4 @@
-package com.goshop.app.data.model;
+package com.goshop.app.data.model.response;
 
 import java.io.Serializable;
 import java.util.List;
@@ -7,7 +7,7 @@ import java.util.List;
  * Created by img on 2018/1/5.
  */
 
-public class MultipleItem {
+public class HomeResponse {
 
     private int itemType;
 
@@ -20,17 +20,6 @@ public class MultipleItem {
     private List<BottomSlide> bottomSlide;
 
     private String content;
-
-    public MultipleItem(int itemType, int spanSize, String content) {
-        this.itemType = itemType;
-        this.spanSize = spanSize;
-        this.content = content;
-    }
-
-    public MultipleItem(int itemType, String content) {
-        this.itemType = itemType;
-        this.content = content;
-    }
 
     public int getSpanSize() {
         return spanSize;
@@ -56,7 +45,8 @@ public class MultipleItem {
         return topBanner;
     }
 
-    public void setTopBanner(List<TopBanner> topBanner) {
+    public void setTopBanner(
+        List<TopBanner> topBanner) {
         this.topBanner = topBanner;
     }
 

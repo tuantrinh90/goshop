@@ -3,11 +3,12 @@ package com.goshop.app.utils;
 import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
-import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.Observable;
@@ -27,61 +28,60 @@ public class ServiceData {
     /**
      * TODO this is temp code
      */
-    public static List<MultipleItem> getBaseData() {
-        List<MultipleItem> list = new ArrayList<>();
-        list.addAll(getTopBannerData());
-        list.add(new MultipleItem(Const.HOME_TOP_CATEGORY, ""));
-        list.addAll(getContentVideoData());
-        list.addAll(getBottomSlidedata());
-        return list;
+    public static Observable<HomeResponse> getBaseData() {
+        HomeResponse topBannerData = getTopBannerData();
+        HomeResponse contentVideoData = getContentVideoData(topBannerData);
+        HomeResponse bottomSlidedata = getBottomSlidedata(contentVideoData);
+        return Observable.just(bottomSlidedata);
     }
 
     /**
      * TODO this is temp code
+     * @return
      */
-    public static List<MultipleItem> getTopBannerData() {
-        List<MultipleItem> list = new ArrayList<>();
+    public static HomeResponse getTopBannerData() {
+        HomeResponse homeResponse=new HomeResponse();
+        List<HomeResponse.TopBanner> topBanners = new ArrayList<>();
         //top banner
-        MultipleItem multipleItemTopBanner = new MultipleItem(Const.HOME_TOP_BANNER, "");
-
-        List<MultipleItem.TopBanner> topBanner = new ArrayList<>();
-
-        MultipleItem.TopBanner topbanner1 = new MultipleItem.TopBanner();
+        List<String> imgs = Arrays.asList(Const.HOME_TEST_IMG1,
+            Const.HOME_TEST_IMG2,
+            Const.HOME_TEST_IMG3);
+        HomeResponse.TopBanner topbanner1 = new HomeResponse.TopBanner();
         topbanner1.setImg(Const.HOME_TEST_IMG1);
         topbanner1.setType(Const.PROMOTION_PAGE_PDP);
-        topBanner.add(topbanner1);
-        MultipleItem.TopBanner topbanner2 = new MultipleItem.TopBanner();
+        topBanners.add(topbanner1);
+
+        HomeResponse.TopBanner topbanner2 = new HomeResponse.TopBanner();
         topbanner2.setImg(Const.HOME_TEST_IMG2);
         topbanner2.setType(Const.PROMOTION_PAGE_LIST);
-        topBanner.add(topbanner2);
-        MultipleItem.TopBanner topbanner3 = new MultipleItem.TopBanner();
+        topBanners.add(topbanner2);
+
+        HomeResponse.TopBanner topbanner3 = new HomeResponse.TopBanner();
         topbanner3.setImg(Const.HOME_TEST_IMG3);
         topbanner3.setType(Const.PROMOTION_PAGE_BANNER);
-        topBanner.add(topbanner3);
-        multipleItemTopBanner.setTopBanner(topBanner);
-        list.add(multipleItemTopBanner);
+        topBanners.add(topbanner3);
 
-        return list;
+        homeResponse.setTopBanner(topBanners);
+        return homeResponse;
     }
 
     /**
      * TODO this is temp code
+     * @return
      */
-    public static List<MultipleItem> getContentVideoData() {
-        List<MultipleItem> list = new ArrayList<>();
-        List<MultipleItem.CenterVideo> centerVideos = new ArrayList<>();
-
+    public static HomeResponse getContentVideoData(HomeResponse homeResponse) {
+        List<HomeResponse.CenterVideo> centerVideos = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            MultipleItem.CenterVideo centerVideo = new MultipleItem.CenterVideo();
-            MultipleItem.CenterVideo.CenterVideoMsg centerVideoMsg = new MultipleItem.CenterVideo
+            HomeResponse.CenterVideo centerVideo = new HomeResponse.CenterVideo();
+            HomeResponse.CenterVideo.CenterVideoMsg centerVideoMsg = new HomeResponse.CenterVideo
                 .CenterVideoMsg();
             centerVideo.setItemType(Const.HOME_CENTER_VIDEO_CHILD_VIDEO);
             centerVideoMsg.setVideoMsg("i'm " + i + " page");
             centerVideo.setPosition(i);
             centerVideo.setCenterVideoMsg(centerVideoMsg);
-            List<MultipleItem.CenterVideo.CenterVideoList> centerVideoLists = new ArrayList<>();
+            List<HomeResponse.CenterVideo.CenterVideoList> centerVideoLists = new ArrayList<>();
             for (int j = 0; j < 2; j++) {
-                MultipleItem.CenterVideo.CenterVideoList centerVideoList = new MultipleItem
+                HomeResponse.CenterVideo.CenterVideoList centerVideoList = new HomeResponse
                     .CenterVideo.CenterVideoList();
                 centerVideoList.setImgUrl(Const.HOME_TEST_IMG1);
                 centerVideoList.setProductName(productName + j);
@@ -91,7 +91,7 @@ public class ServiceData {
             }
             centerVideo.setCenterVideoList(centerVideoLists);
 
-            MultipleItem.CenterVideo.PrevAndNext prevAndNext = new MultipleItem.CenterVideo
+            HomeResponse.CenterVideo.PrevAndNext prevAndNext = new HomeResponse.CenterVideo
                 .PrevAndNext();
             prevAndNext.setImgUrls(Const.HOME_TEST_IMG1);
             prevAndNext.setProductName(productName + i);
@@ -100,35 +100,31 @@ public class ServiceData {
             centerVideo.setPrevAndNext(prevAndNext);
             centerVideos.add(centerVideo);
         }
-
-        MultipleItem multipleItemTopBanner = new MultipleItem(Const.HOME_CENTER_VIDEO, "");
-        multipleItemTopBanner.setCenterVideo(centerVideos);
-        list.add(multipleItemTopBanner);
-        return list;
+        homeResponse.setCenterVideo(centerVideos);
+        return homeResponse;
     }
 
     /**
      * TODO this is temp code
+     * @return
      */
-    public static List<MultipleItem> getBottomSlidedata() {
-        List<MultipleItem> multipleItems = new ArrayList<>();
-        MultipleItem bottomSldieItem = new MultipleItem(Const.HOME_CENTER_VIDEO, "");
-        List<MultipleItem.BottomSlide> bottomSlides = new ArrayList<>();
+    public static HomeResponse getBottomSlidedata(HomeResponse homeResponse) {
+        List<HomeResponse.BottomSlide> bottomSlides = new ArrayList<>();
         for (int i = 0; i < 3; i++) {
             String headImageUrl = Const.HOME_TEST_IMG3;
-            MultipleItem.BottomSlide bottomSlideHeader = new MultipleItem.BottomSlide();
+            HomeResponse.BottomSlide bottomSlideHeader = new HomeResponse.BottomSlide();
             bottomSlideHeader.setHeadImageUrl(headImageUrl);
             bottomSlideHeader.setViewType(Const.HOME_BOTTOM_SLIDE_HEADER_IMG);
             bottomSlides.add(bottomSlideHeader);
-            MultipleItem.BottomSlide bottomSlideTitle = new MultipleItem.BottomSlide();
+            HomeResponse.BottomSlide bottomSlideTitle = new HomeResponse.BottomSlide();
             bottomSlideTitle.setViewType(Const.HOME_BOTTOM_SLIDE_TITLE);
             bottomSlideTitle.setSlideTitle(GoShopApplication.getAppContext().getResources()
                 .getString(R.string.home_bottom_slide_title));
             bottomSlides.add(bottomSlideTitle);
-            MultipleItem.BottomSlide bottomSlideItem = new MultipleItem.BottomSlide();
-            List<MultipleItem.BottomSlide.BottomSlideChild> bottomSlideChildren = new ArrayList<>();
+            HomeResponse.BottomSlide bottomSlideItem = new HomeResponse.BottomSlide();
+            List<HomeResponse.BottomSlide.BottomSlideChild> bottomSlideChildren = new ArrayList<>();
             for (int j = 0; j < 10; j++) {
-                MultipleItem.BottomSlide.BottomSlideChild bottomSlideBody = new MultipleItem
+                HomeResponse.BottomSlide.BottomSlideChild bottomSlideBody = new HomeResponse
                     .BottomSlide.BottomSlideChild();
                 bottomSlideBody.setProductName(productName);
                 bottomSlideBody.setProductPrice(productPrice);
@@ -139,9 +135,8 @@ public class ServiceData {
             bottomSlideItem.setBottomSlideChildren(bottomSlideChildren);
             bottomSlides.add(bottomSlideItem);
         }
-        bottomSldieItem.setBottomSlide(bottomSlides);
-        multipleItems.add(bottomSldieItem);
-        return multipleItems;
+        homeResponse.setBottomSlide(bottomSlides);
+        return homeResponse;
     }
 
     /**

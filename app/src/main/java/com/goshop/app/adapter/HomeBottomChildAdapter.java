@@ -2,7 +2,7 @@ package com.goshop.app.adapter;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.data.model.response.HomeResponse;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,10 +23,10 @@ import butterknife.ButterKnife;
 
 public class HomeBottomChildAdapter extends RecyclerView.Adapter {
 
-    List<MultipleItem.BottomSlide.BottomSlideChild> bottomSlideChildren = new ArrayList<>();
+    List<HomeResponse.BottomSlide.BottomSlideChild> bottomSlideChildren = new ArrayList<>();
 
     public HomeBottomChildAdapter(
-        List<MultipleItem.BottomSlide.BottomSlideChild> bottomSlideChildren) {
+        List<HomeResponse.BottomSlide.BottomSlideChild> bottomSlideChildren) {
         this.bottomSlideChildren = bottomSlideChildren;
     }
 
@@ -43,7 +43,7 @@ public class HomeBottomChildAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         BottomSlideItemHolder bottomSlideItemHolder = (BottomSlideItemHolder) holder;
-        MultipleItem.BottomSlide.BottomSlideChild bottomSlideChild = bottomSlideChildren
+        HomeResponse.BottomSlide.BottomSlideChild bottomSlideChild = bottomSlideChildren
             .get(position);
         Glide.with(bottomSlideItemHolder.ivBottomIcon.getContext())
             .load(bottomSlideChild.getImageUrl()).into(bottomSlideItemHolder.ivBottomIcon);

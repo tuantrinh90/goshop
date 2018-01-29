@@ -50,7 +50,9 @@ public class SlidingImageAdapter extends PagerAdapter {
         view.addView(imageLayout, 0);
         RxView.clicks(imageView)
             .subscribe(v -> {
-                iOnClick.onItemClick(imageView, position);
+                if (iOnClick!=null){
+                    iOnClick.onItemClick(imageView, position);
+                }
             });
         return imageLayout;
     }

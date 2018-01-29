@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.goshop.app.presentation.home.HomeActivity">
+    tools:context="com.goshop.app.presentation.home.DemoActivity">
     <com.goshop.app.common.view.CustomBoldButton
         android:id="@+id/tv_c"
         android:layout_width="wrap_content"

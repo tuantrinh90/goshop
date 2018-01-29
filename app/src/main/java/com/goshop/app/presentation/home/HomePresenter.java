@@ -1,11 +1,13 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.Weather;
-import com.goshop.app.data.retrofit.ServiceApiFail;
+import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.domian.AccountRepository;
 
+import java.util.Map;
+
 import javax.inject.Inject;
+
 import io.reactivex.observers.DisposableObserver;
 
 /**
@@ -21,34 +23,26 @@ public class HomePresenter extends RxPresenter<HomeContract.View> implements Hom
     }
 
     @Override
-    public void getWeather() {
+    public void getHome(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.getWeather().subscribeWith(new DisposableObserver<Weather>(){
-
-            @Override
-            public void onNext(Weather weather) {
-                mView.hideLoadingBar();
-                mView.showWeather(weather);
-            }
-
-            @Override
-            public void onError(Throwable throwable) {
-                mView.hideLoadingBar();
-                if(throwable instanceof ServiceApiFail){
-                    //show api return faild message
-                    mView.showFaildMessage(((ServiceApiFail) throwable).getErrorMessage());
-                }else{
-                    // show net work error Message
-                    mView.showNetwordErrorMessage();
+        addSubscrebe(accountRepository.homeRequest(params).subscribeWith(
+            new DisposableObserver<HomeResponse>() {
+                @Override
+                public void onNext(HomeResponse homeResponse) {
+                    mView.hideLoadingBar();
+                    mView.showHome(homeResponse);
                 }
 
-            }
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                }
 
-            @Override
-            public void onComplete() {
+                @Override
+                public void onComplete() {
 
-            }
-        }));
+                }
+            }));
+        ;
     }
-
 }

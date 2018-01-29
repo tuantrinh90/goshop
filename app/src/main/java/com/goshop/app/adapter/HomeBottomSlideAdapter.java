@@ -3,7 +3,7 @@ package com.goshop.app.adapter;
 import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
 import com.goshop.app.R;
-import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.utils.PageIntentUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 
@@ -26,10 +26,10 @@ import butterknife.ButterKnife;
  */
 public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
 
-    List<MultipleItem.BottomSlide> bottomSlides = new ArrayList<>();
+    List<HomeResponse.BottomSlide> bottomSlides = new ArrayList<>();
 
     public HomeBottomSlideAdapter(
-        List<MultipleItem.BottomSlide> bottomSlides) {
+        List<HomeResponse.BottomSlide> bottomSlides) {
         this.bottomSlides = bottomSlides;
     }
 
@@ -65,7 +65,7 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof BottomHeaderHolder) {
-            ((BottomHeaderHolder) holder).bindingData(bottomSlides.get(position));
+            ((BottomHeaderHolder) holder).bindingData(bottomSlides.get(position),position);
         } else if (holder instanceof BottomTitleHolder) {
             ((BottomTitleHolder) holder).bindingData(bottomSlides.get(position));
         } else if (holder instanceof BottomBodyHolder) {
@@ -88,14 +88,13 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MultipleItem.BottomSlide bottomSlide) {
+        void bindingData(HomeResponse.BottomSlide bottomSlide,int position) {
             Glide.with(ivBottomHeader.getContext()).load(bottomSlide.getHeadImageUrl())
                 .into(ivBottomHeader);
             RxView.clicks(ivBottomHeader).subscribe(v -> {
                 PageIntentUtils.skipBannerPromotion(ivBottomHeader.getContext(), bottomSlide);
             });
         }
-
     }
 
     static class BottomTitleHolder extends RecyclerView.ViewHolder {
@@ -108,7 +107,7 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MultipleItem.BottomSlide bottomSlide) {
+        void bindingData(HomeResponse.BottomSlide bottomSlide) {
             tvTitle.setText(bottomSlide.getSlideTitle());
         }
     }
@@ -123,7 +122,7 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MultipleItem.BottomSlide bottomSlide) {
+        void bindingData(HomeResponse.BottomSlide bottomSlide) {
             recyclerView.setLayoutManager(new LinearLayoutManager(recyclerView.getContext(),
                 LinearLayoutManager.HORIZONTAL, false));
             recyclerView

@@ -133,11 +133,18 @@
         <item name="android:text">@string/home_item_test_product_price</item>
     </style>
 
+    <style name="homeSlideItemBg">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">@dimen/home_slide_menu_item_height</item>
+        <item name="android:background">@drawable/slidemenu_bg_color_selected</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+    </style>
+
     <style name="homeSlideItemImage">
         <item name="android:layout_width">24dp</item>
         <item name="android:layout_height">24dp</item>
         <item name="android:layout_centerVertical">true</item>
-        <item name="android:background">@mipmap/ic_launcher</item>
     </style>
 
     <style name="homeSlideItemText">
@@ -145,7 +152,8 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:layout_marginLeft">25dp</item>
+        <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:textColor">@drawable/text_color_selected</item>
     </style>
 
     <style name="homeSlideItemTextNum">
@@ -161,14 +169,19 @@
         <item name="android:layout_alignParentRight">true</item>
     </style>
 
+
     <style name="homeSlideItemSettingText">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_height">@dimen/home_slide_menu_item_height</item>
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
         <item name="android:gravity">center_vertical</item>
         <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@drawable/text_color_selected</item>
+        <item name="android:background">@drawable/slidemenu_bg_color_selected</item>
     </style>
+
+
 
 
     <style name="MyEditText" parent="AppTheme">

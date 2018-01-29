@@ -1,7 +1,7 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.Const;
-import com.goshop.app.data.model.MultipleItem;
+import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
 
@@ -20,8 +20,8 @@ public class PageIntentUtils {
 
     public static void skipBannerPromotion(Context context, Serializable serializable) {
         //Home TopBanner click
-        if (serializable instanceof MultipleItem.TopBanner) {
-            MultipleItem.TopBanner topBanner = (MultipleItem.TopBanner) serializable;
+        if (serializable instanceof HomeResponse.TopBanner) {
+            HomeResponse.TopBanner topBanner = (HomeResponse.TopBanner) serializable;
             switch (topBanner.getType()) {
                 case Const.PROMOTION_PAGE_PDP:
                     break;
@@ -39,8 +39,8 @@ public class PageIntentUtils {
                     break;
             }
             //Home Bottom head img click
-        } else if (serializable instanceof MultipleItem.BottomSlide) {
-            MultipleItem.BottomSlide bottomSlide = (MultipleItem.BottomSlide) serializable;
+        } else if (serializable instanceof HomeResponse.BottomSlide) {
+            HomeResponse.BottomSlide bottomSlide = (HomeResponse.BottomSlide) serializable;
             Intent bottomSlideIntent = new Intent();
             bottomSlideIntent.setClass(context, PromotionBannerActivity.class);
             bottomSlideIntent.putExtra(PROMOTION_BANNER_URL, bottomSlide.getHeadImageUrl());
