@@ -1,6 +1,10 @@
 package injection.components;
 
+import com.goshop.app.presentation.account.AddAddressActivity;
+import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.LoginActivity;
+import com.goshop.app.presentation.account.MyAddressBookActivity;
 import com.goshop.app.presentation.home.DemoActivity;
 import com.goshop.app.presentation.home.HomeActivity;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
@@ -51,4 +55,12 @@ public interface PresenterComponent {
     void inject(SearchActivity searchActivity);
 
     void inject(SearchResultActivity resultActivity);
+
+    void inject(ChangePasswordActivity changePasswordActivity);
+
+    void inject(EditProfileActivity editProfileActivity);
+
+    void inject(AddAddressActivity addAddressActivity);
+
+    void inject(MyAddressBookActivity myAddressBookActivity);
 }

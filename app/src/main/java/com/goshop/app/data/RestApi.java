@@ -1,7 +1,10 @@
 package com.goshop.app.data;
 
+import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -46,4 +49,12 @@ public interface RestApi {
     Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params);
 
     Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
+
+    Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params);
+
+    Observable<ProfileReponse>editProfileRequest(Map<String, Object> params);
+
+    Observable<AddressReponse> addAddressRequest(Map<String, Object> params);
+
+    Observable<AddressReponse> myAddressRequest(Map<String, Object> params);
 }

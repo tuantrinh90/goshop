@@ -2,16 +2,18 @@ package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
+import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ProfileReponse;
+import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
+import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.GetWeatherResponse;
-
-import com.goshop.app.data.model.ComplementEmailReponse;
-import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ResetPasswordReponse;
-import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
@@ -58,8 +60,8 @@ public class RetrofitRestApiImpl implements RestApi {
 
     @Override
     public Observable<HomeResponse> homeRequest(Map<String, Object> params) {
-        String url=EndpointAddress.getFullUrl(EndpointAddress.HOME_REQUEST);
-        return retrofitRestApi.homeRequest(url,params);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_REQUEST);
+        return retrofitRestApi.homeRequest(url, params);
     }
 
     @Override
@@ -109,5 +111,29 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_BANNER);
         return retrofitRestApi.promotionBannerRequest(url, params);
+    }
+
+    @Override
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.CHANGE_PASSWORD);
+        return retrofitRestApi.changePasswordRequest(url, params);
+    }
+
+    @Override
+    public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_PROFILE);
+        return retrofitRestApi.editProfileRequest(url, params);
+    }
+
+    @Override
+    public Observable<AddressReponse> addAddressRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_ADDRESS);
+        return retrofitRestApi.addAddressRequest(url, params);
+    }
+
+    @Override
+    public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.MY_ADDRESS);
+        return retrofitRestApi.myAddressRequest(url, params);
     }
 }

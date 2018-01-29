@@ -9,6 +9,7 @@
     <color name="color_main_green">#22aa11</color>
     <color name="color_main_black">#000000</color>
     <color name="color_main_grey">#bcbcbc</color>
+    <color name="grey_f1f1f1">#f1f1f1</color>
     <color name="brightSkyBlue">#00b6f1</color>
     <color name="bluePoor">#00A9AC</color>
     <color name="blueNormal">#27A9E1</color>
