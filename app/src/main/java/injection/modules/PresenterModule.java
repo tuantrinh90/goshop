@@ -7,6 +7,8 @@ import com.goshop.app.presentation.account.ChangePasswordContract;
 import com.goshop.app.presentation.account.ChangePasswordPresenter;
 import com.goshop.app.presentation.account.EditProfileContract;
 import com.goshop.app.presentation.account.EditProfilePresenter;
+import com.goshop.app.presentation.account.WebContentContract;
+import com.goshop.app.presentation.account.WebContentPresenter;
 import com.goshop.app.presentation.account.LoginContract;
 import com.goshop.app.presentation.account.LoginPresenter;
 import com.goshop.app.presentation.home.DemoContract;
@@ -188,4 +190,9 @@ public class PresenterModule {
         return new ShoppingCartPresenter(dataRepository);
     }
 
+    @Provides
+    @ActivityScope
+    public WebContentContract.Presenter provideWebContentPresenter(AccountDataRepository dataRepository) {
+        return new WebContentPresenter(dataRepository);
+    }
 }

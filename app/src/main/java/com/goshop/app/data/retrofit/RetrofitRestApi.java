@@ -3,6 +3,7 @@ package com.goshop.app.data.retrofit;
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
@@ -174,4 +175,12 @@ public interface RetrofitRestApi {
     @POST
     Observable<ShoppingCartResponse> shoppingCartRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<GetWebContentReponse> getEcmcContent(@Url String fullUrl);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<GetWebContentReponse> getContactContent(@Url String fullUrl);
 }

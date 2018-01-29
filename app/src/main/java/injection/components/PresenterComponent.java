@@ -5,6 +5,7 @@ import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
+import com.goshop.app.presentation.account.WebContentActivity;
 import com.goshop.app.presentation.home.DemoActivity;
 import com.goshop.app.presentation.home.HomeActivity;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
@@ -73,4 +74,5 @@ public interface PresenterComponent {
 
     void inject(ShoppingCartActivity shoppingCartActivity);
 
+    void inject(WebContentActivity webContentActivity);
 }

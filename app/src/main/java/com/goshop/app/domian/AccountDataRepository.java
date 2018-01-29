@@ -2,6 +2,7 @@ package com.goshop.app.domian;
 
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
@@ -48,6 +49,23 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return accountCloudDataSource.changePasswordRequest(params);
+    }
+
+    @Override
+    public Observable<UserInfo> getUserInfo(String id) {
+        return accountCloudDataSource.getUserInfo(id)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<UserInfo> getUserInfo(String username, String password) {
+        return accountCloudDataSource.getUserInfo(username, password);
+    }
+
+    @Override
     public Observable<Weather> getWeather() {
         return accountCloudDataSource.getWeather()
             .subscribeOn(Schedulers.io())
@@ -60,11 +78,6 @@ public class AccountDataRepository implements AccountRepository {
                     return Observable.error(new ServiceApiFail("error"));
                 }
             });
-    }
-
-    @Override
-    public Observable<UserInfo> getUserInfo(String username, String password) {
-        return accountCloudDataSource.getUserInfo(username, password);
     }
 
     public Observable<UserInfo> registerRequest(Map<String, Object> params) {
@@ -114,6 +127,20 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
+        return accountCloudDataSource.promotionListRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
+        return accountCloudDataSource.promotionBannerRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
     public Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params) {
         return accountCloudDataSource.searchFilterRequest(params);
     }
@@ -121,11 +148,6 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
         return accountCloudDataSource.searchResultResponse(params);
-    }
-
-    @Override
-    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
-        return accountCloudDataSource.changePasswordRequest(params);
     }
 
     @Override
@@ -142,28 +164,19 @@ public class AccountDataRepository implements AccountRepository {
     public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.addAddressRequest(params);
     }
+
+    @Override
     public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
         return accountCloudDataSource.shoppingCartRequest(params);
     }
 
     @Override
-    public Observable<UserInfo> getUserInfo(String id) {
-        return accountCloudDataSource.getUserInfo(id)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
+    public Observable<GetWebContentReponse> getEcmcContent() {
+        return accountCloudDataSource.getEcmcContent();
     }
 
     @Override
-    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
-        return accountCloudDataSource.promotionListRequest(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    @Override
-    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
-        return accountCloudDataSource.promotionBannerRequest(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
+    public Observable<GetWebContentReponse> getContactContent() {
+        return accountCloudDataSource.getEcmcContent();
     }
 }

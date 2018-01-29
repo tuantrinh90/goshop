@@ -3,6 +3,7 @@ package com.goshop.app.data.source.cloud;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
@@ -126,11 +127,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
-        return restApi.changePasswordRequest(params);
-    }
-
-    @Override
     public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
         return restApi.editProfileRequest(params);
     }
@@ -148,5 +144,20 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
         return restApi.shoppingCartRequest(params);
+    }
+
+    @Override
+    public Observable<GetWebContentReponse> getEcmcContent() {
+        return restApi.getEcmcContent();
+    }
+
+    @Override
+    public Observable<GetWebContentReponse> getContactContent() {
+        return restApi.getContactContent();
+    }
+
+    @Override
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return restApi.changePasswordRequest(params);
     }
 }

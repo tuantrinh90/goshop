@@ -3,6 +3,7 @@ package com.goshop.app.data.source.local;
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
@@ -115,6 +116,11 @@ public class AccountLocalDataSource implements AccountDataSource {
         return null;
     }
 
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
     public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
         return null;
     }
@@ -134,7 +140,12 @@ public class AccountLocalDataSource implements AccountDataSource {
         return null;
     }
 
-    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+    @Override
+    public Observable<GetWebContentReponse> getEcmcContent() {
+        return null;
+    }
+
+    public Observable<GetWebContentReponse> getContactContent() {
         return null;
     }
 }
