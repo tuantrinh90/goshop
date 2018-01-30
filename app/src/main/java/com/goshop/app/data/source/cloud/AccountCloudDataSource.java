@@ -1,8 +1,11 @@
 package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
+import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -103,5 +106,25 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
         return restApi.searchResultResponse(params);
+    }
+
+    @Override
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return restApi.changePasswordRequest(params);
+    }
+
+    @Override
+    public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
+        return restApi.editProfileRequest(params);
+    }
+
+    @Override
+    public Observable<AddressReponse> addAddressRequest(Map<String, Object> params) {
+        return restApi.addAddressRequest(params);
+    }
+
+    @Override
+    public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
+        return restApi.myAddressRequest(params);
     }
 }

@@ -1,7 +1,10 @@
 package com.goshop.app.domian;
 
+import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -101,6 +104,26 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
         return accountCloudDataSource.searchResultResponse(params);
+    }
+
+    @Override
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return accountCloudDataSource.changePasswordRequest(params);
+    }
+
+    @Override
+    public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
+        return accountCloudDataSource.editProfileRequest(params);
+    }
+
+    @Override
+    public Observable<AddressReponse> addAddressRequest(Map<String, Object> params) {
+        return accountCloudDataSource.addAddressRequest(params);
+    }
+
+    @Override
+    public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
+        return accountCloudDataSource.addAddressRequest(params);
     }
 
     @Override

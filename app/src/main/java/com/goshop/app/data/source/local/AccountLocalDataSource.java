@@ -1,8 +1,11 @@
 package com.goshop.app.data.source.local;
 
 import com.goshop.app.data.LocalApi;
+import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -96,6 +99,24 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<AddressReponse> addAddressRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
         return null;
     }
 }

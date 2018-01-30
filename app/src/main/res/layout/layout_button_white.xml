@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.goshop.app.common.view.CustomTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_btn_layout_white"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center"
+    android:textColor="@android:color/black"
+    android:text="@string/save"
+    android:textSize="@dimen/size_font_16"
+    android:paddingBottom="@dimen/size_14"
+    android:paddingTop="@dimen/size_10"
+    android:background="@drawable/bg_white_round_circle"/>
