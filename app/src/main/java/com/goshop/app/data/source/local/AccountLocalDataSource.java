@@ -10,6 +10,7 @@ import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -102,10 +103,6 @@ public class AccountLocalDataSource implements AccountDataSource {
         return null;
     }
 
-    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
-        return null;
-    }
-
     public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
         return null;
     }
@@ -117,6 +114,15 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
         return null;
     }
 }

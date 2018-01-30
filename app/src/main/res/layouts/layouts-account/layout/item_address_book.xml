@@ -99,7 +99,7 @@
         android:layout_height="@dimen/size_1"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
-        android:background="@color/grey_f1f1f1"/>
+        android:background="@color/color_divider_grey"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -166,6 +166,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
-        android:background="@color/grey_f1f1f1"/>
+        android:background="@color/color_divider_grey"/>
 
 </LinearLayout>

@@ -16,6 +16,7 @@ import com.goshop.app.presentation.login.RegisterActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.search.SearchResultActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
+import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
 import android.app.Activity;
 
@@ -63,4 +64,7 @@ public interface PresenterComponent {
     void inject(AddAddressActivity addAddressActivity);
 
     void inject(MyAddressBookActivity myAddressBookActivity);
+
+    void inject(ShoppingCartActivity shoppingCartActivity);
+
 }

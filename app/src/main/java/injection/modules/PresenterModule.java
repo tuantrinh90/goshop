@@ -31,6 +31,8 @@ import com.goshop.app.presentation.search.SearchResultContract;
 import com.goshop.app.presentation.search.SearchResultPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
+import com.goshop.app.presentation.shopping.ShoppingCartContract;
+import com.goshop.app.presentation.shopping.ShoppingCartPresenter;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
@@ -169,6 +171,13 @@ public class PresenterModule {
     public MyAddressBookContract.Presenter provideMyAddressBookPresenter(
         AccountDataRepository dataRepository) {
         return new MyAddressBookPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public ShoppingCartContract.Presenter provideShoppingCartPresenter(
+        AccountDataRepository dataRepository) {
+        return new ShoppingCartPresenter(dataRepository);
     }
 
 }

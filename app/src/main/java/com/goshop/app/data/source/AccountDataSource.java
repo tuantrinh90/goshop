@@ -9,6 +9,7 @@ import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -58,4 +59,7 @@ public interface AccountDataSource {
     Observable<AddressReponse> addAddressRequest(Map<String, Object> params);
 
     Observable<AddressReponse> myAddressRequest(Map<String, Object> params);
+
+    Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);
+
 }

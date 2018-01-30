@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:tools="http://schemas.android.com/tools">
+<resources>
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#EC458B</color>
 
-    <color name="color_main_pink">#FF4081</color>
+    <color name="color_main_pink">#ec458b</color>
     <color name="color_main_orange">#ff9911</color>
     <color name="color_main_green">#22aa11</color>
     <color name="color_main_black">#000000</color>
     <color name="color_main_grey">#bcbcbc</color>
-    <color name="grey_f1f1f1">#f1f1f1</color>
+    <color name="color_light_black">#333333</color>
+    <color name="color_divider_grey">#f1f1f1</color>
     <color name="brightSkyBlue">#00b6f1</color>
     <color name="bluePoor">#00A9AC</color>
     <color name="blueNormal">#27A9E1</color>
@@ -59,8 +60,10 @@
 
     <!--facebook -->
     <color name="facebook">#3A5899</color>
+
     <color name="transparent60Percent">#99000000</color>
     <color name="transparent80Percent">#CC000000</color>
+
 
 
 </resources>
