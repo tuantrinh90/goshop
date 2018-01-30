@@ -15,6 +15,16 @@ import com.goshop.app.presentation.home.DemoContract;
 import com.goshop.app.presentation.home.DemoPresenter;
 import com.goshop.app.presentation.account.MyAddressBookContract;
 import com.goshop.app.presentation.account.MyAddressBookPresenter;
+import com.goshop.app.presentation.account.FAQContract;
+import com.goshop.app.presentation.account.FAQPresenter;
+import com.goshop.app.presentation.account.HelpSupportContract;
+import com.goshop.app.presentation.account.HelpSupportPresenter;
+import com.goshop.app.presentation.account.LoginContract;
+import com.goshop.app.presentation.account.LoginPresenter;
+import com.goshop.app.presentation.account.TermsConditionsContract;
+import com.goshop.app.presentation.account.TermsConditionsPresenter;
+import com.goshop.app.presentation.account.WebContentContract;
+import com.goshop.app.presentation.account.WebContentPresenter;
 import com.goshop.app.presentation.home.HomeContract;
 import com.goshop.app.presentation.home.HomePresenter;
 import com.goshop.app.presentation.home.PromotionContract;
@@ -192,7 +202,28 @@ public class PresenterModule {
 
     @Provides
     @ActivityScope
-    public WebContentContract.Presenter provideWebContentPresenter(AccountDataRepository dataRepository) {
+    public WebContentContract.Presenter provideWebContentPresenter(
+        AccountDataRepository dataRepository) {
         return new WebContentPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public HelpSupportContract.Presenter provideHelpSupprotPresenter(
+        AccountDataRepository dataRepository) {
+        return new HelpSupportPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public FAQContract.Presenter provideFAQPresenter(AccountDataRepository dataRepository) {
+        return new FAQPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public TermsConditionsContract.Presenter provideTermsConditionPresenter(
+        AccountDataRepository dataRepository) {
+        return new TermsConditionsPresenter(dataRepository);
     }
 }

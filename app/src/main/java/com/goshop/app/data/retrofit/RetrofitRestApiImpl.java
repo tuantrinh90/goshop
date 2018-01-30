@@ -8,11 +8,14 @@ import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
+import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -167,5 +170,23 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<GetWebContentReponse> getContactContent() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_CONTACT_US);
         return retrofitRestApi.getContactContent(url);
+    }
+
+    @Override
+    public Observable<HelpSupportReponse> helpSupportRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.HELP_SUPPORT);
+        return retrofitRestApi.helpSupportRequest(url, params);
+    }
+
+    @Override
+    public Observable<FAQReponse> faqRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.FAQ);
+        return retrofitRestApi.faqRequest(url, params);
+    }
+
+    @Override
+    public Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.TERMS_CONDITIONS);
+        return retrofitRestApi.termsConditionsRequest(url, params);
     }
 }

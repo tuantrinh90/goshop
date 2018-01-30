@@ -74,10 +74,6 @@
 
         <activity android:name=".presentation.account.WebContentActivity"
             android:theme="@style/WhiteBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <activity android:name=".presentation.account.EditProfileActivity"
@@ -88,6 +84,17 @@
         <activity android:name=".presentation.account.ChangePasswordActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
+        <activity android:name=".presentation.account.HelpSupportActivity"
+            android:theme="@style/WhiteBackground">
+        </activity>
+
+        <activity android:name=".presentation.account.FAQActivity"
+            android:theme="@style/WhiteBackground">
+        </activity>
+
+        <activity android:name=".presentation.account.TermsConditionsActivity"
+            android:theme="@style/WhiteBackground">
+        </activity>
 
         <activity android:name=".presentation.account.AddAddressActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"

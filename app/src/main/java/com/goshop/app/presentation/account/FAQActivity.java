@@ -3,7 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.presentation.model.HelpSupportModel;
+import com.goshop.app.presentation.model.FAQVM;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -21,29 +21,28 @@ import injection.modules.PresenterModule;
  * Created by helen on 2018/1/29.
  */
 
-public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presenter> implements
-    HelpSupportContract.View {
+public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements FAQContract.View {
 
-    @BindView(R.id.recyclerview_help)
-    RecyclerView recyclerviewHelp;
+    @BindView(R.id.recyclerview_faq)
+    RecyclerView recyclerviewFaq;
 
-    private HelpSupportAdapter adapter;
+    private FAQAdapter adapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO(helen)wait for api
-        mPresenter.helpSupportRequest(null);
+        //TODO(helen) wait for api
+        mPresenter.faqRequest(null);
     }
 
     @Override
     public int getContentView() {
-        return R.layout.activity_help_support;
+        return R.layout.activity_faq;
     }
 
     @Override
     public String getScreenTitle() {
-        return getResources().getString(R.string.help_support);
+        return getResources().getString(R.string.faq);
     }
 
     @Override
@@ -51,6 +50,14 @@ public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presen
         hideRightMenu();
         initRecyclerView();
         initPresenter();
+    }
+
+    private void initRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerviewFaq.setLayoutManager(layoutManager);
+        adapter = new FAQAdapter(new ArrayList<>());
+        recyclerviewFaq.setAdapter(adapter);
     }
 
     private void initPresenter() {
@@ -61,16 +68,8 @@ public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presen
             .inject(this);
     }
 
-    private void initRecyclerView() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerviewHelp.setLayoutManager(layoutManager);
-        adapter = new HelpSupportAdapter(new ArrayList<>());
-        recyclerviewHelp.setAdapter(adapter);
-    }
-
     @Override
-    public void showResult(List<HelpSupportModel> helpSupportModels) {
-        adapter.updateDatas(helpSupportModels);
+    public void showResult(List<FAQVM> faqvms) {
+        adapter.updateDatas(faqvms);
     }
 }

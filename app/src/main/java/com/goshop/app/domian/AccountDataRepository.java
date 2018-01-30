@@ -2,7 +2,9 @@ package com.goshop.app.domian;
 
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
+import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
@@ -11,6 +13,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -46,11 +49,6 @@ public class AccountDataRepository implements AccountRepository {
         @Named("localAccountDataSource") AccountDataSource accountLocalDataSource) {
         this.accountCloudDataSource = accountCloudDataSource;
         this.accountLocalDataSource = accountLocalDataSource;
-    }
-
-    @Override
-    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
-        return accountCloudDataSource.changePasswordRequest(params);
     }
 
     @Override
@@ -151,6 +149,11 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return accountCloudDataSource.changePasswordRequest(params);
+    }
+
+    @Override
     public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
         return accountCloudDataSource.editProfileRequest(params);
     }
@@ -177,6 +180,22 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<GetWebContentReponse> getContactContent() {
-        return accountCloudDataSource.getEcmcContent();
+        return accountCloudDataSource.getContactContent();
+    }
+
+
+    @Override
+    public Observable<HelpSupportReponse> helpSupportRequest(Map<String, Object> params) {
+        return accountCloudDataSource.helpSupportRequest(params);
+    }
+
+    @Override
+    public Observable<FAQReponse> faqRequest(Map<String, Object> params) {
+        return accountCloudDataSource.faqRequest(params);
+    }
+
+    @Override
+    public Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params) {
+        return accountCloudDataSource.termsConditionsRequest(params);
     }
 }

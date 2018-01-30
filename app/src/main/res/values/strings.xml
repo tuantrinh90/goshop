@@ -250,5 +250,8 @@
     <string name="ecmc">ECMC Customer Terms And Conditions</string>
     <string name="contact_us">Contact Us</string>
     <string name="help_support">Help &#38; Support</string>
+    <string name="faq">FAQ</string>
+    <string name="terms_conditions">Terms &#38; Conditions</string>
+    <string name="office_address_">Office Address:</string>
 
 </resources>

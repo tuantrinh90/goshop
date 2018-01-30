@@ -2,7 +2,9 @@ package com.goshop.app.domian;
 
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
+import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
@@ -11,6 +13,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -72,5 +75,11 @@ public interface AccountRepository {
     Observable<GetWebContentReponse> getEcmcContent();
 
     Observable<GetWebContentReponse> getContactContent();
+
+    Observable<HelpSupportReponse> helpSupportRequest(Map<String, Object> params);
+
+    Observable<FAQReponse> faqRequest(Map<String, Object> params);
+
+    Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params);
 
 }
