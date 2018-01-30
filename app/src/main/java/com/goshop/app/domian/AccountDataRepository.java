@@ -2,6 +2,7 @@ package com.goshop.app.domian;
 
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
@@ -183,7 +184,6 @@ public class AccountDataRepository implements AccountRepository {
         return accountCloudDataSource.getContactContent();
     }
 
-
     @Override
     public Observable<HelpSupportReponse> helpSupportRequest(Map<String, Object> params) {
         return accountCloudDataSource.helpSupportRequest(params);
@@ -197,5 +197,15 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params) {
         return accountCloudDataSource.termsConditionsRequest(params);
+    }
+
+    @Override
+    public Observable<ContactUsReponse> getContactInfo() {
+        return accountCloudDataSource.getContactInfo();
+    }
+
+    @Override
+    public Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params) {
+        return accountCloudDataSource.contactMessageRequest(params);
     }
 }

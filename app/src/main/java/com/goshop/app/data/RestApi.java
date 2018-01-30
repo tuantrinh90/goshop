@@ -2,6 +2,7 @@ package com.goshop.app.data;
 
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
@@ -80,4 +81,9 @@ public interface RestApi {
     Observable<FAQReponse> faqRequest(Map<String, Object> params);
 
     Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params);
+
+
+    Observable<ContactUsReponse> getContactInfo();
+
+    Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params);
 }

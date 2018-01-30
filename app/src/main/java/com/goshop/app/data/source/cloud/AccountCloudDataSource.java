@@ -3,6 +3,7 @@ package com.goshop.app.data.source.cloud;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
@@ -177,6 +178,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params) {
         return restApi.termsConditionsRequest(params);
+    }
+
+    @Override
+    public Observable<ContactUsReponse> getContactInfo() {
+        return restApi.getContactInfo();
+    }
+
+    @Override
+    public Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params) {
+        return restApi.contactMessageRequest(params);
     }
 
 }

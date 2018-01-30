@@ -2,10 +2,11 @@ package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
-import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
+import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
@@ -173,6 +174,7 @@ public interface RetrofitRestApi {
     @POST
     Observable<AddressReponse> myAddressRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
@@ -203,5 +205,15 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<TermsConditionsReponse> termsConditionsRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<ContactUsReponse> getContactInfo(@Url String fullUrl);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<ContactUsReponse> contactMessageRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

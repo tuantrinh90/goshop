@@ -4,13 +4,14 @@ import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ContactUsReponse;
+import com.goshop.app.data.model.FAQReponse;
+import com.goshop.app.data.model.GetWebContentReponse;
+import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
-import com.goshop.app.data.model.FAQReponse;
-import com.goshop.app.data.model.GetWebContentReponse;
-import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
@@ -155,11 +156,13 @@ public class RetrofitRestApiImpl implements RestApi {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_ADDRESS);
         return retrofitRestApi.myAddressRequest(url, params);
     }
+
     @Override
     public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.SHOPPINT_CART);
         return retrofitRestApi.shoppingCartRequest(url, params);
     }
+
     @Override
     public Observable<GetWebContentReponse> getEcmcContent() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_ECMC);
@@ -188,5 +191,17 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.TERMS_CONDITIONS);
         return retrofitRestApi.termsConditionsRequest(url, params);
+    }
+
+    @Override
+    public Observable<ContactUsReponse> getContactInfo() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_CONTACT_INFO);
+        return retrofitRestApi.getContactInfo(url);
+    }
+
+    @Override
+    public Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.CONTACT_MESSAGE);
+        return retrofitRestApi.contactMessageRequest(url, params);
     }
 }

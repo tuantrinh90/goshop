@@ -4,6 +4,7 @@ import com.crashlytics.android.Crashlytics;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.presentation.account.ContactUsActivity;
 import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
 import com.goshop.app.presentation.search.SearchActivity;
@@ -48,8 +49,8 @@ public class TestMenuActivity extends BaseActivity {
 
     @OnClick({R.id.btn_test_register, R.id.btn_test_complement_email, R.id
         .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_changepwd,
-        R.id.btn_test_editprofile, R.id.btn_test_pdp, R.id.btn_test_my_address,  R.id
-        .btn_test_search, R.id.btn_test_cart})
+        R.id.btn_test_editprofile, R.id.btn_test_pdp, R.id.btn_test_my_address, R.id
+        .btn_test_search, R.id.btn_test_cart, R.id.btn_test_contact_us})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_register:
@@ -78,10 +79,12 @@ public class TestMenuActivity extends BaseActivity {
                 break;
             case R.id.btn_test_my_address:
                 startActivity(new Intent(this, MyAddressBookActivity.class));
-
+                break;
             case R.id.btn_test_cart:
                 startActivity(new Intent(this, ShoppingCartActivity.class));
-
+                break;
+            case R.id.btn_test_contact_us:
+                startActivity(new Intent(this, ContactUsActivity.class));
                 break;
         }
     }

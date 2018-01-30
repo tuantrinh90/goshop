@@ -2,6 +2,7 @@ package com.goshop.app.domian;
 
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
@@ -82,4 +83,7 @@ public interface AccountRepository {
 
     Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params);
 
+    Observable<ContactUsReponse> getContactInfo();
+
+    Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params);
 }

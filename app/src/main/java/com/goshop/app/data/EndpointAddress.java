@@ -71,6 +71,10 @@ public class EndpointAddress {
 
     public static final String TERMS_CONDITIONS = "";
 
+    public static final String GET_CONTACT_INFO = "";
+
+    public static final String CONTACT_MESSAGE = "";
+
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;
     }

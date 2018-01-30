@@ -5,6 +5,8 @@ import com.goshop.app.presentation.account.AddAddressContract;
 import com.goshop.app.presentation.account.AddAddressPresenter;
 import com.goshop.app.presentation.account.ChangePasswordContract;
 import com.goshop.app.presentation.account.ChangePasswordPresenter;
+import com.goshop.app.presentation.account.ContactUsContract;
+import com.goshop.app.presentation.account.ContactUsPresenter;
 import com.goshop.app.presentation.account.EditProfileContract;
 import com.goshop.app.presentation.account.EditProfilePresenter;
 import com.goshop.app.presentation.account.WebContentContract;
@@ -226,4 +228,12 @@ public class PresenterModule {
         AccountDataRepository dataRepository) {
         return new TermsConditionsPresenter(dataRepository);
     }
+
+    @Provides
+    @ActivityScope
+    public ContactUsContract.Presenter provideTContactUsPresenter(
+        AccountDataRepository dataRepository) {
+        return new ContactUsPresenter(dataRepository);
+    }
+
 }

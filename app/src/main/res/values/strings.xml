@@ -101,6 +101,7 @@
     <string name="email">Email</string>
     <string name="email_format">test@test.com</string>
     <string name="mobile_number">Mobile Number</string>
+    <string name="mobile_number_optional">Mobile Number (Optional)</string>
     <string name="change_password">Change Password</string>
     <string name="password">Password</string>
     <string name="current_password">Current Password</string>
@@ -230,11 +231,11 @@
     <string name="default_text">Default</string>
     <string name="comma">,</string>
 
-   <string-array name="test_list">
-       <item>First</item>
-       <item>Second</item>
-       <item>Third</item>
-   </string-array>
+    <string-array name="test_list">
+        <item>First</item>
+        <item>Second</item>
+        <item>Third</item>
+    </string-array>
 
     <string name="shopping_cart">Shopping Cart</string>
     <string name="discount_code">Discount Code</string>
@@ -253,5 +254,18 @@
     <string name="faq">FAQ</string>
     <string name="terms_conditions">Terms &#38; Conditions</string>
     <string name="office_address_">Office Address:</string>
+    <string name="contact_us_address_content">Astro GS Shop Sdn Bhd (1081077-X) Astro All Asia
+        Broadcast Centre, Technology Park Malaysia, Lebuhraya Puchong-Sungai Besi, Bukit Jalil,
+        57000 Kuala Lumpur, Malaysia.
+    </string>
+
+    <string name="via_email">Via Email:</string>
+    <string name="via_phone">Via Phone:</string>
+    <string name="via_social_media">Via Social Media</string>
+    <string name="send_message_to_us">Send Message to Us</string>
+    <string name="name">Name</string>
+    <string name="product_handing">Product Handing</string>
+    <string name="contact_us_after_phone">(24 hours daily toll-free)</string>
+
 
 </resources>
