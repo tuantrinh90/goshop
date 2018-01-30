@@ -36,9 +36,13 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     @BindView(R.id.tv_btn_layout_white)
     CustomTextView tvBtnLayoutWhite;
 
+    private List<AddressVM> displayAddressVMs;
+
     @Override
     public void myAddressResult(List<AddressVM> addressVMS) {
-        addressBookAdapter.setUpdates(addressVMS);
+        displayAddressVMs.clear();
+        displayAddressVMs.addAll(addressVMS);
+        addressBookAdapter.setUpdates(displayAddressVMs);
     }
 
     @Override
@@ -61,6 +65,7 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     @Override
     public void inject() {
         hideRightMenu();
+        displayAddressVMs = new ArrayList<>();
         tvBtnLayoutWhite.setText(getResources().getString(R.string.add_new_address));
         initPresenter();
         initRecyclerView();
@@ -78,7 +83,7 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerviewAddressBook.setLayoutManager(layoutManager);
-        addressBookAdapter = new MyAddressBookAdapter(new ArrayList<>(), this);
+        addressBookAdapter = new MyAddressBookAdapter(displayAddressVMs, this);
         recyclerviewAddressBook.setAdapter(addressBookAdapter);
     }
 
@@ -105,6 +110,12 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     @Override
     public void removeAddress(AddressVM addressVM) {
-
+        if (displayAddressVMs.contains(addressVM)) {
+            displayAddressVMs.remove(addressVM);
+            if (addressVM.isDefault() && displayAddressVMs.size() > 0) {
+                displayAddressVMs.get(0).setDefault(true);
+            }
+        }
+        addressBookAdapter.setUpdates(displayAddressVMs);
     }
 }

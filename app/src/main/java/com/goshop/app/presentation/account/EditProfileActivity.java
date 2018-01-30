@@ -27,7 +27,8 @@ import injection.modules.PresenterModule;
  * Created by helen on 2018/1/25.
  */
 
-public class EditProfileActivity extends BaseActivity<EditProfileContract.Presenter> implements EditProfileContract.View {
+public class EditProfileActivity extends BaseActivity<EditProfileContract.Presenter> implements
+    EditProfileContract.View {
 
     @BindView(R.id.et_profile_date)
     CustomAnimSpinner etProfileDate;
@@ -71,13 +72,6 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
     }
-    private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
-    }
 
     @Override
     public int getContentView() {
@@ -97,13 +91,44 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         initRadioGroup();
     }
 
+    private void initPresenter() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
+    }
+
+    private void initSprinner() {
+        etProfileDate.getEditText().setItems(getMockDatas());
+        etProfileDate.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
+
+        });
+
+        etProfileTitle.getEditText().setItems(getMockDatas());
+        etProfileTitle.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
+
+        });
+
+        etProfileLanguage.getEditText().setItems(getMockDatas());
+        etProfileLanguage.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
+
+        });
+
+        etProfileRace.getEditText().setItems(getMockDatas());
+        etProfileRace.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
+
+        });
+
+    }
+
     private void initRadioGroup() {
-        if(isMale) {
+        if (isMale) {
             rbEditProfileMale.setChecked(true);
         } else {
             rbEditProfileFemale.setChecked(true);
         }
-        rgEditProfileGender.setOnCheckedChangeListener((RadioGroup group, int checkedId)->{
+        rgEditProfileGender.setOnCheckedChangeListener((RadioGroup group, int checkedId) -> {
             switch (checkedId) {
                 case R.id.rb_edit_profile_female:
                     isMale = false;
@@ -113,29 +138,6 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
                     break;
             }
         });
-    }
-
-    private void initSprinner() {
-        etProfileDate.getEditText().setItems(getMockDatas());
-        etProfileDate.getEditText().setOnItemSelectedListener((item, selectedIndex)->{
-
-        });
-
-        etProfileTitle.getEditText().setItems(getMockDatas());
-        etProfileTitle.getEditText().setOnItemSelectedListener((item, selectedIndex)->{
-
-        });
-
-        etProfileLanguage.getEditText().setItems(getMockDatas());
-        etProfileLanguage.getEditText().setOnItemSelectedListener((item, selectedIndex)->{
-
-        });
-
-        etProfileRace.getEditText().setItems(getMockDatas());
-        etProfileRace.getEditText().setOnItemSelectedListener((item, selectedIndex)->{
-
-        });
-
     }
 
     //TODO(helen)this is mock data will delete
@@ -164,23 +166,23 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     private void judgmentInput(String email, String firstName, String lastName, String birth,
         String mobile) {
-        if(TextUtils.isEmpty(email)) {
+        if (TextUtils.isEmpty(email)) {
             etProfileEmail.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        if(TextUtils.isEmpty(firstName)) {
+        if (TextUtils.isEmpty(firstName)) {
             etProfileFirst.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        if(TextUtils.isEmpty(lastName)) {
+        if (TextUtils.isEmpty(lastName)) {
             etProfileLast.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        if(TextUtils.isEmpty(birth)) {
+        if (TextUtils.isEmpty(birth)) {
             etProfileDate.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        if(TextUtils.isEmpty(mobile)) {
+        if (TextUtils.isEmpty(mobile)) {
             etProfileMobile.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
@@ -190,6 +192,6 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     @Override
     public void editProfileResult() {
-
+        //TODO(helen) wait for api
     }
 }

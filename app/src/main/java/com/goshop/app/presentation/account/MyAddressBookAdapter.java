@@ -108,11 +108,7 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
             tvAddressBookCountry.setText(addressVM.getCountry());
             tvAddressBookState.setText(addressVM.getState());
             tvAddressBookTel.setText(addressVM.getTel());
-            if (addressVM.isDefault()) {
-                rbAddressBookDefault.setChecked(true);
-            } else {
-                rbAddressBookDefault.setChecked(false);
-            }
+            rbAddressBookDefault.setChecked(addressVM.isDefault());
 
             llAddressBookEdit.setOnClickListener(v -> addressBookClickListener.editAddress(addressVM));
 
