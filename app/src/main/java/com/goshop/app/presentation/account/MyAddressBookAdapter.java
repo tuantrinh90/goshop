@@ -6,6 +6,7 @@ import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.AddressVM;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,8 +35,9 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
     }
 
     public void setUpdates(List<AddressVM> addressVMS) {
+        //TODO(helen)this part need decide
         this.addressVMS.clear();
-        this.addressVMS = addressVMS;
+        this.addressVMS.addAll(addressVMS);
         notifyDataSetChanged();
     }
 
