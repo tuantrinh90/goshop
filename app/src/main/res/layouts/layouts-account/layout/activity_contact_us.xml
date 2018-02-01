@@ -41,13 +41,13 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_1"
-                    android:background="@color/color_main_grey"/>
+                    android:background="@color/color_divider_grey"/>
 
                 <com.goshop.app.common.view.CustomBoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_main_black"
+                    android:textColor="@color/color_text_black"
                     android:text="@string/office_address_"
                     android:paddingTop="@dimen/size_20"
                     android:paddingLeft="@dimen/size_16"/>
@@ -57,7 +57,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_main_black"
+                    android:textColor="@color/color_text_black"
                     android:text="@string/contact_us_address_content"
                     android:paddingTop="@dimen/size_10"
                     android:paddingLeft="@dimen/size_16"
@@ -67,7 +67,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_main_black"
+                    android:textColor="@color/color_text_black"
                     android:text="@string/via_email"
                     android:paddingTop="@dimen/size_20"
                     android:paddingLeft="@dimen/size_16"
@@ -78,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_main_black"
+                    android:textColor="@color/color_text_black"
                     android:paddingTop="@dimen/size_4"
                     android:paddingLeft="@dimen/size_16"
                     android:paddingRight="@dimen/size_100"/>
@@ -87,7 +87,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_main_black"
+                    android:textColor="@color/color_text_black"
                     android:text="@string/via_phone"
                     android:paddingTop="@dimen/size_20"
                     android:paddingLeft="@dimen/size_16"
@@ -102,7 +102,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
-                        android:textColor="@color/color_main_black"
+                        android:textColor="@color/color_text_black"
                         android:paddingTop="@dimen/size_4"
                         android:paddingLeft="@dimen/size_16"/>
 
@@ -110,7 +110,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
-                        android:textColor="@color/color_main_grey"
+                        android:textColor="@color/color_hint_grey"
                         android:text="@string/contact_us_after_phone"
                         android:paddingTop="@dimen/size_4"
                         android:paddingLeft="@dimen/size_6"/>
@@ -122,7 +122,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_main_black"
+                    android:textColor="@color/color_text_black"
                     android:text="@string/via_social_media"
                     android:paddingTop="@dimen/size_20"
                     android:paddingLeft="@dimen/size_16"
@@ -139,26 +139,29 @@
                         android:id="@+id/iv_contact_facebook"
                         android:layout_width="@dimen/size_36"
                         android:layout_height="@dimen/size_36"
-                        android:background="@mipmap/facebook"/>
+                        android:background="@mipmap/facebook"
+                        android:contentDescription="@string/app_name"/>
                     <ImageView
                         android:id="@+id/iv_contact_twitter"
                         android:layout_width="@dimen/size_36"
                         android:layout_height="@dimen/size_36"
                         android:layout_marginLeft="@dimen/size_16"
+                        android:contentDescription="@string/app_name"
                         android:background="@mipmap/twitter"/>
                     <ImageView
                         android:id="@+id/iv_contact_group"
                         android:layout_width="@dimen/size_36"
                         android:layout_height="@dimen/size_36"
                         android:layout_marginLeft="@dimen/size_16"
-                        android:background="@mipmap/group"/>
+                        android:background="@mipmap/group"
+                        android:contentDescription="@string/app_name"/>
                 </LinearLayout>
 
                 <com.goshop.app.common.view.CustomBoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_main_black"
+                    android:textColor="@color/color_text_black"
                     android:text="@string/send_message_to_us"
                     android:paddingTop="@dimen/size_40"
                     android:paddingLeft="@dimen/size_16"/>

@@ -9,11 +9,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
@@ -71,5 +73,14 @@ public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements 
     @Override
     public void showResult(List<FAQVM> faqvms) {
         adapter.updateDatas(faqvms);
+    }
+
+    @OnClick({R.id.imageview_left_menu})
+    public void OnFAQClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                finish();
+                break;
+        }
     }
 }

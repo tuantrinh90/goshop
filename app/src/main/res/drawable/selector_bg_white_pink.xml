@@ -9,7 +9,7 @@
                 android:right="@dimen/size_16"
                 android:left="@dimen/size_16"
             >
-                <color android:color="@color/pinkishGrey"/>
+                <color android:color="@color/color_divider_grey"/>
             </item>
             <item
                 android:bottom="@dimen/size_1">

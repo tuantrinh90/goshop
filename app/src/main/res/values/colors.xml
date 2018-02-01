@@ -4,7 +4,12 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#EC458B</color>
 
+    <!--Correction color-->
+    <color name="color_hint_grey">#cccccc</color>
+    <color name="color_text_black">#494949</color>
     <color name="color_main_pink">#ec458b</color>
+    <color name="color_litte_pink">#FFF0F5</color>
+
     <color name="color_main_orange">#ff9911</color>
     <color name="color_main_green">#22aa11</color>
     <color name="color_main_black">#000000</color>

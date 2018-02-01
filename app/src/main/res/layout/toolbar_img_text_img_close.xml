@@ -44,7 +44,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/size_60"
             android:paddingRight="@dimen/size_60"
-            android:textColor="@color/color_main_black"
+            android:textColor="@color/color_text_black"
             android:textSize="@dimen/size_font_20"
             android:minLines="1"
             android:maxLines="1"

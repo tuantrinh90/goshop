@@ -5,7 +5,7 @@
         android:state_focused="false">
         <layer-list>
             <item>
-                <color android:color="@color/pinkishGrey"/>
+                <color android:color="@color/color_divider_grey"/>
             </item>
             <item
                 android:bottom="@dimen/size_1">
@@ -18,7 +18,7 @@
         android:state_focused="true">
         <layer-list>
             <item>
-                <color android:color="@color/colorAccent"/>
+                <color android:color="@color/color_main_pink"/>
             </item>
             <item
                 android:bottom="@dimen/size_1">
@@ -30,7 +30,7 @@
     <item>
         <layer-list>
             <item>
-                <color android:color="@color/pinkishGrey"/>
+                <color android:color="@color/color_divider_grey"/>
             </item>
             <item
                 android:bottom="@dimen/size_1">

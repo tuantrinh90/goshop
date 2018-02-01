@@ -3,7 +3,7 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.CustomTitleDelEditText;
+import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -29,7 +29,7 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
     .Presenter> implements LoginResetPasswordContract.View, ToastUtil.OnToastListener {
 
     @BindView(R.id.ctd_et_reset_pwd)
-    CustomTitleDelEditText ctdEtResetPwd;
+    CustomAnimEditText ctdEtResetPwd;
 
     @BindView(R.id.tv_btn_reset_password_submit)
     CustomBoldTextView tvBtnResetPasswordSubmit;
@@ -70,7 +70,6 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
     private void initEditText() {
         ctdEtResetPwd.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         ctdEtResetPwd.initImeOptions(EditorInfo.IME_ACTION_DONE);
-        ctdEtResetPwd.focusListener(CustomTitleDelEditText.EDITTEXT_EMAIL);
     }
 
     @Override
@@ -97,7 +96,7 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
                 //TODO(helen)wait for api
                 EditTextUtil.eidtLoseFocus(tvBtnResetPasswordSubmit);
                 String email = ctdEtResetPwd.getText();
-                if(!TextUtils.isEmpty(email)) {
+                if (!TextUtils.isEmpty(email)) {
                     mPresenter.resetPasswordRequest(null);
                 }
 

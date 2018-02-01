@@ -7,10 +7,12 @@ import com.goshop.app.common.view.CustomBoldTextView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
@@ -59,6 +61,7 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
 
     @Override
     public void inject() {
+        hideRightMenu();
         initWebView();
         initDatas();
         initPresenter();
@@ -103,6 +106,15 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
         if (wvContent != null) {
             wvContent.destroy();
             wvContent = null;
+        }
+    }
+
+    @OnClick({R.id.imageview_left_menu})
+    public void OnWebClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                finish();
+                break;
         }
     }
 }

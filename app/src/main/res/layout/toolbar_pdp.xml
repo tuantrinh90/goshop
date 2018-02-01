@@ -40,7 +40,7 @@
             android:layout_alignParentEnd="true"/>
 
         <ImageView
-            android:id="@+id/imageview_right_menu_left"
+            android:id="@+id/imageview_right_cart"
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_16"
             android:layout_marginRight="@dimen/size_16"

@@ -6,14 +6,26 @@ package com.goshop.app.presentation.model;
 
 public class FilterMenuExpandVM extends FilterMenuModel {
 
+    private boolean hasIcon;
+
     private boolean isExpand;
 
     private String title;
 
-    public FilterMenuExpandVM(String title, boolean isExpand) {
+    public FilterMenuExpandVM(String title, boolean isExpand, boolean hasIcon) {
         super(FilterMenuModel.FILTER_EXPAND);
         this.title = title;
         this.isExpand = isExpand;
+        this.hasIcon = hasIcon;
+
+    }
+
+    public boolean isHasIcon() {
+        return hasIcon;
+    }
+
+    public void setHasIcon(boolean hasIcon) {
+        this.hasIcon = hasIcon;
     }
 
     public String getTitle() {

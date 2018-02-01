@@ -3,7 +3,7 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.CustomTitleDelEditText;
+import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -30,7 +30,7 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     LoginComplementEmailContract.View, ToastUtil.OnToastListener {
 
     @BindView(R.id.ctd_et_complement_email)
-    CustomTitleDelEditText ctdEtComplementEmail;
+    CustomAnimEditText ctdEtComplementEmail;
 
     @BindView(R.id.tv_btn_complement_email_submit)
     CustomBoldTextView tvBtnComplementEmailSubmit;
@@ -71,7 +71,6 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     private void initEditText() {
         ctdEtComplementEmail.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         ctdEtComplementEmail.initImeOptions(EditorInfo.IME_ACTION_DONE);
-        ctdEtComplementEmail.focusListener(CustomTitleDelEditText.EDITTEXT_EMAIL);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_complement_email_submit})

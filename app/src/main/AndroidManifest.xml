@@ -70,7 +70,9 @@
 
         <activity android:name=".presentation.search.SearchResultActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/WhiteBackground"/>
+            android:theme="@style/WhiteBackground">
+
+        </activity>
 
         <activity android:name=".presentation.account.WebContentActivity"
             android:theme="@style/WhiteBackground">

@@ -10,7 +10,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
-        android:background="@color/color_main_grey"/>
+        android:background="@color/color_divider_grey"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_faq"

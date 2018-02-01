@@ -134,7 +134,7 @@
                     android:layout_marginLeft="@dimen/size_16"
                     android:checked="true"
                     android:text="@string/register_tips_email"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@color/color_text_black"/>
 
                 <CheckBox
                     android:id="@+id/cb_register_sms"
@@ -145,7 +145,7 @@
                     android:layout_marginLeft="@dimen/size_16"
                     android:checked="true"
                     android:text="@string/register_tips_sms"
-                    android:textColor="@android:color/black"/>
+                    android:textColor="@color/color_text_black"/>
             </LinearLayout>
         </ScrollView>
     </LinearLayout>

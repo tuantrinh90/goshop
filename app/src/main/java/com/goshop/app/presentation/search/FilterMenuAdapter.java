@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.search;
 
 import com.goshop.app.R;
-import com.goshop.app.common.CustomDynamicRelativeLayout;
+import com.goshop.app.common.FlowLayout;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.FilterMenuCategoryVM;
@@ -13,8 +13,11 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,16 +29,43 @@ import butterknife.ButterKnife;
 
 public class FilterMenuAdapter extends RecyclerView.Adapter {
 
+    private boolean add = true;
+
+    private List<FilterMenuModel> displayModels;
+
     private List<FilterMenuModel> menuModels;
 
     public FilterMenuAdapter(
         List<FilterMenuModel> menuModels) {
-        this.menuModels = menuModels;
+        this.displayModels = menuModels;
+        this.menuModels = new ArrayList<>();
     }
 
     public void updateDatas(List<FilterMenuModel> menuModels) {
         this.menuModels.clear();
+        this.displayModels.clear();
         this.menuModels = menuModels;
+        for (int i = 0; i < menuModels.size(); i++) {
+            FilterMenuModel filterMenuModel = menuModels.get(i);
+            if (add) {
+                displayModels.add(filterMenuModel);
+                if (filterMenuModel instanceof FilterMenuExpandVM) {
+                    if (((FilterMenuExpandVM) filterMenuModel)
+                        .isHasIcon() && !((FilterMenuExpandVM) filterMenuModel).isExpand()) {
+                        add = false;
+                    }
+                }
+            } else {
+                if (filterMenuModel instanceof FilterMenuExpandVM) {
+                    add = true;
+                    displayModels.add(filterMenuModel);
+                    if (((FilterMenuExpandVM) filterMenuModel)
+                        .isHasIcon() && !((FilterMenuExpandVM) filterMenuModel).isExpand()) {
+                        add = false;
+                    }
+                }
+            }
+        }
         notifyDataSetChanged();
     }
 
@@ -55,7 +85,9 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
                 break;
 
             case FilterMenuModel.FILTER_BRANDS:
-                //TODO(helen) need decide
+                View brandsView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_filter_menu_brands, parent, false);
+                viewHolder = new BrandsViewHolder(brandsView);
                 break;
             case FilterMenuModel.FILTER_PRICE:
                 View priceView = LayoutInflater.from(parent.getContext())
@@ -68,9 +100,9 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        FilterMenuModel filterMenuModel = menuModels.get(position);
+        FilterMenuModel filterMenuModel = displayModels.get(position);
         if (holder instanceof ExpandViewHolder) {
-            ((ExpandViewHolder) holder).bindingData((FilterMenuExpandVM) filterMenuModel);
+            ((ExpandViewHolder) holder).bindingData((FilterMenuExpandVM) filterMenuModel, position);
         } else if (holder instanceof CategoryViewHolder) {
             ((CategoryViewHolder) holder).bindingData((FilterMenuCategoryVM) filterMenuModel);
         } else if (holder instanceof PriceViewHolder) {
@@ -80,12 +112,38 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemViewType(int position) {
-        return menuModels.get(position).getViewType();
+        return displayModels.get(position).getViewType();
     }
 
     @Override
     public int getItemCount() {
-        return menuModels.size();
+        return displayModels.size();
+    }
+
+    private void expand(int position) {
+        int expandPosition = menuModels.indexOf(displayModels.get(position));
+        int insert = position;
+        int count = 0;
+        for (int i = expandPosition + 1; i < menuModels.size() && (menuModels.get(i)
+            .getViewType() != FilterMenuExpandVM.FILTER_EXPAND); i++) {
+            count++;
+            insert++;
+            displayModels.add(insert, menuModels.get(i));
+        }
+        //Todo(helen)this part need to decide
+        notifyDataSetChanged();
+    }
+
+    private void closeUp(int position) {
+        int closePosition = menuModels.indexOf(displayModels.get(position));
+        int count = 0;
+        for (int i = closePosition + 1; i < menuModels.size() && (menuModels.get(i)
+            .getViewType() != FilterMenuExpandVM.FILTER_EXPAND); i++) {
+            count++;
+            displayModels.remove(position + 1);
+        }
+        //Todo(helen)this part need to decide
+        notifyDataSetChanged();
     }
 
     class ExpandViewHolder extends RecyclerView.ViewHolder {
@@ -96,33 +154,68 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_item_search_filter_expand)
         CustomTextView tvItemSearchFilterExpand;
 
+        @BindView(R.id.rl_filter_expand_title)
+        RelativeLayout rlFilterExpandTitle;
+
         public ExpandViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(FilterMenuExpandVM expandVM) {
+        void bindingData(FilterMenuExpandVM expandVM, int position) {
             tvItemSearchFilterExpand.setText(expandVM.getTitle());
-            ivItemSearchFilterExpand.setOnClickListener(
-                v -> ivItemSearchFilterExpand.setSelected(!ivItemSearchFilterExpand.isSelected()));
+            if (expandVM.isHasIcon()) {
+                ivItemSearchFilterExpand.setVisibility(View.VISIBLE);
+                ivItemSearchFilterExpand.setSelected(expandVM.isExpand());
+                rlFilterExpandTitle.setSelected(expandVM.isExpand());
+                itemView.setOnClickListener(
+                    v -> {
+                        expandVM.setExpand(!expandVM.isExpand());
+                        ivItemSearchFilterExpand.setSelected(expandVM.isExpand());
+                        rlFilterExpandTitle.setSelected(expandVM.isExpand());
+                        if (expandVM.isExpand()) {
+                            expand(position);
+                        } else {
+                            closeUp(position);
+                        }
+                    });
+            } else {
+                ivItemSearchFilterExpand.setVisibility(View.GONE);
+                rlFilterExpandTitle.setSelected(true);
+            }
+
         }
     }
 
     class CategoryViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.crl_search_category_filter)
-        CustomDynamicRelativeLayout crlSearchCategoryFilter;
+        @BindView(R.id.flow_search_filter)
+        FlowLayout flowSearchFilter;
 
-        private CategorySelectorHelper selectorHelper;
+        private List<String> categorys;
 
         public CategoryViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            selectorHelper = new CategorySelectorHelper();
+            categorys = new ArrayList<>();
         }
 
         void bindingData(FilterMenuCategoryVM categoryVM) {
-            selectorHelper.createCheckBox(crlSearchCategoryFilter, categoryVM.getCategorys());
+            categorys.clear();
+            categorys = categoryVM.getCategorys();
+
+            LayoutInflater mInflater = LayoutInflater.from(itemView.getContext());
+            for (int i = 0; i < categorys.size(); i++) {
+                CheckBox categoryCheckView = (CheckBox) mInflater.inflate(R.layout.item_checkbox,
+                    flowSearchFilter, false);
+                categoryCheckView.setText(categorys.get(i));
+                categoryCheckView.setOnCheckedChangeListener(((buttonView, isChecked) -> {
+                    if (isChecked) {
+                        //todo(helen) wait for design
+                    }
+                }));
+                flowSearchFilter.addView(categoryCheckView);
+            }
         }
     }
 

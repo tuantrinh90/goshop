@@ -91,6 +91,8 @@ public class CustomPasswordEditText extends RelativeLayout {
     public void setErrorMessage(String errorMessage) {
         tilPasswordEdittext.setErrorEnabled(true);
         tilPasswordEdittext.setError(errorMessage);
+        etPasswordEdittext.setFocusable(true);
+        etPasswordEdittext.requestFocus();
     }
 
     public void initInputType(int inputType) {

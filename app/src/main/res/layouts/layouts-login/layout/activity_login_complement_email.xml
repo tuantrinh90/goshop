@@ -2,8 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:CustomTitleDelEditText="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent" xmlns:animET="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:focusableInTouchMode="true"
     android:focusable="true">
@@ -14,7 +13,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
-        android:background="@color/color_main_grey"/>
+        android:background="@color/color_divider_grey"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:layout_width="match_parent"
@@ -22,19 +21,19 @@
         android:layout_marginTop="@dimen/size_14"
         android:text="@string/complement_email_tips"
         android:textSize="@dimen/size_font_16"
-        android:textColor="@android:color/black"
-        android:paddingLeft="@dimen/size_20"
-        android:paddingRight="@dimen/size_20"/>
+        android:textColor="@color/color_text_black"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"/>
 
-    <com.goshop.app.common.CustomTitleDelEditText
+    <com.goshop.app.common.CustomAnimEditText
         android:id="@+id/ctd_et_complement_email"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_40"
-        android:layout_marginLeft="@dimen/size_20"
-        android:layout_marginRight="@dimen/size_20"
-        CustomTitleDelEditText:et_hint="@string/email"
-        />
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginRight="@dimen/size_16"
+        animET:hint="@string/email"
+    />
 
 
     <com.goshop.app.common.view.CustomBoldTextView
@@ -43,13 +42,13 @@
         android:layout_height="wrap_content"
         android:background="@drawable/bg_btn_round_pink"
         android:layout_marginTop="@dimen/size_54"
-        android:layout_marginLeft="@dimen/size_20"
-        android:layout_marginRight="@dimen/size_20"
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginRight="@dimen/size_16"
         android:padding="@dimen/size_12"
         android:gravity="center"
         android:textColor="@android:color/white"
         android:text="@string/submit"
-        android:textSize="@dimen/size_font_18"/>
+        android:textSize="@dimen/size_font_16"/>
 
 
 </LinearLayout>

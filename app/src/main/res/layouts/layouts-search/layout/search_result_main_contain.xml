@@ -25,9 +25,10 @@
             android:layout_alignParentLeft="true"
             android:paddingLeft="@dimen/size_20"
             android:paddingRight="@dimen/size_20"
-            android:textColor="@color/color_main_black"
+            android:textColor="@color/color_text_black"
             android:textSize="@dimen/size_font_14"
-            tools:ignore="RtlSymmetry"/>
+            tools:ignore="RtlSymmetry"
+            android:layout_alignParentStart="true"/>
 
         <ImageView
             android:id="@+id/iv_sort_arrow"
@@ -36,7 +37,8 @@
             android:src="@drawable/selector_image_expand_selected"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/tv_btn_search_sort"
-            android:contentDescription="@string/app_name" />
+            android:contentDescription="@string/app_name"
+            android:layout_toEndOf="@id/tv_btn_search_sort"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_btn_search_filter"
@@ -47,9 +49,10 @@
             android:text="@string/filter"
             android:paddingLeft="@dimen/size_20"
             android:paddingRight="@dimen/size_20"
-            android:textColor="@color/color_main_black"
+            android:textColor="@color/color_text_black"
             android:textSize="@dimen/size_font_14"
-            tools:ignore="RtlSymmetry"/>
+            tools:ignore="RtlSymmetry"
+            android:layout_alignParentEnd="true"/>
 
 
     </RelativeLayout>

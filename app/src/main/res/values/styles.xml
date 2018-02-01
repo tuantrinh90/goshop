@@ -220,12 +220,6 @@
     <style name="WhiteBackground" parent="AppTheme">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
-    
-    <declare-styleable name="CustomTitleDelEditText">
-        <attr name="et_hint" format="reference" />
-        <attr name="et_password" format="boolean" />
-
-    </declare-styleable>
 
     <declare-styleable name="animET">
         <attr name="hint" format="reference" />
@@ -251,9 +245,9 @@
     </style>
 
     <style name="hintAppearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/color_main_black</item>
+        <item name="android:textColor">@color/color_text_black</item>
         <item name="android:textSize">@dimen/size_font_12</item>
-        <item name="android:textColorHint">@color/color_main_grey</item>
+        <item name="android:textColorHint">@color/color_hint_grey</item>
 
     </style>
 

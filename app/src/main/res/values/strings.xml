@@ -169,6 +169,7 @@
     <string name="pdp_additionall_value">N/A</string>
 
     <string name="search">Search</string>
+    <string name="search_result">Search Result</string>
     <string name="search_products">Search products</string>
     <string name="search_no_data">Your search returns no results.</string>
     <string name="search_explore">Why not to explore our best sellers</string>
@@ -266,6 +267,8 @@
     <string name="name">Name</string>
     <string name="product_handing">Product Handing</string>
     <string name="contact_us_after_phone">(24 hours daily toll-free)</string>
+    <string name="min">Min</string>
+    <string name="max">Max</string>
 
 
 </resources>
