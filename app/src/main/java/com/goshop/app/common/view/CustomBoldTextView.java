@@ -16,26 +16,25 @@ public class CustomBoldTextView extends android.support.v7.widget.AppCompatTextV
 
     public CustomBoldTextView(Context context) {
         super(context);
-//TODO if have font file open this method
-//        setFont(context);
+        setFont(context);
     }
 
     public CustomBoldTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-//TODO if have font file open this method
-//        setFont(context);
+        setFont(context);
     }
 
     public CustomBoldTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-//TODO if have font file open this method
-//        setFont(context);
+        setFont(context);
     }
 
     private void setFont(Context context) {
-        TextPaint paint = getPaint();
+        //TODO if have font file open this method
+        /*TextPaint paint = getPaint();
         paint.setFakeBoldText(true);
         Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_BOLD);
-        setTypeface(face);
+        setTypeface(face);*/
+        setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
     }
 }

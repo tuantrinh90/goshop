@@ -30,9 +30,11 @@ public class CustomBoldButton extends android.support.v7.widget.AppCompatButton 
     }
 
     private void setFont(Context context) {
-        TextPaint paint = getPaint();
+        //TODO if have font file open this method
+        /*TextPaint paint = getPaint();
         paint.setFakeBoldText(true);
         Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_BOLD);
-        setTypeface(face);
+        setTypeface(face);*/
+        setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
     }
 }
