@@ -37,7 +37,7 @@ import butterknife.OnClick;
 
 public class MyOrderListAdapter extends RecyclerView.Adapter {
 
-    List<MyOrderListResponse.ResultsBean> results=new ArrayList<>();
+    List<MyOrderListResponse.ResultsBean> results = new ArrayList<>();
 
     public MyOrderListAdapter(List<MyOrderListResponse.ResultsBean> results) {
         this.results = results;
@@ -71,7 +71,7 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
         MyOrderListResponse.ResultsBean resultsBean = results.get(position);
 
         if (viewHolder instanceof TitleHolder) {
-            TitleHolder holder= (TitleHolder)viewHolder;
+            TitleHolder holder = (TitleHolder) viewHolder;
             SpannableString orderString = setBoldText(holder.orderNumber, resultsBean.getOrderSn());
             holder.tvOrderNum.setText(orderString);
 
@@ -79,8 +79,8 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
             holder.tvOrderStatus.setText(statusString);
 
         } else if (viewHolder instanceof BodyHolder) {
-            BodyHolder holder= (BodyHolder)viewHolder;
-            holder.bindingData(holder,resultsBean);
+            BodyHolder holder = (BodyHolder) viewHolder;
+            holder.bindingData(holder, resultsBean);
 
         } else if (viewHolder instanceof BottomPriceHolder) {
             BottomPriceHolder holder = (BottomPriceHolder) viewHolder;
@@ -90,17 +90,13 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private SpannableString setBoldText(String frontText,String behindText){
+    private SpannableString setBoldText(String frontText, String behindText) {
         String allText = frontText + behindText;
-        SpannableString spannableString=new SpannableString(allText);
-        StyleSpan styleSpan=new StyleSpan(Typeface.BOLD);
-        spannableString.setSpan(styleSpan,frontText.length(),allText.length(),
+        SpannableString spannableString = new SpannableString(allText);
+        StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
+        spannableString.setSpan(styleSpan, frontText.length(), allText.length(),
             Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
         return spannableString;
-    }
-
-    static class ViewHolder{
-
     }
 
     @Override
@@ -111,6 +107,10 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemViewType(int position) {
         return results.get(position).getType();
+    }
+
+    static class ViewHolder {
+
     }
 
     static class TitleHolder extends RecyclerView.ViewHolder {
@@ -127,14 +127,13 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
         @BindString(R.string.my_orders_title_status)
         String orderStatus;
 
-
         public TitleHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
     }
 
-    static class BodyHolder extends RecyclerView.ViewHolder{
+    static class BodyHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_order_product_id)
         CustomTextView tvOrderProductId;
@@ -172,54 +171,61 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
         public void onViewClicked(View view) {
             switch (view.getId()) {
                 case R.id.tv_order_product_track:
+                    //TODO joyson temp code
                     Logger.e("click track");
                     break;
                 case R.id.rl_order_list_product_body:
-                    Logger.e("click content to Order Detail");
                     itemView.getContext().startActivity(new Intent(itemView.getContext(),
                         MyOrderDetailActivity.class));
                     break;
             }
         }
-        void bindingDetail(BodyHolder holder,MyOrderDetailReponse.SubordersBean subordersBean){
-            Glide.with(holder.itemView.getContext()).load(subordersBean.getImage()).into(ivProductIcon);
+
+        void bindingDetail(BodyHolder holder, MyOrderDetailReponse.SubordersBean subordersBean) {
+            Glide.with(holder.itemView.getContext()).load(subordersBean.getImage())
+                .into(ivProductIcon);
             SpannableString italicString = setItalicText(subordersBean.getProductId() + " ",
                 subordersBean.getStatus());
             tvOrderProductId.setText(italicString);
-            Glide.with(holder.itemView.getContext()).load(subordersBean.getImage()).into(ivProductIcon);
+            Glide.with(holder.itemView.getContext()).load(subordersBean.getImage())
+                .into(ivProductIcon);
             tvOrderProductPrice.setText(subordersBean.getPrice());
             tvOrderProductTitle.setText(subordersBean.getName());
             tvOrderProductAmount.setText(subordersBean.getQty() + "");
         }
 
-        void bindingData(BodyHolder holder,MyOrderListResponse.ResultsBean resultsBean){
+        void bindingData(BodyHolder holder, MyOrderListResponse.ResultsBean resultsBean) {
             SpannableString italicString = setItalicText(resultsBean.getProductId() + " ",
                 resultsBean.getStatus());
             tvOrderProductId.setText(italicString);
-            Glide.with(holder.itemView.getContext()).load(resultsBean.getImage()).into(ivProductIcon);
+            Glide.with(holder.itemView.getContext()).load(resultsBean.getImage())
+                .into(ivProductIcon);
             tvOrderProductPrice.setText(resultsBean.getPrice());
             tvOrderProductTitle.setText(resultsBean.getName());
             tvOrderProductAmount.setText(resultsBean.getQty() + "");
         }
 
-        private SpannableString setItalicText(String frontText,String behindText){
+        private SpannableString setItalicText(String frontText, String behindText) {
             String allText = frontText + behindText;
             SpannableString spannableString = new SpannableString(allText);
-            StyleSpan styleItalic  = new StyleSpan(Typeface.ITALIC);
-            ForegroundColorSpan colorSpan = new ForegroundColorSpan(ScreenHelper.getColor(R.color.colorAccent));
-            spannableString.setSpan(colorSpan, frontText.length(), allText.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-            spannableString.setSpan(styleItalic, frontText.length(), allText.length(), Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            StyleSpan styleItalic = new StyleSpan(Typeface.ITALIC);
+            ForegroundColorSpan colorSpan = new ForegroundColorSpan(
+                ScreenHelper.getColor(R.color.colorAccent));
+            spannableString.setSpan(colorSpan, frontText.length(), allText.length(),
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
+            spannableString.setSpan(styleItalic, frontText.length(), allText.length(),
+                Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
             return spannableString;
         }
     }
 
     static class BottomPriceHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.tv_order_list_total_price)
         CustomTextView tvOrderListTotalPrice;
 
         @BindString(R.string.my_orders_total_price)
         String orderTotalPrice;
-
 
         public BottomPriceHolder(View itemView) {
             super(itemView);

@@ -122,12 +122,14 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
     }
 
     private void initPageInfo(MyOrderDetailReponse reponse) {
-        tvOrderDetailNumber.setText(holderOrderNumber+reponse.getOrderId());
-        tvOrderDetailStatus.setText(holderOrderStatus+reponse.getState());
-        tvOrderDetailTrack.setText(holderOrderPlacedAt+reponse.getDate());
+        tvOrderDetailNumber.setText(holderOrderNumber + reponse.getOrderId());
+        tvOrderDetailStatus.setText(holderOrderStatus + reponse.getState());
+        tvOrderDetailTrack.setText(holderOrderPlacedAt + reponse.getDate());
         tvOrderDetailPersonName.setText(reponse.getCustomerName());
         tvOrderDetailAddress.setText(reponse.getShippingAddress().getRegion());
-        tvOrderDetailCityAndPostcode.setText(reponse.getShippingAddress().getCity()+","+reponse.getShippingAddress().getPostcode());
+        tvOrderDetailCityAndPostcode.setText(
+            reponse.getShippingAddress().getCity() + "," + reponse.getShippingAddress()
+                .getPostcode());
         tvOrderDetailCountry.setText(reponse.getShippingAddress().getCountry());
         tvOrderDetailTel.setText(reponse.getShippingAddress().getTelephone());
         tvOrderDetailPayMethod.setText(reponse.getPaymentMethod());
@@ -157,7 +159,7 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
             .inject(this);
     }
 
-    @OnClick({ R.id.imageview_left_menu})
+    @OnClick({R.id.imageview_left_menu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:

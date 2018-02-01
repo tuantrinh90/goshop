@@ -17,7 +17,7 @@ import java.util.List;
 
 public class MyOrderDetailAdapter extends RecyclerView.Adapter {
 
-    List<MyOrderDetailReponse.SubordersBean> subordersBeans=new ArrayList<>();
+    List<MyOrderDetailReponse.SubordersBean> subordersBeans = new ArrayList<>();
 
     public MyOrderDetailAdapter(
         List<MyOrderDetailReponse.SubordersBean> subordersBeans) {
@@ -26,15 +26,15 @@ public class MyOrderDetailAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view= LayoutInflater.from(parent.getContext())
+        View view = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_order_list_content, parent, false);
         return new MyOrderListAdapter.BodyHolder(view);
     }
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-        MyOrderListAdapter.BodyHolder holder= (MyOrderListAdapter.BodyHolder) viewHolder;
-        holder.bindingDetail(holder,subordersBeans.get(position));
+        MyOrderListAdapter.BodyHolder holder = (MyOrderListAdapter.BodyHolder) viewHolder;
+        holder.bindingDetail(holder, subordersBeans.get(position));
     }
 
     @Override

@@ -1,27 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+>
     <include
         layout="@layout/toolbar_image_title_image"/>
     <View style="@style/homeWrapWidthLine"/>
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+    >
         <LinearLayout
             android:orientation="vertical"
             android:focusableInTouchMode="true"
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-
 
 
             <com.goshop.app.common.view.CustomBoldTextView

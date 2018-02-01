@@ -13,7 +13,7 @@ import java.util.Map;
 
 public interface MyOrderContract {
 
-    interface View extends BaseView{
+    interface View extends BaseView {
 
         void showOrderList(MyOrderListResponse response);
 
@@ -26,13 +26,13 @@ public interface MyOrderContract {
         public void closeSwipeLayout();
 
         void showOrderDetail(MyOrderDetailReponse reponse);
-
     }
 
-    interface Presenter extends BasePresenter<View>{
-         void getOrderList(Map<String, Object> params);
-         void getOrderDetail(Map<String, Object> params);
+    interface Presenter extends BasePresenter<View> {
 
+        void getOrderList(Map<String, Object> params);
+
+        void getOrderDetail(Map<String, Object> params);
     }
 
 }

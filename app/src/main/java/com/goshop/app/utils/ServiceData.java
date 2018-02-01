@@ -39,10 +39,9 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static HomeResponse getTopBannerData() {
-        HomeResponse homeResponse=new HomeResponse();
+        HomeResponse homeResponse = new HomeResponse();
         List<HomeResponse.TopBanner> topBanners = new ArrayList<>();
         //top banner
         List<String> imgs = Arrays.asList(Const.HOME_TEST_IMG1,
@@ -69,7 +68,6 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static HomeResponse getContentVideoData(HomeResponse homeResponse) {
         List<HomeResponse.CenterVideo> centerVideos = new ArrayList<>();
@@ -108,7 +106,6 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static HomeResponse getBottomSlidedata(HomeResponse homeResponse) {
         List<HomeResponse.BottomSlide> bottomSlides = new ArrayList<>();
@@ -193,38 +190,38 @@ public class ServiceData {
     /**
      * TODO this is temp mock code
      */
-    public static Observable<MyOrderListResponse> getMyOrderLists(){
-        MyOrderListResponse myOrderListResponse=new MyOrderListResponse();
-        List<MyOrderListResponse.ResultsBean> results=new ArrayList<>();
+    public static Observable<MyOrderListResponse> getMyOrderLists() {
+        MyOrderListResponse myOrderListResponse = new MyOrderListResponse();
+        List<MyOrderListResponse.ResultsBean> results = new ArrayList<>();
 
-        for (int k=0;k<5;k++){
-            MyOrderListResponse.ResultsBean titleBean=new MyOrderListResponse.ResultsBean();
+        for (int k = 0; k < 5; k++) {
+            MyOrderListResponse.ResultsBean titleBean = new MyOrderListResponse.ResultsBean();
             titleBean.setDate("21 Mar 2017");
-            titleBean.setOrderId(String.valueOf(44814+k));
-            titleBean.setOrderSn(String.valueOf(910312525+k));
+            titleBean.setOrderId(String.valueOf(44814 + k));
+            titleBean.setOrderSn(String.valueOf(910312525 + k));
             titleBean.setTotal("245.00");
             titleBean.setStatus("pending");
             titleBean.setType(Const.MYORDER_LIST_TITLE);
             results.add(titleBean);
 
-            for (int i=0;i<3;i++){
-                MyOrderListResponse.ResultsBean bodyBean =new MyOrderListResponse.ResultsBean();
-                bodyBean.setProductId(String.valueOf(145071+i));
-                bodyBean.setItemId(String.valueOf(467363+i));
+            for (int i = 0; i < 3; i++) {
+                MyOrderListResponse.ResultsBean bodyBean = new MyOrderListResponse.ResultsBean();
+                bodyBean.setProductId(String.valueOf(145071 + i));
+                bodyBean.setItemId(String.valueOf(467363 + i));
                 bodyBean.setName("PS4 DUALSHOCK®4 Wireless Controller (Wave Blue)");
                 bodyBean.setBrand("PlayStation");
-                bodyBean.setBrandId(String.valueOf(4813+i));
+                bodyBean.setBrandId(String.valueOf(4813 + i));
                 bodyBean.setCategory("Others");
-                bodyBean.setQty(1+i);
+                bodyBean.setQty(1 + i);
                 bodyBean.setPrice("208.00");
                 bodyBean.setImage(Const.BANNER_IMG1);
-                bodyBean.setId(String.valueOf(910312525+i));
+                bodyBean.setId(String.valueOf(910312525 + i));
                 bodyBean.setStatus("Shipped");
                 bodyBean.setType(Const.MYORDER_LIST_CONTENT);
                 results.add(bodyBean);
             }
 
-            MyOrderListResponse.ResultsBean bottomPriceBean=new MyOrderListResponse.ResultsBean();
+            MyOrderListResponse.ResultsBean bottomPriceBean = new MyOrderListResponse.ResultsBean();
             bottomPriceBean.setTotal("245.00");
             bottomPriceBean.setType(Const.MYORDER_LIST_PRICE);
             results.add(bottomPriceBean);
@@ -239,8 +236,8 @@ public class ServiceData {
     /**
      * TODO this is temp mock code
      */
-    public static Observable<MyOrderDetailReponse> getMyOrderDetail(){
-        MyOrderDetailReponse myOrderDetailReponse=new MyOrderDetailReponse();
+    public static Observable<MyOrderDetailReponse> getMyOrderDetail() {
+        MyOrderDetailReponse myOrderDetailReponse = new MyOrderDetailReponse();
         myOrderDetailReponse.setOrderId("44752");
         myOrderDetailReponse.setDate("11 Jan 2018");
         myOrderDetailReponse.setState("processing");
@@ -251,7 +248,7 @@ public class ServiceData {
         myOrderDetailReponse.setShippingFee("RM 0.00");
         myOrderDetailReponse.setGrandTotal("RM 1,461.00");
 
-        MyOrderDetailReponse.ShippingAddressBean shippingAddressBean=new MyOrderDetailReponse
+        MyOrderDetailReponse.ShippingAddressBean shippingAddressBean = new MyOrderDetailReponse
             .ShippingAddressBean();
         shippingAddressBean.setFirstname("Test Name");
         shippingAddressBean.setCountry("China");
@@ -261,13 +258,14 @@ public class ServiceData {
         shippingAddressBean.setTelephone("+123456789");
         myOrderDetailReponse.setShippingAddress(shippingAddressBean);
 
-        ArrayList<MyOrderDetailReponse.SubordersBean> subordersBeans=new ArrayList<>();
-        for (int i=0;i<4;i++){
-            MyOrderDetailReponse.SubordersBean subordersBean=new MyOrderDetailReponse.SubordersBean();
-            subordersBean.setProductId(String.valueOf(467363123+i));
-            if (i%2==0){
+        ArrayList<MyOrderDetailReponse.SubordersBean> subordersBeans = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            MyOrderDetailReponse.SubordersBean subordersBean = new MyOrderDetailReponse
+                .SubordersBean();
+            subordersBean.setProductId(String.valueOf(467363123 + i));
+            if (i % 2 == 0) {
                 subordersBean.setStatus("Shipped");
-            }else {
+            } else {
                 subordersBean.setStatus("Processing");
             }
             subordersBean.setName("PS4 DUALSHOCK®4 Wireless Controller (Wave Blue)");
@@ -278,11 +276,6 @@ public class ServiceData {
         return Observable.just(myOrderDetailReponse);
 
     }
-
-
-
-
-
 
 
 }

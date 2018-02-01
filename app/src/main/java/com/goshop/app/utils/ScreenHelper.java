@@ -123,7 +123,7 @@ public class ScreenHelper {
         return getMeasures(paramContext).arg2;
     }
 
-    public static void setBg(View view,int drawableRes){
+    public static void setBg(View view, int drawableRes) {
         Drawable drawable = GoShopApplication.getAppContext().getResources()
             .getDrawable(drawableRes);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {

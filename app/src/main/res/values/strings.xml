@@ -80,6 +80,10 @@
     <string name="my_orders_shipping_address">Shipping Address</string>
     <string name="my_orders_payment_method">Payment Method</string>
     <string name="my_orders_items">Items</string>
+    <string name="my_orders_test_id">#123019223</string>
+    <string name="my_orders_test_color">Color: Blue</string>
+    <string name="my_orders_test_size">Size: M</string>
+    <string name="my_orders_test_amount">* 3</string>
 
     <!--test data-->
     <string name="home_item_test_product_name">Manjung Korean Crispy Seaweed(Sea Salt)</string>
