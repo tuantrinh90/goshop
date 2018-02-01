@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_address_book_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingTop="@dimen/size_20"
+        android:paddingBottom="@dimen/size_12"
+        android:textColor="@color/color_main_black"
+        android:textSize="@dimen/size_font_16"/>
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_address_book_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingTop="@dimen/size_8"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_main_black"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_address_book_city"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size_16"
+            android:paddingTop="@dimen/size_8"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_main_black"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/size_4"
+            android:paddingTop="@dimen/size_8"
+            android:text="@string/comma"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_main_black"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_address_book_state"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size_8"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_main_black"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/size_4"
+            android:paddingTop="@dimen/size_8"
+            android:text="@string/comma"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_main_black"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_address_book_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size_8"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_main_black"/>
+    </LinearLayout>
+
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_address_book_country"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingTop="@dimen/size_8"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_main_black"/>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_address_book_tel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingTop="@dimen/size_8"
+        android:paddingBottom="@dimen/size_12"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_main_black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginRight="@dimen/size_16"
+        android:background="@color/color_divider_grey"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/size_16"
+        android:paddingLeft="@dimen/size_16">
+        <RadioButton
+            android:id="@+id/rb_address_book_default"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/color_main_black"
+            android:text="@string/default_text"/>
+
+
+        <LinearLayout
+            android:id="@+id/ll_address_book_remove"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:paddingTop="@dimen/size_14"
+            android:paddingBottom="@dimen/size_14"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/size_24"
+                android:layout_height="@dimen/size_24"
+                android:background="@mipmap/remove"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_main_black"
+                android:text="@string/remove"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/ll_address_book_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/size_12"
+            android:paddingTop="@dimen/size_14"
+            android:paddingBottom="@dimen/size_14"
+            android:layout_toLeftOf="@id/ll_address_book_remove"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/size_24"
+                android:layout_height="@dimen/size_24"
+                android:background="@mipmap/edit_f"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_main_black"
+                android:text="@string/edit"/>
+
+        </LinearLayout>
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/color_divider_grey"/>
+
+</LinearLayout>

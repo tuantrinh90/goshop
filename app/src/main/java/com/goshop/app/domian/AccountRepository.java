@@ -1,11 +1,15 @@
 package com.goshop.app.domian;
 
+import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -53,5 +57,16 @@ public interface AccountRepository {
     Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params);
 
     Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params);
+
+    Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params);
+
+    Observable<ProfileReponse> editProfileRequest(Map<String, Object> params);
+
+    Observable<AddressReponse> addAddressRequest(Map<String, Object> params);
+
+    Observable<AddressReponse> myAddressRequest(Map<String, Object> params);
+
+    Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);
+
 
 }

@@ -1,10 +1,18 @@
 package injection.modules;
 
 import com.goshop.app.domian.AccountDataRepository;
+import com.goshop.app.presentation.account.AddAddressContract;
+import com.goshop.app.presentation.account.AddAddressPresenter;
+import com.goshop.app.presentation.account.ChangePasswordContract;
+import com.goshop.app.presentation.account.ChangePasswordPresenter;
+import com.goshop.app.presentation.account.EditProfileContract;
+import com.goshop.app.presentation.account.EditProfilePresenter;
 import com.goshop.app.presentation.account.LoginContract;
 import com.goshop.app.presentation.account.LoginPresenter;
 import com.goshop.app.presentation.home.DemoContract;
 import com.goshop.app.presentation.home.DemoPresenter;
+import com.goshop.app.presentation.account.MyAddressBookContract;
+import com.goshop.app.presentation.account.MyAddressBookPresenter;
 import com.goshop.app.presentation.home.HomeContract;
 import com.goshop.app.presentation.home.HomePresenter;
 import com.goshop.app.presentation.home.PromotionContract;
@@ -25,6 +33,8 @@ import com.goshop.app.presentation.search.SearchResultContract;
 import com.goshop.app.presentation.search.SearchResultPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
+import com.goshop.app.presentation.shopping.ShoppingCartContract;
+import com.goshop.app.presentation.shopping.ShoppingCartPresenter;
 
 import android.app.Activity;
 import android.support.v4.app.Fragment;
@@ -141,6 +151,41 @@ public class PresenterModule {
     public PromotionContract.Presenter providePromotionPresenter(
         AccountDataRepository dataRepository) {
         return new PromotionPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public ChangePasswordContract.Presenter provideChangePasswordPresenter(
+        AccountDataRepository dataRepository) {
+        return new ChangePasswordPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public EditProfileContract.Presenter provideEditProfilePresenter(
+        AccountDataRepository dataRepository) {
+        return new EditProfilePresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public AddAddressContract.Presenter provideAddAddressPresenter(
+        AccountDataRepository dataRepository) {
+        return new AddAddressPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public MyAddressBookContract.Presenter provideMyAddressBookPresenter(
+        AccountDataRepository dataRepository) {
+        return new MyAddressBookPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public ShoppingCartContract.Presenter provideShoppingCartPresenter(
+        AccountDataRepository dataRepository) {
+        return new ShoppingCartPresenter(dataRepository);
     }
 
 }

@@ -227,10 +227,34 @@
 
     </declare-styleable>
 
+    <declare-styleable name="animET">
+        <attr name="hint" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="animSpinner">
+        <attr name="sp_hint" format="reference" />
+    </declare-styleable>
+
+    <declare-styleable name="pwd">
+        <attr name="pwd_hint" format="reference" />
+    </declare-styleable>
 
     <style name="PopMenuAnimation">
         <item name="android:windowEnterAnimation">@anim/pop_in</item>
         <item name="android:windowExitAnimation">@anim/pop_out</item>
+    </style>
+
+    <style name="errorAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/color_main_pink</item>
+        <item name="android:textSize">@dimen/size_font_12</item>
+        <item name="android:textColorHint">@color/color_main_pink</item>
+    </style>
+
+    <style name="hintAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/color_main_black</item>
+        <item name="android:textSize">@dimen/size_font_12</item>
+        <item name="android:textColorHint">@color/color_main_grey</item>
+
     </style>
 
 </resources>

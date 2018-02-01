@@ -1,11 +1,15 @@
 package com.goshop.app.data.source;
 
+import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -26,7 +30,7 @@ public interface AccountDataSource {
 
     Observable<UserInfo> getUserInfo(String userId);
 
-    Observable<UserInfo> getUserInfo(String username ,String password);
+    Observable<UserInfo> getUserInfo(String username, String password);
 
     Observable<GetWeatherResponse> getWeather();
 
@@ -53,4 +57,15 @@ public interface AccountDataSource {
     Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params);
 
     Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
+
+    Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params);
+
+    Observable<ProfileReponse> editProfileRequest(Map<String, Object> params);
+
+    Observable<AddressReponse> addAddressRequest(Map<String, Object> params);
+
+    Observable<AddressReponse> myAddressRequest(Map<String, Object> params);
+
+    Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);
+
 }

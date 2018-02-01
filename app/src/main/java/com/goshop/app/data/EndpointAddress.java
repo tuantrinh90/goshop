@@ -9,8 +9,16 @@ import com.goshop.app.BuildConfig;
 @SuppressWarnings("ALL")
 public class EndpointAddress {
 
-    //todo test api
-    public static final String USER_INFO = "data/cityinfo/101190408.html";
+    public static final String ADD_ADDRESS = "";
+
+    //todo wait for api
+    public static final String CHANGE_PASSWORD = "";
+
+    //todo wait for api
+    public static final String COMPLEMENT_EMAIL = "";
+
+    //todo wait for api
+    public static final String EDIT_PROFILE = "";
 
     //todo wait for api
     public static final String HOME_REQUEST = "";
@@ -22,19 +30,22 @@ public class EndpointAddress {
     public static final String MYORDER_DETAIL_REQUEST = "";
 
     //todo wait for api
-    public static final String REGISTER = "";
-
-    //todo wait for api
-    public static final String COMPLEMENT_EMAIL = "";
-
-    //todo wait for api
-    public static final String RESET_PASSWORD = "";
-
-    //todo wait for api
-    public static final String SEND_CONFIRMATION_LINK = "";
+    public static final String MY_ADDRESS = "";
 
     //todo wait for api
     public static final String PRODUCT_DETAIL = "";
+
+    //todo wait for api
+    public static final String PROMOTION_BANNER = "";
+
+    //todo wait for api
+    public static final String PROMOTION_LIST = "";
+
+    //todo wait for api
+    public static final String REGISTER = "";
+
+    //todo wait for api
+    public static final String RESET_PASSWORD = "";
 
     //todo wait for api
     public static final String SEARCH_FILGER = "";
@@ -43,9 +54,12 @@ public class EndpointAddress {
     public static final String SEARCH_RESULT = "";
 
     //todo wait for api
-    public static final String PROMOTION_LIST = "";
+    public static final String SEND_CONFIRMATION_LINK = "";
 
-    public static final String PROMOTION_BANNER = "";
+    public static final String SHOPPINT_CART = "";
+
+    //todo test api
+    public static final String USER_INFO = "data/cityinfo/101190408.html";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

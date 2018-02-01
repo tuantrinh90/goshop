@@ -1,12 +1,16 @@
 package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
+import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -36,13 +40,13 @@ public class AccountCloudDataSource implements AccountDataSource {
         this.restApi = restApi;
     }
 
-    @Override
-    public Observable<UserInfo> getUserInfo(String username,String password) {
-        return restApi.getUser(username, password);
-    }
-
     public Observable<UserInfo> getUserInfo(String id) {
         return null;
+    }
+
+    @Override
+    public Observable<UserInfo> getUserInfo(String username, String password) {
+        return restApi.getUser(username, password);
     }
 
     @Override
@@ -98,6 +102,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
+    public Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params) {
+        return restApi.searchFilterRequest(params);
+    }
+
+    @Override
+    public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
+        return restApi.searchResultResponse(params);
+    }
+
+    @Override
     public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
         //TODO joyson temp code
 //        return restApi.promotionListRequest(params);
@@ -112,12 +126,27 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params) {
-        return restApi.searchFilterRequest(params);
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return restApi.changePasswordRequest(params);
     }
 
     @Override
-    public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
-        return restApi.searchResultResponse(params);
+    public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
+        return restApi.editProfileRequest(params);
+    }
+
+    @Override
+    public Observable<AddressReponse> addAddressRequest(Map<String, Object> params) {
+        return restApi.addAddressRequest(params);
+    }
+
+    @Override
+    public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
+        return restApi.myAddressRequest(params);
+    }
+
+    @Override
+    public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
+        return restApi.shoppingCartRequest(params);
     }
 }

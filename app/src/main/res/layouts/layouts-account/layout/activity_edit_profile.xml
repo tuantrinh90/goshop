@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:animET="http://schemas.android.com/apk/res-auto"
+    xmlns:animSpinner="http://schemas.android.com/apk/res-auto"
+    android:clipChildren="false"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_bottom_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_top_shadow_white"
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_10"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:layout_alignParentBottom="true">
+        <include
+            layout="@layout/layout_button_pink"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_bottom_btn"
+        android:orientation="vertical">
+
+        <include
+            layout="@layout/toolbar_img_text_img_close"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1"
+            android:background="@color/color_divider_grey"/>
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none"
+        >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingBottom="@dimen/size_36"
+                android:orientation="vertical">
+                <com.goshop.app.common.CustomAnimEditText
+                    android:id="@+id/et_profile_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animET:hint="@string/email"/>
+
+                <com.goshop.app.common.CustomAnimEditText
+                    android:id="@+id/et_profile_first"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animET:hint="@string/register_firstname"/>
+
+                <com.goshop.app.common.CustomAnimEditText
+                    android:id="@+id/et_profile_last"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animET:hint="@string/register_lastname"/>
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_12"
+                    android:text="@string/gender"
+                    android:textColor="@color/color_main_black"
+                    android:layout_marginTop="@dimen/size_28"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"/>
+
+                <RadioGroup
+                    android:id="@+id/rg_edit_profile_gender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="@dimen/size_16"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:orientation="horizontal">
+                    <RadioButton
+                        android:id="@+id/rb_edit_profile_male"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/color_main_black"
+                        android:textSize="@dimen/size_font_16"
+                        android:text="@string/male"/>
+
+                    <RadioButton
+                        android:id="@+id/rb_edit_profile_female"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/size_76"
+                        android:textColor="@color/color_main_black"
+                        android:textSize="@dimen/size_font_16"
+                        android:text="@string/female"/>
+                </RadioGroup>
+
+
+                <com.goshop.app.common.CustomAnimSpinner
+                    android:id="@+id/et_profile_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_32"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animSpinner:sp_hint="@string/date_of_birth"/>
+
+                <com.goshop.app.common.CustomAnimSpinner
+                    android:id="@+id/et_profile_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animSpinner:sp_hint="@string/title_optional"/>
+
+                <com.goshop.app.common.CustomAnimEditText
+                    android:id="@+id/et_profile_mobile"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animET:hint="@string/mobile_number"/>
+
+                <com.goshop.app.common.CustomAnimSpinner
+                    android:id="@+id/et_profile_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animSpinner:sp_hint="@string/language_optional"/>
+
+                <com.goshop.app.common.CustomAnimSpinner
+                    android:id="@+id/et_profile_race"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animSpinner:sp_hint="@string/race_optional"/>
+
+
+            </LinearLayout>
+        </ScrollView>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

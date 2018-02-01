@@ -7,8 +7,6 @@
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 
-
-
     <application
         android:name=".GoShopApplication"
         android:allowBackup="true"
@@ -27,14 +25,14 @@
             android:value="@string/facebook_id"/>
 
         <activity android:name=".presentation.home.DemoActivity">
+
+        </activity>
+
+        <activity android:name=".presentation.login.TestMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-
-        <activity android:name=".presentation.login.TestMenuActivity">
-
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.HomeActivity"/>
@@ -76,10 +74,24 @@
             android:theme="@style/WhiteBackground">
         </activity>
 
+        <activity android:name=".presentation.account.EditProfileActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+        <activity android:name=".presentation.shopping.ShoppingCartActivity"/>
 
+        <activity android:name=".presentation.account.ChangePasswordActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.account.AddAddressActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.account.MyAddressBookActivity"
+            android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.account.EditAddressActivity"
+            android:theme="@style/WhiteBackground"/>
     </application>
 
 

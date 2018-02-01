@@ -3,8 +3,12 @@ package com.goshop.app.presentation.login;
 import com.crashlytics.android.Crashlytics;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.presentation.account.EditProfileActivity;
+import com.goshop.app.presentation.account.MyAddressBookActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
+import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -19,6 +23,12 @@ import io.fabric.sdk.android.Fabric;
  */
 //todo(helen) this activity will delete when merge code
 public class TestMenuActivity extends BaseActivity {
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        Fabric.with(this, new Crashlytics());
+    }
 
     @Override
     public int getContentView() {
@@ -36,15 +46,10 @@ public class TestMenuActivity extends BaseActivity {
 
     }
 
-    @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Fabric.with(this, new Crashlytics());
-    }
-
     @OnClick({R.id.btn_test_register, R.id.btn_test_complement_email, R.id
-        .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_pdp, R.id
-        .btn_test_search})
+        .btn_test_forgot_password, R.id.btn_test_send_confirmation_link, R.id.btn_test_changepwd,
+        R.id.btn_test_editprofile, R.id.btn_test_pdp, R.id.btn_test_my_address,  R.id
+        .btn_test_search, R.id.btn_test_cart})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_register:
@@ -64,6 +69,19 @@ public class TestMenuActivity extends BaseActivity {
                 break;
             case R.id.btn_test_search:
                 startActivity(new Intent(this, SearchActivity.class));
+                break;
+            case R.id.btn_test_changepwd:
+                startActivity(new Intent(this, ChangePasswordActivity.class));
+                break;
+            case R.id.btn_test_editprofile:
+                startActivity(new Intent(this, EditProfileActivity.class));
+                break;
+            case R.id.btn_test_my_address:
+                startActivity(new Intent(this, MyAddressBookActivity.class));
+
+            case R.id.btn_test_cart:
+                startActivity(new Intent(this, ShoppingCartActivity.class));
+
                 break;
         }
     }
