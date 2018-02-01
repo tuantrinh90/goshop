@@ -35,6 +35,13 @@ public class Const {
     //type-banner
     public static final int PROMOTION_LIST_BANNER = 1;
 
+    //My order list type
+    public static final int MYORDER_LIST_TITLE = 0;
+
+    public static final int MYORDER_LIST_CONTENT = 1;
+
+    public static final int MYORDER_LIST_PRICE = 2;
+
     public static final String PROMOTION_PAGE_LIST = "promotion_list";
 
     public static final String PROMOTION_PAGE_BANNER = "promotion_banner";

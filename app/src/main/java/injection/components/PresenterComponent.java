@@ -9,6 +9,8 @@ import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 import com.goshop.app.presentation.login.LoginResetPasswordActivity;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
 import com.goshop.app.presentation.login.RegisterActivity;
+import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
+import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.search.SearchResultActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
@@ -29,6 +31,10 @@ public interface PresenterComponent {
     Activity getActivity();
 
     void inject(DemoActivity homeActivity);
+
+    void inject(MyOrderListActivity myOrderListActivity);
+
+    void inject(MyOrderDetailActivity myOrderDetailActivity);
 
     void inject(LoginActivity loginActivity);
 

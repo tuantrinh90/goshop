@@ -6,7 +6,9 @@ import com.goshop.app.adapter.HomeBaseAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.presentation.myorder.MyOrderListActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -227,6 +229,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 ivOrderlist.setSelected(true);
                 tvOrder.setSelected(true);
                 rlDrawerOrder.setSelected(true);
+                startActivity(new Intent(this, MyOrderListActivity.class));
                 break;
             case R.id.rl_drawer_notification:
                 resetSelect();

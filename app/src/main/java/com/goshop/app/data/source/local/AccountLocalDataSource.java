@@ -10,6 +10,8 @@ import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.source.AccountDataSource;
@@ -55,6 +57,16 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<HomeResponse> homeRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params) {
         return null;
     }
 

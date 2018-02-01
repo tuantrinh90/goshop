@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_order_title"
+        android:text="@string/my_orders_total_price"
+        android:layout_width="wrap_content"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:gravity="center"
+        android:layout_gravity="right"
+        android:layout_height="40dp"/>
+
+
+
+</LinearLayout>

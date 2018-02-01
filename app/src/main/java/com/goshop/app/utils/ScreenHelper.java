@@ -5,12 +5,14 @@ import com.goshop.app.GoShopApplication;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Message;
 import android.support.v4.content.ContextCompat;
 import android.util.DisplayMetrics;
 import android.util.TypedValue;
 import android.view.Display;
+import android.view.View;
 import android.view.WindowManager;
 
 public class ScreenHelper {
@@ -119,6 +121,16 @@ public class ScreenHelper {
 
     public static int getHeight(Context paramContext) {
         return getMeasures(paramContext).arg2;
+    }
+
+    public static void setBg(View view,int drawableRes){
+        Drawable drawable = GoShopApplication.getAppContext().getResources()
+            .getDrawable(drawableRes);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            view.setBackground(drawable);
+        } else {
+            view.setBackgroundDrawable(drawable);
+        }
     }
 
 }
