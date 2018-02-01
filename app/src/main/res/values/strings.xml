@@ -123,6 +123,7 @@
         order to finish Facebook connection process, please complement your email as below:
     </string>
     <string name="submit">Submit</string>
+    <string name="send">Send</string>
     <string name="reset_password_tips">Please enter the email address associated with your account.
         We will email you a link to reset your password.
     </string>

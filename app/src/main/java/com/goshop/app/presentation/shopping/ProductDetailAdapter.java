@@ -532,7 +532,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         RelativeLayout rlPdpExpandTitle;
 
         @BindView(R.id.tv_item_pdp_expand)
-        CustomTextView tvItemPdpExpand;
+        CustomBoldTextView tvItemPdpExpand;
 
         public ExpandTitleViewHolder(View itemView) {
             super(itemView);

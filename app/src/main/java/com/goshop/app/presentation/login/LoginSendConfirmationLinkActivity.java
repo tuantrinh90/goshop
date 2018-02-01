@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
@@ -33,7 +33,7 @@ public class LoginSendConfirmationLinkActivity extends
     CustomAnimEditText ctdEtConfirmationLink;
 
     @BindView(R.id.tv_btn_send_confirmation_link_submit)
-    CustomBoldTextView tvBtnSendConfirmationLinkSubmit;
+    CustomTextView tvBtnSendConfirmationLinkSubmit;
 
     private ToastUtil toastUtil;
 

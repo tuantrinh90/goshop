@@ -37,7 +37,7 @@
     />
 
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_btn_complement_email_submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

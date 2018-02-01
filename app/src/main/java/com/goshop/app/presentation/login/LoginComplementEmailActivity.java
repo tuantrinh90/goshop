@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
@@ -33,7 +33,7 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     CustomAnimEditText ctdEtComplementEmail;
 
     @BindView(R.id.tv_btn_complement_email_submit)
-    CustomBoldTextView tvBtnComplementEmailSubmit;
+    CustomTextView tvBtnComplementEmailSubmit;
 
     private ToastUtil toastUtil;
 
