@@ -235,6 +235,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                 break;
             case R.id.imageview_right_menu:
                 finish();
+                ScreenHelper.setPageTopToBottomAnim(this);
                 break;
 
         }

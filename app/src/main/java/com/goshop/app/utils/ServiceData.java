@@ -80,7 +80,7 @@ public class ServiceData {
             centerVideo.setPosition(i);
             centerVideo.setCenterVideoMsg(centerVideoMsg);
             List<HomeResponse.CenterVideo.CenterVideoList> centerVideoLists = new ArrayList<>();
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < 4; j++) {
                 HomeResponse.CenterVideo.CenterVideoList centerVideoList = new HomeResponse
                     .CenterVideo.CenterVideoList();
                 centerVideoList.setImgUrl(Const.HOME_TEST_IMG1);

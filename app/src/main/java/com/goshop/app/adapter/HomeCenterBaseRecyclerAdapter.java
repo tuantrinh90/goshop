@@ -1,17 +1,18 @@
 package com.goshop.app.adapter;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.utils.ScreenHelper;
+import com.jakewharton.rxbinding2.view.RxView;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -43,15 +44,26 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         HomeCenterVideoList homeCenterVideoList = (HomeCenterVideoList) holder;
-        //TODO joyson will delete after require
-        homeCenterVideoList.rlDownArrows.setOnClickListener(
-            v -> Toast.makeText(GoShopApplication.getAppContext(), "down arrows", Toast.LENGTH_SHORT).show());
+        HomeCenterChildViewListAdapter homeCenterChildViewListAdapter = new
+            HomeCenterChildViewListAdapter(
+            centerVideos.get(position).getCenterVideoList());
+        homeCenterChildViewListAdapter.setExpand(false);
+        RxView.clicks(homeCenterVideoList.rlDownArrows).subscribe(v -> {
+            if (homeCenterChildViewListAdapter.isExpand()){
+                homeCenterChildViewListAdapter.setExpand(false);
+                ScreenHelper.rotateArrow(homeCenterVideoList.ivArrow,false);
+            }else {
+                homeCenterChildViewListAdapter.setExpand(true);
+                ScreenHelper.rotateArrow(homeCenterVideoList.ivArrow,true);
+            }
+            homeCenterChildViewListAdapter.notifyDataSetChanged();
+        });
+
         homeCenterVideoList.viewVideo
             .setText(centerVideos.get(position).getCenterVideoMsg().getVideoMsg());
         homeCenterVideoList.recyclerView.setLayoutManager(
             new LinearLayoutManager(homeCenterVideoList.recyclerView.getContext()));
-        homeCenterVideoList.recyclerView.setAdapter(
-            new HomeCenterChildViewListAdapter(centerVideos.get(position).getCenterVideoList()));
+        homeCenterVideoList.recyclerView.setAdapter(homeCenterChildViewListAdapter);
     }
 
     @Override
@@ -69,6 +81,9 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
 
         @BindView(R.id.rl_home_center_bottom_video_down_arrows)
         RelativeLayout rlDownArrows;
+
+        @BindView(R.id.iv_arrow)
+        ImageView ivArrow;
 
         public HomeCenterVideoList(View itemView) {
             super(itemView);

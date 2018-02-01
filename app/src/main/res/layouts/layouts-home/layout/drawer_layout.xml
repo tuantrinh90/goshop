@@ -13,8 +13,6 @@
         android:layout_height="match_parent">
         <!--top user head portrait-->
         <RelativeLayout
-            android:focusableInTouchMode="true"
-            android:focusable="true"
             android:id="@+id/rl_profile"
             android:layout_width="match_parent"
             android:gravity="center"
