@@ -49,7 +49,8 @@
             android:layout_toRightOf="@id/tv_pdp_reviews_top_num"
             android:textColor="@color/color_text_black"
             android:textSize="@dimen/size_font_12"
-            android:paddingRight="@dimen/size_18" tools:ignore="RtlSymmetry"
+            android:paddingRight="@dimen/size_18"
+            tools:ignore="RtlSymmetry"
             android:layout_toEndOf="@id/tv_pdp_reviews_top_num"
             android:paddingEnd="@dimen/size_18"/>
         <RatingBar
