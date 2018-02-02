@@ -47,22 +47,17 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         this.menuModels = menuModels;
         for (int i = 0; i < menuModels.size(); i++) {
             FilterMenuModel filterMenuModel = menuModels.get(i);
-            if (add) {
+            if ((filterMenuModel instanceof FilterMenuExpandVM)) {
                 displayModels.add(filterMenuModel);
-                if (filterMenuModel instanceof FilterMenuExpandVM) {
-                    if (((FilterMenuExpandVM) filterMenuModel)
-                        .isHasIcon() && !((FilterMenuExpandVM) filterMenuModel).isExpand()) {
-                        add = false;
-                    }
+                if (((FilterMenuExpandVM) filterMenuModel)
+                    .isHasIcon() && ((FilterMenuExpandVM) filterMenuModel).isExpand()) {
+                    add = true;
+                } else {
+                    add = false;
                 }
             } else {
-                if (filterMenuModel instanceof FilterMenuExpandVM) {
-                    add = true;
+                if (add) {
                     displayModels.add(filterMenuModel);
-                    if (((FilterMenuExpandVM) filterMenuModel)
-                        .isHasIcon() && !((FilterMenuExpandVM) filterMenuModel).isExpand()) {
-                        add = false;
-                    }
                 }
             }
         }
@@ -151,11 +146,11 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         @BindView(R.id.iv_item_search_filter_expand)
         ImageView ivItemSearchFilterExpand;
 
-        @BindView(R.id.tv_item_search_filter_expand)
-        CustomTextView tvItemSearchFilterExpand;
-
         @BindView(R.id.rl_filter_expand_title)
         RelativeLayout rlFilterExpandTitle;
+
+        @BindView(R.id.tv_item_search_filter_expand)
+        CustomTextView tvItemSearchFilterExpand;
 
         public ExpandViewHolder(View itemView) {
             super(itemView);

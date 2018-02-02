@@ -89,11 +89,8 @@ public class HelpSupportAdapter extends RecyclerView.Adapter {
         }
 
         void bindingDatas(int position, HelpSupportTitleVM helpSupportTitleVM) {
-            if (position == 0) {
-                vHelpSupportDivider.setVisibility(View.GONE);
-            } else {
-                vHelpSupportDivider.setVisibility(View.VISIBLE);
-            }
+            int visibility = position == 0 ? View.GONE:View.VISIBLE;
+            vHelpSupportDivider.setVisibility(visibility);
             tvHelpSupportTitle.setText(helpSupportTitleVM.getTitle());
         }
     }
