@@ -110,6 +110,7 @@
     <string name="register_firstname">First Name</string>
     <string name="register_lastname">Last Name</string>
     <string name="email">Email</string>
+    <string name="email_end">Email:</string>
     <string name="email_format">test@test.com</string>
     <string name="mobile_number">Mobile Number</string>
     <string name="mobile_number_optional">Mobile Number (Optional)</string>
@@ -241,6 +242,7 @@
     <string name="city_state_1000">City, State, 1000</string>
     <string name="china">China</string>
     <string name="t">T:+1234567890</string>
+    <string name="tel">Tel:</string>
     <string name="default_text">Default</string>
     <string name="comma">,</string>
 
@@ -261,6 +263,7 @@
     <string name="demo_cart_price1">RM 12.00</string>
     <string name="demo_cart_price2">- RM 12.00</string>
     <string name="demo_cart_price3">RM 36.00</string>
+
     <string name="ecmc">ECMC Customer Terms And Conditions</string>
     <string name="contact_us">Contact Us</string>
     <string name="help_support">Help &#38; Support</string>
@@ -289,6 +292,16 @@
     <string name="go_shop_points">Go Shop Points</string>
     <string name="valid_until">Valid until</string>
     <string name="my_point">My Go Shop Points</string>
+
+    <string name="continue_shopping">Continue Shopping</string>
+    <string name="status_receieved">Your Order Has Been Receieved</string>
+    <string name="something_wrong">Something Went Wrong In The Payment!</string>
+    <string name="something_wrong_tip">If further information, please contact our customer service:</string>
+    <string name="thank_purchase">Thank you for your purchase!</string>
+    <string name="your_order">Your order # is: </string>
+    <string name="status_success_tip">You will receive an order confirmation email with details of your order and a link to track its progress.</string>
+    <string name="check_order">Check Order</string>
+    <string name="payment_status">Payment Status</string>
 
 
 </resources>
