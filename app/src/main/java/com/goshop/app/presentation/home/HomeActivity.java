@@ -9,7 +9,7 @@ import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.myorder.MyOrderListActivity;
-import com.goshop.app.utils.ScreenHelper;
+import com.goshop.app.utils.AnimUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -197,7 +197,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 break;
             case R.id.rl_profile:
                 startActivity(new Intent(this, LoginActivity.class));
-                ScreenHelper.setPageBottomToTopAnim(this);
+                AnimUtils.setPageBottomToTopAnim(this);
                 break;
             case R.id.rl_drawer_home:
                 switchMenu(Const.MENU_HOME);

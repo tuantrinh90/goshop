@@ -9,6 +9,7 @@ import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.utils.ScreenHelper;
+import com.goshop.app.utils.ViewUtils;
 
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -172,7 +173,7 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.getOrderDetail(new HashMap<>());
-        ScreenHelper.setBg(imageviewLeftMenu, R.mipmap.back);
+        ViewUtils.setBg(imageviewLeftMenu, R.mipmap.back);
     }
 
     private void initRecycler(MyOrderDetailReponse response) {

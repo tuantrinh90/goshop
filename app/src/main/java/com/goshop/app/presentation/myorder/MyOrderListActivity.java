@@ -8,6 +8,7 @@ import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.utils.JToolUtils;
 import com.goshop.app.utils.ScreenHelper;
+import com.goshop.app.utils.ViewUtils;
 
 import android.os.Bundle;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -101,7 +102,7 @@ public class MyOrderListActivity extends BaseActivity<MyOrderContract.Presenter>
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.getOrderList(new HashMap<>());
-        ScreenHelper.setBg(imageviewLeftMenu, R.mipmap.back);
+        ViewUtils.setBg(imageviewLeftMenu, R.mipmap.back);
         swipeLayoutMyorderList.setOnRefreshListener(this);
     }
 
