@@ -29,8 +29,6 @@ import butterknife.ButterKnife;
 
 public class FilterMenuAdapter extends RecyclerView.Adapter {
 
-    private boolean add = true;
-
     private List<FilterMenuModel> displayModels;
 
     private List<FilterMenuModel> menuModels;
@@ -45,23 +43,23 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         this.menuModels.clear();
         this.displayModels.clear();
         this.menuModels = menuModels;
-        for (int i = 0; i < menuModels.size(); i++) {
-            FilterMenuModel filterMenuModel = menuModels.get(i);
+        boolean isDisplayChilds = true;
+        for ( FilterMenuModel filterMenuModel :menuModels) {
             if ((filterMenuModel instanceof FilterMenuExpandVM)) {
                 displayModels.add(filterMenuModel);
-                if (((FilterMenuExpandVM) filterMenuModel)
-                    .isHasIcon() && ((FilterMenuExpandVM) filterMenuModel).isExpand()) {
-                    add = true;
-                } else {
-                    add = false;
-                }
+                isDisplayChilds = isAddChildModels(filterMenuModel);
             } else {
-                if (add) {
+                if (isDisplayChilds) {
                     displayModels.add(filterMenuModel);
                 }
             }
         }
         notifyDataSetChanged();
+    }
+
+    private boolean isAddChildModels(FilterMenuModel filterMenuModel ) {
+        return ((FilterMenuExpandVM) filterMenuModel)
+            .isHasIcon() && ((FilterMenuExpandVM) filterMenuModel).isExpand();
     }
 
     @Override
