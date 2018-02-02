@@ -2,6 +2,7 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
+import com.goshop.app.common.FlowLayout;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.CustomTextView;
@@ -16,6 +17,7 @@ import com.goshop.app.presentation.model.PdpQAContentTopVM;
 import com.goshop.app.presentation.model.PdpQAContentVM;
 import com.goshop.app.presentation.model.PdpReviewsContentVM;
 import com.goshop.app.presentation.model.PdpReviewsTopVM;
+import com.goshop.app.presentation.model.PdpTipVM;
 import com.goshop.app.presentation.model.PdpTopContentVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 
@@ -440,6 +442,19 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     class TopContentViewHolder extends RecyclerView.ViewHolder {
 
+        List<Integer> childColors;
+
+        ColorSelectorHelper colorSelectorHelper;
+
+        @BindView(R.id.flowlayout_pdp_tips)
+        FlowLayout flowLayoutPdpTips;
+
+        @BindView(R.id.mpet_pdp_quantily)
+        CustomMinusPlusEditText mpetPdpQuantily;
+
+        @BindView(R.id.radio_group_pdp_color)
+        RadioGroup radioGroupPdpColor;
+
         @BindView(R.id.ratingbar_pdp_top)
         RatingBar ratingBar;
 
@@ -458,21 +473,14 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_pdp_top_title)
         CustomBoldTextView tvPdpTopTitle;
 
-        @BindView(R.id.mpet_pdp_quantily)
-        CustomMinusPlusEditText mpetPdpQuantily;
-
-        @BindView(R.id.radio_group_pdp_color)
-        RadioGroup radioGroupPdpColor;
-
-        ColorSelectorHelper colorSelectorHelper;
-
-        List<Integer> childColors;
+        private List<PdpTipVM> tips;
 
         public TopContentViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             colorSelectorHelper = new ColorSelectorHelper();
             childColors = new ArrayList<>();
+            tips = new ArrayList<>();
         }
 
         void bindingData(PdpTopContentVM contentVM) {
@@ -498,6 +506,19 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
                         break;
                 }
             }));
+
+            tips.clear();
+            tips = contentVM.getTips();
+            LayoutInflater mInflater = LayoutInflater.from(itemView.getContext());
+            for (int i = 0; i < tips.size(); i++) {
+                CustomTextView tipView = (CustomTextView) mInflater
+                    .inflate(R.layout.item_pdp_tips_text,
+                        flowLayoutPdpTips, false);
+                ColorSelectorHelper
+                    .setTipsColor(tipView, tips.get(i).getTextColor(), tips.get(i).getBgColor());
+                tipView.setText(tips.get(i).getContent());
+                flowLayoutPdpTips.addView(tipView);
+            }
         }
     }
 
@@ -511,7 +532,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         RelativeLayout rlPdpExpandTitle;
 
         @BindView(R.id.tv_item_pdp_expand)
-        CustomTextView tvItemPdpExpand;
+        CustomBoldTextView tvItemPdpExpand;
 
         public ExpandTitleViewHolder(View itemView) {
             super(itemView);

@@ -23,7 +23,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_main_black"/>
+        android:textColor="@color/color_text_black"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_pdp_review_info"
@@ -31,14 +31,14 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_4"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_main_black"/>
+        android:textColor="@color/color_text_black"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_pdp_reviewer_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_2"
-        android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_main_grey"/>
+        android:textSize="@dimen/size_font_12"
+        android:textColor="@color/color_hint_grey"/>
 
 </LinearLayout>

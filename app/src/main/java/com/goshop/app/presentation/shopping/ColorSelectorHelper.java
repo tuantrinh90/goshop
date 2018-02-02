@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 
 import java.util.List;
 
@@ -61,6 +62,19 @@ public class ColorSelectorHelper {
         } else {
             radioButton.setBackgroundDrawable(drawable);
         }
+    }
+
+    public static void setTipsColor(TextView textView, int textColor, int bgColor) {
+        GradientDrawable bg = new GradientDrawable();
+        bg.setCornerRadius(5);
+        bg.setShape(GradientDrawable.RECTANGLE);
+        bg.setColor(ContextCompat.getColor(textView.getContext(), bgColor));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            textView.setBackground(bg);
+        } else {
+            textView.setBackgroundDrawable(bg);
+        }
+        textView.setTextColor(ContextCompat.getColor(textView.getContext(), textColor));
     }
 
     private void setSelectorColor(RadioButton radioButton, int normal, int checked) {

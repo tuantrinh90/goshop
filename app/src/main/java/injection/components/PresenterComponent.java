@@ -2,9 +2,14 @@ package injection.components;
 
 import com.goshop.app.presentation.account.AddAddressActivity;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.presentation.account.ContactUsActivity;
 import com.goshop.app.presentation.account.EditProfileActivity;
+import com.goshop.app.presentation.account.FAQActivity;
+import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
+import com.goshop.app.presentation.account.TermsConditionsActivity;
+import com.goshop.app.presentation.account.WebContentActivity;
 import com.goshop.app.presentation.home.DemoActivity;
 import com.goshop.app.presentation.home.HomeActivity;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
@@ -73,4 +78,13 @@ public interface PresenterComponent {
 
     void inject(ShoppingCartActivity shoppingCartActivity);
 
+    void inject(WebContentActivity webContentActivity);
+
+    void inject(HelpSupportActivity helpSupportActivity);
+
+    void inject(FAQActivity faqActivity);
+
+    void inject(TermsConditionsActivity termsConditionsActivity);
+
+    void inject(ContactUsActivity contactUsActivity);
 }

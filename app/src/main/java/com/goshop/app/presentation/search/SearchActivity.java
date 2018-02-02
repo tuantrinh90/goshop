@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomGridDivider;
 import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.presentation.model.SearchFilterModel;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
@@ -34,7 +35,7 @@ import io.reactivex.disposables.CompositeDisposable;
  */
 
 public class SearchActivity extends BaseActivity<SearchContract.Presenter> implements
-    SearchContract.View, SearchFilterAdapter.SearchFilterClickListener {
+    SearchContract.View, SearchFilterAdapter.SearchFilterClickListener , SearchResultAdapter.OnItemClickListener{
 
     public static final String KEYWORDS = "keywords";
 
@@ -94,7 +95,7 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerviewSearchResult.setLayoutManager(gridLayoutManager);
         recyclerviewSearchResult.addItemDecoration(new CustomGridDivider(this));
-        resultAdapter = new SearchResultAdapter(new ArrayList<>());
+        resultAdapter = new SearchResultAdapter(new ArrayList<>(), this);
         recyclerviewSearchResult.setAdapter(resultAdapter);
     }
 
@@ -158,5 +159,10 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
     @Override
     public void onFilterClick(String keywords) {
         startSearchResultScreen(keywords);
+    }
+
+    @Override
+    public void onClick() {
+        startActivity(new Intent(this, ProductDetailActivity.class));
     }
 }

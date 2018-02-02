@@ -42,12 +42,13 @@
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/size_10"
-            android:paddingRight="@dimen/size_10"
-            android:textColor="@color/color_main_black"
+            android:paddingLeft="@dimen/size_60"
+            android:paddingRight="@dimen/size_60"
+            android:textColor="@color/color_text_black"
             android:textSize="@dimen/size_font_20"
             android:minLines="1"
             android:maxLines="1"
+            android:ellipsize="end"
             android:layout_centerInParent="true"
             android:gravity="center"/>
     </RelativeLayout>

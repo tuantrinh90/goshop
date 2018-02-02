@@ -15,24 +15,23 @@ public class CustomTextView extends android.support.v7.widget.AppCompatTextView 
 
     public CustomTextView(Context context) {
         super(context);
-//TODO if have font file open this method
-//        setFont(context);
+        setFont(context);
     }
 
     public CustomTextView(Context context, AttributeSet attrs) {
         super(context, attrs);
-//TODO if have font file open this method
-//        setFont(context);
+        setFont(context);
     }
 
     public CustomTextView(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-//TODO if have font file open this method
-//        setFont(context);
+        setFont(context);
     }
 
     private void setFont(Context context) {
-        Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_TEXT);
-        setTypeface(face);
+        //TODO if have font file open this method
+        /*Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_TEXT);
+        setTypeface(face);*/
+        setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
     }
 }

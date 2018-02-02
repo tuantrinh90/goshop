@@ -14,7 +14,8 @@
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginTop="@dimen/size_16"
         android:layout_marginBottom="@dimen/size_16"
-        android:contentDescription="@string/app_name"/>
+        android:contentDescription="@string/app_name"
+        android:layout_marginStart="@dimen/size_16"/>
 
     <ImageView
         android:id="@+id/iv_item_cart_menu"
@@ -24,7 +25,9 @@
         android:layout_alignTop="@id/iv_item_cart_product"
         android:layout_marginRight="@dimen/size_16"
         android:background="@mipmap/icon_menu"
-        android:contentDescription="@string/app_name"/>
+        android:contentDescription="@string/app_name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginEnd="@dimen/size_16"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_cart_title"
@@ -32,10 +35,13 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/size_12"
         android:layout_marginRight="@dimen/size_12"
+        android:textColor="@color/color_text_black"
         android:textSize="@dimen/size_font_14"
         android:layout_toLeftOf="@id/iv_item_cart_menu"
         android:layout_toRightOf="@id/iv_item_cart_product"
-        android:layout_alignTop="@id/iv_item_cart_product"/>
+        android:layout_alignTop="@id/iv_item_cart_product"
+        android:layout_toStartOf="@id/iv_item_cart_menu"
+        android:layout_toEndOf="@id/iv_item_cart_product"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_cart_color"
@@ -44,9 +50,12 @@
         android:layout_below="@id/tv_item_cart_title"
         android:layout_marginLeft="@dimen/size_12"
         android:layout_marginRight="@dimen/size_12"
+        android:textColor="@color/color_text_black"
         android:textSize="@dimen/size_font_14"
         android:layout_toLeftOf="@id/iv_item_cart_menu"
-        android:layout_toRightOf="@id/iv_item_cart_product"/>
+        android:layout_toRightOf="@id/iv_item_cart_product"
+        android:layout_toStartOf="@id/iv_item_cart_menu"
+        android:layout_toEndOf="@id/iv_item_cart_product"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_cart_old_price"
@@ -55,9 +64,12 @@
         android:layout_below="@id/tv_item_cart_color"
         android:layout_marginLeft="@dimen/size_12"
         android:layout_marginRight="@dimen/size_12"
+        android:textColor="@color/color_hint_grey"
         android:textSize="@dimen/size_font_14"
         android:layout_toLeftOf="@id/iv_item_cart_menu"
-        android:layout_toRightOf="@id/iv_item_cart_product"/>
+        android:layout_toRightOf="@id/iv_item_cart_product"
+        android:layout_toStartOf="@id/iv_item_cart_menu"
+        android:layout_toEndOf="@id/iv_item_cart_product"/>
 
     <com.goshop.app.common.view.CustomBoldTextView
         android:id="@+id/tv_item_cart_now_price"
@@ -66,10 +78,12 @@
         android:layout_below="@id/tv_item_cart_old_price"
         android:layout_marginLeft="@dimen/size_12"
         android:layout_marginRight="@dimen/size_12"
-        android:textColor="@color/color_main_black"
+        android:textColor="@color/color_text_black"
         android:textSize="@dimen/size_font_14"
         android:layout_toLeftOf="@id/iv_item_cart_menu"
-        android:layout_toRightOf="@id/iv_item_cart_product"/>
+        android:layout_toRightOf="@id/iv_item_cart_product"
+        android:layout_toStartOf="@id/iv_item_cart_menu"
+        android:layout_toEndOf="@id/iv_item_cart_product"/>
 
     <com.goshop.app.common.CustomMinusPlusEditText
         android:id="@+id/cmp_et_count"
@@ -77,7 +91,9 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/size_16"
         android:layout_alignBottom="@id/iv_item_cart_product"
-        android:layout_alignParentRight="true"/>
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="@dimen/size_16"
+        android:layout_alignParentEnd="true"/>
 
     <View
         android:layout_width="match_parent"

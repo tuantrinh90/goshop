@@ -6,7 +6,7 @@
         android:state_selected="false">
         <layer-list>
             <item>
-                <color android:color="@color/pinkishGrey"/>
+                <color android:color="@color/color_divider_grey"/>
             </item>
             <item
                 android:bottom="@dimen/size_1">

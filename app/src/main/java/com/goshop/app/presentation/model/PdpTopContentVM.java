@@ -8,6 +8,8 @@ import java.util.List;
 
 public class PdpTopContentVM extends ProductDetailModel {
 
+    private List<Integer> colors;
+
     private String counts;
 
     private String nowPrice;
@@ -20,16 +22,17 @@ public class PdpTopContentVM extends ProductDetailModel {
 
     private int ratingNum;
 
-    private String title;
+    private List<PdpTipVM> tips;
 
-    private List<Integer> colors;
+    private String title;
 
     public PdpTopContentVM() {
         super(ProductDetailModel.DETAIL_TOP_CONTENT);
     }
 
     public PdpTopContentVM(String title, String nowPrice, String oldPrice,
-        String percent, int ratingNum, String counts, String quantity, List<Integer> colors) {
+        String percent, int ratingNum, String counts, String quantity, List<Integer> colors,
+        List<PdpTipVM> tips) {
         super(ProductDetailModel.DETAIL_TOP_CONTENT);
         this.title = title;
         this.nowPrice = nowPrice;
@@ -39,6 +42,15 @@ public class PdpTopContentVM extends ProductDetailModel {
         this.counts = counts;
         this.quantity = quantity;
         this.colors = colors;
+        this.tips = tips;
+    }
+
+    public List<PdpTipVM> getTips() {
+        return tips;
+    }
+
+    public void setTips(List<PdpTipVM> tips) {
+        this.tips = tips;
     }
 
     public List<Integer> getColors() {

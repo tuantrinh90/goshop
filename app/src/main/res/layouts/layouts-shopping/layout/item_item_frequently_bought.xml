@@ -1,9 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:paddingRight="@dimen/size_16" tools:ignore="RtlSymmetry"
+    android:paddingRight="@dimen/size_16"
+    tools:ignore="RtlSymmetry"
     android:paddingEnd="@dimen/size_16">
 
     <ImageView
@@ -12,7 +14,8 @@
         android:layout_height="@dimen/size_136"
         android:layout_marginRight="@dimen/size_16"
         android:layout_marginBottom="@dimen/size_8"
-        android:contentDescription="@string/app_name" android:layout_marginEnd="@dimen/size_16"/>
+        android:contentDescription="@string/app_name"
+        android:layout_marginEnd="@dimen/size_16"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_item_item_percent"
@@ -37,7 +40,7 @@
         android:layout_alignRight="@id/iv_item_item_frequently"
         android:layout_below="@id/iv_item_item_frequently"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_main_black"
+        android:textColor="@color/color_text_black"
         android:layout_alignStart="@id/iv_item_item_frequently"
         android:layout_alignEnd="@id/iv_item_item_frequently"/>
 
@@ -49,7 +52,7 @@
         android:layout_alignRight="@id/iv_item_item_frequently"
         android:layout_below="@id/tv_item_item_title"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_main_grey"
+        android:textColor="@color/color_hint_grey"
         android:paddingTop="@dimen/size_2"
         android:layout_alignStart="@id/iv_item_item_frequently"
         android:layout_alignEnd="@id/iv_item_item_frequently"/>
@@ -62,7 +65,7 @@
         android:layout_alignRight="@id/iv_item_item_frequently"
         android:layout_below="@id/tv_item_item_old_price"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_main_black"
+        android:textColor="@color/color_text_black"
         android:paddingTop="@dimen/size_2"
         android:paddingBottom="@dimen/size_8"
         android:layout_alignStart="@id/iv_item_item_frequently"

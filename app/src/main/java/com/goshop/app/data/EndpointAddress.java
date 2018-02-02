@@ -61,6 +61,20 @@ public class EndpointAddress {
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
 
+    public static final String GET_ECMC = "";
+
+    public static final String GET_CONTACT_US = "";
+
+    public static final String HELP_SUPPORT = "";
+
+    public static final String FAQ = "";
+
+    public static final String TERMS_CONDITIONS = "";
+
+    public static final String GET_CONTACT_INFO = "";
+
+    public static final String CONTACT_MESSAGE = "";
+
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;
     }

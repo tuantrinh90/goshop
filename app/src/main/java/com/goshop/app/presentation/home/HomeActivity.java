@@ -10,7 +10,8 @@ import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.utils.AnimUtils;
-
+import com.goshop.app.presentation.search.SearchActivity;
+import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -32,7 +33,9 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class HomeActivity extends BaseActivity<HomeContract.Presenter> implements HomeContract.View {
+public class HomeActivity extends BaseActivity<HomeContract.Presenter> implements HomeContract
+    .View {
+
     @BindView(R.id.et_home_search)
     CustomEditText etHomeSearch;
 
@@ -172,7 +175,16 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        initSearch();
+    }
 
+    private void initSearch() {
+        etHomeSearch.setOnFocusChangeListener((View v, boolean hasFocus) -> {
+            if(hasFocus) {
+                etHomeSearch.clearFocus();
+                startActivity(new Intent(HomeActivity.this, SearchActivity.class));
+            }
+        });
     }
 
     private void initToolBar() {
@@ -185,7 +197,8 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
         rvHome.setAdapter(homeBaseAdapter);
     }
 
-    @OnClick({R.id.rl_image_left,R.id.rl_image_right,R.id.rl_profile, R.id.rl_drawer_home, R.id.rl_drawer_categorytree, R.id
+    @OnClick({R.id.rl_image_left, R.id.rl_image_right, R.id.rl_profile, R.id.rl_drawer_home, R.id
+        .rl_drawer_categorytree, R.id
         .rl_drawer_go_loyalty, R.id.rl_drawer_shoppingcart, R.id.rl_drawer_wishlist, R.id
         .rl_drawer_order, R.id.rl_drawer_notification, R.id.tv_help_support, R.id.tv_setting})
     public void onViewClicked(View view) {
@@ -194,6 +207,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 getDrawerLayout().openDrawer(Gravity.LEFT);
                 break;
             case R.id.rl_image_right:
+                startActivity(new Intent(this, ShoppingCartActivity.class));
                 break;
             case R.id.rl_profile:
                 startActivity(new Intent(this, LoginActivity.class));
@@ -277,7 +291,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
         }
     }
 
-    private void resetSelect(){
+    private void resetSelect() {
         ivHome.setSelected(false);
         tvHome.setSelected(false);
         rlDrawerHome.setSelected(false);

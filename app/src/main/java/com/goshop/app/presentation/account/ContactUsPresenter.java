@@ -1,0 +1,76 @@
+package com.goshop.app.presentation.account;
+
+import com.goshop.app.base.RxPresenter;
+import com.goshop.app.data.model.ContactUsReponse;
+import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.ContactUsVM;
+
+import java.util.Map;
+
+import io.reactivex.observers.DisposableObserver;
+
+/**
+ * Created by helen on 2018/1/30.
+ */
+
+public class ContactUsPresenter extends RxPresenter<ContactUsContract.View> implements
+    ContactUsContract.Presenter {
+
+    AccountRepository accountRepository;
+
+    public ContactUsPresenter(AccountRepository accountRepository) {
+        this.accountRepository = accountRepository;
+    }
+
+    @Override
+    public void getContactInfo() {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.getContactInfo().subscribeWith(
+            new DisposableObserver<ContactUsReponse>() {
+                @Override
+                public void onNext(ContactUsReponse contactUsReponse) {
+                    mView.hideLoadingBar();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    mView.showContactInfo(getMockInfo());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void contactMessageRequest(Map<String, Object> params) {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.contactMessageRequest(params).subscribeWith(
+            new DisposableObserver<ContactUsReponse>() {
+                @Override
+                public void onNext(ContactUsReponse contactUsReponse) {
+                    mView.hideLoadingBar();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    mView.requestResult();
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    //TODO(helen) this is mock data
+    private ContactUsVM getMockInfo() {
+        ContactUsVM contactUsVM = new ContactUsVM("wecare@goshop.com.my", "1800820088");
+        return contactUsVM;
+    }
+}
