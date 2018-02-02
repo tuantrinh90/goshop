@@ -4,6 +4,8 @@ import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
@@ -37,10 +39,9 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static HomeResponse getTopBannerData() {
-        HomeResponse homeResponse=new HomeResponse();
+        HomeResponse homeResponse = new HomeResponse();
         List<HomeResponse.TopBanner> topBanners = new ArrayList<>();
         //top banner
         List<String> imgs = Arrays.asList(Const.HOME_TEST_IMG1,
@@ -67,7 +68,6 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static HomeResponse getContentVideoData(HomeResponse homeResponse) {
         List<HomeResponse.CenterVideo> centerVideos = new ArrayList<>();
@@ -80,7 +80,7 @@ public class ServiceData {
             centerVideo.setPosition(i);
             centerVideo.setCenterVideoMsg(centerVideoMsg);
             List<HomeResponse.CenterVideo.CenterVideoList> centerVideoLists = new ArrayList<>();
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < 4; j++) {
                 HomeResponse.CenterVideo.CenterVideoList centerVideoList = new HomeResponse
                     .CenterVideo.CenterVideoList();
                 centerVideoList.setImgUrl(Const.HOME_TEST_IMG1);
@@ -106,7 +106,6 @@ public class ServiceData {
 
     /**
      * TODO this is temp code
-     * @return
      */
     public static HomeResponse getBottomSlidedata(HomeResponse homeResponse) {
         List<HomeResponse.BottomSlide> bottomSlides = new ArrayList<>();
@@ -174,6 +173,9 @@ public class ServiceData {
         return Observable.just(promotionLandingResponses);
     }
 
+    /**
+     * TODO this is temp mock code
+     */
     public static Observable<PromotionBannerResponse> getPromotionBannerLists() {
         PromotionBannerResponse promotionBannerResponse = new PromotionBannerResponse();
         List<String> imageUrls = new ArrayList<>();
@@ -183,6 +185,96 @@ public class ServiceData {
         imageUrls.add(Const.BANNER_IMG4);
         promotionBannerResponse.setImageUrl(imageUrls);
         return Observable.just(promotionBannerResponse);
+    }
+
+    /**
+     * TODO this is temp mock code
+     */
+    public static Observable<MyOrderListResponse> getMyOrderLists() {
+        MyOrderListResponse myOrderListResponse = new MyOrderListResponse();
+        List<MyOrderListResponse.ResultsBean> results = new ArrayList<>();
+
+        for (int k = 0; k < 5; k++) {
+            MyOrderListResponse.ResultsBean titleBean = new MyOrderListResponse.ResultsBean();
+            titleBean.setDate("21 Mar 2017");
+            titleBean.setOrderId(String.valueOf(44814 + k));
+            titleBean.setOrderSn(String.valueOf(910312525 + k));
+            titleBean.setTotal("245.00");
+            titleBean.setStatus("pending");
+            titleBean.setType(Const.MYORDER_LIST_TITLE);
+            results.add(titleBean);
+
+            for (int i = 0; i < 3; i++) {
+                MyOrderListResponse.ResultsBean bodyBean = new MyOrderListResponse.ResultsBean();
+                bodyBean.setProductId(String.valueOf(145071 + i));
+                bodyBean.setItemId(String.valueOf(467363 + i));
+                bodyBean.setName("PS4 DUALSHOCK®4 Wireless Controller (Wave Blue)");
+                bodyBean.setBrand("PlayStation");
+                bodyBean.setBrandId(String.valueOf(4813 + i));
+                bodyBean.setCategory("Others");
+                bodyBean.setQty(1 + i);
+                bodyBean.setPrice("208.00");
+                bodyBean.setImage(Const.BANNER_IMG1);
+                bodyBean.setId(String.valueOf(910312525 + i));
+                bodyBean.setStatus("Shipped");
+                bodyBean.setType(Const.MYORDER_LIST_CONTENT);
+                results.add(bodyBean);
+            }
+
+            MyOrderListResponse.ResultsBean bottomPriceBean = new MyOrderListResponse.ResultsBean();
+            bottomPriceBean.setTotal("245.00");
+            bottomPriceBean.setType(Const.MYORDER_LIST_PRICE);
+            results.add(bottomPriceBean);
+        }
+
+        myOrderListResponse.setResults(results);
+        myOrderListResponse.setStatus(1);
+        myOrderListResponse.setTotal(results.size());
+        return Observable.just(myOrderListResponse);
+    }
+
+    /**
+     * TODO this is temp mock code
+     */
+    public static Observable<MyOrderDetailReponse> getMyOrderDetail() {
+        MyOrderDetailReponse myOrderDetailReponse = new MyOrderDetailReponse();
+        myOrderDetailReponse.setOrderId("44752");
+        myOrderDetailReponse.setDate("11 Jan 2018");
+        myOrderDetailReponse.setState("processing");
+        myOrderDetailReponse.setStatus(1);
+        myOrderDetailReponse.setCustomerName("Test Test");
+        myOrderDetailReponse.setPaymentMethod("PayPal Express Checkout");
+        myOrderDetailReponse.setSubtotal("RM 1,461.00");
+        myOrderDetailReponse.setShippingFee("RM 0.00");
+        myOrderDetailReponse.setGrandTotal("RM 1,461.00");
+
+        MyOrderDetailReponse.ShippingAddressBean shippingAddressBean = new MyOrderDetailReponse
+            .ShippingAddressBean();
+        shippingAddressBean.setFirstname("Test Name");
+        shippingAddressBean.setCountry("China");
+        shippingAddressBean.setRegion("Discovery Bay & Tung Chung");
+        shippingAddressBean.setCity("Hong kong");
+        shippingAddressBean.setPostcode("123");
+        shippingAddressBean.setTelephone("+123456789");
+        myOrderDetailReponse.setShippingAddress(shippingAddressBean);
+
+        ArrayList<MyOrderDetailReponse.SubordersBean> subordersBeans = new ArrayList<>();
+        for (int i = 0; i < 4; i++) {
+            MyOrderDetailReponse.SubordersBean subordersBean = new MyOrderDetailReponse
+                .SubordersBean();
+            subordersBean.setProductId(String.valueOf(467363123 + i));
+            if (i % 2 == 0) {
+                subordersBean.setStatus("Shipped");
+            } else {
+                subordersBean.setStatus("Processing");
+            }
+            subordersBean.setName("PS4 DUALSHOCK®4 Wireless Controller (Wave Blue)");
+            subordersBean.setImage(Const.HOME_TEST_IMG2);
+            subordersBeans.add(subordersBean);
+        }
+        myOrderDetailReponse.setSuborders(subordersBeans);
+        return Observable.just(myOrderDetailReponse);
+
     }
 
 

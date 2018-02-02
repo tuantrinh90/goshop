@@ -16,6 +16,8 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
@@ -63,6 +65,18 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<HomeResponse> homeRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_REQUEST);
         return retrofitRestApi.homeRequest(url, params);
+    }
+
+    @Override
+    public Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params) {
+        String url=EndpointAddress.getFullUrl(EndpointAddress.MYORDER_LIST_REQUEST);
+        return retrofitRestApi.myOrderListRequest(url,params);
+    }
+
+    @Override
+    public Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params) {
+        String url=EndpointAddress.getFullUrl(EndpointAddress.MYORDER_DETAIL_REQUEST);
+        return retrofitRestApi.myOrderDetailRequest(url,params);
     }
 
     @Override

@@ -25,17 +25,19 @@
             android:value="@string/facebook_id"/>
 
         <activity android:name=".presentation.home.DemoActivity">
-
-        </activity>
-
-        <activity android:name=".presentation.login.TestMenuActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
+
+        <activity android:name=".presentation.login.TestMenuActivity">
+
+        </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.HomeActivity"/>
+        <activity android:name=".presentation.myorder.MyOrderListActivity"/>
+        <activity android:name=".presentation.myorder.MyOrderDetailActivity"/>
 
         <activity android:name=".presentation.home.PromotionLandingListActivity"/>
         <activity android:name=".presentation.home.PromotionBannerActivity"/>

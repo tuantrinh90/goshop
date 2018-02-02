@@ -35,6 +35,24 @@ public class Const {
     //type-banner
     public static final int PROMOTION_LIST_BANNER = 1;
 
+    //My order list type
+    public static final int MYORDER_LIST_TITLE = 0;
+
+    public static final int MYORDER_LIST_CONTENT = 1;
+
+    public static final int MYORDER_LIST_PRICE = 2;
+
+    //Home slide menu item type
+    public static final int MENU_HOME = 0;
+    public static final int MENU_CATEGORY = 1;
+    public static final int MENU_GO_LOYALTY = 2;
+    public static final int MENU_SHOPPING_CART = 3;
+    public static final int MENU_WISHLIST = 4;
+    public static final int MENU_ORDER = 5;
+    public static final int MENU_NOTIFICATION = 6;
+    public static final int MENU_HELP_SUPPORT = 7;
+    public static final int MENU_SETTING = 8;
+
     public static final String PROMOTION_PAGE_LIST = "promotion_list";
 
     public static final String PROMOTION_PAGE_BANNER = "promotion_banner";

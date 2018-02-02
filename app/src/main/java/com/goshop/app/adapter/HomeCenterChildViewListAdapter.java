@@ -24,7 +24,8 @@ import butterknife.ButterKnife;
 public class HomeCenterChildViewListAdapter extends RecyclerView.Adapter {
 
     List<HomeResponse.CenterVideo.CenterVideoList> centerVideoLists = new ArrayList<>();
-
+    private boolean isExpand;
+    private final static int NOT_EXPAND_VISIBLE_COUNT=1;
     public HomeCenterChildViewListAdapter(
         List<HomeResponse.CenterVideo.CenterVideoList> centerVideoLists) {
         this.centerVideoLists = centerVideoLists;
@@ -51,7 +52,7 @@ public class HomeCenterChildViewListAdapter extends RecyclerView.Adapter {
 
     @Override
     public int getItemCount() {
-        return centerVideoLists.size();
+        return isExpand?centerVideoLists.size():NOT_EXPAND_VISIBLE_COUNT;
     }
 
     public static class CenterVideoListHolder extends RecyclerView.ViewHolder {
@@ -75,6 +76,13 @@ public class HomeCenterChildViewListAdapter extends RecyclerView.Adapter {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+    }
 
+    public void setExpand(boolean expand) {
+        isExpand = expand;
+    }
+
+    public boolean isExpand() {
+        return isExpand;
     }
 }

@@ -1,12 +1,17 @@
 package com.goshop.app.presentation.home;
 
+import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.HomeBaseAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.presentation.account.LoginActivity;
+import com.goshop.app.presentation.myorder.MyOrderListActivity;
+import com.goshop.app.utils.AnimUtils;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CoordinatorLayout;
@@ -191,55 +196,82 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
             case R.id.rl_image_right:
                 break;
             case R.id.rl_profile:
+                startActivity(new Intent(this, LoginActivity.class));
+                AnimUtils.setPageBottomToTopAnim(this);
                 break;
             case R.id.rl_drawer_home:
-                resetSelect();
+                switchMenu(Const.MENU_HOME);
+                break;
+            case R.id.rl_drawer_categorytree:
+                switchMenu(Const.MENU_CATEGORY);
+                break;
+            case R.id.rl_drawer_go_loyalty:
+                switchMenu(Const.MENU_GO_LOYALTY);
+                break;
+            case R.id.rl_drawer_shoppingcart:
+                switchMenu(Const.MENU_SHOPPING_CART);
+                break;
+            case R.id.rl_drawer_wishlist:
+                switchMenu(Const.MENU_WISHLIST);
+                break;
+            case R.id.rl_drawer_order:
+                switchMenu(Const.MENU_ORDER);
+                startActivity(new Intent(this, MyOrderListActivity.class));
+                break;
+            case R.id.rl_drawer_notification:
+                switchMenu(Const.MENU_NOTIFICATION);
+                break;
+            case R.id.tv_help_support:
+                switchMenu(Const.MENU_HELP_SUPPORT);
+                break;
+            case R.id.tv_setting:
+                switchMenu(Const.MENU_SETTING);
+                break;
+        }
+    }
+
+    public void switchMenu(int type){
+        resetSelect();
+        switch (type){
+            case Const.MENU_HOME:
                 rlDrawerHome.setSelected(true);
                 ivHome.setSelected(true);
                 tvHome.setSelected(true);
                 break;
-            case R.id.rl_drawer_categorytree:
-                resetSelect();
+            case Const.MENU_CATEGORY:
                 ivCategoryTree.setSelected(true);
                 tvCategoryTree.setSelected(true);
                 rlDrawerCategorytree.setSelected(true);
                 break;
-            case R.id.rl_drawer_go_loyalty:
-                resetSelect();
+            case Const.MENU_GO_LOYALTY:
                 ivGoLoyalty.setSelected(true);
                 tvGoLoyalty.setSelected(true);
                 rlDrawerGoLoyalty.setSelected(true);
                 break;
-            case R.id.rl_drawer_shoppingcart:
-                resetSelect();
+            case Const.MENU_SHOPPING_CART:
                 ivShoppingCart.setSelected(true);
                 tvShoppingCart.setSelected(true);
                 rlDrawerShoppingcart.setSelected(true);
                 break;
-            case R.id.rl_drawer_wishlist:
-                resetSelect();
+            case Const.MENU_WISHLIST:
                 ivWishlist.setSelected(true);
                 tvWishlist.setSelected(true);
                 rlDrawerWishlist.setSelected(true);
                 break;
-            case R.id.rl_drawer_order:
-                resetSelect();
+            case Const.MENU_ORDER:
                 ivOrderlist.setSelected(true);
                 tvOrder.setSelected(true);
                 rlDrawerOrder.setSelected(true);
                 break;
-            case R.id.rl_drawer_notification:
-                resetSelect();
+            case Const.MENU_NOTIFICATION:
                 ivNotification.setSelected(true);
                 tvNotification.setSelected(true);
                 rlDrawerNotification.setSelected(true);
                 break;
-            case R.id.tv_help_support:
-                resetSelect();
+            case Const.MENU_HELP_SUPPORT:
                 tvHelpSupport.setSelected(true);
                 break;
-            case R.id.tv_setting:
-                resetSelect();
+            case Const.MENU_SETTING:
                 tvSetting.setSelected(true);
                 break;
         }

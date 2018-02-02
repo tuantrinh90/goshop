@@ -14,6 +14,8 @@ import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.source.AccountDataSource;
@@ -62,6 +64,20 @@ public class AccountCloudDataSource implements AccountDataSource {
         //TODO joyson temp code
 //        return restApi.homeRequest(params);
         return ServiceData.getBaseData();
+    }
+
+    @Override
+    public Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params) {
+        //TODO joyson temp code
+//        return restApi.myOrderListRequest(params);
+        return ServiceData.getMyOrderLists();
+    }
+
+    @Override
+    public Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params) {
+        //TODO joyson temp code
+//        return restApi.myOrderDetailRequest(params);
+        return ServiceData.getMyOrderDetail();
     }
 
     @Override

@@ -49,9 +49,18 @@
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
 
+    <style name="btnStyle">
+        <item name="android:gravity">center</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:background">@drawable/big_button_style_config</item>
+        <item name="android:textColor">@color/blackTrans87</item>
+    </style>
+
     <style name="textInputErrorStyle">
         <item name="android:textColor">@color/colorAccent</item><!--hint-->
     </style>
+
     <style name="homeTopCategoryText">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
@@ -181,7 +190,27 @@
         <item name="android:background">@drawable/slidemenu_bg_color_selected</item>
     </style>
 
+    <style name="myOrderDetailTitle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/blackTrans87</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 
+    <style name="myOrderDetailInfo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">30dp</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/blackTrans38</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+        <item name="android:gravity">center_vertical</item>
+    </style>
 
 
     <style name="MyEditText" parent="AppTheme">

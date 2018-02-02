@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">goshop</string>
+
+    <string name="app_network_error">network error</string>
     <!--home-->
     <string name="home_second_category">Categories</string>
     <string name="home_second_brand">Brands</string>
@@ -61,6 +63,27 @@
     <string name="promotion_item_best_symbol">best</string>
     <string name="promotion_list_symbol">promotion list</string>
     <string name="promotion_banner_symbol">promotion banner</string>
+
+    <!--my orders-->
+    <string name="my_orders_title_number">Order Number:&#160;</string>
+    <string name="my_orders_title_status">Order Status:&#160;</string>
+    <string name="my_orders_total_price">Total incl. GST:&#160;</string>
+    <string name="my_orders_track">Track</string>
+    <string name="my_orders_title">My Orders</string>
+    <string name="my_orders_detail_title">Order Detail</string>
+    <string name="my_orders_sub_total">Sub Total:&#160;</string>
+    <string name="my_orders_rounding_amout">Rounding Amout:&#160;</string>
+    <string name="my_orders_shipping">Shipping:&#160;</string>
+    <string name="my_orders_discount">Discount:&#160;</string>
+    <string name="my_orders_information">Order Information:&#160;</string>
+    <string name="my_orders_placed_at">Placed at:&#160;</string>
+    <string name="my_orders_shipping_address">Shipping Address</string>
+    <string name="my_orders_payment_method">Payment Method</string>
+    <string name="my_orders_items">Items</string>
+    <string name="my_orders_test_id">#123019223</string>
+    <string name="my_orders_test_color">Color: Blue</string>
+    <string name="my_orders_test_size">Size: M</string>
+    <string name="my_orders_test_amount">* 3</string>
 
     <!--test data-->
     <string name="home_item_test_product_name">Manjung Korean Crispy Seaweed(Sea Salt)</string>
@@ -143,7 +166,6 @@
     <string name="frequently_bought_together">Frequently Bought Together</string>
     <string name="in_stock">In Stock</string>
     <string name="pdp_additionall_value">N/A</string>
-
 
     <string name="search">Search</string>
     <string name="search_products">Search products</string>

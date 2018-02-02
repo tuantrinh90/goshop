@@ -7,6 +7,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.utils.AnimUtils;
 import com.goshop.app.utils.JDataUtils;
 import com.goshop.app.utils.ScreenHelper;
 import com.jakewharton.rxbinding2.view.RxView;
@@ -235,6 +236,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                 break;
             case R.id.imageview_right_menu:
                 finish();
+                AnimUtils.setPageTopToBottomAnim(this);
                 break;
 
         }

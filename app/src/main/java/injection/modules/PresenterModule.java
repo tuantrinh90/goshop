@@ -25,6 +25,8 @@ import com.goshop.app.presentation.login.LoginSendConfirmationLinkContract;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkPresenter;
 import com.goshop.app.presentation.login.RegisterContract;
 import com.goshop.app.presentation.login.RegisterPresenter;
+import com.goshop.app.presentation.myorder.MyOrderContract;
+import com.goshop.app.presentation.myorder.MyOrderPresenter;
 import com.goshop.app.presentation.search.SearchContract;
 import com.goshop.app.presentation.search.SearchPresenter;
 import com.goshop.app.presentation.search.SearchResultContract;
@@ -82,6 +84,12 @@ public class PresenterModule {
     @ActivityScope
     public HomeContract.Presenter provideHomePresenter(AccountDataRepository dataRepository) {
         return new HomePresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public MyOrderContract.Presenter provideMyOrderPresenter(AccountDataRepository dataRepository) {
+        return new MyOrderPresenter(dataRepository);
     }
 
     @Provides
