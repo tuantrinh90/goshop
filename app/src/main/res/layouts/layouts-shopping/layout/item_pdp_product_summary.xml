@@ -11,11 +11,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/product_summary_tips"
-        android:textSize="@dimen/size_font_16"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_text_black"
         android:paddingBottom="@dimen/size_14"
     />
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
-        android:background="@color/pinkishGrey"/>
+        android:background="@color/color_divider_grey"/>
 </LinearLayout>

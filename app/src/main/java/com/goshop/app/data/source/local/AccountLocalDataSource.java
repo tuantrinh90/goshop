@@ -3,6 +3,10 @@ package com.goshop.app.data.source.local;
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ContactUsReponse;
+import com.goshop.app.data.model.FAQReponse;
+import com.goshop.app.data.model.GetWebContentReponse;
+import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
@@ -11,6 +15,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -121,6 +126,12 @@ public class AccountLocalDataSource implements AccountDataSource {
         return null;
     }
 
+    @Override
+    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
     public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
         return null;
     }
@@ -140,7 +151,38 @@ public class AccountLocalDataSource implements AccountDataSource {
         return null;
     }
 
-    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+    @Override
+    public Observable<GetWebContentReponse> getEcmcContent() {
+        return null;
+    }
+
+    @Override
+    public Observable<GetWebContentReponse> getContactContent() {
+        return null;
+    }
+
+    @Override
+    public Observable<HelpSupportReponse> helpSupportRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<FAQReponse> faqRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<ContactUsReponse> getContactInfo() {
+        return null;
+    }
+
+    @Override
+    public Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params) {
         return null;
     }
 }

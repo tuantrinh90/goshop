@@ -8,7 +8,9 @@ import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SearchFilterModel;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 
+import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -37,7 +39,7 @@ import injection.modules.PresenterModule;
  */
 
 public class SearchResultActivity extends BaseActivity<SearchResultContract.Presenter> implements
-    SearchResultContract.View {
+    SearchResultContract.View , SearchResultAdapter.OnItemClickListener{
 
     private static final int NAME_A_Z = 2;
 
@@ -133,7 +135,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerviewSearchResultDisplay.setLayoutManager(gridLayoutManager);
         recyclerviewSearchResultDisplay.addItemDecoration(new CustomGridDivider(this));
-        resultAdapter = new SearchResultAdapter(new ArrayList<>());
+        resultAdapter = new SearchResultAdapter(new ArrayList<>(), this);
         recyclerviewSearchResultDisplay.setAdapter(resultAdapter);
     }
 
@@ -325,5 +327,10 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         } else {
             super.onBackPressed();
         }
+    }
+
+    @Override
+    public void onClick() {
+        startActivity(new Intent(this, ProductDetailActivity.class));
     }
 }

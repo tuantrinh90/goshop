@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
-
     <application
         android:name=".GoShopApplication"
         android:allowBackup="true"
@@ -25,19 +24,22 @@
             android:value="@string/facebook_id"/>
 
         <activity android:name=".presentation.home.DemoActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
         </activity>
 
         <activity android:name=".presentation.login.TestMenuActivity">
 
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
-        <activity android:name=".presentation.home.HomeActivity"/>
+        <activity android:name=".presentation.home.HomeActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
         <activity android:name=".presentation.myorder.MyOrderListActivity"/>
         <activity android:name=".presentation.myorder.MyOrderDetailActivity"/>
+        <activity android:name=".presentation.checkout.CheckoutActivity"/>
 
         <activity android:name=".presentation.home.PromotionLandingListActivity"/>
         <activity android:name=".presentation.home.PromotionBannerActivity"/>
@@ -72,6 +74,11 @@
         <activity android:name=".presentation.search.SearchResultActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.account.WebContentActivity"
+            android:theme="@style/WhiteBackground">
         </activity>
 
         <activity android:name=".presentation.account.EditProfileActivity"
@@ -82,6 +89,17 @@
         <activity android:name=".presentation.account.ChangePasswordActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
+        <activity android:name=".presentation.account.HelpSupportActivity"
+            android:theme="@style/WhiteBackground">
+        </activity>
+
+        <activity android:name=".presentation.account.FAQActivity"
+            android:theme="@style/WhiteBackground">
+        </activity>
+
+        <activity android:name=".presentation.account.TermsConditionsActivity"
+            android:theme="@style/WhiteBackground">
+        </activity>
 
         <activity android:name=".presentation.account.AddAddressActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
@@ -91,6 +109,10 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.EditAddressActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.account.ContactUsActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
     </application>
 

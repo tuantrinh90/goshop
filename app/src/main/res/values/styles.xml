@@ -202,7 +202,7 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/blackTrans87</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:gravity">center_vertical</item>
@@ -221,13 +221,11 @@
 
     <style name="checkoutRadioButton">
         <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">30dp</item>
+        <item name="android:layout_height">40dp</item>
         <item name="android:background">@null</item>
         <item name="android:button">@null</item>
         <item name="android:drawablePadding">8dp</item>
-        <item name="android:paddingTop">4dp</item>
-        <item name="android:paddingBottom">4dp</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">16sp</item>
         <item name="android:textColor">@color/blackTrans54</item>
         <item name="android:drawableLeft">@drawable/selector_check</item>
     </style>
@@ -240,12 +238,6 @@
     <style name="WhiteBackground" parent="AppTheme">
         <item name="android:windowBackground">@android:color/white</item>
     </style>
-    
-    <declare-styleable name="CustomTitleDelEditText">
-        <attr name="et_hint" format="reference" />
-        <attr name="et_password" format="boolean" />
-
-    </declare-styleable>
 
     <declare-styleable name="animET">
         <attr name="hint" format="reference" />
@@ -271,9 +263,9 @@
     </style>
 
     <style name="hintAppearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/color_main_black</item>
+        <item name="android:textColor">@color/color_text_black</item>
         <item name="android:textSize">@dimen/size_font_12</item>
-        <item name="android:textColorHint">@color/color_main_grey</item>
+        <item name="android:textColorHint">@color/color_hint_grey</item>
 
     </style>
 

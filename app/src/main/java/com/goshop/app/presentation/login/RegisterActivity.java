@@ -3,7 +3,8 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.CustomTitleDelEditText;
+import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.CustomPasswordEditText;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.utils.EditTextUtil;
@@ -16,6 +17,7 @@ import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextUtils;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
@@ -45,22 +47,22 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     CheckBox cbRegisterSms;
 
     @BindView(R.id.ctd_et_register_confirmation_password)
-    CustomTitleDelEditText ctdEtRegisterConfirmationPassword;
+    CustomPasswordEditText ctdEtRegisterConfirmationPassword;
 
     @BindView(R.id.ctd_et_register_email)
-    CustomTitleDelEditText ctdEtRegisterEmail;
+    CustomAnimEditText ctdEtRegisterEmail;
 
     @BindView(R.id.ctd_et_register_firstname)
-    CustomTitleDelEditText ctdEtRegisterFirstname;
+    CustomAnimEditText ctdEtRegisterFirstname;
 
     @BindView(R.id.ctd_et_register_lastname)
-    CustomTitleDelEditText ctdEtRegisterLastname;
+    CustomAnimEditText ctdEtRegisterLastname;
 
     @BindView(R.id.ctd_et_register_mobile)
-    CustomTitleDelEditText ctdEtRegisterMobile;
+    CustomAnimEditText ctdEtRegisterMobile;
 
     @BindView(R.id.ctd_et_register_password)
-    CustomTitleDelEditText ctdEtRegisterPassword;
+    CustomPasswordEditText ctdEtRegisterPassword;
 
     @BindView(R.id.rb_register_female)
     RadioButton rbRegisterFemale;
@@ -68,8 +70,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     @BindView(R.id.rb_register_male)
     RadioButton rbRegisterMale;
 
-    @BindView(R.id.tv_btn_register)
-    CustomTextView tvBtnRegister;
+    @BindView(R.id.tv_btn_layout_pink)
+    CustomTextView tvBtnLayoutPink;
 
     @BindView(R.id.tv_btn_register_login)
     CustomBoldTextView tvBtnRegisterLogin;
@@ -105,46 +107,12 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @Override
     public void inject() {
+        tvBtnLayoutPink.setText(getResources().getString(R.string.submit));
         initPresenter();
         initEditText();
         checkBoxActionListener();
         toastUtil = new ToastUtil(this, this);
         initRead();
-    }
-
-    //TODO(helen)hard code need decide
-    private void initRead() {
-        SpannableString spannableString = new SpannableString(
-            getResources().getString(R.string.register_tips));
-        spannableString.setSpan(new UnderlineSpan(), 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString
-            .setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_main_pink)), 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new UnderlineSpan(), 85, 105, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ForegroundColorSpan(Color.MAGENTA), 85, 105, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new UnderlineSpan(), 107, 120, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ForegroundColorSpan(Color.MAGENTA), 107, 120, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        spannableString.setSpan(new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(RegisterActivity.this, "1", Toast.LENGTH_SHORT).show();
-            }
-        }, 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                Toast.makeText(RegisterActivity.this, "2", Toast.LENGTH_SHORT).show();
-            }
-        },85, 105, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                Toast.makeText(RegisterActivity.this, "3", Toast.LENGTH_SHORT).show();
-            }
-        },107, 120, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        tvRegisterRead.setText(spannableString);
-        tvRegisterRead.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     private void initPresenter() {
@@ -158,20 +126,14 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     private void initEditText() {
         ctdEtRegisterFirstname.initInputType(InputType.TYPE_CLASS_TEXT);
         ctdEtRegisterFirstname.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterFirstname.focusListener(CustomTitleDelEditText.EDITTEXT_TEXT);
         ctdEtRegisterLastname.initInputType(InputType.TYPE_CLASS_TEXT);
         ctdEtRegisterLastname.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterLastname.focusListener(CustomTitleDelEditText.EDITTEXT_TEXT);
         ctdEtRegisterEmail.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         ctdEtRegisterEmail.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterEmail.focusListener(CustomTitleDelEditText.EDITTEXT_EMAIL);
         ctdEtRegisterMobile.initInputType(InputType.TYPE_CLASS_NUMBER);
         ctdEtRegisterMobile.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterMobile.focusListener(CustomTitleDelEditText.EDITTEXT_NUMBER);
         ctdEtRegisterPassword.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterPassword.focusListener(CustomTitleDelEditText.EDITTEXT_NUMBER);
         ctdEtRegisterConfirmationPassword.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterConfirmationPassword.focusListener(CustomTitleDelEditText.EDITTEXT_NUMBER);
 
     }
 
@@ -180,6 +142,44 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             (view, isChecked) -> EditTextUtil.eidtLoseFocus(cbRegisterEmail));
         cbRegisterSms.setOnCheckedChangeListener(
             (view, isChecked) -> EditTextUtil.eidtLoseFocus(cbRegisterSms));
+    }
+
+    //TODO(helen)hard code need decide
+    private void initRead() {
+        SpannableString spannableString = new SpannableString(
+            getResources().getString(R.string.register_tips));
+        spannableString.setSpan(new UnderlineSpan(), 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString
+            .setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_main_pink)), 69,
+                83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new UnderlineSpan(), 85, 105, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ForegroundColorSpan(Color.MAGENTA), 85, 105,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new UnderlineSpan(), 107, 120, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ForegroundColorSpan(Color.MAGENTA), 107, 120,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(RegisterActivity.this, "1", Toast.LENGTH_SHORT).show();
+            }
+        }, 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Toast.makeText(RegisterActivity.this, "2", Toast.LENGTH_SHORT).show();
+            }
+        }, 85, 105, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                Toast.makeText(RegisterActivity.this, "3", Toast.LENGTH_SHORT).show();
+            }
+        }, 107, 120, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        tvRegisterRead.setText(spannableString);
+        tvRegisterRead.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
     @Override
@@ -202,16 +202,15 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         //TODO(helen)when register failed
     }
 
-    @OnClick({R.id.tv_btn_register, R.id.tv_btn_register_login, R.id.imageview_left_menu, R.id
+    @OnClick({R.id.tv_btn_layout_pink, R.id.tv_btn_register_login, R.id.imageview_left_menu, R.id
         .imageview_right_menu, R.id.tv_register_title, R.id.tv_register_language, R.id
         .tv_register_date_of_birth})
     public void onRegisterClick(View view) {
         switch (view.getId()) {
-            case R.id.tv_btn_register:
-                EditTextUtil.eidtLoseFocus(tvBtnRegister);
-                //TODO(helen)wait for api
-                //getInputDatas();
-                mPresenter.registerRequest(null);
+            case R.id.tv_btn_layout_pink:
+                judgmentRegister(ctdEtRegisterFirstname.getText(), ctdEtRegisterLastname.getText(),
+                    ctdEtRegisterEmail.getText(), ctdEtRegisterPassword.getText(),
+                    ctdEtRegisterConfirmationPassword.getText(), ctdEtRegisterMobile.getText(), tvRegisterDateOfBirth.getText().toString());
                 break;
             case R.id.tv_btn_register_login:
                 startLoginScreen();
@@ -241,14 +240,48 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         }
     }
 
-    private void startLoginScreen() {
-        //TODO(helen) it will completed when code merge
+    private void judgmentRegister(String firstName, String lastName, String email, String password,
+        String confirmPassword, String mobile, String birth) {
+        if (TextUtils.isEmpty(firstName)) {
+            ctdEtRegisterFirstname.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+
+        if (TextUtils.isEmpty(lastName)) {
+            ctdEtRegisterLastname.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+
+        if (TextUtils.isEmpty(email)) {
+            ctdEtRegisterEmail.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+
+        if (TextUtils.isEmpty(password)) {
+            ctdEtRegisterPassword.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+
+        if (TextUtils.isEmpty(confirmPassword)) {
+            ctdEtRegisterConfirmationPassword.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+
+        if (TextUtils.isEmpty(mobile)) {
+            ctdEtRegisterMobile.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+
+        if (TextUtils.isEmpty(birth)) {
+            //todo(helen)this need decide
+            return;
+        }
+        //TODO(helen)wait for api
+        mPresenter.registerRequest(null);
     }
 
-    private void getInputDatas() {
-        //TODO(helen)wait for api
-        boolean isSendEmail = cbRegisterEmail.isChecked();
-        boolean isSendSms = cbRegisterSms.isChecked();
+    private void startLoginScreen() {
+        //TODO(helen) it will completed when code merge
     }
 
     @Override

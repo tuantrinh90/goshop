@@ -3,10 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:id="@+id/rl_pdp_expand_title"
+    android:id="@+id/rl_filter_expand_title"
     android:layout_height="@dimen/size_50"
-    android:layout_marginLeft="@dimen/size_16"
-    android:layout_marginRight="@dimen/size_16"
+    android:layout_marginLeft="@dimen/size_12"
+    android:layout_marginRight="@dimen/size_12"
     android:background="@drawable/selector_bg_expand_pdp_title"
     tools:ignore="Overdraw">
 
@@ -16,9 +16,8 @@
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:text="@string/details"
-        android:textAllCaps="true"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@android:color/black"/>
+        android:textColor="@color/color_text_black"/>
 
     <ImageView
         android:id="@+id/iv_item_search_filter_expand"

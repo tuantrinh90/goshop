@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.FilterMenuBrandsVM;
 import com.goshop.app.presentation.model.FilterMenuCategoryVM;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -66,9 +67,11 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
     //todo(helen) this is mock data, please do not delete
     private List<FilterMenuModel> getFilterMenu() {
         List<FilterMenuModel> filterMenuModels = new ArrayList<>();
-        filterMenuModels.add(new FilterMenuExpandVM("Category", true));
+        filterMenuModels.add(new FilterMenuExpandVM("Category", true, true));
         filterMenuModels.add(new FilterMenuCategoryVM(getCategorys()));
-        filterMenuModels.add(new FilterMenuExpandVM("Brands", true));
+        filterMenuModels.add(new FilterMenuExpandVM("Brands", false, true));
+        filterMenuModels.add(new FilterMenuBrandsVM());
+        filterMenuModels.add(new FilterMenuExpandVM("Price(RM)", false, false));
         filterMenuModels.add(new FilterMenuPriceVM());
         return filterMenuModels;
     }
@@ -81,6 +84,8 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
         categorys.add("Kids & Baby");
         categorys.add("Digital & Electronic");
         categorys.add("Living");
+        categorys.add("Sports & Leisure");
+        categorys.add("Others");
         return categorys;
     }
 

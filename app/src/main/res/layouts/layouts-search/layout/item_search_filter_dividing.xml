@@ -4,6 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="@dimen/size_1"
-    android:background="@color/color_main_grey"
+    android:background="@color/color_divider_grey"
     android:contentDescription="@string/app_name"
     tools:ignore="Overdraw"/>

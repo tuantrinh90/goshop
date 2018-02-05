@@ -16,6 +16,7 @@ import com.goshop.app.presentation.model.PdpQAContentTopVM;
 import com.goshop.app.presentation.model.PdpQAContentVM;
 import com.goshop.app.presentation.model.PdpReviewsContentVM;
 import com.goshop.app.presentation.model.PdpReviewsTopVM;
+import com.goshop.app.presentation.model.PdpTipVM;
 import com.goshop.app.presentation.model.PdpTopContentVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 
@@ -103,13 +104,17 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     //todo(helen)this is mock data will delete when get api
     private List<ProductDetailModel> getTopDatas() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
+        List<PdpTipVM> tips = new ArrayList<>();
+
+        tips.add(new PdpTipVM("In Stock", R.color.color_text_black, R.color.color_divider_grey));
+        tips.add(new PdpTipVM("With free gift", R.color.color_main_pink, R.color.color_litte_pink));
         List<Integer> colors = new ArrayList<>();
         colors.add(0xff23f22d);
         colors.add(0xff23faad);
         colors.add(0xfa23faaa);
         detailModels
             .add(new PdpTopContentVM("Kloken Living Box Value Set Kloken Living Box Value Set",
-                "RM 199.00", "RM 268.00", "-30%", 4, "(24)", "10", colors));
+                "RM 199.00", "RM 268.00", "-30%", 4, "(24)", "10", colors, tips));
         return detailModels;
     }
 

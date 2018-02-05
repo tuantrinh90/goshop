@@ -4,17 +4,22 @@ import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.model.ShoppingCartApplyVM;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
+import com.jakewharton.rxbinding2.view.RxView;
 
+import android.content.Intent;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -68,6 +73,10 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
             ((ProductViewHolder) holder).bindingData((ShoppingCartProductVM) shoppingCartModel);
         } else if (holder instanceof CheckoutViewHolder) {
             //TODO(helen) need decide
+            RxView.clicks(holder.itemView).subscribe(v -> {
+                holder.itemView.getContext().startActivity(new Intent(holder.itemView.getContext(), CheckoutActivity.class));
+            });
+
         } else if (holder instanceof ApplyViewHolder) {
             ((ApplyViewHolder) holder).bindingData((ShoppingCartApplyVM) shoppingCartModel);
         }

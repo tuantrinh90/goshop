@@ -31,6 +31,7 @@
         android:layout_height="match_parent"
         android:layout_toLeftOf="@id/iv_plus"
         android:textCursorDrawable="@null"
+        android:textColor="@color/color_text_black"
         android:background="@null"
         android:gravity="center"
         android:inputType="number"

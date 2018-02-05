@@ -283,11 +283,14 @@ public class ServiceData {
         response.setCity("Taibei");
         response.setUserName("test1");
         response.setFirstAddress("new Land");
+        response.setSecondAddress("new Land2");
+        response.setPostcode("0000");
         response.setCountry("China");
         response.setTel("+1234567");
         List<CheckoutResponse.CheckoutItem> checkoutItems=new ArrayList<>();
         for (int i=0;i<5;i++){
             CheckoutResponse.CheckoutItem checkoutItem=new CheckoutResponse.CheckoutItem();
+            checkoutItem.setProductName(ScreenHelper.getString(R.string.home_item_test_product_name));
             checkoutItem.setAmount(String.valueOf(i));
             checkoutItem.setColor("Blue");
             checkoutItem.setCurrentPrice("RM 119.00");

@@ -90,6 +90,8 @@ public class CustomAnimEditText extends RelativeLayout {
     public void setErrorMessage(String errorMessage) {
         tilAnimEdittext.setErrorEnabled(true);
         tilAnimEdittext.setError(errorMessage);
+        etAnimEdittext.setFocusable(true);
+        etAnimEdittext.requestFocus();
     }
 
 

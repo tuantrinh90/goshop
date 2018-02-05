@@ -2,7 +2,7 @@ package com.goshop.app.adapter;
 
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.HomeResponse;
-import com.goshop.app.utils.ScreenHelper;
+import com.goshop.app.utils.AnimUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import android.support.v7.widget.LinearLayoutManager;
@@ -49,13 +49,9 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
             centerVideos.get(position).getCenterVideoList());
         homeCenterChildViewListAdapter.setExpand(false);
         RxView.clicks(homeCenterVideoList.rlDownArrows).subscribe(v -> {
-            if (homeCenterChildViewListAdapter.isExpand()){
-                homeCenterChildViewListAdapter.setExpand(false);
-                ScreenHelper.rotateArrow(homeCenterVideoList.ivArrow,false);
-            }else {
-                homeCenterChildViewListAdapter.setExpand(true);
-                ScreenHelper.rotateArrow(homeCenterVideoList.ivArrow,true);
-            }
+            boolean isExpand = homeCenterChildViewListAdapter.isExpand();
+            AnimUtils.rotateArrow(homeCenterVideoList.ivArrow,!isExpand);
+            homeCenterChildViewListAdapter.setExpand(!isExpand);
             homeCenterChildViewListAdapter.notifyDataSetChanged();
         });
 

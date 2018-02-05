@@ -28,6 +28,7 @@
         android:layout_marginTop="@dimen/size_12"
         android:layout_alignParentRight="true"
         android:contentDescription="@string/app_name"
-        android:background="@mipmap/ic_chevron_titlebar_down"/>
+        android:background="@mipmap/ic_chevron_titlebar_down"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

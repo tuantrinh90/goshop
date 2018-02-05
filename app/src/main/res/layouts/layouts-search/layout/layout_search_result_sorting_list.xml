@@ -21,7 +21,8 @@
             android:gravity="center_vertical"
             android:textSize="@dimen/size_font_14"
             android:text="@string/new_arrivals"
-            android:textColor="@drawable/selector_text_white_pink"/>
+            android:textColor="@drawable/selector_text_white_pink"
+            android:layout_alignParentStart="true"/>
 
         <ImageView
             android:id="@+id/iv_search_result_sorting_arrivals"
@@ -30,7 +31,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@mipmap/right"
-        />
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -49,7 +51,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/price_low_high"
             android:textColor="@drawable/selector_text_white_pink"
-        />
+            android:layout_alignParentStart="true"/>
 
         <ImageView
             android:id="@+id/iv_search_result_sorting_price"
@@ -58,7 +60,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@mipmap/right"
-        />
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -76,7 +79,8 @@
             android:gravity="center_vertical"
             android:textSize="@dimen/size_font_14"
             android:text="@string/name_a_z"
-            android:textColor="@drawable/selector_text_white_pink"/>
+            android:textColor="@drawable/selector_text_white_pink"
+            android:layout_alignParentStart="true"/>
 
         <ImageView
             android:id="@+id/iv_search_result_sorting_name"
@@ -85,7 +89,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@mipmap/right"
-        />
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -103,7 +108,8 @@
             android:gravity="center_vertical"
             android:textSize="@dimen/size_font_14"
             android:text="@string/promotion"
-            android:textColor="@drawable/selector_text_white_pink"/>
+            android:textColor="@drawable/selector_text_white_pink"
+            android:layout_alignParentStart="true"/>
 
         <ImageView
             android:id="@+id/iv_search_result_sorting_promotion"
@@ -112,7 +118,8 @@
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             android:background="@mipmap/right"
-        />
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
 </LinearLayout>

@@ -24,10 +24,14 @@ import butterknife.ButterKnife;
 
 public class SearchResultAdapter extends RecyclerView.Adapter {
 
-    List<SearchFilterModel> filterModels;
+    private List<SearchFilterModel> filterModels;
 
-    public SearchResultAdapter(List<SearchFilterModel> filterModels) {
+    private OnItemClickListener onItemClickListener;
+
+    public SearchResultAdapter(List<SearchFilterModel> filterModels,
+        OnItemClickListener onItemClickListener) {
         this.filterModels = filterModels;
+        this.onItemClickListener = onItemClickListener;
     }
 
     public void setDatas(List<SearchFilterModel> filterModels) {
@@ -66,6 +70,11 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return filterModels.size();
+    }
+
+    interface OnItemClickListener {
+
+        void onClick();
     }
 
     class SearchResultViewHolder extends RecyclerView.ViewHolder {
@@ -133,6 +142,9 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
             tvSearchResultPriceOld.setText(searchResultVM.getOldPrice());
             tvSearchResultPriceOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             tvSearchResultPriceNow.setText(searchResultVM.getNowPrice());
+            itemView.setOnClickListener(v -> {
+                onItemClickListener.onClick();
+            });
         }
     }
 

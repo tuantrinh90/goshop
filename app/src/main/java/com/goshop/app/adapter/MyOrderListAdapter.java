@@ -109,10 +109,6 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
         return results.get(position).getType();
     }
 
-    static class ViewHolder {
-
-    }
-
     static class TitleHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_order_num)

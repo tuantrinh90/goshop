@@ -3,8 +3,8 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.CustomTitleDelEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
@@ -30,10 +30,10 @@ public class LoginSendConfirmationLinkActivity extends
     LoginSendConfirmationLinkContract.View, ToastUtil.OnToastListener {
 
     @BindView(R.id.ctd_et_confirmation_link)
-    CustomTitleDelEditText ctdEtConfirmationLink;
+    CustomAnimEditText ctdEtConfirmationLink;
 
     @BindView(R.id.tv_btn_send_confirmation_link_submit)
-    CustomBoldTextView tvBtnSendConfirmationLinkSubmit;
+    CustomTextView tvBtnSendConfirmationLinkSubmit;
 
     private ToastUtil toastUtil;
 
@@ -71,7 +71,6 @@ public class LoginSendConfirmationLinkActivity extends
     private void initEditText() {
         ctdEtConfirmationLink.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
         ctdEtConfirmationLink.initImeOptions(EditorInfo.IME_ACTION_DONE);
-        ctdEtConfirmationLink.focusListener(CustomTitleDelEditText.EDITTEXT_EMAIL);
     }
 
     @Override
@@ -96,7 +95,7 @@ public class LoginSendConfirmationLinkActivity extends
             case R.id.tv_btn_send_confirmation_link_submit:
                 EditTextUtil.eidtLoseFocus(tvBtnSendConfirmationLinkSubmit);
                 String email = ctdEtConfirmationLink.getText();
-                if(!TextUtils.isEmpty(email)) {
+                if (!TextUtils.isEmpty(email)) {
                     //TODO(helen) wait for api
                     mPresenter.sendConfirmationLinkRequest(null);
                 }
