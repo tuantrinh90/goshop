@@ -89,7 +89,7 @@ public class HelpSupportAdapter extends RecyclerView.Adapter {
         }
 
         void bindingDatas(int position, HelpSupportTitleVM helpSupportTitleVM) {
-            int visibility = position == 0 ? View.GONE:View.VISIBLE;
+            int visibility = position == 0 ? View.GONE : View.VISIBLE;
             vHelpSupportDivider.setVisibility(visibility);
             tvHelpSupportTitle.setText(helpSupportTitleVM.getTitle());
         }
@@ -107,6 +107,8 @@ public class HelpSupportAdapter extends RecyclerView.Adapter {
 
         void bindingDatas(HelpSupportContentVM contentVM) {
             tvHelpSupportContent.setText(contentVM.getLabel());
+            itemView
+                .setOnClickListener(v -> contentVM.getHelpContentClickListener().onContentClick());
         }
     }
 }
