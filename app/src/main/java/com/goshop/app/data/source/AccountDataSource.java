@@ -9,6 +9,7 @@ import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.MyPointsReponse;
 import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.PaymentStatusReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
@@ -88,7 +89,6 @@ public interface AccountDataSource {
 
     Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params);
 
-
     Observable<ContactUsReponse> getContactInfo();
 
     Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params);
@@ -96,4 +96,9 @@ public interface AccountDataSource {
     Observable<GetSettingsReponse> getSettingsDetail();
 
     Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params);
+
+    Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params);
+
+    Observable<AddressReponse> selectAddressRequest(Map<String, Object> params);
+
 }

@@ -43,8 +43,9 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         this.menuModels.clear();
         this.displayModels.clear();
         this.menuModels = menuModels;
+        //TODO(helen) this part need decide
         boolean isDisplayChilds = true;
-        for ( FilterMenuModel filterMenuModel :menuModels) {
+        for (FilterMenuModel filterMenuModel : menuModels) {
             if ((filterMenuModel instanceof FilterMenuExpandVM)) {
                 displayModels.add(filterMenuModel);
                 isDisplayChilds = isAddChildModels(filterMenuModel);
@@ -57,7 +58,7 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    private boolean isAddChildModels(FilterMenuModel filterMenuModel ) {
+    private boolean isAddChildModels(FilterMenuModel filterMenuModel) {
         return ((FilterMenuExpandVM) filterMenuModel)
             .isHasIcon() && ((FilterMenuExpandVM) filterMenuModel).isExpand();
     }

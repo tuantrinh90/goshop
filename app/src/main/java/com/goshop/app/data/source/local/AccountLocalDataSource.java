@@ -10,6 +10,7 @@ import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.MyPointsReponse;
 import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.PaymentStatusReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
@@ -195,6 +196,18 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
+
+        return null;
+    }
+
+    @Override
+    public Observable<AddressReponse> selectAddressRequest(Map<String, Object> params) {
+
         return null;
     }
 }

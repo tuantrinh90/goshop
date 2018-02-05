@@ -11,6 +11,7 @@ import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.MyPointsReponse;
 import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.PaymentStatusReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
@@ -224,5 +225,16 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_POINTS);
         return retrofitRestApi.myPointsRequest(url, params);
+    }
+    @Override
+    public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PAYMENT_STATUS);
+        return retrofitRestApi.paymentStatusRequest(url, params);
+    }
+
+    @Override
+    public Observable<AddressReponse> selectAddressRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.SELECT_ADDRESS);
+        return retrofitRestApi.selectAddressRequest(url, params);
     }
 }

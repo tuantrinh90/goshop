@@ -80,7 +80,9 @@
 
         <activity android:name=".presentation.account.EditProfileActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/WhiteBackground"/>
+            android:theme="@style/WhiteBackground">
+
+        </activity>
         <activity android:name=".presentation.shopping.ShoppingCartActivity"/>
 
         <activity android:name=".presentation.account.ChangePasswordActivity"
@@ -88,6 +90,10 @@
             android:theme="@style/WhiteBackground"/>
         <activity android:name=".presentation.account.HelpSupportActivity"
             android:theme="@style/WhiteBackground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity android:name=".presentation.account.FAQActivity"
@@ -100,13 +106,17 @@
 
         <activity android:name=".presentation.account.AddAddressActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/WhiteBackground"/>
+            android:theme="@style/WhiteBackground">
+
+        </activity>
 
         <activity android:name=".presentation.account.MyAddressBookActivity"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.EditAddressActivity"
-            android:theme="@style/WhiteBackground"/>
+            android:theme="@style/WhiteBackground">
+
+        </activity>
 
         <activity android:name=".presentation.account.ContactUsActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
@@ -122,6 +132,24 @@
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
+        </activity>
+        <activity android:name=".presentation.checkout.PaymentStatusActivity"
+            android:theme="@style/WhiteBackground">
+
+        </activity>
+        <activity android:name=".presentation.checkout.CheckoutAddNewAddressActivity"
+            android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.checkout.CheckoutEditAddressActivity"
+            android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.checkout.CheckoutSelectAddressActivity"
+            android:theme="@style/WhiteBackground">
+
         </activity>
     </application>
 

@@ -9,6 +9,7 @@ import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.MyPointsReponse;
 import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.PaymentStatusReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
@@ -227,5 +228,15 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params) {
         return accountCloudDataSource.myPointsRequest(params);
+    }
+
+    @Override
+    public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
+        return accountCloudDataSource.paymentStatusRequest(params);
+    }
+
+    @Override
+    public Observable<AddressReponse> selectAddressRequest(Map<String, Object> params) {
+        return accountCloudDataSource.selectAddressRequest(params);
     }
 }
