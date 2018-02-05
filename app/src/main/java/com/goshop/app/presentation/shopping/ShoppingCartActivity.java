@@ -3,8 +3,10 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -72,6 +74,8 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvShoppintCart.setLayoutManager(layoutManager);
         shoppingCartAdapter = new ShoppingCartAdapter(new ArrayList<>());
+        shoppingCartAdapter.setiRecyclerItemClick(
+            (view, position) -> startActivity(new Intent(ShoppingCartActivity.this, CheckoutActivity.class)));
         rvShoppintCart.setAdapter(shoppingCartAdapter);
     }
 
