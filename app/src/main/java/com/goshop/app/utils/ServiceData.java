@@ -3,6 +3,7 @@ package com.goshop.app.utils;
 import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
+import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
@@ -275,6 +276,30 @@ public class ServiceData {
         myOrderDetailReponse.setSuborders(subordersBeans);
         return Observable.just(myOrderDetailReponse);
 
+    }
+
+    public static Observable<CheckoutResponse> getCheckout(){
+        CheckoutResponse response=new CheckoutResponse();
+        response.setCity("Taibei");
+        response.setUserName("test1");
+        response.setFirstAddress("new Land");
+        response.setSecondAddress("new Land2");
+        response.setPostcode("0000");
+        response.setCountry("China");
+        response.setTel("+1234567");
+        List<CheckoutResponse.CheckoutItem> checkoutItems=new ArrayList<>();
+        for (int i=0;i<5;i++){
+            CheckoutResponse.CheckoutItem checkoutItem=new CheckoutResponse.CheckoutItem();
+            checkoutItem.setProductName(ScreenHelper.getString(R.string.home_item_test_product_name));
+            checkoutItem.setAmount(String.valueOf(i));
+            checkoutItem.setColor("Blue");
+            checkoutItem.setCurrentPrice("RM 119.00");
+            checkoutItem.setOldPrice("RM 269.00");
+            checkoutItem.setImage(Const.BANNER_IMG4);
+            checkoutItems.add(checkoutItem);
+        }
+        response.setCheckoutItems(checkoutItems);
+        return Observable.just(response);
     }
 
 

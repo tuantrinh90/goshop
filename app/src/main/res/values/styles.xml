@@ -111,6 +111,10 @@
         <item name="android:layout_height">@dimen/line_height</item>
         <item name="android:background">@color/blackTrans12</item>
     </style>
+    
+    <style name="pageCardInterval" parent="homeWrapWidthLine">
+        <item name="android:layout_height">12dp</item>
+    </style>
 
     <style name="homeItemProductName">
         <item name="android:layout_width">match_parent</item>
@@ -121,7 +125,10 @@
         <item name="android:textSize">14sp</item>
         <item name="android:textColor">@color/blackTrans87</item>
         <item name="android:text">@string/home_item_test_product_name</item>
+    </style>
 
+    <style name="otherItemProductName" parent="homeItemProductName">
+        <item name="android:gravity">center</item>
     </style>
 
     <style name="homeItemProductOldPrice">
@@ -195,7 +202,7 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">18sp</item>
         <item name="android:textColor">@color/blackTrans87</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:gravity">center_vertical</item>
@@ -210,6 +217,17 @@
         <item name="android:textColor">@color/blackTrans38</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:gravity">center_vertical</item>
+    </style>
+
+    <style name="checkoutRadioButton">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:background">@null</item>
+        <item name="android:button">@null</item>
+        <item name="android:drawablePadding">8dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/blackTrans54</item>
+        <item name="android:drawableLeft">@drawable/selector_check</item>
     </style>
 
 

@@ -85,6 +85,17 @@
     <string name="my_orders_test_size">Size: M</string>
     <string name="my_orders_test_amount">* 3</string>
 
+    <!--chekcout-->
+    <string name="checkout_title">Checkout</string>
+    <string name="checkout_shipping">Shipping</string>
+    <string name="checkout_payment">Payment</string>
+    <string name="checkout_payment_bank">Online Banking</string>
+    <string name="checkout_payment_credit">Credit Card</string>
+    <string name="checkout_payment_cash_on_deliery">Cash on Deliery</string>
+    <string name="checkout_items">Items</string>
+    <string name="checkout_place_my_order">Place My Order</string>
+    <string name="checkout_item_color_and_size">Color: Blue,Size: L</string>
+
     <!--test data-->
     <string name="home_item_test_product_name">Manjung Korean Crispy Seaweed(Sea Salt)</string>
     <string name="home_item_test_product_price">RM 119.00</string>

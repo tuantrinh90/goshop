@@ -2,6 +2,7 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
+import com.goshop.app.common.listener.IRecyclerItemClick;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.ShoppingCartApplyVM;
@@ -14,7 +15,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -25,6 +28,12 @@ import butterknife.ButterKnife;
 public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
     private List<ShoppingCartModel> cartModels;
+
+    IRecyclerItemClick iRecyclerItemClick;
+
+    public void setiRecyclerItemClick(IRecyclerItemClick iRecyclerItemClick) {
+        this.iRecyclerItemClick = iRecyclerItemClick;
+    }
 
     public ShoppingCartAdapter(
         List<ShoppingCartModel> cartModels) {
@@ -68,6 +77,9 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
             ((ProductViewHolder) holder).bindingData((ShoppingCartProductVM) shoppingCartModel);
         } else if (holder instanceof CheckoutViewHolder) {
             //TODO(helen) need decide
+            if (iRecyclerItemClick!=null){
+                iRecyclerItemClick.onItemClick(holder.itemView,0);
+            }
         } else if (holder instanceof ApplyViewHolder) {
             ((ApplyViewHolder) holder).bindingData((ShoppingCartApplyVM) shoppingCartModel);
         }

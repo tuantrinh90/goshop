@@ -17,6 +17,7 @@ import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
@@ -42,6 +43,8 @@ public interface AccountRepository {
     Observable<UserInfo> registerRequest(Map<String, Object> params);
 
     Observable<HomeResponse> homeRequest(Map<String, Object> params);
+
+    Observable<CheckoutResponse> checkoutRequest(String sessionKey);
 
     Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params);
 
