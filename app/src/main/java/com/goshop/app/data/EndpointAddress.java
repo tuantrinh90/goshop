@@ -24,6 +24,9 @@ public class EndpointAddress {
     public static final String HOME_REQUEST = "";
 
     //todo wait for api
+    public static final String CHECKOUT_REQUEST = "";
+
+    //todo wait for api
     public static final String MYORDER_LIST_REQUEST = "";
 
     //todo wait for api

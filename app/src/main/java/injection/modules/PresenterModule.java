@@ -9,6 +9,8 @@ import com.goshop.app.presentation.account.EditProfileContract;
 import com.goshop.app.presentation.account.EditProfilePresenter;
 import com.goshop.app.presentation.account.LoginContract;
 import com.goshop.app.presentation.account.LoginPresenter;
+import com.goshop.app.presentation.checkout.CheckoutContract;
+import com.goshop.app.presentation.checkout.CheckoutPresenter;
 import com.goshop.app.presentation.home.DemoContract;
 import com.goshop.app.presentation.home.DemoPresenter;
 import com.goshop.app.presentation.account.MyAddressBookContract;
@@ -84,6 +86,12 @@ public class PresenterModule {
     @ActivityScope
     public HomeContract.Presenter provideHomePresenter(AccountDataRepository dataRepository) {
         return new HomePresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public CheckoutContract.Presenter provideCheckoutPresenter(AccountDataRepository dataRepository) {
+        return new CheckoutPresenter(dataRepository);
     }
 
     @Provides
