@@ -41,26 +41,20 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
 
     public void updateDatas(List<FilterMenuModel> menuModels) {
         this.menuModels.clear();
-        this.displayModels.clear();
         this.menuModels = menuModels;
         //TODO(helen) this part need decide
-        boolean isDisplayChilds = true;
-        for (FilterMenuModel filterMenuModel : menuModels) {
-            if ((filterMenuModel instanceof FilterMenuExpandVM)) {
-                displayModels.add(filterMenuModel);
-                isDisplayChilds = isAddChildModels(filterMenuModel);
-            } else {
-                if (isDisplayChilds) {
-                    displayModels.add(filterMenuModel);
-                }
-            }
-        }
+        expandAll();
         notifyDataSetChanged();
     }
 
-    private boolean isAddChildModels(FilterMenuModel filterMenuModel) {
-        return ((FilterMenuExpandVM) filterMenuModel)
-            .isHasIcon() && ((FilterMenuExpandVM) filterMenuModel).isExpand();
+    private void expandAll() {
+        this.displayModels.clear();
+        for(FilterMenuModel filterMenuModel: menuModels) {
+            if(filterMenuModel instanceof FilterMenuExpandVM) {
+                ((FilterMenuExpandVM) filterMenuModel).setExpand(true);
+            }
+            displayModels.add(filterMenuModel);
+        }
     }
 
     @Override
@@ -115,6 +109,7 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
     }
 
     private void expand(int position) {
+
         int expandPosition = menuModels.indexOf(displayModels.get(position));
         int insert = position;
         int count = 0;

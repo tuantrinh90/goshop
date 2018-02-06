@@ -1,6 +1,7 @@
 package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
@@ -246,5 +247,20 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<AddressReponse> selectAddressRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<CategoryMenuResponse> getCategoryLeftMenu(@Url String fullUrl);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<CategoryMenuResponse> categoryRightMenuRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<SearchResultResponse> categoryDetailRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

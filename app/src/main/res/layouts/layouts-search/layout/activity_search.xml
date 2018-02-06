@@ -7,7 +7,7 @@
     android:orientation="vertical">
 
     <include
-        layout="@layout/toolbar_search_image"/>
+        layout="@layout/toolbar_search_with_bottom_shadow"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -15,21 +15,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color_divider_grey"
+            android:background="@android:color/white"
+            android:paddingLeft="@dimen/size_16"
+            android:paddingRight="@dimen/size_16"
             android:orientation="vertical">
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_search_filter"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:nestedScrollingEnabled="false"
-                android:layout_marginTop="@dimen/size_8"
+                android:layout_marginTop="@dimen/size_12"
                 tools:targetApi="lollipop"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_search_result"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:paddingRight="@dimen/size_10"
-                android:paddingLeft="@dimen/size_10"
                 android:nestedScrollingEnabled="false"
                 android:background="@android:color/white"
                 tools:targetApi="lollipop"/>

@@ -14,7 +14,7 @@
         android:paddingTop="@dimen/size_20"
         android:paddingBottom="@dimen/size_14"
         android:gravity="center"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_text_grey"
         android:textSize="@dimen/size_font_14"
         android:text="@string/search_no_data"/>
 
@@ -27,7 +27,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_text_light_grey"
             android:textSize="@dimen/size_font_14"
             android:text="@string/or"/>
 
@@ -65,7 +65,7 @@
         android:paddingTop="@dimen/size_14"
         android:paddingBottom="@dimen/size_20"
         android:gravity="center"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_text_grey"
         android:textSize="@dimen/size_font_14"
         android:text="@string/search_explore"/>
 

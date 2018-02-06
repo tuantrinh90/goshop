@@ -35,6 +35,10 @@ import com.goshop.app.presentation.account.WebContentContract;
 import com.goshop.app.presentation.account.WebContentPresenter;
 import com.goshop.app.presentation.checkout.CheckoutContract;
 import com.goshop.app.presentation.checkout.CheckoutPresenter;
+import com.goshop.app.presentation.category.CategoryContract;
+import com.goshop.app.presentation.category.CategoryPresenter;
+import com.goshop.app.presentation.category.CategoryTreeDetailContract;
+import com.goshop.app.presentation.category.CategoryTreeDetailPresenter;
 import com.goshop.app.presentation.checkout.CheckoutSelectContract;
 import com.goshop.app.presentation.checkout.CheckoutSelectPresenter;
 import com.goshop.app.presentation.checkout.PaymentStatusContract;
@@ -283,6 +287,20 @@ public class PresenterModule {
     public CheckoutSelectContract.Presenter provideCheckoutSelectPresenter(
         AccountDataRepository dataRepository) {
         return new CheckoutSelectPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public CategoryContract.Presenter provideCategoryPresenter(
+        AccountDataRepository dataRepository) {
+        return new CategoryPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public CategoryTreeDetailContract.Presenter provideCategoryTreeDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new CategoryTreeDetailPresenter(dataRepository);
     }
 
 }

@@ -184,6 +184,7 @@
     <string name="search">Search</string>
     <string name="search_result">Search Result</string>
     <string name="search_products">Search products</string>
+    <string name="popular_products">Popular Products</string>
     <string name="search_no_data">Your search returns no results.</string>
     <string name="search_explore">Why not to explore our best sellers</string>
     <string name="or">or</string>
@@ -304,5 +305,7 @@
     <string name="payment_status">Payment Status</string>
     <string name="set_it_as_shipping_address">Set it as shipping address </string>
     <string name="select_address">Select Address</string>
+    <string name="search_hint">Search products or brands</string>
+    <string name="category">Category</string>
 
 </resources>

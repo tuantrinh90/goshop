@@ -23,14 +23,11 @@ public class CustomSearchEditText extends RelativeLayout {
 
     public static final int FIELD_DELAY = 500;
 
-    @BindView(R.id.iv_search_del)
-    ImageView ivDelete;
-
-    @BindView(R.id.rl_layout_search)
-    RelativeLayout layout;
-
     @BindView(R.id.et_search_search)
     CustomEditText editText;
+
+    @BindView(R.id.iv_search_del)
+    ImageView ivDelete;
 
     public CustomSearchEditText(Context context) {
         super(context);
@@ -39,7 +36,7 @@ public class CustomSearchEditText extends RelativeLayout {
 
     private void initView(Context context) {
         View searchView = LayoutInflater.from(context)
-            .inflate(R.layout.layout_search_image, this, true);
+            .inflate(R.layout.layout_custom_search_edit, this, true);
         ButterKnife.bind(this, searchView);
         editText.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         RxTextView.textChanges(editText).subscribe(charSequence -> {

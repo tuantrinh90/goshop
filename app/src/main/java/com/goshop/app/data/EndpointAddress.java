@@ -86,6 +86,12 @@ public class EndpointAddress {
 
     public static final String SELECT_ADDRESS = "";
 
+    public static final String CATEGORY_LEFT = "";
+
+    public static final String CATEGORY_RIGHT = "";
+
+    public static final String CATEGORY_DETAIL = "";
+
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;
     }

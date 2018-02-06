@@ -1,4 +1,4 @@
-package com.goshop.app.presentation.search;
+package com.goshop.app.presentation.category;
 
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
@@ -12,8 +12,6 @@ import com.goshop.app.presentation.model.FilterMenuPriceVM;
 import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SearchResultVM;
 
-import android.os.Handler;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -21,34 +19,35 @@ import java.util.Map;
 import io.reactivex.observers.DisposableObserver;
 
 /**
- * Created by helen on 2018/1/19.
+ * Created by helen on 2018/2/6.
  */
 
-public class SearchResultPresenter extends RxPresenter<SearchResultContract.View> implements
-    SearchResultContract.Presenter {
+public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailContract.View>
+    implements CategoryTreeDetailContract.Presenter {
 
     private AccountRepository accountRepository;
 
-    public SearchResultPresenter(AccountRepository accountRepository) {
+    public CategoryTreeDetailPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
     @Override
-    public void searchResultRequest(Map<String, Object> params) {
-        //TODO(helen) the null is just for mock data, waiting for api
-        addSubscrebe(accountRepository.searchResultResponse(null).subscribeWith(
+    public void categoryDetailRequest(Map<String, Object> params) {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.categoryDetailRequest(params).subscribeWith(
             new DisposableObserver<SearchResultResponse>() {
                 @Override
                 public void onNext(SearchResultResponse searchResultResponse) {
-                    //TODO(helen) wait for api
+                    mView.hideLoadingBar();
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
-                    //TODO(helen) wait for api
-                    List<SearchFilterModel> suggestModels = new ArrayList<>();
-                    suggestModels.addAll(getSuggestDatas());
-                    mView.showResult(suggestModels);
+                    mView.hideLoadingBar();
+
+                    List<SearchFilterModel> resultModels = new ArrayList<>();
+                    resultModels.addAll(getMockDatas());
+                    mView.categoryDetailResult(resultModels);
                 }
 
                 @Override
@@ -60,10 +59,9 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
 
     @Override
     public void filterMenuRequest(Map<String, Object> params) {
-        //todo wait for api
-        new Handler().post(()-> mView.showFilterMenu(getFilterMenu()));
-
+        mView.showFilterMenu(getFilterMenu());
     }
+
     //todo(helen) this is mock data, please do not delete
     private List<FilterMenuModel> getFilterMenu() {
         List<FilterMenuModel> filterMenuModels = new ArrayList<>();
@@ -75,6 +73,7 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
         filterMenuModels.add(new FilterMenuPriceVM());
         return filterMenuModels;
     }
+
     //todo(helen) this is mock data, please do not delete
     private List<String> getCategorys() {
         List<String> categorys = new ArrayList<>();
@@ -90,7 +89,7 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
     }
 
     //todo(helen) this is mock data, please do not delete
-    private List<SearchResultVM> getSuggestDatas() {
+    private List<SearchResultVM> getMockDatas() {
         List<SearchResultVM> filterModels = new ArrayList<>();
         SearchResultVM searchResultVM1 = new SearchResultVM(R.mipmap.bought, 0,
             R.mipmap.tv, false, false, "RM 299.00", "RM 399.00", "30% OFF",

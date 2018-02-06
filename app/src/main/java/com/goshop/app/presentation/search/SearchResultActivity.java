@@ -3,7 +3,6 @@ package com.goshop.app.presentation.search;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.CustomGridDivider;
 import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -70,16 +69,13 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     @BindView(R.id.rl_drawer_filter)
     RelativeLayout rlDrawerFilter;
 
-    @BindView(R.id.tv_btn_search_filter)
-    CustomTextView tvBtnSearchFilter;
-
-    @BindView(R.id.tv_btn_search_filter_clear)
+    @BindView(R.id.tv_btn_filter_clear)
     CustomTextView tvBtnSearchFilterClear;
 
-    @BindView(R.id.tv_btn_search_filter_done)
+    @BindView(R.id.tv_btn_filter_done)
     CustomTextView tvBtnSearchFilterDone;
 
-    @BindView(R.id.tv_btn_search_sort)
+    @BindView(R.id.tv_btn_sort)
     CustomTextView tvBtnSearchSort;
 
     private int currentSelectNumber = 0;
@@ -115,6 +111,15 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         initPresenter();
         initRecyclerView();
         initFilterMenuRecyclerView();
+        initSearchBar();
+    }
+
+    private void initSearchBar() {
+        csetSearch.getEditText().setOnFocusChangeListener((View v, boolean hasFocus) ->{
+            if(hasFocus) {
+                this.finish();
+            }
+        });
     }
 
     private void initSearchView() {
@@ -134,7 +139,8 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     private void initRecyclerView() {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerviewSearchResultDisplay.setLayoutManager(gridLayoutManager);
-        recyclerviewSearchResultDisplay.addItemDecoration(new CustomGridDivider(this));
+        //TODO(helen)this divider wait for the design,then decide
+//        recyclerviewSearchResultDisplay.addItemDecoration(new CustomGridDivider(this));
         resultAdapter = new SearchResultAdapter(new ArrayList<>(), this);
         recyclerviewSearchResultDisplay.setAdapter(resultAdapter);
     }
@@ -146,24 +152,24 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         recyclerviewFilter.setAdapter(menuAdapter);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_search_sort, R.id.tv_btn_search_filter, R.id
-        .tv_btn_search_filter_clear, R.id.tv_btn_search_filter_done})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_sort, R.id.iv_btn_filter, R.id
+        .tv_btn_filter_clear, R.id.tv_btn_filter_done})
     public void onResultClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
-            case R.id.tv_btn_search_sort:
+            case R.id.tv_btn_sort:
                 ivSortArrow.setSelected(!ivSortArrow.isSelected());
                 showSortPop(tvBtnSearchSort, currentSelectNumber);
                 break;
-            case R.id.tv_btn_search_filter:
+            case R.id.iv_btn_filter:
                 drawerLayout.openDrawer(GravityCompat.END);
                 break;
-            case R.id.tv_btn_search_filter_clear:
+            case R.id.tv_btn_filter_clear:
                 drawerLayout.closeDrawer(GravityCompat.END);
                 break;
-            case R.id.tv_btn_search_filter_done:
+            case R.id.tv_btn_filter_done:
                 drawerLayout.closeDrawer(GravityCompat.END);
                 break;
         }

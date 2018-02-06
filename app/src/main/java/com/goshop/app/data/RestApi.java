@@ -1,6 +1,7 @@
 package com.goshop.app.data;
 
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
@@ -99,5 +100,11 @@ public interface RestApi {
     Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params);
 
     Observable<AddressReponse> selectAddressRequest(Map<String, Object> params);
+
+    Observable<CategoryMenuResponse> getCategoryLeftMenu();
+
+    Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params);
+
+    Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params);
 
 }

@@ -2,6 +2,7 @@ package com.goshop.app.data.source.local;
 
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
@@ -208,6 +209,21 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Override
     public Observable<AddressReponse> selectAddressRequest(Map<String, Object> params) {
 
+        return null;
+    }
+
+    @Override
+    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
+        return null;
+    }
+
+    @Override
+    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         return null;
     }
 }

@@ -54,8 +54,6 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
                     }
                     if (filterModels.size() > 0) {
                         displayFilterModels.addAll(filterModels);
-                        displayFilterModels
-                            .add(new SearchFilterModel(SearchFilterModel.SEARCH_POPULAR_DIVIDING));
                     }
                     filterModels.clear();
                     for (SearchKeywordsVM keywordsVM : keywordsVMS) {
@@ -66,6 +64,9 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
                     }
                     if (filterModels.size() > 0) {
                         displayFilterModels.addAll(filterModels);
+                    }
+
+                    if(displayFilterModels.size() > 0) {
                         displayFilterModels
                             .add(new SearchFilterModel(SearchFilterModel.SEARCH_POPULAR_DIVIDING));
                     }

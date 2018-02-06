@@ -2,6 +2,7 @@ package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
@@ -217,6 +218,21 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<AddressReponse> selectAddressRequest(Map<String, Object> params) {
         return restApi.selectAddressRequest(params);
+    }
+
+    @Override
+    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
+        return restApi.getCategoryLeftMenu();
+    }
+
+    @Override
+    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+        return restApi.categoryRightMenuRequest(params);
+    }
+
+    @Override
+    public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
+        return restApi.categoryDetailRequest(params);
     }
 
 }

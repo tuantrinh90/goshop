@@ -66,17 +66,16 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.search.SearchActivity"
+            android:theme="@style/WhiteBackground"/>
+
+
+        <activity android:name=".presentation.search.SearchResultActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
-        </activity>
-
-        <activity android:name=".presentation.search.SearchResultActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/WhiteBackground">
-
         </activity>
 
         <activity android:name=".presentation.account.WebContentActivity"
@@ -150,6 +149,14 @@
         </activity>
 
         <activity android:name=".presentation.checkout.CheckoutSelectAddressActivity"
+            android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.category.CategoryTreeDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.category.CategoryActivity"
             android:theme="@style/WhiteBackground">
 
         </activity>

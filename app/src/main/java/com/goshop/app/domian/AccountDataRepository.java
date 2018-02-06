@@ -1,6 +1,7 @@
 package com.goshop.app.domian;
 
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
@@ -238,5 +239,20 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<AddressReponse> selectAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.selectAddressRequest(params);
+    }
+
+    @Override
+    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
+        return accountCloudDataSource.getCategoryLeftMenu();
+    }
+
+    @Override
+    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+        return accountCloudDataSource.categoryRightMenuRequest(params);
+    }
+
+    @Override
+    public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.categoryDetailRequest(params);
     }
 }

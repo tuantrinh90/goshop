@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="@dimen/size_112"
+    android:layout_height="@dimen/size_80"
+    android:id="@+id/rl_item_category_left"
+    android:background="@drawable/selector_bg_white_grey"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/iv_category_left_menu"
+        android:layout_width="@dimen/size_30"
+        android:layout_height="@dimen/size_30"
+        android:layout_centerHorizontal="true"/>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_category_left_menu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_2"
+        android:paddingRight="@dimen/size_20"
+        android:paddingLeft="@dimen/size_20"
+        android:textSize="@dimen/size_font_14"
+        android:gravity="center"
+        android:textColor="@drawable/selector_text_black_pink_color"
+        android:layout_below="@id/iv_category_left_menu"/>
+
+
+</RelativeLayout>
