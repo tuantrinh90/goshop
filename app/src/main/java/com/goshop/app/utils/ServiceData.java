@@ -279,6 +279,9 @@ public class ServiceData {
 
     }
 
+    /**
+     * TODO this is temp mock code
+     */
     public static Observable<CheckoutResponse> getCheckout(){
         CheckoutResponse response=new CheckoutResponse();
         response.setCity("Taibei");
@@ -303,6 +306,9 @@ public class ServiceData {
         return Observable.just(response);
     }
 
+    /**
+     * TODO this is temp mock code
+     */git add
     public static Observable<NotificationsResponse> getNotification(){
         NotificationsResponse response=new NotificationsResponse();
         List<NotificationsResponse.NotificationBean> notificationBeanList=new ArrayList<>();
