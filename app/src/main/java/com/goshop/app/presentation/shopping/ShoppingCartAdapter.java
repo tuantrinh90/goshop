@@ -2,7 +2,6 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
-import com.goshop.app.common.listener.IRecyclerItemClick;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.ShoppingCartApplyVM;
@@ -29,15 +28,12 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
     private List<ShoppingCartModel> cartModels;
 
-    IRecyclerItemClick iRecyclerItemClick;
-
-    public void setiRecyclerItemClick(IRecyclerItemClick iRecyclerItemClick) {
-        this.iRecyclerItemClick = iRecyclerItemClick;
-    }
+    private OnCheckoutClickListener onCheckoutClickListener;
 
     public ShoppingCartAdapter(
-        List<ShoppingCartModel> cartModels) {
+        List<ShoppingCartModel> cartModels, OnCheckoutClickListener onCheckoutClickListener) {
         this.cartModels = cartModels;
+        this.onCheckoutClickListener = onCheckoutClickListener;
     }
 
     public void setDatas(List<ShoppingCartModel> cartModels) {
@@ -64,7 +60,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
             case ShoppingCartModel.CART_APPLY:
                 View applyView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_cart_apply, parent, false);
-                viewHolder = new CheckoutViewHolder(applyView);
+                viewHolder = new ApplyViewHolder(applyView);
                 break;
         }
         return viewHolder;
@@ -76,10 +72,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
         if (holder instanceof ProductViewHolder) {
             ((ProductViewHolder) holder).bindingData((ShoppingCartProductVM) shoppingCartModel);
         } else if (holder instanceof CheckoutViewHolder) {
-            //TODO(helen) need decide
-            if (iRecyclerItemClick!=null){
-                iRecyclerItemClick.onItemClick(holder.itemView,0);
-            }
+            ((CheckoutViewHolder) holder).bindingData();
         } else if (holder instanceof ApplyViewHolder) {
             ((ApplyViewHolder) holder).bindingData((ShoppingCartApplyVM) shoppingCartModel);
         }
@@ -93,6 +86,11 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return cartModels.size();
+    }
+
+    interface OnCheckoutClickListener {
+
+        void onCheckoutClick();
     }
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
@@ -150,8 +148,16 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
     class CheckoutViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.tv_btn_cart_checkout)
+        CustomTextView tvBtnCartCheckout;
+
         public CheckoutViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        void bindingData() {
+            tvBtnCartCheckout.setOnClickListener(v -> onCheckoutClickListener.onCheckoutClick());
         }
     }
 }

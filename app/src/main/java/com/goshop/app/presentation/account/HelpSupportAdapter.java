@@ -107,8 +107,11 @@ public class HelpSupportAdapter extends RecyclerView.Adapter {
 
         void bindingDatas(HelpSupportContentVM contentVM) {
             tvHelpSupportContent.setText(contentVM.getLabel());
-            itemView
-                .setOnClickListener(v -> contentVM.getHelpContentClickListener().onContentClick());
+            if(contentVM.getHelpContentClickListener() != null) {
+                itemView
+                    .setOnClickListener(v -> contentVM.getHelpContentClickListener().onContentClick());
+            }
+
         }
     }
 }

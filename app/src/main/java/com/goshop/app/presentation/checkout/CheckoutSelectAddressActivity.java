@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.SelectAddressVM;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -86,6 +87,7 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
             case R.id.imageview_left_menu:
                 break;
             case R.id.tv_btn_layout_white:
+                startActivity(new Intent(this, CheckoutAddNewAddressActivity.class));
                 break;
         }
     }
@@ -97,6 +99,6 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
 
     @Override
     public void onEditClick() {
-
+        startActivity(new Intent(this, CheckoutEditAddressActivity.class));
     }
 }

@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.TermsConditionsVM;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -24,7 +25,7 @@ import injection.modules.PresenterModule;
  */
 
 public class TermsConditionsActivity extends BaseActivity<TermsConditionsContract.Presenter>
-    implements TermsConditionsContract.View {
+    implements TermsConditionsContract.View, TermsConditionsAdapter.OnTermsItemClickListener {
 
     @BindView(R.id.recyclerview_terms_conditions)
     RecyclerView recyclerviewTermsConditions;
@@ -59,7 +60,7 @@ public class TermsConditionsActivity extends BaseActivity<TermsConditionsContrac
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerviewTermsConditions.setLayoutManager(layoutManager);
-        adapter = new TermsConditionsAdapter(new ArrayList<>());
+        adapter = new TermsConditionsAdapter(new ArrayList<>(), this);
         recyclerviewTermsConditions.setAdapter(adapter);
     }
 
@@ -83,5 +84,10 @@ public class TermsConditionsActivity extends BaseActivity<TermsConditionsContrac
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void onTermsClick() {
+        startActivity(new Intent(this, WebContentActivity.class));
     }
 }
