@@ -308,7 +308,7 @@ public class ServiceData {
 
     /**
      * TODO this is temp mock code
-     */git add
+     */
     public static Observable<NotificationsResponse> getNotification(){
         NotificationsResponse response=new NotificationsResponse();
         List<NotificationsResponse.NotificationBean> notificationBeanList=new ArrayList<>();
