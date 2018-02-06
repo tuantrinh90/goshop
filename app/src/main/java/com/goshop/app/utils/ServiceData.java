@@ -7,6 +7,7 @@ import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
@@ -302,5 +303,20 @@ public class ServiceData {
         return Observable.just(response);
     }
 
+    public static Observable<NotificationsResponse> getNotification(){
+        NotificationsResponse response=new NotificationsResponse();
+        List<NotificationsResponse.NotificationBean> notificationBeanList=new ArrayList<>();
+        for (int i=0;i<10;i++){
+            NotificationsResponse.NotificationBean notificationBean=new NotificationsResponse
+                .NotificationBean();
+            notificationBean.setNotifyName("lorem ipsum dolor sit amet,consectetur adipiscing edit. Nulla quam velit.");
+            notificationBean.setHour("12:00");
+            notificationBean.setNew(i%2==0);
+            notificationBean.setDate("1/2/18");
+            notificationBeanList.add(notificationBean);
+        }
+        response.setNotificationBean(notificationBeanList);
+        return Observable.just(response);
+    }
 
 }

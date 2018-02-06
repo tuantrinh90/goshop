@@ -8,6 +8,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.presentation.account.LoginActivity;
+import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.utils.AnimUtils;
 import com.goshop.app.presentation.search.SearchActivity;
@@ -234,6 +235,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 break;
             case R.id.rl_drawer_notification:
                 switchMenu(Const.MENU_NOTIFICATION);
+                startActivity(new Intent(this, NotificationActivity.class));
                 break;
             case R.id.tv_help_support:
                 switchMenu(Const.MENU_HELP_SUPPORT);

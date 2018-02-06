@@ -33,6 +33,9 @@ public class EndpointAddress {
     public static final String MYORDER_DETAIL_REQUEST = "";
 
     //todo wait for api
+    public static final String NOTIFICATION_REQUEST = "";
+
+    //todo wait for api
     public static final String MY_ADDRESS = "";
 
     //todo wait for api

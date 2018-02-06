@@ -21,6 +21,7 @@ import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
@@ -47,6 +48,8 @@ public interface RestApi {
     io.reactivex.Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params);
 
     io.reactivex.Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params);
+
+    io.reactivex.Observable<NotificationsResponse> notificationRequest(Map<String, Object> params);
 
     io.reactivex.Observable<ComplementEmailReponse> complementEmailRequest(
         Map<String, Object> params);

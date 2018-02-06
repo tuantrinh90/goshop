@@ -21,6 +21,7 @@ import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
@@ -49,6 +50,8 @@ public interface AccountRepository {
     Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params);
 
     Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params);
+
+    Observable<NotificationsResponse> notificationRequest(Map<String, Object> params);
 
     Observable<ComplementEmailReponse> complementEmailRequest(Map<String, Object> params);
 

@@ -23,6 +23,7 @@ import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
@@ -96,6 +97,12 @@ public interface RetrofitRestApi {
     @POST
     Observable<CheckoutResponse> checkoutRequest(@Url String fullUrl,
         String sessionKey);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<NotificationsResponse> notificationRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
 
     //TODO  this is an example
     @FormUrlEncoded
