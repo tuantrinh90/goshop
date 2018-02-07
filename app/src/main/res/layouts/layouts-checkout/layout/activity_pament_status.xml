@@ -39,6 +39,7 @@
             android:layout_width="@dimen/size_90"
             android:layout_height="@dimen/size_90"
             android:layout_marginTop="@dimen/size_76"
+            android:contentDescription="@string/app_name"
             android:background="@mipmap/wrong_red"/>
 
         <com.goshop.app.common.view.CustomBoldTextView
@@ -123,6 +124,7 @@
             android:layout_width="@dimen/size_90"
             android:layout_height="@dimen/size_90"
             android:layout_marginTop="@dimen/size_76"
+            android:contentDescription="@string/app_name"
             android:background="@mipmap/right_green"/>
 
         <com.goshop.app.common.view.CustomBoldTextView

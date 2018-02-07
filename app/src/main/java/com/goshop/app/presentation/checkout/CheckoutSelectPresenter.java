@@ -46,7 +46,7 @@ public class CheckoutSelectPresenter extends RxPresenter<CheckoutSelectContract.
                 }
             }));
     }
-
+    //TODO(helen)wait for api
     private List<SelectAddressVM> getMockData() {
         List<SelectAddressVM> addressVMS = new ArrayList<>();
         addressVMS.add(new SelectAddressVM("Test Name", "Address", "City", "State", "1000", "China",

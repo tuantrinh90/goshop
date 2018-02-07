@@ -130,10 +130,7 @@ public class CategoryRightAdapter extends RecyclerView.Adapter {
         void bindingData(CategoryRightParentVM parentVM, int position) {
             tvCategoryRightParent.setText(parentVM.getTitle());
             ivItemCategoryExpand.setSelected(parentVM.isExpand());
-            itemView.setOnClickListener(v -> {
-
-                singleExpand(getModelPosition(position));
-            });
+            itemView.setOnClickListener(v -> singleExpand(getModelPosition(position)));
         }
     }
 

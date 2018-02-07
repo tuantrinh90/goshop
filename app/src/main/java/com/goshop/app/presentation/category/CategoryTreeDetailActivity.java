@@ -154,7 +154,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
 
     @Override
     public void onClick() {
-
+    //todo(helen)wait for api
     }
 
     @Override

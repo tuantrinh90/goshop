@@ -125,26 +125,15 @@ public class CategoryTreeDetailAdapter extends RecyclerView.Adapter {
                 ivSearchResultGift.setVisibility(View.VISIBLE);
                 ivSearchResultGift.setBackgroundResource(searchResultVM.getIconGift());
             }
-            if (searchResultVM.isBest()) {
-                tvSearchResultBest.setVisibility(View.VISIBLE);
-            } else {
-                tvSearchResultBest.setVisibility(View.GONE);
-            }
 
-            if (searchResultVM.isNew()) {
-                tvSearchResultNew.setVisibility(View.VISIBLE);
-            } else {
-                tvSearchResultNew.setVisibility(View.GONE);
-            }
-
+            tvSearchResultBest.setVisibility(searchResultVM.isBest()?View.VISIBLE:View.GONE);
+            tvSearchResultNew.setVisibility(searchResultVM.isBest()?View.VISIBLE:View.GONE);
             tvSearchResultPercent.setText(searchResultVM.getPrecent());
             tvSearchResultTitle.setText(searchResultVM.getTitle());
             tvSearchResultPriceOld.setText(searchResultVM.getOldPrice());
             tvSearchResultPriceOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             tvSearchResultPriceNow.setText(searchResultVM.getNowPrice());
-            itemView.setOnClickListener(v -> {
-                onItemClickListener.onClick();
-            });
+            itemView.setOnClickListener(v -> onItemClickListener.onClick());
         }
     }
 
