@@ -33,7 +33,6 @@
             android:layout_height="wrap_content"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_notification_date"
-            android:text="12:00 1/2/18"
             android:layout_marginLeft="@dimen/home_padding"
             android:textColor="@color/blackTrans38"
             android:fontFamily="sans-serif-light"
