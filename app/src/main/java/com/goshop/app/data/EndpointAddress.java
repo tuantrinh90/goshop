@@ -15,22 +15,34 @@ public class EndpointAddress {
     public static final String CHANGE_PASSWORD = "";
 
     //todo wait for api
+    public static final String CHECKOUT_REQUEST = "";
+
+    //todo wait for api
     public static final String COMPLEMENT_EMAIL = "";
+
+    public static final String CONTACT_MESSAGE = "";
 
     //todo wait for api
     public static final String EDIT_PROFILE = "";
+
+    public static final String FAQ = "";
+
+    public static final String GET_CONTACT_INFO = "";
+
+    public static final String GET_CONTACT_US = "";
+
+    public static final String GET_ECMC = "";
+
+    public static final String HELP_SUPPORT = "";
 
     //todo wait for api
     public static final String HOME_REQUEST = "";
 
     //todo wait for api
-    public static final String CHECKOUT_REQUEST = "";
+    public static final String MYORDER_DETAIL_REQUEST = "";
 
     //todo wait for api
     public static final String MYORDER_LIST_REQUEST = "";
-
-    //todo wait for api
-    public static final String MYORDER_DETAIL_REQUEST = "";
 
     //todo wait for api
     public static final String MY_ADDRESS = "";
@@ -59,24 +71,16 @@ public class EndpointAddress {
     //todo wait for api
     public static final String SEND_CONFIRMATION_LINK = "";
 
+    public static final String SETTING_DETAILS = "";
+
     public static final String SHOPPINT_CART = "";
-
-    //todo test api
-    public static final String USER_INFO = "data/cityinfo/101190408.html";
-
-    public static final String GET_ECMC = "";
-
-    public static final String GET_CONTACT_US = "";
-
-    public static final String HELP_SUPPORT = "";
-
-    public static final String FAQ = "";
 
     public static final String TERMS_CONDITIONS = "";
 
-    public static final String GET_CONTACT_INFO = "";
+    public static final String MY_POINTS = "";
 
-    public static final String CONTACT_MESSAGE = "";
+    //todo test api
+    public static final String USER_INFO = "data/cityinfo/101190408.html";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

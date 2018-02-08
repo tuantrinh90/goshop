@@ -8,6 +8,7 @@ import com.goshop.app.presentation.account.FAQActivity;
 import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
+import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.account.TermsConditionsActivity;
 import com.goshop.app.presentation.account.WebContentActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
@@ -23,6 +24,7 @@ import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
 import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.search.SearchResultActivity;
+import com.goshop.app.presentation.settings.SettingsActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
@@ -90,4 +92,8 @@ public interface PresenterComponent {
     void inject(TermsConditionsActivity termsConditionsActivity);
 
     void inject(ContactUsActivity contactUsActivity);
+
+    void inject(SettingsActivity settingsActivity);
+
+    void inject(MyPointsActivity myPointsActivity);
 }

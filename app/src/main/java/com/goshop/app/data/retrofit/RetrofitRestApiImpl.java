@@ -6,8 +6,10 @@ import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
+import com.goshop.app.data.model.GetSettingsReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
+import com.goshop.app.data.model.MyPointsReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
@@ -210,5 +212,17 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CONTACT_MESSAGE);
         return retrofitRestApi.contactMessageRequest(url, params);
+    }
+
+    @Override
+    public Observable<GetSettingsReponse> getSettingsDetail() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.SETTING_DETAILS);
+        return retrofitRestApi.getSettingsDetail(url);
+    }
+
+    @Override
+    public Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.MY_POINTS);
+        return retrofitRestApi.myPointsRequest(url, params);
     }
 }
