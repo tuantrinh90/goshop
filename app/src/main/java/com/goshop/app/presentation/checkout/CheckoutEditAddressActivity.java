@@ -76,6 +76,7 @@ public class CheckoutEditAddressActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.textview_right_menu:
+                //TODO(helen) this is need decide
                 break;
         }
     }

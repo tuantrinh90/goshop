@@ -53,8 +53,8 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
             if(filterMenuModel instanceof FilterMenuExpandVM) {
                 ((FilterMenuExpandVM) filterMenuModel).setExpand(true);
             }
-            displayModels.add(filterMenuModel);
         }
+        displayModels.addAll(menuModels);
     }
 
     @Override

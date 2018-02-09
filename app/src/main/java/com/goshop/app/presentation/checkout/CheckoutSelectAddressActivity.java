@@ -85,6 +85,7 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
     public void onSelectClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
+                finish();
                 break;
             case R.id.tv_btn_layout_white:
                 startActivity(new Intent(this, CheckoutAddNewAddressActivity.class));

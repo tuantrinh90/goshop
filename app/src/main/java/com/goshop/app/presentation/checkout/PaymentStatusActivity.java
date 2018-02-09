@@ -83,8 +83,10 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
                 finish();
                 break;
             case R.id.tv_btn_payment_status:
+                //TODO(helen) this is need decide
                 break;
             case R.id.tv_btn_status_success_check:
+                //TODO(helen) this is need decide
                 break;
         }
     }

@@ -44,7 +44,7 @@ public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailC
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-
+                    //TODO(helen)wait for api
                     List<SearchFilterModel> resultModels = new ArrayList<>();
                     resultModels.addAll(getMockDatas());
                     mView.categoryDetailResult(resultModels);
