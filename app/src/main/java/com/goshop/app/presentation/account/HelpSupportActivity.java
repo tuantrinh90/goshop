@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.HelpSupportModel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -55,14 +56,6 @@ public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presen
         initPresenter();
     }
 
-    private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
-    }
-
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -71,9 +64,32 @@ public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presen
         recyclerviewHelp.setAdapter(adapter);
     }
 
+    private void initPresenter() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
+    }
+
     @Override
     public void showResult(List<HelpSupportModel> helpSupportModels) {
         adapter.updateDatas(helpSupportModels);
+    }
+
+    @Override
+    public void startFAQ() {
+        startActivity(new Intent(this, FAQActivity.class));
+    }
+
+    @Override
+    public void startContactUs() {
+        startActivity(new Intent(this, ContactUsActivity.class));
+    }
+
+    @Override
+    public void startTermsAndConditions() {
+        startActivity(new Intent(this, TermsConditionsActivity.class));
     }
 
     @OnClick({R.id.imageview_left_menu})

@@ -20,10 +20,14 @@ import butterknife.ButterKnife;
 
 public class TermsConditionsAdapter extends RecyclerView.Adapter {
 
+    private OnTermsItemClickListener onTermsItemClickListener;
+
     private List<TermsConditionsVM> termsConditionsVMS;
 
-    public TermsConditionsAdapter(List<TermsConditionsVM> termsConditionsVMS) {
+    public TermsConditionsAdapter(List<TermsConditionsVM> termsConditionsVMS,
+        OnTermsItemClickListener onTermsItemClickListener) {
         this.termsConditionsVMS = termsConditionsVMS;
+        this.onTermsItemClickListener = onTermsItemClickListener;
     }
 
     public void updateDatas(List<TermsConditionsVM> termsConditionsVMS) {
@@ -49,6 +53,11 @@ public class TermsConditionsAdapter extends RecyclerView.Adapter {
         return termsConditionsVMS.size();
     }
 
+    interface OnTermsItemClickListener {
+
+        void onTermsClick();
+    }
+
     class ContentViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_help_support_content)
@@ -61,6 +70,7 @@ public class TermsConditionsAdapter extends RecyclerView.Adapter {
 
         void bindingDatas(TermsConditionsVM termsConditionsVM) {
             tvHelpSupportContent.setText(termsConditionsVM.getLabel());
+            itemView.setOnClickListener(v -> onTermsItemClickListener.onTermsClick());
         }
     }
 }

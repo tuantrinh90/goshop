@@ -5,8 +5,12 @@
     <color name="colorAccent">#EC458B</color>
 
     <!--Correction color-->
-    <color name="color_hint_grey">#cccccc</color>
-    <color name="color_text_black">#494949</color>
+    <color name="color_hint_grey">#62000000</color>
+    <color name="color_text_grey">#8a000000</color>
+    <color name="color_text_old_grey">#a9a9a9</color>
+    <color name="color_text_light_grey">#8a000000</color>
+    <color name="color_text_black">#de000000</color>
+    <color name="color_text_bold_black">#dd000000</color>
     <color name="color_main_pink">#ec458b</color>
     <color name="color_litte_pink">#FFF0F5</color>
 
@@ -14,7 +18,8 @@
     <color name="color_main_green">#22aa11</color>
     <color name="color_main_grey">#bcbcbc</color>
     <color name="color_light_black">#333333</color>
-    <color name="color_divider_grey">#f1f1f1</color>
+    <color name="color_divider_grey">#1e000000</color>
+    <color name="color_line_grey">#1e000000</color>
     <color name="brightSkyBlue">#00b6f1</color>
     <color name="bluePoor">#00A9AC</color>
     <color name="blueNormal">#27A9E1</color>
@@ -23,10 +28,14 @@
     <color name="yellowNormal">#FBAF3F</color>
 
     <color name="pinkishGrey">#bcbcbc</color>
+    <color name="color_shadow_dark">#00999999</color>
+    <color name="color_shadow_dark_center">#bbbbbb</color>
+    <color name="color_shadow_dark_end">#d5d5d5</color>
     <color name="color_shadow_one">#00CCCCCC</color>
     <color name="color_shadow_two">#10CCCCCC</color>
     <color name="color_shadow_three">#20CCCCCC</color>
     <color name="color_shadow_four">#40CCCCCC</color>
+
 
 
     <color name="appColorPrimary">#ff0000</color>

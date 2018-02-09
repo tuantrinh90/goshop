@@ -67,11 +67,11 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
     //todo(helen) this is mock data, please do not delete
     private List<FilterMenuModel> getFilterMenu() {
         List<FilterMenuModel> filterMenuModels = new ArrayList<>();
-        filterMenuModels.add(new FilterMenuExpandVM("Category", true, true));
+        filterMenuModels.add(new FilterMenuExpandVM("Category", true));
         filterMenuModels.add(new FilterMenuCategoryVM(getCategorys()));
-        filterMenuModels.add(new FilterMenuExpandVM("Brands", false, true));
+        filterMenuModels.add(new FilterMenuExpandVM("Brands", true));
         filterMenuModels.add(new FilterMenuBrandsVM());
-        filterMenuModels.add(new FilterMenuExpandVM("Price(RM)", false, false));
+        filterMenuModels.add(new FilterMenuExpandVM("Price(RM)", false));
         filterMenuModels.add(new FilterMenuPriceVM());
         return filterMenuModels;
     }

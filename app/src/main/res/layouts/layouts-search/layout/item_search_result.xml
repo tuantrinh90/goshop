@@ -97,7 +97,7 @@
         android:id="@+id/tv_search_result_price_old"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_hint_grey"
+        android:textColor="@color/color_text_old_grey"
         android:layout_below="@id/tv_search_result_title"
         android:paddingBottom="@dimen/size_4"
         android:textSize="@dimen/size_font_12"

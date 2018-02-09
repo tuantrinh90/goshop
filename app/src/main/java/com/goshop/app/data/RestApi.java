@@ -1,14 +1,16 @@
 package com.goshop.app.data;
 
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
-import com.goshop.app.data.model.GetSettingsReponse;
-import com.goshop.app.data.model.MyPointsReponse;
-import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.FAQReponse;
+import com.goshop.app.data.model.GetSettingsReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
+import com.goshop.app.data.model.MyPointsReponse;
+import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.PaymentStatusReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
@@ -72,7 +74,7 @@ public interface RestApi {
 
     Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params);
 
-    Observable<ProfileReponse>editProfileRequest(Map<String, Object> params);
+    Observable<ProfileReponse> editProfileRequest(Map<String, Object> params);
 
     Observable<AddressReponse> addAddressRequest(Map<String, Object> params);
 
@@ -90,7 +92,6 @@ public interface RestApi {
 
     Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params);
 
-
     Observable<ContactUsReponse> getContactInfo();
 
     Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params);
@@ -98,4 +99,15 @@ public interface RestApi {
     Observable<GetSettingsReponse> getSettingsDetail();
 
     Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params);
+
+    Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params);
+
+    Observable<AddressReponse> selectAddressRequest(Map<String, Object> params);
+
+    Observable<CategoryMenuResponse> getCategoryLeftMenu();
+
+    Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params);
+
+    Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params);
+
 }

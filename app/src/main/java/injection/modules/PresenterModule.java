@@ -29,12 +29,26 @@ import com.goshop.app.presentation.account.LoginContract;
 import com.goshop.app.presentation.account.LoginPresenter;
 import com.goshop.app.presentation.account.MyAddressBookContract;
 import com.goshop.app.presentation.account.MyAddressBookPresenter;
+import com.goshop.app.presentation.account.MyAddressBookContract;
+import com.goshop.app.presentation.account.MyAddressBookPresenter;
 import com.goshop.app.presentation.account.NotificationContract;
 import com.goshop.app.presentation.account.NotificationPresenter;
 import com.goshop.app.presentation.account.TermsConditionsContract;
 import com.goshop.app.presentation.account.TermsConditionsPresenter;
 import com.goshop.app.presentation.account.WebContentContract;
 import com.goshop.app.presentation.account.WebContentPresenter;
+import com.goshop.app.presentation.checkout.CheckoutContract;
+import com.goshop.app.presentation.checkout.CheckoutPresenter;
+import com.goshop.app.presentation.category.CategoryContract;
+import com.goshop.app.presentation.category.CategoryPresenter;
+import com.goshop.app.presentation.category.CategoryTreeDetailContract;
+import com.goshop.app.presentation.category.CategoryTreeDetailPresenter;
+import com.goshop.app.presentation.checkout.CheckoutSelectContract;
+import com.goshop.app.presentation.checkout.CheckoutSelectPresenter;
+import com.goshop.app.presentation.checkout.PaymentStatusContract;
+import com.goshop.app.presentation.checkout.PaymentStatusPresenter;
+import com.goshop.app.presentation.home.DemoContract;
+import com.goshop.app.presentation.home.DemoPresenter;
 import com.goshop.app.presentation.checkout.CheckoutContract;
 import com.goshop.app.presentation.checkout.CheckoutPresenter;
 import com.goshop.app.presentation.home.DemoContract;
@@ -116,7 +130,8 @@ public class PresenterModule {
 
     @Provides
     @ActivityScope
-    public CheckoutContract.Presenter provideCheckoutPresenter(AccountDataRepository dataRepository) {
+    public CheckoutContract.Presenter provideCheckoutPresenter(
+        AccountDataRepository dataRepository) {
         return new CheckoutPresenter(dataRepository);
     }
 
@@ -268,12 +283,38 @@ public class PresenterModule {
         AccountDataRepository dataRepository) {
         return new SettingsPresenter(dataRepository);
     }
+    @Provides
+    @ActivityScope
+    public PaymentStatusContract.Presenter providePaymentStatusPresenter(
+        AccountDataRepository dataRepository) {
+        return new PaymentStatusPresenter(dataRepository);
+    }
 
     @Provides
     @ActivityScope
     public MyPointsContract.Presenter provideMyPointsContractPresenter(
         AccountDataRepository dataRepository) {
         return new MyPointsPresenter(dataRepository);
+    }
+    @Provides
+    @ActivityScope
+    public CheckoutSelectContract.Presenter provideCheckoutSelectPresenter(
+        AccountDataRepository dataRepository) {
+        return new CheckoutSelectPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public CategoryContract.Presenter provideCategoryPresenter(
+        AccountDataRepository dataRepository) {
+        return new CategoryPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public CategoryTreeDetailContract.Presenter provideCategoryTreeDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new CategoryTreeDetailPresenter(dataRepository);
     }
 
 }

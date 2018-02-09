@@ -196,6 +196,55 @@
                 android:text="@string/home_drawlayout_settings"
             />
 
+            <!--these will delete-->
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_edit_profile"
+                style="@style/homeSlideItemSettingText"
+                android:text="@string/edit_profile"
+            />
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_change_password"
+                style="@style/homeSlideItemSettingText"
+                android:text="@string/change_password"
+            />
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_my_address_book"
+                style="@style/homeSlideItemSettingText"
+                android:text="@string/my_address_book"
+            />
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_send_confirmation_link"
+                style="@style/homeSlideItemSettingText"
+                android:text="@string/send_confirmation_link"
+            />
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_reset_password"
+                style="@style/homeSlideItemSettingText"
+                android:text="@string/reset_password"
+            />
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_reset_email"
+                style="@style/homeSlideItemSettingText"
+                android:text="@string/whoops_email"
+            />
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_payment_status"
+                style="@style/homeSlideItemSettingText"
+                android:text="@string/payment_status"
+            />
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_select_address"
+                style="@style/homeSlideItemSettingText"
+                android:text="@string/select_address"
+            />
+
         </LinearLayout>
     </LinearLayout>
 </android.support.v4.widget.NestedScrollView>

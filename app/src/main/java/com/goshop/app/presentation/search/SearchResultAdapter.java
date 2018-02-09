@@ -142,9 +142,7 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
             tvSearchResultPriceOld.setText(searchResultVM.getOldPrice());
             tvSearchResultPriceOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             tvSearchResultPriceNow.setText(searchResultVM.getNowPrice());
-            itemView.setOnClickListener(v -> {
-                onItemClickListener.onClick();
-            });
+            itemView.setOnClickListener(v -> onItemClickListener.onClick());
         }
     }
 

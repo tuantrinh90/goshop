@@ -94,7 +94,8 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 2);
         recyclerviewSearchResult.setLayoutManager(gridLayoutManager);
-        recyclerviewSearchResult.addItemDecoration(new CustomGridDivider(this));
+        //TODO(helen)this part need decide
+//        recyclerviewSearchResult.addItemDecoration(new CustomGridDivider(this));
         resultAdapter = new SearchResultAdapter(new ArrayList<>(), this);
         recyclerviewSearchResult.setAdapter(resultAdapter);
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginTop="20dp">
-    >
+
     <ImageView
         android:id="@+id/iv_promotion_banner_item"
         android:layout_width="match_parent"

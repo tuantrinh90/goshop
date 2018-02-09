@@ -69,12 +69,12 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
                 break;
             case SearchFilterModel.SEARCH_POPULAR_DIVIDING:
                 View dividingView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_search_filter_dividing, parent, false);
+                    .inflate(R.layout.item_list_dividing, parent, false);
                 viewHolder = new SearchFixedViewHolder(dividingView);
                 break;
             case SearchFilterModel.SEARCH_NO_DATA:
                 View noDataView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_search_nodata, parent, false);
+                    .inflate(R.layout.item_list_nodata, parent, false);
                 viewHolder = new SearchFixedViewHolder(noDataView);
                 break;
         }

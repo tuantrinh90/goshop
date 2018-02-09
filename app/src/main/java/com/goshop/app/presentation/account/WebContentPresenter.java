@@ -33,7 +33,7 @@ public class WebContentPresenter extends RxPresenter<WebContentContract.View> im
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
                     //TODO(helen)wait for api
-                    mView.requestResult("https://www.baidu.com/");
+                    mView.requestResult("https://app.zeplin.io/welcome");
                 }
 
                 @Override
@@ -58,7 +58,7 @@ public class WebContentPresenter extends RxPresenter<WebContentContract.View> im
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
                     //TODO(helen)wait for api
-                    mView.requestResult("https://www.baidu.com/");
+                    mView.requestResult("https://app.zeplin.io/welcome");
                 }
 
                 @Override

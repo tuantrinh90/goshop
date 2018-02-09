@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_top_bottom_line">
+
+    <ImageView
+        android:id="@+id/iv_item_category_expand"
+        android:layout_width="@dimen/size_16"
+        android:layout_height="@dimen/size_16"
+        android:src="@drawable/selector_image_expand_selected"
+        android:layout_centerVertical="true"
+        android:layout_alignParentRight="true"
+        android:contentDescription="@string/app_name"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="@dimen/size_16"/>
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_category_right_parent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toLeftOf="@id/iv_item_category_expand"
+        android:textSize="@dimen/size_font_16"
+        android:textColor="@color/color_text_bold_black"
+        android:paddingTop="@dimen/size_20"
+        android:paddingBottom="@dimen/size_20"/>
+
+</RelativeLayout>

@@ -3,6 +3,8 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:animET="http://schemas.android.com/apk/res-auto"
     xmlns:animSpinner="http://schemas.android.com/apk/res-auto"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     android:clipChildren="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent">

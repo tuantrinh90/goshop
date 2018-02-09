@@ -2,30 +2,14 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/rl_layout_search"
     android:layout_width="match_parent"
-    android:background="@drawable/drawable_white_bottom_line"
-    android:layout_height="@dimen/size_36"
+    android:layout_height="wrap_content"
     android:gravity="center_vertical">
-
-    <ImageView
-        android:id="@+id/iv_search_left"
-        android:layout_width="@dimen/size_20"
-        android:layout_height="@dimen/size_20"
-        android:layout_alignParentLeft="true"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="@dimen/size_8"
-        android:background="@mipmap/search"
-        android:contentDescription="@string/app_name"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="@dimen/size_8"/>
 
     <ImageView
         android:id="@+id/iv_search_del"
         android:layout_width="@dimen/size_20"
         android:layout_height="@dimen/size_20"
-        android:layout_alignTop="@id/iv_search_left"
-        android:layout_alignBottom="@id/iv_search_left"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/size_8"
@@ -37,22 +21,21 @@
     <com.goshop.app.common.view.CustomEditText
         android:id="@+id/et_search_search"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_toRightOf="@id/iv_search_left"
+        android:layout_height="wrap_content"
         android:layout_toLeftOf="@id/iv_search_del"
-        android:layout_alignTop="@id/iv_search_left"
-        android:layout_alignBottom="@id/iv_search_left"
         android:textColor="@color/color_text_black"
         android:textSize="@dimen/size_font_16"
-        android:paddingLeft="@dimen/size_8"
-        android:paddingRight="@dimen/size_8"
         android:maxLines="1"
         android:textCursorDrawable="@null"
+        android:paddingLeft="@dimen/size_8"
+        android:paddingRight="@dimen/size_8"
         android:background="@null"
         android:gravity="left"
         android:inputType="text"
+        android:hint="@string/search_hint"
+        android:textColorHint="@color/color_hint_grey"
         android:imeOptions="actionSearch"
-        android:layout_toEndOf="@id/iv_search_left"
+        android:layout_alignParentLeft="true"
         android:layout_toStartOf="@id/iv_search_del"
         tools:ignore="RtlHardcoded"/>
 

@@ -7,7 +7,9 @@ import com.goshop.app.common.view.CustomBoldTextView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
+import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
 
@@ -40,10 +42,10 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (CONTENT_TAG.equals(CONTACT_US)) {
+        if (contentTag.equals(CONTACT_US)) {
             textviewToolbarTitle.setText(getResources().getString(R.string.contact_us));
             mPresenter.getContactUsContent();
-        } else if (CONTENT_TAG.equals(ECMC)) {
+        } else if (contentTag.equals(ECMC)) {
             textviewToolbarTitle.setText(getResources().getString(R.string.ecmc));
             mPresenter.getEcmcContent();
         }
@@ -79,6 +81,18 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
         wvContent.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         wvContent.getSettings().setDomStorageEnabled(true);
         wvContent.getSettings().setDatabaseEnabled(true);
+
+        wvContent.setWebChromeClient(new WebChromeClient() {
+            @Override
+            public void onProgressChanged(WebView view, int newProgress) {
+                if (newProgress == 100) {
+                    hideLoadingBar();
+                } else {
+                    showLoadingBar();
+                }
+                super.onProgressChanged(view, newProgress);
+            }
+        });
     }
 
     private void initDatas() {
@@ -97,6 +111,7 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
 
     @Override
     public void requestResult(String url) {
+        Log.d("WebContentActivity", "url:" + url);
         wvContent.loadUrl(url);
     }
 
