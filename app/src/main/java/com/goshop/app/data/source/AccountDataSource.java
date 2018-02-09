@@ -4,8 +4,10 @@ import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
+import com.goshop.app.data.model.GetSettingsReponse;
 import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
+import com.goshop.app.data.model.MyPointsReponse;
 import com.goshop.app.data.model.PasswordReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
@@ -90,4 +92,8 @@ public interface AccountDataSource {
     Observable<ContactUsReponse> getContactInfo();
 
     Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params);
+
+    Observable<GetSettingsReponse> getSettingsDetail();
+
+    Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params);
 }

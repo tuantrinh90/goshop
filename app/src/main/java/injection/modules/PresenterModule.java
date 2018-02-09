@@ -9,6 +9,8 @@ import com.goshop.app.presentation.account.ContactUsContract;
 import com.goshop.app.presentation.account.ContactUsPresenter;
 import com.goshop.app.presentation.account.EditProfileContract;
 import com.goshop.app.presentation.account.EditProfilePresenter;
+import com.goshop.app.presentation.account.MyPointsContract;
+import com.goshop.app.presentation.account.MyPointsPresenter;
 import com.goshop.app.presentation.account.WebContentContract;
 import com.goshop.app.presentation.account.WebContentPresenter;
 import com.goshop.app.presentation.account.LoginContract;
@@ -47,6 +49,8 @@ import com.goshop.app.presentation.search.SearchContract;
 import com.goshop.app.presentation.search.SearchPresenter;
 import com.goshop.app.presentation.search.SearchResultContract;
 import com.goshop.app.presentation.search.SearchResultPresenter;
+import com.goshop.app.presentation.settings.SettingsContract;
+import com.goshop.app.presentation.settings.SettingsPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
 import com.goshop.app.presentation.shopping.ShoppingCartContract;
@@ -242,6 +246,20 @@ public class PresenterModule {
     public ContactUsContract.Presenter provideTContactUsPresenter(
         AccountDataRepository dataRepository) {
         return new ContactUsPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public SettingsContract.Presenter provideSettingsContractPresenter(
+        AccountDataRepository dataRepository) {
+        return new SettingsPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public MyPointsContract.Presenter provideMyPointsContractPresenter(
+        AccountDataRepository dataRepository) {
+        return new MyPointsPresenter(dataRepository);
     }
 
 }

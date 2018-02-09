@@ -31,10 +31,7 @@
         </activity>
         <activity android:name=".presentation.account.LoginActivity"/>
         <activity android:name=".presentation.home.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".presentation.myorder.MyOrderListActivity"/>
@@ -114,6 +111,18 @@
         <activity android:name=".presentation.account.ContactUsActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.settings.SettingsActivity"
+            android:theme="@style/WhiteBackground">
+
+        </activity>
+        <activity android:name=".presentation.account.MyPointsActivity"
+            android:theme="@style/WhiteBackground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
     </application>
 
 
