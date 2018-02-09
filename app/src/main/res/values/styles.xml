@@ -7,6 +7,14 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropdownStyle</item>
     </style>
+    <style name="toolbarTheme" parent="AppTheme">
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle</item>
+    </style>
+    <style name="ActionButtonStyle" parent="Widget.AppCompat.Light.ActionButton">
+        <item name="android:minWidth">44dp</item>
+        <item name="android:paddingLeft">@dimen/size_16</item>
+        <item name="android:paddingRight">@dimen/size_16</item>
+    </style>
     <style name="SpinnerDropdownStyle" parent="@android:style/Widget.DropDownItem.Spinner">
         <item name="android:background">@android:color/white</item>
     </style>
@@ -266,7 +274,12 @@
         <item name="android:textColor">@color/color_text_black</item>
         <item name="android:textSize">@dimen/size_font_12</item>
         <item name="android:textColorHint">@color/color_hint_grey</item>
+    </style>
 
+    <style name="menuTextStyle">
+        <item name="android:textSize">@dimen/size_font_16</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textStyle">normal</item>
     </style>
 
 </resources>

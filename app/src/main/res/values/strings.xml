@@ -102,7 +102,6 @@
     <string name="home_bottom_slide_title">Best Seller</string>
 
 
-
     <string name="facebook_id">1287318627981888</string>
     <!-- Facebook Login -->
     <string name="FB_Login_tips_error">Please check the internet, and try again.</string>
@@ -298,15 +297,27 @@
     <string name="continue_shopping">Continue Shopping</string>
     <string name="status_receieved">Your Order Has Been Receieved</string>
     <string name="something_wrong">Something Went Wrong \nIn The Payment!</string>
-    <string name="something_wrong_tip">If further information, please contact our customer service:</string>
+    <string name="something_wrong_tip">If further information, please contact our customer
+        service:
+    </string>
     <string name="thank_purchase">Thank you for your purchase!</string>
-    <string name="your_order">Your order # is: </string>
-    <string name="status_success_tip">You will receive an order confirmation email with details of your order and a link to track its progress.</string>
+    <string name="your_order">Your order # is:</string>
+    <string name="status_success_tip">You will receive an order confirmation email with details of
+        your order and a link to track its progress.
+    </string>
     <string name="check_order">Check Order</string>
     <string name="payment_status">Payment Status</string>
-    <string name="set_it_as_shipping_address">Set it as shipping address </string>
+    <string name="set_it_as_shipping_address">Set it as shipping address</string>
     <string name="select_address">Select Address</string>
     <string name="search_hint">Search products or brands</string>
     <string name="category">Category</string>
+    <string name="sign_up_login">Sign up / Login</string>
+    <string name="hey_user">Hey, User Name</string>
+    <string name="home">Home</string>
+    <string name="categories">Categories</string>
+    <string name="go_loyalty">Go+ Loyalty</string>
+    <string name="notifications">Notifications</string>
+    <string name="my_wishlist">My Wishlist</string>
+    <string name="my_orders">My Orders</string>
 
 </resources>

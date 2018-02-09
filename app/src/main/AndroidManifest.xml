@@ -23,24 +23,27 @@
             android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_id"/>
 
-        <activity android:name=".presentation.login.TestMenuActivity">
+        <activity android:name=".presentation.login.TestMenuActivity"/>
 
-        </activity>
+
         <activity android:name=".presentation.account.LoginActivity"/>
+
         <activity android:name=".presentation.home.HomeActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".presentation.myorder.MyOrderListActivity"/>
+
         <activity android:name=".presentation.myorder.MyOrderDetailActivity"/>
+
         <activity android:name=".presentation.checkout.CheckoutActivity"/>
+
         <activity android:name=".presentation.account.NotificationActivity"/>
 
         <activity android:name=".presentation.home.PromotionLandingListActivity"/>
+
         <activity android:name=".presentation.home.PromotionBannerActivity"/>
+
         <!-- FACEBOOK -->
         <activity
             tools:replace="android:theme"
@@ -72,93 +75,76 @@
 
         <activity android:name=".presentation.search.SearchResultActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.WebContentActivity"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.EditProfileActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/WhiteBackground">
+            android:theme="@style/WhiteBackground"/>
 
-        </activity>
         <activity android:name=".presentation.shopping.ShoppingCartActivity"/>
 
         <activity android:name=".presentation.account.ChangePasswordActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
-        <activity android:name=".presentation.account.HelpSupportActivity"
-            android:theme="@style/WhiteBackground">
 
-        </activity>
+        <activity android:name=".presentation.account.HelpSupportActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.FAQActivity"
-            android:theme="@style/WhiteBackground">
-        </activity>
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.TermsConditionsActivity"
-            android:theme="@style/WhiteBackground">
-        </activity>
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.AddAddressActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.MyAddressBookActivity"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.EditAddressActivity"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.ContactUsActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.settings.SettingsActivity"
-            android:theme="@style/WhiteBackground">
+            android:theme="@style/WhiteBackground"/>
 
-        </activity>
         <activity android:name=".presentation.account.MyPointsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.checkout.PaymentStatusActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.checkout.CheckoutAddNewAddressActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.checkout.CheckoutEditAddressActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.checkout.CheckoutSelectAddressActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.category.CategoryTreeDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.category.CategoryActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.home.HomeSlideMenuActivity"
             android:theme="@style/WhiteBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".presentation.checkout.PaymentStatusActivity"
-            android:theme="@style/WhiteBackground">
 
-        </activity>
-        <activity android:name=".presentation.checkout.CheckoutAddNewAddressActivity"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
-
-        <activity android:name=".presentation.checkout.CheckoutEditAddressActivity"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
-
-        <activity android:name=".presentation.checkout.CheckoutSelectAddressActivity"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
-
-        <activity android:name=".presentation.category.CategoryTreeDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.category.CategoryActivity"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
     </application>
 
 

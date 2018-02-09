@@ -5,6 +5,7 @@ import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.utils.StatusBarUtils;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -121,5 +122,16 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
 
     public Toolbar getToolbar(){
         return toolbar;
+    }
+
+    public void slideMenuStartActivity(Intent intent) {
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_from_right,
+            R.anim.slide_to_left);
+    }
+
+    public void slideFinishActivity() {
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 }

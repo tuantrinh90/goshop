@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.Toolbar
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/toolbar"
+    android:layout_width="match_parent"
+    android:layout_height="?attr/actionBarSize"
+    app:contentInsetEnd="@dimen/size_0"
+    app:contentInsetStart="@dimen/size_0"
+    app:contentInsetLeft="@dimen/size_0"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/imageview_left_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerInside"
+            android:visibility="gone"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            tools:ignore="ContentDescription"
+            android:layout_alignParentStart="true"/>
+
+        <ImageView
+            android:id="@+id/imageview_right_menu"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/size_26"
+            android:layout_marginLeft="@dimen/size_16"
+            android:src="@mipmap/ic_home_checkout"
+            tools:ignore="ContentDescription"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_toolbar_cart_counter"
+            android:layout_width="@dimen/size_14"
+            android:layout_height="@dimen/size_14"
+            android:background="@drawable/bg_slide_menu_number"
+            android:text="1"
+            android:textSize="@dimen/size_font_10"
+            android:layout_marginTop="@dimen/size_12"
+            android:layout_marginRight="@dimen/size_16"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:textColor="@color/white"
+            android:gravity="center"/>
+
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:id="@+id/textview_toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:textColor="@android:color/white"
+            android:textSize="20sp"
+            android:minLines="1"
+            android:maxLines="1"
+            android:layout_centerInParent="true"
+            android:gravity="center"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toLeftOf="@id/imageview_right_menu"
+            android:layout_marginBottom="@dimen/size_8"
+            android:background="@drawable/bg_white_bottom_divider_line">
+            <ImageView
+                android:id="@+id/iv_search_icon"
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_alignParentLeft="true"
+                android:background="@mipmap/icon_search_tool"
+                android:layout_centerVertical="true"
+                tools:ignore="ContentDescription"/>
+            <com.goshop.app.common.CustomSearchEditText
+                android:id="@+id/cset_search"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_search_icon"
+                android:layout_centerVertical="true"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</android.support.v7.widget.Toolbar>
