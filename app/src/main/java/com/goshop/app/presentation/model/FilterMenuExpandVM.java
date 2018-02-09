@@ -8,14 +8,13 @@ public class FilterMenuExpandVM extends FilterMenuModel {
 
     private boolean hasIcon;
 
-    private boolean isExpand;
+    private boolean isExpand = false;
 
     private String title;
 
-    public FilterMenuExpandVM(String title, boolean isExpand, boolean hasIcon) {
+    public FilterMenuExpandVM(String title, boolean hasIcon) {
         super(FilterMenuModel.FILTER_EXPAND);
         this.title = title;
-        this.isExpand = isExpand;
         this.hasIcon = hasIcon;
 
     }

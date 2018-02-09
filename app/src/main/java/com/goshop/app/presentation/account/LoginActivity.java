@@ -7,6 +7,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.presentation.login.RegisterActivity;
 import com.goshop.app.utils.AnimUtils;
 import com.goshop.app.utils.JDataUtils;
 import com.goshop.app.utils.ScreenHelper;
@@ -233,6 +234,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                     .asList("public_profile", "email", "user_friends"));
                 break;
             case R.id.tv_register:
+                startActivity(new Intent(this, RegisterActivity.class));
                 break;
             case R.id.imageview_right_menu:
                 finish();

@@ -2,6 +2,7 @@ package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
 import com.goshop.app.data.model.FAQReponse;
@@ -10,6 +11,7 @@ import com.goshop.app.data.model.GetWebContentReponse;
 import com.goshop.app.data.model.HelpSupportReponse;
 import com.goshop.app.data.model.MyPointsReponse;
 import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.PaymentStatusReponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileReponse;
 import com.goshop.app.data.model.ResetPasswordReponse;
@@ -208,6 +210,29 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params) {
         return restApi.myPointsRequest(params);
+    }
+    public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
+        return restApi.paymentStatusRequest(params);
+    }
+
+    @Override
+    public Observable<AddressReponse> selectAddressRequest(Map<String, Object> params) {
+        return restApi.selectAddressRequest(params);
+    }
+
+    @Override
+    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
+        return restApi.getCategoryLeftMenu();
+    }
+
+    @Override
+    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+        return restApi.categoryRightMenuRequest(params);
+    }
+
+    @Override
+    public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
+        return restApi.categoryDetailRequest(params);
     }
 
 }

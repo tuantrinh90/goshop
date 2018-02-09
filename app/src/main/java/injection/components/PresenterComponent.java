@@ -12,6 +12,10 @@ import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.account.TermsConditionsActivity;
 import com.goshop.app.presentation.account.WebContentActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
+import com.goshop.app.presentation.category.CategoryActivity;
+import com.goshop.app.presentation.category.CategoryTreeDetailActivity;
+import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
+import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.home.DemoActivity;
 import com.goshop.app.presentation.home.HomeActivity;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
@@ -96,4 +100,13 @@ public interface PresenterComponent {
     void inject(SettingsActivity settingsActivity);
 
     void inject(MyPointsActivity myPointsActivity);
+
+    void inject(PaymentStatusActivity paymentStatusActivity);
+
+    void inject(CheckoutSelectAddressActivity checkoutSelectAddressActivity);
+
+    void inject(CategoryActivity categoryActivity);
+
+    void inject(CategoryTreeDetailActivity categoryTreeDetailActivity);
+
 }

@@ -16,6 +16,13 @@ public class HelpSupportContract {
     interface View extends BaseView {
 
         void showResult(List<HelpSupportModel> helpSupportModels);
+
+        void startFAQ();
+
+        void startContactUs();
+
+        void startTermsAndConditions();
+
     }
 
     public interface Presenter extends BasePresenter<View> {

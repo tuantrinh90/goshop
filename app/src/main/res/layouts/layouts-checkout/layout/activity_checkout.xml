@@ -79,7 +79,8 @@
                     android:layout_centerVertical="true"
                     android:background="@mipmap/back"
                     android:layout_width="30dp"
-                    android:layout_height="30dp"/>
+                    android:layout_height="30dp"
+                    android:contentDescription="@string/app_name"/>
 
             </RelativeLayout>
             <View

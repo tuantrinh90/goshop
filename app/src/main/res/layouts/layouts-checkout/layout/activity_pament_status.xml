@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <include
+        layout="@layout/toolbar_img_text_img_close"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_1"
+        android:background="@color/color_divider_grey"
+        android:layout_below="@+id/toolbar"/>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_btn_payment_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/drawable_round_black"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:textColor="@android:color/white"
+        android:text="@string/continue_shopping"
+        android:textSize="@dimen/size_font_16"
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_12"
+        android:layout_margin="@dimen/size_8"/>
+
+    <LinearLayout
+        android:id="@+id/ll_status_wrong_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar"
+        android:gravity="center_horizontal"
+        android:layout_above="@id/tv_btn_payment_status">
+
+        <ImageView
+            android:layout_width="@dimen/size_90"
+            android:layout_height="@dimen/size_90"
+            android:layout_marginTop="@dimen/size_76"
+            android:contentDescription="@string/app_name"
+            android:background="@mipmap/wrong_red"/>
+
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_34"
+            android:gravity="center"
+            android:text="@string/something_wrong"
+            android:textSize="@dimen/size_font_20"
+            android:textColor="@color/color_text_black"
+            android:layout_marginRight="@dimen/size_64"
+            android:layout_marginLeft="@dimen/size_64"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text_black"
+            android:text="@string/something_wrong_tip"
+            android:textSize="@dimen/size_font_14"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size_24"
+            android:layout_marginLeft="@dimen/size_74"
+            android:layout_marginRight="@dimen/size_74"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4"
+            android:orientation="horizontal">
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_text_black"
+                android:paddingRight="@dimen/size_4"
+                android:text="@string/email_end"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_status_wrong_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_text_black"
+                android:text="@string/email_format"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4"
+            android:orientation="horizontal">
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_text_black"
+                android:paddingRight="@dimen/size_4"
+                android:text="@string/tel"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_status_wrong_tel"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_text_black"
+                android:text="@string/email_format"/>
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_status_success_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_below="@+id/toolbar"
+        android:gravity="center_horizontal"
+        android:layout_above="@id/tv_btn_payment_status">
+
+        <ImageView
+            android:layout_width="@dimen/size_90"
+            android:layout_height="@dimen/size_90"
+            android:layout_marginTop="@dimen/size_76"
+            android:contentDescription="@string/app_name"
+            android:background="@mipmap/right_green"/>
+
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_34"
+            android:gravity="center"
+            android:text="@string/status_receieved"
+            android:textSize="@dimen/size_font_20"
+            android:textColor="@color/color_text_black"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text_black"
+            android:text="@string/thank_purchase"
+            android:textSize="@dimen/size_font_16"
+            android:gravity="center_horizontal"
+            android:layout_marginTop="@dimen/size_24"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4"
+            android:orientation="horizontal">
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_text_black"
+                android:text="@string/your_order"
+                android:paddingRight="@dimen/size_4"
+                android:textSize="@dimen/size_font_16"
+                android:gravity="center_horizontal"/>
+
+            <com.goshop.app.common.view.CustomBoldTextView
+                android:id="@+id/tv_status_success_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@color/color_text_black"
+                android:text="@string/email_format"/>
+        </LinearLayout>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_4"
+            android:layout_marginRight="@dimen/size_38"
+            android:layout_marginLeft="@dimen/size_38"
+            android:gravity="center_horizontal"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_text_black"
+            android:text="@string/status_success_tip"/>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_btn_status_success_check"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_round_circle"
+            android:layout_marginTop="@dimen/size_16"
+            android:paddingTop="@dimen/size_8"
+            android:paddingBottom="@dimen/size_8"
+            android:paddingRight="@dimen/size_24"
+            android:paddingLeft="@dimen/size_24"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_text_black"
+            android:text="@string/check_order"/>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>

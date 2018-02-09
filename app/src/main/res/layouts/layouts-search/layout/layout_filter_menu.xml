@@ -12,7 +12,7 @@
         android:orientation="horizontal">
 
         <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_btn_search_filter_clear"
+            android:id="@+id/tv_btn_filter_clear"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_16"
@@ -23,7 +23,7 @@
             android:layout_weight="1"
             android:background="@drawable/bg_btn_pink_circle"/>
         <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_btn_search_filter_done"
+            android:id="@+id/tv_btn_filter_done"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_16"

@@ -54,10 +54,11 @@ public class HelpSupportPresenter extends RxPresenter<HelpSupportContract.View> 
     private List<HelpSupportModel> getMockData() {
         List<HelpSupportModel> helpSupportModels = new ArrayList<>();
         helpSupportModels.add(new HelpSupportTitleVM("Help Centre"));
-        helpSupportModels.add(new HelpSupportContentVM("FAQ"));
+        helpSupportModels.add(new HelpSupportContentVM("FAQ", () -> mView.startFAQ()));
         helpSupportModels.add(new HelpSupportContentVM("Online Support"));
         helpSupportModels.add(new HelpSupportContentVM("Notice"));
-        helpSupportModels.add(new HelpSupportContentVM("Terms and Conditions"));
+        helpSupportModels.add(new HelpSupportContentVM("Terms and Conditions",
+            () -> mView.startTermsAndConditions()));
         helpSupportModels.add(new HelpSupportContentVM("Privacy Policy"));
 
         helpSupportModels.add(new HelpSupportTitleVM("Services"));
@@ -68,7 +69,7 @@ public class HelpSupportPresenter extends RxPresenter<HelpSupportContract.View> 
         helpSupportModels.add(new HelpSupportTitleVM("Company"));
         helpSupportModels.add(new HelpSupportContentVM("Overview & Vision"));
         helpSupportModels.add(new HelpSupportContentVM("Careers"));
-        helpSupportModels.add(new HelpSupportContentVM("Contact Us"));
+        helpSupportModels.add(new HelpSupportContentVM("Contact Us", () -> mView.startContactUs()));
         helpSupportModels.add(new HelpSupportContentVM("Sell on Go Shop"));
 
         return helpSupportModels;

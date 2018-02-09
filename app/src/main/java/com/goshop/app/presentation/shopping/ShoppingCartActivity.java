@@ -26,7 +26,7 @@ import injection.modules.PresenterModule;
  */
 
 public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Presenter> implements
-    ShoppingCartContract.View {
+    ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener {
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageviewLeftMenu;
@@ -73,14 +73,17 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvShoppintCart.setLayoutManager(layoutManager);
-        shoppingCartAdapter = new ShoppingCartAdapter(new ArrayList<>());
-        shoppingCartAdapter.setiRecyclerItemClick(
-            (view, position) -> startActivity(new Intent(ShoppingCartActivity.this, CheckoutActivity.class)));
+        shoppingCartAdapter = new ShoppingCartAdapter(new ArrayList<>(), this);
         rvShoppintCart.setAdapter(shoppingCartAdapter);
     }
 
     @Override
     public void showCartDetail(List<ShoppingCartModel> cartModels) {
         shoppingCartAdapter.setDatas(cartModels);
+    }
+
+    @Override
+    public void onCheckoutClick() {
+        startActivity(new Intent(ShoppingCartActivity.this, CheckoutActivity.class));
     }
 }

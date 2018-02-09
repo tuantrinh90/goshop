@@ -7,11 +7,22 @@ import com.goshop.app.adapter.HomeBaseAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.presentation.account.EditProfileActivity;
+import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.LoginActivity;
+import com.goshop.app.presentation.account.MyAddressBookActivity;
+import com.goshop.app.presentation.category.CategoryActivity;
+import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
+import com.goshop.app.presentation.checkout.PaymentStatusActivity;
+import com.goshop.app.presentation.login.LoginComplementEmailActivity;
+import com.goshop.app.presentation.login.LoginResetPasswordActivity;
+import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
 import com.goshop.app.presentation.myorder.MyOrderListActivity;
-import com.goshop.app.utils.AnimUtils;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
+import com.goshop.app.utils.AnimUtils;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.AppBarLayout;
@@ -36,14 +47,62 @@ import injection.modules.PresenterModule;
 public class HomeActivity extends BaseActivity<HomeContract.Presenter> implements HomeContract
     .View {
 
-    @BindView(R.id.et_home_search)
-    CustomEditText etHomeSearch;
-
     @BindView(R.id.appbar_layout)
     AppBarLayout appbarLayout;
 
-    @BindView(R.id.root_layout)
-    CoordinatorLayout rootLayout;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
+
+    @BindView(R.id.et_home_search)
+    CustomEditText etHomeSearch;
+
+    @BindView(R.id.iv_category_tree)
+    ImageView ivCategoryTree;
+
+    @BindView(R.id.iv_go_loyalty)
+    ImageView ivGoLoyalty;
+
+    @BindView(R.id.iv_home)
+    ImageView ivHome;
+
+    @BindView(R.id.iv_notification)
+    ImageView ivNotification;
+
+    @BindView(R.id.iv_orderlist)
+    ImageView ivOrderlist;
+
+    @BindView(R.id.iv_shopping_cart)
+    ImageView ivShoppingCart;
+
+    @BindView(R.id.iv_user_img)
+    ImageView ivUserImg;
+
+    @BindView(R.id.iv_wishlist)
+    ImageView ivWishlist;
+
+    @BindView(R.id.menu_layout)
+    LinearLayout menuLayout;
+
+    @BindView(R.id.rl_drawer_categorytree)
+    RelativeLayout rlDrawerCategorytree;
+
+    @BindView(R.id.rl_drawer_go_loyalty)
+    RelativeLayout rlDrawerGoLoyalty;
+
+    @BindView(R.id.rl_drawer_home)
+    RelativeLayout rlDrawerHome;
+
+    @BindView(R.id.rl_drawer_notification)
+    RelativeLayout rlDrawerNotification;
+
+    @BindView(R.id.rl_drawer_order)
+    RelativeLayout rlDrawerOrder;
+
+    @BindView(R.id.rl_drawer_shoppingcart)
+    RelativeLayout rlDrawerShoppingcart;
+
+    @BindView(R.id.rl_drawer_wishlist)
+    RelativeLayout rlDrawerWishlist;
 
     @BindView(R.id.rl_image_left)
     RelativeLayout rlImageLeft;
@@ -51,80 +110,29 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
     @BindView(R.id.rl_image_right)
     RelativeLayout rlImageRight;
 
-    @BindView(R.id.iv_user_img)
-    ImageView ivUserImg;
-
-    @BindView(R.id.tv_sidemenu_login_name)
-    TextView tvLoginName;
-
-    @BindView(R.id.tv_sidemenu_unlogin_name)
-    TextView tvUnloginName;
-
     @BindView(R.id.rl_profile)
     RelativeLayout rlProfile;
 
-    @BindView(R.id.iv_home)
-    ImageView ivHome;
+    @BindView(R.id.root_layout)
+    CoordinatorLayout rootLayout;
 
-    @BindView(R.id.tv_home)
-    TextView tvHome;
-
-    @BindView(R.id.rl_drawer_home)
-    RelativeLayout rlDrawerHome;
-
-    @BindView(R.id.iv_category_tree)
-    ImageView ivCategoryTree;
+    @BindView(R.id.rv_home)
+    RecyclerView rvHome;
 
     @BindView(R.id.tv_category_tree)
     TextView tvCategoryTree;
 
-    @BindView(R.id.rl_drawer_categorytree)
-    RelativeLayout rlDrawerCategorytree;
-
-    @BindView(R.id.iv_go_loyalty)
-    ImageView ivGoLoyalty;
-
     @BindView(R.id.tv_go_loyalty)
     TextView tvGoLoyalty;
 
-    @BindView(R.id.rl_drawer_go_loyalty)
-    RelativeLayout rlDrawerGoLoyalty;
+    @BindView(R.id.tv_help_support)
+    TextView tvHelpSupport;
 
-    @BindView(R.id.iv_shopping_cart)
-    ImageView ivShoppingCart;
+    @BindView(R.id.tv_home)
+    TextView tvHome;
 
-    @BindView(R.id.tv_shopping_cart)
-    TextView tvShoppingCart;
-
-    @BindView(R.id.tv_shoppingCart_num)
-    TextView tvShoppingCartNum;
-
-    @BindView(R.id.rl_drawer_shoppingcart)
-    RelativeLayout rlDrawerShoppingcart;
-
-    @BindView(R.id.iv_wishlist)
-    ImageView ivWishlist;
-
-    @BindView(R.id.tv_wishlist)
-    TextView tvWishlist;
-
-    @BindView(R.id.tv_wishlist_num)
-    TextView tvWishlistNum;
-
-    @BindView(R.id.rl_drawer_wishlist)
-    RelativeLayout rlDrawerWishlist;
-
-    @BindView(R.id.iv_orderlist)
-    ImageView ivOrderlist;
-
-    @BindView(R.id.tv_order)
-    TextView tvOrder;
-
-    @BindView(R.id.rl_drawer_order)
-    RelativeLayout rlDrawerOrder;
-
-    @BindView(R.id.iv_notification)
-    ImageView ivNotification;
+    @BindView(R.id.tv_sidemenu_login_name)
+    TextView tvLoginName;
 
     @BindView(R.id.tv_notification)
     TextView tvNotification;
@@ -132,23 +140,26 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
     @BindView(R.id.tv_notification_num)
     TextView tvNotificationNum;
 
-    @BindView(R.id.rl_drawer_notification)
-    RelativeLayout rlDrawerNotification;
-
-    @BindView(R.id.tv_help_support)
-    TextView tvHelpSupport;
+    @BindView(R.id.tv_order)
+    TextView tvOrder;
 
     @BindView(R.id.tv_setting)
     TextView tvSetting;
 
-    @BindView(R.id.menu_layout)
-    LinearLayout menuLayout;
+    @BindView(R.id.tv_shopping_cart)
+    TextView tvShoppingCart;
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+    @BindView(R.id.tv_shoppingCart_num)
+    TextView tvShoppingCartNum;
 
-    @BindView(R.id.rv_home)
-    RecyclerView rvHome;
+    @BindView(R.id.tv_sidemenu_unlogin_name)
+    TextView tvUnloginName;
+
+    @BindView(R.id.tv_wishlist)
+    TextView tvWishlist;
+
+    @BindView(R.id.tv_wishlist_num)
+    TextView tvWishlistNum;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,7 +191,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
 
     private void initSearch() {
         etHomeSearch.setOnFocusChangeListener((View v, boolean hasFocus) -> {
-            if(hasFocus) {
+            if (hasFocus) {
                 etHomeSearch.clearFocus();
                 startActivity(new Intent(HomeActivity.this, SearchActivity.class));
             }
@@ -191,16 +202,46 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
         getToolbar().setBackgroundColor(getResources().getColor(R.color.whiteTrans18));
     }
 
-    private void initRecycler(HomeResponse homeResponse) {
-        HomeBaseAdapter homeBaseAdapter = new HomeBaseAdapter(homeResponse);
-        rvHome.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
-        rvHome.setAdapter(homeBaseAdapter);
+    private void resetSelect() {
+        ivHome.setSelected(false);
+        tvHome.setSelected(false);
+        rlDrawerHome.setSelected(false);
+
+        ivCategoryTree.setSelected(false);
+        tvCategoryTree.setSelected(false);
+        rlDrawerCategorytree.setSelected(false);
+
+        ivGoLoyalty.setSelected(false);
+        tvGoLoyalty.setSelected(false);
+        rlDrawerGoLoyalty.setSelected(false);
+
+        ivShoppingCart.setSelected(false);
+        tvShoppingCart.setSelected(false);
+        rlDrawerShoppingcart.setSelected(false);
+
+        ivWishlist.setSelected(false);
+        tvWishlist.setSelected(false);
+        rlDrawerWishlist.setSelected(false);
+
+        ivOrderlist.setSelected(false);
+        tvOrder.setSelected(false);
+        rlDrawerOrder.setSelected(false);
+
+        ivNotification.setSelected(false);
+        tvNotification.setSelected(false);
+        rlDrawerNotification.setSelected(false);
+
+        tvHelpSupport.setSelected(false);
+        tvSetting.setSelected(false);
     }
 
     @OnClick({R.id.rl_image_left, R.id.rl_image_right, R.id.rl_profile, R.id.rl_drawer_home, R.id
         .rl_drawer_categorytree, R.id
         .rl_drawer_go_loyalty, R.id.rl_drawer_shoppingcart, R.id.rl_drawer_wishlist, R.id
-        .rl_drawer_order, R.id.rl_drawer_notification, R.id.tv_help_support, R.id.tv_setting})
+        .rl_drawer_order, R.id.rl_drawer_notification, R.id.tv_help_support, R.id.tv_setting, R
+        .id.tv_edit_profile, R.id.tv_change_password, R.id.tv_my_address_book, R.id
+        .tv_send_confirmation_link, R.id.tv_reset_password, R.id.tv_reset_email, R.id
+        .tv_payment_status, R.id.tv_select_address})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_image_left:
@@ -241,12 +282,40 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
             case R.id.tv_setting:
                 switchMenu(Const.MENU_SETTING);
                 break;
+            case R.id.tv_edit_profile:
+                startActivity(new Intent(this, EditProfileActivity.class));
+                break;
+            case R.id.tv_change_password:
+                startActivity(new Intent(this, ChangePasswordActivity.class));
+                break;
+            case R.id.tv_my_address_book:
+                startActivity(new Intent(this, MyAddressBookActivity.class));
+                break;
+            case R.id.tv_send_confirmation_link:
+                startActivity(new Intent(this, LoginSendConfirmationLinkActivity.class));
+                break;
+            case R.id.tv_reset_password:
+                startActivity(new Intent(this, LoginResetPasswordActivity.class));
+                break;
+            case R.id.tv_reset_email:
+                startActivity(new Intent(this, LoginComplementEmailActivity.class));
+                break;
+            case R.id.tv_payment_status:
+                startActivity(new Intent(this, PaymentStatusActivity.class));
+                break;
+            case R.id.tv_select_address:
+                startActivity(new Intent(this, CheckoutSelectAddressActivity.class));
+                break;
         }
     }
 
-    public void switchMenu(int type){
+    public DrawerLayout getDrawerLayout() {
+        return drawerLayout;
+    }
+
+    public void switchMenu(int type) {
         resetSelect();
-        switch (type){
+        switch (type) {
             case Const.MENU_HOME:
                 rlDrawerHome.setSelected(true);
                 ivHome.setSelected(true);
@@ -256,6 +325,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 ivCategoryTree.setSelected(true);
                 tvCategoryTree.setSelected(true);
                 rlDrawerCategorytree.setSelected(true);
+                startActivity(new Intent(this, CategoryActivity.class));
                 break;
             case Const.MENU_GO_LOYALTY:
                 ivGoLoyalty.setSelected(true);
@@ -266,6 +336,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 ivShoppingCart.setSelected(true);
                 tvShoppingCart.setSelected(true);
                 rlDrawerShoppingcart.setSelected(true);
+                startActivity(new Intent(this, ShoppingCartActivity.class));
                 break;
             case Const.MENU_WISHLIST:
                 ivWishlist.setSelected(true);
@@ -284,6 +355,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 break;
             case Const.MENU_HELP_SUPPORT:
                 tvHelpSupport.setSelected(true);
+                startActivity(new Intent(this, HelpSupportActivity.class));
                 break;
             case Const.MENU_SETTING:
                 tvSetting.setSelected(true);
@@ -291,46 +363,15 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
         }
     }
 
-    private void resetSelect() {
-        ivHome.setSelected(false);
-        tvHome.setSelected(false);
-        rlDrawerHome.setSelected(false);
-
-        ivCategoryTree.setSelected(false);
-        tvCategoryTree.setSelected(false);
-        rlDrawerCategorytree.setSelected(false);
-
-        ivGoLoyalty.setSelected(false);
-        tvGoLoyalty.setSelected(false);
-        rlDrawerGoLoyalty.setSelected(false);
-
-        ivShoppingCart.setSelected(false);
-        tvShoppingCart.setSelected(false);
-        rlDrawerShoppingcart.setSelected(false);
-
-        ivWishlist.setSelected(false);
-        tvWishlist.setSelected(false);
-        rlDrawerWishlist.setSelected(false);
-
-        ivOrderlist.setSelected(false);
-        tvOrder.setSelected(false);
-        rlDrawerOrder.setSelected(false);
-
-        ivNotification.setSelected(false);
-        tvNotification.setSelected(false);
-        rlDrawerNotification.setSelected(false);
-
-        tvHelpSupport.setSelected(false);
-        tvSetting.setSelected(false);
-    }
-
-    public DrawerLayout getDrawerLayout() {
-        return drawerLayout;
-    }
-
     @Override
     public void showHome(HomeResponse homeResponse) {
         initRecycler(homeResponse);
+    }
+
+    private void initRecycler(HomeResponse homeResponse) {
+        HomeBaseAdapter homeBaseAdapter = new HomeBaseAdapter(homeResponse);
+        rvHome.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        rvHome.setAdapter(homeBaseAdapter);
     }
 
     @Override
