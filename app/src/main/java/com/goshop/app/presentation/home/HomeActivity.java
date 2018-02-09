@@ -11,6 +11,7 @@ import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.LoginActivity;
+import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
 import com.goshop.app.presentation.category.CategoryActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
@@ -275,6 +276,7 @@ public class HomeActivity extends BaseActivity<HomeContract.Presenter> implement
                 break;
             case R.id.rl_drawer_notification:
                 switchMenu(Const.MENU_NOTIFICATION);
+                startActivity(new Intent(this, NotificationActivity.class));
                 break;
             case R.id.tv_help_support:
                 switchMenu(Const.MENU_HELP_SUPPORT);

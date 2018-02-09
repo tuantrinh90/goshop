@@ -25,6 +25,7 @@ import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
@@ -112,6 +113,13 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params) {
         return accountCloudDataSource.myOrderDetailRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<NotificationsResponse> notificationRequest(Map<String, Object> params) {
+        return accountCloudDataSource.notificationRequest(params)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread());
     }

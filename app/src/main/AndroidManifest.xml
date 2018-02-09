@@ -40,6 +40,7 @@
         <activity android:name=".presentation.myorder.MyOrderListActivity"/>
         <activity android:name=".presentation.myorder.MyOrderDetailActivity"/>
         <activity android:name=".presentation.checkout.CheckoutActivity"/>
+        <activity android:name=".presentation.account.NotificationActivity"/>
 
         <activity android:name=".presentation.home.PromotionLandingListActivity"/>
         <activity android:name=".presentation.home.PromotionBannerActivity"/>

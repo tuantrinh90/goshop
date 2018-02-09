@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+<LinearLayout
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_margin="@dimen/activity_horizontal_margin"
+    android:layout_height="50dp">
+    <View
+        android:id="@+id/view_notification_icon"
+        style="@style/homeSlideItemTextNum"
+        android:visibility="visible"
+        android:layout_marginTop="@dimen/home_padding"
+        android:background="@drawable/drawable_slidemenu_hint_point"
+        android:layout_width="@dimen/size_8"
+        android:layout_height="@dimen/size_8"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="match_parent">
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_notification_name"
+            android:text="@string/home_item_test_product_name"
+            android:layout_marginLeft="@dimen/home_padding"
+            android:textColor="@color/blackTrans87"
+            android:fontFamily="sans-serif-medium"
+            android:maxLines="2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_notification_date"
+            android:layout_marginLeft="@dimen/home_padding"
+            android:textColor="@color/blackTrans38"
+            android:fontFamily="sans-serif-light"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+    </LinearLayout>
+</LinearLayout>
+    <View
+        android:layout_alignParentBottom="true"
+        style="@style/homeWrapWidthLine"/>
+</RelativeLayout>
