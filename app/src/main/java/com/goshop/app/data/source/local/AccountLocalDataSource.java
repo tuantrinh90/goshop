@@ -21,6 +21,7 @@ import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -44,6 +45,11 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Inject
     public AccountLocalDataSource(LocalApi localApi) {
         this.localApi = localApi;
+    }
+
+    @Override
+    public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
+        return null;
     }
 
     @Override

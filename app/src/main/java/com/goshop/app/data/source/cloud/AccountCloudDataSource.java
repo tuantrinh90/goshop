@@ -21,6 +21,7 @@ import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -45,6 +46,11 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Inject
     public AccountCloudDataSource(RestApi restApi) {
         this.restApi = restApi;
+    }
+
+    @Override
+    public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
+        return restApi.homePageRequest(params);
     }
 
     public Observable<UserInfo> getUserInfo(String id) {

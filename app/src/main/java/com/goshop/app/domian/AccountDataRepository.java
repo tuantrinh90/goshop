@@ -21,6 +21,7 @@ import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
@@ -52,6 +53,11 @@ public class AccountDataRepository implements AccountRepository {
         @Named("localAccountDataSource") AccountDataSource accountLocalDataSource) {
         this.accountCloudDataSource = accountCloudDataSource;
         this.accountLocalDataSource = accountLocalDataSource;
+    }
+
+    @Override
+    public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
+        return accountCloudDataSource.homePageRequest(params);
     }
 
     @Override

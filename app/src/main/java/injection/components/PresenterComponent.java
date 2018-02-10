@@ -18,6 +18,8 @@ import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.home.HomeActivity;
+import com.goshop.app.presentation.home.HomePageActivity;
+import com.goshop.app.presentation.home.HomePageContract;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
 import com.goshop.app.presentation.login.LoginComplementEmailActivity;
@@ -43,6 +45,8 @@ import injection.modules.PresenterModule;
 public interface PresenterComponent {
 
     Activity getActivity();
+
+    void inject(HomePageActivity homePageActivity);
 
     void inject(MyOrderListActivity myOrderListActivity);
 

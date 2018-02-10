@@ -20,6 +20,7 @@ import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.request.SaveUserRequest;
 import com.goshop.app.data.model.response.CheckoutResponse;
@@ -47,6 +48,12 @@ import retrofit2.http.Url;
 public interface RetrofitRestApi {
 
     String CONTENT_TYPE_JSON = "Content-Type: application/vnd.api+json";
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<WidgetViewReponse> homePageRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET

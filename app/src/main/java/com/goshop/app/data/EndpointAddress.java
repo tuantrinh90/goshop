@@ -5,6 +5,8 @@ import com.goshop.app.BuildConfig;
 @SuppressWarnings("ALL")
 public class EndpointAddress {
 
+    public static final String HOME_PAGE = "";
+
     public static final String ADD_ADDRESS = "";
 
     //todo wait for api

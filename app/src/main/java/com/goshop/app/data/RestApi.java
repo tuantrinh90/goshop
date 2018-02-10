@@ -20,6 +20,7 @@ import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -33,6 +34,8 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 public interface RestApi {
+
+    Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params);
 
     io.reactivex.Observable<GetWeatherResponse> getWeather(String id);
 

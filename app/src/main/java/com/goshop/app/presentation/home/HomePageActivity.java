@@ -1,18 +1,19 @@
 package com.goshop.app.presentation.home;
 
+import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.account.HelpSupportActivity;
-import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.category.CategoryActivity;
-import com.goshop.app.presentation.login.RegisterActivity;
+import com.goshop.app.presentation.model.WidgetViewModel;
 import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
+import com.goshop.app.widget.WidgetViewAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,20 +22,27 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.BindView;
+import injection.components.DaggerPresenterComponent;
+import injection.modules.PresenterModule;
 
 /**
  * Created by helen on 2018/2/8.
  */
 
-public class HomeSlideMenuActivity extends BaseActivity implements NavigationView
-    .OnNavigationItemSelectedListener {
+public class HomePageActivity extends BaseActivity<HomePageContract.Presenter> implements NavigationView
+    .OnNavigationItemSelectedListener, HomePageContract.View {
 
     @BindView(R.id.cset_search)
     CustomSearchEditText csetSearch;
@@ -42,11 +50,20 @@ public class HomeSlideMenuActivity extends BaseActivity implements NavigationVie
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 
+    @BindView(R.id.iv_search_icon)
+    ImageView ivSearchIcon;
+
     @BindView(R.id.navigation_slide_menu)
     NavigationView navigationSlideMenu;
 
+    @BindView(R.id.recyclerview_home)
+    RecyclerView recyclerviewHome;
+
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.tv_toolbar_cart_counter)
+    CustomTextView tvToolbarCartCounter;
 
     private boolean isLogin = false;
 
@@ -68,17 +85,13 @@ public class HomeSlideMenuActivity extends BaseActivity implements NavigationVie
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-
-        toggle.syncState();
-
+        //TODO(helen) wait for api
+        mPresenter.homePageRequest(null);
     }
 
     @Override
     public int getContentView() {
-        return R.layout.activity_home_slide_menu;
+        return R.layout.activity_home_page;
     }
 
     @Override
@@ -88,8 +101,34 @@ public class HomeSlideMenuActivity extends BaseActivity implements NavigationVie
 
     @Override
     public void inject() {
+        initDrawerLayout();
         initNavigation();
         drawerLisenter();
+        initPresenter();
+        initRecyclerview();
+    }
+
+    private void initPresenter() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
+    }
+
+    private void initDrawerLayout() {
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+            this, drawerLayout, toolbar, 0,
+            0);
+        toggle.syncState();
+    }
+
+    private WidgetViewAdapter viewAdapter;
+    private void initRecyclerview() {
+        LinearLayoutManager manager = new LinearLayoutManager(this);
+        recyclerviewHome.setLayoutManager(manager);
+        viewAdapter = new WidgetViewAdapter(new ArrayList<>());
+        recyclerviewHome.setAdapter(viewAdapter);
     }
 
     private void initNavigation() {
@@ -131,32 +170,33 @@ public class HomeSlideMenuActivity extends BaseActivity implements NavigationVie
                 Intent intent = null;
                 switch (menuId) {
                     case R.id.slide_menu_categories:
-                        intent = new Intent(HomeSlideMenuActivity.this, CategoryActivity.class);
+                        intent = new Intent(HomePageActivity.this, CategoryActivity.class);
                         break;
                     case R.id.slide_menu_go_loyalty:
                         //TODO(helen) this part need to decide
                         break;
                     case R.id.slide_menu_cart:
-                        intent = new Intent(HomeSlideMenuActivity.this, ShoppingCartActivity.class);
+                        intent = new Intent(HomePageActivity.this, ShoppingCartActivity.class);
                         break;
                     case R.id.slide_menu_wishlist:
                         //TODO(helen) this part need to decide
                         break;
                     case R.id.slide_menu_orders:
-                        intent = new Intent(HomeSlideMenuActivity.this, MyOrderDetailActivity.class);
+                        intent = new Intent(HomePageActivity.this,
+                            MyOrderDetailActivity.class);
                         break;
                     case R.id.slide_menu_notifications:
-                        intent = new Intent(HomeSlideMenuActivity.this, NotificationActivity.class);
+                        intent = new Intent(HomePageActivity.this, NotificationActivity.class);
                         break;
                     case R.id.slide_menu_help:
-                        intent = new Intent(HomeSlideMenuActivity.this, HelpSupportActivity.class);
+                        intent = new Intent(HomePageActivity.this, HelpSupportActivity.class);
                         break;
                     case R.id.slide_menu_setting:
-                        intent = new Intent(HomeSlideMenuActivity.this, SettingsActivity.class);
+                        intent = new Intent(HomePageActivity.this, SettingsActivity.class);
                         break;
                 }
 
-                if(intent != null) {
+                if (intent != null) {
                     slideMenuStartActivity(intent);
                 }
             }
@@ -185,5 +225,10 @@ public class HomeSlideMenuActivity extends BaseActivity implements NavigationVie
         menuId = item.getItemId();
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void homePageResult(List<WidgetViewModel> widgetViewModels) {
+        viewAdapter.setUpdateDatas(widgetViewModels);
     }
 }

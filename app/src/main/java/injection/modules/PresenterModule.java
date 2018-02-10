@@ -36,6 +36,8 @@ import com.goshop.app.presentation.checkout.CheckoutSelectPresenter;
 import com.goshop.app.presentation.checkout.PaymentStatusContract;
 import com.goshop.app.presentation.checkout.PaymentStatusPresenter;
 import com.goshop.app.presentation.home.HomeContract;
+import com.goshop.app.presentation.home.HomePageContract;
+import com.goshop.app.presentation.home.HomePagePresenter;
 import com.goshop.app.presentation.home.HomePresenter;
 import com.goshop.app.presentation.home.PromotionContract;
 import com.goshop.app.presentation.home.PromotionPresenter;
@@ -93,6 +95,13 @@ public class PresenterModule {
     @ActivityScope
     public Activity provideActivity() {
         return mActivity;
+    }
+
+
+    @Provides
+    @ActivityScope
+    public HomePageContract.Presenter provideHomePagePresenter(AccountDataRepository dataRepository) {
+        return new HomePagePresenter(dataRepository);
     }
 
     @Provides

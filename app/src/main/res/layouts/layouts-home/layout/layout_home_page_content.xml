@@ -10,7 +10,11 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
         android:background="@color/color_divider_grey"/>
-    <include layout="@layout/layout_slide_menu_content_main"/>
+    <!--<include layout="@layout/layout_slide_menu_content_main"/>-->
 
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_home"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
 
 </LinearLayout>
