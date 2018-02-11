@@ -9,11 +9,11 @@ public class WidgetViewModel {
     public static final int VIEW_TYPE_BANNER = 0x01;
 
     //TODO(HELEN) these(from 1 to 8) are wait for api and then rename
-    public static final int VIEW_TYPE_1 = 0x02;
+    public static final int VIEW_TYPE_ON_AIR = 0x02;
 
-    public static final int VIEW_TYPE_2 = 0x03;
+    public static final int VIEW_TYPE_SINGLE_PICTURE = 0x03;
 
-    public static final int VIEW_TYPE_3 = 0x04;
+    public static final int VIEW_TYPE_HORIZONTAL = 0x04;
 
     public static final int VIEW_TYPE_4 = 0x05;
 

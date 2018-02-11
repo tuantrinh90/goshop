@@ -1,9 +1,14 @@
 package com.goshop.app.presentation.home;
 
+import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.WidgetBannerVM;
+import com.goshop.app.presentation.model.WidgetGridDetailVM;
+import com.goshop.app.presentation.model.WidgetHorizontalVM;
+import com.goshop.app.presentation.model.WidgetOnAirVM;
+import com.goshop.app.presentation.model.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.WidgetViewModel;
 
 import java.util.ArrayList;
@@ -16,7 +21,8 @@ import io.reactivex.observers.DisposableObserver;
  * Created by helen on 2018/2/10.
  */
 
-public class HomePagePresenter extends RxPresenter<HomePageContract.View> implements HomePageContract.Presenter{
+public class HomePagePresenter extends RxPresenter<HomePageContract.View> implements
+    HomePageContract.Presenter {
 
     AccountRepository accountRepository;
 
@@ -49,13 +55,21 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
     }
 
     //TODO(helen) this is mock data
-    private List<WidgetViewModel> getMockData(){
+    private List<WidgetViewModel> getMockData() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.addAll(getWidgetBannerVMS());
+        widgetViewModels.addAll(getWidgetOnAirVMS());
+        widgetViewModels.addAll(getSinglePicture());
+        widgetViewModels.addAll(getWidgetHorizontalVMs("Trending Now"));
+        widgetViewModels.addAll(getSinglePicture());
+        widgetViewModels.addAll(getWidgetHorizontalVMs("Best Seller"));
+        widgetViewModels.addAll(getSinglePicture());
+        widgetViewModels.addAll(getWidgetHorizontalVMs("TV Special"));
         return widgetViewModels;
     }
+
     //TODO(helen) this is mock data
-    private List<WidgetBannerVM> getWidgetBannerVMS(){
+    private List<WidgetBannerVM> getWidgetBannerVMS() {
         List<WidgetBannerVM> widgetBannerVMS = new ArrayList<>();
         List<String> images = new ArrayList<>();
         images.add(
@@ -73,5 +87,35 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
                 ".com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg");
         widgetBannerVMS.add(new WidgetBannerVM(images));
         return widgetBannerVMS;
+    }
+
+    //TODO(helen) this is mock data
+    private List<WidgetOnAirVM> getWidgetOnAirVMS() {
+        List<WidgetOnAirVM> widgetOnAirVMS = new ArrayList<>();
+        widgetOnAirVMS.add(
+            new WidgetOnAirVM("", "", "Manjung Korean Crispy Seaweed (Sea Salt)", "RM 239.00",
+                "RM 119.00", "30% OFF"));
+        return widgetOnAirVMS;
+    }
+
+    //TODO(helen) this is mock data
+    private List<WidgetSinglePictureVM> getSinglePicture() {
+        List<WidgetSinglePictureVM> singlePictureVMS = new ArrayList<>();
+        singlePictureVMS.add(new WidgetSinglePictureVM("", R.mipmap.detail_top_demo));
+        return singlePictureVMS;
+    }
+
+    //TODO(helen) this is mock data
+    private List<WidgetHorizontalVM> getWidgetHorizontalVMs(String title) {
+        List<WidgetHorizontalVM> widgetHorizontalVMS = new ArrayList<>();
+        List<WidgetGridDetailVM> detailVMS = new ArrayList<>();
+        WidgetGridDetailVM detailVM = new WidgetGridDetailVM("", R.mipmap.bought, "30% OFF",
+            "Bloom By Naelofar Hijab (3pcs set)", "RM 269.00", "RM 119.00");
+        detailVMS.add(detailVM);
+        detailVMS.add(detailVM);
+        detailVMS.add(detailVM);
+        detailVMS.add(detailVM);
+        widgetHorizontalVMS.add(new WidgetHorizontalVM(title, detailVMS));
+        return widgetHorizontalVMS;
     }
 }

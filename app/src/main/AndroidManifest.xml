@@ -137,7 +137,7 @@
         <activity android:name=".presentation.category.CategoryActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.home.HomePageActivity"
+        <activity android:name=".presentation.home.MainPageActivity"
             android:theme="@style/WhiteBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

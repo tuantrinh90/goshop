@@ -40,6 +40,11 @@
             android:title="@string/my_orders"/>
 
         <item
+            android:id="@+id/slide_menu_rewards"
+            android:icon="@mipmap/icon_my_orders"
+            android:title="@string/my_rewards"/>
+
+        <item
             android:id="@+id/slide_menu_notifications"
             android:icon="@mipmap/icon_notifaications"
             app:actionLayout="@layout/menu_counter"

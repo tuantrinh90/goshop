@@ -66,7 +66,6 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.notificationRequest(new HashMap<>());
-        ViewUtils.setBg(imageviewLeftMenu, R.mipmap.back);
     }
 
     @OnClick(R.id.imageview_left_menu)

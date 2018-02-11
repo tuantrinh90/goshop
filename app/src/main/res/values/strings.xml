@@ -319,5 +319,16 @@
     <string name="notifications">Notifications</string>
     <string name="my_wishlist">My Wishlist</string>
     <string name="my_orders">My Orders</string>
+    <string name="my_rewards">My Rewards</string>
+    <string name="trending_now">Trending Now</string>
+    <string name="tv_shows">TV Shows</string>
+    <string name="brands">Brands</string>
+    <string name="on_air">On Air</string>
+    <string name="tv_schedule">TV Schedule</string>
+    <string name="ch118">ch118</string>
+    <string name="ch120">ch120</string>
+    <string name="ch303">ch303</string>
+    <string name="fb_live">Fb Live</string>
+    <string name="demo_detail_title">Manjung Korean Crispy Seaweed (Sea Salt)</string>
 
 </resources>

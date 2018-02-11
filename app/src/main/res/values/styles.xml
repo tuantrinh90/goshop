@@ -119,7 +119,7 @@
         <item name="android:layout_height">@dimen/line_height</item>
         <item name="android:background">@color/blackTrans12</item>
     </style>
-    
+
     <style name="pageCardInterval" parent="homeWrapWidthLine">
         <item name="android:layout_height">12dp</item>
     </style>
@@ -248,15 +248,15 @@
     </style>
 
     <declare-styleable name="animET">
-        <attr name="hint" format="reference" />
+        <attr name="hint" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="animSpinner">
-        <attr name="sp_hint" format="reference" />
+        <attr name="sp_hint" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="pwd">
-        <attr name="pwd_hint" format="reference" />
+        <attr name="pwd_hint" format="reference"/>
     </declare-styleable>
 
     <style name="PopMenuAnimation">
@@ -280,6 +280,13 @@
         <item name="android:textSize">@dimen/size_font_16</item>
         <item name="android:typeface">sans</item>
         <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="mainTabStyle">
+        <item name="android:textSize">@dimen/size_font_14</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
 </resources>

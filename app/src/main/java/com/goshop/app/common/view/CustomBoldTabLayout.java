@@ -45,7 +45,9 @@ public class CustomBoldTabLayout extends TabLayout {
                 this.addTab(tab.setText(pagerAdapter.getPageTitle(i)));
                 AppCompatTextView view = (AppCompatTextView) ((ViewGroup) slidingTabStrip
                     .getChildAt(i)).getChildAt(1);
-                view.setTypeface(typeface);
+                //TODO if have font file open this method
+                view.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
+//                view.setTypeface(typeface);
             }
         }
     }
