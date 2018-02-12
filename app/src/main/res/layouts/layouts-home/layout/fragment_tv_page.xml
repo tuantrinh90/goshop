@@ -1,15 +1,170 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="wrap_content"
+    android:scrollbars="none">
 
-    <com.goshop.app.common.view.CustomTextView
-        android:id="@+id/tv_test"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/home"/>
+        android:orientation="vertical">
+        <include
+            layout="@layout/layout_channels"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size_16"
+            android:paddingRight="@dimen/size_16"
+            android:paddingBottom="@dimen/size_16"
+            android:orientation="vertical">
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_18"
+                    android:text="12"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_18"
+                    android:text="13"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_18"
+                    android:text="14"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_18"
+                    android:text="15"/>
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_18"
+                    android:text="16"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_18"
+                    android:text="17"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_18"
+                    android:text="18"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:padding="@dimen/size_8"
+                    android:textSize="@dimen/size_font_18"
+                    android:text="19"/>
+
+            </LinearLayout>
+
+            <LinearLayout android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="MON"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="TUE"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="WED"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="THU"/>
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="FRI"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="SAT"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="SUN"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="MON"/>
+
+            </LinearLayout>
+
+        </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_1"
+            android:background="@color/color_divider_grey"/>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_video_right"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:layout_alignParentRight="true"/>
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_video_left"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:layout_toLeftOf="@id/recyclerview_video_right"/>
+
+        </RelativeLayout>
+    </LinearLayout>
 
 
-</LinearLayout>
+</android.support.v4.widget.NestedScrollView>
+

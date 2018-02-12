@@ -19,6 +19,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.WidgetViewReponse;
@@ -232,6 +233,16 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params) {
         return null;
     }
 }

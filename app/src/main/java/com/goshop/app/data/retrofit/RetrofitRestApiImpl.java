@@ -20,6 +20,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.WidgetViewReponse;
@@ -266,5 +267,17 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CATEGORY_DETAIL);
         return retrofitRestApi.categoryDetailRequest(url, params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.TV_SHOWS);
+        return retrofitRestApi.rightVideoRequest(url, params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.TV_SHOWS);
+        return retrofitRestApi.leftVideoRequest(url, params);
     }
 }

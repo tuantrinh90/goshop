@@ -41,6 +41,8 @@ import com.goshop.app.presentation.home.HomePagePresenter;
 import com.goshop.app.presentation.home.HomePresenter;
 import com.goshop.app.presentation.home.PromotionContract;
 import com.goshop.app.presentation.home.PromotionPresenter;
+import com.goshop.app.presentation.home.TVShowPageContract;
+import com.goshop.app.presentation.home.TVShowPagePresenter;
 import com.goshop.app.presentation.login.LoginComplementEmailContract;
 import com.goshop.app.presentation.login.LoginComplementEmailPresenter;
 import com.goshop.app.presentation.login.LoginResetPasswordContract;
@@ -70,7 +72,6 @@ import dagger.Provides;
 import injection.ActivityScope;
 
 @Module
-
 public class PresenterModule {
 
     private Fragment fragment;
@@ -97,10 +98,10 @@ public class PresenterModule {
         return mActivity;
     }
 
-
     @Provides
     @ActivityScope
-    public HomePageContract.Presenter provideHomePagePresenter(AccountDataRepository dataRepository) {
+    public HomePageContract.Presenter provideHomePagePresenter(
+        AccountDataRepository dataRepository) {
         return new HomePagePresenter(dataRepository);
     }
 
@@ -300,6 +301,13 @@ public class PresenterModule {
     public CategoryTreeDetailContract.Presenter provideCategoryTreeDetailPresenter(
         AccountDataRepository dataRepository) {
         return new CategoryTreeDetailPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public TVShowPageContract.Presenter provideTVShowPresenter(
+        AccountDataRepository dataRepository) {
+        return new TVShowPagePresenter(dataRepository);
     }
 
 }

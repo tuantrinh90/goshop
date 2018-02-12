@@ -21,7 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@android:color/white"
-        android:scrollbars="none"
         android:layout_gravity="start"
         android:fitsSystemWindows="true"
         app:itemTextColor="@drawable/selector_menu_color"

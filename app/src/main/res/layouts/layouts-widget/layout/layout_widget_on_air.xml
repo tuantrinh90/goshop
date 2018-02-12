@@ -20,7 +20,7 @@
             android:textColor="@color/color_text_black"
             android:text="@string/on_air"/>
         <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_btn__on_air_tv_schedule"
+            android:id="@+id/tv_btn_on_air_tv_schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:drawableRight="@mipmap/arrow_right"
@@ -31,7 +31,10 @@
         />
     </RelativeLayout>
 
-    <LinearLayout
+    <include
+        layout="@layout/layout_channels"/>
+
+    <!--<LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_16"
@@ -104,7 +107,7 @@
             android:text="@string/fb_live"
             android:textAllCaps="true"
             android:layout_weight="4"/>
-    </LinearLayout>
+    </LinearLayout>-->
 
     <ImageView
         android:layout_width="match_parent"

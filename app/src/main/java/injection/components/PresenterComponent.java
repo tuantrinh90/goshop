@@ -21,6 +21,7 @@ import com.goshop.app.presentation.home.HomeActivity;
 import com.goshop.app.presentation.home.HomePageFragment;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
+import com.goshop.app.presentation.home.TVShowPageFragment;
 import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 import com.goshop.app.presentation.login.LoginResetPasswordActivity;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
@@ -108,5 +109,7 @@ public interface PresenterComponent {
     void inject(CategoryActivity categoryActivity);
 
     void inject(CategoryTreeDetailActivity categoryTreeDetailActivity);
+
+    void inject(TVShowPageFragment tvShowPageFragment);
 
 }

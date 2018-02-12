@@ -93,6 +93,8 @@ public class EndpointAddress {
 
     public static final String CATEGORY_DETAIL = "";
 
+    public static final String TV_SHOWS = "";
+
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;
     }

@@ -18,6 +18,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.WidgetViewReponse;
@@ -237,6 +238,7 @@ public interface RetrofitRestApi {
     @POST
     Observable<MyPointsReponse> myPointsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
@@ -252,9 +254,22 @@ public interface RetrofitRestApi {
     @POST
     Observable<CategoryMenuResponse> categoryRightMenuRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<SearchResultResponse> categoryDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<TVShowReponse> rightVideoRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<TVShowReponse> leftVideoRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

@@ -20,6 +20,7 @@ import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -142,6 +143,16 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         tvSlideSignUp.setVisibility(isLogin ? View.GONE : View.VISIBLE);
         llSlideUserInfo.setVisibility(isLogin ? View.VISIBLE : View.GONE);
         initSlideMenuHeaderListener();
+        disableNavigationViewScrollbars(navigationSlideMenu);
+    }
+
+    private void disableNavigationViewScrollbars(NavigationView navigationView) {
+        if (navigationView != null) {
+            NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView.getChildAt(0);
+            if (navigationMenuView != null) {
+                navigationMenuView.setVerticalScrollBarEnabled(false);
+            }
+        }
     }
 
     private void drawerLisenter() {

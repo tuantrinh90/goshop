@@ -25,23 +25,23 @@ public class WidgetOnAirViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.tv_btn_buy_now)
     CustomTextView tvBtnBuyNow;
 
-    @BindView(R.id.tv_btn__on_air_tv_schedule)
+    @BindView(R.id.tv_btn_on_air_tv_schedule)
     CustomTextView tvBtnOnAirTvSchedule;
 
-    @BindView(R.id.tv_on_air_ch118)
-    CustomTextView tvOnAirCh118;
+    @BindView(R.id.tv_btn_ch118)
+    CustomTextView tvBtnCh118;
 
-    @BindView(R.id.tv_on_air_ch120)
-    CustomTextView tvOnAirCh120;
+    @BindView(R.id.tv_btn_ch120)
+    CustomTextView tvBtnCh120;
 
-    @BindView(R.id.tv_on_air_ch303)
-    CustomTextView tvOnAirCh303;
+    @BindView(R.id.tv_btn_ch303)
+    CustomTextView tvBtnCh303;
 
     @BindView(R.id.tv_on_air_display_percent)
     CustomBoldTextView tvOnAirDisplayPercent;
 
-    @BindView(R.id.tv_on_air_fb_live)
-    CustomTextView tvOnAirFbLive;
+    @BindView(R.id.tv_btn_fb_live)
+    CustomTextView tvBtnFbLive;
 
     @BindView(R.id.tv_on_air_now_price)
     CustomBoldTextView tvOnAirNowPrice;

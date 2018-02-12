@@ -18,6 +18,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
@@ -108,5 +109,9 @@ public interface AccountRepository {
     Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params);
 
     Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params);
+
+    Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params);
+
+    Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params);
 
 }

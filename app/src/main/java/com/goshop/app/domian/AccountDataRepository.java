@@ -18,6 +18,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
@@ -264,5 +265,15 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         return accountCloudDataSource.categoryDetailRequest(params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params) {
+        return accountCloudDataSource.rightVideoRequest(params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params) {
+        return accountCloudDataSource.leftVideoRequest(params);
     }
 }
