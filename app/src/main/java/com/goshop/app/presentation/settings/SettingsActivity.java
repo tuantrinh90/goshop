@@ -3,8 +3,10 @@ package com.goshop.app.presentation.settings;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.model.SettingsModel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -75,6 +77,11 @@ public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> i
     @Override
     public void showSettingView(List<SettingsModel> settingsModelse) {
         settingsAdapter.setUpdateDatas(settingsModelse);
+    }
+
+    @Override
+    public void startChangePasswordScreen() {
+        startActivity(new Intent(this, ChangePasswordActivity.class));
     }
 
 

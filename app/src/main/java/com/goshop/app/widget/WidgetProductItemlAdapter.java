@@ -4,12 +4,11 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.presentation.model.PdpFrequentlyDataVM;
-import com.goshop.app.presentation.model.WidgetGridDetailVM;
+import com.goshop.app.presentation.model.widget.ProductItemVM;
+import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
-import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -23,11 +22,17 @@ import butterknife.ButterKnife;
 /**
  * Created by helen on 2018/1/12.
  */
-public class WidgetGridDetailAdapter extends RecyclerView.Adapter {
+public class WidgetProductItemlAdapter extends RecyclerView.Adapter {
 
-    private List<WidgetGridDetailVM> detailVMS;
+    private final String RM = "RM ";
 
-    public WidgetGridDetailAdapter(List<WidgetGridDetailVM> detailVMS) {
+    private List<ProductItemVM> detailVMS;
+
+    private OnProductItemClickListener onProductItemClickListener;
+
+    public WidgetProductItemlAdapter(OnProductItemClickListener onProductItemClickListener,
+        List<ProductItemVM> detailVMS) {
+        this.onProductItemClickListener = onProductItemClickListener;
         this.detailVMS = detailVMS;
     }
 
@@ -53,32 +58,36 @@ public class WidgetGridDetailAdapter extends RecyclerView.Adapter {
         @BindView(R.id.iv_grid_pic)
         ImageView ivGridPic;
 
+        @BindView(R.id.tv_grid_now_price)
+        CustomBoldTextView tvGridNowPrice;
+
+        @BindView(R.id.tv_grid_old)
+        CustomTextView tvGridOld;
+
         @BindView(R.id.tv_grid_percent)
         CustomBoldTextView tvGridPercent;
 
         @BindView(R.id.tv_grid_title)
         CustomTextView tvGridTitle;
 
-        @BindView(R.id.tv_grid_old)
-        CustomTextView tvGridOld;
-
-        @BindView(R.id.tv_grid_now_price)
-        CustomBoldTextView tvGridNowPrice;
-
         public GridDetailViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(WidgetGridDetailVM detailVM) {
-            Glide.with(itemView.getContext()).load(detailVM.getImageUrl()).asBitmap()
-                .error(detailVM.getIconDefault())
+        void bindingData(ProductItemVM detailVM) {
+            Glide.with(itemView.getContext()).load(detailVM.getImage()).asBitmap()
+                .error(detailVM.getImageDefault())
                 .into(ivGridPic);
-            tvGridPercent.setText(detailVM.getPercent());
+            tvGridPercent.setText(detailVM.getPrice().getRM().getDiscountTitle());
             tvGridTitle.setText(detailVM.getTitle());
-            tvGridOld.setText(detailVM.getOld());
-            tvGridNowPrice.setText(detailVM.getNow());
+            String oldPrice = RM + detailVM.getPrice().getRM().getOriginal();
+            String nowPrice = RM + detailVM.getPrice().getRM().getDiscounted();
+            tvGridOld.setText(oldPrice);
+            tvGridNowPrice.setText(nowPrice);
             tvGridOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            itemView
+                .setOnClickListener(v -> onProductItemClickListener.onProductItemClick(detailVM));
         }
     }
 }

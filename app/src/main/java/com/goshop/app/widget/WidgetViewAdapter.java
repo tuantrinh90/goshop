@@ -1,11 +1,14 @@
 package com.goshop.app.widget;
 
 import com.goshop.app.R;
-import com.goshop.app.presentation.model.WidgetBannerVM;
-import com.goshop.app.presentation.model.WidgetHorizontalVM;
-import com.goshop.app.presentation.model.WidgetOnAirVM;
-import com.goshop.app.presentation.model.WidgetSinglePictureVM;
-import com.goshop.app.presentation.model.WidgetViewModel;
+import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
+import com.goshop.app.presentation.model.widget.WidgetOnAirVM;
+import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
+import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
+import com.goshop.app.presentation.model.widget.WidgetViewModel;
+import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
+import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
+import com.goshop.app.widget.WidgetListener.OnSinglePicturClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -21,11 +24,31 @@ import java.util.List;
 
 public class WidgetViewAdapter extends RecyclerView.Adapter {
 
-    List<WidgetViewModel> widgetViewModels;
+    private OnBannerItemClickListener onBannerItemClickListener;
+
+    private OnProductItemClickListener onProductItemClickListener;
+
+    private OnSinglePicturClickListener onSinglePicturClickListener;
+
+    private List<WidgetViewModel> widgetViewModels;
 
     public WidgetViewAdapter(
         List<WidgetViewModel> widgetViewModels) {
         this.widgetViewModels = widgetViewModels;
+    }
+
+    public void setOnProductItemClickListener(
+        OnProductItemClickListener onProductItemClickListener) {
+        this.onProductItemClickListener = onProductItemClickListener;
+    }
+
+    public void setOnBannerItemClickListener(OnBannerItemClickListener onBannerItemClickListener) {
+        this.onBannerItemClickListener = onBannerItemClickListener;
+    }
+
+    public void setOnSinglePicturClickListener(
+        OnSinglePicturClickListener onSinglePicturClickListener) {
+        this.onSinglePicturClickListener = onSinglePicturClickListener;
     }
 
     public void setUpdateDatas(List<WidgetViewModel> widgetViewModels) {
@@ -55,10 +78,10 @@ public class WidgetViewAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.layout_widget_single_picture, viewGroup, false);
                 viewHolder = new WidgetSinglePictureViewHolder(singleView);
                 break;
-            case WidgetViewModel.VIEW_TYPE_HORIZONTAL:
+            case WidgetViewModel.VIEW_TYPE_PRODUCT_SCROLLER:
                 View horizontalView = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.layout_widget_horizontal, viewGroup,false);
-                viewHolder = new WidgetHorizontalViewHolder(horizontalView);
+                    .inflate(R.layout.layout_widget_horizontal, viewGroup, false);
+                viewHolder = new WidgetProductScrollerViewHolder(horizontalView);
                 break;
         }
         return viewHolder;
@@ -68,15 +91,16 @@ public class WidgetViewAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         WidgetViewModel widgetViewModel = widgetViewModels.get(position);
         if (viewHolder instanceof WidgetBannerViewHolder) {
-            ((WidgetBannerViewHolder) viewHolder).bindingData((WidgetBannerVM) widgetViewModel);
+            ((WidgetBannerViewHolder) viewHolder)
+                .bindingData((WidgetCarouselVM) widgetViewModel, onBannerItemClickListener);
         } else if (viewHolder instanceof WidgetOnAirViewHolder) {
             ((WidgetOnAirViewHolder) viewHolder).bindingData((WidgetOnAirVM) widgetViewModel);
         } else if (viewHolder instanceof WidgetSinglePictureViewHolder) {
             ((WidgetSinglePictureViewHolder) viewHolder).bindingData(
-                (WidgetSinglePictureVM) widgetViewModel);
-        } else if(viewHolder instanceof WidgetHorizontalViewHolder) {
-            ((WidgetHorizontalViewHolder) viewHolder).bindingData(
-                (WidgetHorizontalVM) widgetViewModel);
+                (WidgetSinglePictureVM) widgetViewModel, onSinglePicturClickListener);
+        } else if (viewHolder instanceof WidgetProductScrollerViewHolder) {
+            ((WidgetProductScrollerViewHolder) viewHolder).bindingData(
+                (WidgetProductScrollerVM) widgetViewModel, onProductItemClickListener);
         }
     }
 

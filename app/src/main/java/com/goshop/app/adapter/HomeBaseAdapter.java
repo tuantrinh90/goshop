@@ -116,7 +116,7 @@ public class HomeBaseAdapter extends RecyclerView.Adapter {
                 .skipBannerPromotion(vpHomeHeader.getContext(), topBanners.get(position)));
             vpHomeHeader.setAdapter(slidingImageAdapter);
             customPagerIndicator.setViewPager(vpHomeHeader);
-            BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(vpHomeHeader);
+            BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(vpHomeHeader,2000);
             bannerAutoPlayHelper.autoPlay();
         }
 

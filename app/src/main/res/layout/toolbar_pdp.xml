@@ -19,12 +19,12 @@
 
         <ImageView
             android:id="@+id/imageview_left_menu"
-            android:layout_width="@dimen/size_40"
-            android:layout_height="@dimen/size_40"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
             android:scaleType="centerInside"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:src="@mipmap/back"
+            android:background="@mipmap/icon_back"
             tools:ignore="ContentDescription"
             android:layout_alignParentStart="true"/>
 
@@ -42,10 +42,10 @@
         <ImageView
             android:id="@+id/imageview_right_cart"
             android:layout_width="@dimen/size_24"
-            android:layout_height="@dimen/size_16"
+            android:layout_height="@dimen/size_24"
             android:layout_marginRight="@dimen/size_16"
             android:scaleType="centerInside"
-            android:src="@mipmap/shoppingcart"
+            android:background="@mipmap/icon_shopping_cart"
             android:layout_toLeftOf="@id/imageview_right_menu"
             android:layout_centerVertical="true"
             tools:ignore="ContentDescription" android:layout_marginEnd="@dimen/size_16"

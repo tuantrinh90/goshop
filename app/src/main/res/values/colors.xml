@@ -13,6 +13,9 @@
     <color name="color_text_bold_black">#dd000000</color>
     <color name="color_main_pink">#ec458b</color>
     <color name="color_litte_pink">#FFF0F5</color>
+    <color name="color_litte_grey">#f1f1f1</color>
+    <color name="color_back_grey">#42221f1f</color>
+    <color name="color_hot_pink">#FF69B4</color>
 
     <color name="color_main_orange">#ff9911</color>
     <color name="color_main_green">#22aa11</color>

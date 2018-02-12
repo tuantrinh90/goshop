@@ -3,7 +3,6 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
-import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.TVVideoLeftVM;
 import com.goshop.app.presentation.model.TVVideoRightVM;
 
@@ -14,6 +13,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,17 +37,8 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     @BindView(R.id.recyclerview_video_right)
     RecyclerView recyclerviewVideoRight;
 
-    @BindView(R.id.tv_btn_ch118)
-    CustomTextView tvBtnCh118;
-
-    @BindView(R.id.tv_btn_ch120)
-    CustomTextView tvBtnCh120;
-
-    @BindView(R.id.tv_btn_ch303)
-    CustomTextView tvBtnCh303;
-
-    @BindView(R.id.tv_btn_fb_live)
-    CustomTextView tvFbLive;
+    @BindView(R.id.rg_channels)
+    RadioGroup rgChannels;
 
     Unbinder unbinder;
 
@@ -97,12 +88,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         recyclerviewVideoRight.setAdapter(rightAdapter);
     }
 
-    @Override
-    public void setup() {
-        //TODO(helen)wait for api
-        mPresenter.rightVideoRequest(null);
-        mPresenter.leftVideoRequest(null);
-    }
     private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
@@ -110,6 +95,26 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             .build()
             .inject(this);
     }
+
+    @Override
+    public void setup() {
+        //TODO(helen)wait for api
+        mPresenter.rightVideoRequest(null);
+        mPresenter.leftVideoRequest(null);
+        rgChannels.setOnCheckedChangeListener((RadioGroup group, int checkedId) -> {
+            switch (checkedId) {
+                case R.id.rb_ch118:
+                    break;
+                case R.id.rb_ch120:
+                    break;
+                case R.id.rb_ch303:
+                    break;
+                case R.id.rb_fb_live:
+                    break;
+            }
+        });
+    }
+
     @Override
     public void onDestroyView() {
         super.onDestroyView();

@@ -221,10 +221,11 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                 break;
             case R.id.btn_login:
                 if (isEmail() && isPassword()) {
-
+                    finish();
                 }
                 break;
             case R.id.tv_forgot_password:
+                startActivity(new Intent(this, ChangePasswordActivity.class));
                 break;
             case R.id.rl_login_facebook:
                 //facebook sdk code

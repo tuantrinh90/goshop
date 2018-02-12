@@ -134,6 +134,10 @@ public class SettingsAdapter extends RecyclerView.Adapter {
 
         void bindingData(SettingsSingleDetailVM singleDetailVM) {
             tvItemDetail.setText(singleDetailVM.getDetail());
+            if (singleDetailVM.getItemClickListener() != null) {
+                itemView.setOnClickListener(
+                    v -> singleDetailVM.getItemClickListener().onDetailItemClick());
+            }
         }
     }
 

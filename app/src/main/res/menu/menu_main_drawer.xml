@@ -60,6 +60,10 @@
         <item
             android:id="@+id/slide_menu_setting"
             android:title="@string/settings"/>
+
+        <item
+            android:id="@+id/slide_menu_others"
+            android:title="@string/other_page"/>
     </group>
 
 </menu>

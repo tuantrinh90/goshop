@@ -2,8 +2,9 @@ package com.goshop.app.widget;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.goshop.app.presentation.model.widget.CarouselItemsVM;
+import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
 
-import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,28 +19,33 @@ import java.util.List;
 
 public class WidgetBannerAdapter extends PagerAdapter {
 
-    private Context context;
+    private List<CarouselItemsVM> itemsVMS;
 
-    private List<String> imageUrls;
+    private OnBannerItemClickListener onBannerItemClickListener;
 
-    public WidgetBannerAdapter(Context context, List<String> imageUrls) {
-        this.context = context;
-        this.imageUrls = imageUrls;
+    public WidgetBannerAdapter(List<CarouselItemsVM> itemsVMS,
+        OnBannerItemClickListener onBannerItemClickListener) {
+        this.itemsVMS = itemsVMS;
+        this.onBannerItemClickListener = onBannerItemClickListener;
     }
 
     @Override
     public int getCount() {
-        return imageUrls.size();
+        return itemsVMS.size();
     }
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View imageLayout = LayoutInflater.from(context)
+        View imageLayout = LayoutInflater.from(container.getContext())
             .inflate(R.layout.item_widget_banner, container, false);
+        CarouselItemsVM itemsVM = itemsVMS.get(position);
         final ImageView imageView = imageLayout
             .findViewById(R.id.iv_widget_banner);
-        Glide.with(context).load(imageUrls.get(position)).into(imageView);
+        Glide.with(container.getContext()).load(itemsVM.getImage()).into(imageView);
         container.addView(imageLayout, 0);
+        imageView.setOnClickListener(v -> {
+            onBannerItemClickListener.onBannerItemClick(itemsVM);
+        });
         return imageLayout;
     }
 

@@ -1,4 +1,4 @@
-package com.goshop.app.presentation.model;
+package com.goshop.app.presentation.model.widget;
 
 /**
  * this is the widget model for dynimac
@@ -13,9 +13,9 @@ public class WidgetViewModel {
 
     public static final int VIEW_TYPE_SINGLE_PICTURE = 0x03;
 
-    public static final int VIEW_TYPE_HORIZONTAL = 0x04;
+    public static final int VIEW_TYPE_PRODUCT_SCROLLER = 0x04;
 
-    public static final int VIEW_TYPE_4 = 0x05;
+    public static final int VIEW_TYPE_SEARCH_RESULT = 0x05;
 
     public static final int VIEW_TYPE_5 = 0x06;
 

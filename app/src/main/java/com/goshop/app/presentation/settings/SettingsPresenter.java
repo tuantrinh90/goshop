@@ -59,7 +59,7 @@ public class SettingsPresenter extends RxPresenter<SettingsContract.View> implem
         settingsModels.add(new SettingsSwitchVM("SMS Marketing Consent."));
 
         settingsModels.add(new SettingsTitleVM("Account"));
-        settingsModels.add(new SettingsSingleDetailVM("Change Password"));
+        settingsModels.add(new SettingsSingleDetailVM("Change Password", ()->mView.startChangePasswordScreen()));
         settingsModels.add(new SettingsSingleDetailVM("Logout"));
 
         return settingsModels;

@@ -14,6 +14,7 @@ public class SettingsContract {
 
     interface View extends BaseView {
         void showSettingView(List<SettingsModel> settingsModelse);
+        void startChangePasswordScreen();
     }
 
     public interface Presenter extends BasePresenter<View> {

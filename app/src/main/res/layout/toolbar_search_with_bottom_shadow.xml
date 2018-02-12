@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/size_20"
+            android:layout_marginLeft="@dimen/size_16"
             android:layout_toRightOf="@id/imageview_left_menu"
             android:layout_toEndOf="@id/imageview_left_menu"/>
     </RelativeLayout>

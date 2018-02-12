@@ -1,21 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RadioGroup
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rg_channels"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/size_16"
-    android:paddingBottom="@dimen/size_18"
     android:paddingLeft="@dimen/size_24"
     android:paddingRight="@dimen/size_24"
     android:orientation="horizontal">
 
-    <com.goshop.app.common.view.CustomTextView
-        android:id="@+id/tv_btn_ch118"
+    <com.goshop.app.common.view.CustomRadioButton
+        android:id="@+id/rb_ch118"
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"
+        android:checked="true"
+        android:button="@null"
         android:gravity="center"
         android:textSize="@dimen/size_font_16"
-        android:textColor="@drawable/selector_text_black_grey"
+        android:textColor="@drawable/selector_check_text_black_grey"
         android:text="@string/ch118"
         android:textAllCaps="true"
         android:layout_weight="4"/>
@@ -27,13 +28,14 @@
         android:layout_weight="0.5"
         android:background="@mipmap/ic_home_center_video_line"
     />
-    <com.goshop.app.common.view.CustomTextView
-        android:id="@+id/tv_btn_ch120"
+    <com.goshop.app.common.view.CustomRadioButton
+        android:id="@+id/rb_ch120"
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"
+        android:button="@null"
         android:gravity="center"
         android:textSize="@dimen/size_font_16"
-        android:textColor="@drawable/selector_text_black_grey"
+        android:textColor="@drawable/selector_check_text_black_grey"
         android:text="@string/ch120"
         android:textAllCaps="true"
         android:layout_weight="4"/>
@@ -45,13 +47,14 @@
         android:layout_weight="0.5"
         android:background="@mipmap/ic_home_center_video_line"
     />
-    <com.goshop.app.common.view.CustomTextView
-        android:id="@+id/tv_btn_ch303"
+    <com.goshop.app.common.view.CustomRadioButton
+        android:id="@+id/rb_ch303"
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"
+        android:button="@null"
         android:gravity="center"
         android:textSize="@dimen/size_font_16"
-        android:textColor="@drawable/selector_text_black_grey"
+        android:textColor="@drawable/selector_check_text_black_grey"
         android:text="@string/ch303"
         android:textAllCaps="true"
         android:layout_weight="4"/>
@@ -63,15 +66,16 @@
         android:layout_weight="0.5"
         android:background="@mipmap/ic_home_center_video_line"
     />
-    <com.goshop.app.common.view.CustomTextView
-        android:id="@+id/tv_btn_fb_live"
+    <com.goshop.app.common.view.CustomRadioButton
+        android:id="@+id/rb_fb_live"
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"
+        android:button="@null"
         android:gravity="center"
         android:textSize="@dimen/size_font_16"
-        android:textColor="@drawable/selector_text_black_grey"
+        android:textColor="@drawable/selector_check_text_black_grey"
         android:text="@string/fb_live"
         android:textAllCaps="true"
         android:layout_weight="4"/>
 
-</LinearLayout>
+</RadioGroup>

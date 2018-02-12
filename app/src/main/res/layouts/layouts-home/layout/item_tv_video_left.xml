@@ -2,7 +2,9 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/size_16"
+    android:paddingRight="@dimen/size_16">
 
     <com.goshop.app.common.view.CustomBoldTextView
         android:id="@+id/tv_video_left_time"
@@ -10,8 +12,7 @@
         android:layout_height="wrap_content"
         android:gravity="left"
         android:textColor="@color/color_text_black"
-        android:textSize="@dimen/size_font_14"
-        android:paddingLeft="@dimen/size_16"
+        android:textSize="@dimen/size_font_16"
         android:paddingTop="@dimen/size_16"
         android:paddingBottom="@dimen/size_8"
         android:layout_alignParentTop="true"
@@ -20,10 +21,9 @@
     <ImageView
         android:id="@+id/iv_video_left"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_240"
-        android:layout_marginLeft="@dimen/size_16"
+        android:layout_height="@dimen/size_224"
         android:layout_below="@id/tv_video_left_time"
-        android:layout_marginRight="@dimen/size_16"/>
+       />
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_video_left_percent"
@@ -35,7 +35,7 @@
         android:padding="@dimen/size_4"
         android:text="@string/on_air"
         android:textAllCaps="true"
-        android:layout_alignLeft="@id/iv_video_left"
+        android:layout_alignParentLeft="true"
         android:layout_alignBottom="@id/iv_video_left"
         android:background="@color/color_main_pink"/>
 
@@ -48,9 +48,6 @@
         android:textColor="@color/color_text_black"
         android:textSize="@dimen/size_font_14"
         android:paddingTop="@dimen/size_8"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingRight="@dimen/size_16"
-        android:paddingBottom="@dimen/size_8"
         android:background="@android:color/transparent"/>
 
     <com.goshop.app.common.view.CustomTextView
@@ -61,9 +58,7 @@
         android:gravity="left"
         android:textColor="@color/color_hint_grey"
         android:textSize="@dimen/size_font_12"
-        android:paddingTop="@dimen/size_8"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingBottom="@dimen/size_8"
+        android:paddingTop="@dimen/size_4"
         android:background="@android:color/transparent"/>
 
     <com.goshop.app.common.view.CustomTextView
@@ -74,9 +69,8 @@
         android:gravity="left"
         android:textColor="@color/color_text_black"
         android:textSize="@dimen/size_font_14"
-        android:paddingTop="@dimen/size_8"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingBottom="@dimen/size_8"
+        android:paddingTop="@dimen/size_4"
+        android:paddingBottom="@dimen/size_14"
         android:background="@android:color/transparent"/>
 
     <com.goshop.app.common.view.CustomTextView
@@ -86,8 +80,7 @@
         android:background="@drawable/bg_white_round_circle"
         android:layout_alignParentRight="true"
         android:layout_below="@id/tv_video_left_title"
-        android:layout_marginTop="@dimen/size_12"
-        android:layout_marginRight="@dimen/size_16"
+        android:layout_marginTop="@dimen/size_4"
         android:paddingLeft="@dimen/size_10"
         android:paddingRight="@dimen/size_10"
         android:paddingTop="@dimen/size_8"
@@ -97,8 +90,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
-        android:layout_marginRight="@dimen/size_16"
-        android:layout_marginLeft="@dimen/size_16"
         android:background="@color/color_divider_grey"
         android:layout_below="@id/tv_video_left_now_price"/>
 

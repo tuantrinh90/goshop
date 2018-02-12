@@ -4,12 +4,18 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.WidgetBannerVM;
-import com.goshop.app.presentation.model.WidgetGridDetailVM;
-import com.goshop.app.presentation.model.WidgetHorizontalVM;
-import com.goshop.app.presentation.model.WidgetOnAirVM;
-import com.goshop.app.presentation.model.WidgetSinglePictureVM;
-import com.goshop.app.presentation.model.WidgetViewModel;
+import com.goshop.app.presentation.model.widget.CarouselAutoPlayVM;
+import com.goshop.app.presentation.model.widget.CarouselDataVM;
+import com.goshop.app.presentation.model.widget.CarouselItemsVM;
+import com.goshop.app.presentation.model.widget.ProductDataVM;
+import com.goshop.app.presentation.model.widget.ProductItemVM;
+import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
+import com.goshop.app.presentation.model.widget.ProductPriceVM;
+import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
+import com.goshop.app.presentation.model.widget.WidgetOnAirVM;
+import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
+import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
+import com.goshop.app.presentation.model.widget.WidgetViewModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -57,36 +63,34 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getMockData() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
-        widgetViewModels.addAll(getWidgetBannerVMS());
+        widgetViewModels.add(getWidgetBanners());
         widgetViewModels.addAll(getWidgetOnAirVMS());
         widgetViewModels.addAll(getSinglePicture());
-        widgetViewModels.addAll(getWidgetHorizontalVMs("Trending Now"));
+        widgetViewModels.add(getWidgetProductScrollerVM("Trending Now"));
         widgetViewModels.addAll(getSinglePicture());
-        widgetViewModels.addAll(getWidgetHorizontalVMs("Best Seller"));
+        widgetViewModels.add(getWidgetProductScrollerVM("Best Seller"));
         widgetViewModels.addAll(getSinglePicture());
-        widgetViewModels.addAll(getWidgetHorizontalVMs("TV Special"));
+        widgetViewModels.add(getWidgetProductScrollerVM("TV Special"));
         return widgetViewModels;
     }
 
     //TODO(helen) this is mock data
-    private List<WidgetBannerVM> getWidgetBannerVMS() {
-        List<WidgetBannerVM> widgetBannerVMS = new ArrayList<>();
-        List<String> images = new ArrayList<>();
-        images.add(
-            "http://a.hiphotos.baidu" +
-                ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
-        images.add(
-            "http://g.hiphotos.baidu" +
-                ".com/image/pic/item/7aec54e736d12f2ee7ed822044c2d56284356881.jpg");
-        images.add("http://img843.ph.126.net/HQO2EzKsZ30Kvp03799Gyg==/883831426873459781.jpg");
-        images.add(
-            "http://g.hiphotos.baidu" +
-                ".com/image/pic/item/9a504fc2d56285356bd508329aef76c6a7ef63e8.jpg");
-        images.add(
-            "http://a.hiphotos.baidu" +
-                ".com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg");
-        widgetBannerVMS.add(new WidgetBannerVM(images));
-        return widgetBannerVMS;
+    private WidgetCarouselVM getWidgetBanners() {
+        CarouselAutoPlayVM autoPlayVM = new CarouselAutoPlayVM(1000, true);
+        List<CarouselItemsVM> itemsVMS = new ArrayList<>();
+        CarouselItemsVM itemsVM = new CarouselItemsVM("http://a.hiphotos.baidu" +
+            ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
+        CarouselItemsVM itemsVM1 = new CarouselItemsVM("http://g.hiphotos.baidu" +
+            ".com/image/pic/item/7aec54e736d12f2ee7ed822044c2d56284356881.jpg");
+        CarouselItemsVM itemsVM2 = new CarouselItemsVM("http://img843.ph.126.net/HQO2EzKsZ30Kvp03799Gyg==/883831426873459781.jpg");
+        CarouselItemsVM itemsVM3 = new CarouselItemsVM("http://g.hiphotos.baidu" +
+            ".com/image/pic/item/9a504fc2d56285356bd508329aef76c6a7ef63e8.jpg");
+        itemsVMS.add(itemsVM);
+        itemsVMS.add(itemsVM1);
+        itemsVMS.add(itemsVM2);
+        itemsVMS.add(itemsVM3);
+        CarouselDataVM carouselDataVM = new CarouselDataVM(itemsVMS);
+        return new WidgetCarouselVM(autoPlayVM, carouselDataVM);
     }
 
     //TODO(helen) this is mock data
@@ -106,16 +110,19 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
     }
 
     //TODO(helen) this is mock data
-    private List<WidgetHorizontalVM> getWidgetHorizontalVMs(String title) {
-        List<WidgetHorizontalVM> widgetHorizontalVMS = new ArrayList<>();
-        List<WidgetGridDetailVM> detailVMS = new ArrayList<>();
-        WidgetGridDetailVM detailVM = new WidgetGridDetailVM("", R.mipmap.bought, "30% OFF",
-            "Bloom By Naelofar Hijab (3pcs set)", "RM 269.00", "RM 119.00");
-        detailVMS.add(detailVM);
-        detailVMS.add(detailVM);
-        detailVMS.add(detailVM);
-        detailVMS.add(detailVM);
-        widgetHorizontalVMS.add(new WidgetHorizontalVM(title, detailVMS));
-        return widgetHorizontalVMS;
+    private WidgetProductScrollerVM getWidgetProductScrollerVM(String title) {
+        ProductPriceRMVM productPriceRMVM = new ProductPriceRMVM("25% OFF", "149", "200");
+        ProductPriceVM productPriceVM = new ProductPriceVM(productPriceRMVM);
+        List<String> attributes = new ArrayList<>();
+        attributes.add("New");
+        ProductItemVM productItemVM = new ProductItemVM(R.mipmap.bought, "",
+            "Bloom By Naelofar Hijab (3pcs set)", attributes, productPriceVM);
+        List<ProductItemVM> productItemVMS = new ArrayList<>();
+        productItemVMS.add(productItemVM);
+        productItemVMS.add(productItemVM);
+        productItemVMS.add(productItemVM);
+        productItemVMS.add(productItemVM);
+        ProductDataVM productDataVM = new ProductDataVM(productItemVMS);
+        return new WidgetProductScrollerVM(title, productDataVM);
     }
 }

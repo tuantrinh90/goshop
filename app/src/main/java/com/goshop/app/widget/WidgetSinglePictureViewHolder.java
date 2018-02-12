@@ -2,7 +2,8 @@ package com.goshop.app.widget;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.presentation.model.WidgetSinglePictureVM;
+import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
+import com.goshop.app.widget.WidgetListener.OnSinglePicturClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -15,7 +16,7 @@ import butterknife.ButterKnife;
  * Created by helen on 2018/2/11.
  */
 
-public class WidgetSinglePictureViewHolder extends RecyclerView.ViewHolder{
+public class WidgetSinglePictureViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.iv_single_picture)
     ImageView ivSinglePicture;
@@ -25,9 +26,13 @@ public class WidgetSinglePictureViewHolder extends RecyclerView.ViewHolder{
         ButterKnife.bind(this, itemView);
     }
 
-    void bindingData(WidgetSinglePictureVM singlePictureVM) {
+    void bindingData(WidgetSinglePictureVM singlePictureVM,
+        OnSinglePicturClickListener onSinglePicturClickListener) {
         Glide.with(itemView.getContext()).load(singlePictureVM.getImageUrl()).asBitmap()
             .error(singlePictureVM.getIconDefault())
             .into(ivSinglePicture);
+        itemView.setOnClickListener(v -> {
+            onSinglePicturClickListener.onSinglePictureClick(singlePictureVM);
+        });
     }
 }

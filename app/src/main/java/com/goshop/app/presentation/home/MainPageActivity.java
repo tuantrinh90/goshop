@@ -12,7 +12,9 @@ import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.category.CategoryActivity;
+import com.goshop.app.presentation.login.TestMenuActivity;
 import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
+import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
@@ -106,16 +108,16 @@ public class MainPageActivity extends BaseActivity implements NavigationView
     }
 
     @Override
-    public String getScreenTitle() {
-        return null;
-    }
-
-    @Override
     public void inject() {
         initNavigation();
         drawerLisenter();
         initTabLayoutViewPager();
         initSearch();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return null;
     }
 
     private void initNavigation() {
@@ -144,15 +146,6 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         llSlideUserInfo.setVisibility(isLogin ? View.VISIBLE : View.GONE);
         initSlideMenuHeaderListener();
         disableNavigationViewScrollbars(navigationSlideMenu);
-    }
-
-    private void disableNavigationViewScrollbars(NavigationView navigationView) {
-        if (navigationView != null) {
-            NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView.getChildAt(0);
-            if (navigationMenuView != null) {
-                navigationMenuView.setVerticalScrollBarEnabled(false);
-            }
-        }
     }
 
     private void drawerLisenter() {
@@ -190,7 +183,7 @@ public class MainPageActivity extends BaseActivity implements NavigationView
                             break;
                         case R.id.slide_menu_orders:
                             intent = new Intent(MainPageActivity.this,
-                                MyOrderDetailActivity.class);
+                                MyOrderListActivity.class);
                             break;
                         case R.id.slide_menu_rewards:
                             //TODO(helen) this part need to decide
@@ -204,12 +197,17 @@ public class MainPageActivity extends BaseActivity implements NavigationView
                         case R.id.slide_menu_setting:
                             intent = new Intent(MainPageActivity.this, SettingsActivity.class);
                             break;
+                        case R.id.slide_menu_others:
+                            intent = new Intent(MainPageActivity.this, TestMenuActivity.class);
+                            break;
                     }
                 }
 
                 drawerHasSelect = false;
                 if (intent != null) {
-                    slideMenuStartActivity(intent);
+                    startActivity(intent);
+                    overridePendingTransition(R.anim.slide_from_right,
+                        R.anim.slide_to_left);
                 }
             }
 
@@ -260,12 +258,13 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         });
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
+    private void disableNavigationViewScrollbars(NavigationView navigationView) {
+        if (navigationView != null) {
+            NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView
+                .getChildAt(0);
+            if (navigationMenuView != null) {
+                navigationMenuView.setVerticalScrollBarEnabled(false);
+            }
         }
     }
 
@@ -286,4 +285,23 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }
+    }
+
+    //TODO(helen) this part need decide
+    public void slideFinishActivity() {
+        finish();
+        overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
+    }
 }

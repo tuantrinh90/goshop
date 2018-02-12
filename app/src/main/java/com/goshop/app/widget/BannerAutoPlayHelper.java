@@ -10,12 +10,15 @@ public class BannerAutoPlayHelper {
 
     private static int NUM_PAGES;
 
+    private static long duration;
+
     private ImageHandler mImageHandler;
 
     private ViewPager sliderViewPager;
 
-    public BannerAutoPlayHelper(ViewPager sliderViewPager) {
+    public BannerAutoPlayHelper(ViewPager sliderViewPager, long duration) {
         this.sliderViewPager = sliderViewPager;
+        this.duration = duration;
         NUM_PAGES = sliderViewPager.getAdapter().getCount();
         mImageHandler = new ImageHandler(sliderViewPager);
     }
@@ -47,7 +50,7 @@ public class BannerAutoPlayHelper {
                         break;
                     case ViewPager.SCROLL_STATE_IDLE:
                         mImageHandler.sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE,
-                            ImageHandler.MSG_DELAY);
+                            duration);
                         break;
                     default:
                         break;
@@ -56,14 +59,12 @@ public class BannerAutoPlayHelper {
 
         });
         mImageHandler
-            .sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, ImageHandler.MSG_DELAY);
+            .sendEmptyMessageDelayed(ImageHandler.MSG_UPDATE_IMAGE, duration);
     }
 
     private static class ImageHandler extends Handler {
 
         static final int MSG_BREAK_SILENT = 3;
-
-        static final long MSG_DELAY = 2000;
 
         static final int MSG_KEEP_SILENT = 2;
 
@@ -92,16 +93,16 @@ public class BannerAutoPlayHelper {
                         currentItem = 0;
                     }
                     viewPagerWeakReference.get().setCurrentItem(currentItem++);
-                    this.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
+                    this.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, duration);
                     break;
                 case MSG_KEEP_SILENT:
                     break;
                 case MSG_BREAK_SILENT:
-                    this.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
+                    this.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, duration);
                     break;
                 case MSG_PAGE_CHANGED:
                     currentItem = msg.arg1;
-                    this.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, MSG_DELAY);
+                    this.sendEmptyMessageDelayed(MSG_UPDATE_IMAGE, duration);
                     break;
                 default:
                     break;
