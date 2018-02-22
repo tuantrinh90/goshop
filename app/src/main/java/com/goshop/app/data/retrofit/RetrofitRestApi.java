@@ -59,24 +59,8 @@ public interface RetrofitRestApi {
     //TODO  this is an example
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<UserInfo> getUserInfo(@Url String url, @Query("userId") String id);
-
-    //TODO  this is an example
-    @Headers({CONTENT_TYPE_JSON})
-    @GET
-    Observable<Boolean> getUserInfo(@Url String url,
-        @QueryMap(encoded = true) Map<String, Object> query);
-
-    //TODO  this is an example
-    @Headers({CONTENT_TYPE_JSON})
-    @GET
     Observable<UserInfo> getUserInfo(@Url String url,
         @Body GetUserRequest getUserRequest);
-
-    //TODO  this is an example
-    @Headers(CONTENT_TYPE_JSON)
-    @POST
-    Observable<UserInfo> saveUserInfo(@Url String url, @Body SaveUserRequest saveUserRequest);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

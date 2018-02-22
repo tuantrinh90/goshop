@@ -12,12 +12,11 @@ import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.account.TermsConditionsActivity;
 import com.goshop.app.presentation.account.WebContentActivity;
-import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.category.CategoryActivity;
 import com.goshop.app.presentation.category.CategoryTreeDetailActivity;
+import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
-import com.goshop.app.presentation.home.DemoActivity;
 import com.goshop.app.presentation.home.HomeActivity;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
@@ -47,8 +46,6 @@ import injection.modules.PresenterModule;
 public interface PresenterComponent {
 
     Activity getActivity();
-
-    void inject(DemoActivity homeActivity);
 
     void inject(MyOrderListActivity myOrderListActivity);
 
