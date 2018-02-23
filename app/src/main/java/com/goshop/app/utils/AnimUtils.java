@@ -9,10 +9,6 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 
-/**
- * Created by img on 2018/1/22.
- */
-
 public class AnimUtils {
 
     public static void setFilterBarAnim(View view, boolean isShow) {
@@ -49,23 +45,25 @@ public class AnimUtils {
 
     }
 
-    public static void rotateArrow(View arrow, boolean rotate){
-        Context context= GoShopApplication.getAppContext();
-        if(rotate) {
-            Animation operatingAnim = AnimationUtils.loadAnimation(context, R.anim.anim_rotate_to_180);
+    public static void rotateArrow(View arrow, boolean rotate) {
+        Context context = GoShopApplication.getAppContext();
+        if (rotate) {
+            Animation operatingAnim = AnimationUtils
+                .loadAnimation(context, R.anim.anim_rotate_to_180);
             operatingAnim.setFillAfter(true);
             arrow.startAnimation(operatingAnim);
-        }else {
-            Animation operatingAnim = AnimationUtils.loadAnimation(context, R.anim.anim_rotate_from180);
+        } else {
+            Animation operatingAnim = AnimationUtils
+                .loadAnimation(context, R.anim.anim_rotate_from180);
             arrow.startAnimation(operatingAnim);
         }
     }
 
-    public static void setPageBottomToTopAnim(Activity context){
+    public static void setPageBottomToTopAnim(Activity context) {
         context.overridePendingTransition(R.anim.enter_bottom_top, R.anim.exit_bottom_top);
     }
 
-    public static void setPageTopToBottomAnim(Activity context){
+    public static void setPageTopToBottomAnim(Activity context) {
         context.overridePendingTransition(R.anim.enter_top_bottom, R.anim.exit_top_bottom);
     }
 

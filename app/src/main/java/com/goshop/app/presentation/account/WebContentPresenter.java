@@ -6,7 +6,8 @@ import com.goshop.app.domian.AccountRepository;
 
 import io.reactivex.observers.DisposableObserver;
 
-public class WebContentPresenter extends RxPresenter<WebContentContract.View> implements WebContentContract
+public class WebContentPresenter extends RxPresenter<WebContentContract.View> implements
+    WebContentContract
     .Presenter {
 
     AccountRepository accountRepository;

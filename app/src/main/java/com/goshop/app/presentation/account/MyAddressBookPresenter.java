@@ -11,8 +11,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-
-
 public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.View> implements
     MyAddressBookContract.Presenter {
 

@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/2/5.
- */
-
 public class CategoryRightChildVM extends CategoryRightMenuModel {
 
     private String title;

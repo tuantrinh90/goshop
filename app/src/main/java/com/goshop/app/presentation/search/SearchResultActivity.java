@@ -33,12 +33,8 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/19.
- */
-
 public class SearchResultActivity extends BaseActivity<SearchResultContract.Presenter> implements
-    SearchResultContract.View , SearchResultAdapter.OnItemClickListener{
+    SearchResultContract.View, SearchResultAdapter.OnItemClickListener {
 
     private static final int NAME_A_Z = 2;
 
@@ -100,11 +96,6 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     }
 
     @Override
-    public String getScreenTitle() {
-        return null;
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initSearchView();
@@ -114,12 +105,9 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         initSearchBar();
     }
 
-    private void initSearchBar() {
-        csetSearch.getEditText().setOnFocusChangeListener((View v, boolean hasFocus) ->{
-            if(hasFocus) {
-                this.finish();
-            }
-        });
+    @Override
+    public String getScreenTitle() {
+        return null;
     }
 
     private void initSearchView() {
@@ -150,6 +138,14 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         recyclerviewFilter.setLayoutManager(layoutManager);
         menuAdapter = new FilterMenuAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
+    }
+
+    private void initSearchBar() {
+        csetSearch.getEditText().setOnFocusChangeListener((View v, boolean hasFocus) -> {
+            if (hasFocus) {
+                this.finish();
+            }
+        });
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_sort, R.id.iv_btn_filter, R.id

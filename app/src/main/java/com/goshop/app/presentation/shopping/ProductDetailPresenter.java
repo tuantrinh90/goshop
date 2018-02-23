@@ -26,10 +26,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/1/11.
- */
-
 public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.View> implements
     ProductDetailContract.Presenter {
 
@@ -192,10 +188,10 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         List<PdpFrequentlyDataVM> frequentlyDataVMS = new ArrayList<>();
         PdpFrequentlyDataVM frequentlyDataVM = new PdpFrequentlyDataVM(
             "Bloom By Naelofar Hijab (3pcs set)", "", "RM 119.00", "",
-            R.mipmap.bought);
+            R.drawable.ic_bought);
         PdpFrequentlyDataVM frequentlyDataVM2 = new PdpFrequentlyDataVM(
             "Bloom By Naelofar Hijab (3pcs set)", "RM 269.00", "RM 119.00", "30% OFF",
-            R.mipmap.bought);
+            R.drawable.ic_bought);
         frequentlyDataVMS.add(frequentlyDataVM);
         frequentlyDataVMS.add(frequentlyDataVM2);
         frequentlyDataVMS.add(frequentlyDataVM);

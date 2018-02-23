@@ -21,10 +21,6 @@ import butterknife.BindView;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/24.
- */
-
 public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Presenter> implements
     ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener {
 
@@ -49,16 +45,16 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.shopping_cart);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         imageviewLeftMenu.setVisibility(View.GONE);
         initPresenter();
         initRecyclerView();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.shopping_cart);
     }
 
     private void initPresenter() {

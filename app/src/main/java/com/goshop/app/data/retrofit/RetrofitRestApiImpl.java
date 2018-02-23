@@ -20,8 +20,10 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -39,7 +41,6 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
 
-
 public class RetrofitRestApiImpl implements RestApi {
 
     private RetrofitRestApi retrofitRestApi;
@@ -47,6 +48,18 @@ public class RetrofitRestApiImpl implements RestApi {
     @Inject
     public RetrofitRestApiImpl(Retrofit retrofit) {
         this.retrofitRestApi = retrofit.create(RetrofitRestApi.class);
+    }
+
+    @Override
+    public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_PAGE);
+        return retrofitRestApi.homePageRequest(url, params);
+    }
+
+    @Override
+    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PDP_DETAILS);
+        return retrofitRestApi.pdpDetailRequest(url, params);
     }
 
     @Override
@@ -83,20 +96,20 @@ public class RetrofitRestApiImpl implements RestApi {
 
     @Override
     public Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params) {
-        String url=EndpointAddress.getFullUrl(EndpointAddress.MYORDER_LIST_REQUEST);
-        return retrofitRestApi.myOrderListRequest(url,params);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.MYORDER_LIST_REQUEST);
+        return retrofitRestApi.myOrderListRequest(url, params);
     }
 
     @Override
     public Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params) {
-        String url=EndpointAddress.getFullUrl(EndpointAddress.MYORDER_DETAIL_REQUEST);
-        return retrofitRestApi.myOrderDetailRequest(url,params);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.MYORDER_DETAIL_REQUEST);
+        return retrofitRestApi.myOrderDetailRequest(url, params);
     }
 
     @Override
     public Observable<NotificationsResponse> notificationRequest(Map<String, Object> params) {
-        String url=EndpointAddress.getFullUrl(EndpointAddress.NOTIFICATION_REQUEST);
-        return retrofitRestApi.notificationRequest(url,params);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.NOTIFICATION_REQUEST);
+        return retrofitRestApi.notificationRequest(url, params);
     }
 
     @Override
@@ -231,6 +244,7 @@ public class RetrofitRestApiImpl implements RestApi {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_POINTS);
         return retrofitRestApi.myPointsRequest(url, params);
     }
+
     @Override
     public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PAYMENT_STATUS);
@@ -259,5 +273,17 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CATEGORY_DETAIL);
         return retrofitRestApi.categoryDetailRequest(url, params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.TV_SHOWS);
+        return retrofitRestApi.rightVideoRequest(url, params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.TV_SHOWS);
+        return retrofitRestApi.leftVideoRequest(url, params);
     }
 }

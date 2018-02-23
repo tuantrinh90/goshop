@@ -16,6 +16,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
+
 public class AddAddressActivity extends BaseActivity<AddAddressContract.Presenter> implements
     AddAddressContract.View {
 
@@ -63,14 +64,14 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.add_address);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initPresenter();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.add_address);
     }
 
     private void initPresenter() {

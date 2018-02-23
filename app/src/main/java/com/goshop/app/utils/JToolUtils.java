@@ -4,10 +4,6 @@ import com.google.gson.Gson;
 
 import com.orhanobut.logger.Logger;
 
-/**
- * Created by img on 2018/1/5.
- */
-
 public class JToolUtils {
 
     //TODO joyson test use : print object

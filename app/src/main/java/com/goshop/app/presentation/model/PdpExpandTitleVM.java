@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/1/11.
- */
-
 public class PdpExpandTitleVM extends ProductDetailModel {
 
     public static final int HAS_ICON = 0;

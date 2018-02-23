@@ -10,6 +10,7 @@ import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
 import com.goshop.app.utils.ScreenHelper;
 import com.orhanobut.logger.Logger;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
@@ -30,10 +31,6 @@ import butterknife.BindString;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
-/**
- * Created by img on 2018/1/30.
- */
 
 public class MyOrderListAdapter extends RecyclerView.Adapter {
 
@@ -177,6 +174,7 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
             }
         }
 
+        @SuppressLint("SetTextI18n")
         void bindingDetail(BodyHolder holder, MyOrderDetailReponse.SubordersBean subordersBean) {
             Glide.with(holder.itemView.getContext()).load(subordersBean.getImage())
                 .into(ivProductIcon);

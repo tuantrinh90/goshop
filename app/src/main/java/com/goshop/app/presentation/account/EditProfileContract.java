@@ -5,8 +5,6 @@ import com.goshop.app.base.BaseView;
 
 import java.util.Map;
 
-
-
 public class EditProfileContract {
 
     interface View extends BaseView {

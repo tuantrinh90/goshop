@@ -15,7 +15,6 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class CustomSearchEditText extends RelativeLayout {
 
     public static final int FIELD_DELAY = 500;

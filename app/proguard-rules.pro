@@ -26,16 +26,15 @@
 
 
 
-#---------------------------------基本指令区----------------------------------
 
--dontskipnonpubliclibraryclassmembers  #指定不去忽略非公共的库的类的成员
--printmapping proguardMapping.txt #生成原类名和混淆后的类名的映射文件
--optimizations !code/simplification/cast,!field/*,!class/merging/*  #指定混淆是采用的算法
--keepattributes *Annotation*,InnerClasses  #不混淆Annotation
--keepattributes Signature  #不混淆泛型
--keepattributes SourceFile,LineNumberTable  #抛出异常时保留代码行号
+-dontskipnonpubliclibraryclassmembers
+-printmapping proguardMapping.txt
+-optimizations !code/simplification/cast,!field/*,!class/merging/*
+-keepattributes *Annotation*,InnerClasses
+-keepattributes Signature
+-keepattributes SourceFile,LineNumberTable
 
-#---------------------------------默认保留区----------------------------------
+
 
 -keep public class * extends android.app.Application
 -keep public class * extends android.app.Activity
@@ -63,31 +62,31 @@
 -keep class com.imaginato.inflighto.data.model.** { *; }
 -dontwarn com.imaginato.inflighto.data.model.**
 
-    #保持实现"Serializable"接口的类不被混淆
+
    -keepnames class * implements java.io.Serializable
 
-    # 所有枚举类型不要混淆
+
     -keepclassmembers enum * {
     public static **[] values();
     public static ** valueOf(java.lang.String);
     }
 
-    # 保持 native 方法不被混淆
+
     -keepclasseswithmembernames class * {
     native <methods>;
     }
 
-    #保持R文件不被混淆，否则，你的反射是获取不到资源id的
+
     -keep class **.R*{*;}
 
-    # parcelable 不被混淆
+
     -keep class * implements android.os.Parcelable {
     public static finalandroid.os.ParcelableCreator *;
     }
 
 
 
-# ------------------- 测试框架-------------------
+
 
 -dontwarn org.hamcrest.**
 -dontwarn android.test.**
@@ -102,7 +101,7 @@
 -keep class sun.misc.** { *; }
 -dontwarn sun.misc.**
 
-#---------------------------------webview------------------------------------
+
 -keep class **.Webview2JsInterface {*; }
 -keep public class android.webkit.**
 -keepclassmembers class fqcn.of.javascript.interface.for.Webview {
@@ -116,7 +115,7 @@
     public void *(android.webkit.WebView, jav.lang.String);
 }
 
-#---------------------------------第三方库------------------------------------
+
 -dontwarn android.arch.lifecycle.LifecycleProcessor
 -dontwarn com.google.auto.common.BasicAnnotationProcessor
 -dontwarn android.content.pm.PackageManager

@@ -19,8 +19,10 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -44,6 +46,16 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Inject
     public AccountLocalDataSource(LocalApi localApi) {
         this.localApi = localApi;
+    }
+
+    @Override
+    public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        return null;
     }
 
     @Override
@@ -226,6 +238,16 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params) {
         return null;
     }
 }

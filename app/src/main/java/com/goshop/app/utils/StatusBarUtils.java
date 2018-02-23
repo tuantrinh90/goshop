@@ -1,12 +1,11 @@
 package com.goshop.app.utils;
 
+import com.readystatesoftware.systembartint.SystemBarTintManager;
+
 import android.app.Activity;
 import android.os.Build;
 import android.view.Window;
 import android.view.WindowManager;
-
-import com.readystatesoftware.systembartint.SystemBarTintManager;
-
 
 public class StatusBarUtils {
 

@@ -6,6 +6,7 @@ import com.goshop.app.common.listener.IRecyclerItemClick;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.data.model.response.CheckoutResponse;
 
+import android.annotation.SuppressLint;
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.text.SpannableString;
@@ -21,10 +22,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-/**
- * Created by img on 2018/1/30.
- */
 
 public class CheckoutListAdapter extends RecyclerView.Adapter {
 
@@ -44,10 +41,10 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_checkout_item, parent, false);
-        RecyclerView.ViewHolder viewHolder = new CheckoutHolder(view);
-        return viewHolder;
+        return new CheckoutHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         CheckoutResponse.CheckoutItem checkoutItem = results.get(position);

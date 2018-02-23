@@ -7,6 +7,12 @@ public class EndpointAddress {
 
     public static final String ADD_ADDRESS = "";
 
+    public static final String CATEGORY_DETAIL = "";
+
+    public static final String CATEGORY_LEFT = "";
+
+    public static final String CATEGORY_RIGHT = "";
+
     //todo wait for api
     public static final String CHANGE_PASSWORD = "";
 
@@ -31,20 +37,28 @@ public class EndpointAddress {
 
     public static final String HELP_SUPPORT = "";
 
-    //todo wait for api
-    public static final String HOME_REQUEST = "";
+    public static final String HOME_PAGE = "";
 
     //todo wait for api
-    public static final String MYORDER_LIST_REQUEST = "";
+    public static final String HOME_REQUEST = "";
 
     //todo wait for api
     public static final String MYORDER_DETAIL_REQUEST = "";
 
     //todo wait for api
-    public static final String NOTIFICATION_REQUEST = "";
+    public static final String MYORDER_LIST_REQUEST = "";
 
     //todo wait for api
     public static final String MY_ADDRESS = "";
+
+    public static final String MY_POINTS = "";
+
+    //todo wait for api
+    public static final String NOTIFICATION_REQUEST = "";
+
+    public static final String PAYMENT_STATUS = "";
+
+    public static final String PDP_DETAILS = "";
 
     //todo wait for api
     public static final String PRODUCT_DETAIL = "";
@@ -67,6 +81,8 @@ public class EndpointAddress {
     //todo wait for api
     public static final String SEARCH_RESULT = "";
 
+    public static final String SELECT_ADDRESS = "";
+
     //todo wait for api
     public static final String SEND_CONFIRMATION_LINK = "";
 
@@ -76,20 +92,10 @@ public class EndpointAddress {
 
     public static final String TERMS_CONDITIONS = "";
 
-    public static final String MY_POINTS = "";
+    public static final String TV_SHOWS = "";
 
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
-
-    public static final String PAYMENT_STATUS = "";
-
-    public static final String SELECT_ADDRESS = "";
-
-    public static final String CATEGORY_LEFT = "";
-
-    public static final String CATEGORY_RIGHT = "";
-
-    public static final String CATEGORY_DETAIL = "";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

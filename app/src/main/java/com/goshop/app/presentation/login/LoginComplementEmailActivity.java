@@ -21,10 +21,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/9.
- */
-
 public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEmailContract
     .Presenter> implements
     LoginComplementEmailContract.View, ToastUtil.OnToastListener {
@@ -48,16 +44,16 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.whoops_email);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initPresenter();
         initEditText();
         toastUtil = new ToastUtil(this, this);
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.whoops_email);
     }
 
     private void initPresenter() {

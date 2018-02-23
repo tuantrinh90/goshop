@@ -22,10 +22,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/2/5.
- */
-
 public class CategoryActivity extends BaseActivity<CategoryContract.Presenter> implements
     CategoryContract.View, CategoryLeftAdapter.CategoryLeftClickListener, CategoryRightAdapter
     .OnChildItemClickListener {
@@ -52,15 +48,15 @@ public class CategoryActivity extends BaseActivity<CategoryContract.Presenter> i
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.category);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initPresenter();
         initRecycleview();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.category);
     }
 
     private void initPresenter() {

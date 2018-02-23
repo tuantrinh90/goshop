@@ -6,7 +6,6 @@ import com.goshop.app.adapter.NotificationAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.utils.ScreenHelper;
-import com.goshop.app.utils.ViewUtils;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -20,8 +19,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
-
-
 
 public class NotificationActivity extends BaseActivity<NotificationContract.Presenter>
     implements NotificationContract.View {
@@ -44,13 +41,14 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
     }
 
     @Override
-    public int getContentView() {
-        return R.layout.activity_notification;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter.notificationRequest(new HashMap<>());
     }
 
     @Override
-    public String getScreenTitle() {
-        return ScreenHelper.getString(R.string.home_drawlayout_notifications);
+    public int getContentView() {
+        return R.layout.activity_notification;
     }
 
     @Override
@@ -63,10 +61,8 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mPresenter.notificationRequest(new HashMap<>());
-        ViewUtils.setBg(imageviewLeftMenu, R.mipmap.back);
+    public String getScreenTitle() {
+        return ScreenHelper.getString(R.string.home_drawlayout_notifications);
     }
 
     @OnClick(R.id.imageview_left_menu)

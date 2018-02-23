@@ -20,7 +20,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-
 public class TermsConditionsActivity extends BaseActivity<TermsConditionsContract.Presenter>
     implements TermsConditionsContract.View, TermsConditionsAdapter.OnTermsItemClickListener {
 
@@ -42,15 +41,15 @@ public class TermsConditionsActivity extends BaseActivity<TermsConditionsContrac
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.terms_conditions);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initRecyclerView();
         initPresenter();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.terms_conditions);
     }
 
     private void initRecyclerView() {

@@ -15,10 +15,6 @@ import android.widget.TextView;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by helen on 2018/1/9.
- */
-
 public class EditTextUtil {
 
     public static void deleteImageShowListener(EditText targetEditText, ImageView deleteIv) {

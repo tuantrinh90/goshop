@@ -7,10 +7,6 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 
 import java.util.Map;
 
-/**
- * Created by Administrator on 2018/1/6.
- */
-
 public interface MyOrderContract {
 
     interface View extends BaseView {

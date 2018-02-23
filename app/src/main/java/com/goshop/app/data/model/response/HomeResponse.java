@@ -3,23 +3,19 @@ package com.goshop.app.data.model.response;
 import java.io.Serializable;
 import java.util.List;
 
-/**
- * Created by img on 2018/1/5.
- */
-
 public class HomeResponse {
+
+    private List<BottomSlide> bottomSlide;
+
+    private List<CenterVideo> centerVideo;
+
+    private String content;
 
     private int itemType;
 
     private int spanSize;
 
     private List<TopBanner> topBanner;
-
-    private List<CenterVideo> centerVideo;
-
-    private List<BottomSlide> bottomSlide;
-
-    private String content;
 
     public int getSpanSize() {
         return spanSize;
@@ -67,10 +63,11 @@ public class HomeResponse {
         this.bottomSlide = bottomSlide;
     }
 
-    public static class TopBanner implements Serializable{
+    public static class TopBanner implements Serializable {
 
         private String img;
-        //search productDetail promotion noSkip
+
+        //ic_search productDetail promotion noSkip
         private String type;
 
         public String getImg() {
@@ -92,15 +89,15 @@ public class HomeResponse {
 
     public static class CenterVideo {
 
-        private int position;
+        private List<CenterVideoList> centerVideoList;
 
         private CenterVideoMsg centerVideoMsg;
 
-        private List<CenterVideoList> centerVideoList;
+        private int itemType;
+
+        private int position;
 
         private PrevAndNext prevAndNext;
-
-        private int itemType;
 
         public int getItemType() {
             return itemType;
@@ -160,11 +157,11 @@ public class HomeResponse {
 
             private String imgUrl;
 
+            private int itemType;
+
             private String productName;
 
             private String productPrice;
-
-            private int itemType;
 
             public String getImgUrl() {
                 return imgUrl;
@@ -225,13 +222,13 @@ public class HomeResponse {
         }
     }
 
-    public static class BottomSlide implements Serializable{
+    public static class BottomSlide implements Serializable {
+
+        private List<BottomSlideChild> bottomSlideChildren;
 
         private String headImageUrl;
 
         private String slideTitle;
-
-        private List<BottomSlideChild> bottomSlideChildren;
 
         private int viewType;
 

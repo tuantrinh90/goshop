@@ -8,8 +8,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-
-
 public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> implements
     EditProfileContract.Presenter {
 

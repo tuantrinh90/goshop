@@ -1,9 +1,5 @@
 package com.goshop.app.utils;
 
-/**
- * Created by helen on 2018/1/30.
- */
-
 public class NumberFormater {
 
     public static String formaterPhoneNumber(String phoneNumber) {

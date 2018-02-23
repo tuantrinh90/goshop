@@ -8,10 +8,9 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/home_center_video_item_image_w_and_h"
-        android:layout_weight="1"
         android:orientation="horizontal"
         android:background="@color/white"
-    >
+        android:baselineAligned="false">
         <RelativeLayout
             android:layout_width="@dimen/home_center_video_item_image_w_and_h"
             android:layout_height="match_parent">
@@ -21,6 +20,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
+                android:contentDescription="@string/app_name"
                 android:background="@mipmap/ic_launcher"
             />
             <com.goshop.app.common.view.CustomTextView
@@ -59,7 +59,7 @@
                 android:layout_alignParentRight="true"
                 android:layout_alignParentBottom="true"
                 android:text="@string/home_video_item_buy_now"
-            />
+                android:layout_alignParentEnd="true"/>
         </RelativeLayout>
     </LinearLayout>
     <View

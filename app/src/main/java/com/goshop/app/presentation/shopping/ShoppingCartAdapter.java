@@ -20,10 +20,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/24.
- */
-
 public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
     private List<ShoppingCartModel> cartModels;
@@ -130,8 +126,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
             //TODO(helen) need decide
             cmpEtCount.setText(productVM.getCount() + "");
             cmpEtCount.setEditBackGround(android.R.color.transparent);
-            cmpEtCount.setMinusBackGround(R.mipmap.minus_round);
-            cmpEtCount.setPlusBackGround(R.mipmap.plus_round);
+            cmpEtCount.setMinusBackGround(R.drawable.ic_minus_round);
+            cmpEtCount.setPlusBackGround(R.drawable.ic_plus_round);
         }
     }
 

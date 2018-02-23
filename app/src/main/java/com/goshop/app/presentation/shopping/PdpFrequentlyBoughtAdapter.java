@@ -18,9 +18,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/12.
- */
 public class PdpFrequentlyBoughtAdapter extends RecyclerView.Adapter {
 
     private List<PdpFrequentlyDataVM> dataVMS;

@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/2/6.
- */
-
 public class CategoryRightMenuModel {
 
     public static final int VIEW_TYPE_CHILD = 2;

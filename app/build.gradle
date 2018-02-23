@@ -32,6 +32,7 @@ android {
     sourceSets {
         main {
             res.srcDirs = [
+                    'src/main/res/layouts/layouts-widget',
                     'src/main/res/layouts/layouts-notification',
                     'src/main/res/layouts/layouts-settings',
                     'src/main/res/layouts/layouts-search',
@@ -147,7 +148,7 @@ dependencies {
         exclude group: 'com.android.support', module: 'support-annotations'
     })
     compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
-        transitive = true;
+        transitive = true
     }
 }
 

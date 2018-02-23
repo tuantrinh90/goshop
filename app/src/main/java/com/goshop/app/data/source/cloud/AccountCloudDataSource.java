@@ -19,8 +19,10 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -45,6 +47,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Inject
     public AccountCloudDataSource(RestApi restApi) {
         this.restApi = restApi;
+    }
+
+    @Override
+    public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
+        return restApi.homePageRequest(params);
+    }
+
+    @Override
+    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        return restApi.pdpDetailRequest(params);
     }
 
     public Observable<UserInfo> getUserInfo(String id) {
@@ -215,6 +227,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     public Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params) {
         return restApi.myPointsRequest(params);
     }
+
     public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
         return restApi.paymentStatusRequest(params);
     }
@@ -237,6 +250,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         return restApi.categoryDetailRequest(params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params) {
+        return restApi.rightVideoRequest(params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params) {
+        return restApi.leftVideoRequest(params);
     }
 
 }

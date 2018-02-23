@@ -10,10 +10,6 @@ import android.support.annotation.Nullable;
 
 import butterknife.BindView;
 
-/**
- * Created by helen on 2018/2/2.
- */
-
 public class CheckoutAddNewAddressActivity extends BaseActivity {
 
     @BindView(R.id.et_new_address_first)
@@ -57,13 +53,13 @@ public class CheckoutAddNewAddressActivity extends BaseActivity {
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.add_new_address);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         textviewRightMenu.setText(getResources().getString(R.string.save));
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.add_new_address);
     }
 }

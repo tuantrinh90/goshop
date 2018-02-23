@@ -26,10 +26,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by img on 2018/1/30.
- */
-
 public class MyOrderListActivity extends BaseActivity<MyOrderContract.Presenter> implements
     MyOrderContract.View, SwipeRefreshLayout.OnRefreshListener {
 
@@ -52,24 +48,24 @@ public class MyOrderListActivity extends BaseActivity<MyOrderContract.Presenter>
 
     @Override
     public void showNetwordErrorMessage() {
-        Toast.makeText(this,R.string.app_network_error,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.app_network_error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showFaildMessage(String errorMessage) {
-        Toast.makeText(this,R.string.app_network_error,Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, R.string.app_network_error, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void showSwipeLayout() {
-        if(swipeLayoutMyorderList!=null){
+        if (swipeLayoutMyorderList != null) {
             swipeLayoutMyorderList.setRefreshing(true);
         }
     }
 
     @Override
     public void closeSwipeLayout() {
-        if(swipeLayoutMyorderList!=null){
+        if (swipeLayoutMyorderList != null) {
             swipeLayoutMyorderList.setRefreshing(false);
         }
     }
@@ -79,14 +75,23 @@ public class MyOrderListActivity extends BaseActivity<MyOrderContract.Presenter>
         //TODO joyson this is empty response ,no need write code
     }
 
-    @Override
-    public int getContentView() {
-        return R.layout.activity_myorder_list;
+    private void initRecycler(MyOrderListResponse response) {
+        List<MyOrderListResponse.ResultsBean> results = response.getResults();
+        rvOrderList.setLayoutManager(new LinearLayoutManager(this));
+        rvOrderList.setAdapter(new MyOrderListAdapter(results));
     }
 
     @Override
-    public String getScreenTitle() {
-        return ScreenHelper.getString(R.string.my_orders_title);
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        mPresenter.getOrderList(new HashMap<>());
+        ViewUtils.setBg(imageviewLeftMenu, R.drawable.ic_icon_back);
+        swipeLayoutMyorderList.setOnRefreshListener(this);
+    }
+
+    @Override
+    public int getContentView() {
+        return R.layout.activity_myorder_list;
     }
 
     @Override
@@ -99,26 +104,23 @@ public class MyOrderListActivity extends BaseActivity<MyOrderContract.Presenter>
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mPresenter.getOrderList(new HashMap<>());
-        ViewUtils.setBg(imageviewLeftMenu, R.mipmap.back);
-        swipeLayoutMyorderList.setOnRefreshListener(this);
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        isFront=true;
+    public String getScreenTitle() {
+        return ScreenHelper.getString(R.string.my_orders_title);
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        isFront=false;
+        isFront = false;
     }
 
-    @OnClick({ R.id.imageview_left_menu})
+    @Override
+    protected void onResume() {
+        super.onResume();
+        isFront = true;
+    }
+
+    @OnClick({R.id.imageview_left_menu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -127,15 +129,9 @@ public class MyOrderListActivity extends BaseActivity<MyOrderContract.Presenter>
         }
     }
 
-    private void initRecycler(MyOrderListResponse response) {
-        List<MyOrderListResponse.ResultsBean> results = response.getResults();
-        rvOrderList.setLayoutManager(new LinearLayoutManager(this));
-        rvOrderList.setAdapter(new MyOrderListAdapter(results));
-    }
-
     @Override
     public void onRefresh() {
-        if (isFront){
+        if (isFront) {
             mPresenter.getOrderList(new HashMap<>());
         }
     }

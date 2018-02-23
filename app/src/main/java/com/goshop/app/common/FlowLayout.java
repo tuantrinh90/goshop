@@ -1,5 +1,6 @@
 package com.goshop.app.common;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.view.View;
@@ -7,8 +8,6 @@ import android.view.ViewGroup;
 
 import java.util.ArrayList;
 import java.util.List;
-
-
 
 public class FlowLayout extends ViewGroup {
 
@@ -98,7 +97,7 @@ public class FlowLayout extends ViewGroup {
         int lineWidth = 0;
         int lineHeight = 0;
 
-        List<View> lineViews = new ArrayList<>();
+        @SuppressLint("DrawAllocation") List<View> lineViews = new ArrayList<>();
 
         int cCount = getChildCount();
 

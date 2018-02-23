@@ -23,29 +23,28 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by img on 2018/1/22.
- */
-
 public class PromotionBannerActivity extends BaseActivity<PromotionContract.Presenter> implements
     PromotionContract.View {
-
-    @BindView(R.id.recycler_promotion_banner)
-    RecyclerView recyclerPromotionBanner;
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageviewLeftMenu;
 
+    @BindView(R.id.recycler_promotion_banner)
+    RecyclerView recyclerPromotionBanner;
+
     private String topBannerUrl;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        imageviewLeftMenu.setBackgroundResource(R.drawable.ic_icon_back);
+        initIntent();
+        mPresenter.getPromotionBanner(new HashMap<>());
+    }
 
     @Override
     public int getContentView() {
         return R.layout.acitivity_promotion_banner;
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return getString(R.string.promotion_item_new_symbol);
     }
 
     @Override
@@ -58,17 +57,8 @@ public class PromotionBannerActivity extends BaseActivity<PromotionContract.Pres
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        imageviewLeftMenu.setBackgroundResource(R.mipmap.back);
-        initIntent();
-        mPresenter.getPromotionBanner(new HashMap<>());
-    }
-
-    private void initRecyclerView(List<String> urls) {
-        recyclerPromotionBanner.setLayoutManager(new LinearLayoutManager(this));
-        recyclerPromotionBanner.setAdapter(
-            new PromotionBannerAdapter(topBannerUrl, urls));
+    public String getScreenTitle() {
+        return getString(R.string.promotion_item_new_symbol);
     }
 
     private void initIntent() {
@@ -95,6 +85,12 @@ public class PromotionBannerActivity extends BaseActivity<PromotionContract.Pres
     @Override
     public void showPromotionBanner(PromotionBannerResponse response) {
         initRecyclerView(response.getImageUrl());
+    }
+
+    private void initRecyclerView(List<String> urls) {
+        recyclerPromotionBanner.setLayoutManager(new LinearLayoutManager(this));
+        recyclerPromotionBanner.setAdapter(
+            new PromotionBannerAdapter(topBannerUrl, urls));
     }
 
     @Override

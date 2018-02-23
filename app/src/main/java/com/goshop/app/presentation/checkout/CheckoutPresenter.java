@@ -8,11 +8,9 @@ import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by Administrator on 2018/1/6.
- */
+public class CheckoutPresenter extends RxPresenter<CheckoutContract.View> implements
+    CheckoutContract.Presenter {
 
-public class CheckoutPresenter extends RxPresenter<CheckoutContract.View> implements CheckoutContract.Presenter{
     AccountRepository accountRepository;
 
     @Inject

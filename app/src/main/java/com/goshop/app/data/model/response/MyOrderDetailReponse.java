@@ -2,109 +2,45 @@ package com.goshop.app.data.model.response;
 
 import java.util.List;
 
-/**
- * Created by img on 2018/1/31.
- */
-
 public class MyOrderDetailReponse {
 
-    /**
-     * orderId : 44752
-     * date : 11 Jan 2018
-     * status : processing
-     * status : 1
-     * customerName : Test Test
-     * subtotal : HK$1,461.00
-     * shippingFee : HK$0.00
-     * grandTotal : HK$1,461.00
-     * shippingAddress : {"firstname":"Test","lastname":"Test","country":"Hong Kong",
-     * "region":"Discovery Bay & Tung Chung","city":"Eeeee","street":"Weeeeeee","postcode":"123",
-     * "telephone":"123456789","fax":"123456789"}
-     * billingAddress : {"firstname":"Test","lastname":"Test","country":"Hong Kong",
-     * "region":"Discovery Bay & Tung Chung","city":"Eeeee","street":"Weeeeeee","postcode":"123",
-     * "telephone":"123456789","fax":"123456789"}
-     * pickupAddress : {}
-     * paymentMethod :     <p><span>PayPal Express Checkout</span></p>
-     <table>
-     <tbody>
-     <tr>
-     <td>Payer Email:</td>
-     </tr>
-     <tr>
-     <td>wnppayment-buyer@mailinator.com</td>
-     </tr>
-     </tbody>
-     </table>
+    private BanktransferBean banktransfer;
 
-     * orderComment : asdfasd fasd fasd fsda er g fgd . afsd as df asd fdsa afd sasdf asdf asdf
-     * qerf feqfeq f sda sadf sad dsfa as df afs d fqefeq qe fas d df ads
-     jjjjjjwe
-     asfd sadfk sdf as df asd f
-     asdf as df asd
-     * isBanktransfer : 0
-     * banktransfer : {}
-     * isRPayment : 0
-     * isPickupInStore : 0
-     * paymentCode : paypal_express
-     * suborders : [{"items":[{"productId":"10383","itemId":"149038","name":"DogNog Refill Weight
-     * : 8oz","brand":"Steve's Real Food","brandId":422,"category":"Hip & Joint Support","qty":1,
-     * "price":"298.00","image":"catalog/product/s/t/steve_s.jpg","options":[],"canViewPdp":1,
-     * "availability":1,"visibility":1,"stockQty":9}]},{"items":[{"productId":"566",
-     * "itemId":"149039","name":"Butcher & Bushel Chicken Wing & Thigh Dinner Weight : 12.7oz",
-     * "brand":"Castor & Pollux","brandId":492,"category":null,"qty":4,"price":"26.00",
-     * "image":"catalog/product/b/u/butcher_bushel_group.jpg","options":[],"canViewPdp":1,
-     * "availability":1,"visibility":1,"stockQty":14}]},{"items":[{"productId":"566",
-     * "itemId":"149040","name":"Butcher & Bushel Shredded Chicken Dinner Weight : 12.7oz",
-     * "brand":"Castor & Pollux","brandId":492,"category":null,"qty":4,"price":"26.00",
-     * "image":"catalog/product/b/u/butcher_bushel_group.jpg","options":[],"canViewPdp":1,
-     * "availability":1,"visibility":1,"stockQty":5}]},{"items":[{"productId":"8",
-     * "itemId":"149041","name":"Wild Kangaroo & Apples Weight : 4lb","brand":"Addiction",
-     * "brandId":33,"category":"","qty":1,"price":"215.00",
-     * "image":"catalog/product/_/2/_20150711162111_17051_43.png","options":[],"canViewPdp":1,
-     * "availability":0,"visibility":1,"stockQty":0}]},{"items":[{"productId":"8",
-     * "itemId":"149042","name":"Wild Kangaroo & Apples Weight : 20lb","brand":"Addiction",
-     * "brandId":33,"category":"Weight Control","qty":1,"price":"740.00",
-     * "image":"catalog/product/_/2/_20150711162111_17051_43.png","options":[],"canViewPdp":1,
-     * "availability":1,"visibility":1,"stockQty":4}]}]
-     */
+    private BillingAddressBean billingAddress;
+
+    private String customerName;
+
+    private String date;
+
+    private String grandTotal;
+
+    private int isBanktransfer;
+
+    private int isPickupInStore;
+
+    private int isRPayment;
+
+    private String orderComment;
 
     private String orderId;
 
-    private String date;
+    private String paymentCode;
+
+    private String paymentMethod;
+
+    private PickupAddressBean pickupAddress;
+
+    private ShippingAddressBean shippingAddress;
+
+    private String shippingFee;
 
     private String state;
 
     private int status;
 
-    private String customerName;
+    private List<SubordersBean> suborders;
 
     private String subtotal;
-
-    private String shippingFee;
-
-    private String grandTotal;
-
-    private ShippingAddressBean shippingAddress;
-
-    private BillingAddressBean billingAddress;
-
-    private PickupAddressBean pickupAddress;
-
-    private String paymentMethod;
-
-    private String orderComment;
-
-    private int isBanktransfer;
-
-    private BanktransferBean banktransfer;
-
-    private int isRPayment;
-
-    private int isPickupInStore;
-
-    private String paymentCode;
-
-    private List<SubordersBean> suborders;
 
     public String getOrderId() {
         return orderId;
@@ -260,35 +196,23 @@ public class MyOrderDetailReponse {
 
     public static class ShippingAddressBean {
 
-        /**
-         * firstname : Test
-         * lastname : Test
-         * country : Hong Kong
-         * region : Discovery Bay & Tung Chung
-         * city : Eeeee
-         * street : Weeeeeee
-         * postcode : 123
-         * telephone : 123456789
-         * fax : 123456789
-         */
+        private String city;
+
+        private String country;
+
+        private String fax;
 
         private String firstname;
 
         private String lastname;
 
-        private String country;
+        private String postcode;
 
         private String region;
 
-        private String city;
-
         private String street;
 
-        private String postcode;
-
         private String telephone;
-
-        private String fax;
 
         public String getFirstname() {
             return firstname;
@@ -375,54 +299,37 @@ public class MyOrderDetailReponse {
 
     }
 
-    public static class SubordersBean{
+    public static class SubordersBean {
 
-        /**
-         * productId : 10383
-         * itemId : 149038
-         * name : DogNog Refill Weight : 8oz
-         * brand : Steve's Real Food
-         * brandId : 422
-         * category : Hip & Joint Support
-         * qty : 1
-         * price : 298.00
-         * image : catalog/product/s/t/steve_s.jpg
-         * options : []
-         * canViewPdp : 1
-         * availability : 1
-         * visibility : 1
-         * stockQty : 9
-         */
-
-        private String productId;
-
-        private String itemId;
-
-        private String name;
+        private int availability;
 
         private String brand;
 
         private int brandId;
 
+        private int canViewPdp;
+
         private String category;
-
-        private int qty;
-
-        private String price;
 
         private String image;
 
-        private int canViewPdp;
+        private String itemId;
 
-        private int availability;
-
-        private int visibility;
-
-        private int stockQty;
+        private String name;
 
         private List<?> options;
 
+        private String price;
+
+        private String productId;
+
+        private int qty;
+
         private String status;
+
+        private int stockQty;
+
+        private int visibility;
 
         public String getStatus() {
             return status;

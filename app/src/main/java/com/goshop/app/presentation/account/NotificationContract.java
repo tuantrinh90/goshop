@@ -6,8 +6,6 @@ import com.goshop.app.data.model.response.NotificationsResponse;
 
 import java.util.Map;
 
-
-
 public class NotificationContract {
 
     interface View extends BaseView {

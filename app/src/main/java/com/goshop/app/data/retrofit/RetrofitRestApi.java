@@ -18,10 +18,11 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.request.GetUserRequest;
-import com.goshop.app.data.model.request.SaveUserRequest;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -40,13 +41,23 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 
 public interface RetrofitRestApi {
 
     String CONTENT_TYPE_JSON = "Content-Type: application/vnd.api+json";
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<WidgetViewReponse> homePageRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<ProductDetailResponse> pdpDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
@@ -230,6 +241,7 @@ public interface RetrofitRestApi {
     @POST
     Observable<MyPointsReponse> myPointsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
@@ -245,9 +257,22 @@ public interface RetrofitRestApi {
     @POST
     Observable<CategoryMenuResponse> categoryRightMenuRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<SearchResultResponse> categoryDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<TVShowReponse> rightVideoRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<TVShowReponse> leftVideoRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

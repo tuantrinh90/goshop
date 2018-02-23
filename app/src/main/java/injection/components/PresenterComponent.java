@@ -6,7 +6,6 @@ import com.goshop.app.presentation.account.ContactUsActivity;
 import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.FAQActivity;
 import com.goshop.app.presentation.account.HelpSupportActivity;
-import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
 import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
@@ -17,9 +16,11 @@ import com.goshop.app.presentation.category.CategoryTreeDetailActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
-import com.goshop.app.presentation.home.HomeActivity;
+import com.goshop.app.presentation.home.HomePageFragment;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
+import com.goshop.app.presentation.home.TVShowPageFragment;
+import com.goshop.app.presentation.login.LoginActivity;
 import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 import com.goshop.app.presentation.login.LoginResetPasswordActivity;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
@@ -29,6 +30,7 @@ import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.search.SearchResultActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
+import com.goshop.app.presentation.shopping.PDPDetailActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
@@ -44,6 +46,10 @@ public interface PresenterComponent {
 
     Activity getActivity();
 
+    void inject(HomePageFragment homePageFragment);
+
+    void inject(PDPDetailActivity pdpDetailActivity);
+
     void inject(MyOrderListActivity myOrderListActivity);
 
     void inject(MyOrderDetailActivity myOrderDetailActivity);
@@ -53,8 +59,6 @@ public interface PresenterComponent {
     void inject(LoginActivity loginActivity);
 
     void inject(CheckoutActivity checkoutActivity);
-
-    void inject(HomeActivity loginActivity);
 
     void inject(RegisterActivity registerActivity);
 
@@ -105,5 +109,7 @@ public interface PresenterComponent {
     void inject(CategoryActivity categoryActivity);
 
     void inject(CategoryTreeDetailActivity categoryTreeDetailActivity);
+
+    void inject(TVShowPageFragment tvShowPageFragment);
 
 }

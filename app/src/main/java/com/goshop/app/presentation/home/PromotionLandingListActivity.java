@@ -28,10 +28,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by img on 2018/1/18.
- */
-
 public class PromotionLandingListActivity extends BaseActivity<PromotionContract.Presenter>
     implements PromotionContract.View {
 
@@ -39,27 +35,30 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
 
     private static final int TOP_FILTER_BAR_POS = 1;
 
-    @BindView(R.id.rl_top_condition_bar)
-    RelativeLayout rlTopConditionBar;
-
-    @BindView(R.id.recycler_promotion_content_list)
-    RecyclerView recyclerSearchContentList;
+    int firstVisibleItemPosition;
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageviewLeftMenu;
 
-    int firstVisibleItemPosition;
+    @BindView(R.id.recycler_promotion_content_list)
+    RecyclerView recyclerSearchContentList;
+
+    @BindView(R.id.rl_top_condition_bar)
+    RelativeLayout rlTopConditionBar;
 
     private String topBannerUrl;
 
     @Override
-    public int getContentView() {
-        return R.layout.acitivity_promotion_list;
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        initIntent();
+        mPresenter.getPromotionList(new HashMap<>());
+        imageviewLeftMenu.setBackgroundResource(R.drawable.ic_icon_back);
     }
 
     @Override
-    public String getScreenTitle() {
-        return getString(R.string.promotion_item_new_symbol);
+    public int getContentView() {
+        return R.layout.acitivity_promotion_list;
     }
 
     @Override
@@ -72,11 +71,8 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
     }
 
     @Override
-    protected void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        initIntent();
-        mPresenter.getPromotionList(new HashMap<>());
-        imageviewLeftMenu.setBackgroundResource(R.mipmap.back);
+    public String getScreenTitle() {
+        return getString(R.string.promotion_item_new_symbol);
     }
 
     private void initIntent() {
@@ -84,6 +80,36 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
         if (intent != null) {
             topBannerUrl = intent.getStringExtra(PageIntentUtils.PROMOTION_BANNER_URL);
         }
+    }
+
+    @OnClick({R.id.ll_promotion_filter, R.id.ll_promotion_new_arrivals, R.id.imageview_left_menu})
+    public void onViewClicked(View view) {
+        switch (view.getId()) {
+            case R.id.ll_promotion_filter:
+                clickFilter();
+                break;
+            case R.id.ll_promotion_new_arrivals:
+                clickNewArrivals();
+                break;
+            case R.id.imageview_left_menu:
+                finish();
+                break;
+        }
+    }
+
+    private void clickFilter() {
+        //TODO joyson temp code
+        Logger.e("filter");
+    }
+
+    private void clickNewArrivals() {
+        //TODO joyson temp code
+        Logger.e("new_arrivals");
+    }
+
+    @Override
+    public void showPromotionList(PromotionListResponse response) {
+        initRecycler(response.getPromotionItems());
     }
 
     private void initRecycler(List<PromotionListResponse.PromotionItem> datas) {
@@ -149,36 +175,6 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
                 }
             }
         });
-    }
-
-    private void clickFilter() {
-        //TODO joyson temp code
-        Logger.e("filter");
-    }
-
-    private void clickNewArrivals() {
-        //TODO joyson temp code
-        Logger.e("new_arrivals");
-    }
-
-    @OnClick({R.id.ll_promotion_filter, R.id.ll_promotion_new_arrivals, R.id.imageview_left_menu})
-    public void onViewClicked(View view) {
-        switch (view.getId()) {
-            case R.id.ll_promotion_filter:
-                clickFilter();
-                break;
-            case R.id.ll_promotion_new_arrivals:
-                clickNewArrivals();
-                break;
-            case R.id.imageview_left_menu:
-                finish();
-                break;
-        }
-    }
-
-    @Override
-    public void showPromotionList(PromotionListResponse response) {
-        initRecycler(response.getPromotionItems());
     }
 
     @Override

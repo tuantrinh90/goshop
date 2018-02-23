@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/1/18.
- */
-
 public class SearchCategoryVM extends SearchFilterModel {
 
     private String category;

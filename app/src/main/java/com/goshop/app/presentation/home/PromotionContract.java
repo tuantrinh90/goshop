@@ -7,10 +7,6 @@ import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.Map;
 
-/**
- * Created by img on 2018/1/23.
- */
-
 public interface PromotionContract {
 
     interface View extends BaseView {

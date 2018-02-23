@@ -39,10 +39,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/11.
- */
-
 public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     private boolean addData = true;

@@ -17,10 +17,6 @@ import java.util.List;
 
 import io.reactivex.Observable;
 
-/**
- * Created by img on 2018/1/5.
- */
-
 public class ServiceData {
 
     static String productName = GoShopApplication.getAppContext().getResources()
@@ -282,8 +278,8 @@ public class ServiceData {
     /**
      * TODO this is temp mock code
      */
-    public static Observable<CheckoutResponse> getCheckout(){
-        CheckoutResponse response=new CheckoutResponse();
+    public static Observable<CheckoutResponse> getCheckout() {
+        CheckoutResponse response = new CheckoutResponse();
         response.setCity("Taibei");
         response.setUserName("test1");
         response.setFirstAddress("new Land");
@@ -291,10 +287,11 @@ public class ServiceData {
         response.setPostcode("0000");
         response.setCountry("China");
         response.setTel("+1234567");
-        List<CheckoutResponse.CheckoutItem> checkoutItems=new ArrayList<>();
-        for (int i=0;i<5;i++){
-            CheckoutResponse.CheckoutItem checkoutItem=new CheckoutResponse.CheckoutItem();
-            checkoutItem.setProductName(ScreenHelper.getString(R.string.home_item_test_product_name));
+        List<CheckoutResponse.CheckoutItem> checkoutItems = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            CheckoutResponse.CheckoutItem checkoutItem = new CheckoutResponse.CheckoutItem();
+            checkoutItem
+                .setProductName(ScreenHelper.getString(R.string.home_item_test_product_name));
             checkoutItem.setAmount(String.valueOf(i));
             checkoutItem.setColor("Blue");
             checkoutItem.setCurrentPrice("RM 119.00");
@@ -309,15 +306,16 @@ public class ServiceData {
     /**
      * TODO this is temp mock code
      */
-    public static Observable<NotificationsResponse> getNotification(){
-        NotificationsResponse response=new NotificationsResponse();
-        List<NotificationsResponse.NotificationBean> notificationBeanList=new ArrayList<>();
-        for (int i=0;i<10;i++){
-            NotificationsResponse.NotificationBean notificationBean=new NotificationsResponse
+    public static Observable<NotificationsResponse> getNotification() {
+        NotificationsResponse response = new NotificationsResponse();
+        List<NotificationsResponse.NotificationBean> notificationBeanList = new ArrayList<>();
+        for (int i = 0; i < 10; i++) {
+            NotificationsResponse.NotificationBean notificationBean = new NotificationsResponse
                 .NotificationBean();
-            notificationBean.setNotifyName("lorem ipsum dolor sit amet,consectetur adipiscing edit. Nulla quam velit.");
+            notificationBean.setNotifyName(
+                "lorem ipsum dolor sit amet,consectetur adipiscing edit. Nulla quam velit.");
             notificationBean.setHour("12:00");
-            notificationBean.setNew(i%2==0);
+            notificationBean.setNew(i % 2 == 0);
             notificationBean.setDate("1/2/18");
             notificationBeanList.add(notificationBean);
         }

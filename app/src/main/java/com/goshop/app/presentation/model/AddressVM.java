@@ -3,11 +3,19 @@ package com.goshop.app.presentation.model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-/**
- * Created by helen on 2018/1/26.
- */
-
 public class AddressVM implements Parcelable {
+
+    public static final Creator<AddressVM> CREATOR = new Creator<AddressVM>() {
+        @Override
+        public AddressVM createFromParcel(Parcel in) {
+            return new AddressVM(in);
+        }
+
+        @Override
+        public AddressVM[] newArray(int size) {
+            return new AddressVM[size];
+        }
+    };
 
     private String address;
 
@@ -47,18 +55,6 @@ public class AddressVM implements Parcelable {
         state = in.readString();
         tel = in.readString();
     }
-
-    public static final Creator<AddressVM> CREATOR = new Creator<AddressVM>() {
-        @Override
-        public AddressVM createFromParcel(Parcel in) {
-            return new AddressVM(in);
-        }
-
-        @Override
-        public AddressVM[] newArray(int size) {
-            return new AddressVM[size];
-        }
-    };
 
     public String getAddress() {
         return address;

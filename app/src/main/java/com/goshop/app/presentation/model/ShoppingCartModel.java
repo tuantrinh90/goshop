@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/1/24.
- */
-
 public class ShoppingCartModel {
 
     public static final int CART_APPLY = 2;

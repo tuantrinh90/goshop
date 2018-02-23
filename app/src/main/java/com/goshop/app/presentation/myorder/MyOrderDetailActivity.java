@@ -11,6 +11,7 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.utils.ViewUtils;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -27,27 +28,23 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by img on 2018/1/30.
- */
-
 public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presenter> implements
     MyOrderContract.View {
+
+    @BindString(R.string.my_orders_title_number)
+    String holderOrderNumber;
+
+    @BindString(R.string.my_orders_placed_at)
+    String holderOrderPlacedAt;
+
+    @BindString(R.string.my_orders_title_status)
+    String holderOrderStatus;
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageviewLeftMenu;
 
-    @BindView(R.id.tv_order_detail_number)
-    CustomTextView tvOrderDetailNumber;
-
-    @BindView(R.id.tv_order_detail_status)
-    CustomTextView tvOrderDetailStatus;
-
-    @BindView(R.id.tv_order_detail_track)
-    CustomTextView tvOrderDetailTrack;
-
-    @BindView(R.id.tv_order_detail_person_name)
-    CustomTextView tvOrderDetailPersonName;
+    @BindView(R.id.rv_order_list)
+    RecyclerView rvOrderList;
 
     @BindView(R.id.tv_order_detail_address)
     CustomTextView tvOrderDetailAddress;
@@ -58,17 +55,17 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
     @BindView(R.id.tv_order_detail_country)
     CustomTextView tvOrderDetailCountry;
 
-    @BindView(R.id.tv_order_detail_tel)
-    CustomTextView tvOrderDetailTel;
+    @BindView(R.id.tv_order_detail_discount)
+    CustomTextView tvOrderDetailDiscount;
+
+    @BindView(R.id.tv_order_detail_number)
+    CustomTextView tvOrderDetailNumber;
 
     @BindView(R.id.tv_order_detail_pay_method)
     CustomTextView tvOrderDetailPayMethod;
 
-    @BindView(R.id.rv_order_list)
-    RecyclerView rvOrderList;
-
-    @BindView(R.id.tv_order_detail_sub_total)
-    CustomTextView tvOrderDetailSubTotal;
+    @BindView(R.id.tv_order_detail_person_name)
+    CustomTextView tvOrderDetailPersonName;
 
     @BindView(R.id.tv_order_detail_rounding_amout)
     CustomTextView tvOrderDetailRoundingAmout;
@@ -76,20 +73,20 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
     @BindView(R.id.tv_order_detail_shipping)
     CustomTextView tvOrderDetailShipping;
 
-    @BindView(R.id.tv_order_detail_discount)
-    CustomTextView tvOrderDetailDiscount;
+    @BindView(R.id.tv_order_detail_status)
+    CustomTextView tvOrderDetailStatus;
+
+    @BindView(R.id.tv_order_detail_sub_total)
+    CustomTextView tvOrderDetailSubTotal;
+
+    @BindView(R.id.tv_order_detail_tel)
+    CustomTextView tvOrderDetailTel;
 
     @BindView(R.id.tv_order_detail_total)
     CustomBoldTextView tvOrderDetailTotal;
 
-    @BindString(R.string.my_orders_title_number)
-    String holderOrderNumber;
-
-    @BindString(R.string.my_orders_title_status)
-    String holderOrderStatus;
-
-    @BindString(R.string.my_orders_placed_at)
-    String holderOrderPlacedAt;
+    @BindView(R.id.tv_order_detail_track)
+    CustomTextView tvOrderDetailTrack;
 
     @Override
     public void showOrderList(MyOrderListResponse response) {
@@ -122,6 +119,14 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
         initPageInfo(reponse);
     }
 
+    private void initRecycler(MyOrderDetailReponse response) {
+        List<MyOrderDetailReponse.SubordersBean> suborders = response.getSuborders();
+        rvOrderList.setNestedScrollingEnabled(false);
+        rvOrderList.setLayoutManager(new LinearLayoutManager(this));
+        rvOrderList.setAdapter(new MyOrderDetailAdapter(suborders));
+    }
+
+    @SuppressLint("SetTextI18n")
     private void initPageInfo(MyOrderDetailReponse reponse) {
         tvOrderDetailNumber.setText(holderOrderNumber + reponse.getOrderId());
         tvOrderDetailStatus.setText(holderOrderStatus + reponse.getState());
@@ -141,25 +146,6 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
         tvOrderDetailTotal.setText(reponse.getGrandTotal());
     }
 
-    @Override
-    public int getContentView() {
-        return R.layout.activity_myorder_detail;
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return ScreenHelper.getString(R.string.my_orders_title);
-    }
-
-    @Override
-    public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
-    }
-
     @OnClick({R.id.imageview_left_menu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
@@ -173,14 +159,26 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.getOrderDetail(new HashMap<>());
-        ViewUtils.setBg(imageviewLeftMenu, R.mipmap.back);
+        ViewUtils.setBg(imageviewLeftMenu, R.drawable.ic_icon_back);
     }
 
-    private void initRecycler(MyOrderDetailReponse response) {
-        List<MyOrderDetailReponse.SubordersBean> suborders = response.getSuborders();
-        rvOrderList.setNestedScrollingEnabled(false);
-        rvOrderList.setLayoutManager(new LinearLayoutManager(this));
-        rvOrderList.setAdapter(new MyOrderDetailAdapter(suborders));
+    @Override
+    public int getContentView() {
+        return R.layout.activity_myorder_detail;
+    }
+
+    @Override
+    public void inject() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return ScreenHelper.getString(R.string.my_orders_title);
     }
 
 }

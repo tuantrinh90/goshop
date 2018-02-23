@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     <include
@@ -10,7 +11,8 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
         android:background="@color/color_divider_grey"
-        android:layout_below="@+id/toolbar"/>
+        android:layout_below="@+id/toolbar"
+        tools:ignore="UnknownIdInLayout"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_btn_payment_status"
@@ -33,14 +35,15 @@
         android:orientation="vertical"
         android:layout_below="@+id/toolbar"
         android:gravity="center_horizontal"
-        android:layout_above="@id/tv_btn_payment_status">
+        android:layout_above="@id/tv_btn_payment_status"
+        tools:ignore="UnknownIdInLayout">
 
         <ImageView
             android:layout_width="@dimen/size_90"
             android:layout_height="@dimen/size_90"
             android:layout_marginTop="@dimen/size_76"
             android:contentDescription="@string/app_name"
-            android:background="@mipmap/wrong_red"/>
+            android:background="@drawable/ic_wrong_red"/>
 
         <com.goshop.app.common.view.CustomBoldTextView
             android:layout_width="match_parent"
@@ -75,7 +78,9 @@
                 android:textSize="@dimen/size_font_14"
                 android:textColor="@color/color_text_black"
                 android:paddingRight="@dimen/size_4"
-                android:text="@string/email_end"/>
+                android:text="@string/email_end"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_4"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_status_wrong_email"
@@ -97,7 +102,9 @@
                 android:textSize="@dimen/size_font_14"
                 android:textColor="@color/color_text_black"
                 android:paddingRight="@dimen/size_4"
-                android:text="@string/tel"/>
+                android:text="@string/tel"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_4"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_status_wrong_tel"
@@ -118,14 +125,15 @@
         android:orientation="vertical"
         android:layout_below="@+id/toolbar"
         android:gravity="center_horizontal"
-        android:layout_above="@id/tv_btn_payment_status">
+        android:layout_above="@id/tv_btn_payment_status"
+        tools:ignore="UnknownIdInLayout">
 
         <ImageView
             android:layout_width="@dimen/size_90"
             android:layout_height="@dimen/size_90"
             android:layout_marginTop="@dimen/size_76"
             android:contentDescription="@string/app_name"
-            android:background="@mipmap/right_green"/>
+            android:background="@drawable/ic_right_green"/>
 
         <com.goshop.app.common.view.CustomBoldTextView
             android:layout_width="wrap_content"
@@ -157,7 +165,9 @@
                 android:text="@string/your_order"
                 android:paddingRight="@dimen/size_4"
                 android:textSize="@dimen/size_font_16"
-                android:gravity="center_horizontal"/>
+                android:gravity="center_horizontal"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_4"/>
 
             <com.goshop.app.common.view.CustomBoldTextView
                 android:id="@+id/tv_status_success_order"

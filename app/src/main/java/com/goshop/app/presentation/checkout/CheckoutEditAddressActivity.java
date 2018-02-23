@@ -12,10 +12,6 @@ import android.view.View;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * Created by helen on 2018/2/2.
- */
-
 public class CheckoutEditAddressActivity extends BaseActivity {
 
     @BindView(R.id.et_checkout_address_first)
@@ -59,14 +55,14 @@ public class CheckoutEditAddressActivity extends BaseActivity {
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.edit_address);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         textviewRightMenu.setText(getResources().getString(R.string.save));
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.edit_address);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.textview_right_menu})

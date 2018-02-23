@@ -21,10 +21,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/9.
- */
-
 public class LoginSendConfirmationLinkActivity extends
     BaseActivity<LoginSendConfirmationLinkContract.Presenter> implements
     LoginSendConfirmationLinkContract.View, ToastUtil.OnToastListener {
@@ -48,16 +44,16 @@ public class LoginSendConfirmationLinkActivity extends
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.send_confirmation_link);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initPresenter();
         initEditText();
         toastUtil = new ToastUtil(this, this);
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.send_confirmation_link);
     }
 
     private void initPresenter() {

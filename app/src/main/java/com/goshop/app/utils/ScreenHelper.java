@@ -2,6 +2,7 @@ package com.goshop.app.utils;
 
 import com.goshop.app.GoShopApplication;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Point;
@@ -48,7 +49,9 @@ public class ScreenHelper {
         return getMeasures(paramContext).arg1;
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     public static Message getMeasures(Context paramContext) {
+        assert ((WindowManager) paramContext.getSystemService(Context.WINDOW_SERVICE)) != null;
         Display display = ((WindowManager) paramContext.getSystemService(Context.WINDOW_SERVICE))
             .getDefaultDisplay();
         Point localPoint = new Point();
@@ -72,7 +75,9 @@ public class ScreenHelper {
         return getMeasures(paramContext).arg1;
     }
 
+    @SuppressLint("ObsoleteSdkInt")
     public static Message getMeasures(Activity paramContext) {
+        assert ((WindowManager) paramContext.getSystemService(Context.WINDOW_SERVICE)) != null;
         Display display = ((WindowManager) paramContext.getSystemService(Context.WINDOW_SERVICE))
             .getDefaultDisplay();
         Point localPoint = new Point();

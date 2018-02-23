@@ -2,10 +2,6 @@ package com.goshop.app.data.model.response;
 
 import java.util.List;
 
-/**
- * Created by img on 2018/2/5.
- */
-
 public class NotificationsResponse {
 
     private List<NotificationBean> notificationBean;
@@ -21,13 +17,13 @@ public class NotificationsResponse {
 
     public static class NotificationBean {
 
-        private String notifyName;
+        private String date;
 
         private String hour;
 
-        private String date;
-
         private boolean isNew;
+
+        private String notifyName;
 
         public String getNotifyName() {
             return notifyName;

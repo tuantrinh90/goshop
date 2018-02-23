@@ -18,8 +18,6 @@ import butterknife.BindView;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-
-
 public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> implements
     MyPointsContract.View {
 
@@ -44,16 +42,16 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.my_point);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         imageviewLeftMenu.setOnClickListener(v -> finish());
         initPresenter();
         initRecyclerview();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.my_point);
     }
 
     private void initPresenter() {

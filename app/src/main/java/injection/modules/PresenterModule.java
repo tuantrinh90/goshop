@@ -13,8 +13,6 @@ import com.goshop.app.presentation.account.FAQContract;
 import com.goshop.app.presentation.account.FAQPresenter;
 import com.goshop.app.presentation.account.HelpSupportContract;
 import com.goshop.app.presentation.account.HelpSupportPresenter;
-import com.goshop.app.presentation.account.LoginContract;
-import com.goshop.app.presentation.account.LoginPresenter;
 import com.goshop.app.presentation.account.MyAddressBookContract;
 import com.goshop.app.presentation.account.MyAddressBookPresenter;
 import com.goshop.app.presentation.account.MyPointsContract;
@@ -35,12 +33,16 @@ import com.goshop.app.presentation.checkout.CheckoutSelectContract;
 import com.goshop.app.presentation.checkout.CheckoutSelectPresenter;
 import com.goshop.app.presentation.checkout.PaymentStatusContract;
 import com.goshop.app.presentation.checkout.PaymentStatusPresenter;
-import com.goshop.app.presentation.home.HomeContract;
-import com.goshop.app.presentation.home.HomePresenter;
+import com.goshop.app.presentation.home.HomePageContract;
+import com.goshop.app.presentation.home.HomePagePresenter;
 import com.goshop.app.presentation.home.PromotionContract;
 import com.goshop.app.presentation.home.PromotionPresenter;
+import com.goshop.app.presentation.home.TVShowPageContract;
+import com.goshop.app.presentation.home.TVShowPagePresenter;
 import com.goshop.app.presentation.login.LoginComplementEmailContract;
 import com.goshop.app.presentation.login.LoginComplementEmailPresenter;
+import com.goshop.app.presentation.login.LoginContract;
+import com.goshop.app.presentation.login.LoginPresenter;
 import com.goshop.app.presentation.login.LoginResetPasswordContract;
 import com.goshop.app.presentation.login.LoginResetPasswordPresenter;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkContract;
@@ -55,6 +57,8 @@ import com.goshop.app.presentation.search.SearchResultContract;
 import com.goshop.app.presentation.search.SearchResultPresenter;
 import com.goshop.app.presentation.settings.SettingsContract;
 import com.goshop.app.presentation.settings.SettingsPresenter;
+import com.goshop.app.presentation.shopping.PDPDetailContract;
+import com.goshop.app.presentation.shopping.PDPDetailPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
 import com.goshop.app.presentation.shopping.ShoppingCartContract;
@@ -68,7 +72,6 @@ import dagger.Provides;
 import injection.ActivityScope;
 
 @Module
-
 public class PresenterModule {
 
     private Fragment fragment;
@@ -97,8 +100,16 @@ public class PresenterModule {
 
     @Provides
     @ActivityScope
-    public HomeContract.Presenter provideHomePresenter(AccountDataRepository dataRepository) {
-        return new HomePresenter(dataRepository);
+    public HomePageContract.Presenter provideHomePagePresenter(
+        AccountDataRepository dataRepository) {
+        return new HomePagePresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public PDPDetailContract.Presenter providePDPDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new PDPDetailPresenter(dataRepository);
     }
 
     @Provides
@@ -291,6 +302,13 @@ public class PresenterModule {
     public CategoryTreeDetailContract.Presenter provideCategoryTreeDetailPresenter(
         AccountDataRepository dataRepository) {
         return new CategoryTreeDetailPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public TVShowPageContract.Presenter provideTVShowPresenter(
+        AccountDataRepository dataRepository) {
+        return new TVShowPagePresenter(dataRepository);
     }
 
 }

@@ -7,10 +7,6 @@ import com.goshop.app.presentation.model.ShoppingCartModel;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by helen on 2018/1/24.
- */
-
 public class ShoppingCartContract {
 
     interface View extends BaseView {

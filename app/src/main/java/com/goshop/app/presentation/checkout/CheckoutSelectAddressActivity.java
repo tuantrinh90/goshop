@@ -22,10 +22,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/2/2.
- */
-
 public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectContract.Presenter>
     implements CheckoutSelectContract.View, CheckoutSelectAddressAdapter.OnEditClickListener {
 
@@ -53,16 +49,16 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.select_address);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         tvBtnLayoutWhite.setText(getResources().getString(R.string.add_new_address));
         initPresenter();
         initRecyclerView();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.select_address);
     }
 
     private void initPresenter() {

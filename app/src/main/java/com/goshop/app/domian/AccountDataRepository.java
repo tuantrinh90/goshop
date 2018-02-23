@@ -18,9 +18,11 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkReponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
@@ -52,6 +54,16 @@ public class AccountDataRepository implements AccountRepository {
         @Named("localAccountDataSource") AccountDataSource accountLocalDataSource) {
         this.accountCloudDataSource = accountCloudDataSource;
         this.accountLocalDataSource = accountLocalDataSource;
+    }
+
+    @Override
+    public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
+        return accountCloudDataSource.homePageRequest(params);
+    }
+
+    @Override
+    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.pdpDetailRequest(params);
     }
 
     @Override
@@ -258,5 +270,15 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         return accountCloudDataSource.categoryDetailRequest(params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params) {
+        return accountCloudDataSource.rightVideoRequest(params);
+    }
+
+    @Override
+    public Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params) {
+        return accountCloudDataSource.leftVideoRequest(params);
     }
 }

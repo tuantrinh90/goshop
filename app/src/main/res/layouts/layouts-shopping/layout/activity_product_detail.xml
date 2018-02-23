@@ -18,53 +18,57 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:paddingLeft="@dimen/size_16"
-            android:paddingRight="@dimen/size_16"
+            android:paddingLeft="@dimen/size_10"
+            android:paddingRight="@dimen/size_10"
             android:background="@drawable/bg_top_shadow_white">
             <ImageView
                 android:id="@+id/iv_pdp_love"
-                android:layout_width="@dimen/size_36"
-                android:layout_height="@dimen/size_36"
-                android:layout_centerVertical="true"
-                android:src="@mipmap/heart"
-                android:contentDescription="@string/app_name"/>
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_28"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginRight="@dimen/size_10"
+                android:background="@drawable/ic_heart"
+                android:contentDescription="@string/app_name"
+                android:layout_marginEnd="@dimen/size_10"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_toRightOf="@id/iv_pdp_love"
-                android:paddingLeft="@dimen/size_16"
-                android:layout_marginTop="@dimen/size_10"
-                android:layout_marginBottom="@dimen/size_10"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_marginBottom="@dimen/size_8"
                 android:orientation="horizontal"
                 tools:ignore="RtlSymmetry"
-                android:layout_toEndOf="@id/iv_pdp_love"
-                android:paddingStart="@dimen/size_16">
-                <com.goshop.app.common.view.CustomTextView
-                    android:id="@+id/tv_btn_pdp_buy_now"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:background="@drawable/bg_btn_round_pink"
-                    android:text="@string/buy_now"
-                    android:padding="@dimen/size_12"
-                    android:textColor="@android:color/white"
-                    android:textSize="@dimen/size_font_16"
-                    android:layout_marginRight="@dimen/size_4"
-                    android:layout_marginEnd="@dimen/size_4"/>
+                android:layout_toEndOf="@id/iv_pdp_love">
+
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_btn_pdp_add_to_cart"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:background="@drawable/bg_btn_round_pink_circle"
+                    android:layout_marginRight="@dimen/size_4"
+                    android:background="@drawable/bg_btn_round_pink"
                     android:text="@string/add_to_cart"
-                    android:textColor="@color/colorAccent"
+                    android:textColor="@android:color/white"
                     android:textSize="@dimen/size_font_16"
+                    android:textAllCaps="true"
                     android:padding="@dimen/size_12"
+                    android:layout_marginEnd="@dimen/size_4"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_btn_pdp_buy_now"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
                     android:layout_marginLeft="@dimen/size_4"
+                    android:background="@drawable/bg_btn_round_dark_pink"
+                    android:text="@string/buy_now"
+                    android:padding="@dimen/size_12"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/size_font_16"
                     android:layout_marginStart="@dimen/size_4"/>
+
             </LinearLayout>
 
         </RelativeLayout>

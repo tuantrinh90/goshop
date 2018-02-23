@@ -18,20 +18,14 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-
 @SuppressWarnings("ALL")
-public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleActivity implements BaseView {
+public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleActivity
+    implements BaseView {
 
     private static final String TAG = BaseActivity.class.getSimpleName();
 
-    @BindView(R.id.toolbar)
-    @Nullable
-    Toolbar toolbar;
-
-    @BindView(R.id.textview_toolbar_title)
-    @Nullable
-    CustomBoldTextView titleToolbar;
+    @Inject
+    public T mPresenter;
 
     @BindView(R.id.imageview_left_menu)
     @Nullable
@@ -41,8 +35,13 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
     @Nullable
     ImageView ivRightMenu;
 
-    @Inject
-    public T mPresenter;
+    @BindView(R.id.textview_toolbar_title)
+    @Nullable
+    CustomBoldTextView titleToolbar;
+
+    @BindView(R.id.toolbar)
+    @Nullable
+    Toolbar toolbar;
 
     private ProgressDialog progressDialog;
 
@@ -62,8 +61,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
 
     public abstract int getContentView();
 
-    public abstract String getScreenTitle();
-
     public abstract void inject();
 
     private void setToolbar() {
@@ -81,12 +78,14 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         }
     }
 
-    public void setToolbarTitle(String title){
-        titleToolbar.setText(title);
-    }
-
     private void setStatusBar() {
         StatusBarUtils.setStatusBarColor(this, R.color.blackStatusBar);
+    }
+
+    public abstract String getScreenTitle();
+
+    public void setToolbarTitle(String title) {
+        titleToolbar.setText(title);
     }
 
     public void showLoadingBar() {
@@ -105,21 +104,22 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
     }
 
     public void setToolbarTextImageTitleOnly() {
-        if(ivRightMenu!=null){
+        if (ivRightMenu != null) {
             ivRightMenu.setVisibility(View.GONE);
         }
-        if(ivLeftMenu !=null) {
+        if (ivLeftMenu != null) {
             ivLeftMenu.setVisibility(View.GONE);
         }
     }
 
     public void hideRightMenu() {
-        if(ivRightMenu!=null){
+        if (ivRightMenu != null) {
             ivRightMenu.setVisibility(View.GONE);
         }
     }
 
-    public Toolbar getToolbar(){
+    public Toolbar getToolbar() {
         return toolbar;
     }
+
 }

@@ -13,10 +13,6 @@ import java.util.List;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/2/8.
- */
-
 public class SettingsPresenter extends RxPresenter<SettingsContract.View> implements
     SettingsContract.Presenter {
 
@@ -59,7 +55,8 @@ public class SettingsPresenter extends RxPresenter<SettingsContract.View> implem
         settingsModels.add(new SettingsSwitchVM("SMS Marketing Consent."));
 
         settingsModels.add(new SettingsTitleVM("Account"));
-        settingsModels.add(new SettingsSingleDetailVM("Change Password"));
+        settingsModels.add(
+            new SettingsSingleDetailVM("Change Password", () -> mView.startChangePasswordScreen()));
         settingsModels.add(new SettingsSingleDetailVM("Logout"));
 
         return settingsModels;

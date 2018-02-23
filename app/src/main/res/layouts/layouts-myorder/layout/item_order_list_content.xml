@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -12,7 +13,8 @@
             android:text="@string/my_orders_test_id"
             android:layout_centerVertical="true"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            tools:ignore="RelativeOverlap"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_order_product_track"
@@ -22,7 +24,7 @@
             android:layout_centerVertical="true"
             style="@style/btnStyle"
             android:layout_alignParentRight="true"
-        />
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -39,15 +41,17 @@
             android:layout_height="80dp"
             android:layout_centerVertical="true"
             android:layout_marginRight="@dimen/home_padding"
+            android:contentDescription="@string/app_name"
             android:background="@drawable/ic_launcher_background"
-        />
+            android:layout_marginEnd="@dimen/home_padding"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_order_product_price"
             style="@style/homeItemProductPrice"
             android:layout_alignParentRight="true"
             android:text="@string/home_item_test_product_price"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_order_product_title"
             android:layout_toRightOf="@id/iv_order_product_product_icon"
@@ -55,7 +59,9 @@
             style="@style/homeItemProductName"
             android:text="@string/home_item_test_product_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/iv_order_product_product_icon"
+            android:layout_toStartOf="@id/tv_order_product_price"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_order_product_color"
             style="@style/homeItemProductOldPrice"
@@ -65,7 +71,9 @@
             android:layout_toLeftOf="@id/tv_order_product_price"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/my_orders_test_color"/>
+            android:text="@string/my_orders_test_color"
+            android:layout_toEndOf="@id/iv_order_product_product_icon"
+            android:layout_toStartOf="@id/tv_order_product_price"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_order_product_size"
             style="@style/homeItemProductOldPrice"
@@ -75,7 +83,9 @@
             android:layout_toLeftOf="@id/tv_order_product_price"
             android:layout_width="match_parent"
             android:text="@string/my_orders_test_size"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@id/iv_order_product_product_icon"
+            android:layout_toStartOf="@id/tv_order_product_price"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_order_product_amount"
             style="@style/homeItemProductOldPrice"
@@ -83,7 +93,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
-            android:layout_alignParentRight="true"/>
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
 

@@ -8,10 +8,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/1/9.
- */
-
 public class LoginResetPasswordPresenter extends RxPresenter<LoginResetPasswordContract.View>
     implements LoginResetPasswordContract.Presenter {
 

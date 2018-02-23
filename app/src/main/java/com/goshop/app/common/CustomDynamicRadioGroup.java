@@ -7,8 +7,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RadioGroup;
 
-
-
 public class CustomDynamicRadioGroup extends RadioGroup {
 
     private static final int margin = 16;
@@ -66,7 +64,7 @@ public class CustomDynamicRadioGroup extends RadioGroup {
         final int childCount = getChildCount();
         int maxWidth = r - l;
         int x = 0;
-        int y = 0;
+        int y;
         int row = 0;
         for (int i = 0; i < childCount; i++) {
             final View child = this.getChildAt(i);

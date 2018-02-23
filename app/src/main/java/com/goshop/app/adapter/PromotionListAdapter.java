@@ -22,10 +22,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
-/**
- * Created by img on 2018/1/18.
- */
-
 public class PromotionListAdapter extends RecyclerView.Adapter {
 
     private static final int BANNER_AND_FILTER_BAR_SIZE = 2;

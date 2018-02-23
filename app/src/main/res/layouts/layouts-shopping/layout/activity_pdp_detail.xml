@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_pdp_detail_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:paddingLeft="@dimen/size_10"
+            android:paddingRight="@dimen/size_10"
+            android:background="@drawable/bg_top_shadow_white">
+            <ImageView
+                android:id="@+id/iv_pdp_detail_love"
+                android:layout_width="@dimen/size_30"
+                android:layout_height="@dimen/size_28"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginRight="@dimen/size_10"
+                android:background="@drawable/ic_heart"
+                android:contentDescription="@string/app_name"
+                android:layout_marginEnd="@dimen/size_10"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_pdp_detail_love"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_marginBottom="@dimen/size_8"
+                android:orientation="horizontal"
+                tools:ignore="RtlSymmetry"
+                android:layout_toEndOf="@id/iv_pdp_detail_love">
+
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_btn_pdp_detail_cart"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginRight="@dimen/size_4"
+                    android:background="@drawable/bg_btn_round_pink"
+                    android:text="@string/add_to_cart"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/size_font_16"
+                    android:textAllCaps="true"
+                    android:padding="@dimen/size_12"
+                    android:layout_marginEnd="@dimen/size_4"/>
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_btn_pdp_detail_buy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/size_4"
+                    android:background="@drawable/bg_btn_round_dark_pink"
+                    android:text="@string/buy_now"
+                    android:padding="@dimen/size_12"
+                    android:textColor="@android:color/white"
+                    android:textAllCaps="true"
+                    android:textSize="@dimen/size_font_16"
+                    android:layout_marginStart="@dimen/size_4"/>
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_pdp_details"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_above="@id/rl_pdp_detail_bottom"/>
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/toolbar_pdp"/>
+
+</android.support.design.widget.CoordinatorLayout>

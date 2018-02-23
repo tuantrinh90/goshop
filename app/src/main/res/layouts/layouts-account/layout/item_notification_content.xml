@@ -30,14 +30,16 @@
             android:fontFamily="sans-serif-medium"
             android:maxLines="2"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_padding"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_notification_date"
             android:layout_marginLeft="@dimen/home_padding"
             android:textColor="@color/blackTrans38"
             android:fontFamily="sans-serif-light"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_padding"/>
     </LinearLayout>
 </LinearLayout>
     <View

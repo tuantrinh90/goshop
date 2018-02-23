@@ -3,8 +3,10 @@ package com.goshop.app.presentation.settings;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.model.SettingsModel;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -17,10 +19,6 @@ import java.util.List;
 import butterknife.BindView;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
-
-/**
- * Created by helen on 2018/2/8.
- */
 
 public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> implements
     SettingsContract.View {
@@ -45,16 +43,16 @@ public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> i
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.settings);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         imageviewLeftMenu.setOnClickListener(v -> finish());
         initRecyclerview();
         initPresenter();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.settings);
     }
 
     private void initRecyclerview() {
@@ -75,6 +73,11 @@ public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> i
     @Override
     public void showSettingView(List<SettingsModel> settingsModelse) {
         settingsAdapter.setUpdateDatas(settingsModelse);
+    }
+
+    @Override
+    public void startChangePasswordScreen() {
+        startActivity(new Intent(this, ChangePasswordActivity.class));
     }
 
 

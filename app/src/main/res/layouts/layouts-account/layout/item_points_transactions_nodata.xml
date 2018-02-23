@@ -7,6 +7,7 @@
     <ImageView
         android:background="@color/color_divider_grey"
         android:layout_centerInParent="true"
+        android:contentDescription="@string/app_name"
         android:layout_width="@dimen/size_69"
         android:layout_height="@dimen/size_80"/>
 

@@ -7,6 +7,14 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropdownStyle</item>
     </style>
+    <style name="toolbarTheme" parent="AppTheme">
+        <item name="android:actionButtonStyle">@style/ActionButtonStyle</item>
+    </style>
+    <style name="ActionButtonStyle" parent="Widget.AppCompat.Light.ActionButton">
+        <item name="android:minWidth">44dp</item>
+        <item name="android:paddingLeft">@dimen/size_16</item>
+        <item name="android:paddingRight">@dimen/size_16</item>
+    </style>
     <style name="SpinnerDropdownStyle" parent="@android:style/Widget.DropDownItem.Spinner">
         <item name="android:background">@android:color/white</item>
     </style>
@@ -103,7 +111,7 @@
         <item name="android:gravity">center</item>
         <item name="android:layout_width">2dp</item>
         <item name="android:layout_height">20dp</item>
-        <item name="android:background">@mipmap/ic_home_center_video_line</item>
+        <item name="android:background">@drawable/ic_home_center_video_line</item>
         <item name="android:contentDescription">line</item>
     </style>
     <style name="homeWrapWidthLine">
@@ -111,7 +119,7 @@
         <item name="android:layout_height">@dimen/line_height</item>
         <item name="android:background">@color/blackTrans12</item>
     </style>
-    
+
     <style name="pageCardInterval" parent="homeWrapWidthLine">
         <item name="android:layout_height">12dp</item>
     </style>
@@ -240,15 +248,15 @@
     </style>
 
     <declare-styleable name="animET">
-        <attr name="hint" format="reference" />
+        <attr name="hint" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="animSpinner">
-        <attr name="sp_hint" format="reference" />
+        <attr name="sp_hint" format="reference"/>
     </declare-styleable>
 
     <declare-styleable name="pwd">
-        <attr name="pwd_hint" format="reference" />
+        <attr name="pwd_hint" format="reference"/>
     </declare-styleable>
 
     <style name="PopMenuAnimation">
@@ -266,7 +274,19 @@
         <item name="android:textColor">@color/color_text_black</item>
         <item name="android:textSize">@dimen/size_font_12</item>
         <item name="android:textColorHint">@color/color_hint_grey</item>
+    </style>
 
+    <style name="menuTextStyle">
+        <item name="android:textSize">@dimen/size_font_16</item>
+        <item name="android:typeface">sans</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+
+    <style name="mainTabStyle">
+        <item name="android:textSize">@dimen/size_font_14</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textAllCaps">true</item>
     </style>
 
 </resources>

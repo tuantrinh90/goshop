@@ -16,10 +16,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by img on 2018/1/22.
- */
-
 public class PromotionBannerAdapter extends RecyclerView.Adapter {
 
     private static final int TOP_BANNER_PLACEHOLDER = 1;

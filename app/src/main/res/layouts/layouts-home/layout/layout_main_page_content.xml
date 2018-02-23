@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <include layout="@layout/toolbar_slide_menu"/>
+
+    <!--<include layout="@layout/layout_slide_menu_content_main"/>-->
+    <com.goshop.app.common.view.CustomBoldTabLayout
+        android:id="@+id/tablayout_main"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:tabPaddingStart="@dimen/size_12"
+        app:tabPaddingEnd="@dimen/size_12"
+        app:tabMode="scrollable"
+        app:tabTextColor="@color/color_hint_grey"
+        app:tabSelectedTextColor="@color/color_text_black"
+        app:tabIndicatorColor="@color/color_text_black"
+        app:tabTextAppearance="@style/mainTabStyle"/>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_main"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+</LinearLayout>

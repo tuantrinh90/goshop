@@ -16,13 +16,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
-
 
 public class EditProfileActivity extends BaseActivity<EditProfileContract.Presenter> implements
     EditProfileContract.View {
@@ -76,16 +76,16 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.edit_profile);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initPresenter();
         initSprinner();
         initRadioGroup();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.edit_profile);
     }
 
     private void initPresenter() {
@@ -96,6 +96,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             .inject(this);
     }
 
+    @SuppressWarnings("unchecked")
     private void initSprinner() {
         etProfileDate.getEditText().setItems(getMockDatas());
         etProfileDate.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
@@ -142,9 +143,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         List<String> list = new ArrayList<>();
         Resources res = getResources();
         String[] testList = res.getStringArray(R.array.test_list);
-        for (String test : testList) {
-            list.add(test);
-        }
+        Collections.addAll(list, testList);
         return list;
     }
 

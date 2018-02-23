@@ -17,10 +17,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by img on 2018/1/5.
- */
-
 public class HomeBottomChildAdapter extends RecyclerView.Adapter {
 
     List<HomeResponse.BottomSlide.BottomSlideChild> bottomSlideChildren = new ArrayList<>();
@@ -32,12 +28,11 @@ public class HomeBottomChildAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder viewHolder = null;
+
         View itemView = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_home_bottom_sideslip_image_and_text_t4, parent, false);
-        viewHolder = new BottomSlideItemHolder(itemView);
 
-        return viewHolder;
+        return new BottomSlideItemHolder(itemView);
     }
 
     @Override

@@ -12,10 +12,6 @@ import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by Administrator on 2018/1/6.
- */
-
 public class MyOrderPresenter extends RxPresenter<MyOrderContract.View> implements
     MyOrderContract.Presenter {
 

@@ -17,8 +17,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-
 public class HelpSupportAdapter extends RecyclerView.Adapter {
 
     private List<HelpSupportModel> helpSupportModels;
@@ -105,9 +103,10 @@ public class HelpSupportAdapter extends RecyclerView.Adapter {
 
         void bindingDatas(HelpSupportContentVM contentVM) {
             tvHelpSupportContent.setText(contentVM.getLabel());
-            if(contentVM.getHelpContentClickListener() != null) {
+            if (contentVM.getHelpContentClickListener() != null) {
                 itemView
-                    .setOnClickListener(v -> contentVM.getHelpContentClickListener().onContentClick());
+                    .setOnClickListener(
+                        v -> contentVM.getHelpContentClickListener().onContentClick());
             }
 
         }

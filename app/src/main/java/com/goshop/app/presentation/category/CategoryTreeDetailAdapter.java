@@ -18,10 +18,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/18.
- */
-
 public class CategoryTreeDetailAdapter extends RecyclerView.Adapter {
 
     private List<SearchFilterModel> filterModels;
@@ -126,8 +122,8 @@ public class CategoryTreeDetailAdapter extends RecyclerView.Adapter {
                 ivSearchResultGift.setBackgroundResource(searchResultVM.getIconGift());
             }
 
-            tvSearchResultBest.setVisibility(searchResultVM.isBest()?View.VISIBLE:View.GONE);
-            tvSearchResultNew.setVisibility(searchResultVM.isBest()?View.VISIBLE:View.GONE);
+            tvSearchResultBest.setVisibility(searchResultVM.isBest() ? View.VISIBLE : View.GONE);
+            tvSearchResultNew.setVisibility(searchResultVM.isBest() ? View.VISIBLE : View.GONE);
             tvSearchResultPercent.setText(searchResultVM.getPrecent());
             tvSearchResultTitle.setText(searchResultVM.getTitle());
             tvSearchResultPriceOld.setText(searchResultVM.getOldPrice());

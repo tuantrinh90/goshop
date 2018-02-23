@@ -7,8 +7,6 @@ import com.goshop.app.presentation.model.PointsModel;
 import java.util.List;
 import java.util.Map;
 
-
-
 public class MyPointsContract {
 
     interface View extends BaseView {

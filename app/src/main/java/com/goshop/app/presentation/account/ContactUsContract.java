@@ -6,8 +6,6 @@ import com.goshop.app.presentation.model.ContactUsVM;
 
 import java.util.Map;
 
-
-
 public class ContactUsContract {
 
     interface View extends BaseView {

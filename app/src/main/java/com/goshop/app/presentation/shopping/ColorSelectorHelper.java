@@ -17,13 +17,22 @@ import android.widget.TextView;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/1/16.
- */
-
 public class ColorSelectorHelper {
 
     public ColorSelectorHelper() {
+    }
+
+    public static void setTipsColor(TextView textView, int textColor, int bgColor) {
+        GradientDrawable bg = new GradientDrawable();
+        bg.setCornerRadius(5);
+        bg.setShape(GradientDrawable.RECTANGLE);
+        bg.setColor(ContextCompat.getColor(textView.getContext(), bgColor));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
+            textView.setBackground(bg);
+        } else {
+            textView.setBackgroundDrawable(bg);
+        }
+        textView.setTextColor(ContextCompat.getColor(textView.getContext(), textColor));
     }
 
     public void createSelector(RadioGroup parentView, List<Integer> colors) {
@@ -62,19 +71,6 @@ public class ColorSelectorHelper {
         } else {
             radioButton.setBackgroundDrawable(drawable);
         }
-    }
-
-    public static void setTipsColor(TextView textView, int textColor, int bgColor) {
-        GradientDrawable bg = new GradientDrawable();
-        bg.setCornerRadius(5);
-        bg.setShape(GradientDrawable.RECTANGLE);
-        bg.setColor(ContextCompat.getColor(textView.getContext(), bgColor));
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN) {
-            textView.setBackground(bg);
-        } else {
-            textView.setBackgroundDrawable(bg);
-        }
-        textView.setTextColor(ContextCompat.getColor(textView.getContext(), textColor));
     }
 
     private void setSelectorColor(RadioButton radioButton, int normal, int checked) {

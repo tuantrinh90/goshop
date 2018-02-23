@@ -6,10 +6,6 @@ import com.goshop.app.presentation.model.PaymentStatusVM;
 
 import java.util.Map;
 
-/**
- * Created by helen on 2018/2/2.
- */
-
 public class PaymentStatusContract {
 
     interface View extends BaseView {

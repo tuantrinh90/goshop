@@ -12,14 +12,11 @@ import com.goshop.app.utils.ToastUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.ImageView;
 
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
-
-
 
 public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter> implements
     ContactUsContract.View, ToastUtil.OnToastListener {
@@ -47,16 +44,16 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.contact_us);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         tvBtnLayoutPink.setText(getResources().getString(R.string.send));
         initPresenter();
         toastUtil = new ToastUtil(this, this);
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.contact_us);
     }
 
     private void initPresenter() {

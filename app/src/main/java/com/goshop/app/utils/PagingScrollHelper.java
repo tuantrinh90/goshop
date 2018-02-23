@@ -3,36 +3,37 @@ package com.goshop.app.utils;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 import android.view.MotionEvent;
 import android.view.View;
 
-/**
- * implements RecycleView pageing scroll like viewpager utils
- * TODO joyson home page may add this class
- * Created by zhuguohui on 2016/11/10.
- */
-
+//TODO joyson home page may add this class
 public class PagingScrollHelper {
 
-    RecyclerView mRecyclerView = null;
+    ValueAnimator mAnimator = null;
 
-    private MyOnScrollListener mOnScrollListener = new MyOnScrollListener();
-
-    private MyOnFlingListener mOnFlingListener = new MyOnFlingListener();
-    private int offsetY = 0;
-    private int offsetX = 0;
-
-    int startY = 0;
-    int startX = 0;
-
-
-    enum ORIENTATION {
-        HORIZONTAL, VERTICAL, NULL
-    }
+    onPageChangeListener mOnPageChangeListener;
 
     ORIENTATION mOrientation = ORIENTATION.HORIZONTAL;
 
+    RecyclerView mRecyclerView = null;
+
+    int startX = 0;
+
+    int startY = 0;
+
+    private MyOnFlingListener mOnFlingListener = new MyOnFlingListener();
+
+    private MyOnScrollListener mOnScrollListener = new MyOnScrollListener();
+
+    private MyOnTouchListener mOnTouchListener = new MyOnTouchListener();
+
+    private int offsetX = 0;
+
+    private int offsetY = 0;
+
+    @SuppressLint("ClickableViewAccessibility")
     public void setUpRecycleView(RecyclerView recycleView) {
         if (recycleView == null) {
             throw new IllegalArgumentException("recycleView must be not null");
@@ -67,7 +68,38 @@ public class PagingScrollHelper {
 
     }
 
-    ValueAnimator mAnimator = null;
+    private int getPageIndex() {
+        int p = 0;
+        if (mOrientation == ORIENTATION.VERTICAL) {
+            p = offsetY / mRecyclerView.getHeight();
+        } else {
+            p = offsetX / mRecyclerView.getWidth();
+        }
+        return p;
+    }
+
+    private int getStartPageIndex() {
+        int p = 0;
+        if (mOrientation == ORIENTATION.VERTICAL) {
+            p = startY / mRecyclerView.getHeight();
+        } else {
+            p = startX / mRecyclerView.getWidth();
+        }
+        return p;
+    }
+
+    public void setOnPageChangeListener(onPageChangeListener listener) {
+        mOnPageChangeListener = listener;
+    }
+
+    enum ORIENTATION {
+        HORIZONTAL, VERTICAL, NULL
+    }
+
+    public interface onPageChangeListener {
+
+        void onPageChange(int index);
+    }
 
     public class MyOnFlingListener extends RecyclerView.OnFlingListener {
 
@@ -114,18 +146,15 @@ public class PagingScrollHelper {
                 mAnimator = new ValueAnimator().ofInt(startPoint, endPoint);
 
                 mAnimator.setDuration(300);
-                mAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
-                    @Override
-                    public void onAnimationUpdate(ValueAnimator animation) {
-                        int nowPoint = (int) animation.getAnimatedValue();
+                mAnimator.addUpdateListener(animation -> {
+                    int nowPoint = (int) animation.getAnimatedValue();
 
-                        if (mOrientation == ORIENTATION.VERTICAL) {
-                            int dy = nowPoint - offsetY;
-                            mRecyclerView.scrollBy(0, dy);
-                        } else {
-                            int dx = nowPoint - offsetX;
-                            mRecyclerView.scrollBy(dx, 0);
-                        }
+                    if (mOrientation == ORIENTATION.VERTICAL) {
+                        int dy = nowPoint - offsetY;
+                        mRecyclerView.scrollBy(0, dy);
+                    } else {
+                        int dx = nowPoint - offsetX;
+                        mRecyclerView.scrollBy(dx, 0);
                     }
                 });
                 mAnimator.addListener(new AnimatorListenerAdapter() {
@@ -149,6 +178,7 @@ public class PagingScrollHelper {
     }
 
     public class MyOnScrollListener extends RecyclerView.OnScrollListener {
+
         @Override
         public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
             //newState==0 mean scroll stop ，You need to handle the rollback.
@@ -157,7 +187,8 @@ public class PagingScrollHelper {
                 int vX = 0, vY = 0;
                 if (mOrientation == ORIENTATION.VERTICAL) {
                     int absY = Math.abs(offsetY - startY);
-                    //If the sliding distance exceeds half of the screen, you need to slide to the next page.
+                    //If the sliding distance exceeds half of the screen, you need to slide to
+                    // the next page.
                     move = absY > recyclerView.getHeight() / 2;
                     vY = 0;
 
@@ -188,11 +219,9 @@ public class PagingScrollHelper {
         }
     }
 
-    private MyOnTouchListener mOnTouchListener = new MyOnTouchListener();
-
-
     public class MyOnTouchListener implements View.OnTouchListener {
 
+        @SuppressLint("ClickableViewAccessibility")
         @Override
         public boolean onTouch(View v, MotionEvent event) {
             //Record the coordinates of the beginning of the scroll when the finger is pressed.
@@ -203,36 +232,6 @@ public class PagingScrollHelper {
             return false;
         }
 
-    }
-
-    private int getPageIndex() {
-        int p = 0;
-        if (mOrientation == ORIENTATION.VERTICAL) {
-            p = offsetY / mRecyclerView.getHeight();
-        } else {
-            p = offsetX / mRecyclerView.getWidth();
-        }
-        return p;
-    }
-
-    private int getStartPageIndex() {
-        int p = 0;
-        if (mOrientation == ORIENTATION.VERTICAL) {
-            p = startY / mRecyclerView.getHeight();
-        } else {
-            p = startX / mRecyclerView.getWidth();
-        }
-        return p;
-    }
-
-    onPageChangeListener mOnPageChangeListener;
-
-    public void setOnPageChangeListener(onPageChangeListener listener) {
-        mOnPageChangeListener = listener;
-    }
-
-    public interface onPageChangeListener {
-        void onPageChange(int index);
     }
 
 }

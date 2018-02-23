@@ -82,27 +82,26 @@ public class NetModule {
     }
 
     @Provides
-    public LocalApi provideLocalApi(RealmDataSource realmDataSource){
+    public LocalApi provideLocalApi(RealmDataSource realmDataSource) {
         return realmDataSource;
     }
 
     @Provides
-    public RestApi provideRestApi(@Named("DefaultRetrofit") Retrofit retrofit){
+    public RestApi provideRestApi(@Named("DefaultRetrofit") Retrofit retrofit) {
         return new RetrofitRestApiImpl(retrofit);
     }
-    
+
     @Provides
     @Named("localAccountDataSource")
-    public AccountDataSource provideLocalAccountDataSource(LocalApi localApi){
+    public AccountDataSource provideLocalAccountDataSource(LocalApi localApi) {
         return new AccountLocalDataSource(localApi);
     }
 
     @Provides
     @Named("cloudAccountDataSource")
-    public AccountDataSource  provideCloudAccountDataSource(RestApi restApi){
+    public AccountDataSource provideCloudAccountDataSource(RestApi restApi) {
         return new AccountCloudDataSource(restApi);
     }
-
 
 
 }

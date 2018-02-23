@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:layout_marginRight="@dimen/size_16"
     android:layout_marginLeft="@dimen/size_16"
     android:background="@drawable/bg_white_bottom_line">
 
+
     <Switch
         android:id="@+id/switch_setting"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:thumb="@drawable/switch_selector"
-        android:track="@drawable/switch_track"
+        android:thumb="@drawable/switch_thumb_selector"
+        android:track="@drawable/switch_track_selector"
         android:layout_alignParentRight="true"
-        android:layout_centerVertical="true"/>
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_switch_content"
@@ -25,6 +28,9 @@
         android:paddingRight="@dimen/size_16"
         android:paddingTop="@dimen/size_20"
         android:paddingBottom="@dimen/size_20"
-        android:layout_toLeftOf="@id/switch_setting"/>
+        android:layout_toLeftOf="@id/switch_setting"
+        tools:ignore="RtlSymmetry"
+        android:paddingEnd="@dimen/size_16"
+        android:layout_toStartOf="@id/switch_setting"/>
 
 </RelativeLayout>

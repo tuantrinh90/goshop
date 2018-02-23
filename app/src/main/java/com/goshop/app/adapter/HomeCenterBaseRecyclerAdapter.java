@@ -20,9 +20,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by img on 2018/1/5.
- */
 public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
 
     List<HomeResponse.CenterVideo> centerVideos = new ArrayList<>();
@@ -34,11 +31,11 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerView.ViewHolder viewHolder = null;
+
         View centerVideo = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_home_center_video_adapter_t3_inside, parent, false);
-        viewHolder = new HomeCenterVideoList(centerVideo);
-        return viewHolder;
+
+        return new HomeCenterVideoList(centerVideo);
     }
 
     @Override
@@ -50,7 +47,7 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
         homeCenterChildViewListAdapter.setExpand(false);
         RxView.clicks(homeCenterVideoList.rlDownArrows).subscribe(v -> {
             boolean isExpand = homeCenterChildViewListAdapter.isExpand();
-            AnimUtils.rotateArrow(homeCenterVideoList.ivArrow,!isExpand);
+            AnimUtils.rotateArrow(homeCenterVideoList.ivArrow, !isExpand);
             homeCenterChildViewListAdapter.setExpand(!isExpand);
             homeCenterChildViewListAdapter.notifyDataSetChanged();
         });
@@ -69,8 +66,8 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
 
     static class HomeCenterVideoList extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.view_video)
-        TextView viewVideo;
+        @BindView(R.id.iv_arrow)
+        ImageView ivArrow;
 
         @BindView(R.id.rv_home_center_video_list)
         RecyclerView recyclerView;
@@ -78,8 +75,8 @@ public class HomeCenterBaseRecyclerAdapter extends RecyclerView.Adapter {
         @BindView(R.id.rl_home_center_bottom_video_down_arrows)
         RelativeLayout rlDownArrows;
 
-        @BindView(R.id.iv_arrow)
-        ImageView ivArrow;
+        @BindView(R.id.view_video)
+        TextView viewVideo;
 
         public HomeCenterVideoList(View itemView) {
             super(itemView);

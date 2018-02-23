@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
+
+    <ImageView
+        android:id="@+id/iv_video_right"
+        android:layout_width="@dimen/size_106"
+        android:layout_height="@dimen/size_106"
+        android:background="@drawable/ic_bought"
+        android:contentDescription="@string/app_name"/>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_video_right_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="right"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/size_font_12"
+        android:padding="@dimen/size_4"
+        android:text="@string/on_air"
+        android:textAllCaps="true"
+        android:layout_alignRight="@id/iv_video_right"
+        android:layout_alignTop="@id/iv_video_right"
+        android:background="@color/color_main_pink"
+        tools:ignore="RtlHardcoded"
+        android:layout_alignEnd="@id/iv_video_right"/>
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_video_right_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/size_font_14"
+        android:padding="@dimen/size_4"
+        android:layout_alignBottom="@id/iv_video_right"
+        android:layout_alignRight="@id/iv_video_right"
+        android:layout_alignLeft="@id/iv_video_right"
+        android:background="@android:color/transparent"
+        tools:ignore="RtlHardcoded"
+        android:layout_alignEnd="@id/iv_video_right"
+        android:layout_alignStart="@id/iv_video_right"/>
+
+</RelativeLayout>

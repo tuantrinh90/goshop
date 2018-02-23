@@ -11,10 +11,6 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by img on 2018/1/31.
- */
-
 public class MyOrderDetailAdapter extends RecyclerView.Adapter {
 
     List<MyOrderDetailReponse.SubordersBean> subordersBeans = new ArrayList<>();

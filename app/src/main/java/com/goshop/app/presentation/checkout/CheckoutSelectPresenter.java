@@ -11,10 +11,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/2/2.
- */
-
 public class CheckoutSelectPresenter extends RxPresenter<CheckoutSelectContract.View> implements
     CheckoutSelectContract.Presenter {
 
@@ -46,6 +42,7 @@ public class CheckoutSelectPresenter extends RxPresenter<CheckoutSelectContract.
                 }
             }));
     }
+
     //TODO(helen)wait for api
     private List<SelectAddressVM> getMockData() {
         List<SelectAddressVM> addressVMS = new ArrayList<>();

@@ -7,8 +7,6 @@ import com.goshop.app.presentation.model.HelpSupportModel;
 import java.util.List;
 import java.util.Map;
 
-
-
 public class HelpSupportContract {
 
     interface View extends BaseView {

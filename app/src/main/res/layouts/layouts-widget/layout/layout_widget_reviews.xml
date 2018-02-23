@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16">
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_btn_review_top"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@+id/rl_review_top_left"
+            android:text="@string/write_a_review"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_main_pink"
+            android:background="@drawable/bg_btn_round_pink_circle"
+            android:paddingBottom="@dimen/size_6"
+            android:paddingTop="@dimen/size_6"
+            android:paddingRight="@dimen/size_16"
+            android:paddingLeft="@dimen/size_16"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
+
+        <RelativeLayout
+            android:id="@+id/rl_review_top_left"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginTop="@dimen/size_8"
+            android:orientation="vertical"
+            android:layout_alignParentStart="true">
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_reviews_top_num"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_main_pink"
+                android:textSize="@dimen/size_font_12"
+                android:paddingRight="@dimen/size_4"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_4"/>
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/reviews"
+                android:layout_toRightOf="@id/tv_reviews_top_num"
+                android:textColor="@color/color_text_black"
+                android:textSize="@dimen/size_font_12"
+                android:paddingRight="@dimen/size_18"
+                tools:ignore="RtlSymmetry"
+                android:layout_toEndOf="@id/tv_reviews_top_num"
+                android:paddingEnd="@dimen/size_18"/>
+            <RatingBar
+                android:id="@+id/ratingbar_reviews_top"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/size_28"
+                android:layout_below="@id/tv_reviews_top_num"
+                android:progressDrawable="@drawable/bg_rating"
+                android:isIndicator="true"
+                android:stepSize="1"
+                android:rating="5"
+                android:numStars="5"/>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_reviews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <include
+        layout="@layout/item_more"/>
+
+</LinearLayout>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:showIn="navigation_view">
+
+    <group
+        android:id="@+id/group_one"
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/slide_menu_home"
+            android:icon="@drawable/ic_icon_home"
+            android:title="@string/home"/>
+
+        <item
+            android:id="@+id/slide_menu_categories"
+            android:icon="@drawable/ic_icon_categories"
+            android:title="@string/categories"/>
+
+        <item
+            android:id="@+id/slide_menu_go_loyalty"
+            app:actionLayout="@layout/menu_counter"
+            android:icon="@drawable/ic_slidemenu_go_loyalty_nor"
+            android:title="@string/go_loyalty"/>
+
+        <item
+            android:id="@+id/slide_menu_cart"
+            android:icon="@drawable/ic_icon_shopping_cart"
+            android:title="@string/shopping_cart"/>
+
+        <item
+            android:id="@+id/slide_menu_wishlist"
+            android:icon="@drawable/ic_icon_my_wishlist"
+            android:title="@string/my_wishlist"/>
+
+        <item
+            android:id="@+id/slide_menu_orders"
+            android:icon="@drawable/ic_icon_my_orders"
+            android:title="@string/my_orders"/>
+
+        <item
+            android:id="@+id/slide_menu_rewards"
+            android:icon="@drawable/ic_icon_my_orders"
+            android:title="@string/my_rewards"/>
+
+        <item
+            android:id="@+id/slide_menu_notifications"
+            android:icon="@drawable/ic_icon_notifaications"
+            app:actionLayout="@layout/menu_counter"
+            android:title="@string/notifications"/>
+    </group>
+
+    <group
+        android:checkableBehavior="single"
+        android:id="@+id/group_two">
+        <item
+            android:id="@+id/slide_menu_help"
+            android:title="@string/help_support"/>
+        <item
+            android:id="@+id/slide_menu_setting"
+            android:title="@string/settings"/>
+
+        <item
+            android:id="@+id/slide_menu_others"
+            android:title="@string/other_page"/>
+    </group>
+
+</menu>

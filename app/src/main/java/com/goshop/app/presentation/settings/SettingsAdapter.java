@@ -20,10 +20,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/2/8.
- */
-
 public class SettingsAdapter extends RecyclerView.Adapter {
 
     private List<SettingsModel> settingsModels;
@@ -134,6 +130,10 @@ public class SettingsAdapter extends RecyclerView.Adapter {
 
         void bindingData(SettingsSingleDetailVM singleDetailVM) {
             tvItemDetail.setText(singleDetailVM.getDetail());
+            if (singleDetailVM.getItemClickListener() != null) {
+                itemView.setOnClickListener(
+                    v -> singleDetailVM.getItemClickListener().onDetailItemClick());
+            }
         }
     }
 

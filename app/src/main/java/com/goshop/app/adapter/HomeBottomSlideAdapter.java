@@ -21,9 +21,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by img on 2018/1/5.
- */
 public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
 
     List<HomeResponse.BottomSlide> bottomSlides = new ArrayList<>();
@@ -91,9 +88,7 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
         void bindingData(HomeResponse.BottomSlide bottomSlide,int position) {
             Glide.with(ivBottomHeader.getContext()).load(bottomSlide.getHeadImageUrl())
                 .into(ivBottomHeader);
-            RxView.clicks(ivBottomHeader).subscribe(v -> {
-                PageIntentUtils.skipBannerPromotion(ivBottomHeader.getContext(), bottomSlide);
-            });
+            RxView.clicks(ivBottomHeader).subscribe(v -> PageIntentUtils.skipBannerPromotion(ivBottomHeader.getContext(), bottomSlide));
         }
     }
 

@@ -12,10 +12,6 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/1/12.
- */
-
 public class PdpBannerAdapter extends PagerAdapter {
 
     private Context context;

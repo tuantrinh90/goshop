@@ -1,212 +1,110 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
-    <LinearLayout
+    <include
+        layout="@layout/toolbar_img_text_img_close"/>
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_register"
+            android:orientation="vertical">
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/btn_test_login"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"
+                android:padding="@dimen/size_16"
+                android:textColor="@color/color_text_black"
+                android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/register"/>
+                android:text="@string/login"/>
 
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_forgot_password"
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/btn_test_send_confirmation_link"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"
+                android:padding="@dimen/size_16"
+                android:textColor="@color/color_text_black"
+                android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/reset_password"/>
-        </LinearLayout>
-        <com.goshop.app.common.view.CustomBoldButton
-            android:id="@+id/btn_test_send_confirmation_link"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/size_font_14"
-            android:layout_margin="@dimen/size_8"
-            android:text="@string/send_confirmation_link"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.goshop.app.common.view.CustomBoldButton
+                android:text="@string/send_confirmation_link"/>
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/btn_test_complement_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"
+                android:padding="@dimen/size_16"
+                android:textColor="@color/color_text_black"
+                android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
                 android:text="@string/complement_email"/>
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_changepwd"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/change_password"/>
-
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_pdp"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/pdp"/>
-
-            <com.goshop.app.common.view.CustomBoldButton
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/btn_test_my_address"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"
+                android:padding="@dimen/size_16"
+                android:textColor="@color/color_text_black"
+                android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
                 android:text="@string/my_address_book"/>
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_search"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/search"/>
-
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_search_result"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/search_result"/>
-
-        </LinearLayout>
-
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_cart"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/shopping_cart"/>
-
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_contact_us"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/contact_us"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_help"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/help_support"/>
-
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_faq"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/faq"/>
-        </LinearLayout>
-        <com.goshop.app.common.view.CustomBoldButton
-            android:id="@+id/btn_test_ecmc"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/size_font_14"
-            android:layout_margin="@dimen/size_8"
-            android:text="@string/ecmc"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <com.goshop.app.common.view.CustomBoldButton
+            <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/btn_test_editprofile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"
+                android:padding="@dimen/size_16"
+                android:textColor="@color/color_text_black"
+                android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
                 android:text="@string/edit_profile"/>
 
-            <com.goshop.app.common.view.CustomBoldButton
-                android:id="@+id/btn_test_term"
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/btn_test_my_points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:textColor="@android:color/white"
+                android:padding="@dimen/size_16"
+                android:textColor="@color/color_text_black"
+                android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
-                android:layout_margin="@dimen/size_8"
-                android:text="@string/terms_conditions"/>
+                android:text="@string/my_point"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/btn_test_select_address"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/size_16"
+                android:textColor="@color/color_text_black"
+                android:background="@drawable/bg_white_top_bottom_line"
+                android:textSize="@dimen/size_font_14"
+                android:text="@string/select_address"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/btn_test_paymentstatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:padding="@dimen/size_16"
+                android:textColor="@color/color_text_black"
+                android:background="@drawable/bg_white_top_bottom_line"
+                android:textSize="@dimen/size_font_14"
+                android:text="@string/payment_status"/>
+
         </LinearLayout>
+    </ScrollView>
 
-
-    </LinearLayout>
-</ScrollView>
+</LinearLayout>

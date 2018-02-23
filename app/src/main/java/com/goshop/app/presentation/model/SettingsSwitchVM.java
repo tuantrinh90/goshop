@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/2/8.
- */
-
 public class SettingsSwitchVM extends SettingsModel {
 
     private String detail;
