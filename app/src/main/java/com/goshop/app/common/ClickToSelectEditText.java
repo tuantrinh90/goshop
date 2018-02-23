@@ -9,9 +9,7 @@ import android.util.AttributeSet;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/1/25.
- */
+
 
 public class ClickToSelectEditText<T> extends AppCompatEditText {
 

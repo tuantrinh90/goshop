@@ -5,9 +5,7 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.UserInfo;
 
-/**
- * Created by img on 2018/1/9.
- */
+
 
 public interface LoginContract {
 

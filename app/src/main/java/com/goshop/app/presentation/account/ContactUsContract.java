@@ -6,9 +6,7 @@ import com.goshop.app.presentation.model.ContactUsVM;
 
 import java.util.Map;
 
-/**
- * Created by helen on 2018/1/30.
- */
+
 
 public class ContactUsContract {
 

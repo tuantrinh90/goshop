@@ -13,9 +13,7 @@ import android.view.ViewGroup;
 import com.goshop.app.common.Typefaces;
 
 
-/**
- * Created by yahyamukhlis on 4/5/17.
- */
+
 
 @SuppressWarnings("ALL")
 public class CustomBoldTabLayout extends TabLayout {

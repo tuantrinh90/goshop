@@ -15,9 +15,7 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/16.
- */
+
 
 public class CustomMinusPlusEditText extends RelativeLayout {
 

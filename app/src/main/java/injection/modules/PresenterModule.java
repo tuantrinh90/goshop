@@ -67,9 +67,6 @@ import dagger.Module;
 import dagger.Provides;
 import injection.ActivityScope;
 
-/**
- * Created by ray on 2017/5/5.
- */
 @Module
 
 public class PresenterModule {

@@ -13,9 +13,7 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/2/8.
- */
+
 
 public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implements
     MyPointsContract.Presenter {

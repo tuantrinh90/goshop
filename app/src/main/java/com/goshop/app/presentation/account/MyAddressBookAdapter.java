@@ -18,9 +18,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/26.
- */
+
 
 public class MyAddressBookAdapter extends RecyclerView.Adapter {
 

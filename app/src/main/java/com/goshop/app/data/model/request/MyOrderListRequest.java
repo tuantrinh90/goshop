@@ -1,8 +1,6 @@
 package com.goshop.app.data.model.request;
 
-/**
- * Created by img on 2018/1/29.
- */
+
 
 public class MyOrderListRequest {
     private String session_key;

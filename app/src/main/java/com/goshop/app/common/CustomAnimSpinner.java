@@ -14,9 +14,7 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/25.
- */
+
 
 public class CustomAnimSpinner extends RelativeLayout {
 

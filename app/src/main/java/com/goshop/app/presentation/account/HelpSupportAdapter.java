@@ -17,9 +17,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/29.
- */
+
 
 public class HelpSupportAdapter extends RecyclerView.Adapter {
 

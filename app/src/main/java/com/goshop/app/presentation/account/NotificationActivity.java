@@ -21,9 +21,7 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by img on 2018/2/6.
- */
+
 
 public class NotificationActivity extends BaseActivity<NotificationContract.Presenter>
     implements NotificationContract.View {

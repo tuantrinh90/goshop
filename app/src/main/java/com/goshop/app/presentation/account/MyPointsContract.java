@@ -7,9 +7,7 @@ import com.goshop.app.presentation.model.PointsModel;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by helen on 2018/2/8.
- */
+
 
 public class MyPointsContract {
 

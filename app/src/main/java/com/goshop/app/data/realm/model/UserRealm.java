@@ -3,9 +3,6 @@ package com.goshop.app.data.realm.model;
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
 
-/**
- * Created by Ray on 2018/1/5.
- */
 //TODO ray this is just a presentation class
 public class UserRealm extends RealmObject {
 

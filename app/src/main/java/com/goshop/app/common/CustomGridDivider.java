@@ -10,9 +10,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-/**
- * Created by helen on 2018/1/19.
- */
+
 
 public class CustomGridDivider extends RecyclerView.ItemDecoration {
 

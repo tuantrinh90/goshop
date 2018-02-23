@@ -44,10 +44,6 @@ import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 
-/**
- * Created by Ray on 2018/1/5.
- */
-
 public interface RetrofitRestApi {
 
     String CONTENT_TYPE_JSON = "Content-Type: application/vnd.api+json";

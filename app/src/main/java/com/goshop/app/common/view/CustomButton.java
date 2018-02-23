@@ -7,9 +7,7 @@ import android.graphics.Typeface;
 import android.text.TextPaint;
 import android.util.AttributeSet;
 
-/**
- * Created by Ray on 2018/1/15.
- */
+
 
 public class CustomButton extends android.support.v7.widget.AppCompatButton {
 

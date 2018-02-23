@@ -3,9 +3,6 @@ package com.goshop.app.base;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.disposables.Disposable;
 
-/**
- * Created by Administrator on 2016/12/23.
- */
 public class RxPresenter<T extends BaseView> implements BasePresenter<T> {
 
     protected T mView;

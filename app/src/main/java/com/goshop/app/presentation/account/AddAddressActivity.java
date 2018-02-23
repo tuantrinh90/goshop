@@ -16,11 +16,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
-
-/**
- * Created by helen on 2018/1/26.
- */
-
 public class AddAddressActivity extends BaseActivity<AddAddressContract.Presenter> implements
     AddAddressContract.View {
 

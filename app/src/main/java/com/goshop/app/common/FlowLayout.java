@@ -8,9 +8,7 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by img on 2018/1/23.
- */
+
 
 public class FlowLayout extends ViewGroup {
 

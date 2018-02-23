@@ -7,9 +7,7 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.RadioGroup;
 
-/**
- * Created by helen on 2018/1/16.
- */
+
 
 public class CustomDynamicRadioGroup extends RadioGroup {
 

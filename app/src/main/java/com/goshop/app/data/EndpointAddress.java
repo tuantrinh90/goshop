@@ -2,10 +2,6 @@ package com.goshop.app.data;
 
 import com.goshop.app.BuildConfig;
 
-/**
- * Created by winniseptiani on 3/22/17.
- */
-
 @SuppressWarnings("ALL")
 public class EndpointAddress {
 

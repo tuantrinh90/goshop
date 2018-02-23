@@ -3,10 +3,6 @@ package com.goshop.app.data.realm;
 import io.realm.DynamicRealm;
 import io.realm.RealmMigration;
 
-/**
- * Created by yahyamukhlis on 4/17/17.
- */
-
 @SuppressWarnings("ALL")
 public class SchemaMigration implements RealmMigration {
 

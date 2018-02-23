@@ -10,9 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-/**
- * Created by img on 2018/1/8.
- */
+
 
 public class CustomButtomLineRelativeLayout extends RelativeLayout {
     private TextView lineTextView;

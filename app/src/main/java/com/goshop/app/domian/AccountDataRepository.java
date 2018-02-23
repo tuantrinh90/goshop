@@ -40,10 +40,6 @@ import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
-/**
- * Created by Ray on 2018/1/5.
- */
-
 public class AccountDataRepository implements AccountRepository {
 
     private AccountDataSource accountCloudDataSource;

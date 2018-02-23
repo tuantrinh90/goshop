@@ -20,9 +20,7 @@ import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by img on 2018/1/9.
- */
+
 
 public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract.Presenter {
     AccountRepository accountRepository;

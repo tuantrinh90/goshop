@@ -16,9 +16,7 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/26.
- */
+
 
 public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.Presenter>
     implements ChangePasswordContract.View {

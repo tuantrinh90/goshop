@@ -7,9 +7,7 @@ import com.goshop.app.presentation.model.FAQVM;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by helen on 2018/1/29.
- */
+
 
 public class FAQContract {
 

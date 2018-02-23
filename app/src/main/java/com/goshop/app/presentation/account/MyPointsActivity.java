@@ -18,9 +18,7 @@ import butterknife.BindView;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/2/8.
- */
+
 
 public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> implements
     MyPointsContract.View {

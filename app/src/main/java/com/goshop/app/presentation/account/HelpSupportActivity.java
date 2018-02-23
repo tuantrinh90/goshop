@@ -20,9 +20,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/29.
- */
 
 public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presenter> implements
     HelpSupportContract.View {

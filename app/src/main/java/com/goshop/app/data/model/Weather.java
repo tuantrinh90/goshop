@@ -2,10 +2,6 @@ package com.goshop.app.data.model;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by Administrator on 2018/1/7.
- */
-
 public class Weather {
 //    {
 //        "weatherinfo": {

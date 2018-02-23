@@ -5,9 +5,6 @@ import android.app.Activity;
 import dagger.Module;
 import dagger.Provides;
 
-/**
- * Created by Administrator on 2017/5/26.
- */
 @Module
 public class ActivityModule {
 

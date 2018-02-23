@@ -37,9 +37,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 import io.reactivex.disposables.Disposable;
 
-/**
- * Created by img on 2018/1/8.
- */
+
 
 public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements LoginContract
     .View {

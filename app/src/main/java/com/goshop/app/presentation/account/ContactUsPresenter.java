@@ -9,9 +9,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/1/30.
- */
 
 public class ContactUsPresenter extends RxPresenter<ContactUsContract.View> implements
     ContactUsContract.Presenter {

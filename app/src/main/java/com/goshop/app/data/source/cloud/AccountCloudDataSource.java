@@ -38,10 +38,6 @@ import javax.inject.Inject;
 
 import io.reactivex.Observable;
 
-/**
- * Created by Ray on 2018/1/5.
- */
-
 public class AccountCloudDataSource implements AccountDataSource {
 
     private RestApi restApi;

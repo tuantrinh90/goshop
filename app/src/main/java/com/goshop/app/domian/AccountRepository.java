@@ -32,11 +32,6 @@ import com.goshop.app.data.model.response.PromotionListResponse;
 import java.util.Map;
 
 import io.reactivex.Observable;
-
-/**
- * Created by Ray on 2018/1/5.
- */
-
 public interface AccountRepository {
 
     Observable<UserInfo> getUserInfo(String userId);

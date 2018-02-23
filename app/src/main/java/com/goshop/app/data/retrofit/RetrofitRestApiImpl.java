@@ -39,9 +39,6 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
 
-/**
- * Created by Ray on 2018/1/5.
- */
 
 public class RetrofitRestApiImpl implements RestApi {
 

@@ -1,8 +1,6 @@
 package com.goshop.app.data.model;
 
-/**
- * Created by Ray on 2018/1/5.
- */
+
 
 public class Reponse {
 

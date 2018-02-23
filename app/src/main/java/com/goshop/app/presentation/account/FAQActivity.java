@@ -19,9 +19,7 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/29.
- */
+
 
 public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements FAQContract.View {
 

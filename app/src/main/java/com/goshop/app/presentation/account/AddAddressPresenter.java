@@ -8,9 +8,7 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/1/26.
- */
+
 
 public class AddAddressPresenter extends RxPresenter<AddAddressContract.View> implements
     AddAddressContract.Presenter {

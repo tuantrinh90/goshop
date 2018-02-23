@@ -33,10 +33,6 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 
-/**
- * Created by Ray on 2018/1/5.
- */
-
 public interface AccountDataSource {
 
     Observable<UserInfo> getUserInfo(String userId);

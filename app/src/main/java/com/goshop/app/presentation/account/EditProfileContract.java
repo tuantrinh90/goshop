@@ -5,9 +5,7 @@ import com.goshop.app.base.BaseView;
 
 import java.util.Map;
 
-/**
- * Created by helen on 2018/1/26.
- */
+
 
 public class EditProfileContract {
 

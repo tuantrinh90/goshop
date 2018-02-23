@@ -14,9 +14,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/1/29.
- */
 
 public class FAQPresenter extends RxPresenter<FAQContract.View> implements FAQContract.Presenter {
 

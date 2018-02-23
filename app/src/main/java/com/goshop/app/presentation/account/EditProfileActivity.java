@@ -23,9 +23,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/25.
- */
 
 public class EditProfileActivity extends BaseActivity<EditProfileContract.Presenter> implements
     EditProfileContract.View {

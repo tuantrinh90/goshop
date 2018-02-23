@@ -19,9 +19,7 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/30.
- */
+
 
 public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter> implements
     ContactUsContract.View, ToastUtil.OnToastListener {

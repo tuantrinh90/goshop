@@ -16,9 +16,7 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-/**
- * Created by helen on 2018/1/29.
- */
+
 
 public class EditAddressActivity extends BaseActivity {
 
