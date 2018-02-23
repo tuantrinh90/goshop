@@ -1,4 +1,4 @@
-package com.goshop.app.presentation.account;
+package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
@@ -7,7 +7,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.data.model.UserInfo;
-import com.goshop.app.presentation.login.RegisterActivity;
+import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.utils.AnimUtils;
 import com.goshop.app.utils.JDataUtils;
 import com.goshop.app.utils.ScreenHelper;

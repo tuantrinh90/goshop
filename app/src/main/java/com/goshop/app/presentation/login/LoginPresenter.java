@@ -1,4 +1,4 @@
-package com.goshop.app.presentation.account;
+package com.goshop.app.presentation.login;
 
 import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
@@ -65,6 +65,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
     }
 
+    private final static String TAG_FACEBOOK = "facebook";
     //TODO facebook sdk code
     @Override
     public CallbackManager initFaceBook() {
@@ -85,14 +86,14 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                                 return;
                             }
                             if (loginResult.getAccessToken() != null) {
-                                thirdLogin("facebook", loginResult.getAccessToken().getToken());
+                                thirdLogin(TAG_FACEBOOK, loginResult.getAccessToken().getToken());
                             }
                             mProfileTracker.stopTracking();
                         }
                     };
                     mProfileTracker.startTracking();
                 } else {
-                    thirdLogin("facebook", loginResult.getAccessToken().getToken());
+                    thirdLogin(TAG_FACEBOOK, loginResult.getAccessToken().getToken());
                 }
             }
 

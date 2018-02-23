@@ -1,4 +1,4 @@
-package com.goshop.app.presentation.account;
+package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
 import com.goshop.app.base.BasePresenter;

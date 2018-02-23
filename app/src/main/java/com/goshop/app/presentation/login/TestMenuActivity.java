@@ -4,7 +4,6 @@ import com.crashlytics.android.Crashlytics;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.account.EditProfileActivity;
-import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
 import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;

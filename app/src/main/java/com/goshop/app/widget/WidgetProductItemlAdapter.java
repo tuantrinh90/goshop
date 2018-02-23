@@ -76,10 +76,10 @@ public class WidgetProductItemlAdapter extends RecyclerView.Adapter {
             Glide.with(itemView.getContext()).load(detailVM.getImage()).asBitmap()
                 .error(detailVM.getImageDefault())
                 .into(ivGridPic);
-            tvGridPercent.setText(detailVM.getPrice().getRM().getDiscountTitle());
+            tvGridPercent.setText(detailVM.getPrice().getRm().getDiscountTitle());
             tvGridTitle.setText(detailVM.getTitle());
-            String oldPrice = RM + detailVM.getPrice().getRM().getOriginal();
-            String nowPrice = RM + detailVM.getPrice().getRM().getDiscounted();
+            String oldPrice = RM + detailVM.getPrice().getRm().getOriginal();
+            String nowPrice = RM + detailVM.getPrice().getRm().getDiscounted();
             tvGridOld.setText(oldPrice);
             tvGridNowPrice.setText(nowPrice);
             tvGridOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);

@@ -2,18 +2,17 @@ package com.goshop.app.presentation.model.widget;
 
 public class ProductPriceVM {
 
-    private ProductPriceRMVM RM;
+    private ProductPriceRMVM rm;
 
-    public ProductPriceVM(ProductPriceRMVM RM) {
-        this.RM = RM;
+    public ProductPriceVM(ProductPriceRMVM rm) {
+        this.rm = rm;
     }
 
-    public ProductPriceRMVM getRM() {
-        return RM;
+    public ProductPriceRMVM getRm() {
+        return rm;
     }
 
-    public void setRM(ProductPriceRMVM RM) {
-        this.RM = RM;
+    public void setRm(ProductPriceRMVM rm) {
+        this.rm = rm;
     }
-
 }

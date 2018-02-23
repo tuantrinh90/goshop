@@ -4,8 +4,10 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductItemVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
+import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
 import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
 import com.goshop.app.widget.WidgetViewAdapter;
 
@@ -27,7 +29,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
-    implements PDPDetailContract.View , OnProductItemClickListener {
+    implements PDPDetailContract.View, OnProductItemClickListener, OnBannerItemClickListener {
 
     @BindView(R.id.iv_pdp_detail_love)
     ImageView ivPdpDetailLove;
@@ -110,12 +112,18 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
     @Override
     public void pdpDetailRequestSuccess(List<WidgetViewModel> detailDatas) {
         //todo(helen)wait for complete
+        widgetViewAdapter.setOnBannerItemClickListener(this);
         widgetViewAdapter.setOnProductItemClickListener(this);
         widgetViewAdapter.setUpdateDatas(detailDatas);
     }
 
     @Override
     public void onProductItemClick(ProductItemVM productItemVM) {
+        //TODO(helen)wait for design
+    }
+
+    @Override
+    public void onBannerItemClick(CarouselItemsVM carouselItemsVM) {
         //TODO(helen)wait for design
     }
 }
