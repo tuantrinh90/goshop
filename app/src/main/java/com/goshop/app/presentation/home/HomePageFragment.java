@@ -7,6 +7,7 @@ import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductItemVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
+import com.goshop.app.presentation.shopping.PDPDetailActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
 import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
@@ -110,7 +111,7 @@ public class HomePageFragment extends BaseFragment<HomePageContract.Presenter> i
 
     @Override
     public void onProductItemClick(ProductItemVM productItemVM) {
-        startActivity(new Intent(getActivity(), ProductDetailActivity.class));
+        startActivity(new Intent(getActivity(), PDPDetailActivity.class));
     }
 
     @Override

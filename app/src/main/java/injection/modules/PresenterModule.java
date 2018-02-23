@@ -59,6 +59,8 @@ import com.goshop.app.presentation.search.SearchResultContract;
 import com.goshop.app.presentation.search.SearchResultPresenter;
 import com.goshop.app.presentation.settings.SettingsContract;
 import com.goshop.app.presentation.settings.SettingsPresenter;
+import com.goshop.app.presentation.shopping.PDPDetailContract;
+import com.goshop.app.presentation.shopping.PDPDetailPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
 import com.goshop.app.presentation.shopping.ShoppingCartContract;
@@ -103,6 +105,13 @@ public class PresenterModule {
     public HomePageContract.Presenter provideHomePagePresenter(
         AccountDataRepository dataRepository) {
         return new HomePagePresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public PDPDetailContract.Presenter providePDPDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new PDPDetailPresenter(dataRepository);
     }
 
     @Provides

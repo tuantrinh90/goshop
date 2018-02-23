@@ -56,6 +56,12 @@ public interface RetrofitRestApi {
     Observable<WidgetViewReponse> homePageRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<ProductDetailResponse> pdpDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
     @Headers({CONTENT_TYPE_JSON})
     @GET
     Observable<GetWeatherResponse> getWeather(@Url String url);

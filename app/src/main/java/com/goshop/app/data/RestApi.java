@@ -38,6 +38,8 @@ public interface RestApi {
 
     Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params);
 
+    Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
+
     io.reactivex.Observable<GetWeatherResponse> getWeather(String id);
 
     io.reactivex.Observable<UserInfo> getUser(String username, String password);

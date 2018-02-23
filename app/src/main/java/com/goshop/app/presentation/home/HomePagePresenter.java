@@ -15,6 +15,7 @@ import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
 import com.goshop.app.presentation.model.widget.WidgetOnAirVM;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
+import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
 
 import java.util.ArrayList;
@@ -66,11 +67,11 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
         widgetViewModels.add(getWidgetBanners());
         widgetViewModels.addAll(getWidgetOnAirVMS());
         widgetViewModels.addAll(getSinglePicture());
-        widgetViewModels.add(getWidgetProductScrollerVM("Trending Now"));
+        widgetViewModels.addAll(getWidgetProductScrollerVM("Trending Now"));
         widgetViewModels.addAll(getSinglePicture());
-        widgetViewModels.add(getWidgetProductScrollerVM("Best Seller"));
+        widgetViewModels.addAll(getWidgetProductScrollerVM("Best Seller"));
         widgetViewModels.addAll(getSinglePicture());
-        widgetViewModels.add(getWidgetProductScrollerVM("TV Special"));
+        widgetViewModels.addAll(getWidgetProductScrollerVM("TV Special"));
         return widgetViewModels;
     }
 
@@ -110,7 +111,9 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
     }
 
     //TODO(helen) this is mock data
-    private WidgetProductScrollerVM getWidgetProductScrollerVM(String title) {
+    private List<WidgetViewModel> getWidgetProductScrollerVM(String title) {
+        List<WidgetViewModel> widgetViewModels = new ArrayList<>();
+        widgetViewModels.add(new WidgetTitleExpandVM(title));
         ProductPriceRMVM productPriceRMVM = new ProductPriceRMVM("25% OFF", "149", "200");
         ProductPriceVM productPriceVM = new ProductPriceVM(productPriceRMVM);
         List<String> attributes = new ArrayList<>();
@@ -123,6 +126,7 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
         productItemVMS.add(productItemVM);
         productItemVMS.add(productItemVM);
         ProductDataVM productDataVM = new ProductDataVM(productItemVMS);
-        return new WidgetProductScrollerVM(title, productDataVM);
+        widgetViewModels.add(new WidgetProductScrollerVM(productDataVM));
+        return widgetViewModels;
     }
 }

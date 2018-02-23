@@ -54,6 +54,11 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
+    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
     public Observable<UserInfo> getUserInfo(String userId) {
         return null;
     }

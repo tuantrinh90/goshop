@@ -62,6 +62,11 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.pdpDetailRequest(params);
+    }
+
+    @Override
     public Observable<UserInfo> getUserInfo(String id) {
         return accountCloudDataSource.getUserInfo(id)
             .subscribeOn(Schedulers.io())

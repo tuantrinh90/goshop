@@ -7,6 +7,8 @@ public class EndpointAddress {
 
     public static final String HOME_PAGE = "";
 
+    public static final String PDP_DETAILS = "";
+
     public static final String ADD_ADDRESS = "";
 
     //todo wait for api

@@ -54,6 +54,11 @@ public class AccountCloudDataSource implements AccountDataSource {
         return restApi.homePageRequest(params);
     }
 
+    @Override
+    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        return restApi.pdpDetailRequest(params);
+    }
+
     public Observable<UserInfo> getUserInfo(String id) {
         return null;
     }

@@ -30,8 +30,8 @@
 
         <ImageView
             android:id="@+id/imageview_right_menu"
-            android:layout_width="@dimen/size_18"
-            android:layout_height="@dimen/size_14"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
             android:scaleType="centerInside"
             android:src="@mipmap/share"
             android:layout_alignParentRight="true"
@@ -43,12 +43,13 @@
             android:id="@+id/imageview_right_cart"
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
-            android:layout_marginRight="@dimen/size_16"
+            android:layout_marginRight="@dimen/size_28"
             android:scaleType="centerInside"
             android:background="@mipmap/icon_shopping_cart"
             android:layout_toLeftOf="@id/imageview_right_menu"
             android:layout_centerVertical="true"
-            tools:ignore="ContentDescription" android:layout_marginEnd="@dimen/size_16"
+            tools:ignore="ContentDescription"
+            android:layout_marginEnd="@dimen/size_28"
             android:layout_toStartOf="@id/imageview_right_menu"/>
 
         <com.goshop.app.common.view.CustomBoldTextView

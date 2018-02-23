@@ -38,6 +38,8 @@ public interface AccountRepository {
 
     Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params);
 
+    Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
+
     Observable<UserInfo> getUserInfo(String userId);
 
     Observable<UserInfo> getUserInfo(String username, String password);

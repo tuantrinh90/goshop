@@ -58,6 +58,12 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
+    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PDP_DETAILS);
+        return retrofitRestApi.pdpDetailRequest(url, params);
+    }
+
+    @Override
     public Observable<GetWeatherResponse> getWeather(String id) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.USER_INFO);
         return retrofitRestApi.getWeather(url);

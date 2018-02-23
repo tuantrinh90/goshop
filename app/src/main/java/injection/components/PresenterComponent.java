@@ -31,6 +31,7 @@ import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.search.SearchResultActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
+import com.goshop.app.presentation.shopping.PDPDetailActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
@@ -47,6 +48,8 @@ public interface PresenterComponent {
     Activity getActivity();
 
     void inject(HomePageFragment homePageFragment);
+
+    void inject(PDPDetailActivity pdpDetailActivity);
 
     void inject(MyOrderListActivity myOrderListActivity);
 

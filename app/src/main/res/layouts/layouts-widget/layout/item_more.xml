@@ -4,19 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
     <com.goshop.app.common.view.CustomTextView
-        android:id="@+id/tv_pdp_product_summary_content"
+        android:id="@+id/tv_btn_add_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingRight="@dimen/size_16"
-        android:text="@string/product_summary_tips"
-        android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
-        android:paddingBottom="@dimen/size_14"
-    />
+        android:padding="@dimen/size_14"
+        android:gravity="center"
+        android:text="@string/view_more"
+        android:textColor="@color/color_main_pink"
+        android:textSize="@dimen/size_font_14"/>
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_1"
         android:background="@color/color_divider_grey"/>
+
 </LinearLayout>

@@ -331,5 +331,7 @@
     <string name="fb_live">Fb Live</string>
     <string name="demo_detail_title">Manjung Korean Crispy Seaweed (Sea Salt)</string>
     <string name="other_page">Other Page</string>
+    <string name="check">Check</string>
+    <string name="enter_delivery">Enter Delivery Zipcode</string>
 
 </resources>

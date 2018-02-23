@@ -12,21 +12,31 @@
         android:paddingTop="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
         android:paddingBottom="@dimen/size_24">
+        
+        <ImageView
+            android:id="@+id/iv_btn_on_air_right"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
+            android:background="@mipmap/arrow_right"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"/>
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:textSize="@dimen/size_font_18"
             android:textColor="@color/color_text_black"
+            android:layout_centerVertical="true"
             android:text="@string/on_air"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_btn_on_air_tv_schedule"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:drawableRight="@mipmap/arrow_right"
-            android:layout_alignParentRight="true"
+            android:layout_toLeftOf="@id/iv_btn_on_air_right"
+            android:layout_marginRight="@dimen/size_4"
             android:textColor="@color/color_text_black"
             android:textSize="@dimen/size_font_14"
+            android:layout_centerVertical="true"
             android:text="@string/tv_schedule"
         />
     </RelativeLayout>
@@ -112,9 +122,9 @@
         android:paddingBottom="@dimen/size_20"
         android:gravity="center">
         <ImageView
-            android:layout_width="@dimen/size_20"
-            android:layout_height="@dimen/size_20"
-            android:background="@mipmap/ic_chevron_titlebar_down"/>
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
+            android:background="@mipmap/arrow_turn_down"/>
     </LinearLayout>
 
 

@@ -8,6 +8,8 @@ import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,9 +23,6 @@ public class WidgetProductScrollerViewHolder extends RecyclerView.ViewHolder {
     @BindView(R.id.recyclerview_horizontal)
     RecyclerView recyclerViewHorizontal;
 
-    @BindView(R.id.tv_horizontal_title)
-    CustomBoldTextView tvHorizontalTitle;
-
     public WidgetProductScrollerViewHolder(View itemView) {
         super(itemView);
         ButterKnife.bind(this, itemView);
@@ -31,7 +30,6 @@ public class WidgetProductScrollerViewHolder extends RecyclerView.ViewHolder {
 
     void bindingData(WidgetProductScrollerVM detailHorizontalVM,
         OnProductItemClickListener onProductItemClickListener) {
-        tvHorizontalTitle.setText(detailHorizontalVM.getTitle());
         LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerViewHorizontal.setLayoutManager(manager);

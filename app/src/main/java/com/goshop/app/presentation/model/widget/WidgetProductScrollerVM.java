@@ -20,9 +20,8 @@ public class WidgetProductScrollerVM extends WidgetViewModel {
 
     private String title;
 
-    public WidgetProductScrollerVM(String title, ProductDataVM data) {
+    public WidgetProductScrollerVM(ProductDataVM data) {
         super(WidgetViewModel.VIEW_TYPE_PRODUCT_SCROLLER);
-        this.title = title;
         this.data = data;
     }
 
