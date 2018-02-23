@@ -4,10 +4,6 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 
-/**
- * Created by winniseptiani on 3/16/17.
- */
-
 @SuppressWarnings("ALL")
 public class CustomBoldItaticTextView extends android.support.v7.widget.AppCompatTextView {
 
