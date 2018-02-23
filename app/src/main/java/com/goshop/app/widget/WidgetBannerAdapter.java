@@ -13,10 +13,6 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/2/10.
- */
-
 public class WidgetBannerAdapter extends PagerAdapter {
 
     private List<CarouselItemsVM> itemsVMS;
@@ -43,9 +39,7 @@ public class WidgetBannerAdapter extends PagerAdapter {
             .findViewById(R.id.iv_widget_banner);
         Glide.with(container.getContext()).load(itemsVM.getImage()).into(imageView);
         container.addView(imageLayout, 0);
-        imageView.setOnClickListener(v -> {
-            onBannerItemClickListener.onBannerItemClick(itemsVM);
-        });
+        imageView.setOnClickListener(v -> onBannerItemClickListener.onBannerItemClick(itemsVM));
         return imageLayout;
     }
 

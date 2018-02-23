@@ -17,7 +17,8 @@
         android:id="@+id/iv_home_home_center_bottom_video_down_arrows"
         android:layout_width="20dp"
         android:layout_height="20dp"
-        android:background="@mipmap/ic_down_arrows"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/ic_arrow_turn_down"
         android:layout_below="@id/rv_home_center_bottom_video"
         android:layout_centerInParent="true"/>
 

@@ -1,10 +1,8 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.FAQVM;
 import com.goshop.app.presentation.model.TermsConditionsVM;
 
 import java.util.ArrayList;
@@ -13,8 +11,8 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-
-public class TermsConditionsPresenter extends RxPresenter<TermsConditionsContract.View> implements TermsConditionsContract.Presenter {
+public class TermsConditionsPresenter extends RxPresenter<TermsConditionsContract.View>
+    implements TermsConditionsContract.Presenter {
 
     private AccountRepository accountRepository;
 
@@ -45,7 +43,6 @@ public class TermsConditionsPresenter extends RxPresenter<TermsConditionsContrac
                 }
             }));
     }
-
 
     //TODO(helen) this is mock data
     private List<TermsConditionsVM> getMockData() {

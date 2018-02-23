@@ -2,6 +2,7 @@ package com.goshop.app.common;
 
 import com.goshop.app.R;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.design.widget.TextInputLayout;
@@ -13,8 +14,6 @@ import android.widget.RelativeLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-
 
 public class CustomAnimSpinner extends RelativeLayout {
 
@@ -38,7 +37,7 @@ public class CustomAnimSpinner extends RelativeLayout {
         View spinnerView = LayoutInflater.from(context)
             .inflate(R.layout.layout_anim_spinner, this, true);
         ButterKnife.bind(this, spinnerView);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.animSpinner);
+        @SuppressLint("CustomViewStyleable") TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.animSpinner);
         hintString = typedArray.getResourceId(R.styleable.animSpinner_sp_hint, 0);
         typedArray.recycle();
         tilAnimSpinner.setHint(context.getString(hintString));
@@ -59,7 +58,7 @@ public class CustomAnimSpinner extends RelativeLayout {
     }
 
     public String getText() {
-        return  etAnimSpinner.getText().toString();
+        return etAnimSpinner.getText().toString();
     }
 
     public void setErrorMessage(String errorMessage) {

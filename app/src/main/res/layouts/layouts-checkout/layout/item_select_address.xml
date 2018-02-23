@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -36,7 +37,8 @@
             android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_text_black"
-            android:paddingStart="@dimen/size_16"/>
+            android:paddingStart="@dimen/size_16"
+            tools:ignore="RtlSymmetry"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="wrap_content"
@@ -46,7 +48,8 @@
             android:text="@string/comma"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_text_black"
-            android:paddingEnd="@dimen/size_4"/>
+            android:paddingEnd="@dimen/size_4"
+            tools:ignore="RtlSymmetry"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_select_address_state"
@@ -64,7 +67,8 @@
             android:text="@string/comma"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_text_black"
-            android:paddingEnd="@dimen/size_4"/>
+            android:paddingEnd="@dimen/size_4"
+            tools:ignore="RtlSymmetry"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_select_address_code"
@@ -131,12 +135,14 @@
             android:layout_toLeftOf="@id/ll_address_book_remove"
             android:orientation="horizontal"
             android:paddingEnd="@dimen/size_12"
-            android:layout_toStartOf="@id/ll_address_book_remove">
+            android:layout_toStartOf="@id/ll_address_book_remove"
+            tools:ignore="RelativeOverlap,RtlSymmetry"
+            android:layout_alignParentEnd="true">
 
             <ImageView
                 android:layout_width="@dimen/size_24"
                 android:layout_height="@dimen/size_24"
-                android:background="@mipmap/edit_f"
+                android:background="@drawable/ic_edit_f"
                 android:contentDescription="@string/app_name"/>
 
             <com.goshop.app.common.view.CustomTextView

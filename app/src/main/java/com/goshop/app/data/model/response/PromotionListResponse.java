@@ -2,15 +2,11 @@ package com.goshop.app.data.model.response;
 
 import java.util.List;
 
-/**
- * Created by img on 2018/1/18.
- */
-
 public class PromotionListResponse {
 
-    private List<PromotionItem> promotionItems;
-
     private String bannerUrl;
+
+    private List<PromotionItem> promotionItems;
 
     private String title;
 
@@ -43,21 +39,21 @@ public class PromotionListResponse {
 
         private String imageUrl;
 
-        private String productName;
-
-        private String productOldPrice;
-
-        private String productCurrentPrice;
-
-        private String productOff;
-
-        private boolean isTvShow;
+        private boolean isBest;
 
         private boolean isGiftShow;
 
-        private boolean isBest;
-
         private boolean isNew;
+
+        private boolean isTvShow;
+
+        private String productCurrentPrice;
+
+        private String productName;
+
+        private String productOff;
+
+        private String productOldPrice;
 
         public String getImageUrl() {
             return imageUrl;

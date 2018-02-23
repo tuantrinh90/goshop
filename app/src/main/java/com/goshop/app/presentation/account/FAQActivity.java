@@ -19,8 +19,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-
-
 public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements FAQContract.View {
 
     @BindView(R.id.recyclerview_faq)
@@ -41,15 +39,15 @@ public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements 
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.faq);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initRecyclerView();
         initPresenter();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.faq);
     }
 
     private void initRecyclerView() {

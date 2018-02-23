@@ -23,10 +23,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/10.
- */
-
 public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Presenter>
     implements ProductDetailContract.View {
 
@@ -63,14 +59,14 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     @Override
-    public String getScreenTitle() {
-        return null;
-    }
-
-    @Override
     public void inject() {
         initPresenter();
         initRecyclerView();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return null;
     }
 
     private void initPresenter() {

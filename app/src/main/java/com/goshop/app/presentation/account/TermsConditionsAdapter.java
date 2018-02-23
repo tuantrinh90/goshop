@@ -14,8 +14,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-
 public class TermsConditionsAdapter extends RecyclerView.Adapter {
 
     private OnTermsItemClickListener onTermsItemClickListener;

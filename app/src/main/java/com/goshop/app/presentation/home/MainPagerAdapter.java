@@ -1,15 +1,13 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.base.BaseFragment;
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+
 import java.util.ArrayList;
 import java.util.List;
-
-/**
- * Created by helen on 2018/2/11.
- */
 
 public class MainPagerAdapter extends FragmentStatePagerAdapter {
 

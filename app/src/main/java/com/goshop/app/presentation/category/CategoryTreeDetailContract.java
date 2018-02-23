@@ -8,10 +8,6 @@ import com.goshop.app.presentation.model.SearchFilterModel;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by helen on 2018/2/6.
- */
-
 public class CategoryTreeDetailContract {
 
     interface View extends BaseView {

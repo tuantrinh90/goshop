@@ -7,6 +7,7 @@ import android.util.Log;
 import java.util.Hashtable;
 
 public class Typefaces {
+
     //TODO
     public static final String PATH_FONT_CUSTOM_BOLD = "";
 

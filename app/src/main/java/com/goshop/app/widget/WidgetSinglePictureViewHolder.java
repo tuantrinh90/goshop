@@ -12,10 +12,6 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class WidgetSinglePictureViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.iv_single_picture)
@@ -31,8 +27,6 @@ public class WidgetSinglePictureViewHolder extends RecyclerView.ViewHolder {
         Glide.with(itemView.getContext()).load(singlePictureVM.getImageUrl()).asBitmap()
             .error(singlePictureVM.getIconDefault())
             .into(ivSinglePicture);
-        itemView.setOnClickListener(v -> {
-            onSinglePicturClickListener.onSinglePictureClick(singlePictureVM);
-        });
+        itemView.setOnClickListener(v -> onSinglePicturClickListener.onSinglePictureClick(singlePictureVM));
     }
 }

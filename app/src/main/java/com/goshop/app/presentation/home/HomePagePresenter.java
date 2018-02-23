@@ -24,10 +24,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/2/10.
- */
-
 public class HomePagePresenter extends RxPresenter<HomePageContract.View> implements
     HomePageContract.Presenter {
 
@@ -83,7 +79,8 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
             ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
         CarouselItemsVM itemsVM1 = new CarouselItemsVM("http://g.hiphotos.baidu" +
             ".com/image/pic/item/7aec54e736d12f2ee7ed822044c2d56284356881.jpg");
-        CarouselItemsVM itemsVM2 = new CarouselItemsVM("http://img843.ph.126.net/HQO2EzKsZ30Kvp03799Gyg==/883831426873459781.jpg");
+        CarouselItemsVM itemsVM2 = new CarouselItemsVM(
+            "http://img843.ph.126.net/HQO2EzKsZ30Kvp03799Gyg==/883831426873459781.jpg");
         CarouselItemsVM itemsVM3 = new CarouselItemsVM("http://g.hiphotos.baidu" +
             ".com/image/pic/item/9a504fc2d56285356bd508329aef76c6a7ef63e8.jpg");
         itemsVMS.add(itemsVM);
@@ -106,7 +103,7 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
     //TODO(helen) this is mock data
     private List<WidgetSinglePictureVM> getSinglePicture() {
         List<WidgetSinglePictureVM> singlePictureVMS = new ArrayList<>();
-        singlePictureVMS.add(new WidgetSinglePictureVM("", R.mipmap.detail_top_demo));
+        singlePictureVMS.add(new WidgetSinglePictureVM("", R.drawable.ic_detail_top_demo));
         return singlePictureVMS;
     }
 
@@ -118,7 +115,7 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
         ProductPriceVM productPriceVM = new ProductPriceVM(productPriceRMVM);
         List<String> attributes = new ArrayList<>();
         attributes.add("New");
-        ProductItemVM productItemVM = new ProductItemVM(R.mipmap.bought, "",
+        ProductItemVM productItemVM = new ProductItemVM(R.drawable.ic_bought, "",
             "Bloom By Naelofar Hijab (3pcs set)", attributes, productPriceVM);
         List<ProductItemVM> productItemVMS = new ArrayList<>();
         productItemVMS.add(productItemVM);

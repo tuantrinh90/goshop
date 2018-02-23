@@ -3,18 +3,6 @@ package com.goshop.app.data.model;
 import com.google.gson.annotations.SerializedName;
 
 public class Weather {
-//    {
-//        "weatherinfo": {
-//        "city": "太仓",
-//                "cityid": "101190408",
-//                "temp1": "2℃",
-//                "temp2": "16℃",
-//                "weather": "晴转多云",
-//                "img1": "n0.gif",
-//                "img2": "d1.gif",
-//                "ptime": "18:00"
-//    }
-//    }
 
     private String city;
 

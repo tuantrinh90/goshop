@@ -14,10 +14,6 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class BrandsPageFragment extends BaseFragment {
 
     @BindView(R.id.tv_test)
@@ -35,7 +31,7 @@ public class BrandsPageFragment extends BaseFragment {
         @Nullable Bundle savedInstanceState) {
 
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
-        assert  rootView != null;
+        assert rootView != null;
         unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }

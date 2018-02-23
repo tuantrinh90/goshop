@@ -1,11 +1,13 @@
 package com.goshop.app.data.model.request;
 
-
-
+//TODO this class may be used later, so keep it
 public class MyOrderListRequest {
-    private String session_key;
-    private String offset;
+
     private String max;
+
+    private String offset;
+
+    private String session_key;
 
     public String getSession_key() {
         return session_key;

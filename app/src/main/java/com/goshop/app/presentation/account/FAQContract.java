@@ -7,8 +7,6 @@ import com.goshop.app.presentation.model.FAQVM;
 import java.util.List;
 import java.util.Map;
 
-
-
 public class FAQContract {
 
     interface View extends BaseView {

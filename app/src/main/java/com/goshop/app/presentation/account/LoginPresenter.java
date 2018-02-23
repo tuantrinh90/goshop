@@ -20,20 +20,22 @@ import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableObserver;
 
+public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract
+    .Presenter {
 
-
-public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract.Presenter {
     AccountRepository accountRepository;
+
     private CallbackManager facebookCallbackManager;
+
     @Inject
-    public LoginPresenter(AccountRepository accountRepository){
+    public LoginPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
     @Override
     public void getUserLogin(String username, String password) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.getUserInfo(username,password).subscribeWith(
+        addSubscrebe(accountRepository.getUserInfo(username, password).subscribeWith(
             new DisposableObserver<UserInfo>() {
                 @Override
                 public void onNext(UserInfo userInfo) {
@@ -44,9 +46,9 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    if(throwable instanceof ServiceApiFail){
+                    if (throwable instanceof ServiceApiFail) {
                         mView.showFaildMessage(((ServiceApiFail) throwable).getErrorMessage());
-                    }else{
+                    } else {
                         mView.showNetwordErrorMessage();
                     }
                 }
@@ -65,11 +67,12 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
     //TODO facebook sdk code
     @Override
-    public CallbackManager initFaceBook(){
+    public CallbackManager initFaceBook() {
         facebookCallbackManager = CallbackManager.Factory.create();
 
         FacebookCallback<LoginResult> facebookCallback = new FacebookCallback<LoginResult>() {
             private ProfileTracker mProfileTracker;
+
             @Override
             public void onSuccess(final LoginResult loginResult) {
                 Profile facebookProfile = Profile.getCurrentProfile();
@@ -81,17 +84,18 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                                 mView.fbLoginError();
                                 return;
                             }
-                            if(loginResult.getAccessToken()!=null) {
+                            if (loginResult.getAccessToken() != null) {
                                 thirdLogin("facebook", loginResult.getAccessToken().getToken());
                             }
                             mProfileTracker.stopTracking();
                         }
                     };
                     mProfileTracker.startTracking();
-                }else{
+                } else {
                     thirdLogin("facebook", loginResult.getAccessToken().getToken());
                 }
             }
+
             @Override
             public void onCancel() {
             }
@@ -104,7 +108,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                             LoginManager.getInstance().logOut();
                         }
                     }
-                }catch(Exception ex){
+                } catch (Exception ex) {
                     ex.getStackTrace();
                 }
                 mView.fbLoginError();

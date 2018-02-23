@@ -41,7 +41,6 @@ import javax.inject.Inject;
 import io.reactivex.Observable;
 import retrofit2.Retrofit;
 
-
 public class RetrofitRestApiImpl implements RestApi {
 
     private RetrofitRestApi retrofitRestApi;
@@ -97,20 +96,20 @@ public class RetrofitRestApiImpl implements RestApi {
 
     @Override
     public Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params) {
-        String url=EndpointAddress.getFullUrl(EndpointAddress.MYORDER_LIST_REQUEST);
-        return retrofitRestApi.myOrderListRequest(url,params);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.MYORDER_LIST_REQUEST);
+        return retrofitRestApi.myOrderListRequest(url, params);
     }
 
     @Override
     public Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params) {
-        String url=EndpointAddress.getFullUrl(EndpointAddress.MYORDER_DETAIL_REQUEST);
-        return retrofitRestApi.myOrderDetailRequest(url,params);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.MYORDER_DETAIL_REQUEST);
+        return retrofitRestApi.myOrderDetailRequest(url, params);
     }
 
     @Override
     public Observable<NotificationsResponse> notificationRequest(Map<String, Object> params) {
-        String url=EndpointAddress.getFullUrl(EndpointAddress.NOTIFICATION_REQUEST);
-        return retrofitRestApi.notificationRequest(url,params);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.NOTIFICATION_REQUEST);
+        return retrofitRestApi.notificationRequest(url, params);
     }
 
     @Override
@@ -245,6 +244,7 @@ public class RetrofitRestApiImpl implements RestApi {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_POINTS);
         return retrofitRestApi.myPointsRequest(url, params);
     }
+
     @Override
     public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PAYMENT_STATUS);

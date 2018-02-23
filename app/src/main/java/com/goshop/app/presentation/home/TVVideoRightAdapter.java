@@ -17,10 +17,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class TVVideoRightAdapter extends RecyclerView.Adapter {
 
     List<TVVideoRightVM> rightVMS;
@@ -35,6 +31,7 @@ public class TVVideoRightAdapter extends RecyclerView.Adapter {
         this.rightVMS = rightVMS;
         notifyDataSetChanged();
     }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View rightView = LayoutInflater.from(parent.getContext())

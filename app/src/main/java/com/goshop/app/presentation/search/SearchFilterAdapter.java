@@ -21,10 +21,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/18.
- */
-
 public class SearchFilterAdapter extends RecyclerView.Adapter {
 
     private List<SearchFilterModel> filterModels;
@@ -97,6 +93,8 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
                 (SearchPopularDetailVM) searchFilterModel);
         } else if (holder instanceof SearchFixedViewHolder) {
             //TODO(helen) this part need decide
+        } else {
+            //TODO wait for design
         }
     }
 

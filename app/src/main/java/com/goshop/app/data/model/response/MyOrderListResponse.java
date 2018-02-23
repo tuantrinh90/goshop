@@ -4,30 +4,13 @@ import com.goshop.app.data.model.Reponse;
 
 import java.util.List;
 
-/**
- * Created by img on 2018/1/29.
- */
+public class MyOrderListResponse extends Reponse {
 
-public class MyOrderListResponse extends Reponse{
-
-    /**
-     * total : 1
-     * results : [{"orderId":"311704","orderSn":"910312525","date":"21 Mar 2017",
-     * "total":"208.00","totalFormatted":"RM 208.00","status":"Awaiting Cash Transfer",
-     * "suborders":[{"statusCode":"pending","status":"Verifying Payment","id":"910312525-01",
-     * "items":[{"productId":"145071","itemId":"467363","name":"PS4 DUALSHOCK®4 Wireless
-     * Controller (Wave Blue)","brand":"PlayStation","brandId":"4813","category":"Others",
-     * "qty":1,"price":"208.00","image":"catalog/product/594/u/g/ug100011ds4blue-(1).jpg",
-     * "options":[],"canViewPdp":1,"availability":1,"visibility":1,
-     * "vendorDisplayName":"USEDGAME","vendor_id":"594"}]}]}]
-     * status : 1
-     */
-
-    private int total;
+    private List<ResultsBean> results;
 
     private int status;
 
-    private List<ResultsBean> results;
+    private int total;
 
     public int getTotal() {
         return total;
@@ -53,72 +36,59 @@ public class MyOrderListResponse extends Reponse{
         this.results = results;
     }
 
-    public static class ResultsBean{
+    public static class ResultsBean {
 
-        /**
-         * orderId : 311704
-         * orderSn : 910312525
-         * date : 21 Mar 2017
-         * total : 208.00
-         * totalFormatted : RM 208.00
-         * status : Awaiting Cash Transfer
-         * suborders : [{"statusCode":"pending","status":"Verifying Payment","id":"910312525-01",
-         * "items":[{"productId":"145071","itemId":"467363","name":"PS4 DUALSHOCK®4 Wireless
-         * Controller (Wave Blue)","brand":"PlayStation","brandId":"4813","category":"Others",
-         * "qty":1,"price":"208.00","image":"catalog/product/594/u/g/ug100011ds4blue-(1).jpg",
-         * "options":[],"canViewPdp":1,"availability":1,"visibility":1,
-         * "vendorDisplayName":"USEDGAME","vendor_id":"594"}]}]
-         */
-
-        private String orderId;
-
-        private String orderSn;
-
-        private String date;
-
-        private String total;
-
-        private String totalFormatted;
-
-        private String statusCode;
-
-        private String status;
-
-        private String id;
-
-        private String productId;
-
-        private String itemId;
-
-        private String name;
+        private int availability;
 
         private String brand;
 
         private String brandId;
 
+        private int canViewPdp;
+
         private String category;
 
-        private int qty;
+        private String color;
 
-        private String price;
+        private String date;
+
+        private String id;
 
         private String image;
 
-        private int canViewPdp;
+        private String itemId;
 
-        private int availability;
+        private String name;
 
-        private int visibility;
+        private List<String> options;
+
+        private String orderId;
+
+        private String orderSn;
+
+        private String price;
+
+        private String productId;
+
+        private int qty;
+
+        private String size;
+
+        private String status;
+
+        private String statusCode;
+
+        private String total;
+
+        private String totalFormatted;
+
+        private int type;
 
         private String vendorDisplayName;
 
         private String vendor_id;
 
-        private List<String> options;
-
-        private String color;
-
-        private String size;
+        private int visibility;
 
         public String getProductId() {
             return productId;
@@ -271,8 +241,6 @@ public class MyOrderListResponse extends Reponse{
         public void setSize(String size) {
             this.size = size;
         }
-
-        private int type;
 
         public int getType() {
             return type;

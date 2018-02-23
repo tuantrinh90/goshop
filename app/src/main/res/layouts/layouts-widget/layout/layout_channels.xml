@@ -26,7 +26,8 @@
         android:layout_marginLeft="@dimen/size_4"
         android:layout_marginRight="@dimen/size_4"
         android:layout_weight="0.5"
-        android:background="@mipmap/ic_home_center_video_line"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/ic_home_center_video_line"
     />
     <com.goshop.app.common.view.CustomRadioButton
         android:id="@+id/rb_ch120"
@@ -45,7 +46,8 @@
         android:layout_marginLeft="@dimen/size_4"
         android:layout_marginRight="@dimen/size_4"
         android:layout_weight="0.5"
-        android:background="@mipmap/ic_home_center_video_line"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/ic_home_center_video_line"
     />
     <com.goshop.app.common.view.CustomRadioButton
         android:id="@+id/rb_ch303"
@@ -64,7 +66,8 @@
         android:layout_marginLeft="@dimen/size_4"
         android:layout_marginRight="@dimen/size_4"
         android:layout_weight="0.5"
-        android:background="@mipmap/ic_home_center_video_line"
+        android:contentDescription="@string/app_name"
+        android:background="@drawable/ic_home_center_video_line"
     />
     <com.goshop.app.common.view.CustomRadioButton
         android:id="@+id/rb_fb_live"

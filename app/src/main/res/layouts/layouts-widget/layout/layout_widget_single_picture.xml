@@ -12,7 +12,8 @@
         android:layout_height="@dimen/size_170"
         android:layout_marginTop="@dimen/size_8"
         android:layout_marginBottom="@dimen/size_8"
-        android:background="@mipmap/detail_top_demo"/>
+        android:background="@drawable/ic_detail_top_demo"
+        android:contentDescription="@string/app_name"/>
 
 
 </LinearLayout>

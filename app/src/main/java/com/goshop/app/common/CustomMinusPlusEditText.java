@@ -2,8 +2,8 @@ package com.goshop.app.common;
 
 import com.goshop.app.R;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -15,9 +15,9 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
-
 public class CustomMinusPlusEditText extends RelativeLayout {
+
+    private static final String placeHolder = "";
 
     @BindView(R.id.et_minus_plus)
     EditText editText;
@@ -30,8 +30,6 @@ public class CustomMinusPlusEditText extends RelativeLayout {
 
     @BindView(R.id.rl_et_minus_plus)
     RelativeLayout layout;
-
-    private static final String placeHolder = "";
 
     public CustomMinusPlusEditText(Context context) {
         super(context);
@@ -47,6 +45,7 @@ public class CustomMinusPlusEditText extends RelativeLayout {
         ivMinus.setOnClickListener(v -> minus());
     }
 
+    @SuppressLint("SetTextI18n")
     private void plus() {
         String count = editText.getText().toString();
         if (!TextUtils.isEmpty(count)) {
@@ -57,6 +56,7 @@ public class CustomMinusPlusEditText extends RelativeLayout {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void minus() {
         String count = editText.getText().toString();
         if (!TextUtils.isEmpty(count)) {

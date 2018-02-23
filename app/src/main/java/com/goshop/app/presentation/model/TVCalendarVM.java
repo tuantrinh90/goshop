@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class TVCalendarVM {
 
     private String day;

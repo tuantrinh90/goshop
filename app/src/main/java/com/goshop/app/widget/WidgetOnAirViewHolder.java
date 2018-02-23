@@ -17,10 +17,6 @@ import android.widget.RelativeLayout;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class WidgetOnAirViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.iv_on_air_display)

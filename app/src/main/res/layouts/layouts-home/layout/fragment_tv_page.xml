@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v4.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:scrollbars="none">
@@ -33,7 +34,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_text_black"
-                    android:text="12"/>
+                    android:text="12"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -42,7 +44,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_text_black"
-                    android:text="13"/>
+                    android:text="13"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -51,7 +54,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_text_black"
-                    android:text="14"/>
+                    android:text="14"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -60,7 +64,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_text_black"
-                    android:text="15"/>
+                    android:text="15"
+                    tools:ignore="HardcodedText"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -70,7 +75,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_main_pink"
-                    android:text="16"/>
+                    android:text="16"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -79,7 +85,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_text_black"
-                    android:text="17"/>
+                    android:text="17"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -88,7 +95,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_text_black"
-                    android:text="18"/>
+                    android:text="18"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -97,7 +105,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_text_black"
-                    android:text="19"/>
+                    android:text="19"
+                    tools:ignore="HardcodedText"/>
 
             </LinearLayout>
 
@@ -113,7 +122,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_text_black"
-                    android:text="MON"/>
+                    android:text="MON"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -121,7 +131,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_text_black"
-                    android:text="TUE"/>
+                    android:text="TUE"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -129,7 +140,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_text_black"
-                    android:text="WED"/>
+                    android:text="WED"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -137,7 +149,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_text_black"
-                    android:text="THU"/>
+                    android:text="THU"
+                    tools:ignore="HardcodedText"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -146,7 +159,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_main_pink"
-                    android:text="FRI"/>
+                    android:text="FRI"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -154,7 +168,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_text_black"
-                    android:text="SAT"/>
+                    android:text="SAT"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -162,7 +177,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_text_black"
-                    android:text="SUN"/>
+                    android:text="SUN"
+                    tools:ignore="HardcodedText"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -170,7 +186,8 @@
                     android:gravity="center"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_text_black"
-                    android:text="MON"/>
+                    android:text="MON"
+                    tools:ignore="HardcodedText"/>
 
             </LinearLayout>
 
@@ -189,13 +206,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:nestedScrollingEnabled="false"
-                android:layout_alignParentRight="true"/>
+                android:layout_alignParentRight="true"
+                tools:targetApi="lollipop"
+                android:layout_alignParentEnd="true"/>
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_video_left"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:nestedScrollingEnabled="false"
-                android:layout_toLeftOf="@id/recyclerview_video_right"/>
+                android:layout_toLeftOf="@id/recyclerview_video_right"
+                tools:targetApi="lollipop"
+                android:layout_toStartOf="@id/recyclerview_video_right"/>
 
         </RelativeLayout>
     </LinearLayout>

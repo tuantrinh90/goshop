@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_white_top_line"
@@ -44,7 +45,9 @@
         android:textSize="@dimen/size_font_14"
         android:gravity="right"
         android:textColor="@color/color_text_black"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        tools:ignore="RtlHardcoded,RtlSymmetry"
+        android:paddingEnd="@dimen/size_4"/>
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_points_date"
         android:layout_width="@dimen/size_0"
@@ -53,6 +56,7 @@
         android:textColor="@color/color_text_black"
         android:textSize="@dimen/size_font_14"
         android:gravity="right"
-        android:layout_weight="1"/>
+        android:layout_weight="1"
+        tools:ignore="RtlHardcoded"/>
 
 </LinearLayout>

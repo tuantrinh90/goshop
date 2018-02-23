@@ -10,10 +10,6 @@ import android.content.Intent;
 
 import java.io.Serializable;
 
-/**
- * Created by img on 2018/1/22.
- */
-
 public class PageIntentUtils {
 
     public static final String PROMOTION_BANNER_URL = "PROMOTION_BANNER_URL";

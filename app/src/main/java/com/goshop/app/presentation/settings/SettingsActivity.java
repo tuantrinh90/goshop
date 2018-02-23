@@ -20,10 +20,6 @@ import butterknife.BindView;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/2/8.
- */
-
 public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> implements
     SettingsContract.View {
 
@@ -47,16 +43,16 @@ public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> i
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.settings);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         imageviewLeftMenu.setOnClickListener(v -> finish());
         initRecyclerview();
         initPresenter();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.settings);
     }
 
     private void initRecyclerview() {

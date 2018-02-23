@@ -12,7 +12,6 @@ import dagger.Component;
 import injection.modules.ApplicationModule;
 import injection.modules.NetModule;
 
-
 @Component(modules = {ApplicationModule.class, NetModule.class})
 @Singleton
 public interface ApplicationComponent {

@@ -1,9 +1,10 @@
 package com.goshop.app.data.model.request;
 
-
 public class GetUserRequest {
-    private String userName;
+
     private String password;
+
+    private String userName;
 
     public String getUserName() {
         return userName;

@@ -5,12 +5,9 @@ import android.text.TextUtils;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by img on 2018/1/9.
- */
-
 public class JDataUtils {
-    public  static boolean isEmail(String email) {
+
+    public static boolean isEmail(String email) {
         if (TextUtils.isEmpty(email)) {
             return false;
         }

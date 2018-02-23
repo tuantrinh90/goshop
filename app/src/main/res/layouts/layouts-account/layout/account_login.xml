@@ -16,8 +16,8 @@
         android:layout_centerHorizontal="true"
         android:layout_width="70dp"
         android:layout_height="70dp"
-        android:background="@mipmap/ic_app_logo"
-    />
+        android:background="@drawable/ic_app_logo"
+        android:contentDescription="@string/app_name"/>
 
     <RelativeLayout
         android:id="@+id/rl_login_root"
@@ -52,8 +52,10 @@
             android:layout_alignParentRight="true"
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:src="@mipmap/text_elimination"
-            android:visibility="gone"/>
+            android:src="@drawable/ic_text_elimination"
+            android:contentDescription="@string/app_name"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -84,7 +86,7 @@
                 android:textColorHint="@color/blackTrans38"
                 android:textSize="@dimen/editTextFontSize"
                 android:textCursorDrawable="@null"
-            />
+                android:layout_toStartOf="@+id/iv_visible_password"/>
 
         </android.support.design.widget.TextInputLayout>
         <ImageView
@@ -94,18 +96,23 @@
             android:layout_marginTop="@dimen/activity_horizontal_margin"
             android:layout_marginRight="@dimen/activity_horizontal_margin"
             android:layout_alignParentRight="true"
-            android:background="@mipmap/ic_password_not_visible"
-        />
+            android:contentDescription="@string/app_name"
+            android:background="@drawable/ic_password_not_visible"
+            android:layout_marginEnd="@dimen/activity_horizontal_margin"
+            android:layout_alignParentEnd="true"/>
         <ImageView
             android:id="@+id/iv_clear_password"
             android:layout_width="16dp"
             android:layout_height="16dp"
             android:layout_marginTop="2dp"
             android:layout_marginRight="@dimen/home_padding"
+            android:contentDescription="@string/app_name"
             android:layout_toLeftOf="@id/iv_visible_password"
             android:layout_alignTop="@id/iv_visible_password"
-            android:src="@mipmap/text_elimination"
-            android:visibility="gone"/>
+            android:src="@drawable/ic_text_elimination"
+            android:visibility="gone"
+            android:layout_marginEnd="@dimen/home_padding"
+            android:layout_toStartOf="@id/iv_visible_password"/>
     </RelativeLayout>
     <com.goshop.app.common.view.CustomButton
         android:layout_margin="@dimen/activity_horizontal_margin"
@@ -168,8 +175,10 @@
             android:background="@drawable/ic_launcher_background"
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size_40"
+            android:contentDescription="@string/app_name"
             android:layout_width="25dp"
-            android:layout_height="25dp"/>
+            android:layout_height="25dp"
+            android:layout_marginStart="@dimen/size_40"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -202,7 +211,7 @@
                 android:text="@string/login_register"
                 android:textColor="@color/colorAccent"
                 android:textStyle="bold"
-            />
+                android:layout_toEndOf="@id/tv_new_to_shop"/>
         </RelativeLayout>
     </RelativeLayout>
 

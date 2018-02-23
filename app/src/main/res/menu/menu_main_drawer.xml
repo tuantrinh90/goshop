@@ -10,43 +10,43 @@
 
         <item
             android:id="@+id/slide_menu_home"
-            android:icon="@mipmap/icon_home"
+            android:icon="@drawable/ic_icon_home"
             android:title="@string/home"/>
 
         <item
             android:id="@+id/slide_menu_categories"
-            android:icon="@mipmap/icon_categories"
+            android:icon="@drawable/ic_icon_categories"
             android:title="@string/categories"/>
 
         <item
             android:id="@+id/slide_menu_go_loyalty"
             app:actionLayout="@layout/menu_counter"
-            android:icon="@mipmap/ic_slidemenu_go_loyalty_nor"
+            android:icon="@drawable/ic_slidemenu_go_loyalty_nor"
             android:title="@string/go_loyalty"/>
 
         <item
             android:id="@+id/slide_menu_cart"
-            android:icon="@mipmap/icon_shopping_cart"
+            android:icon="@drawable/ic_icon_shopping_cart"
             android:title="@string/shopping_cart"/>
 
         <item
             android:id="@+id/slide_menu_wishlist"
-            android:icon="@mipmap/icon_my_wishlist"
+            android:icon="@drawable/ic_icon_my_wishlist"
             android:title="@string/my_wishlist"/>
 
         <item
             android:id="@+id/slide_menu_orders"
-            android:icon="@mipmap/icon_my_orders"
+            android:icon="@drawable/ic_icon_my_orders"
             android:title="@string/my_orders"/>
 
         <item
             android:id="@+id/slide_menu_rewards"
-            android:icon="@mipmap/icon_my_orders"
+            android:icon="@drawable/ic_icon_my_orders"
             android:title="@string/my_rewards"/>
 
         <item
             android:id="@+id/slide_menu_notifications"
-            android:icon="@mipmap/icon_notifaications"
+            android:icon="@drawable/ic_icon_notifaications"
             app:actionLayout="@layout/menu_counter"
             android:title="@string/notifications"/>
     </group>

@@ -13,8 +13,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-
-
 public class HelpSupportPresenter extends RxPresenter<HelpSupportContract.View> implements
     HelpSupportContract.Presenter {
 

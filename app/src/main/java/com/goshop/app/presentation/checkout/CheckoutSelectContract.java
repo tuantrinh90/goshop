@@ -7,10 +7,6 @@ import com.goshop.app.presentation.model.SelectAddressVM;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by helen on 2018/2/2.
- */
-
 public class CheckoutSelectContract {
 
     interface View extends BaseView {

@@ -14,7 +14,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-
 public class FAQAdapter extends RecyclerView.Adapter {
 
     private List<FAQVM> faqvms;
@@ -47,8 +46,10 @@ public class FAQAdapter extends RecyclerView.Adapter {
     }
 
     class ContentViewHolder extends RecyclerView.ViewHolder {
+
         @BindView(R.id.tv_help_support_content)
         CustomTextView tvHelpSupportContent;
+
         public ContentViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

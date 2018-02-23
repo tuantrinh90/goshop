@@ -10,10 +10,6 @@ import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/1/8.
- */
-
 public class RegisterPresenter extends RxPresenter<RegisterContract.View> implements
     RegisterContract.Presenter {
 

@@ -15,10 +15,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/2/5.
- */
-
 public class CategoryPresenter extends RxPresenter<CategoryContract.View> implements
     CategoryContract.Presenter {
 
@@ -111,13 +107,13 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
     //TODO(helen)this is mock data
     private List<CategoryLeftMenuVM> getMockLeftMenu() {
         List<CategoryLeftMenuVM> leftMenuVMS = new ArrayList<>();
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.mipmap.ic_app_logo, "", "Beauty"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.mipmap.ic_app_logo, "", "Digital Electronics"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.mipmap.ic_app_logo, "", "Home Appliances"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.mipmap.ic_app_logo, "", "Mom and Babies"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.mipmap.ic_app_logo, "", "Sports and Leisure"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.mipmap.ic_app_logo, "", "DIY Tools"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.mipmap.ic_app_logo, "", "Spa and Wellbeing"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Beauty"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Digital Electronics"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Home Appliances"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Mom and Babies"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Sports and Leisure"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "DIY Tools"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Spa and Wellbeing"));
         return leftMenuVMS;
     }
 }

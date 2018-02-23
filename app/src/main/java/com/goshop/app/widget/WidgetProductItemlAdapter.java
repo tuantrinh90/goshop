@@ -19,9 +19,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/12.
- */
 public class WidgetProductItemlAdapter extends RecyclerView.Adapter {
 
     private final String RM = "RM ";

@@ -18,10 +18,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/2/6.
- */
-
 public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailContract.View>
     implements CategoryTreeDetailContract.Presenter {
 
@@ -91,23 +87,23 @@ public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailC
     //todo(helen) this is mock data, please do not delete
     private List<SearchResultVM> getMockDatas() {
         List<SearchResultVM> filterModels = new ArrayList<>();
-        SearchResultVM searchResultVM1 = new SearchResultVM(R.mipmap.bought, 0,
-            R.mipmap.tv, false, false, "RM 299.00", "RM 399.00", "30% OFF",
+        SearchResultVM searchResultVM1 = new SearchResultVM(R.drawable.ic_bought, 0,
+            R.drawable.ic_tv, false, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
-        SearchResultVM searchResultVM2 = new SearchResultVM(R.mipmap.bought, R.mipmap.gift,
+        SearchResultVM searchResultVM2 = new SearchResultVM(R.drawable.ic_bought, R.drawable.ic_gift,
             0, false, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
-        SearchResultVM searchResultVM3 = new SearchResultVM(R.mipmap.bought, 0,
+        SearchResultVM searchResultVM3 = new SearchResultVM(R.drawable.ic_bought, 0,
             0, false, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
 
-        SearchResultVM searchResultVM4 = new SearchResultVM(R.mipmap.bought, 0,
+        SearchResultVM searchResultVM4 = new SearchResultVM(R.drawable.ic_bought, 0,
             0, false, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
-        SearchResultVM searchResultVM5 = new SearchResultVM(R.mipmap.bought, 0,
+        SearchResultVM searchResultVM5 = new SearchResultVM(R.drawable.ic_bought, 0,
             0, true, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
-        SearchResultVM searchResultVM6 = new SearchResultVM(R.mipmap.bought, 0,
+        SearchResultVM searchResultVM6 = new SearchResultVM(R.drawable.ic_bought, 0,
             0, false, true, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
         filterModels.add(searchResultVM1);

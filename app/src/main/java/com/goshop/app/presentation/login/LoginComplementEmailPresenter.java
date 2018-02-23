@@ -8,10 +8,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by img on 2018/1/9.
- */
-
 public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEmailContract.View>
     implements LoginComplementEmailContract.Presenter {
 

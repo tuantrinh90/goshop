@@ -2,25 +2,11 @@ package com.goshop.app.presentation.model.widget;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/2/12.
- */
-
 public class ProductItemVM {
 
     private List<String> attributes;
 
     private String hash;
-
-    /**
-     * id : 119391
-     * title : Manjung Korean Crispy Seaweed 4
-     * image : https://image.goshop.com
-     * .my/resources/ms/image/contents/prd/22/32/119391_01_400.jpg
-     * link : /prd/119391
-     * price : {"RM":{"original":"200","discounted":149,"discountTitle":"25% OFF"}}
-     * attributes : ["New"]
-     */
 
     private String id;
 

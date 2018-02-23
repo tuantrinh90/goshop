@@ -6,10 +6,10 @@ import io.realm.annotations.PrimaryKey;
 //TODO ray this is just a presentation class
 public class UserRealm extends RealmObject {
 
+    private String name;
+
     @PrimaryKey
     private String userId;
-
-    private String name;
 
     public String getUserId() {
         return userId;

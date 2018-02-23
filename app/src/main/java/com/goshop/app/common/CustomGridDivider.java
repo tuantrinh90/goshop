@@ -10,11 +10,10 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-
-
 public class CustomGridDivider extends RecyclerView.ItemDecoration {
 
     private final Drawable mDivider;
+
     private Context context;
 
     public CustomGridDivider(Context context) {

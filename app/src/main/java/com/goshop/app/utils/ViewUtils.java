@@ -6,10 +6,6 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.View;
 
-/**
- * Created by img on 2018/2/2.
- */
-
 public class ViewUtils {
 
     public static void setBg(View view, int drawableRes) {

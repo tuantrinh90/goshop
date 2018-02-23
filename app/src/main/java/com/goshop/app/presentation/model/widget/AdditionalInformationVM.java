@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model.widget;
 
-/**
- * Created by helen on 2018/1/12.
- */
-
 public class AdditionalInformationVM extends WidgetViewModel {
 
     private String lable;

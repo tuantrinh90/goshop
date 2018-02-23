@@ -227,6 +227,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     public Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params) {
         return restApi.myPointsRequest(params);
     }
+
     public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
         return restApi.paymentStatusRequest(params);
     }

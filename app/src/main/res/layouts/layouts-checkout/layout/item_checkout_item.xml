@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
@@ -8,11 +9,10 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/home_center_video_item_image_w_and_h"
-        android:layout_weight="1"
         android:orientation="horizontal"
         android:background="@color/white"
         android:layout_margin="@dimen/activity_horizontal_margin"
-    >
+        android:baselineAligned="false">
         <RelativeLayout
             android:layout_width="@dimen/home_center_video_item_image_w_and_h"
             android:layout_height="@dimen/home_center_video_item_image_w_and_h">
@@ -22,6 +22,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:scaleType="fitXY"
+                android:contentDescription="@string/app_name"
                 android:background="@mipmap/ic_launcher"
             />
             <com.goshop.app.common.view.CustomTextView
@@ -35,7 +36,8 @@
             android:layout_weight="1"
             android:layout_width="0dp"
             android:layout_marginLeft="@dimen/home_padding"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/home_padding">
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_checkout_product_name"
                 android:text="@string/home_item_test_product_name"
@@ -64,7 +66,8 @@
                 android:layout_centerVertical="true"
                 android:text="* 3"
                 android:layout_width="wrap_content"
-                style="@style/homeItemProductName"/>
+                style="@style/homeItemProductName"
+                tools:ignore="HardcodedText"/>
         </RelativeLayout>
     </LinearLayout>
     <View

@@ -13,7 +13,6 @@ import com.goshop.app.presentation.account.LoginActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.category.CategoryActivity;
 import com.goshop.app.presentation.login.TestMenuActivity;
-import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
 import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
@@ -21,6 +20,7 @@ import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
@@ -39,10 +39,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-
-/**
- * Created by helen on 2018/2/8.
- */
 
 public class MainPageActivity extends BaseActivity implements NavigationView
     .OnNavigationItemSelectedListener {
@@ -269,7 +265,7 @@ public class MainPageActivity extends BaseActivity implements NavigationView
     }
 
     @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
         drawerHasSelect = true;
         menuId = item.getItemId();
         drawerLayout.closeDrawer(GravityCompat.START);

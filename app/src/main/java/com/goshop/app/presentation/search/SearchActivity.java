@@ -3,7 +3,6 @@ package com.goshop.app.presentation.search;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.CustomGridDivider;
 import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
@@ -30,12 +29,9 @@ import injection.modules.PresenterModule;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 
-/**
- * Created by helen on 2018/1/17.
- */
-
 public class SearchActivity extends BaseActivity<SearchContract.Presenter> implements
-    SearchContract.View, SearchFilterAdapter.SearchFilterClickListener , SearchResultAdapter.OnItemClickListener{
+    SearchContract.View, SearchFilterAdapter.SearchFilterClickListener, SearchResultAdapter
+    .OnItemClickListener {
 
     public static final String KEYWORDS = "keywords";
 
@@ -66,15 +62,15 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
     }
 
     @Override
-    public String getScreenTitle() {
-        return null;
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initPresenter();
         initRecyclerView();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return null;
     }
 
     private void initPresenter() {

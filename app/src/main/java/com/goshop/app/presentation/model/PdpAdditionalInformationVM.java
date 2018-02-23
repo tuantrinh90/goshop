@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/1/12.
- */
-
 public class PdpAdditionalInformationVM extends ProductDetailModel {
 
     private String lable;

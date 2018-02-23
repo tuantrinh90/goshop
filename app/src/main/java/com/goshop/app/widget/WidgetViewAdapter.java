@@ -14,7 +14,6 @@ import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
 import com.goshop.app.widget.WidgetListener.OnSinglePicturClickListener;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,21 +21,18 @@ import android.view.ViewGroup;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by helen on 2018/2/10.
- */
+public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTitleViewHolder
+    .ExpandTitleClickListener {
 
-public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTitleViewHolder.ExpandTitleClickListener {
+    private List<WidgetViewModel> allWidgetViewModels;
+
+    private List<WidgetViewModel> displayModels;
 
     private OnBannerItemClickListener onBannerItemClickListener;
 
     private OnProductItemClickListener onProductItemClickListener;
 
     private OnSinglePicturClickListener onSinglePicturClickListener;
-
-    private List<WidgetViewModel> displayModels;
-
-    private List<WidgetViewModel> allWidgetViewModels;
 
     public WidgetViewAdapter(
         List<WidgetViewModel> widgetViewModels) {
@@ -67,9 +63,10 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
     }
 
     private void expandAll(List<WidgetViewModel> widgetViewModels) {
-        for(WidgetViewModel model: widgetViewModels) {
-            if(model instanceof WidgetTitleExpandVM ) {
-                ((WidgetTitleExpandVM) model).setExpand(((WidgetTitleExpandVM) model).isClickable());
+        for (WidgetViewModel model : widgetViewModels) {
+            if (model instanceof WidgetTitleExpandVM) {
+                ((WidgetTitleExpandVM) model)
+                    .setExpand(((WidgetTitleExpandVM) model).isClickable());
             }
         }
         displayModels.addAll(widgetViewModels);
@@ -80,7 +77,8 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
         int expandPosition = allWidgetViewModels.indexOf(displayModels.get(position));
         int insert = position;
         int count = 0;
-        for (int i = expandPosition + 1; i < allWidgetViewModels.size() && (allWidgetViewModels.get(i)
+        for (int i = expandPosition + 1; i < allWidgetViewModels.size() && (allWidgetViewModels
+            .get(i)
             .getViewType() != WidgetViewModel.VIEW_TYPE_EXPAND_TITLE); i++) {
             count++;
             insert++;
@@ -95,7 +93,8 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
     public void closed(int position) {
         int closePosition = allWidgetViewModels.indexOf(displayModels.get(position));
         int count = 0;
-        for (int i = closePosition + 1; i < allWidgetViewModels.size() && (allWidgetViewModels.get(i)
+        for (int i = closePosition + 1; i < allWidgetViewModels.size() && (allWidgetViewModels
+            .get(i)
             .getViewType() != WidgetViewModel.VIEW_TYPE_EXPAND_TITLE); i++) {
             count++;
             displayModels.remove(position + 1);
@@ -104,7 +103,6 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
         notifyDataSetChanged();
 //        notifyItemRangeRemoved(position + 1, count);
     }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
@@ -174,11 +172,12 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
             ((WidgetProductScrollerViewHolder) viewHolder).bindingData(
                 (WidgetProductScrollerVM) widgetViewModel, onProductItemClickListener);
         } else if (viewHolder instanceof WidgetTitleViewHolder) {
-            ((WidgetTitleViewHolder) viewHolder).bindingData((WidgetTitleExpandVM) widgetViewModel, position);
-        } else if(viewHolder instanceof WidgetPDPTopDetailViewHolder) {
+            ((WidgetTitleViewHolder) viewHolder)
+                .bindingData((WidgetTitleExpandVM) widgetViewModel, position);
+        } else if (viewHolder instanceof WidgetPDPTopDetailViewHolder) {
             ((WidgetPDPTopDetailViewHolder) viewHolder).bindingData(
                 (WidgetPDPTopDetailsVM) widgetViewModel);
-        } else if(viewHolder instanceof AdditionalInformationViewHolder) {
+        } else if (viewHolder instanceof AdditionalInformationViewHolder) {
             ((AdditionalInformationViewHolder) viewHolder).bindingData(
                 (AdditionalInformationVM) widgetViewModel);
         }

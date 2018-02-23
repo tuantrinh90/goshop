@@ -24,10 +24,6 @@ import butterknife.Unbinder;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presenter> implements
     TVShowPageContract.View {
 

@@ -23,10 +23,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/22.
- */
-
 public class FilterMenuAdapter extends RecyclerView.Adapter {
 
     private List<FilterMenuModel> displayModels;
@@ -49,8 +45,8 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
 
     private void expandAll() {
         this.displayModels.clear();
-        for(FilterMenuModel filterMenuModel: menuModels) {
-            if(filterMenuModel instanceof FilterMenuExpandVM) {
+        for (FilterMenuModel filterMenuModel : menuModels) {
+            if (filterMenuModel instanceof FilterMenuExpandVM) {
                 ((FilterMenuExpandVM) filterMenuModel).setExpand(true);
             }
         }

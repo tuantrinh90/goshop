@@ -7,6 +7,7 @@ import com.goshop.app.presentation.model.PointsDetailVM;
 import com.goshop.app.presentation.model.PointsModel;
 import com.goshop.app.presentation.model.PointsTotalVM;
 
+import android.annotation.SuppressLint;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,7 +18,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
 
 public class MyPointsAdapter extends RecyclerView.Adapter {
 
@@ -136,13 +136,16 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
+        @SuppressLint("SetTextI18n")
         void bindingData(PointsDetailVM detailVM) {
             if (detailVM.isIncrease()) {
                 tvPointsCounts.setText(INCREASE + detailVM.getPoints());
-                tvPointsCounts.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_main_pink));
+                tvPointsCounts.setTextColor(
+                    ContextCompat.getColor(itemView.getContext(), R.color.color_main_pink));
             } else {
                 tvPointsCounts.setText(DECLINE + detailVM.getPoints());
-                tvPointsCounts.setTextColor(ContextCompat.getColor(itemView.getContext(), R.color.color_text_black));
+                tvPointsCounts.setTextColor(
+                    ContextCompat.getColor(itemView.getContext(), R.color.color_text_black));
             }
             tvPointsDate.setText(detailVM.getDate());
             tvPointsDescription.setText(detailVM.getDescription());

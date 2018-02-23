@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model.widget;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class WidgetProductScrollerVM extends WidgetViewModel {
 
     private ProductCountVM count;

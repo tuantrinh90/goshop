@@ -11,6 +11,7 @@ import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.utils.ViewUtils;
 
+import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -26,21 +27,36 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by img on 2018/2/2.
- */
-
 public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> implements
     CheckoutContract.View {
+
+    private static final int RADIO_BUTTON_W_AND_H = 25;
+
+    @BindView(R.id.btn_checkout_place_my_order)
+    CustomButton btnCheckoutPlaceMyOrder;
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageviewLeftMenu;
 
-    @BindView(R.id.tv_checkout_shipping_title)
-    CustomBoldTextView tvCheckoutShippingTitle;
+    String paymentType;
 
-    @BindView(R.id.tv_checkout_username)
-    CustomTextView tvCheckoutUsername;
+    @BindView(R.id.radio_payment_type)
+    RadioGroup radioPaymentType;
+
+    @BindView(R.id.rb_checkout_payment_banking)
+    RadioButton rbCheckoutPaymentBanking;
+
+    @BindView(R.id.rb_checkout_payment_cash_on_deliery)
+    RadioButton rbCheckoutPaymentCashOnDeliery;
+
+    @BindView(R.id.rb_checkout_payment_credit)
+    RadioButton rbCheckoutPaymentCredit;
+
+    @BindView(R.id.rl_shipping_root)
+    RelativeLayout rlShippingRoot;
+
+    @BindView(R.id.rv_order_list)
+    RecyclerView rvOrderList;
 
     @BindView(R.id.tv_checkout_address_first)
     CustomTextView tvCheckoutAddressFirst;
@@ -54,29 +70,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.tv_checkout_country)
     CustomTextView tvCheckoutCountry;
 
-    @BindView(R.id.tv_checkout_tel)
-    CustomTextView tvCheckoutTel;
-
-    @BindView(R.id.rl_shipping_root)
-    RelativeLayout rlShippingRoot;
-
-    @BindView(R.id.radio_payment_type)
-    RadioGroup radioPaymentType;
-
-    @BindView(R.id.rb_checkout_payment_banking)
-    RadioButton rbCheckoutPaymentBanking;
-
-    @BindView(R.id.rb_checkout_payment_credit)
-    RadioButton rbCheckoutPaymentCredit;
-
-    @BindView(R.id.rb_checkout_payment_cash_on_deliery)
-    RadioButton rbCheckoutPaymentCashOnDeliery;
-
-    @BindView(R.id.rv_order_list)
-    RecyclerView rvOrderList;
-
-    @BindView(R.id.tv_checkout_sub_total)
-    CustomTextView tvCheckoutSubTotal;
+    @BindView(R.id.tv_checkout_discount)
+    CustomTextView tvCheckoutDiscount;
 
     @BindView(R.id.tv_checkout_rounding_amout)
     CustomTextView tvCheckoutRoundingAmout;
@@ -84,26 +79,93 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.tv_checkout_shipping)
     CustomTextView tvCheckoutShipping;
 
-    @BindView(R.id.tv_checkout_discount)
-    CustomTextView tvCheckoutDiscount;
+    @BindView(R.id.tv_checkout_shipping_title)
+    CustomBoldTextView tvCheckoutShippingTitle;
+
+    @BindView(R.id.tv_checkout_sub_total)
+    CustomTextView tvCheckoutSubTotal;
+
+    @BindView(R.id.tv_checkout_tel)
+    CustomTextView tvCheckoutTel;
 
     @BindView(R.id.tv_checkout_total)
     CustomBoldTextView tvCheckoutTotal;
 
-    @BindView(R.id.btn_checkout_place_my_order)
-    CustomButton btnCheckoutPlaceMyOrder;
+    @BindView(R.id.tv_checkout_username)
+    CustomTextView tvCheckoutUsername;
 
-    private static final int RADIO_BUTTON_W_AND_H = 25;
-    String paymentType;
+    @Override
+    public void showCheckout(CheckoutResponse checkoutResponse) {
+        initCheckoutPage(checkoutResponse);
+        initRecycler(checkoutResponse);
+    }
+
+    @SuppressLint("SetTextI18n")
+    private void initCheckoutPage(CheckoutResponse checkoutResponse) {
+        tvCheckoutUsername.setText(checkoutResponse.getUserName());
+        tvCheckoutAddressFirst.setText(checkoutResponse.getFirstAddress());
+        tvCheckoutAddressSecond.setText(checkoutResponse.getSecondAddress());
+        tvCheckoutCityStateCode
+            .setText(checkoutResponse.getCity() + "," + checkoutResponse.getPostcode());
+        tvCheckoutCountry.setText(checkoutResponse.getCountry());
+        tvCheckoutTel.setText(checkoutResponse.getTel());
+
+        setRadioButtonDrawable(rbCheckoutPaymentBanking);
+        setRadioButtonDrawable(rbCheckoutPaymentCredit);
+        setRadioButtonDrawable(rbCheckoutPaymentCashOnDeliery);
+        radioPaymentType.check(R.id.rb_checkout_payment_banking);
+        radioPaymentType.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.rb_checkout_payment_banking:
+                    paymentType = rbCheckoutPaymentBanking.getText().toString();
+                    break;
+                case R.id.rb_checkout_payment_credit:
+                    paymentType = rbCheckoutPaymentCredit.getText().toString();
+                    break;
+                case R.id.rb_checkout_payment_cash_on_deliery:
+                    paymentType = rbCheckoutPaymentCashOnDeliery.getText().toString();
+                    break;
+                default:
+                    paymentType = rbCheckoutPaymentBanking.getText().toString();
+                    break;
+            }
+        });
+    }
+
+    private void initRecycler(CheckoutResponse response) {
+        rvOrderList.setLayoutManager(new LinearLayoutManager(this));
+        rvOrderList.setNestedScrollingEnabled(false);
+        rvOrderList.setAdapter(new CheckoutListAdapter(response.getCheckoutItems()));
+    }
+
+    private void setRadioButtonDrawable(RadioButton radioButton) {
+        Drawable rbDrawable = getResources().getDrawable(R.drawable.selector_check);
+        rbDrawable.setBounds(0, 0, ScreenHelper.dip2px(this, RADIO_BUTTON_W_AND_H),
+            ScreenHelper.dip2px(this, RADIO_BUTTON_W_AND_H));
+        radioButton.setCompoundDrawables(rbDrawable, null, null, null);
+    }
+
+    @Override
+    public void showNetwordErrorMessage() {
+        //TODO(helen)wait for api
+    }
+
+    @Override
+    public void showFaildMessage(String errorMessage) {
+//TODO(helen)wait for api
+    }
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        ViewUtils.setBg(imageviewLeftMenu, R.drawable.ic_icon_back);
+        mPresenter.getCheckout("");
+
+    }
 
     @Override
     public int getContentView() {
         return R.layout.activity_checkout;
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return ScreenHelper.getString(R.string.checkout_title);
     }
 
     @Override
@@ -116,70 +178,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     @Override
-    public void showCheckout(CheckoutResponse checkoutResponse) {
-        initCheckoutPage(checkoutResponse);
-        initRecycler(checkoutResponse);
-    }
-
-    private void initCheckoutPage(CheckoutResponse checkoutResponse) {
-        tvCheckoutUsername.setText(checkoutResponse.getUserName());
-        tvCheckoutAddressFirst.setText(checkoutResponse.getFirstAddress());
-        tvCheckoutAddressSecond.setText(checkoutResponse.getSecondAddress());
-        tvCheckoutCityStateCode.setText(checkoutResponse.getCity()+","+checkoutResponse.getPostcode());
-        tvCheckoutCountry.setText(checkoutResponse.getCountry());
-        tvCheckoutTel.setText(checkoutResponse.getTel());
-
-        setRadioButtonDrawable(rbCheckoutPaymentBanking);
-        setRadioButtonDrawable(rbCheckoutPaymentCredit);
-        setRadioButtonDrawable(rbCheckoutPaymentCashOnDeliery);
-        radioPaymentType.check(R.id.rb_checkout_payment_banking);
-        radioPaymentType.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId){
-                case R.id.rb_checkout_payment_banking:
-                    paymentType= rbCheckoutPaymentBanking.getText().toString();
-                    break;
-                case R.id.rb_checkout_payment_credit:
-                    paymentType= rbCheckoutPaymentCredit.getText().toString();
-                    break;
-                case R.id.rb_checkout_payment_cash_on_deliery:
-                    paymentType= rbCheckoutPaymentCashOnDeliery.getText().toString();
-                    break;
-                default:
-                    paymentType= rbCheckoutPaymentBanking.getText().toString();
-                    break;
-            }
-        });
-    }
-
-    private void setRadioButtonDrawable(RadioButton radioButton){
-        Drawable rbDrawable = getResources().getDrawable(R.drawable.selector_check);
-        rbDrawable.setBounds(0, 0, ScreenHelper.dip2px(this,RADIO_BUTTON_W_AND_H), ScreenHelper.dip2px(this,RADIO_BUTTON_W_AND_H));
-        radioButton.setCompoundDrawables(rbDrawable, null, null, null);
-    }
-
-
-    @Override
-    public void showNetwordErrorMessage() {
-    //TODO(helen)wait for api
-    }
-
-    @Override
-    public void showFaildMessage(String errorMessage) {
-//TODO(helen)wait for api
-    }
-
-    private void initRecycler(CheckoutResponse response) {
-        rvOrderList.setLayoutManager(new LinearLayoutManager(this));
-        rvOrderList.setNestedScrollingEnabled(false);
-        rvOrderList.setAdapter(new CheckoutListAdapter(response.getCheckoutItems()));
-    }
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        ViewUtils.setBg(imageviewLeftMenu,R.mipmap.back);
-        mPresenter.getCheckout("");
-
+    public String getScreenTitle() {
+        return ScreenHelper.getString(R.string.checkout_title);
     }
 
     @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order})

@@ -6,6 +6,7 @@ import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.jakewharton.rxbinding2.view.RxView;
 
+import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +17,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-/**
- * Created by img on 2018/2/5.
- */
 
 public class NotificationAdapter extends RecyclerView.Adapter {
 
@@ -43,6 +40,7 @@ public class NotificationAdapter extends RecyclerView.Adapter {
         return new NotificationHolder(view);
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         NotificationHolder holder = (NotificationHolder) viewHolder;

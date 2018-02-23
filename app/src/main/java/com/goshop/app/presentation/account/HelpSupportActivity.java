@@ -20,7 +20,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-
 public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presenter> implements
     HelpSupportContract.View {
 
@@ -42,15 +41,15 @@ public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presen
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.help_support);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initRecyclerView();
         initPresenter();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.help_support);
     }
 
     private void initRecyclerView() {

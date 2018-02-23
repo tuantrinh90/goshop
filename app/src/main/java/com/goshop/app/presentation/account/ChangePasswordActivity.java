@@ -16,8 +16,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-
-
 public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.Presenter>
     implements ChangePasswordContract.View {
 
@@ -44,14 +42,14 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.change_password);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initPresenter();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.change_password);
     }
 
     private void initPresenter() {

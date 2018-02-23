@@ -18,10 +18,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/2/2.
- */
-
 public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Presenter>
     implements PaymentStatusContract.View {
 
@@ -56,16 +52,15 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.payment_status);
-    }
-
-    @Override
     public void inject() {
         imageviewLeftMenu.setVisibility(View.GONE);
         initPresenter();
     }
 
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.payment_status);
+    }
 
     private void initPresenter() {
         DaggerPresenterComponent.builder()

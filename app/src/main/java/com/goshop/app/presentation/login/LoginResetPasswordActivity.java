@@ -21,10 +21,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/9.
- */
-
 public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordContract
     .Presenter> implements LoginResetPasswordContract.View, ToastUtil.OnToastListener {
 
@@ -47,16 +43,16 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.reset_password);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initPresenter();
         initEditText();
         toastUtil = new ToastUtil(this, this);
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.reset_password);
     }
 
     private void initPresenter() {

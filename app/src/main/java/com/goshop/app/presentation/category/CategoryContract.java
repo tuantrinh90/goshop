@@ -8,10 +8,6 @@ import com.goshop.app.presentation.model.CategoryRightMenuModel;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by helen on 2018/2/5.
- */
-
 public class CategoryContract {
 
     interface View extends BaseView {

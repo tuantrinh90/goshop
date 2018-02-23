@@ -11,7 +11,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 
 import java.util.ArrayList;
@@ -21,8 +20,6 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
-
-
 
 public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Presenter>
     implements MyAddressBookContract.View, MyAddressBookAdapter.OnAddressBookClickListener {
@@ -59,17 +56,17 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.my_address_book);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         displayAddressVMs = new ArrayList<>();
         tvBtnLayoutWhite.setText(getResources().getString(R.string.add_new_address));
         initPresenter();
         initRecyclerView();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.my_address_book);
     }
 
     private void initPresenter() {

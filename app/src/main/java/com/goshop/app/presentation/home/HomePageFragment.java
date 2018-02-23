@@ -8,7 +8,6 @@ import com.goshop.app.presentation.model.widget.ProductItemVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import com.goshop.app.presentation.shopping.PDPDetailActivity;
-import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
 import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
 import com.goshop.app.widget.WidgetListener.OnSinglePicturClickListener;
@@ -33,10 +32,6 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 import static com.goshop.app.utils.PageIntentUtils.PROMOTION_BANNER_URL;
-
-/**
- * Created by helen on 2018/2/11.
- */
 
 public class HomePageFragment extends BaseFragment<HomePageContract.Presenter> implements
     HomePageContract.View, OnProductItemClickListener, OnBannerItemClickListener,

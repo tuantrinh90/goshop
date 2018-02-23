@@ -29,10 +29,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by img on 2018/1/5.
- */
-
 public class HomeBaseAdapter extends RecyclerView.Adapter {
 
     private static final int SUM_PAGE = 4;

@@ -8,7 +8,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-
 public class ChangePasswordPresenter extends RxPresenter<ChangePasswordContract.View> implements
     ChangePasswordContract.Presenter {
 

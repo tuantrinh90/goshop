@@ -13,7 +13,7 @@
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
         android:layout_marginRight="@dimen/size_8"
-        android:background="@mipmap/close"
+        android:background="@drawable/ic_close"
         android:contentDescription="@string/app_name"
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/size_8"/>

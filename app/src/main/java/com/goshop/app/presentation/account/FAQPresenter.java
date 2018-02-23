@@ -4,16 +4,12 @@ import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.FAQReponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.FAQVM;
-import com.goshop.app.presentation.model.HelpSupportContentVM;
-import com.goshop.app.presentation.model.HelpSupportModel;
-import com.goshop.app.presentation.model.HelpSupportTitleVM;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
-
 
 public class FAQPresenter extends RxPresenter<FAQContract.View> implements FAQContract.Presenter {
 
@@ -46,7 +42,6 @@ public class FAQPresenter extends RxPresenter<FAQContract.View> implements FAQCo
                 }
             }));
     }
-
 
     //TODO(helen) this is mock data
     private List<FAQVM> getMockData() {

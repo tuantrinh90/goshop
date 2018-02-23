@@ -7,10 +7,6 @@ import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by helen on 2018/2/22.
- */
-
 public class PDPDetailContract {
 
     interface View extends BaseView {

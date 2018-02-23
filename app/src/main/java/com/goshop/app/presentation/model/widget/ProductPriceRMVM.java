@@ -1,20 +1,10 @@
 package com.goshop.app.presentation.model.widget;
 
-/**
- * Created by helen on 2018/2/12.
- */
-
 public class ProductPriceRMVM {
 
     private String discountTitle;
 
     private String discounted;
-
-    /**
-     * original : 200
-     * discounted : 149
-     * discountTitle : 25% OFF
-     */
 
     private String original;
 

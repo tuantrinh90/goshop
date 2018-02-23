@@ -19,7 +19,8 @@
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="104dp">
+            android:layout_height="104dp"
+            android:baselineAligned="false">
             <LinearLayout
                 android:id="@+id/ll_home_top_category_category"
                 android:layout_weight="1"
@@ -31,7 +32,8 @@
                     android:layout_gravity="center"
                     android:layout_width="@dimen/home_category_image_w_and_h"
                     android:layout_height="@dimen/home_category_image_w_and_h"
-                    android:background="@mipmap/ic_home_category"
+                    android:contentDescription="@string/app_name"
+                    android:background="@drawable/ic_home_category"
                 />
                 <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
@@ -49,7 +51,8 @@
                     android:layout_width="@dimen/home_category_image_w_and_h"
                     android:layout_height="@dimen/home_category_image_w_and_h"
                     android:layout_gravity="center"
-                    android:background="@mipmap/ic_home_tv_show"
+                    android:contentDescription="@string/app_name"
+                    android:background="@drawable/ic_home_tv_show"
                 />
                 <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
@@ -67,7 +70,8 @@
                     android:layout_width="@dimen/home_category_image_w_and_h"
                     android:layout_height="@dimen/home_category_image_w_and_h"
                     android:layout_gravity="center"
-                    android:background="@mipmap/ic_home_brands"
+                    android:contentDescription="@string/app_name"
+                    android:background="@drawable/ic_home_brands"
                 />
                 <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"
@@ -86,7 +90,8 @@
                     android:layout_width="@dimen/home_category_image_w_and_h"
                     android:layout_height="@dimen/home_category_image_w_and_h"
                     android:layout_gravity="center"
-                    android:background="@mipmap/ic_home_gifts"
+                    android:contentDescription="@string/app_name"
+                    android:background="@drawable/ic_home_gifts"
                 />
                 <com.goshop.app.common.view.CustomTextView
                     style="@style/homeTopCategoryText"

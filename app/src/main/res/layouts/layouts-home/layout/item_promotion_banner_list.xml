@@ -10,6 +10,7 @@
         android:id="@+id/iv_promotion_banner_item"
         android:layout_width="match_parent"
         android:scaleType="fitXY"
+        android:contentDescription="@string/app_name"
         android:layout_height="130dp">
 
     </ImageView>

@@ -13,10 +13,6 @@ import javax.inject.Inject;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by img on 2018/1/23.
- */
-
 public class PromotionPresenter extends RxPresenter<PromotionContract.View> implements
     PromotionContract.Presenter {
 

@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.CustomEditText;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.design.widget.TextInputLayout;
@@ -16,8 +17,6 @@ import android.widget.RelativeLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-
 
 public class CustomAnimEditText extends RelativeLayout {
 
@@ -40,7 +39,7 @@ public class CustomAnimEditText extends RelativeLayout {
     private void initView(Context context, AttributeSet attrs) {
         View editView = LayoutInflater.from(context).inflate(R.layout.layout_anim_edit, this, true);
         ButterKnife.bind(this, editView);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.animET);
+        @SuppressLint("CustomViewStyleable") TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.animET);
         hintString = typedArray.getResourceId(R.styleable.animET_hint, 0);
         typedArray.recycle();
         tilAnimEdittext.setHint(context.getString(hintString));
@@ -85,6 +84,10 @@ public class CustomAnimEditText extends RelativeLayout {
         return etAnimEdittext.getText().toString();
     }
 
+    public void setText(String content) {
+        etAnimEdittext.setText(content);
+    }
+
     public void setErrorMessage(String errorMessage) {
         tilAnimEdittext.setErrorEnabled(true);
         tilAnimEdittext.setError(errorMessage);
@@ -92,16 +95,11 @@ public class CustomAnimEditText extends RelativeLayout {
         etAnimEdittext.requestFocus();
     }
 
-
     public void initInputType(int inputType) {
         etAnimEdittext.setInputType(inputType);
     }
 
     public void initImeOptions(int imeAction) {
         etAnimEdittext.onEditorAction(imeAction);
-    }
-
-    public void setText(String content) {
-        etAnimEdittext.setText(content);
     }
 }

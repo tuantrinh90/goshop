@@ -1,12 +1,10 @@
 package com.goshop.app.data.model;
 
-
-
 public class Reponse {
 
-    private int state;
-
     private String errorMessage;
+
+    private int state;
 
     public int getState() {
         return state;

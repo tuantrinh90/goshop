@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/ll_center_root"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:padding="@dimen/home_padding">
+    android:padding="@dimen/home_padding"
+    android:baselineAligned="false">
     <!--prev -->
     <RelativeLayout
         android:layout_width="0dp"
@@ -34,12 +36,15 @@
             android:layout_height="200dp"
             android:layout_below="@+id/tv_home_center_prev_time"
             android:paddingLeft="@dimen/home_padding_half"
-            android:paddingTop="@dimen/home_padding">
+            android:paddingTop="@dimen/home_padding"
+            tools:ignore="RtlSymmetry"
+            android:paddingStart="@dimen/home_padding_half">
 
             <ImageView
                 android:id="@+id/iv_home_center_prev_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
                 android:background="@color/green_common"/>
 
             <RelativeLayout
@@ -92,12 +97,15 @@
             android:layout_height="200dp"
             android:layout_below="@+id/tv_home_center_next_time"
             android:paddingLeft="@dimen/home_padding_half"
-            android:paddingTop="@dimen/home_padding">
+            android:paddingTop="@dimen/home_padding"
+            tools:ignore="RtlSymmetry"
+            android:paddingStart="@dimen/home_padding_half">
 
             <ImageView
                 android:id="@+id/iv_home_center_next_icon"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:contentDescription="@string/app_name"
                 android:background="@color/green_common"/>
 
             <RelativeLayout

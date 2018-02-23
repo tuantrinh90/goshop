@@ -18,9 +18,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by img on 2018/1/10.
- */
 public class HomeCenterChildViewListAdapter extends RecyclerView.Adapter {
 
     List<HomeResponse.CenterVideo.CenterVideoList> centerVideoLists = new ArrayList<>();

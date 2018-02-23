@@ -13,10 +13,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class TVShowPagePresenter extends RxPresenter<TVShowPageContract.View> implements
     TVShowPageContract.Presenter {
 
@@ -75,27 +71,27 @@ public class TVShowPagePresenter extends RxPresenter<TVShowPageContract.View> im
     private List<TVVideoLeftVM> getLeftVideos() {
         List<TVVideoLeftVM> leftVMS = new ArrayList<>();
         leftVMS.add(new TVVideoLeftVM("RM 119.00", "RM 239.00", "30% OFF", "10:00 - 11:00",
-            "Manjung Korean Crispy Seaweed (Sea Salt)", R.mipmap.left_demo, ""));
+            "Manjung Korean Crispy Seaweed (Sea Salt)", R.drawable.ic_left_demo, ""));
         leftVMS.add(new TVVideoLeftVM("RM 119.00", "RM 239.00", "30% OFF", "10:00 - 11:00",
-            "Manjung Korean Crispy Seaweed (Sea Salt)", R.mipmap.left_demo, ""));
+            "Manjung Korean Crispy Seaweed (Sea Salt)", R.drawable.ic_left_demo, ""));
         leftVMS.add(new TVVideoLeftVM("RM 119.00", "RM 239.00", "30% OFF", "10:00 - 11:00",
-            "Manjung Korean Crispy Seaweed (Sea Salt)", R.mipmap.left_demo, ""));
+            "Manjung Korean Crispy Seaweed (Sea Salt)", R.drawable.ic_left_demo, ""));
         return leftVMS;
     }
 
     //TODO(helen) this is mock data
     private List<TVVideoRightVM> getRightVideos() {
         List<TVVideoRightVM> rightVMS = new ArrayList<>();
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.right_video_demo, true));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.bought, false));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.right_video_demo, false));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.bought, false));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.right_video_demo, false));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.bought, false));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.right_video_demo, false));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.bought, false));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.right_video_demo, false));
-        rightVMS.add(new TVVideoRightVM("13:00", "", R.mipmap.bought, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_right_video_demo, true));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_bought, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_right_video_demo, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_bought, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_right_video_demo, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_bought, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_right_video_demo, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_bought, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_right_video_demo, false));
+        rightVMS.add(new TVVideoRightVM("13:00", "", R.drawable.ic_bought, false));
 
         return rightVMS;
     }

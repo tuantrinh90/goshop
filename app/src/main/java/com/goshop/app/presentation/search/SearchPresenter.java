@@ -15,10 +15,6 @@ import java.util.List;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/1/18.
- */
-
 public class SearchPresenter extends RxPresenter<SearchContract.View> implements SearchContract
     .Presenter {
 
@@ -66,7 +62,7 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
                         displayFilterModels.addAll(filterModels);
                     }
 
-                    if(displayFilterModels.size() > 0) {
+                    if (displayFilterModels.size() > 0) {
                         displayFilterModels
                             .add(new SearchFilterModel(SearchFilterModel.SEARCH_POPULAR_DIVIDING));
                     }
@@ -131,23 +127,23 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
     //todo(helen) this is mock data, please do not delete
     private List<SearchResultVM> getSuggestDatas() {
         List<SearchResultVM> filterModels = new ArrayList<>();
-        SearchResultVM searchResultVM1 = new SearchResultVM(R.mipmap.bought, 0,
-            R.mipmap.tv, false, false, "RM 299.00", "RM 399.00", "30% OFF",
+        SearchResultVM searchResultVM1 = new SearchResultVM(R.drawable.ic_bought, 0,
+            R.drawable.ic_tv, false, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
-        SearchResultVM searchResultVM2 = new SearchResultVM(R.mipmap.bought, R.mipmap.gift,
+        SearchResultVM searchResultVM2 = new SearchResultVM(R.drawable.ic_bought, R.drawable.ic_gift,
             0, false, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
-        SearchResultVM searchResultVM3 = new SearchResultVM(R.mipmap.bought, 0,
+        SearchResultVM searchResultVM3 = new SearchResultVM(R.drawable.ic_bought, 0,
             0, false, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
 
-        SearchResultVM searchResultVM4 = new SearchResultVM(R.mipmap.bought, 0,
+        SearchResultVM searchResultVM4 = new SearchResultVM(R.drawable.ic_bought, 0,
             0, false, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
-        SearchResultVM searchResultVM5 = new SearchResultVM(R.mipmap.bought, 0,
+        SearchResultVM searchResultVM5 = new SearchResultVM(R.drawable.ic_bought, 0,
             0, true, false, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
-        SearchResultVM searchResultVM6 = new SearchResultVM(R.mipmap.bought, 0,
+        SearchResultVM searchResultVM6 = new SearchResultVM(R.drawable.ic_bought, 0,
             0, false, true, "RM 299.00", "RM 399.00", "30% OFF",
             "Manjung Korean Crispy Seaweed (S");
         filterModels.add(searchResultVM1);
@@ -168,10 +164,10 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
     //todo(helen) this is mock data, please do not delete
     private List<SearchFilterModel> getPopularDetail() {
         List<SearchFilterModel> filterModels = new ArrayList<>();
-        SearchPopularDetailVM popularDetailVM1 = new SearchPopularDetailVM(R.mipmap.bought,
+        SearchPopularDetailVM popularDetailVM1 = new SearchPopularDetailVM(R.drawable.ic_bought,
             "Manjung Korean Crispy Seaweed (Sea Salt) Seaweed (Sea Salt)", "RM 233.00",
             "RM 119.00");
-        SearchPopularDetailVM popularDetailVM2 = new SearchPopularDetailVM(R.mipmap.bought,
+        SearchPopularDetailVM popularDetailVM2 = new SearchPopularDetailVM(R.drawable.ic_bought,
             "Manjung Korean Crispy Seaweed (Sea Salt) Seaweed (Sea Salt)", "RM 233.00",
             "RM 119.00");
         filterModels.add(new SearchFilterModel(SearchFilterModel.SEARCH_POPULAR_TITLE));

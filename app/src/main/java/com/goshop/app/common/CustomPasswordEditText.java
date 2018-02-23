@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.CustomEditText;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.design.widget.TextInputLayout;
@@ -16,8 +17,6 @@ import android.widget.RelativeLayout;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-
 
 public class CustomPasswordEditText extends RelativeLayout {
 
@@ -41,7 +40,7 @@ public class CustomPasswordEditText extends RelativeLayout {
         View editView = LayoutInflater.from(context)
             .inflate(R.layout.layout_password_edit, this, true);
         ButterKnife.bind(this, editView);
-        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.pwd);
+        @SuppressLint("CustomViewStyleable") TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.pwd);
         hintString = typedArray.getResourceId(R.styleable.pwd_pwd_hint, R.string.password);
         typedArray.recycle();
         tilPasswordEdittext.setHint(context.getString(hintString));

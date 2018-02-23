@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <View
@@ -21,7 +21,7 @@
         android:paddingBottom="@dimen/size_20"
         android:paddingTop="@dimen/size_20"
         android:textColor="@color/color_text_black"
-    />
+        tools:ignore="RtlHardcoded"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -47,7 +47,8 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/go_shop_points"
             android:gravity="right"
-            android:layout_weight="2"/>
+            android:layout_weight="2"
+            tools:ignore="RtlHardcoded"/>
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
@@ -56,7 +57,8 @@
             android:textSize="@dimen/size_font_14"
             android:gravity="right"
             android:text="@string/valid_until"
-            android:layout_weight="1.5"/>
+            android:layout_weight="1.5"
+            tools:ignore="RtlHardcoded"/>
 
     </LinearLayout>
 </LinearLayout>

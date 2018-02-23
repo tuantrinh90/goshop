@@ -25,10 +25,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-/**
- * Created by helen on 2018/2/22.
- */
-
 public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> implements
     PDPDetailContract.Presenter {
 
@@ -110,6 +106,7 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
             "RM 269.00", "RM 199.00", "(-30%)", 5, "(24)",
             tips, colorVMS, sizes, "2");
     }
+
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getProductSummary() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
@@ -117,6 +114,7 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
         widgetViewModels.add(new WidgetViewModel(WidgetViewModel.VIEW_TYPE_SINGLE_TEXT));
         return widgetViewModels;
     }
+
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getDeliveryInfo() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
@@ -124,6 +122,7 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
         widgetViewModels.add(new WidgetViewModel(WidgetViewModel.VIEW_TYPE_DELIVERY_INFO));
         return widgetViewModels;
     }
+
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getDetails() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
@@ -131,32 +130,37 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
         widgetViewModels.add(new WidgetViewModel(WidgetViewModel.VIEW_TYPE_SINGLE_TEXT));
         return widgetViewModels;
     }
+
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getQA() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM("Q&A", false, true));
         return widgetViewModels;
     }
+
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getReviews() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM("Reviews", false, true));
         return widgetViewModels;
     }
+
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getAdditionalInformation() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM("Additional Information", false, true));
-        widgetViewModels.add(new AdditionalInformationVM("A/S Processing Standard","N/A"));
-        widgetViewModels.add(new AdditionalInformationVM("Quality Guarantee Period","N/A"));
-        widgetViewModels.add(new AdditionalInformationVM("Basic Constitution","N/A"));
-        widgetViewModels.add(new AdditionalInformationVM("Precaution","N/A"));
-        widgetViewModels.add(new AdditionalInformationVM("Return/Cancel Processing Standard","N/A"));
-        widgetViewModels.add(new AdditionalInformationVM("Model Name","N/A"));
-        widgetViewModels.add(new AdditionalInformationVM("Material","N/A"));
-        widgetViewModels.add(new AdditionalInformationVM("Product Features","N/A"));
+        widgetViewModels.add(new AdditionalInformationVM("A/S Processing Standard", "N/A"));
+        widgetViewModels.add(new AdditionalInformationVM("Quality Guarantee Period", "N/A"));
+        widgetViewModels.add(new AdditionalInformationVM("Basic Constitution", "N/A"));
+        widgetViewModels.add(new AdditionalInformationVM("Precaution", "N/A"));
+        widgetViewModels
+            .add(new AdditionalInformationVM("Return/Cancel Processing Standard", "N/A"));
+        widgetViewModels.add(new AdditionalInformationVM("Model Name", "N/A"));
+        widgetViewModels.add(new AdditionalInformationVM("Material", "N/A"));
+        widgetViewModels.add(new AdditionalInformationVM("Product Features", "N/A"));
         return widgetViewModels;
     }
+
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getFrequentlyBoughtTogether() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
@@ -165,7 +169,7 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
         ProductPriceVM productPriceVM = new ProductPriceVM(productPriceRMVM);
         List<String> attributes = new ArrayList<>();
         attributes.add("New");
-        ProductItemVM productItemVM = new ProductItemVM(R.mipmap.bought, "",
+        ProductItemVM productItemVM = new ProductItemVM(R.drawable.ic_bought, "",
             "Bloom By Naelofar Hijab (3pcs set)", attributes, productPriceVM);
         List<ProductItemVM> productItemVMS = new ArrayList<>();
         productItemVMS.add(productItemVM);

@@ -6,18 +6,17 @@ import com.goshop.app.presentation.model.SettingsModel;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/2/8.
- */
-
 public class SettingsContract {
 
     interface View extends BaseView {
+
         void showSettingView(List<SettingsModel> settingsModelse);
+
         void startChangePasswordScreen();
     }
 
     public interface Presenter extends BasePresenter<View> {
+
         void getSettingsDetail();
     }
 

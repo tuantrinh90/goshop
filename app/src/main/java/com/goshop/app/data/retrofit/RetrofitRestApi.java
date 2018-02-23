@@ -23,7 +23,6 @@ import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.request.GetUserRequest;
-import com.goshop.app.data.model.request.SaveUserRequest;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
@@ -42,8 +41,6 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
-import retrofit2.http.Query;
-import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 
 public interface RetrofitRestApi {

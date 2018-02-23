@@ -37,52 +37,46 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 import io.reactivex.disposables.Disposable;
 
-
-
 public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements LoginContract
     .View {
-
-    @BindView(R.id.iv_login_logo)
-    ImageView ivLoginLogo;
-
-    @BindView(R.id.et_email)
-    EditText etEmail;
-
-    @BindView(R.id.iv_clear_mail)
-    ImageView ivClearMail;
-
-    @BindView(R.id.et_password)
-    EditText etPassword;
-
-    @BindView(R.id.iv_clear_password)
-    ImageView ivClearPassword;
-
-    @BindView(R.id.iv_visible_password)
-    ImageView ivVisiblePassword;
 
     @BindView(R.id.btn_login)
     Button btnLogin;
 
-    @BindView(R.id.tv_forgot_password)
-    TextView tvForgotPassword;
+    @BindView(R.id.et_email)
+    EditText etEmail;
 
-    @BindView(R.id.rl_text_or)
-    RelativeLayout rlTextOr;
+    @BindView(R.id.et_password)
+    EditText etPassword;
+
+    @BindView(R.id.imageview_right_menu)
+    ImageView imageviewRightMenu;
+
+    boolean isVisible;
+
+    @BindView(R.id.iv_clear_mail)
+    ImageView ivClearMail;
+
+    @BindView(R.id.iv_clear_password)
+    ImageView ivClearPassword;
 
     @BindView(R.id.iv_login_facebook_icon)
     ImageView ivLoginFacebookIcon;
 
+    @BindView(R.id.iv_login_logo)
+    ImageView ivLoginLogo;
+
+    @BindView(R.id.iv_visible_password)
+    ImageView ivVisiblePassword;
+
     @BindView(R.id.rl_login_facebook)
     RelativeLayout rlLoginFacebook;
 
-    @BindView(R.id.view_bottom_line)
-    View viewBottomLine;
+    @BindView(R.id.rl_password_root)
+    RelativeLayout rlPasswordRoot;
 
-    @BindView(R.id.tv_new_to_shop)
-    TextView tvNewToShop;
-
-    @BindView(R.id.tv_register)
-    TextView tvRegister;
+    @BindView(R.id.rl_text_or)
+    RelativeLayout rlTextOr;
 
     @BindView(R.id.text_email)
     TextInputLayout textEmail;
@@ -90,27 +84,34 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @BindView(R.id.text_password)
     TextInputLayout textPassword;
 
-    boolean isVisible;
-
-    @BindView(R.id.rl_password_root)
-    RelativeLayout rlPasswordRoot;
+    @BindView(R.id.tv_forgot_password)
+    TextView tvForgotPassword;
 
     @BindView(R.id.tv_login_facebook)
     CustomTextView tvLoginFacebook;
 
-    @BindView(R.id.imageview_right_menu)
-    ImageView imageviewRightMenu;
+    @BindView(R.id.tv_new_to_shop)
+    TextView tvNewToShop;
+
+    @BindView(R.id.tv_register)
+    TextView tvRegister;
+
+    @BindView(R.id.view_bottom_line)
+    View viewBottomLine;
 
     private CallbackManager facebookCallbackManager;
 
     @Override
-    public int getContentView() {
-        return R.layout.account_login;
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        facebookCallbackManager = mPresenter.initFaceBook();
+        initTitleBar();
+        initView();
     }
 
     @Override
-    public String getScreenTitle() {
-        return null;
+    public int getContentView() {
+        return R.layout.account_login;
     }
 
     @Override
@@ -123,21 +124,12 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        facebookCallbackManager = mPresenter.initFaceBook();
-        initTitleBar();
-        initView();
+    public String getScreenTitle() {
+        return null;
     }
 
     private void initTitleBar() {
-        imageviewRightMenu.setBackgroundResource(R.mipmap.close);
-    }
-
-    @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
+        imageviewRightMenu.setBackgroundResource(R.drawable.ic_close);
     }
 
     private void initView() {
@@ -200,20 +192,27 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
+    }
+
     @OnClick({R.id.iv_visible_password, R.id
-        .btn_login, R.id.tv_forgot_password, R.id.rl_login_facebook, R.id.tv_register,R.id.imageview_right_menu})
+        .btn_login, R.id.tv_forgot_password, R.id.rl_login_facebook, R.id.tv_register, R.id
+        .imageview_right_menu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.iv_visible_password:
                 if (!TextUtils.isEmpty(etPassword.getText().toString().trim())) {
                     if (isVisible) {
                         isVisible = false;
-                        ivVisiblePassword.setBackgroundResource(R.mipmap.ic_password_not_visible);
+                        ivVisiblePassword.setBackgroundResource(R.drawable.ic_password_not_visible);
                         etPassword
                             .setTransformationMethod(PasswordTransformationMethod.getInstance());
                     } else {
                         isVisible = true;
-                        ivVisiblePassword.setBackgroundResource(R.mipmap.ic_password_visible);
+                        ivVisiblePassword.setBackgroundResource(R.drawable.ic_password_visible);
                         etPassword
                             .setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     }

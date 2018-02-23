@@ -6,10 +6,6 @@ import com.goshop.app.presentation.model.SearchFilterModel;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/1/18.
- */
-
 public class SearchContract {
 
     interface View extends BaseView {

@@ -2,21 +2,25 @@ package com.goshop.app.data.model.response;
 
 import java.util.List;
 
-/**
- * Created by img on 2018/2/2.
- */
-
 public class CheckoutResponse {
 
-    private String userName;
-    private String firstAddress;
-    private String secondAddress;
-    private String city;
-    private String state;
-    private String postcode;
-    private String country;
-    private String tel;
     private List<CheckoutItem> checkoutItems;
+
+    private String city;
+
+    private String country;
+
+    private String firstAddress;
+
+    private String postcode;
+
+    private String secondAddress;
+
+    private String state;
+
+    private String tel;
+
+    private String userName;
 
     public String getUserName() {
         return userName;
@@ -91,15 +95,21 @@ public class CheckoutResponse {
         this.checkoutItems = checkoutItems;
     }
 
-    public static class CheckoutItem{
-        private String productName;
-        private String color;
-        private String size;
-        private String oldPrice;
-        private String currentPrice;
+    public static class CheckoutItem {
+
         private String amount;
+
+        private String color;
+
+        private String currentPrice;
+
         private String image;
 
+        private String oldPrice;
+
+        private String productName;
+
+        private String size;
 
         public String getProductName() {
             return productName;

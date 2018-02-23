@@ -3,7 +3,6 @@ package com.goshop.app.widget;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.presentation.model.widget.CarouselAutoPlayVM;
-import com.goshop.app.presentation.model.widget.CarouselDataVM;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
 import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
@@ -12,15 +11,10 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-/**
- * Created by helen on 2018/2/10.
- */
 
 public class WidgetBannerViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,7 +29,8 @@ public class WidgetBannerViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    void bindingData(WidgetCarouselVM bannerVM, OnBannerItemClickListener onBannerItemClickListener) {
+    void bindingData(WidgetCarouselVM bannerVM,
+        OnBannerItemClickListener onBannerItemClickListener) {
         List<CarouselItemsVM> itemsVMS = bannerVM.getData().getItems();
         viewpagerWidgetBanner
             .setAdapter(new WidgetBannerAdapter(itemsVMS, onBannerItemClickListener));

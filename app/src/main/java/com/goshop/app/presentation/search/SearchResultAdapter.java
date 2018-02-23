@@ -18,10 +18,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/1/18.
- */
-
 public class SearchResultAdapter extends RecyclerView.Adapter {
 
     private List<SearchFilterModel> filterModels;

@@ -34,7 +34,8 @@
             android:id="@+id/iv_arrow"
             android:layout_width="16dp"
             android:layout_height="8dp"
-            android:background="@mipmap/ic_home_center_video_down_arrows"
+            android:contentDescription="@string/app_name"
+            android:background="@drawable/ic_home_center_video_down_arrows"
             android:layout_centerInParent="true"/>
         <View
             android:layout_alignParentBottom="true"

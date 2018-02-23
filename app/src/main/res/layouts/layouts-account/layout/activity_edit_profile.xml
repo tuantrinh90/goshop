@@ -106,7 +106,8 @@
                         android:layout_marginLeft="@dimen/size_76"
                         android:textColor="@color/color_text_black"
                         android:textSize="@dimen/size_font_16"
-                        android:text="@string/female"/>
+                        android:text="@string/female"
+                        android:layout_marginStart="@dimen/size_76"/>
                 </RadioGroup>
 
 

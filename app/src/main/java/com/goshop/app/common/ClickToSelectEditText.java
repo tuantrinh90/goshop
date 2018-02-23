@@ -9,8 +9,6 @@ import android.util.AttributeSet;
 
 import java.util.List;
 
-
-
 public class ClickToSelectEditText<T> extends AppCompatEditText {
 
     CharSequence mHint;
@@ -75,6 +73,7 @@ public class ClickToSelectEditText<T> extends AppCompatEditText {
     }
 
     public interface OnItemSelectedListener<T> {
+
         void onItemSelectedListener(T item, int selectedIndex);
     }
 }

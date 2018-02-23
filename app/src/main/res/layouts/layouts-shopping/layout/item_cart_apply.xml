@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingBottom="@dimen/size_70"
@@ -68,7 +69,8 @@
             android:layout_alignParentRight="true"
             android:textColor="@color/color_text_black"
             android:gravity="end"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -96,7 +98,8 @@
             android:layout_alignParentRight="true"
             android:textColor="@color/color_text_black"
             android:gravity="end"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -124,7 +127,8 @@
             android:layout_alignParentRight="true"
             android:textColor="@color/color_text_black"
             android:gravity="end"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -152,7 +156,8 @@
             android:layout_alignParentRight="true"
             android:textColor="@color/color_main_pink"
             android:gravity="end"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
     </RelativeLayout>
 
 

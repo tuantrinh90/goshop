@@ -17,10 +17,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by helen on 2018/2/5.
- */
-
 public class CategoryLeftAdapter extends RecyclerView.Adapter {
 
     private CategoryLeftClickListener leftClickListener;

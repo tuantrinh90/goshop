@@ -18,9 +18,6 @@ import android.view.View;
 import butterknife.OnClick;
 import io.fabric.sdk.android.Fabric;
 
-/**
- * Created by helen on 2018/1/10.
- */
 //todo(helen) this activity will delete when merge code
 public class TestMenuActivity extends BaseActivity {
 
@@ -48,7 +45,8 @@ public class TestMenuActivity extends BaseActivity {
 
     @OnClick({R.id.btn_test_login, R.id.imageview_left_menu, R.id.btn_test_complement_email, R.id
         .btn_test_send_confirmation_link,
-        R.id.btn_test_editprofile, R.id.btn_test_my_address, R.id.btn_test_my_points, R.id.btn_test_select_address, R.id.btn_test_paymentstatus})
+        R.id.btn_test_editprofile, R.id.btn_test_my_address, R.id.btn_test_my_points, R.id
+        .btn_test_select_address, R.id.btn_test_paymentstatus})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_login:

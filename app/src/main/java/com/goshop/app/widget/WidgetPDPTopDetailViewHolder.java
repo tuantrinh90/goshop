@@ -2,8 +2,8 @@ package com.goshop.app.widget;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomBoldItaticTextView;
+import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.widget.ColorVM;
 import com.goshop.app.presentation.model.widget.WidgetPDPTopDetailsVM;
@@ -20,10 +20,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-/**
- * Created by helen on 2018/2/22.
- */
 
 public class WidgetPDPTopDetailViewHolder extends RecyclerView.ViewHolder {
 
@@ -80,14 +76,14 @@ public class WidgetPDPTopDetailViewHolder extends RecyclerView.ViewHolder {
         ratingBarPdpDetails.setRating(topDetailsVM.getStarStep());
         tvPdpTopStarNum.setText(topDetailsVM.getStarNum());
         List<String> tips = topDetailsVM.getTips();
-        String tip = "";
+        StringBuilder tip = new StringBuilder();
         for (int i = 0; i < tips.size(); i++) {
-            tip = tip + tips.get(i);
+            tip.append(tips.get(i));
             if (i != tips.size() - 1) {
-                tip = tip + " · ";
+                tip.append(" · ");
             }
         }
-        tvPdpTopTips.setText(tip);
+        tvPdpTopTips.setText(tip.toString());
         ColorVM colorVM = topDetailsVM.getPdpColors().get(0);
         tvPdpColor.setText(colorVM.getColorName());
         ivPdpColor.setBackgroundColor(Color.parseColor(colorVM.getColorValue()));

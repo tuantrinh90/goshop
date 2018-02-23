@@ -16,8 +16,6 @@ import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-
-
 public class EditAddressActivity extends BaseActivity {
 
     public static final String EDIT_ADDRESS = "edit_address";
@@ -72,14 +70,14 @@ public class EditAddressActivity extends BaseActivity {
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.edit_address);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         setUp();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.edit_address);
     }
 
     private void setUp() {

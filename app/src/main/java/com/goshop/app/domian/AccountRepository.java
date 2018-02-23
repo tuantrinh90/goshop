@@ -34,6 +34,7 @@ import com.goshop.app.data.model.response.PromotionListResponse;
 import java.util.Map;
 
 import io.reactivex.Observable;
+
 public interface AccountRepository {
 
     Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params);

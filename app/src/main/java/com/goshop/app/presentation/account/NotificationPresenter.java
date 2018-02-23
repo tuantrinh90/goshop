@@ -8,8 +8,6 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-
-
 public class NotificationPresenter extends RxPresenter<NotificationContract.View> implements
     NotificationContract.Presenter {
 

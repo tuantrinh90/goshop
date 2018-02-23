@@ -2,6 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -22,7 +23,8 @@
             android:singleLine="true"
             android:textSize="@dimen/size_font_16"
             android:textCursorDrawable="@null"
-            android:paddingEnd="@dimen/size_20"/>
+            android:paddingEnd="@dimen/size_20"
+            tools:ignore="RtlSymmetry"/>
 
     </android.support.design.widget.TextInputLayout>
 
@@ -34,7 +36,7 @@
         android:layout_marginTop="@dimen/size_24"
         android:layout_alignParentRight="true"
         android:visibility="gone"
-        android:background="@mipmap/del"
+        android:background="@drawable/ic_del"
         android:contentDescription="@string/app_name"
         android:layout_alignParentEnd="true"/>
 

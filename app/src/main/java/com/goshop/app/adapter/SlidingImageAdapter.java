@@ -14,10 +14,6 @@ import android.widget.ImageView;
 
 import java.util.List;
 
-/**
- * Created by img on 2018/1/10.
- */
-
 public class SlidingImageAdapter extends PagerAdapter {
 
     IOnClick iOnClick;

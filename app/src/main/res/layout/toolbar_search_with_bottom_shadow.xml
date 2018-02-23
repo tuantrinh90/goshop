@@ -22,7 +22,7 @@
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
             android:scaleType="centerInside"
-            android:background="@mipmap/icon_back"
+            android:background="@drawable/ic_icon_back"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             tools:ignore="ContentDescription"
@@ -59,7 +59,8 @@
             android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size_16"
             android:layout_toRightOf="@id/imageview_left_menu"
-            android:layout_toEndOf="@id/imageview_left_menu"/>
+            android:layout_toEndOf="@id/imageview_left_menu"
+            android:layout_marginStart="@dimen/size_16"/>
     </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>

@@ -26,7 +26,8 @@
             android:paddingRight="@dimen/size_16"
             android:paddingLeft="@dimen/size_16"
             android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="true"/>
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
 
         <RelativeLayout
             android:id="@+id/rl_review_top_left"

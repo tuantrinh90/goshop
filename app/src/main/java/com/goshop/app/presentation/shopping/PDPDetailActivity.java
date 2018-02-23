@@ -4,8 +4,9 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.presentation.model.ProductDetailModel;
+import com.goshop.app.presentation.model.widget.ProductItemVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
+import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
 import com.goshop.app.widget.WidgetViewAdapter;
 
 import android.content.Intent;
@@ -25,12 +26,8 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/10.
- */
-
 public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
-    implements PDPDetailContract.View {
+    implements PDPDetailContract.View , OnProductItemClickListener {
 
     @BindView(R.id.iv_pdp_detail_love)
     ImageView ivPdpDetailLove;
@@ -110,10 +107,15 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
         }
     }
 
-
     @Override
     public void pdpDetailRequestSuccess(List<WidgetViewModel> detailDatas) {
         //todo(helen)wait for complete
+        widgetViewAdapter.setOnProductItemClickListener(this);
         widgetViewAdapter.setUpdateDatas(detailDatas);
+    }
+
+    @Override
+    public void onProductItemClick(ProductItemVM productItemVM) {
+        //TODO(helen)wait for design
     }
 }

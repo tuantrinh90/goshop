@@ -2,10 +2,6 @@ package com.goshop.app.presentation.model.widget;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/2/22.
- */
-
 public class WidgetPDPTopDetailsVM extends WidgetViewModel {
 
     private String amount;

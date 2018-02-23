@@ -10,10 +10,6 @@ import android.view.View;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-/**
- * Created by img on 2018/2/22.
- */
-
 public class AdditionalInformationViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tv_additional_info_lable)

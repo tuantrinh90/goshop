@@ -1,9 +1,5 @@
 package com.goshop.app.presentation.model;
 
-/**
- * Created by helen on 2018/1/18.
- */
-
 public class SearchResultVM extends SearchFilterModel {
 
     private int iconDetail;

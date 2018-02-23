@@ -8,10 +8,6 @@ import com.goshop.app.presentation.model.TVVideoRightVM;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by helen on 2018/2/11.
- */
-
 public class TVShowPageContract {
 
     interface View extends BaseView {

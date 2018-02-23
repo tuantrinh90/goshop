@@ -38,7 +38,7 @@
                     android:scaleType="centerInside"
                     android:layout_centerInParent="true"
                     tools:ignore="ContentDescription"
-                    android:background="@mipmap/ic_home_menu"
+                    android:background="@drawable/ic_icon_home"
                 />
             </RelativeLayout>
 
@@ -55,7 +55,7 @@
                     android:layout_width="20dp"
                     android:layout_height="20dp"
                     android:scaleType="centerInside"
-                    android:background="@mipmap/ic_home_checkout"
+                    android:background="@drawable/ic_home_checkout"
                     android:layout_centerInParent="true"
                     tools:ignore="ContentDescription"
                 />
@@ -73,7 +73,10 @@
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
                     android:textColor="@color/white"
-                    android:gravity="center"/>
+                    android:gravity="center"
+                    tools:ignore="HardcodedText"
+                    android:layout_marginEnd="12dp"
+                    android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
             <RelativeLayout
@@ -83,7 +86,9 @@
                 android:focusable="true"
                 android:focusableInTouchMode="true"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
+                android:layout_height="match_parent"
+                android:layout_toEndOf="@id/rl_image_left"
+                android:layout_toStartOf="@id/rl_image_right">
                 <com.goshop.app.common.view.CustomEditText
                     android:id="@+id/et_home_search"
                     android:paddingLeft="25dp"
@@ -93,15 +98,19 @@
                     android:textSize="16sp"
                     android:textColorHint="@color/blackTrans38"
                     android:textCursorDrawable="@drawable/edittext_cursor_color"
-                    android:layout_height="match_parent"/>
+                    android:layout_height="match_parent"
+                    tools:ignore="RtlSymmetry"
+                    android:paddingStart="25dp"/>
                 <ImageView
                     android:layout_marginLeft="5dp"
                     android:layout_width="17dp"
                     android:layout_height="17dp"
                     android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
-                    android:background="@mipmap/ic_home_search"
-                />
+                    android:background="@drawable/ic_search"
+                    android:contentDescription="@string/app_name"
+                    android:layout_marginStart="5dp"
+                    android:layout_alignParentStart="true"/>
             </RelativeLayout>
         </RelativeLayout>
 

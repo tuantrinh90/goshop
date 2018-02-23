@@ -48,7 +48,7 @@
             <ImageView
                 android:layout_width="@dimen/size_22"
                 android:layout_height="@dimen/size_22"
-                android:src="@mipmap/chat"
+                android:src="@drawable/ic_chat"
                 android:paddingTop="@dimen/size_2"
                 android:contentDescription="@string/app_name"/>
 

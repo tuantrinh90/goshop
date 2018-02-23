@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomBoldTextView;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.util.Log;
@@ -18,8 +19,8 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-
-public class WebContentActivity extends BaseActivity<WebContentContract.Presenter> implements WebContentContract
+public class WebContentActivity extends BaseActivity<WebContentContract.Presenter> implements
+    WebContentContract
     .View {
 
     public static final String CONTACT_US = "contact_us";
@@ -54,11 +55,6 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.ecmc);
-    }
-
-    @Override
     public void inject() {
         hideRightMenu();
         initWebView();
@@ -66,6 +62,12 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
         initPresenter();
     }
 
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.ecmc);
+    }
+
+    @SuppressLint("SetJavaScriptEnabled")
     private void initWebView() {
         wvContent.setFocusable(true);
         wvContent.requestFocus();

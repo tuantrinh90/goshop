@@ -6,7 +6,6 @@ import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.AddressVM;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-
-
 
 public class MyAddressBookAdapter extends RecyclerView.Adapter {
 
@@ -110,9 +107,11 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
             tvAddressBookTel.setText(addressVM.getTel());
             rbAddressBookDefault.setChecked(addressVM.isDefault());
 
-            llAddressBookEdit.setOnClickListener(v -> addressBookClickListener.editAddress(addressVM));
+            llAddressBookEdit
+                .setOnClickListener(v -> addressBookClickListener.editAddress(addressVM));
 
-            llAddressBookRemove.setOnClickListener(v -> addressBookClickListener.removeAddress(addressVM));
+            llAddressBookRemove
+                .setOnClickListener(v -> addressBookClickListener.removeAddress(addressVM));
         }
     }
 }

@@ -133,9 +133,6 @@
 
         <activity android:name=".presentation.login.TestMenuActivity"/>
 
-        <activity android:name=".presentation.home.HomeActivity">
-        </activity>
-
         <!-- FACEBOOK -->
         <activity
             tools:replace="android:theme"

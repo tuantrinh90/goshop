@@ -2,6 +2,7 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
+
 public class WebContentContract {
 
     interface View extends BaseView {

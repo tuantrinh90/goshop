@@ -2,10 +2,6 @@ package com.goshop.app.presentation.model.widget;
 
 import java.util.List;
 
-/**
- * Created by helen on 2018/2/12.
- */
-
 public class SearchResultDataVM {
 
     private List<ProductItemVM> products;

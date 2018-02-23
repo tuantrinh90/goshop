@@ -1,37 +1,33 @@
 package com.goshop.app.common.view;
 
+import com.goshop.app.common.Typefaces;
+
 import android.content.Context;
-import android.content.res.TypedArray;
 import android.graphics.Paint;
 import android.graphics.Rect;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 
-import com.goshop.app.R;
-import com.goshop.app.common.Typefaces;
-
 public class CustomBoldIconButton extends android.support.v7.widget.AppCompatButton {
-
-    private int drawableWidth;
-
-    private DrawablePositions drawablePosition;
-
-    private int iconPadding;
 
     private Rect bounds;
 
-    private enum DrawablePositions {
-        NONE,
-        LEFT_AND_RIGHT,
-        LEFT,
-        RIGHT
-    }
+    private DrawablePositions drawablePosition;
+
+    private int drawableWidth;
+
+    private int iconPadding;
 
     public CustomBoldIconButton(Context context) {
         super(context);
         setFont(context);
         bounds = new Rect();
+    }
+
+    private void setFont(Context context) {
+        Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_BOLD);
+        setTypeface(face);
     }
 
     public CustomBoldIconButton(Context context, AttributeSet attrs) {
@@ -41,24 +37,18 @@ public class CustomBoldIconButton extends android.support.v7.widget.AppCompatBut
         applyAttributes(attrs);
     }
 
-    public CustomBoldIconButton(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        setFont(context);
-        bounds = new Rect();
-        applyAttributes(attrs);
-    }
-
-
-    private void setFont(Context context) {
-        Typeface face = Typefaces.get(context, Typefaces.PATH_FONT_CUSTOM_BOLD);
-        setTypeface(face);
-    }
-
     private void applyAttributes(AttributeSet attrs) {
         // Slight contortion to prevent allocating in onLayout
         if (null == bounds) {
             bounds = new Rect();
         }
+    }
+
+    public CustomBoldIconButton(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
+        setFont(context);
+        bounds = new Rect();
+        applyAttributes(attrs);
     }
 
     private void setIconPadding(int padding) {
@@ -119,5 +109,12 @@ public class CustomBoldIconButton extends android.support.v7.widget.AppCompatBut
         }
 
         requestLayout();
+    }
+
+    private enum DrawablePositions {
+        NONE,
+        LEFT_AND_RIGHT,
+        LEFT,
+        RIGHT
     }
 }

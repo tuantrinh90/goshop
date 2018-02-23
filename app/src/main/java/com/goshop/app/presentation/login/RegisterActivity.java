@@ -33,10 +33,6 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-/**
- * Created by helen on 2018/1/8.
- */
-
 public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> implements
     RegisterContract.View, ToastUtil.OnToastListener {
 
@@ -101,11 +97,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     }
 
     @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.register);
-    }
-
-    @Override
     public void inject() {
         tvBtnLayoutPink.setText(getResources().getString(R.string.submit));
         initPresenter();
@@ -113,6 +104,11 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         checkBoxActionListener();
         toastUtil = new ToastUtil(this, this);
         initRead();
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.register);
     }
 
     private void initPresenter() {
@@ -210,7 +206,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             case R.id.tv_btn_layout_pink:
                 judgmentRegister(ctdEtRegisterFirstname.getText(), ctdEtRegisterLastname.getText(),
                     ctdEtRegisterEmail.getText(), ctdEtRegisterPassword.getText(),
-                    ctdEtRegisterConfirmationPassword.getText(), ctdEtRegisterMobile.getText(), tvRegisterDateOfBirth.getText().toString());
+                    ctdEtRegisterConfirmationPassword.getText(), ctdEtRegisterMobile.getText(),
+                    tvRegisterDateOfBirth.getText().toString());
                 break;
             case R.id.tv_btn_register_login:
                 startLoginScreen();
@@ -263,7 +260,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         }
 
         if (TextUtils.isEmpty(confirmPassword)) {
-            ctdEtRegisterConfirmationPassword.setErrorMessage(getResources().getString(R.string.empty_error));
+            ctdEtRegisterConfirmationPassword
+                .setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
 
