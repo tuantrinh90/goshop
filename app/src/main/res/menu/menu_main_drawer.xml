@@ -21,7 +21,7 @@
         <item
             android:id="@+id/slide_menu_go_loyalty"
             app:actionLayout="@layout/menu_counter"
-            android:icon="@mipmap/icon_go_loyalty"
+            android:icon="@mipmap/ic_slidemenu_go_loyalty_nor"
             android:title="@string/go_loyalty"/>
 
         <item

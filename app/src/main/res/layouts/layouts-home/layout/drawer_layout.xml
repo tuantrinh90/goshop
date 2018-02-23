@@ -69,7 +69,7 @@
                     android:layout_toRightOf="@+id/iv_home"
                     android:text="@string/home_drawlayout_home"
                     style="@style/homeSlideItemText"
-                    />
+                />
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_drawer_categorytree"
@@ -135,7 +135,7 @@
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_wishlist_num"
                     style="@style/homeSlideItemTextNum"
-                    />
+                />
 
             </RelativeLayout>
 
@@ -182,7 +182,7 @@
             <View
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
-               style="@style/homeWrapWidthLine"></View>
+                style="@style/homeWrapWidthLine"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_help_support"
