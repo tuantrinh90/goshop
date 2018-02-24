@@ -2,7 +2,8 @@ package com.goshop.app.widget;
 
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
-import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
+import com.goshop.app.widget.adapter.WidgetProductItemlAdapter;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

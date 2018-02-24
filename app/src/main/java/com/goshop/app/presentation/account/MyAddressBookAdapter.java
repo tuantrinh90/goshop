@@ -30,7 +30,7 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
     }
 
     public void setUpdates(List<AddressVM> addressVMS) {
-        //TODO(helen)this part need decide
+        //TODO this part need decide
         this.addressVMS.clear();
         this.addressVMS.addAll(addressVMS);
         notifyDataSetChanged();

@@ -8,10 +8,10 @@ import com.goshop.app.presentation.model.widget.ProductItemVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import com.goshop.app.presentation.shopping.PDPDetailActivity;
-import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
-import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
-import com.goshop.app.widget.WidgetListener.OnSinglePicturClickListener;
 import com.goshop.app.widget.WidgetViewAdapter;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnSinglePicturClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -71,7 +71,7 @@ public class HomePageFragment extends BaseFragment<HomePageContract.Presenter> i
 
     @Override
     public void setup() {
-        //TODO(helen) wait for api
+        //TODO  wait for api
         mPresenter.homePageRequest(null);
 
     }
@@ -101,6 +101,7 @@ public class HomePageFragment extends BaseFragment<HomePageContract.Presenter> i
     public void homePageResult(List<WidgetViewModel> widgetViewModels) {
         viewAdapter.setOnBannerItemClickListener(this);
         viewAdapter.setOnProductItemClickListener(this);
+        viewAdapter.setOnSinglePicturClickListener(this);
         viewAdapter.setUpdateDatas(widgetViewModels);
     }
 

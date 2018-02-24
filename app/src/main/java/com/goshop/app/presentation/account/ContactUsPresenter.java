@@ -64,7 +64,7 @@ public class ContactUsPresenter extends RxPresenter<ContactUsContract.View> impl
             }));
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     @SuppressWarnings("UnnecessaryLocalVariable")
     private ContactUsVM getMockInfo() {
         ContactUsVM contactUsVM = new ContactUsVM("wecare@goshop.com.my", "1800820088");

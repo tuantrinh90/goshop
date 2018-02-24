@@ -96,7 +96,7 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
 
     private void initDatas() {
         contentTag = getIntent().getStringExtra(CONTENT_TAG);
-        //TODO(helen) wait for real data
+        //TODO  wait for real data
         contentTag = ECMC;
     }
 

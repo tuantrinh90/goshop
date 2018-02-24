@@ -29,7 +29,7 @@ public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO(helen) wait for api
+        //TODO wait for api
         mPresenter.faqRequest(null);
     }
 

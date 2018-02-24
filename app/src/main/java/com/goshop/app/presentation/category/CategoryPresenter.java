@@ -72,7 +72,7 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
             }));
     }
 
-    //TODO(helen)this is mock data
+    //TODO this is mock data
     private List<CategoryRightMenuModel> getMockRightMenu() {
         List<CategoryRightMenuModel> rightMenuModels = new ArrayList<>();
         rightMenuModels.add(new CategoryRightParentVM("Beauty 1"));
@@ -104,7 +104,7 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
         return rightMenuModels;
     }
 
-    //TODO(helen)this is mock data
+    //TODO this is mock data
     private List<CategoryLeftMenuVM> getMockLeftMenu() {
         List<CategoryLeftMenuVM> leftMenuVMS = new ArrayList<>();
         leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Beauty"));

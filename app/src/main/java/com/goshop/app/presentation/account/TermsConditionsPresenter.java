@@ -33,7 +33,7 @@ public class TermsConditionsPresenter extends RxPresenter<TermsConditionsContrac
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen) wait for api
+                    //TODO  wait for api
                     mView.showResult(getMockData());
                 }
 
@@ -44,7 +44,7 @@ public class TermsConditionsPresenter extends RxPresenter<TermsConditionsContrac
             }));
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private List<TermsConditionsVM> getMockData() {
         List<TermsConditionsVM> termsConditionsVMS = new ArrayList<>();
         termsConditionsVMS.add(new TermsConditionsVM("ECMC Customer Terms And Conditions"));

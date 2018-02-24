@@ -38,7 +38,7 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
     public void updateDatas(List<FilterMenuModel> menuModels) {
         this.menuModels.clear();
         this.menuModels = menuModels;
-        //TODO(helen) this part need decide
+        //TODO  this part need decide
         expandAll();
         notifyDataSetChanged();
     }
@@ -127,7 +127,7 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
             count++;
             displayModels.remove(position + 1);
         }
-        //Todo(helen)this part need to decide
+        //Todo this part need to decide
         notifyDataSetChanged();
     }
 
@@ -208,7 +208,7 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
 
         public BrandsViewHolder(View itemView) {
             super(itemView);
-            //TODO(helen) need decide
+            //TODO  need decide
 //            ButterKnife.bind(this, itemView);
         }
     }

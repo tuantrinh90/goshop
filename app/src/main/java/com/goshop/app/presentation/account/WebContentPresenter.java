@@ -29,7 +29,7 @@ public class WebContentPresenter extends RxPresenter<WebContentContract.View> im
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen)wait for api
+                    //TODO wait for api
                     mView.requestResult("https://app.zeplin.io/welcome");
                 }
 
@@ -43,7 +43,7 @@ public class WebContentPresenter extends RxPresenter<WebContentContract.View> im
     @Override
     public void getContactUsContent() {
         mView.showLoadingBar();
-        //TODO(helen)wait for api
+        //TODO wait for api
         addSubscrebe(accountRepository.getContactContent().subscribeWith(
             new DisposableObserver<GetWebContentReponse>() {
                 @Override
@@ -54,7 +54,7 @@ public class WebContentPresenter extends RxPresenter<WebContentContract.View> im
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen)wait for api
+                    //TODO wait for api
                     mView.requestResult("https://app.zeplin.io/welcome");
                 }
 

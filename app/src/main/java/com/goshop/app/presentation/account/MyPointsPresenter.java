@@ -45,7 +45,7 @@ public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implem
             }));
     }
 
-    //todo(helen) this is mock data
+    //todo  this is mock data
     private List<PointsModel> getMockData() {
         List<PointsModel> pointsModels = new ArrayList<>();
         pointsModels.add(new PointsTotalVM("1000"));
@@ -59,7 +59,7 @@ public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implem
         return pointsModels;
     }
 
-    //todo(helen)this is nodata data
+    //todo this is nodata data
     private List<PointsModel> showNoData() {
         List<PointsModel> pointsModels = new ArrayList<>();
         pointsModels.add(new PointsTotalVM("1000"));

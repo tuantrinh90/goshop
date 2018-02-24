@@ -87,12 +87,12 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
             ((SearchFilterKeywordsViewHolder) holder).bindingData(
                 (SearchKeywordsVM) searchFilterModel);
         } else if (holder instanceof SearchFixedViewHolder) {
-            //TODO(helen) this part need decide
+            //TODO  this part need decide
         } else if (holder instanceof SearchFilterPopularDetailViewHolder) {
             ((SearchFilterPopularDetailViewHolder) holder).bindingData(
                 (SearchPopularDetailVM) searchFilterModel);
         } else if (holder instanceof SearchFixedViewHolder) {
-            //TODO(helen) this part need decide
+            //TODO  this part need decide
         } else {
             //TODO wait for design
         }

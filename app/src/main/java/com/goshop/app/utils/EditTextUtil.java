@@ -35,7 +35,7 @@ public class EditTextUtil {
 
     public static void foucsChangedListener(EditText targetEdit, TextView titleText) {
 
-        //TODO(helen)this is wait for decide
+        //TODO this is wait for decide
         /*RxView.focusChanges(targetEdit).subscribe(hasFoucs->{
             if (hasFoucs) {
                 titleText.startAnimation(getEnterAnim(targetEdit.getContext()));
@@ -48,7 +48,7 @@ public class EditTextUtil {
                 } else {
                     titleText.setTextColor(
                         targetEdit.getContext().getResources().getColor(R.color.colorAccent));
-                    //todo(helen)wait for logic then will add tips on text
+                    //todo wait for logic then will add tips on text
                     titleText.setText("Please input text!");
                 }
 
@@ -66,7 +66,7 @@ public class EditTextUtil {
                 } else {
                     titleText.setTextColor(
                         targetEdit.getContext().getResources().getColor(R.color.colorAccent));
-                    //todo(helen)wait for logic then will add tips on text
+                    //todo wait for logic then will add tips on text
                     titleText.setText("Please input text!");
                 }
 
@@ -96,7 +96,7 @@ public class EditTextUtil {
                 } else {
                     titleText.setTextColor(
                         targetEdit.getContext().getResources().getColor(R.color.colorAccent));
-                    //todo(helen)wait for logic then will add tips on text
+                    //todo wait for logic then will add tips on text
                     titleText.setText("Please input email!");
                 }
 
@@ -125,7 +125,7 @@ public class EditTextUtil {
                 } else {
                     titleText.setTextColor(
                         targetEdit.getContext().getResources().getColor(R.color.colorAccent));
-                    //todo(helen)wait for logic then will add tips on text
+                    //todo wait for logic then will add tips on text
                     titleText.setText("Please input mobile number!");
                 }
 
@@ -134,7 +134,7 @@ public class EditTextUtil {
     }
 
     public static boolean isMobile(String mobile) {
-        //todo(helen) wait for logical needs
+        //todo  wait for logical needs
         return true;
     }
 
@@ -152,7 +152,7 @@ public class EditTextUtil {
                 } else {
                     titleText.setTextColor(
                         targetEdit.getContext().getResources().getColor(R.color.colorAccent));
-                    //todo(helen)wait for logic then will add tips on text
+                    //todo wait for logic then will add tips on text
                     titleText.setText("Please input password!");
                 }
 
@@ -161,7 +161,7 @@ public class EditTextUtil {
     }
 
     public static boolean isPassword(String password) {
-        //todo(helen) wait for logical needs
+        //todo  wait for logical needs
         return true;
     }
 
@@ -172,7 +172,7 @@ public class EditTextUtil {
         KeyBoardUtils.hideKeyboard(view);
     }
 
-    //todo(helen)just a demo, wait for logical needs
+    //todo just a demo, wait for logical needs
     public interface EditTextDeleteListener {
 
         void onDeleteClick();

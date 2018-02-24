@@ -1,9 +1,9 @@
-package com.goshop.app.widget;
+package com.goshop.app.widget.adapter;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;

@@ -44,7 +44,7 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
             }));
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private List<AddressVM> getMockDatas() {
         List<AddressVM> addressVMS = new ArrayList<>();
         addressVMS.add(new AddressVM("Test Name", "Address", "City", "State", "1000", "China",

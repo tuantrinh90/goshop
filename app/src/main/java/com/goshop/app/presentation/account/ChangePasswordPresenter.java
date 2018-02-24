@@ -30,7 +30,7 @@ public class ChangePasswordPresenter extends RxPresenter<ChangePasswordContract.
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //todo(helen) wait for api
+                    //todo  wait for api
                     mView.changeResult();
                 }
 

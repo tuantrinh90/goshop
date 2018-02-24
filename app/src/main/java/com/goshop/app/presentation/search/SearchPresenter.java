@@ -27,17 +27,17 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
     @Override
     public void searchFilter(String keyWords) {
 
-        //TODO(helen) the null is just for mock data, waiting for api
+        //TODO  the null is just for mock data, waiting for api
         addSubscrebe(accountRepository.searchFilterRequest(null).subscribeWith(
             new DisposableObserver<SearchFilterResponse>() {
                 @Override
                 public void onNext(SearchFilterResponse searchFilterResponse) {
-                    //TODO(helen) wait for api
+                    //TODO  wait for api
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
-                    //TODO(helen) wait for api
+                    //TODO  wait for api
                     List<SearchFilterModel> displayFilterModels = new ArrayList<>();
                     List<SearchCategoryVM> categoryVMS = getCategorysDatas();
                     List<SearchKeywordsVM> keywordsVMS = getKeywordsDatas();
@@ -106,7 +106,7 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
         return filterModels;
     }
 
-    //todo(helen) this is mock data, please do not delete
+    //todo  this is mock data, please do not delete
     private List<SearchKeywordsVM> getKeywordsDatas() {
         List<SearchKeywordsVM> filterModels = new ArrayList<>();
         SearchKeywordsVM keywordsVM1 = new SearchKeywordsVM("abc 3");
@@ -161,7 +161,7 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
         return filterModels;
     }
 
-    //todo(helen) this is mock data, please do not delete
+    //todo  this is mock data, please do not delete
     private List<SearchFilterModel> getPopularDetail() {
         List<SearchFilterModel> filterModels = new ArrayList<>();
         SearchPopularDetailVM popularDetailVM1 = new SearchPopularDetailVM(R.drawable.ic_bought,

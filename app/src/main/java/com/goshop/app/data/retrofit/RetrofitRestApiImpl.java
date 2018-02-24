@@ -3,6 +3,7 @@ package com.goshop.app.data.retrofit;
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.BrandsReponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
@@ -54,6 +55,12 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_PAGE);
         return retrofitRestApi.homePageRequest(url, params);
+    }
+
+    @Override
+    public Observable<BrandsReponse> brandsPageRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_PAGE);
+        return retrofitRestApi.brandsPageRequest(url, params);
     }
 
     @Override

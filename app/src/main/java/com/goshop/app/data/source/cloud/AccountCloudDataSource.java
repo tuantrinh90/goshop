@@ -2,6 +2,7 @@ package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.BrandsReponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
@@ -52,6 +53,11 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
         return restApi.homePageRequest(params);
+    }
+
+    @Override
+    public Observable<BrandsReponse> brandsPageRequest(Map<String, Object> params) {
+        return restApi.brandsPageRequest(params);
     }
 
     @Override

@@ -16,6 +16,7 @@ import com.goshop.app.presentation.category.CategoryTreeDetailActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
+import com.goshop.app.presentation.home.BrandsPageFragment;
 import com.goshop.app.presentation.home.HomePageFragment;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
@@ -47,6 +48,8 @@ public interface PresenterComponent {
     Activity getActivity();
 
     void inject(HomePageFragment homePageFragment);
+
+    void inject(BrandsPageFragment brandsPageFragment);
 
     void inject(PDPDetailActivity pdpDetailActivity);
 

@@ -13,7 +13,11 @@ import com.goshop.app.presentation.model.widget.ProductDataVM;
 import com.goshop.app.presentation.model.widget.ProductItemVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
+import com.goshop.app.presentation.model.widget.QAVM;
+import com.goshop.app.presentation.model.widget.ReviewsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
+import com.goshop.app.presentation.model.widget.WidgetPDPQaVM;
+import com.goshop.app.presentation.model.widget.WidgetPDPReviewsVM;
 import com.goshop.app.presentation.model.widget.WidgetPDPTopDetailsVM;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
 import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
@@ -135,6 +139,12 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
     private List<WidgetViewModel> getQA() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM("Q&A", false, true));
+        QAVM qavm = new QAVM("3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+            "1/2/2018");
+        List<QAVM> qavms = new ArrayList<>();
+        qavms.add(qavm);
+        qavms.add(qavm);
+        widgetViewModels.add(new WidgetPDPQaVM("10", "10", qavms));
         return widgetViewModels;
     }
 
@@ -142,6 +152,13 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
     private List<WidgetViewModel> getReviews() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM("Reviews", false, true));
+        List<ReviewsVM> reviewsVMS = new ArrayList<>();
+        ReviewsVM reviewsVM = new ReviewsVM(4, "Lorem ipsum dolor sit amet",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
+            "User Name", "1/2/18");
+        reviewsVMS.add(reviewsVM);
+        reviewsVMS.add(reviewsVM);
+        widgetViewModels.add(new WidgetPDPReviewsVM(5, "100", reviewsVMS));
         return widgetViewModels;
     }
 

@@ -3,7 +3,7 @@ package com.goshop.app.widget;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
-import com.goshop.app.widget.WidgetListener.OnSinglePicturClickListener;
+import com.goshop.app.widget.listener.OnSinglePicturClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;

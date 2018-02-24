@@ -82,7 +82,7 @@ public class EditAddressActivity extends BaseActivity {
 
     private void setUp() {
         AddressVM addressVM = getIntent().getParcelableExtra(EDIT_ADDRESS);
-        //TODO(helen) wait for real data
+        //TODO  wait for real data
         etAddAddressFirst.setText("Test");
         etAddAddressLast.setText("Test");
         etAddAddressOne.setText("Test Address 1");

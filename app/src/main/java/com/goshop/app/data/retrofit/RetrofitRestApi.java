@@ -1,6 +1,7 @@
 package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.BrandsReponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
@@ -51,6 +52,11 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<WidgetViewReponse> homePageRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<BrandsReponse> brandsPageRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

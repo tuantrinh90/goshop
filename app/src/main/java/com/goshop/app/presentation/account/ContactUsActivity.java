@@ -72,7 +72,7 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
 
     @Override
     public void requestResult() {
-        //TODO(helen) wait for api
+        //TODO  wait for api
         toastUtil.showThanksToast();
     }
 
@@ -97,7 +97,7 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
             case R.id.iv_contact_twitter:
                 break;
             case R.id.tv_btn_layout_pink:
-                //TODO(helen)wait for api
+                //TODO wait for api
                 mPresenter.contactMessageRequest(null);
                 break;
         }

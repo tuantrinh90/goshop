@@ -32,7 +32,7 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //todo(helen) wait for api
+        //todo wait for api
         mPresenter.myPointsRequest(null);
     }
 

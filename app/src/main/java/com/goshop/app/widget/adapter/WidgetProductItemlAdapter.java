@@ -1,11 +1,11 @@
-package com.goshop.app.widget;
+package com.goshop.app.widget.adapter;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.widget.ProductItemVM;
-import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;

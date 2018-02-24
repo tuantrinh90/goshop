@@ -32,7 +32,7 @@ public class FAQPresenter extends RxPresenter<FAQContract.View> implements FAQCo
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen) wait for api
+                    //TODO  wait for api
                     mView.showResult(getMockData());
                 }
 
@@ -43,7 +43,7 @@ public class FAQPresenter extends RxPresenter<FAQContract.View> implements FAQCo
             }));
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private List<FAQVM> getMockData() {
         List<FAQVM> faqvms = new ArrayList<>();
         faqvms.add(new FAQVM("Products"));

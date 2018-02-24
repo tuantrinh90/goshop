@@ -5,7 +5,8 @@ import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.presentation.model.widget.CarouselAutoPlayVM;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
-import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
+import com.goshop.app.widget.adapter.WidgetBannerAdapter;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.RecyclerView;

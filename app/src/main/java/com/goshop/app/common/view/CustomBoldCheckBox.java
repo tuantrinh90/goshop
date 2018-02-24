@@ -4,7 +4,7 @@ import android.content.Context;
 import android.graphics.Typeface;
 import android.util.AttributeSet;
 
-//todo(helen) this class may use later please keep it
+//todo  this class may use later please keep it
 public class CustomBoldCheckBox extends android.support.v7.widget.AppCompatCheckBox {
 
     public CustomBoldCheckBox(Context context) {

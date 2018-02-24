@@ -7,8 +7,8 @@ import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductItemVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
-import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
-import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.goshop.app.widget.WidgetViewAdapter;
 
 import android.content.Intent;

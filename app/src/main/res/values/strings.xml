@@ -333,5 +333,10 @@
     <string name="other_page">Other Page</string>
     <string name="check">Check</string>
     <string name="enter_delivery">Enter Delivery Zipcode</string>
+    <string name="updated_at">Updated at</string>
+    <string name="by">By</string>
+    <string name="on">on</string>
+    <string name="samsung">Samsung</string>
+    <string name="loreal">Loreal</string>
 
 </resources>

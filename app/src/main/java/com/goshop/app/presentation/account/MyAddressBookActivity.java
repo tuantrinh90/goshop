@@ -39,14 +39,14 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
         displayAddressVMs.clear();
         displayAddressVMs.addAll(addressVMS);
         addressBookAdapter.notifyDataSetChanged();
-        //TODO(helen)this part need decide
+        //TODO this part need decide
 //        addressBookAdapter.setUpdates(displayAddressVMs);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO(helen) wait for api
+        //TODO  wait for api
         mPresenter.myAddressRequest(null);
     }
 

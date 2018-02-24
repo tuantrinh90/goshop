@@ -1,4 +1,4 @@
-package com.goshop.app.widget.WidgetListener;
+package com.goshop.app.widget.listener;
 
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 

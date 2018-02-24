@@ -1,6 +1,7 @@
 package com.goshop.app.domian;
 
 import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.BrandsReponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailReponse;
 import com.goshop.app.data.model.ContactUsReponse;
@@ -38,6 +39,8 @@ import io.reactivex.Observable;
 public interface AccountRepository {
 
     Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params);
+
+    Observable<BrandsReponse> brandsPageRequest(Map<String, Object> params);
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 

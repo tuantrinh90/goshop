@@ -4,14 +4,18 @@ import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.AdditionalInformationVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
 import com.goshop.app.presentation.model.widget.WidgetOnAirVM;
+import com.goshop.app.presentation.model.widget.WidgetPDPQaVM;
+import com.goshop.app.presentation.model.widget.WidgetPDPReviewsVM;
 import com.goshop.app.presentation.model.widget.WidgetPDPTopDetailsVM;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
-import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
-import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
-import com.goshop.app.widget.WidgetListener.OnSinglePicturClickListener;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnSinglePicturClickListener;
+import com.goshop.app.widget.viewholder.PDPQaViewHolder;
+import com.goshop.app.widget.viewholder.PDPReviewsViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -84,7 +88,7 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
             insert++;
             displayModels.add(insert, allWidgetViewModels.get(i));
         }
-        //Todo(helen)this part need to decide
+        //Todo this part need to decide
         notifyDataSetChanged();
 //        notifyItemRangeInserted(position + 1, count);
     }
@@ -99,7 +103,7 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
             count++;
             displayModels.remove(position + 1);
         }
-        //Todo(helen)this part need to decide
+        //Todo this part need to decide
         notifyDataSetChanged();
 //        notifyItemRangeRemoved(position + 1, count);
     }
@@ -153,6 +157,16 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
                     .inflate(R.layout.item_delivery_info, viewGroup, false);
                 viewHolder = new DeliveryViewHolder(deliveryView);
                 break;
+            case WidgetViewModel.VIEW_TYPE_PDP_QA:
+                View qaView = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.layout_widget_qa, viewGroup, false);
+                viewHolder = new PDPQaViewHolder(qaView);
+                break;
+            case WidgetViewModel.VIEW_TYPE_PDP_REVIEWS:
+                View reviewsView = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.layout_widget_reviews, viewGroup, false);
+                viewHolder = new PDPReviewsViewHolder(reviewsView);
+                break;
         }
         return viewHolder;
     }
@@ -180,6 +194,10 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
         } else if (viewHolder instanceof AdditionalInformationViewHolder) {
             ((AdditionalInformationViewHolder) viewHolder).bindingData(
                 (AdditionalInformationVM) widgetViewModel);
+        } else if (viewHolder instanceof PDPQaViewHolder) {
+            ((PDPQaViewHolder) viewHolder).bindingData((WidgetPDPQaVM) widgetViewModel);
+        } else if (viewHolder instanceof PDPReviewsViewHolder) {
+            ((PDPReviewsViewHolder) viewHolder).bindingData((WidgetPDPReviewsVM) widgetViewModel);
         }
     }
 

@@ -5,14 +5,14 @@
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.CustomBoldTextView
         android:id="@+id/tv_btn_add_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/size_14"
+        android:padding="@dimen/size_16"
         android:gravity="center"
         android:text="@string/view_more"
-        android:textColor="@color/color_main_pink"
+        android:textColor="@color/color_hint_grey"
         android:textSize="@dimen/size_font_14"/>
     <View
         android:layout_width="match_parent"

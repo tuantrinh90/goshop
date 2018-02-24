@@ -35,7 +35,7 @@ public class HelpSupportPresenter extends RxPresenter<HelpSupportContract.View> 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen) wait for api
+                    //TODO  wait for api
                     mView.showResult(getMockData());
                 }
 
@@ -46,7 +46,7 @@ public class HelpSupportPresenter extends RxPresenter<HelpSupportContract.View> 
             }));
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private List<HelpSupportModel> getMockData() {
         List<HelpSupportModel> helpSupportModels = new ArrayList<>();
         helpSupportModels.add(new HelpSupportTitleVM("Help Centre"));

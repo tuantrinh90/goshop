@@ -40,7 +40,7 @@ public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailC
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen)wait for api
+                    //TODO wait for api
                     List<SearchFilterModel> resultModels = new ArrayList<>();
                     resultModels.addAll(getMockDatas());
                     mView.categoryDetailResult(resultModels);
@@ -58,7 +58,7 @@ public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailC
         mView.showFilterMenu(getFilterMenu());
     }
 
-    //todo(helen) this is mock data, please do not delete
+    //todo  this is mock data, please do not delete
     private List<FilterMenuModel> getFilterMenu() {
         List<FilterMenuModel> filterMenuModels = new ArrayList<>();
         filterMenuModels.add(new FilterMenuExpandVM("Category", true));
@@ -70,7 +70,7 @@ public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailC
         return filterMenuModels;
     }
 
-    //todo(helen) this is mock data, please do not delete
+    //todo  this is mock data, please do not delete
     private List<String> getCategorys() {
         List<String> categorys = new ArrayList<>();
         categorys.add("Beauty");
@@ -84,7 +84,7 @@ public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailC
         return categorys;
     }
 
-    //todo(helen) this is mock data, please do not delete
+    //todo  this is mock data, please do not delete
     private List<SearchResultVM> getMockDatas() {
         List<SearchResultVM> filterModels = new ArrayList<>();
         SearchResultVM searchResultVM1 = new SearchResultVM(R.drawable.ic_bought, 0,
