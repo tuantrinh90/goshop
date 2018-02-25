@@ -53,12 +53,8 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
             .error(R.drawable.ic_bought)
             .into(ivVideoProductThumb);
 
-        tvBtnVideoProductBuy.setOnClickListener(v -> {
-            buyClickListener.onBuyNowClick(productsVM);
-        });
+        tvBtnVideoProductBuy.setOnClickListener(v -> buyClickListener.onBuyNowClick(productsVM));
 
-        itemView.setOnClickListener(v -> {
-            onProductItemClickListener.onProductItemClick(productsVM);
-        });
+        itemView.setOnClickListener(v -> onProductItemClickListener.onProductItemClick(productsVM));
     }
 }

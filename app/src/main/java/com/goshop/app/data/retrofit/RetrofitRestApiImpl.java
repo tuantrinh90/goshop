@@ -25,7 +25,6 @@ import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
-import com.goshop.app.data.model.response.BaseWidgetReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;

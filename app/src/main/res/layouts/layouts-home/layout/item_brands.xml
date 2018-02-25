@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
 
@@ -25,7 +25,8 @@
             android:id="@+id/iv_brands_logo"
             android:layout_width="@dimen/size_60"
             android:layout_height="@dimen/size_20"
-            android:background="@drawable/ic_samsung_logo"/>
+            android:background="@drawable/ic_samsung_logo"
+            android:contentDescription="@string/app_name"/>
 
         <com.goshop.app.common.view.CustomBoldTextView
             android:id="@+id/tv_brands_name"
@@ -35,7 +36,8 @@
             android:text="@string/samsung"
             android:textSize="@dimen/size_font_16"
             android:textColor="@color/color_text_black"
-            android:textAllCaps="true"/>
+            android:textAllCaps="true"
+            tools:ignore="RtlSymmetry" android:paddingStart="@dimen/size_12"/>
 
     </LinearLayout>
 
@@ -43,6 +45,7 @@
         android:id="@+id/iv_brands_detail"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_128"
+        android:contentDescription="@string/app_name"
         android:background="@drawable/ic_samsung_detail"/>
 
     <LinearLayout
@@ -60,6 +63,7 @@
             android:layout_height="@dimen/size_76"
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
+            android:contentDescription="@string/app_name"
             android:background="@drawable/ic_samsung_thumb1"
             android:layout_weight="1"/>
         <ImageView
@@ -68,6 +72,7 @@
             android:layout_height="@dimen/size_76"
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
+            android:contentDescription="@string/app_name"
             android:background="@drawable/ic_samsung_thumb2"
             android:layout_weight="1"/>
         <ImageView
@@ -76,6 +81,7 @@
             android:layout_height="@dimen/size_76"
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
+            android:contentDescription="@string/app_name"
             android:background="@drawable/ic_samsung_thumb3"
             android:layout_weight="1"/>
         <ImageView
@@ -84,6 +90,7 @@
             android:layout_height="@dimen/size_76"
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
+            android:contentDescription="@string/app_name"
             android:layout_weight="1"/>
 
     </LinearLayout>

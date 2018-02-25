@@ -69,13 +69,11 @@
                 android:textSize="@dimen/size_font_14"/>
         </LinearLayout>
 
-
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_qa"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:nestedScrollingEnabled="false"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginStart="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"

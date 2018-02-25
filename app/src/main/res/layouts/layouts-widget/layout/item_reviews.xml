@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingTop="@dimen/size_12"
@@ -44,21 +45,26 @@
             android:paddingRight="@dimen/size_4"
             android:text="@string/by"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_hint_grey"/>
+            android:textColor="@color/color_hint_grey"
+            tools:ignore="RtlSymmetry" android:paddingEnd="@dimen/size_4"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_reviews_user_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/size_4"
             android:textSize="@dimen/size_font_12"
-            android:textColor="@color/color_hint_grey"/>
+            android:textColor="@color/color_hint_grey"
+            tools:ignore="RtlSymmetry"
+            android:paddingEnd="@dimen/size_4"/>
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/size_4"
             android:text="@string/on"
             android:textSize="@dimen/size_font_12"
-            android:textColor="@color/color_hint_grey"/>
+            android:textColor="@color/color_hint_grey"
+            tools:ignore="RtlSymmetry"
+            android:paddingEnd="@dimen/size_4"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_reviews_date"
             android:layout_width="wrap_content"
