@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_image_view_more"
+    android:orientation="horizontal"
+    android:paddingTop="@dimen/size_20"
+    android:paddingBottom="@dimen/size_20"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/iv_btn_view_more"
+        android:layout_width="@dimen/size_24"
+        android:layout_height="@dimen/size_24"
+        android:background="@drawable/selector_image_expand_selected"
+        android:contentDescription="@string/app_name"/>
+
+</LinearLayout>

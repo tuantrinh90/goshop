@@ -1,45 +1,69 @@
 package com.goshop.app.presentation.model.widget;
 
+import java.util.List;
+
 public class WidgetCarouselVM extends WidgetViewModel {
 
-    private CarouselAutoPlayVM autoPlay;
+    private String autoDirection;
 
-    private CarouselDataVM data;
+    private long autoDuration;
 
-    private String id;
+    private boolean autoEnabled;
 
-    private String name;
+    private String autoLoop;
+
+    private List<CarouselItemsVM> carouselItemsVMS;
 
     private String title;
 
-    public WidgetCarouselVM(CarouselAutoPlayVM autoPlay, CarouselDataVM data) {
+
+    public WidgetCarouselVM(boolean autoEnabled, long autoDuration,
+        List<CarouselItemsVM> carouselItemsVMS) {
         super(WidgetViewModel.VIEW_TYPE_BANNER);
-        this.autoPlay = autoPlay;
-        this.data = data;
+        this.autoEnabled = autoEnabled;
+        this.autoDuration = autoDuration;
+        this.carouselItemsVMS = carouselItemsVMS;
     }
 
-    public String getId() {
-        return id;
+    public String getAutoDirection() {
+        return autoDirection;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setAutoDirection(String autoDirection) {
+        this.autoDirection = autoDirection;
     }
 
-    public String getName() {
-        return name;
+    public long getAutoDuration() {
+        return autoDuration;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setAutoDuration(long autoDuration) {
+        this.autoDuration = autoDuration;
     }
 
-    public CarouselDataVM getData() {
-        return data;
+    public boolean isAutoEnabled() {
+        return autoEnabled;
     }
 
-    public void setData(CarouselDataVM data) {
-        this.data = data;
+    public void setAutoEnabled(boolean autoEnabled) {
+        this.autoEnabled = autoEnabled;
+    }
+
+    public String getAutoLoop() {
+        return autoLoop;
+    }
+
+    public void setAutoLoop(String autoLoop) {
+        this.autoLoop = autoLoop;
+    }
+
+    public List<CarouselItemsVM> getCarouselItemsVMS() {
+        return carouselItemsVMS;
+    }
+
+    public void setCarouselItemsVMS(
+        List<CarouselItemsVM> carouselItemsVMS) {
+        this.carouselItemsVMS = carouselItemsVMS;
     }
 
     public String getTitle() {
@@ -48,13 +72,5 @@ public class WidgetCarouselVM extends WidgetViewModel {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public CarouselAutoPlayVM getAutoPlay() {
-        return autoPlay;
-    }
-
-    public void setAutoPlay(CarouselAutoPlayVM autoPlay) {
-        this.autoPlay = autoPlay;
     }
 }

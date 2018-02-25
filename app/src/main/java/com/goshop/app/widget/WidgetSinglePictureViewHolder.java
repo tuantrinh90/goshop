@@ -24,8 +24,8 @@ public class WidgetSinglePictureViewHolder extends RecyclerView.ViewHolder {
 
     void bindingData(WidgetSinglePictureVM singlePictureVM,
         OnSinglePicturClickListener onSinglePicturClickListener) {
-        Glide.with(itemView.getContext()).load(singlePictureVM.getImageUrl()).asBitmap()
-            .error(singlePictureVM.getIconDefault())
+        Glide.with(itemView.getContext()).load(singlePictureVM.getOfferListItemsVMS().get(0).getImage()).asBitmap()
+            .error(singlePictureVM.getOfferListItemsVMS().get(0).getIconDefault())
             .into(ivSinglePicture);
         itemView.setOnClickListener(v -> onSinglePicturClickListener.onSinglePictureClick(singlePictureVM));
     }

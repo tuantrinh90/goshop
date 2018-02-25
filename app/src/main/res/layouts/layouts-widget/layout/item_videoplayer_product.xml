@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingLeft="@dimen/size_16"
+    android:paddingRight="@dimen/size_16"
+    android:padding="@dimen/size_12">
+
+    <ImageView
+        android:id="@+id/iv_video_product_thumb"
+        android:layout_width="@dimen/size_92"
+        android:layout_height="@dimen/size_92"
+        android:layout_marginRight="@dimen/size_12"/>
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_video_product_percent"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignBottom="@id/iv_video_product_thumb"
+        android:textSize="@dimen/size_font_12"
+        android:textColor="@android:color/white"
+        android:background="@color/color_main_pink"
+        android:paddingRight="@dimen/size_6"
+        android:paddingLeft="@dimen/size_6"
+        android:paddingTop="@dimen/size_2"
+        android:paddingBottom="@dimen/size_2"
+    />
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_video_product_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/size_font_14"
+        android:layout_toRightOf="@id/iv_video_product_thumb"
+    />
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_video_product_old"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_12"
+        android:textColor="@color/color_text_old_grey"
+        android:textSize="@dimen/size_font_14"
+        android:layout_toRightOf="@id/iv_video_product_thumb"
+        android:layout_below="@id/tv_video_product_title"
+    />
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_video_product_now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_2"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/size_font_14"
+        android:layout_toRightOf="@id/iv_video_product_thumb"
+        android:layout_below="@id/tv_video_product_old"
+    />
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_btn_video_product_buy"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/iv_video_product_thumb"
+        android:layout_marginBottom="@dimen/size_6"
+        android:background="@drawable/bg_white_round_circle"
+        android:layout_alignParentRight="true"
+        android:paddingLeft="@dimen/size_10"
+        android:paddingRight="@dimen/size_10"
+        android:paddingTop="@dimen/size_8"
+        android:paddingBottom="@dimen/size_8"
+        android:text="@string/buy_now"
+        android:textSize="@dimen/size_font_14"
+        android:layout_alignParentEnd="true"/>
+
+</RelativeLayout>

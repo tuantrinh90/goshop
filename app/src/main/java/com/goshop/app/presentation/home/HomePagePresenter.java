@@ -2,21 +2,24 @@ package com.goshop.app.presentation.home;
 
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.WidgetViewReponse;
+import com.goshop.app.data.model.response.BaseWidgetReponse;
+import com.goshop.app.data.model.response.WidgetListReponse;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.widget.CarouselAutoPlayVM;
-import com.goshop.app.presentation.model.widget.CarouselDataVM;
+import com.goshop.app.presentation.mapper.WidgetViewMapper;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-import com.goshop.app.presentation.model.widget.ProductDataVM;
-import com.goshop.app.presentation.model.widget.ProductItemVM;
+import com.goshop.app.presentation.model.widget.OfferListItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
-import com.goshop.app.presentation.model.widget.WidgetOnAirVM;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
+import com.goshop.app.presentation.model.widget.WidgetVideoPlayerVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
+
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -37,10 +40,13 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
     public void homePageRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.homePageRequest(params).subscribeWith(
-            new DisposableObserver<WidgetViewReponse>() {
+            new DisposableObserver<WidgetListReponse>() {
                 @Override
-                public void onNext(WidgetViewReponse widgetViewReponse) {
+                public void onNext(WidgetListReponse widgetListReponse) {
                     mView.hideLoadingBar();
+                    List<BaseWidgetReponse> baseWidgetReponses = widgetListReponse.getWidgetlist();
+                    Log.d("HomePagePresenter", "size:" + baseWidgetReponses.size());
+                    mView.homePageResult(WidgetViewMapper.transform(widgetListReponse));
                 }
 
                 @Override
@@ -61,19 +67,18 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
     private List<WidgetViewModel> getMockData() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(getWidgetBanners());
-        widgetViewModels.addAll(getWidgetOnAirVMS());
-        widgetViewModels.addAll(getSinglePicture());
+        widgetViewModels.add(getWidgetVideoPlayerVMs());
+        widgetViewModels.add(getSinglePicture());
         widgetViewModels.addAll(getWidgetProductScrollerVM("Trending Now"));
-        widgetViewModels.addAll(getSinglePicture());
+        widgetViewModels.add(getSinglePicture());
         widgetViewModels.addAll(getWidgetProductScrollerVM("Best Seller"));
-        widgetViewModels.addAll(getSinglePicture());
+        widgetViewModels.add(getSinglePicture());
         widgetViewModels.addAll(getWidgetProductScrollerVM("TV Special"));
         return widgetViewModels;
     }
 
     //TODO(helen) this is mock data
     private WidgetCarouselVM getWidgetBanners() {
-        CarouselAutoPlayVM autoPlayVM = new CarouselAutoPlayVM(1000, true);
         List<CarouselItemsVM> itemsVMS = new ArrayList<>();
         CarouselItemsVM itemsVM = new CarouselItemsVM("http://a.hiphotos.baidu" +
             ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
@@ -87,43 +92,58 @@ public class HomePagePresenter extends RxPresenter<HomePageContract.View> implem
         itemsVMS.add(itemsVM1);
         itemsVMS.add(itemsVM2);
         itemsVMS.add(itemsVM3);
-        CarouselDataVM carouselDataVM = new CarouselDataVM(itemsVMS);
-        return new WidgetCarouselVM(autoPlayVM, carouselDataVM);
+        return new WidgetCarouselVM(true, 1000, itemsVMS);
     }
 
     //TODO(helen) this is mock data
-    private List<WidgetOnAirVM> getWidgetOnAirVMS() {
-        List<WidgetOnAirVM> widgetOnAirVMS = new ArrayList<>();
-        widgetOnAirVMS.add(
-            new WidgetOnAirVM("", "", "Manjung Korean Crispy Seaweed (Sea Salt)", "RM 239.00",
-                "RM 119.00", "30% OFF"));
-        return widgetOnAirVMS;
+    private WidgetVideoPlayerVM getWidgetVideoPlayerVMs() {
+        List<VideoPlayerItemsVM> videoPlayerItemsVMS = new ArrayList<>();
+        VideoPlayerItemsVM videoPlayerItemsVM = new VideoPlayerItemsVM();
+        videoPlayerItemsVM.setName("CH118");
+        ProductsVM productsVM = new ProductsVM();
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
+        ProductPriceVM priceVM = new ProductPriceVM(rmvm);
+        productsVM.setImage("");
+        productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
+        productsVM.setPriceVM(priceVM);
+        List<ProductsVM> productsVMS = new ArrayList<>();
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        videoPlayerItemsVM.setProductsVMS(productsVMS);
+        videoPlayerItemsVMS.add(videoPlayerItemsVM);
+        videoPlayerItemsVMS.add(videoPlayerItemsVM);
+        videoPlayerItemsVMS.add(videoPlayerItemsVM);
+        videoPlayerItemsVMS.add(videoPlayerItemsVM);
+        return new WidgetVideoPlayerVM("On Air", "TV Schedule", videoPlayerItemsVMS);
     }
 
     //TODO(helen) this is mock data
-    private List<WidgetSinglePictureVM> getSinglePicture() {
-        List<WidgetSinglePictureVM> singlePictureVMS = new ArrayList<>();
-        singlePictureVMS.add(new WidgetSinglePictureVM("", R.drawable.ic_detail_top_demo));
-        return singlePictureVMS;
+    private WidgetSinglePictureVM getSinglePicture() {
+        OfferListItemsVM offerListItemsVM = new OfferListItemsVM(R.drawable.ic_detail_top_demo, "",
+            "");
+        List<OfferListItemsVM> itemsVMS = new ArrayList<>();
+        itemsVMS.add(offerListItemsVM);
+        return new WidgetSinglePictureVM(itemsVMS);
     }
 
     //TODO(helen) this is mock data
     private List<WidgetViewModel> getWidgetProductScrollerVM(String title) {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM(title));
-        ProductPriceRMVM productPriceRMVM = new ProductPriceRMVM("25% OFF", "149", "200");
-        ProductPriceVM productPriceVM = new ProductPriceVM(productPriceRMVM);
-        List<String> attributes = new ArrayList<>();
-        attributes.add("New");
-        ProductItemVM productItemVM = new ProductItemVM(R.drawable.ic_bought, "",
-            "Bloom By Naelofar Hijab (3pcs set)", attributes, productPriceVM);
-        List<ProductItemVM> productItemVMS = new ArrayList<>();
-        productItemVMS.add(productItemVM);
-        productItemVMS.add(productItemVM);
-        productItemVMS.add(productItemVM);
-        productItemVMS.add(productItemVM);
-        ProductDataVM productDataVM = new ProductDataVM(productItemVMS);
-        widgetViewModels.add(new WidgetProductScrollerVM(productDataVM));
+
+        ProductsVM productsVM = new ProductsVM();
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
+        ProductPriceVM priceVM = new ProductPriceVM(rmvm);
+        productsVM.setImage("");
+        productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
+        productsVM.setPriceVM(priceVM);
+        List<ProductsVM> productsVMS = new ArrayList<>();
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        widgetViewModels.add(new WidgetProductScrollerVM(productsVMS));
+
         return widgetViewModels;
     }
 }

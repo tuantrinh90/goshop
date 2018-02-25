@@ -83,6 +83,6 @@
         android:layout_marginEnd="@dimen/size_16"/>
 
     <include
-        layout="@layout/item_more"/>
+        layout="@layout/item_text_more"/>
 
 </LinearLayout>

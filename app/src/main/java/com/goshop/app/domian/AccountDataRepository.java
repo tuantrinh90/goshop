@@ -1,5 +1,11 @@
 package com.goshop.app.domian;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
 import com.goshop.app.data.model.AddressReponse;
 import com.goshop.app.data.model.BrandsReponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
@@ -23,17 +29,25 @@ import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
-import com.goshop.app.data.model.WidgetViewReponse;
+import com.goshop.app.data.model.response.BaseWidgetReponse;
+import com.goshop.app.data.model.response.CarouselReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.OfferListReponse;
+import com.goshop.app.data.model.response.ProductScrollerReponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.VideoPlayerReponse;
+import com.goshop.app.data.model.response.WidgetListReponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.utils.MockJson;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -58,8 +72,43 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params) {
-        return accountCloudDataSource.homePageRequest(params);
+    public Observable<WidgetListReponse> homePageRequest(Map<String, Object> params) {
+        //TODO this is mock data , will delete later
+        WidgetListReponse widgetListReponse = new WidgetListReponse();
+        List<BaseWidgetReponse> baseWidgets = new ArrayList<>();
+        JsonParser parser = new JsonParser();
+        JsonElement element = parser.parse(MockJson.JSON_DATA);
+        JsonObject object = element.getAsJsonObject();
+        JsonArray array = object.getAsJsonArray("widgetlist");
+        for (int i = 0; i < array.size(); i++) {
+            JsonElement arrayElement = array.get(i);
+            JsonObject arrayObject = arrayElement.getAsJsonObject();
+            String name = arrayObject.getAsJsonPrimitive("name").getAsString();
+
+            if (name.equals("Carousel")) {
+                CarouselReponse carouselReponse = new Gson()
+                    .fromJson(arrayObject, CarouselReponse.class);
+                baseWidgets.add(carouselReponse);
+            }
+            if (name.equals("VideoPlayer")) {
+                VideoPlayerReponse videoPlayerReponse = new Gson()
+                    .fromJson(arrayObject, VideoPlayerReponse.class);
+                baseWidgets.add(videoPlayerReponse);
+            }
+            if (name.equals("OfferList")) {
+                OfferListReponse offerListReponse = new Gson()
+                    .fromJson(arrayObject, OfferListReponse.class);
+                baseWidgets.add(offerListReponse);
+            }
+            if (name.equals("ProductScroller")) {
+                ProductScrollerReponse carouselReponse = new Gson()
+                    .fromJson(arrayObject, ProductScrollerReponse.class);
+                baseWidgets.add(carouselReponse);
+            }
+        }
+        widgetListReponse.setWidgetlist(baseWidgets);
+        return Observable.just(widgetListReponse);
+//        return accountCloudDataSource.homePageRequest(params);
     }
 
     @Override

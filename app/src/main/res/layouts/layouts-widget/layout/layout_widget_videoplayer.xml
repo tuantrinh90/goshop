@@ -23,7 +23,8 @@
             android:layout_alignParentRight="true"
             android:contentDescription="@string/app_name"
             android:layout_alignParentEnd="true"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:id="@+id/tv_videoplayer_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
@@ -33,7 +34,7 @@
             android:text="@string/on_air"
             android:layout_alignParentStart="true"/>
         <com.goshop.app.common.view.CustomTextView
-            android:id="@+id/tv_btn_on_air_tv_schedule"
+            android:id="@+id/tv_btn_videoplayer_detail_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/iv_btn_on_air_right"
@@ -59,7 +60,10 @@
         android:contentDescription="@string/app_name"
     />
 
-    <RelativeLayout
+    <include
+        layout="@layout/layout_widget_video_product"/>
+
+   <!-- <RelativeLayout
         android:id="@+id/rl_on_air_product"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -77,6 +81,10 @@
             android:id="@+id/tv_on_air_display_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:background="@color/color_main_pink"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/size_font_12"
+            android:padding="@dimen/size_2"
             android:layout_alignBottom="@id/iv_on_air_display"/>
 
         <com.goshop.app.common.view.CustomTextView
@@ -132,19 +140,9 @@
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/ll_on_air_more"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_20"
-        android:paddingBottom="@dimen/size_20"
-        android:gravity="center">
-        <ImageView
-            android:layout_width="@dimen/size_24"
-            android:layout_height="@dimen/size_24"
-            android:background="@drawable/ic_arrow_turn_down"
-            android:contentDescription="@string/app_name"/>
-    </LinearLayout>
+
+    <include
+        layout="@layout/item_image_more"/>-->
 
 
 </LinearLayout>

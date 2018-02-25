@@ -22,7 +22,6 @@ import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
-import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -32,6 +31,7 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.WidgetListReponse;
 
 import java.util.Map;
 
@@ -51,8 +51,9 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<WidgetViewReponse> homePageRequest(@Url String fullUrl,
+    Observable<WidgetListReponse> homePageRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST

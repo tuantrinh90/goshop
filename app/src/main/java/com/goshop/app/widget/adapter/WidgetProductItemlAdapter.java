@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.presentation.model.widget.ProductItemVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.graphics.Paint;
@@ -21,16 +21,14 @@ import butterknife.ButterKnife;
 
 public class WidgetProductItemlAdapter extends RecyclerView.Adapter {
 
-    private final String RM = "RM ";
-
-    private List<ProductItemVM> detailVMS;
-
     private OnProductItemClickListener onProductItemClickListener;
 
+    private List<ProductsVM> productsVMS;
+
     public WidgetProductItemlAdapter(OnProductItemClickListener onProductItemClickListener,
-        List<ProductItemVM> detailVMS) {
+        List<ProductsVM> detailVMS) {
         this.onProductItemClickListener = onProductItemClickListener;
-        this.detailVMS = detailVMS;
+        this.productsVMS = detailVMS;
     }
 
     @Override
@@ -42,12 +40,12 @@ public class WidgetProductItemlAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((GridDetailViewHolder) holder).bindingData(detailVMS.get(position));
+        ((GridDetailViewHolder) holder).bindingData(productsVMS.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return detailVMS.size();
+        return productsVMS.size();
     }
 
     class GridDetailViewHolder extends RecyclerView.ViewHolder {
@@ -72,19 +70,19 @@ public class WidgetProductItemlAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(ProductItemVM detailVM) {
-            Glide.with(itemView.getContext()).load(detailVM.getImage()).asBitmap()
-                .error(detailVM.getImageDefault())
+        void bindingData(ProductsVM productsVM) {
+            Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
+                .error(R.drawable.ic_bought)
                 .into(ivGridPic);
-            tvGridPercent.setText(detailVM.getPrice().getRm().getDiscountTitle());
-            tvGridTitle.setText(detailVM.getTitle());
-            String oldPrice = RM + detailVM.getPrice().getRm().getOriginal();
-            String nowPrice = RM + detailVM.getPrice().getRm().getDiscounted();
+            tvGridPercent.setText(productsVM.getPriceVM().getRm().getDiscountTitle());
+            tvGridTitle.setText(productsVM.getTitle());
+            String oldPrice = productsVM.getPriceVM().getRm().getOriginal();
+            String nowPrice = productsVM.getPriceVM().getRm().getDiscounted();
             tvGridOld.setText(oldPrice);
             tvGridNowPrice.setText(nowPrice);
             tvGridOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             itemView
-                .setOnClickListener(v -> onProductItemClickListener.onProductItemClick(detailVM));
+                .setOnClickListener(v -> onProductItemClickListener.onProductItemClick(productsVM));
         }
     }
 }

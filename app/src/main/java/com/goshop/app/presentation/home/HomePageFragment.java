@@ -4,12 +4,14 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-import com.goshop.app.presentation.model.widget.ProductItemVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import com.goshop.app.presentation.shopping.PDPDetailActivity;
+import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import com.goshop.app.widget.WidgetViewAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.goshop.app.widget.listener.OnSinglePicturClickListener;
 
@@ -35,7 +37,13 @@ import static com.goshop.app.utils.PageIntentUtils.PROMOTION_BANNER_URL;
 
 public class HomePageFragment extends BaseFragment<HomePageContract.Presenter> implements
     HomePageContract.View, OnProductItemClickListener, OnBannerItemClickListener,
-    OnSinglePicturClickListener {
+    OnSinglePicturClickListener, OnProductBuyClickListener {
+
+    private final String BANNER = "promotionlandBanner";
+
+    private final String PRD = "prd";
+
+    private final String SKU = "promotionlandSKU";
 
     @BindView(R.id.recyclerview_home)
     RecyclerView recyclerviewHome;
@@ -102,25 +110,55 @@ public class HomePageFragment extends BaseFragment<HomePageContract.Presenter> i
         viewAdapter.setOnBannerItemClickListener(this);
         viewAdapter.setOnProductItemClickListener(this);
         viewAdapter.setOnSinglePicturClickListener(this);
+        viewAdapter.setOnProductBuyClickListener(this);
         viewAdapter.setUpdateDatas(widgetViewModels);
     }
 
     @Override
-    public void onProductItemClick(ProductItemVM productItemVM) {
+    public void onProductItemClick(ProductsVM productItemVM) {
         startActivity(new Intent(getActivity(), PDPDetailActivity.class));
     }
 
     @Override
     public void onBannerItemClick(CarouselItemsVM carouselItemsVM) {
-        Intent intent = new Intent(getActivity(), PromotionBannerActivity.class);
-        intent.putExtra(PROMOTION_BANNER_URL, carouselItemsVM.getImage());
-        startActivity(intent);
+        String image = carouselItemsVM.getImage();
+        String link = carouselItemsVM.getLink();
+        String[] linkKinds = link.split("/");
+        startBannerLinkScreen(linkKinds[1], image);
+    }
+
+    private void startBannerLinkScreen(String link, String image) {
+        Intent intent = null;
+        switch (link) {
+            case PRD:
+                intent = new Intent(getActivity(), PDPDetailActivity.class);
+                intent.putExtra(PROMOTION_BANNER_URL, image);
+                break;
+            case SKU:
+                intent = new Intent(getActivity(), PromotionLandingListActivity.class);
+                intent.putExtra(PROMOTION_BANNER_URL, image);
+                break;
+            case BANNER:
+                intent = new Intent(getActivity(), PromotionBannerActivity.class);
+                intent.putExtra(PROMOTION_BANNER_URL, image);
+                break;
+        }
+        if (intent != null) {
+            startActivity(intent);
+        }
     }
 
     @Override
     public void onSinglePictureClick(WidgetSinglePictureVM singlePictureVM) {
         Intent intent = new Intent(getActivity(), PromotionLandingListActivity.class);
-        intent.putExtra(PROMOTION_BANNER_URL, singlePictureVM.getImageUrl());
+        intent.putExtra(PROMOTION_BANNER_URL,
+            singlePictureVM.getOfferListItemsVMS().get(0).getImage());
+        startActivity(intent);
+    }
+
+    @Override
+    public void onBuyNowClick(ProductsVM productItemVM) {
+        Intent intent = new Intent(getActivity(), ShoppingCartActivity.class);
         startActivity(intent);
     }
 }

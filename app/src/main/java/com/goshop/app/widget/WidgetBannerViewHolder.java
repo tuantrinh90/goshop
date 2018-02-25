@@ -2,7 +2,6 @@ package com.goshop.app.widget;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomPagerIndicator;
-import com.goshop.app.presentation.model.widget.CarouselAutoPlayVM;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
 import com.goshop.app.widget.adapter.WidgetBannerAdapter;
@@ -32,14 +31,14 @@ public class WidgetBannerViewHolder extends RecyclerView.ViewHolder {
 
     void bindingData(WidgetCarouselVM bannerVM,
         OnBannerItemClickListener onBannerItemClickListener) {
-        List<CarouselItemsVM> itemsVMS = bannerVM.getData().getItems();
+        List<CarouselItemsVM> itemsVMS = bannerVM.getCarouselItemsVMS();
         viewpagerWidgetBanner
             .setAdapter(new WidgetBannerAdapter(itemsVMS, onBannerItemClickListener));
         indicatorWidget.setViewPager(viewpagerWidgetBanner);
-        CarouselAutoPlayVM autoPlayVM = bannerVM.getAutoPlay();
-        if (autoPlayVM.isEnabled()) {
+
+        if (bannerVM.isAutoEnabled()) {
             BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(
-                viewpagerWidgetBanner, autoPlayVM.getDuration());
+                viewpagerWidgetBanner, bannerVM.getAutoDuration());
             bannerAutoPlayHelper.autoPlay();
         }
     }

@@ -23,7 +23,6 @@ import com.goshop.app.data.model.TVShowReponse;
 import com.goshop.app.data.model.TermsConditionsReponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
-import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailReponse;
@@ -31,6 +30,7 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.WidgetListReponse;
 
 import java.util.Map;
 
@@ -38,7 +38,7 @@ import io.reactivex.Observable;
 
 public interface AccountRepository {
 
-    Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params);
+    Observable<WidgetListReponse> homePageRequest(Map<String, Object> params);
 
     Observable<BrandsReponse> brandsPageRequest(Map<String, Object> params);
 

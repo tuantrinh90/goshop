@@ -10,7 +10,7 @@ public class WidgetViewModel {
 
     public static final int VIEW_TYPE_EXPAND_TITLE = 0x04;
 
-    public static final int VIEW_TYPE_ON_AIR = 0x05;
+    public static final int VIEW_TYPE_VIDEOPLAYER = 0x05;
 
     public static final int VIEW_TYPE_PDP_QA = 0x06;
 
