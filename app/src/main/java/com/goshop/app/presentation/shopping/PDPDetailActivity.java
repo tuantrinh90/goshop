@@ -5,11 +5,11 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-import com.goshop.app.presentation.model.widget.ProductItemVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
-import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
-import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
 import com.goshop.app.widget.WidgetViewAdapter;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -118,7 +118,7 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
     }
 
     @Override
-    public void onProductItemClick(ProductItemVM productItemVM) {
+    public void onProductItemClick(ProductsVM productItemVM) {
         //TODO(helen)wait for design
     }
 

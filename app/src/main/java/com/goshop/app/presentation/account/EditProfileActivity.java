@@ -138,7 +138,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         });
     }
 
-    //TODO(helen)this is mock data will delete
+    //TODO this is mock data will delete
     private List<String> getMockDatas() {
         List<String> list = new ArrayList<>();
         Resources res = getResources();
@@ -182,12 +182,12 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             etProfileMobile.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        //TODO(helen) wait for api
+        //TODO  wait for api
         mPresenter.editProfileRequest(null);
     }
 
     @Override
     public void editProfileResult() {
-        //TODO(helen) wait for api
+        //TODO  wait for api
     }
 }

@@ -2,7 +2,8 @@ package com.goshop.app.widget;
 
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
-import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
+import com.goshop.app.widget.adapter.WidgetProductItemlAdapter;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,14 +22,14 @@ public class WidgetProductScrollerViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    void bindingData(WidgetProductScrollerVM detailHorizontalVM,
+    void bindingData(WidgetProductScrollerVM productScrollerVM,
         OnProductItemClickListener onProductItemClickListener) {
         LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerViewHorizontal.setLayoutManager(manager);
         WidgetProductItemlAdapter detailAdapter = new WidgetProductItemlAdapter(
             onProductItemClickListener,
-            detailHorizontalVM.getData().getItems());
+            productScrollerVM.getProductsVMS());
         recyclerViewHorizontal.setAdapter(detailAdapter);
     }
 }

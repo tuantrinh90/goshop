@@ -40,7 +40,7 @@ public class CustomDynamicRadioGroup extends RadioGroup {
             final View child = getChildAt(index);
             if (child.getVisibility() != View.GONE) {
                 child.measure(MeasureSpec.UNSPECIFIED, MeasureSpec.UNSPECIFIED);
-                //TODO(helen)this need to decide
+                //TODO this need to decide
                 int width = childSize;//child.getMeasuredWidth();
                 int height = childSize;//child.getMeasuredHeight();
                 x += (width + widthMargin);
@@ -69,7 +69,7 @@ public class CustomDynamicRadioGroup extends RadioGroup {
         for (int i = 0; i < childCount; i++) {
             final View child = this.getChildAt(i);
             if (child.getVisibility() != View.GONE) {
-                //TODO(helen)this need to decide
+                //TODO this need to decide
                 int width = childSize;//child.getMeasuredWidth();
                 int height = childSize;//child.getMeasuredHeight();
                 x += (width + widthMargin);

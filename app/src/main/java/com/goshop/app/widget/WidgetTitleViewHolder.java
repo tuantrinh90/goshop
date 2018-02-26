@@ -34,7 +34,7 @@ public class WidgetTitleViewHolder extends RecyclerView.ViewHolder {
     void bindingData(WidgetTitleExpandVM expandVM, int position) {
         tvItemTitleExpand.setText(expandVM.getTitle());
         if (expandVM.isClickable()) {
-            //todo(helen)wait for api
+            //todo wait for api
             ivItemTitleExpand.setVisibility(View.VISIBLE);
             ivItemTitleExpand.setSelected(expandVM.isExpand());
             rlExpandTitle.setSelected(expandVM.isExpand());

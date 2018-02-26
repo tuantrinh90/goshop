@@ -42,7 +42,7 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO(helen) wait for api
+        //TODO  wait for api
         mPresenter.paymentStatusRequest(null);
     }
 
@@ -78,10 +78,10 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
                 finish();
                 break;
             case R.id.tv_btn_payment_status:
-                //TODO(helen) this is need decide
+                //TODO  this is need decide
                 break;
             case R.id.tv_btn_status_success_check:
-                //TODO(helen) this is need decide
+                //TODO  this is need decide
                 break;
         }
     }

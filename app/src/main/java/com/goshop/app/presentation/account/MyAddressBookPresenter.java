@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.AddressVM;
 
@@ -24,9 +24,9 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
     public void myAddressRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.myAddressRequest(params).subscribeWith(
-            new DisposableObserver<AddressReponse>() {
+            new DisposableObserver<AddressResponse>() {
                 @Override
-                public void onNext(AddressReponse addressReponse) {
+                public void onNext(AddressResponse addressResponse) {
                     mView.hideLoadingBar();
                 }
 
@@ -44,7 +44,7 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
             }));
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private List<AddressVM> getMockDatas() {
         List<AddressVM> addressVMS = new ArrayList<>();
         addressVMS.add(new AddressVM("Test Name", "Address", "City", "State", "1000", "China",

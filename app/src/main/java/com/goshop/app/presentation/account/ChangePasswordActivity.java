@@ -89,7 +89,7 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
         if (!newPassword.equals(confirmPassword)) {
             cpEtConfirm.setErrorMessage(getResources().getString(R.string.confirm_error));
         } else {
-            //todo(helen)wait for api
+            //todo wait for api
             mPresenter.changePasswordRequest(null);
         }
     }

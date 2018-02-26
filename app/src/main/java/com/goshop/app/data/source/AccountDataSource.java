@@ -1,35 +1,36 @@
 package com.goshop.app.data.source;
 
-import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.data.model.ComplementEmailReponse;
-import com.goshop.app.data.model.ContactUsReponse;
-import com.goshop.app.data.model.FAQReponse;
-import com.goshop.app.data.model.GetSettingsReponse;
-import com.goshop.app.data.model.GetWebContentReponse;
-import com.goshop.app.data.model.HelpSupportReponse;
-import com.goshop.app.data.model.MyPointsReponse;
-import com.goshop.app.data.model.PasswordReponse;
-import com.goshop.app.data.model.PaymentStatusReponse;
+import com.goshop.app.data.model.ComplementEmailResponse;
+import com.goshop.app.data.model.ContactUsResponse;
+import com.goshop.app.data.model.FAQResponse;
+import com.goshop.app.data.model.GetSettingsResponse;
+import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.PasswordResponse;
+import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileReponse;
-import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
-import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
-import com.goshop.app.data.model.TVShowReponse;
-import com.goshop.app.data.model.TermsConditionsReponse;
+import com.goshop.app.data.model.TVShowResponse;
+import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
-import com.goshop.app.data.model.WidgetViewReponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.WidgetListResponse;
 
 import java.util.Map;
 
@@ -37,7 +38,9 @@ import io.reactivex.Observable;
 
 public interface AccountDataSource {
 
-    Observable<WidgetViewReponse> homePageRequest(Map<String, Object> params);
+    Observable<WidgetListResponse> trendingNowRequest(Map<String, Object> params);
+
+    Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params);
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
@@ -55,15 +58,15 @@ public interface AccountDataSource {
 
     Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params);
 
-    Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params);
+    Observable<MyOrderDetailResponse> myOrderDetailRequest(Map<String, Object> params);
 
     Observable<NotificationsResponse> notificationRequest(Map<String, Object> params);
 
-    Observable<ComplementEmailReponse> complementEmailRequest(Map<String, Object> params);
+    Observable<ComplementEmailResponse> complementEmailRequest(Map<String, Object> params);
 
-    Observable<ResetPasswordReponse> resetPasswordRequest(Map<String, Object> params);
+    Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params);
 
-    Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(Map<String, Object> params);
+    Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(Map<String, Object> params);
 
     Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
 
@@ -75,37 +78,37 @@ public interface AccountDataSource {
 
     Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
 
-    Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params);
+    Observable<PasswordResponse> changePasswordRequest(Map<String, Object> params);
 
-    Observable<ProfileReponse> editProfileRequest(Map<String, Object> params);
+    Observable<ProfileResponse> editProfileRequest(Map<String, Object> params);
 
-    Observable<AddressReponse> addAddressRequest(Map<String, Object> params);
+    Observable<AddressResponse> addAddressRequest(Map<String, Object> params);
 
-    Observable<AddressReponse> myAddressRequest(Map<String, Object> params);
+    Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
     Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);
 
-    Observable<GetWebContentReponse> getEcmcContent();
+    Observable<GetWebContentResponse> getEcmcContent();
 
-    Observable<GetWebContentReponse> getContactContent();
+    Observable<GetWebContentResponse> getContactContent();
 
-    Observable<HelpSupportReponse> helpSupportRequest(Map<String, Object> params);
+    Observable<HelpSupportResponse> helpSupportRequest(Map<String, Object> params);
 
-    Observable<FAQReponse> faqRequest(Map<String, Object> params);
+    Observable<FAQResponse> faqRequest(Map<String, Object> params);
 
-    Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params);
+    Observable<TermsConditionsResponse> termsConditionsRequest(Map<String, Object> params);
 
-    Observable<ContactUsReponse> getContactInfo();
+    Observable<ContactUsResponse> getContactInfo();
 
-    Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params);
+    Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params);
 
-    Observable<GetSettingsReponse> getSettingsDetail();
+    Observable<GetSettingsResponse> getSettingsDetail();
 
-    Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params);
+    Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params);
 
-    Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params);
+    Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params);
 
-    Observable<AddressReponse> selectAddressRequest(Map<String, Object> params);
+    Observable<AddressResponse> selectAddressRequest(Map<String, Object> params);
 
     Observable<CategoryMenuResponse> getCategoryLeftMenu();
 
@@ -113,8 +116,8 @@ public interface AccountDataSource {
 
     Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params);
 
-    Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params);
+    Observable<TVShowResponse> rightVideoRequest(Map<String, Object> params);
 
-    Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params);
+    Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params);
 
 }

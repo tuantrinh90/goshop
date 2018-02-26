@@ -31,17 +31,17 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
 
     @Override
     public void searchResultRequest(Map<String, Object> params) {
-        //TODO(helen) the null is just for mock data, waiting for api
+        //TODO  the null is just for mock data, waiting for api
         addSubscrebe(accountRepository.searchResultResponse(null).subscribeWith(
             new DisposableObserver<SearchResultResponse>() {
                 @Override
                 public void onNext(SearchResultResponse searchResultResponse) {
-                    //TODO(helen) wait for api
+                    //TODO  wait for api
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
-                    //TODO(helen) wait for api
+                    //TODO  wait for api
                     List<SearchFilterModel> suggestModels = new ArrayList<>();
                     suggestModels.addAll(getSuggestDatas());
                     mView.showResult(suggestModels);
@@ -61,7 +61,7 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
 
     }
 
-    //todo(helen) this is mock data, please do not delete
+    //todo this is mock data, please do not delete
     private List<FilterMenuModel> getFilterMenu() {
         List<FilterMenuModel> filterMenuModels = new ArrayList<>();
         filterMenuModels.add(new FilterMenuExpandVM("Category", true));
@@ -73,7 +73,7 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
         return filterMenuModels;
     }
 
-    //todo(helen) this is mock data, please do not delete
+    //todo  this is mock data, please do not delete
     private List<String> getCategorys() {
         List<String> categorys = new ArrayList<>();
         categorys.add("Beauty");
@@ -87,7 +87,7 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
         return categorys;
     }
 
-    //todo(helen) this is mock data, please do not delete
+    //todo this is mock data, please do not delete
     private List<SearchResultVM> getSuggestDatas() {
         List<SearchResultVM> filterModels = new ArrayList<>();
         SearchResultVM searchResultVM1 = new SearchResultVM(R.drawable.ic_bought, 0,

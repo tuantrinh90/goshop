@@ -6,6 +6,9 @@ public class CarouselItemsVM {
 
     private String link;
 
+    public CarouselItemsVM() {
+    }
+
     public CarouselItemsVM(String image) {
         this.image = image;
     }

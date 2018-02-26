@@ -5,7 +5,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
@@ -234,19 +234,19 @@ public class ServiceData {
     /**
      * TODO this is temp mock code
      */
-    public static Observable<MyOrderDetailReponse> getMyOrderDetail() {
-        MyOrderDetailReponse myOrderDetailReponse = new MyOrderDetailReponse();
-        myOrderDetailReponse.setOrderId("44752");
-        myOrderDetailReponse.setDate("11 Jan 2018");
-        myOrderDetailReponse.setState("processing");
-        myOrderDetailReponse.setStatus(1);
-        myOrderDetailReponse.setCustomerName("Test Test");
-        myOrderDetailReponse.setPaymentMethod("PayPal Express Checkout");
-        myOrderDetailReponse.setSubtotal("RM 1,461.00");
-        myOrderDetailReponse.setShippingFee("RM 0.00");
-        myOrderDetailReponse.setGrandTotal("RM 1,461.00");
+    public static Observable<MyOrderDetailResponse> getMyOrderDetail() {
+        MyOrderDetailResponse myOrderDetailResponse = new MyOrderDetailResponse();
+        myOrderDetailResponse.setOrderId("44752");
+        myOrderDetailResponse.setDate("11 Jan 2018");
+        myOrderDetailResponse.setState("processing");
+        myOrderDetailResponse.setStatus(1);
+        myOrderDetailResponse.setCustomerName("Test Test");
+        myOrderDetailResponse.setPaymentMethod("PayPal Express Checkout");
+        myOrderDetailResponse.setSubtotal("RM 1,461.00");
+        myOrderDetailResponse.setShippingFee("RM 0.00");
+        myOrderDetailResponse.setGrandTotal("RM 1,461.00");
 
-        MyOrderDetailReponse.ShippingAddressBean shippingAddressBean = new MyOrderDetailReponse
+        MyOrderDetailResponse.ShippingAddressBean shippingAddressBean = new MyOrderDetailResponse
             .ShippingAddressBean();
         shippingAddressBean.setFirstname("Test Name");
         shippingAddressBean.setCountry("China");
@@ -254,11 +254,11 @@ public class ServiceData {
         shippingAddressBean.setCity("Hong kong");
         shippingAddressBean.setPostcode("123");
         shippingAddressBean.setTelephone("+123456789");
-        myOrderDetailReponse.setShippingAddress(shippingAddressBean);
+        myOrderDetailResponse.setShippingAddress(shippingAddressBean);
 
-        ArrayList<MyOrderDetailReponse.SubordersBean> subordersBeans = new ArrayList<>();
+        ArrayList<MyOrderDetailResponse.SubordersBean> subordersBeans = new ArrayList<>();
         for (int i = 0; i < 4; i++) {
-            MyOrderDetailReponse.SubordersBean subordersBean = new MyOrderDetailReponse
+            MyOrderDetailResponse.SubordersBean subordersBean = new MyOrderDetailResponse
                 .SubordersBean();
             subordersBean.setProductId(String.valueOf(467363123 + i));
             if (i % 2 == 0) {
@@ -270,8 +270,8 @@ public class ServiceData {
             subordersBean.setImage(Const.HOME_TEST_IMG2);
             subordersBeans.add(subordersBean);
         }
-        myOrderDetailReponse.setSuborders(subordersBeans);
-        return Observable.just(myOrderDetailReponse);
+        myOrderDetailResponse.setSuborders(subordersBeans);
+        return Observable.just(myOrderDetailResponse);
 
     }
 

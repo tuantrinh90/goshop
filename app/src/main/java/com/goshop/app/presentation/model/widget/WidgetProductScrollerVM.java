@@ -1,79 +1,74 @@
 package com.goshop.app.presentation.model.widget;
 
+import java.util.List;
+
 public class WidgetProductScrollerVM extends WidgetViewModel {
 
-    private ProductCountVM count;
+    private String countTotal;
 
-    private ProductDataVM data;
+    private String detailLink;
 
-    private ProductDetailsVM details;
+    private String detailTitle;
 
-    private String id;
+    private String pageCurrent;
 
-    private String name;
+    private String pageNext;
 
-    private ProductPageVM page;
+    private List<ProductsVM> productsVMS;
 
-    private String title;
-
-    public WidgetProductScrollerVM(ProductDataVM data) {
+    public WidgetProductScrollerVM(List<ProductsVM> productsVMS) {
         super(WidgetViewModel.VIEW_TYPE_PRODUCT_SCROLLER);
-        this.data = data;
+        this.productsVMS = productsVMS;
     }
 
-    public ProductCountVM getCount() {
-        return count;
+    public List<ProductsVM> getProductsVMS() {
+        return productsVMS;
     }
 
-    public void setCount(ProductCountVM count) {
-        this.count = count;
+    public void setProductsVMS(
+        List<ProductsVM> productsVMS) {
+        this.productsVMS = productsVMS;
     }
 
-    public ProductDataVM getData() {
-        return data;
+    public String getCountTotal() {
+        return countTotal;
     }
 
-    public void setData(ProductDataVM data) {
-        this.data = data;
+    public void setCountTotal(String countTotal) {
+        this.countTotal = countTotal;
     }
 
-    public ProductDetailsVM getDetails() {
-        return details;
+    public String getPageCurrent() {
+        return pageCurrent;
     }
 
-    public void setDetails(ProductDetailsVM details) {
-        this.details = details;
+    public void setPageCurrent(String pageCurrent) {
+        this.pageCurrent = pageCurrent;
     }
 
-    public String getId() {
-        return id;
+    public String getPageNext() {
+        return pageNext;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setPageNext(String pageNext) {
+        this.pageNext = pageNext;
     }
 
-    public String getName() {
-        return name;
+    public String getDetailTitle() {
+        return detailTitle;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setDetailTitle(String detailTitle) {
+        this.detailTitle = detailTitle;
     }
 
-    public ProductPageVM getPage() {
-        return page;
+    public String getDetailLink() {
+        return detailLink;
     }
 
-    public void setPage(ProductPageVM page) {
-        this.page = page;
+    public void setDetailLink(String detailLink) {
+        this.detailLink = detailLink;
     }
 
-    public String getTitle() {
-        return title;
-    }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
 }

@@ -131,7 +131,7 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
             etAddAddressPhone.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        //todo(helen) wait for api
+        //todo  wait for api
         mPresenter.addAddressRequest(null);
     }
 

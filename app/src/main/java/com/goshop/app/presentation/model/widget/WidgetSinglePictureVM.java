@@ -1,31 +1,23 @@
 package com.goshop.app.presentation.model.widget;
 
+import java.util.List;
+
 public class WidgetSinglePictureVM extends WidgetViewModel {
 
-    private int iconDefault;
+    List<OfferListItemsVM> offerListItemsVMS;
 
-    private String imageUrl;
-
-    public WidgetSinglePictureVM(String imageUrl, int iconDefault) {
+    public WidgetSinglePictureVM(
+        List<OfferListItemsVM> offerListItemsVMS) {
         super(WidgetViewModel.VIEW_TYPE_SINGLE_PICTURE);
-        this.imageUrl = imageUrl;
-        this.iconDefault = iconDefault;
+        this.offerListItemsVMS = offerListItemsVMS;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public List<OfferListItemsVM> getOfferListItemsVMS() {
+        return offerListItemsVMS;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setOfferListItemsVMS(
+        List<OfferListItemsVM> offerListItemsVMS) {
+        this.offerListItemsVMS = offerListItemsVMS;
     }
-
-    public int getIconDefault() {
-        return iconDefault;
-    }
-
-    public void setIconDefault(int iconDefault) {
-        this.iconDefault = iconDefault;
-    }
-
 }

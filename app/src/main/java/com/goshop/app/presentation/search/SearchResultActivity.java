@@ -7,7 +7,7 @@ import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SearchFilterModel;
-import com.goshop.app.presentation.shopping.ProductDetailActivity;
+import com.goshop.app.presentation.shopping.PDPDetailActivity;
 
 import android.content.Intent;
 import android.graphics.drawable.ColorDrawable;
@@ -85,7 +85,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO(helen) wait for api
+        //TODO  wait for api
         mPresenter.searchResultRequest(null);
         mPresenter.filterMenuRequest(null);
     }
@@ -333,6 +333,6 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
 
     @Override
     public void onClick() {
-        startActivity(new Intent(this, ProductDetailActivity.class));
+        startActivity(new Intent(this, PDPDetailActivity.class));
     }
 }

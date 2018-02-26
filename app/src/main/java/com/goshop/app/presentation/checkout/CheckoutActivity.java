@@ -147,12 +147,12 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void showNetwordErrorMessage() {
-        //TODO(helen)wait for api
+        //TODO wait for api
     }
 
     @Override
     public void showFaildMessage(String errorMessage) {
-//TODO(helen)wait for api
+//TODO wait for api
     }
 
     @Override

@@ -1,10 +1,10 @@
 package com.goshop.app.data.model.response;
 
-import com.goshop.app.data.model.Reponse;
+import com.goshop.app.data.model.Response;
 
 import java.util.List;
 
-public class MyOrderListResponse extends Reponse {
+public class MyOrderListResponse extends Response {
 
     private List<ResultsBean> results;
 

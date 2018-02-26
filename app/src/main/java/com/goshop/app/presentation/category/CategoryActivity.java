@@ -85,7 +85,7 @@ public class CategoryActivity extends BaseActivity<CategoryContract.Presenter> i
         leftAdapter.setUpdateLeftCategorys(leftMenuVMS);
         if (leftMenuVMS.size() > 0) {
             leftAdapter.selectPosition(0);
-            //TODO(helen) wait for api
+            //TODO  wait for api
             mPresenter.categoryRightMenuRequest(null);
         }
     }
@@ -98,7 +98,7 @@ public class CategoryActivity extends BaseActivity<CategoryContract.Presenter> i
 
     @Override
     public void onLeftClick(CategoryLeftMenuVM leftMenuVM) {
-        //TODO(helen) wait for api
+        //TODO wait for api
         mPresenter.categoryRightMenuRequest(null);
     }
 

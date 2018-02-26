@@ -169,20 +169,20 @@ public class MainPageActivity extends BaseActivity implements NavigationView
                             intent = new Intent(MainPageActivity.this, CategoryActivity.class);
                             break;
                         case R.id.slide_menu_go_loyalty:
-                            //TODO(helen) this part need to decide
+                            //TODO  this part need to decide
                             break;
                         case R.id.slide_menu_cart:
                             intent = new Intent(MainPageActivity.this, ShoppingCartActivity.class);
                             break;
                         case R.id.slide_menu_wishlist:
-                            //TODO(helen) this part need to decide
+                            //TODO  this part need to decide
                             break;
                         case R.id.slide_menu_orders:
                             intent = new Intent(MainPageActivity.this,
                                 MyOrderListActivity.class);
                             break;
                         case R.id.slide_menu_rewards:
-                            //TODO(helen) this part need to decide
+                            //TODO  this part need to decide
                             break;
                         case R.id.slide_menu_notifications:
                             intent = new Intent(MainPageActivity.this, NotificationActivity.class);
@@ -219,7 +219,7 @@ public class MainPageActivity extends BaseActivity implements NavigationView
             R.string.tv_shows), getResources().getString(R.string.brands)};
 
         List<BaseFragment> fragments = new ArrayList<>();
-        fragments.add(HomePageFragment.getInstance());
+        fragments.add(TrendingNowFragment.getInstance());
         fragments.add(TVShowPageFragment.getInstance());
         fragments.add(BrandsPageFragment.getInstance());
         pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragments,

@@ -87,7 +87,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initIntentData();
-        //TODO(helen) wait for api
+        //TODO  wait for api
         mPresenter.categoryDetailRequest(null);
     }
 
@@ -150,7 +150,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
 
     @Override
     public void onClick() {
-        //todo(helen)wait for api
+        //todo wait for api
     }
 
     @Override

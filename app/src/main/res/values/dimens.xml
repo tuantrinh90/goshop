@@ -143,6 +143,7 @@
     <dimen name="size_106">106dp</dimen>
     <dimen name="size_112">112dp</dimen>
     <dimen name="size_120">120dp</dimen>
+    <dimen name="size_128">128dp</dimen>
     <dimen name="size_150">150dp</dimen>
     <dimen name="size_160">160dp</dimen>
     <dimen name="size_136">136dp</dimen>

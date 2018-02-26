@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.FAQReponse;
+import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.FAQVM;
 
@@ -23,16 +23,16 @@ public class FAQPresenter extends RxPresenter<FAQContract.View> implements FAQCo
     public void faqRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.faqRequest(params).subscribeWith(
-            new DisposableObserver<FAQReponse>() {
+            new DisposableObserver<FAQResponse>() {
                 @Override
-                public void onNext(FAQReponse faqReponse) {
+                public void onNext(FAQResponse faqResponse) {
                     mView.hideLoadingBar();
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen) wait for api
+                    //TODO  wait for api
                     mView.showResult(getMockData());
                 }
 
@@ -43,7 +43,7 @@ public class FAQPresenter extends RxPresenter<FAQContract.View> implements FAQCo
             }));
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private List<FAQVM> getMockData() {
         List<FAQVM> faqvms = new ArrayList<>();
         faqvms.add(new FAQVM("Products"));

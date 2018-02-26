@@ -10,7 +10,6 @@
 
     <include layout="@layout/toolbar_slide_menu"/>
 
-    <!--<include layout="@layout/layout_slide_menu_content_main"/>-->
     <com.goshop.app.common.view.CustomBoldTabLayout
         android:id="@+id/tablayout_main"
         android:layout_width="match_parent"

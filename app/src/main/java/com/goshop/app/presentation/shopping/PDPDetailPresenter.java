@@ -1,19 +1,19 @@
 package com.goshop.app.presentation.shopping;
 
-import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.widget.AdditionalInformationVM;
-import com.goshop.app.presentation.model.widget.CarouselAutoPlayVM;
-import com.goshop.app.presentation.model.widget.CarouselDataVM;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ColorVM;
-import com.goshop.app.presentation.model.widget.ProductDataVM;
-import com.goshop.app.presentation.model.widget.ProductItemVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.QAVM;
+import com.goshop.app.presentation.model.widget.ReviewsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
+import com.goshop.app.presentation.model.widget.WidgetPDPQaVM;
+import com.goshop.app.presentation.model.widget.WidgetPDPReviewsVM;
 import com.goshop.app.presentation.model.widget.WidgetPDPTopDetailsVM;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
 import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
@@ -74,7 +74,6 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
 
     //TODO(helen) this is mock data
     private WidgetCarouselVM getWidgetBanners() {
-        CarouselAutoPlayVM autoPlayVM = new CarouselAutoPlayVM(1000, true);
         List<CarouselItemsVM> itemsVMS = new ArrayList<>();
         CarouselItemsVM itemsVM = new CarouselItemsVM("http://a.hiphotos.baidu" +
             ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
@@ -88,8 +87,7 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
         itemsVMS.add(itemsVM1);
         itemsVMS.add(itemsVM2);
         itemsVMS.add(itemsVM3);
-        CarouselDataVM carouselDataVM = new CarouselDataVM(itemsVMS);
-        return new WidgetCarouselVM(autoPlayVM, carouselDataVM);
+        return new WidgetCarouselVM(true, 1000, itemsVMS);
     }
 
     //TODO(helen) this is mock data
@@ -135,6 +133,12 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
     private List<WidgetViewModel> getQA() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM("Q&A", false, true));
+        QAVM qavm = new QAVM("3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+            "1/2/2018");
+        List<QAVM> qavms = new ArrayList<>();
+        qavms.add(qavm);
+        qavms.add(qavm);
+        widgetViewModels.add(new WidgetPDPQaVM("10", "10", qavms));
         return widgetViewModels;
     }
 
@@ -142,6 +146,13 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
     private List<WidgetViewModel> getReviews() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM("Reviews", false, true));
+        List<ReviewsVM> reviewsVMS = new ArrayList<>();
+        ReviewsVM reviewsVM = new ReviewsVM(4, "Lorem ipsum dolor sit amet",
+            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
+            "User Name", "1/2/18");
+        reviewsVMS.add(reviewsVM);
+        reviewsVMS.add(reviewsVM);
+        widgetViewModels.add(new WidgetPDPReviewsVM(5, "100", reviewsVMS));
         return widgetViewModels;
     }
 
@@ -165,19 +176,20 @@ public class PDPDetailPresenter extends RxPresenter<PDPDetailContract.View> impl
     private List<WidgetViewModel> getFrequentlyBoughtTogether() {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM("Frequently Bought Together"));
-        ProductPriceRMVM productPriceRMVM = new ProductPriceRMVM("25% OFF", "149", "200");
-        ProductPriceVM productPriceVM = new ProductPriceVM(productPriceRMVM);
-        List<String> attributes = new ArrayList<>();
-        attributes.add("New");
-        ProductItemVM productItemVM = new ProductItemVM(R.drawable.ic_bought, "",
-            "Bloom By Naelofar Hijab (3pcs set)", attributes, productPriceVM);
-        List<ProductItemVM> productItemVMS = new ArrayList<>();
-        productItemVMS.add(productItemVM);
-        productItemVMS.add(productItemVM);
-        productItemVMS.add(productItemVM);
-        productItemVMS.add(productItemVM);
-        ProductDataVM productDataVM = new ProductDataVM(productItemVMS);
-        widgetViewModels.add(new WidgetProductScrollerVM(productDataVM));
+
+        ProductsVM productsVM = new ProductsVM();
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
+        ProductPriceVM priceVM = new ProductPriceVM(rmvm);
+        productsVM.setImage("");
+        productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
+        productsVM.setPriceVM(priceVM);
+        List<ProductsVM> productsVMS = new ArrayList<>();
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        widgetViewModels.add(new WidgetProductScrollerVM(productsVMS));
+
         return widgetViewModels;
     }
 }

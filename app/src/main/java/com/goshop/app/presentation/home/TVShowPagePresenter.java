@@ -2,7 +2,7 @@ package com.goshop.app.presentation.home;
 
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.TVShowReponse;
+import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.TVVideoLeftVM;
 import com.goshop.app.presentation.model.TVVideoRightVM;
@@ -26,9 +26,9 @@ public class TVShowPagePresenter extends RxPresenter<TVShowPageContract.View> im
     public void rightVideoRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.rightVideoRequest(params).subscribeWith(
-            new DisposableObserver<TVShowReponse>() {
+            new DisposableObserver<TVShowResponse>() {
                 @Override
-                public void onNext(TVShowReponse tvShowReponse) {
+                public void onNext(TVShowResponse tvShowResponse) {
                     mView.hideLoadingBar();
                 }
 
@@ -49,9 +49,9 @@ public class TVShowPagePresenter extends RxPresenter<TVShowPageContract.View> im
     public void leftVideoRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.leftVideoRequest(params).subscribeWith(
-            new DisposableObserver<TVShowReponse>() {
+            new DisposableObserver<TVShowResponse>() {
                 @Override
-                public void onNext(TVShowReponse tvShowReponse) {
+                public void onNext(TVShowResponse tvShowResponse) {
                     mView.hideLoadingBar();
                 }
 

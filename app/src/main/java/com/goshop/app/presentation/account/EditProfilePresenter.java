@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.ProfileReponse;
+import com.goshop.app.data.model.ProfileResponse;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.Map;
@@ -21,9 +21,9 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
     public void editProfileRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.editProfileRequest(params).subscribeWith(
-            new DisposableObserver<ProfileReponse>() {
+            new DisposableObserver<ProfileResponse>() {
                 @Override
-                public void onNext(ProfileReponse profileReponse) {
+                public void onNext(ProfileResponse profileResponse) {
                     mView.hideLoadingBar();
                 }
 

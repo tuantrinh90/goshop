@@ -8,7 +8,8 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_30"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/size_4"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16">
 
@@ -18,12 +19,9 @@
             android:layout_height="wrap_content"
             android:text="@string/ask_a_question"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_main_pink"
-            android:background="@drawable/bg_btn_round_pink_circle"
-            android:paddingBottom="@dimen/size_6"
-            android:paddingTop="@dimen/size_6"
-            android:paddingRight="@dimen/size_16"
-            android:paddingLeft="@dimen/size_16"
+            android:textColor="@color/color_text_black"
+            android:background="@drawable/bg_white_round_circle"
+            android:padding="@dimen/size_8"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap"/>
@@ -35,12 +33,12 @@
             android:layout_centerVertical="true"
             android:orientation="horizontal"
             android:layout_alignParentStart="true">
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.CustomBoldTextView
                 android:id="@+id/tv_question_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_main_pink"
-                android:textSize="@dimen/size_font_12"
+                android:textColor="@color/color_text_black"
+                android:textSize="@dimen/size_font_14"
                 android:paddingRight="@dimen/size_4"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_4"/>
@@ -49,35 +47,38 @@
                 android:layout_height="wrap_content"
                 android:text="@string/questions"
                 android:textColor="@color/color_text_black"
-                android:textSize="@dimen/size_font_12"
+                android:textSize="@dimen/size_font_14"
                 android:paddingRight="@dimen/size_18"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_18"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.CustomBoldTextView
                 android:id="@+id/tv_answers_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_main_pink"
-                android:textSize="@dimen/size_font_12"
-                android:paddingLeft="@dimen/size_4"
+                android:textColor="@color/color_text_black"
+                android:textSize="@dimen/size_font_14"
+                android:paddingRight="@dimen/size_4"
                 tools:ignore="RtlSymmetry"
-                android:paddingStart="@dimen/size_4"/>
+                android:paddingEnd="@dimen/size_4"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/questions"
                 android:textColor="@color/color_text_black"
-                android:textSize="@dimen/size_font_12"/>
+                android:textSize="@dimen/size_font_14"/>
         </LinearLayout>
-
 
     </RelativeLayout>
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_qa"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginStart="@dimen/size_16"
+        android:layout_marginRight="@dimen/size_16"
+        android:layout_marginEnd="@dimen/size_16"/>
     <include
-        layout="@layout/item_more"/>
+        layout="@layout/item_text_more"/>
 
 </LinearLayout>

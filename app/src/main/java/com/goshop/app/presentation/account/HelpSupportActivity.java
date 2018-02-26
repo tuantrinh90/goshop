@@ -31,7 +31,7 @@ public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO(helen)wait for api
+        //TODO wait for api
         mPresenter.helpSupportRequest(null);
     }
 

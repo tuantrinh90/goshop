@@ -3,15 +3,21 @@ package com.goshop.app.widget;
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.AdditionalInformationVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
-import com.goshop.app.presentation.model.widget.WidgetOnAirVM;
+import com.goshop.app.presentation.model.widget.WidgetPDPQaVM;
+import com.goshop.app.presentation.model.widget.WidgetPDPReviewsVM;
 import com.goshop.app.presentation.model.widget.WidgetPDPTopDetailsVM;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
+import com.goshop.app.presentation.model.widget.WidgetVideoPlayerVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
-import com.goshop.app.widget.WidgetListener.OnBannerItemClickListener;
-import com.goshop.app.widget.WidgetListener.OnProductItemClickListener;
-import com.goshop.app.widget.WidgetListener.OnSinglePicturClickListener;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnProductBuyClickListener;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnSinglePicturClickListener;
+import com.goshop.app.widget.viewholder.PDPQaViewHolder;
+import com.goshop.app.widget.viewholder.PDPReviewsViewHolder;
+import com.goshop.app.widget.viewholder.WidgetVideoPlayerViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,6 +31,8 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
     .ExpandTitleClickListener {
 
     private List<WidgetViewModel> allWidgetViewModels;
+
+    private OnProductBuyClickListener buyClickListener;
 
     private List<WidgetViewModel> displayModels;
 
@@ -47,6 +55,10 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
 
     public void setOnBannerItemClickListener(OnBannerItemClickListener onBannerItemClickListener) {
         this.onBannerItemClickListener = onBannerItemClickListener;
+    }
+
+    public void setOnProductBuyClickListener(OnProductBuyClickListener buyClickListener) {
+        this.buyClickListener = buyClickListener;
     }
 
     public void setOnSinglePicturClickListener(
@@ -84,7 +96,7 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
             insert++;
             displayModels.add(insert, allWidgetViewModels.get(i));
         }
-        //Todo(helen)this part need to decide
+        //Todo this part need to decide
         notifyDataSetChanged();
 //        notifyItemRangeInserted(position + 1, count);
     }
@@ -99,7 +111,7 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
             count++;
             displayModels.remove(position + 1);
         }
-        //Todo(helen)this part need to decide
+        //Todo this part need to decide
         notifyDataSetChanged();
 //        notifyItemRangeRemoved(position + 1, count);
     }
@@ -113,10 +125,10 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
                     .inflate(R.layout.layout_widget_banner, viewGroup, false);
                 viewHolder = new WidgetBannerViewHolder(bannerView);
                 break;
-            case WidgetViewModel.VIEW_TYPE_ON_AIR:
+            case WidgetViewModel.VIEW_TYPE_VIDEOPLAYER:
                 View onAirView = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.layout_widget_on_air, viewGroup, false);
-                viewHolder = new WidgetOnAirViewHolder(onAirView);
+                    .inflate(R.layout.layout_widget_videoplayer, viewGroup, false);
+                viewHolder = new WidgetVideoPlayerViewHolder(onAirView);
                 break;
             case WidgetViewModel.VIEW_TYPE_SINGLE_PICTURE:
                 View singleView = LayoutInflater.from(viewGroup.getContext())
@@ -153,6 +165,16 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
                     .inflate(R.layout.item_delivery_info, viewGroup, false);
                 viewHolder = new DeliveryViewHolder(deliveryView);
                 break;
+            case WidgetViewModel.VIEW_TYPE_PDP_QA:
+                View qaView = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.layout_widget_qa, viewGroup, false);
+                viewHolder = new PDPQaViewHolder(qaView);
+                break;
+            case WidgetViewModel.VIEW_TYPE_PDP_REVIEWS:
+                View reviewsView = LayoutInflater.from(viewGroup.getContext())
+                    .inflate(R.layout.layout_widget_reviews, viewGroup, false);
+                viewHolder = new PDPReviewsViewHolder(reviewsView);
+                break;
         }
         return viewHolder;
     }
@@ -163,8 +185,10 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
         if (viewHolder instanceof WidgetBannerViewHolder) {
             ((WidgetBannerViewHolder) viewHolder)
                 .bindingData((WidgetCarouselVM) widgetViewModel, onBannerItemClickListener);
-        } else if (viewHolder instanceof WidgetOnAirViewHolder) {
-            ((WidgetOnAirViewHolder) viewHolder).bindingData((WidgetOnAirVM) widgetViewModel);
+        } else if (viewHolder instanceof WidgetVideoPlayerViewHolder) {
+            ((WidgetVideoPlayerViewHolder) viewHolder)
+                .bindingData((WidgetVideoPlayerVM) widgetViewModel, onProductItemClickListener,
+                    buyClickListener);
         } else if (viewHolder instanceof WidgetSinglePictureViewHolder) {
             ((WidgetSinglePictureViewHolder) viewHolder).bindingData(
                 (WidgetSinglePictureVM) widgetViewModel, onSinglePicturClickListener);
@@ -180,6 +204,10 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
         } else if (viewHolder instanceof AdditionalInformationViewHolder) {
             ((AdditionalInformationViewHolder) viewHolder).bindingData(
                 (AdditionalInformationVM) widgetViewModel);
+        } else if (viewHolder instanceof PDPQaViewHolder) {
+            ((PDPQaViewHolder) viewHolder).bindingData((WidgetPDPQaVM) widgetViewModel);
+        } else if (viewHolder instanceof PDPReviewsViewHolder) {
+            ((PDPReviewsViewHolder) viewHolder).bindingData((WidgetPDPReviewsVM) widgetViewModel);
         }
     }
 
