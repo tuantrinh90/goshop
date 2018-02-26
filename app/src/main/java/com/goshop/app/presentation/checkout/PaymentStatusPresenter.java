@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.checkout;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.PaymentStatusReponse;
+import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.PaymentStatusVM;
 
@@ -22,9 +22,9 @@ public class PaymentStatusPresenter extends RxPresenter<PaymentStatusContract.Vi
     public void paymentStatusRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.paymentStatusRequest(params).subscribeWith(
-            new DisposableObserver<PaymentStatusReponse>() {
+            new DisposableObserver<PaymentStatusResponse>() {
                 @Override
-                public void onNext(PaymentStatusReponse paymentStatusReponse) {
+                public void onNext(PaymentStatusResponse paymentStatusResponse) {
                     mView.hideLoadingBar();
                 }
 

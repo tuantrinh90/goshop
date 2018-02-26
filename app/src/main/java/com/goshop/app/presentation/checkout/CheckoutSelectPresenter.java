@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.checkout;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.SelectAddressVM;
 
@@ -24,9 +24,9 @@ public class CheckoutSelectPresenter extends RxPresenter<CheckoutSelectContract.
     public void selectAddressRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.selectAddressRequest(params).subscribeWith(
-            new DisposableObserver<AddressReponse>() {
+            new DisposableObserver<AddressResponse>() {
                 @Override
-                public void onNext(AddressReponse addressReponse) {
+                public void onNext(AddressResponse addressResponse) {
                     mView.hideLoadingBar();
                 }
 

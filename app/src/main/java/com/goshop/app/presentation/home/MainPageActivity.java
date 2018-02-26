@@ -219,7 +219,7 @@ public class MainPageActivity extends BaseActivity implements NavigationView
             R.string.tv_shows), getResources().getString(R.string.brands)};
 
         List<BaseFragment> fragments = new ArrayList<>();
-        fragments.add(HomePageFragment.getInstance());
+        fragments.add(TrendingNowFragment.getInstance());
         fragments.add(TVShowPageFragment.getInstance());
         fragments.add(BrandsPageFragment.getInstance());
         pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragments,

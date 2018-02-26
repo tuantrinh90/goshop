@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.GetWebContentReponse;
+import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.domian.AccountRepository;
 
 import io.reactivex.observers.DisposableObserver;
@@ -20,9 +20,9 @@ public class WebContentPresenter extends RxPresenter<WebContentContract.View> im
     public void getEcmcContent() {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.getEcmcContent().subscribeWith(
-            new DisposableObserver<GetWebContentReponse>() {
+            new DisposableObserver<GetWebContentResponse>() {
                 @Override
-                public void onNext(GetWebContentReponse getWebContentReponse) {
+                public void onNext(GetWebContentResponse getWebContentResponse) {
                     mView.hideLoadingBar();
                 }
 
@@ -45,9 +45,9 @@ public class WebContentPresenter extends RxPresenter<WebContentContract.View> im
         mView.showLoadingBar();
         //TODO wait for api
         addSubscrebe(accountRepository.getContactContent().subscribeWith(
-            new DisposableObserver<GetWebContentReponse>() {
+            new DisposableObserver<GetWebContentResponse>() {
                 @Override
-                public void onNext(GetWebContentReponse getWebContentReponse) {
+                public void onNext(GetWebContentResponse getWebContentResponse) {
                     mView.hideLoadingBar();
                 }
 

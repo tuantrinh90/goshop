@@ -1,37 +1,37 @@
 package com.goshop.app.data.retrofit;
 
-import com.goshop.app.data.model.AddressReponse;
-import com.goshop.app.data.model.BrandsReponse;
+import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.data.model.ComplementEmailReponse;
-import com.goshop.app.data.model.ContactUsReponse;
-import com.goshop.app.data.model.FAQReponse;
-import com.goshop.app.data.model.GetSettingsReponse;
-import com.goshop.app.data.model.GetWebContentReponse;
-import com.goshop.app.data.model.HelpSupportReponse;
-import com.goshop.app.data.model.MyPointsReponse;
-import com.goshop.app.data.model.PasswordReponse;
-import com.goshop.app.data.model.PaymentStatusReponse;
+import com.goshop.app.data.model.ComplementEmailResponse;
+import com.goshop.app.data.model.ContactUsResponse;
+import com.goshop.app.data.model.FAQResponse;
+import com.goshop.app.data.model.GetSettingsResponse;
+import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.PasswordResponse;
+import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileReponse;
-import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
-import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
-import com.goshop.app.data.model.TVShowReponse;
-import com.goshop.app.data.model.TermsConditionsReponse;
+import com.goshop.app.data.model.TVShowResponse;
+import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
-import com.goshop.app.data.model.response.WidgetListReponse;
+import com.goshop.app.data.model.response.WidgetListResponse;
 
 import java.util.Map;
 
@@ -51,13 +51,13 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<WidgetListReponse> homePageRequest(@Url String fullUrl,
+    Observable<WidgetListResponse> trendingNowRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<BrandsReponse> brandsPageRequest(@Url String fullUrl,
+    Observable<BrandsResponse> brandsPageRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -91,7 +91,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<MyOrderDetailReponse> myOrderDetailRequest(@Url String fullUrl,
+    Observable<MyOrderDetailResponse> myOrderDetailRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -122,19 +122,19 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<ComplementEmailReponse> complementEmailRequest(@Url String fullUrl,
+    Observable<ComplementEmailResponse> complementEmailRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<ResetPasswordReponse> resetPasswordRequest(@Url String fullUrl,
+    Observable<ResetPasswordResponse> resetPasswordRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(@Url String fullUrl,
+    Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -164,7 +164,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<PasswordReponse> changePasswordRequest(@Url String fullUrl,
+    Observable<PasswordResponse> changePasswordRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -176,19 +176,19 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<ProfileReponse> editProfileRequest(@Url String fullUrl,
+    Observable<ProfileResponse> editProfileRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<AddressReponse> addAddressRequest(@Url String fullUrl,
+    Observable<AddressResponse> addAddressRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<AddressReponse> myAddressRequest(@Url String fullUrl,
+    Observable<AddressResponse> myAddressRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -199,60 +199,60 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<GetWebContentReponse> getEcmcContent(@Url String fullUrl);
+    Observable<GetWebContentResponse> getEcmcContent(@Url String fullUrl);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<GetWebContentReponse> getContactContent(@Url String fullUrl);
+    Observable<GetWebContentResponse> getContactContent(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<HelpSupportReponse> helpSupportRequest(@Url String fullUrl,
+    Observable<HelpSupportResponse> helpSupportRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<FAQReponse> faqRequest(@Url String fullUrl,
+    Observable<FAQResponse> faqRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<TermsConditionsReponse> termsConditionsRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
-
-    @Headers({CONTENT_TYPE_JSON})
-    @GET
-    Observable<ContactUsReponse> getContactInfo(@Url String fullUrl);
-
-    @FormUrlEncoded
-    @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<ContactUsReponse> contactMessageRequest(@Url String fullUrl,
+    Observable<TermsConditionsResponse> termsConditionsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<GetSettingsReponse> getSettingsDetail(@Url String fullUrl);
+    Observable<ContactUsResponse> getContactInfo(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<PaymentStatusReponse> paymentStatusRequest(@Url String fullUrl,
+    Observable<ContactUsResponse> contactMessageRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<GetSettingsResponse> getSettingsDetail(@Url String fullUrl);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<PaymentStatusResponse> paymentStatusRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<MyPointsReponse> myPointsRequest(@Url String fullUrl,
+    Observable<MyPointsResponse> myPointsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<AddressReponse> selectAddressRequest(@Url String fullUrl,
+    Observable<AddressResponse> selectAddressRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
@@ -274,12 +274,12 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<TVShowReponse> rightVideoRequest(@Url String fullUrl,
+    Observable<TVShowResponse> rightVideoRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<TVShowReponse> leftVideoRequest(@Url String fullUrl,
+    Observable<TVShowResponse> leftVideoRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

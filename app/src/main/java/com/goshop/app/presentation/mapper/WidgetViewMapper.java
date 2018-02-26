@@ -1,19 +1,19 @@
 package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.R;
-import com.goshop.app.data.model.response.BaseWidgetReponse;
-import com.goshop.app.data.model.response.CarouselItemsReponse;
-import com.goshop.app.data.model.response.CarouselReponse;
-import com.goshop.app.data.model.response.OfferListItemsReponse;
-import com.goshop.app.data.model.response.OfferListReponse;
-import com.goshop.app.data.model.response.ProductScrollerItemsReponse;
-import com.goshop.app.data.model.response.ProductScrollerPriceReponse;
-import com.goshop.app.data.model.response.ProductScrollerReponse;
-import com.goshop.app.data.model.response.VideoItemsReponse;
-import com.goshop.app.data.model.response.VideoPlayerReponse;
-import com.goshop.app.data.model.response.VideoProductsReponse;
-import com.goshop.app.data.model.response.VideoRMReponse;
-import com.goshop.app.data.model.response.WidgetListReponse;
+import com.goshop.app.data.model.response.BaseWidgetResponse;
+import com.goshop.app.data.model.response.CarouselItemsResponse;
+import com.goshop.app.data.model.response.CarouselResponse;
+import com.goshop.app.data.model.response.OfferListItemsResponse;
+import com.goshop.app.data.model.response.OfferListResponse;
+import com.goshop.app.data.model.response.ProductScrollerItemsResponse;
+import com.goshop.app.data.model.response.ProductScrollerPriceResponse;
+import com.goshop.app.data.model.response.ProductScrollerResponse;
+import com.goshop.app.data.model.response.VideoItemsResponse;
+import com.goshop.app.data.model.response.VideoPlayerResponse;
+import com.goshop.app.data.model.response.VideoProductsResponse;
+import com.goshop.app.data.model.response.VideoRMResponse;
+import com.goshop.app.data.model.response.WidgetListResponse;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.OfferListItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
@@ -33,37 +33,37 @@ import java.util.List;
 
 public class WidgetViewMapper {
 
-    public static List<WidgetViewModel> transform(WidgetListReponse widgetListReponse) {
+    public static List<WidgetViewModel> transform(WidgetListResponse widgetListResponse) {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
-        List<BaseWidgetReponse> baseWidgetReponses = widgetListReponse.getWidgetlist();
-        for (BaseWidgetReponse baseWidgetReponse : baseWidgetReponses) {
-            switch (baseWidgetReponse.getName()) {
-                case BaseWidgetReponse.NAME_CAROUSEL:
-                    widgetViewModels.add(getWidgetCarouselVM((CarouselReponse) baseWidgetReponse));
+        List<BaseWidgetResponse> baseWidgetRepons = widgetListResponse.getWidgetlist();
+        for (BaseWidgetResponse baseWidgetResponse : baseWidgetRepons) {
+            switch (baseWidgetResponse.getName()) {
+                case BaseWidgetResponse.NAME_CAROUSEL:
+                    widgetViewModels.add(getWidgetCarouselVM((CarouselResponse) baseWidgetResponse));
                     break;
-                case BaseWidgetReponse.NAME_VIDEOPLAYER:
+                case BaseWidgetResponse.NAME_VIDEOPLAYER:
                     widgetViewModels
-                        .add(getWidgetVideoPlayerVM((VideoPlayerReponse) baseWidgetReponse));
+                        .add(getWidgetVideoPlayerVM((VideoPlayerResponse) baseWidgetResponse));
                     break;
-                case BaseWidgetReponse.NAME_OFFERLIST:
+                case BaseWidgetResponse.NAME_OFFERLIST:
                     widgetViewModels
-                        .add(getWidgetSinglePictureVM((OfferListReponse) baseWidgetReponse));
+                        .add(getWidgetSinglePictureVM((OfferListResponse) baseWidgetResponse));
                     break;
-                case BaseWidgetReponse.NAME_PRODUCTSCROLLER:
+                case BaseWidgetResponse.NAME_PRODUCTSCROLLER:
                     widgetViewModels.addAll(
-                        getWidgetProductScrollerVM((ProductScrollerReponse) baseWidgetReponse));
+                        getWidgetProductScrollerVM((ProductScrollerResponse) baseWidgetResponse));
                     break;
             }
         }
         return widgetViewModels;
     }
 
-    private static WidgetCarouselVM getWidgetCarouselVM(CarouselReponse carouselReponse) {
+    private static WidgetCarouselVM getWidgetCarouselVM(CarouselResponse carouselReponse) {
         boolean autoEnabled = Boolean.parseBoolean(carouselReponse.getAutoPlay().getEnabled());
         long autoDuration = Integer.parseInt(carouselReponse.getAutoPlay().getDuration());
         List<CarouselItemsVM> carouselItemsVMS = new ArrayList<>();
-        List<CarouselItemsReponse> items = carouselReponse.getData().getItems();
-        for (CarouselItemsReponse reponse : items) {
+        List<CarouselItemsResponse> items = carouselReponse.getData().getItems();
+        for (CarouselItemsResponse reponse : items) {
             CarouselItemsVM itemsVM = new CarouselItemsVM();
             itemsVM.setImage(reponse.getImage());
             itemsVM.setLink(reponse.getLink());
@@ -73,21 +73,21 @@ public class WidgetViewMapper {
     }
 
     private static WidgetVideoPlayerVM getWidgetVideoPlayerVM(
-        VideoPlayerReponse videoPlayerReponse) {
+        VideoPlayerResponse videoPlayerReponse) {
         String title = videoPlayerReponse.getTitle();
         String detailTitle = videoPlayerReponse.getData().getDetail().getTitle();
         List<VideoPlayerItemsVM> videoPlayerItemsVMS = new ArrayList<>();
-        List<VideoItemsReponse> itemsReponses = videoPlayerReponse.getData().getItems();
-        for (VideoItemsReponse itemsReponse : itemsReponses) {
+        List<VideoItemsResponse> itemsReponses = videoPlayerReponse.getData().getItems();
+        for (VideoItemsResponse itemsReponse : itemsReponses) {
             VideoPlayerItemsVM videoPlayerItemsVM = new VideoPlayerItemsVM();
-            List<VideoProductsReponse> productsReponses = itemsReponse.getProducts();
+            List<VideoProductsResponse> productsReponses = itemsReponse.getProducts();
             List<ProductsVM> productsVMS = new ArrayList<>();
-            for (VideoProductsReponse productsReponse : productsReponses) {
+            for (VideoProductsResponse productsReponse : productsReponses) {
                 ProductsVM productsVM = new ProductsVM();
                 productsVM.setTitle(productsReponse.getTitle());
                 productsVM.setImage(productsReponse.getImage());
                 productsVM.setLink(productsReponse.getLink());
-                VideoRMReponse rmReponse = productsReponse.getPrice().getRM();
+                VideoRMResponse rmReponse = productsReponse.getPrice().getRM();
                 //todo this will deal when api ready
                 ProductPriceRMVM rmvm = new ProductPriceRMVM(rmReponse.getDiscountTitle(),
                     NumberFormater.formaterMoney(rmReponse.getDiscounted()),
@@ -106,10 +106,10 @@ public class WidgetViewMapper {
     }
 
     private static WidgetSinglePictureVM getWidgetSinglePictureVM(
-        OfferListReponse offerListReponse) {
+        OfferListResponse offerListReponse) {
         List<OfferListItemsVM> offerListItemsVMS = new ArrayList<>();
-        List<OfferListItemsReponse> listItemsReponses = offerListReponse.getData().getItems();
-        for (OfferListItemsReponse itemsReponse : listItemsReponses) {
+        List<OfferListItemsResponse> listItemsReponses = offerListReponse.getData().getItems();
+        for (OfferListItemsResponse itemsReponse : listItemsReponses) {
             OfferListItemsVM itemsVM = new OfferListItemsVM(R.drawable.ic_detail_top_demo,
                 itemsReponse.getImage(), itemsReponse.getLink());
             offerListItemsVMS.add(itemsVM);
@@ -118,16 +118,16 @@ public class WidgetViewMapper {
     }
 
     private static List<WidgetViewModel> getWidgetProductScrollerVM(
-        ProductScrollerReponse productScrollerReponse) {
+        ProductScrollerResponse productScrollerReponse) {
         List<WidgetViewModel> widgetViewModels = new ArrayList<>();
         widgetViewModels.add(new WidgetTitleExpandVM(productScrollerReponse.getTitle()));
 
-        List<ProductScrollerItemsReponse> itemsReponses = productScrollerReponse.getData()
+        List<ProductScrollerItemsResponse> itemsReponses = productScrollerReponse.getData()
             .getItems();
         List<ProductsVM> productsVMS = new ArrayList<>();
-        for (ProductScrollerItemsReponse itemsReponse : itemsReponses) {
+        for (ProductScrollerItemsResponse itemsReponse : itemsReponses) {
             ProductsVM productsVM = new ProductsVM();
-            ProductScrollerPriceReponse priceReponse = itemsReponse.getPrice();
+            ProductScrollerPriceResponse priceReponse = itemsReponse.getPrice();
             ProductPriceRMVM priceRMVM = new ProductPriceRMVM(
                 priceReponse.getRM().getDiscountTitle(),
                 NumberFormater.formaterMoney(priceReponse.getRM().getDiscounted()),

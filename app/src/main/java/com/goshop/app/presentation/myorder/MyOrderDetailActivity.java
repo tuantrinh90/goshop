@@ -6,7 +6,7 @@ import com.goshop.app.adapter.MyOrderDetailAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.utils.ViewUtils;
@@ -114,20 +114,20 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
     }
 
     @Override
-    public void showOrderDetail(MyOrderDetailReponse reponse) {
+    public void showOrderDetail(MyOrderDetailResponse reponse) {
         initRecycler(reponse);
         initPageInfo(reponse);
     }
 
-    private void initRecycler(MyOrderDetailReponse response) {
-        List<MyOrderDetailReponse.SubordersBean> suborders = response.getSuborders();
+    private void initRecycler(MyOrderDetailResponse response) {
+        List<MyOrderDetailResponse.SubordersBean> suborders = response.getSuborders();
         rvOrderList.setNestedScrollingEnabled(false);
         rvOrderList.setLayoutManager(new LinearLayoutManager(this));
         rvOrderList.setAdapter(new MyOrderDetailAdapter(suborders));
     }
 
     @SuppressLint("SetTextI18n")
-    private void initPageInfo(MyOrderDetailReponse reponse) {
+    private void initPageInfo(MyOrderDetailResponse reponse) {
         tvOrderDetailNumber.setText(holderOrderNumber + reponse.getOrderId());
         tvOrderDetailStatus.setText(holderOrderStatus + reponse.getState());
         tvOrderDetailTrack.setText(holderOrderPlacedAt + reponse.getDate());

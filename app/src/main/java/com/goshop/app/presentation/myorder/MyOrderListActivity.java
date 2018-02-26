@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.MyOrderListAdapter;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.utils.JToolUtils;
 import com.goshop.app.utils.ScreenHelper;
@@ -71,7 +71,7 @@ public class MyOrderListActivity extends BaseActivity<MyOrderContract.Presenter>
     }
 
     @Override
-    public void showOrderDetail(MyOrderDetailReponse reponse) {
+    public void showOrderDetail(MyOrderDetailResponse reponse) {
         //TODO joyson this is empty response ,no need write code
     }
 

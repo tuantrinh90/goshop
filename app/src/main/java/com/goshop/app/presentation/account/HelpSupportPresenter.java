@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.HelpSupportReponse;
+import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.HelpSupportContentVM;
 import com.goshop.app.presentation.model.HelpSupportModel;
@@ -26,9 +26,9 @@ public class HelpSupportPresenter extends RxPresenter<HelpSupportContract.View> 
     public void helpSupportRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.helpSupportRequest(params).subscribeWith(
-            new DisposableObserver<HelpSupportReponse>() {
+            new DisposableObserver<HelpSupportResponse>() {
                 @Override
-                public void onNext(HelpSupportReponse helpSupportReponse) {
+                public void onNext(HelpSupportResponse helpSupportResponse) {
                     mView.hideLoadingBar();
                 }
 

@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
 import com.goshop.app.utils.ScreenHelper;
@@ -175,7 +175,7 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
         }
 
         @SuppressLint("SetTextI18n")
-        void bindingDetail(BodyHolder holder, MyOrderDetailReponse.SubordersBean subordersBean) {
+        void bindingDetail(BodyHolder holder, MyOrderDetailResponse.SubordersBean subordersBean) {
             Glide.with(holder.itemView.getContext()).load(subordersBean.getImage())
                 .into(ivProductIcon);
             SpannableString italicString = setItalicText(subordersBean.getProductId() + " ",

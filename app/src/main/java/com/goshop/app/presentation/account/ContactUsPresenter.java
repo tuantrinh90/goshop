@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.ContactUsReponse;
+import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.ContactUsVM;
 
@@ -22,9 +22,9 @@ public class ContactUsPresenter extends RxPresenter<ContactUsContract.View> impl
     public void getContactInfo() {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.getContactInfo().subscribeWith(
-            new DisposableObserver<ContactUsReponse>() {
+            new DisposableObserver<ContactUsResponse>() {
                 @Override
-                public void onNext(ContactUsReponse contactUsReponse) {
+                public void onNext(ContactUsResponse contactUsResponse) {
                     mView.hideLoadingBar();
                 }
 
@@ -45,9 +45,9 @@ public class ContactUsPresenter extends RxPresenter<ContactUsContract.View> impl
     public void contactMessageRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.contactMessageRequest(params).subscribeWith(
-            new DisposableObserver<ContactUsReponse>() {
+            new DisposableObserver<ContactUsResponse>() {
                 @Override
-                public void onNext(ContactUsReponse contactUsReponse) {
+                public void onNext(ContactUsResponse contactUsResponse) {
                     mView.hideLoadingBar();
                 }
 

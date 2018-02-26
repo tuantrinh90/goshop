@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.myorder;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
@@ -58,10 +58,10 @@ public class MyOrderPresenter extends RxPresenter<MyOrderContract.View> implemen
     public void getOrderDetail(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.myOrderDetailRequest(params)
-            .subscribeWith(new DisposableObserver<MyOrderDetailReponse>() {
+            .subscribeWith(new DisposableObserver<MyOrderDetailResponse>() {
 
                 @Override
-                public void onNext(MyOrderDetailReponse response) {
+                public void onNext(MyOrderDetailResponse response) {
                     mView.hideLoadingBar();
                     mView.showOrderDetail(response);
                 }

@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.TermsConditionsReponse;
+import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.TermsConditionsVM;
 
@@ -24,9 +24,9 @@ public class TermsConditionsPresenter extends RxPresenter<TermsConditionsContrac
     public void termsConditionsRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.termsConditionsRequest(params).subscribeWith(
-            new DisposableObserver<TermsConditionsReponse>() {
+            new DisposableObserver<TermsConditionsResponse>() {
                 @Override
-                public void onNext(TermsConditionsReponse reponse) {
+                public void onNext(TermsConditionsResponse reponse) {
                     mView.hideLoadingBar();
                 }
 

@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.PasswordReponse;
+import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.Map;
@@ -21,9 +21,9 @@ public class ChangePasswordPresenter extends RxPresenter<ChangePasswordContract.
     public void changePasswordRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.changePasswordRequest(params).subscribeWith(
-            new DisposableObserver<PasswordReponse>() {
+            new DisposableObserver<PasswordResponse>() {
                 @Override
-                public void onNext(PasswordReponse passwordReponse) {
+                public void onNext(PasswordResponse passwordResponse) {
                     mView.hideLoadingBar();
                 }
 

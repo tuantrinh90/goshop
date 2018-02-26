@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.FAQReponse;
+import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.FAQVM;
 
@@ -23,9 +23,9 @@ public class FAQPresenter extends RxPresenter<FAQContract.View> implements FAQCo
     public void faqRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.faqRequest(params).subscribeWith(
-            new DisposableObserver<FAQReponse>() {
+            new DisposableObserver<FAQResponse>() {
                 @Override
-                public void onNext(FAQReponse faqReponse) {
+                public void onNext(FAQResponse faqResponse) {
                     mView.hideLoadingBar();
                 }
 

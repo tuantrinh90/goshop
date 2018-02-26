@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.settings;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.GetSettingsReponse;
+import com.goshop.app.data.model.GetSettingsResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.SettingsModel;
 import com.goshop.app.presentation.model.SettingsSingleDetailVM;
@@ -26,9 +26,9 @@ public class SettingsPresenter extends RxPresenter<SettingsContract.View> implem
     public void getSettingsDetail() {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.getSettingsDetail().subscribeWith(
-            new DisposableObserver<GetSettingsReponse>() {
+            new DisposableObserver<GetSettingsResponse>() {
                 @Override
-                public void onNext(GetSettingsReponse getSettingsReponse) {
+                public void onNext(GetSettingsResponse getSettingsResponse) {
                     mView.hideLoadingBar();
                 }
 

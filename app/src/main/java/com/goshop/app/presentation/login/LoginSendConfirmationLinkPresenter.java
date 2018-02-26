@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.login;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.Map;
@@ -22,9 +22,9 @@ public class LoginSendConfirmationLinkPresenter extends
     public void sendConfirmationLinkRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.sendConfirmationLinkRequest(params).subscribeWith(
-            new DisposableObserver<SendConfirmationLinkReponse>() {
+            new DisposableObserver<SendConfirmationLinkResponse>() {
                 @Override
-                public void onNext(SendConfirmationLinkReponse sendConfirmationLinkReponse) {
+                public void onNext(SendConfirmationLinkResponse sendConfirmationLinkResponse) {
                     mView.hideLoadingBar();
                     //Todo(helen)wait for api
                     mView.sendConfirmationLinkSuccess();

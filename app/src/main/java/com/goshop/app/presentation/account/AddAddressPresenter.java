@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AddressReponse;
+import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.Map;
@@ -21,9 +21,9 @@ public class AddAddressPresenter extends RxPresenter<AddAddressContract.View> im
     public void addAddressRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.addAddressRequest(params).subscribeWith(
-            new DisposableObserver<AddressReponse>() {
+            new DisposableObserver<AddressResponse>() {
                 @Override
-                public void onNext(AddressReponse addressReponse) {
+                public void onNext(AddressResponse addressResponse) {
                     mView.hideLoadingBar();
                 }
 

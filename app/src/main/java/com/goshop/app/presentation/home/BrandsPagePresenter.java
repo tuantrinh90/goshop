@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.BrandsReponse;
+import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.BrandsVM;
 
@@ -24,9 +24,9 @@ public class BrandsPagePresenter extends RxPresenter<BrandsPageContract.View> im
     public void brandsPageRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.brandsPageRequest(params)
-            .subscribeWith(new DisposableObserver<BrandsReponse>() {
+            .subscribeWith(new DisposableObserver<BrandsResponse>() {
                 @Override
-                public void onNext(BrandsReponse brandsReponse) {
+                public void onNext(BrandsResponse brandsResponse) {
                     mView.hideLoadingBar();
                 }
 

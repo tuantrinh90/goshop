@@ -1,7 +1,7 @@
 package com.goshop.app.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -13,10 +13,10 @@ import java.util.List;
 
 public class MyOrderDetailAdapter extends RecyclerView.Adapter {
 
-    List<MyOrderDetailReponse.SubordersBean> subordersBeans = new ArrayList<>();
+    List<MyOrderDetailResponse.SubordersBean> subordersBeans = new ArrayList<>();
 
     public MyOrderDetailAdapter(
-        List<MyOrderDetailReponse.SubordersBean> subordersBeans) {
+        List<MyOrderDetailResponse.SubordersBean> subordersBeans) {
         this.subordersBeans = subordersBeans;
     }
 

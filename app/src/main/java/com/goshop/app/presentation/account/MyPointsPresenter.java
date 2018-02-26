@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.MyPointsReponse;
+import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.PointsDetailVM;
 import com.goshop.app.presentation.model.PointsModel;
@@ -26,9 +26,9 @@ public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implem
     public void myPointsRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.myPointsRequest(params).subscribeWith(
-            new DisposableObserver<MyPointsReponse>() {
+            new DisposableObserver<MyPointsResponse>() {
                 @Override
-                public void onNext(MyPointsReponse myPointsReponse) {
+                public void onNext(MyPointsResponse myPointsResponse) {
                     mView.hideLoadingBar();
                 }
 

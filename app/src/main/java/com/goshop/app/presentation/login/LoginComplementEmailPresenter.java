@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.login;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.ComplementEmailReponse;
+import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.Map;
@@ -22,9 +22,9 @@ public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEm
 
         mView.showLoadingBar();
         addSubscrebe(accountRepository.complementEmailRequest(params).subscribeWith(
-            new DisposableObserver<ComplementEmailReponse>() {
+            new DisposableObserver<ComplementEmailResponse>() {
                 @Override
-                public void onNext(ComplementEmailReponse complementEmailReponse) {
+                public void onNext(ComplementEmailResponse complementEmailResponse) {
                     mView.hideLoadingBar();
                     //TODO(helen)wait for api
                     mView.complementEmailSuccess();

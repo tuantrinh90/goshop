@@ -1,37 +1,37 @@
 package com.goshop.app.data.source.local;
 
 import com.goshop.app.data.LocalApi;
-import com.goshop.app.data.model.AddressReponse;
-import com.goshop.app.data.model.BrandsReponse;
+import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.data.model.ComplementEmailReponse;
-import com.goshop.app.data.model.ContactUsReponse;
-import com.goshop.app.data.model.FAQReponse;
-import com.goshop.app.data.model.GetSettingsReponse;
-import com.goshop.app.data.model.GetWebContentReponse;
-import com.goshop.app.data.model.HelpSupportReponse;
-import com.goshop.app.data.model.MyPointsReponse;
-import com.goshop.app.data.model.PasswordReponse;
-import com.goshop.app.data.model.PaymentStatusReponse;
+import com.goshop.app.data.model.ComplementEmailResponse;
+import com.goshop.app.data.model.ContactUsResponse;
+import com.goshop.app.data.model.FAQResponse;
+import com.goshop.app.data.model.GetSettingsResponse;
+import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.PasswordResponse;
+import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileReponse;
-import com.goshop.app.data.model.ResetPasswordReponse;
+import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
-import com.goshop.app.data.model.SendConfirmationLinkReponse;
+import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
-import com.goshop.app.data.model.TVShowReponse;
-import com.goshop.app.data.model.TermsConditionsReponse;
+import com.goshop.app.data.model.TVShowResponse;
+import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
-import com.goshop.app.data.model.response.WidgetListReponse;
+import com.goshop.app.data.model.response.WidgetListResponse;
 import com.goshop.app.data.source.AccountDataSource;
 
 import java.util.Map;
@@ -50,12 +50,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<WidgetListReponse> homePageRequest(Map<String, Object> params) {
+    public Observable<WidgetListResponse> trendingNowRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<BrandsReponse> brandsPageRequest(Map<String, Object> params) {
+    public Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -100,7 +100,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<MyOrderDetailReponse> myOrderDetailRequest(Map<String, Object> params) {
+    public Observable<MyOrderDetailResponse> myOrderDetailRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -110,17 +110,17 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ComplementEmailReponse> complementEmailRequest(Map<String, Object> params) {
+    public Observable<ComplementEmailResponse> complementEmailRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<ResetPasswordReponse> resetPasswordRequest(Map<String, Object> params) {
+    public Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<SendConfirmationLinkReponse> sendConfirmationLinkRequest(
+    public Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(
         Map<String, Object> params) {
         return null;
     }
@@ -151,22 +151,22 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<PasswordReponse> changePasswordRequest(Map<String, Object> params) {
+    public Observable<PasswordResponse> changePasswordRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<ProfileReponse> editProfileRequest(Map<String, Object> params) {
+    public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<AddressReponse> addAddressRequest(Map<String, Object> params) {
+    public Observable<AddressResponse> addAddressRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<AddressReponse> myAddressRequest(Map<String, Object> params) {
+    public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -176,58 +176,58 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<GetWebContentReponse> getEcmcContent() {
+    public Observable<GetWebContentResponse> getEcmcContent() {
         return null;
     }
 
     @Override
-    public Observable<GetWebContentReponse> getContactContent() {
+    public Observable<GetWebContentResponse> getContactContent() {
         return null;
     }
 
     @Override
-    public Observable<HelpSupportReponse> helpSupportRequest(Map<String, Object> params) {
+    public Observable<HelpSupportResponse> helpSupportRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<FAQReponse> faqRequest(Map<String, Object> params) {
+    public Observable<FAQResponse> faqRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<TermsConditionsReponse> termsConditionsRequest(Map<String, Object> params) {
+    public Observable<TermsConditionsResponse> termsConditionsRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<ContactUsReponse> getContactInfo() {
+    public Observable<ContactUsResponse> getContactInfo() {
         return null;
     }
 
     @Override
-    public Observable<ContactUsReponse> contactMessageRequest(Map<String, Object> params) {
+    public Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<GetSettingsReponse> getSettingsDetail() {
+    public Observable<GetSettingsResponse> getSettingsDetail() {
         return null;
     }
 
     @Override
-    public Observable<MyPointsReponse> myPointsRequest(Map<String, Object> params) {
+    public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<PaymentStatusReponse> paymentStatusRequest(Map<String, Object> params) {
+    public Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params) {
 
         return null;
     }
 
     @Override
-    public Observable<AddressReponse> selectAddressRequest(Map<String, Object> params) {
+    public Observable<AddressResponse> selectAddressRequest(Map<String, Object> params) {
 
         return null;
     }
@@ -248,12 +248,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<TVShowReponse> rightVideoRequest(Map<String, Object> params) {
+    public Observable<TVShowResponse> rightVideoRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<TVShowReponse> leftVideoRequest(Map<String, Object> params) {
+    public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
         return null;
     }
 }

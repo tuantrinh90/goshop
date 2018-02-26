@@ -2,7 +2,7 @@ package com.goshop.app.presentation.myorder;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
-import com.goshop.app.data.model.response.MyOrderDetailReponse;
+import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 
 import java.util.Map;
@@ -21,7 +21,7 @@ public interface MyOrderContract {
 
         public void closeSwipeLayout();
 
-        void showOrderDetail(MyOrderDetailReponse reponse);
+        void showOrderDetail(MyOrderDetailResponse reponse);
     }
 
     interface Presenter extends BasePresenter<View> {
