@@ -92,6 +92,12 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
 
             tvCategoryLeftMenu.setSelected(leftMenuVM.isSelect());
             ivCategoryLeftMenu.setSelected(leftMenuVM.isSelect());
+
+            ivCategoryLeftMenu.setColorFilter(
+                itemView.getContext().getResources()
+                    .getColor(ivCategoryLeftMenu
+                        .isSelected() ? R.color.color_main_pink : R.color.color_img_grey));
+
             rlLayoutCategoryLeft.setSelected(leftMenuVM.isSelect());
 
             itemView.setOnClickListener(v -> {
