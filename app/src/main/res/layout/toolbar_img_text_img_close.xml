@@ -9,17 +9,22 @@
     android:layout_height="?attr/actionBarSize"
     app:contentInsetEnd="0dp"
     app:contentInsetStart="0dp"
+    android:background="@drawable/bg_bottom_shadow_white"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/size_10">
+        android:paddingTop="@dimen/size_10"
+        android:paddingBottom="@dimen/size_10"
+        android:paddingRight="@dimen/size_16">
 
         <ImageView
             android:id="@+id/imageview_left_menu"
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
+            android:layout_marginLeft="@dimen/size_16"
+            android:layout_marginRight="@dimen/size_34"
             android:scaleType="centerInside"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
@@ -42,15 +47,13 @@
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/size_76"
+            android:layout_toRightOf="@id/imageview_left_menu"
             android:paddingRight="@dimen/size_60"
             android:textColor="@color/color_text_black"
             android:textSize="@dimen/size_font_20"
             android:minLines="1"
             android:maxLines="1"
             android:ellipsize="end"
-            android:layout_centerInParent="true"
-            android:paddingStart="@dimen/size_76"
             android:paddingEnd="@dimen/size_60"/>
     </RelativeLayout>
 

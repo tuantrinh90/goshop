@@ -5,17 +5,15 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.common.view.CustomBoldTabLayout;
-import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
-import com.goshop.app.utils.SlideMenuListenerUtil;
+import com.goshop.app.utils.SlideMenuUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
@@ -25,7 +23,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +31,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainPageActivity extends BaseActivity implements NavigationView
-    .OnNavigationItemSelectedListener, SlideMenuListenerUtil.OnStartNextScreenListener {
+    .OnNavigationItemSelectedListener {
 
     @BindView(R.id.cset_search)
     CustomSearchEditText csetSearch;
@@ -62,23 +59,9 @@ public class MainPageActivity extends BaseActivity implements NavigationView
 
     private boolean isLogin = true;
 
-    private ImageView ivSlideUser;
-
-    private LinearLayout llSlideUserInfo;
-
-    private SlideMenuListenerUtil menuListenerUtil;
-
     private MainPagerAdapter pagerAdapter;
 
-    private MenuItem slideMenuHome, slideMenuCategories, slideMenuLoyalty, slideMenuCart,
-        slideMenuWishlist, slideMenuOrder, slideMenuRewards, slideMenuNotification,
-        slideMenuHelp, slideMenuSettings;
-
-    private CustomBoldTextView tvSlideSignUp;
-
-    private CustomTextView tvSlideUserName;
-
-    private CustomTextView tvToolbarShoppingCartNum;
+    private SlideMenuUtil slideMenuUtil;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -96,9 +79,7 @@ public class MainPageActivity extends BaseActivity implements NavigationView
 
     @Override
     public void inject() {
-        initNavigation();
-//        drawerLisenter();
-        initSlideMenuListenerUtil();
+        initSlideMenuListenerUtil(R.id.slide_menu_home);
         initTabLayoutViewPager();
         initSearch();
     }
@@ -108,37 +89,9 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         return null;
     }
 
-    private void initNavigation() {
-        navigationSlideMenu.setNavigationItemSelectedListener(this);
-        slideMenuHome = getMenuItem(R.id.slide_menu_home);
-        slideMenuCategories = getMenuItem(R.id.slide_menu_categories);
-        slideMenuLoyalty = getMenuItem(R.id.slide_menu_go_loyalty);
-        slideMenuCart = getMenuItem(R.id.slide_menu_cart);
-        slideMenuWishlist = getMenuItem(R.id.slide_menu_wishlist);
-        slideMenuOrder = getMenuItem(R.id.slide_menu_orders);
-        slideMenuRewards = getMenuItem(R.id.slide_menu_rewards);
-        slideMenuNotification = getMenuItem(R.id.slide_menu_notifications);
-        slideMenuHelp = getMenuItem(R.id.slide_menu_help);
-        slideMenuSettings = getMenuItem(R.id.slide_menu_setting);
-        slideMenuHome.setChecked(true);
-        View headerView = navigationSlideMenu.getHeaderView(0);
-        tvSlideSignUp = headerView.findViewById(R.id.tv_slide_sign_up);
-        llSlideUserInfo = headerView.findViewById(R.id.ll_slide_user_info);
-        ivSlideUser = headerView.findViewById(R.id.iv_slide_user);
-        tvSlideUserName = headerView.findViewById(R.id.tv_slide_user_name);
-
-        slideMenuWishlist.setVisible(isLogin);
-        slideMenuOrder.setVisible(isLogin);
-        slideMenuRewards.setVisible(isLogin);
-        tvSlideSignUp.setVisibility(isLogin ? View.GONE : View.VISIBLE);
-        llSlideUserInfo.setVisibility(isLogin ? View.VISIBLE : View.GONE);
-        initSlideMenuHeaderListener();
-        disableNavigationViewScrollbars(navigationSlideMenu);
-    }
-
-    private void initSlideMenuListenerUtil() {
-        menuListenerUtil = new SlideMenuListenerUtil(this, R.id.slide_menu_home, this);
-        menuListenerUtil.drawerLisenter(drawerLayout);
+    private void initSlideMenuListenerUtil(int currentMenuId) {
+        slideMenuUtil = new SlideMenuUtil(this, currentMenuId, drawerLayout,
+            navigationSlideMenu, isLogin, this);
     }
 
     private void initTabLayoutViewPager() {
@@ -165,37 +118,10 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         });
     }
 
-    private MenuItem getMenuItem(int menuId) {
-        return navigationSlideMenu.getMenu().findItem(menuId);
-    }
-
-    private void initSlideMenuHeaderListener() {
-        tvSlideSignUp.setOnClickListener(v -> {
-            menuListenerUtil.setDrawerHasSelect(true);
-            menuListenerUtil.setSelectMenuId(R.id.tv_slide_sign_up);
-            drawerLayout.closeDrawer(GravityCompat.START);
-        });
-        llSlideUserInfo.setOnClickListener(v -> {
-            menuListenerUtil.setDrawerHasSelect(true);
-            menuListenerUtil.setSelectMenuId(R.id.ll_slide_user_info);
-            drawerLayout.closeDrawer(GravityCompat.START);
-        });
-    }
-
-    private void disableNavigationViewScrollbars(NavigationView navigationView) {
-        if (navigationView != null) {
-            NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView
-                .getChildAt(0);
-            if (navigationMenuView != null) {
-                navigationMenuView.setVerticalScrollBarEnabled(false);
-            }
-        }
-    }
-
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        menuListenerUtil.setDrawerHasSelect(true);
-        menuListenerUtil.setSelectMenuId(item.getItemId());
+        slideMenuUtil.setDrawerHasSelect(true);
+        slideMenuUtil.setSelectMenuId(item.getItemId());
         drawerLayout.closeDrawer(GravityCompat.START);
         return true;
     }
@@ -229,10 +155,5 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 
-    @Override
-    public void startNextScreen(Intent intent) {
-        startActivity(intent);
-        overridePendingTransition(R.anim.slide_menu_in,
-            R.anim.slide_menu_out);
-    }
+
 }
