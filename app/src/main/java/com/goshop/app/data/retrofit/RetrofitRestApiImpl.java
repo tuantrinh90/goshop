@@ -58,9 +58,15 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params) {
+    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_PAGE);
-        return retrofitRestApi.brandsPageRequest(url, params);
+        return retrofitRestApi.brandsRequest(url, params);
+    }
+
+    @Override
+    public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.BRANDS_DETAIL);
+        return retrofitRestApi.brandsDetailRequest(url, params);
     }
 
     @Override

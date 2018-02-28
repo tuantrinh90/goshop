@@ -15,7 +15,7 @@
         android:layout_marginLeft="@dimen/size_20"
         android:layout_centerInParent="true"
         android:contentDescription="@string/app_name"
-        android:background="@color/color_line_grey"/>
+        android:background="@color/color_divider_grey"/>
 
     <com.goshop.app.common.view.CustomEditText
         android:id="@+id/et_search_filter_min"

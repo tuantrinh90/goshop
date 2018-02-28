@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
+import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.SlideMenuUtil;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
@@ -36,7 +37,8 @@ import static com.goshop.app.utils.SlideMenuUtil.MENU_KEY;
 
 public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Presenter> implements
     ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener, NavigationView
-    .OnNavigationItemSelectedListener, OnBannerItemClickListener, OnItemMenuClickListener {
+    .OnNavigationItemSelectedListener, OnBannerItemClickListener, OnItemMenuClickListener,
+    PopWindowUtil.OnCartItemMenuClickListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -160,7 +162,17 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     }
 
     @Override
-    public void onItemMenuClick() {
+    public void onItemMenuClick(View parentView) {
+        PopWindowUtil.showShoppingCartMenuPop(parentView, this);
+    }
 
+    @Override
+    public void onCartWishlist() {
+        //todo wait for api
+    }
+
+    @Override
+    public void onCartDeleteClick() {
+        //todo wait for api
     }
 }

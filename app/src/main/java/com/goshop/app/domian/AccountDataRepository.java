@@ -112,8 +112,13 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params) {
-        return accountCloudDataSource.brandsPageRequest(params);
+    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
+        return accountCloudDataSource.brandsRequest(params);
+    }
+
+    @Override
+    public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.brandsDetailRequest(params);
     }
 
     @Override

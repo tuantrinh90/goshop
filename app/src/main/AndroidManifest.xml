@@ -129,6 +129,8 @@
 
         <activity android:name=".presentation.checkout.PaymentStatusActivity"
             android:theme="@style/WhiteBackground"/>
+        <activity android:name=".presentation.home.BrandsDetailActivity"
+            android:theme="@style/WhiteBackground"/>
 
 
         <activity android:name=".presentation.login.TestMenuActivity"/>

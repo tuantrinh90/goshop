@@ -338,5 +338,7 @@
     <string name="on">on</string>
     <string name="samsung">Samsung</string>
     <string name="loreal">Loreal</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="delete">Delete</string>
 
 </resources>

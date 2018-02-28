@@ -33,14 +33,16 @@ import com.goshop.app.presentation.checkout.CheckoutSelectContract;
 import com.goshop.app.presentation.checkout.CheckoutSelectPresenter;
 import com.goshop.app.presentation.checkout.PaymentStatusContract;
 import com.goshop.app.presentation.checkout.PaymentStatusPresenter;
-import com.goshop.app.presentation.home.BrandsPageContract;
-import com.goshop.app.presentation.home.BrandsPagePresenter;
-import com.goshop.app.presentation.home.TrendingNowContract;
-import com.goshop.app.presentation.home.TrendingNowPresenter;
+import com.goshop.app.presentation.home.BrandsContract;
+import com.goshop.app.presentation.home.BrandsDetailContract;
+import com.goshop.app.presentation.home.BrandsDetailPresenter;
+import com.goshop.app.presentation.home.BrandsPresenter;
 import com.goshop.app.presentation.home.PromotionContract;
 import com.goshop.app.presentation.home.PromotionPresenter;
 import com.goshop.app.presentation.home.TVShowPageContract;
 import com.goshop.app.presentation.home.TVShowPagePresenter;
+import com.goshop.app.presentation.home.TrendingNowContract;
+import com.goshop.app.presentation.home.TrendingNowPresenter;
 import com.goshop.app.presentation.login.LoginComplementEmailContract;
 import com.goshop.app.presentation.login.LoginComplementEmailPresenter;
 import com.goshop.app.presentation.login.LoginContract;
@@ -109,9 +111,16 @@ public class PresenterModule {
 
     @Provides
     @ActivityScope
-    public BrandsPageContract.Presenter provideBrandsPagePresenter(
+    public BrandsContract.Presenter provideBrandsPagePresenter(
         AccountDataRepository dataRepository) {
-        return new BrandsPagePresenter(dataRepository);
+        return new BrandsPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public BrandsDetailContract.Presenter provideBrandsDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new BrandsDetailPresenter(dataRepository);
     }
 
     @Provides

@@ -40,7 +40,9 @@ public interface AccountRepository {
 
     Observable<WidgetListResponse> trendingNowRequest(Map<String, Object> params);
 
-    Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params);
+    Observable<BrandsResponse> brandsRequest(Map<String, Object> params);
+
+    Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 

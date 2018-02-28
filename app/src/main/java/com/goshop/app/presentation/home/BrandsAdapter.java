@@ -15,12 +15,16 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BrandsPageAdapter extends RecyclerView.Adapter {
+public class BrandsAdapter extends RecyclerView.Adapter {
 
-    List<BrandsVM> brandsVMS;
+    private List<BrandsVM> brandsVMS;
 
-    public BrandsPageAdapter(List<BrandsVM> brandsVMS) {
+    private OnBrandsItemClickListener onBrandsItemClickListener;
+
+    public BrandsAdapter(List<BrandsVM> brandsVMS,
+        OnBrandsItemClickListener onBrandsItemClickListener) {
         this.brandsVMS = brandsVMS;
+        this.onBrandsItemClickListener = onBrandsItemClickListener;
     }
 
     public void setUpdateDatas(List<BrandsVM> brandsVMS) {
@@ -44,6 +48,11 @@ public class BrandsPageAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return brandsVMS.size();
+    }
+
+    public interface OnBrandsItemClickListener {
+
+        void onBrandsItemClick();
     }
 
     class BrandsPageViewHolder extends RecyclerView.ViewHolder {
@@ -79,6 +88,7 @@ public class BrandsPageAdapter extends RecyclerView.Adapter {
 
         void bindingData(BrandsVM brandsVM, int position) {
             viewBrandDivider.setVisibility(position == 0 ? View.GONE : View.VISIBLE);
+            itemView.setOnClickListener(v -> onBrandsItemClickListener.onBrandsItemClick());
         }
     }
 }

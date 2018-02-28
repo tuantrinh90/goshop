@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.presentation.model.BrandsVM;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -22,18 +23,18 @@ import butterknife.Unbinder;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class BrandsPageFragment extends BaseFragment<BrandsPageContract.Presenter> implements
-    BrandsPageContract.View {
+public class BrandsFragment extends BaseFragment<BrandsContract.Presenter> implements
+    BrandsContract.View, BrandsAdapter.OnBrandsItemClickListener {
 
     @BindView(R.id.recyclerview_brands)
     RecyclerView recyclerviewBrands;
 
     Unbinder unbinder;
 
-    private BrandsPageAdapter adapter;
+    private BrandsAdapter adapter;
 
-    public static BrandsPageFragment getInstance() {
-        return new BrandsPageFragment();
+    public static BrandsFragment getInstance() {
+        return new BrandsFragment();
     }
 
     @Nullable
@@ -49,7 +50,7 @@ public class BrandsPageFragment extends BaseFragment<BrandsPageContract.Presente
 
     @Override
     public int getContentView() {
-        return R.layout.fragment_brands_page;
+        return R.layout.fragment_brands;
     }
 
     @Override
@@ -69,14 +70,14 @@ public class BrandsPageFragment extends BaseFragment<BrandsPageContract.Presente
     private void initRecyclerview() {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerviewBrands.setLayoutManager(manager);
-        adapter = new BrandsPageAdapter(new ArrayList<>());
+        adapter = new BrandsAdapter(new ArrayList<>(), this);
         recyclerviewBrands.setAdapter(adapter);
     }
 
     @Override
     public void setup() {
         //todo wait for api
-        mPresenter.brandsPageRequest(null);
+        mPresenter.brandsRequest(null);
     }
 
     @Override
@@ -88,5 +89,10 @@ public class BrandsPageFragment extends BaseFragment<BrandsPageContract.Presente
     @Override
     public void showResult(List<BrandsVM> brandsVMS) {
         adapter.setUpdateDatas(brandsVMS);
+    }
+
+    @Override
+    public void onBrandsItemClick() {
+        startActivity(new Intent(getActivity(), BrandsDetailActivity.class));
     }
 }

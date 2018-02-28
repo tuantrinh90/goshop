@@ -11,19 +11,19 @@ import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
-public class BrandsPagePresenter extends RxPresenter<BrandsPageContract.View> implements
-    BrandsPageContract.Presenter {
+public class BrandsPresenter extends RxPresenter<BrandsContract.View> implements
+    BrandsContract.Presenter {
 
     private AccountRepository accountRepository;
 
-    public BrandsPagePresenter(AccountRepository accountRepository) {
+    public BrandsPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
 
     @Override
-    public void brandsPageRequest(Map<String, Object> params) {
+    public void brandsRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.brandsPageRequest(params)
+        addSubscrebe(accountRepository.brandsRequest(params)
             .subscribeWith(new DisposableObserver<BrandsResponse>() {
                 @Override
                 public void onNext(BrandsResponse brandsResponse) {

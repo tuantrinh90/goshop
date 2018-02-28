@@ -67,7 +67,7 @@ public class ProductListCartViewHolder extends RecyclerView.ViewHolder {
         etProductCart.setMinusBackGround(R.drawable.bg_rectangle_black);
         etProductCart.setPlusBackGround(R.drawable.bg_rectangle_black);
         llCartMenu.setOnClickListener(v -> {
-            menuClickListener.onItemMenuClick();
+            menuClickListener.onItemMenuClick(llCartMenu);
         });
     }
 }

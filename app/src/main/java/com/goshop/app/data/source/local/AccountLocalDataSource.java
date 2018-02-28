@@ -55,7 +55,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params) {
+    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
         return null;
     }
 

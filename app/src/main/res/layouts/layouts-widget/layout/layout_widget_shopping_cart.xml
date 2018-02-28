@@ -23,13 +23,14 @@
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
         android:layout_alignTop="@id/iv_cart_product_thumb"
-        android:paddingRight="@dimen/size_8"
+        android:layout_marginRight="@dimen/size_12"
         android:paddingLeft="@dimen/size_16"
         android:orientation="vertical">
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="@dimen/size_12"
+            android:layout_height="@dimen/size_24"
             android:src="@drawable/ic_icon_cart_menu"
+            android:scaleType="center"
             android:contentDescription="@string/app_name"/>
     </LinearLayout>
 

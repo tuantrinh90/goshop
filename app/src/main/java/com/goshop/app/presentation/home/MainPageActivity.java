@@ -102,7 +102,7 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(TrendingNowFragment.getInstance());
         fragments.add(TVShowPageFragment.getInstance());
-        fragments.add(BrandsPageFragment.getInstance());
+        fragments.add(BrandsFragment.getInstance());
         pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragments,
             tabLayoutArrays);
         viewpagerMain.setAdapter(pagerAdapter);

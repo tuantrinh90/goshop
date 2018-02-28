@@ -16,11 +16,12 @@ import com.goshop.app.presentation.category.CategoryTreeDetailActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
-import com.goshop.app.presentation.home.BrandsPageFragment;
-import com.goshop.app.presentation.home.TrendingNowFragment;
+import com.goshop.app.presentation.home.BrandsDetailActivity;
+import com.goshop.app.presentation.home.BrandsFragment;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
 import com.goshop.app.presentation.home.TVShowPageFragment;
+import com.goshop.app.presentation.home.TrendingNowFragment;
 import com.goshop.app.presentation.login.LoginActivity;
 import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 import com.goshop.app.presentation.login.LoginResetPasswordActivity;
@@ -49,7 +50,9 @@ public interface PresenterComponent {
 
     void inject(TrendingNowFragment trendingNowFragment);
 
-    void inject(BrandsPageFragment brandsPageFragment);
+    void inject(BrandsFragment brandsFragment);
+
+    void inject(BrandsDetailActivity brandsDetailActivity);
 
     void inject(PDPDetailActivity pdpDetailActivity);
 

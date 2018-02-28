@@ -41,6 +41,8 @@ public class EndpointAddress {
 
     public static final String BRANDS_PAGE = "";
 
+    public static final String BRANDS_DETAIL = "";
+
     //todo wait for api
     public static final String HOME_REQUEST = "";
 

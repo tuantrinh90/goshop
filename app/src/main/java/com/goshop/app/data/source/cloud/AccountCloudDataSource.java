@@ -56,8 +56,13 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params) {
-        return restApi.brandsPageRequest(params);
+    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
+        return restApi.brandsRequest(params);
+    }
+
+    @Override
+    public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
+        return restApi.brandsDetailRequest(params);
     }
 
     @Override
