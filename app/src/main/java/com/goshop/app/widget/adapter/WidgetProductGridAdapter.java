@@ -19,13 +19,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WidgetProductItemlAdapter extends RecyclerView.Adapter {
+public class WidgetProductGridAdapter extends RecyclerView.Adapter {
 
     private OnProductItemClickListener onProductItemClickListener;
 
     private List<ProductsVM> productsVMS;
 
-    public WidgetProductItemlAdapter(OnProductItemClickListener onProductItemClickListener,
+    public WidgetProductGridAdapter(OnProductItemClickListener onProductItemClickListener,
         List<ProductsVM> detailVMS) {
         this.onProductItemClickListener = onProductItemClickListener;
         this.productsVMS = detailVMS;

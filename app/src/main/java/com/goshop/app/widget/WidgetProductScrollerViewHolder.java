@@ -2,7 +2,7 @@ package com.goshop.app.widget;
 
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
-import com.goshop.app.widget.adapter.WidgetProductItemlAdapter;
+import com.goshop.app.widget.adapter.WidgetProductGridAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.support.v7.widget.LinearLayoutManager;
@@ -27,7 +27,7 @@ public class WidgetProductScrollerViewHolder extends RecyclerView.ViewHolder {
         LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
         manager.setOrientation(LinearLayoutManager.HORIZONTAL);
         recyclerViewHorizontal.setLayoutManager(manager);
-        WidgetProductItemlAdapter detailAdapter = new WidgetProductItemlAdapter(
+        WidgetProductGridAdapter detailAdapter = new WidgetProductGridAdapter(
             onProductItemClickListener,
             productScrollerVM.getProductsVMS());
         recyclerViewHorizontal.setAdapter(detailAdapter);

@@ -1,9 +1,10 @@
-package com.goshop.app.widget;
+package com.goshop.app.widget.viewholder;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
+import com.goshop.app.widget.BannerAutoPlayHelper;
 import com.goshop.app.widget.adapter.WidgetBannerAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 
@@ -29,7 +30,7 @@ public class WidgetBannerViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    void bindingData(WidgetCarouselVM bannerVM,
+    public void bindingData(WidgetCarouselVM bannerVM,
         OnBannerItemClickListener onBannerItemClickListener) {
         List<CarouselItemsVM> itemsVMS = bannerVM.getCarouselItemsVMS();
         viewpagerWidgetBanner

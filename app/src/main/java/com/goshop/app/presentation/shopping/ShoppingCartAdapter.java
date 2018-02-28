@@ -1,19 +1,19 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
-import com.goshop.app.common.CustomMinusPlusEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.ShoppingCartApplyVM;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
+import com.goshop.app.presentation.model.widget.ProductCartBannerVM;
+import com.goshop.app.widget.adapter.WidgetProductListAdapter;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
-import android.graphics.Paint;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 
 import java.util.List;
 
@@ -24,6 +24,10 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
     private List<ShoppingCartModel> cartModels;
 
+    private OnItemMenuClickListener menuClickListener;
+
+    private OnBannerItemClickListener onBannerItemClickListener;
+
     private OnCheckoutClickListener onCheckoutClickListener;
 
     public ShoppingCartAdapter(
@@ -32,10 +36,18 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
         this.onCheckoutClickListener = onCheckoutClickListener;
     }
 
+    public void setOnItemMenuClickListener(OnItemMenuClickListener menuClickListener) {
+        this.menuClickListener = menuClickListener;
+    }
+
     public void setDatas(List<ShoppingCartModel> cartModels) {
         this.cartModels.clear();
         this.cartModels = cartModels;
         notifyDataSetChanged();
+    }
+
+    public void setOnBannerItemClickListener(OnBannerItemClickListener onBannerItemClickListener) {
+        this.onBannerItemClickListener = onBannerItemClickListener;
     }
 
     @Override
@@ -43,15 +55,15 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
         RecyclerView.ViewHolder viewHolder = null;
 
         switch (viewType) {
+            case ShoppingCartModel.CART_BANNER:
+                View bannerView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.layout_widget_banner, parent, false);
+                viewHolder = new ShoppingCartBannerViewHolder(bannerView);
+                break;
             case ShoppingCartModel.CART_PRODUCT:
                 View productView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_cart_product, parent, false);
+                    .inflate(R.layout.item_recyclerview, parent, false);
                 viewHolder = new ProductViewHolder(productView);
-                break;
-            case ShoppingCartModel.CART_CHECKOUT:
-                View checkoutView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_cart_checkout, parent, false);
-                viewHolder = new CheckoutViewHolder(checkoutView);
                 break;
             case ShoppingCartModel.CART_APPLY:
                 View applyView = LayoutInflater.from(parent.getContext())
@@ -66,11 +78,13 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ShoppingCartModel shoppingCartModel = cartModels.get(position);
         if (holder instanceof ProductViewHolder) {
-            ((ProductViewHolder) holder).bindingData((ShoppingCartProductVM) shoppingCartModel);
-        } else if (holder instanceof CheckoutViewHolder) {
-            ((CheckoutViewHolder) holder).bindingData();
+            ((ProductViewHolder) holder)
+                .bindingData((ShoppingCartProductVM) shoppingCartModel, menuClickListener);
         } else if (holder instanceof ApplyViewHolder) {
             ((ApplyViewHolder) holder).bindingData((ShoppingCartApplyVM) shoppingCartModel);
+        } else if (holder instanceof ShoppingCartBannerViewHolder) {
+            ((ShoppingCartBannerViewHolder) holder).bindingData(
+                (ProductCartBannerVM) shoppingCartModel, onBannerItemClickListener);
         }
     }
 
@@ -91,43 +105,22 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
     class ProductViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.cmp_et_count)
-        CustomMinusPlusEditText cmpEtCount;
-
-        @BindView(R.id.iv_item_cart_menu)
-        ImageView ivItemCartMenu;
-
-        @BindView(R.id.iv_item_cart_product)
-        ImageView ivItemCartProduct;
-
-        @BindView(R.id.tv_item_cart_color)
-        CustomTextView tvItemCartColor;
-
-        @BindView(R.id.tv_item_cart_now_price)
-        CustomBoldTextView tvItemCartNowPrice;
-
-        @BindView(R.id.tv_item_cart_old_price)
-        CustomTextView tvItemCartOldPrice;
-
-        @BindView(R.id.tv_item_cart_title)
-        CustomTextView tvItemCartTitle;
+        @BindView(R.id.recyclerview)
+        RecyclerView recyclerView;
 
         public ProductViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(ShoppingCartProductVM productVM) {
-            tvItemCartTitle.setText(productVM.getTitle());
-            tvItemCartColor.setText(productVM.getColor());
-            tvItemCartOldPrice.setText(productVM.getOldPrice());
-            tvItemCartOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            tvItemCartNowPrice.setText(productVM.getNowPrice());
-            //TODO(helen) need decide
-            cmpEtCount.setText(productVM.getCount() + "");
-            cmpEtCount.setEditBackGround(android.R.color.transparent);
-            cmpEtCount.setMinusBackGround(R.drawable.ic_minus_round);
-            cmpEtCount.setPlusBackGround(R.drawable.ic_plus_round);
+        void bindingData(ShoppingCartProductVM cartProductVM,
+            OnItemMenuClickListener menuClickListener) {
+            LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
+            recyclerView.setLayoutManager(layoutManager);
+            WidgetProductListAdapter productListAdapter = new WidgetProductListAdapter(
+                cartProductVM.getProductListModels());
+            recyclerView.setAdapter(productListAdapter);
+            productListAdapter.setOnItemMenuClickListener(menuClickListener);
         }
     }
 
@@ -139,21 +132,6 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
         void bindingData(ShoppingCartApplyVM applyVM) {
 
-        }
-    }
-
-    class CheckoutViewHolder extends RecyclerView.ViewHolder {
-
-        @BindView(R.id.tv_btn_cart_checkout)
-        CustomTextView tvBtnCartCheckout;
-
-        public CheckoutViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
-
-        void bindingData() {
-            tvBtnCartCheckout.setOnClickListener(v -> onCheckoutClickListener.onCheckoutClick());
         }
     }
 }

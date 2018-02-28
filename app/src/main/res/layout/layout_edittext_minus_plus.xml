@@ -6,14 +6,16 @@
     android:layout_height="@dimen/size_28"
     android:focusableInTouchMode="true"
     android:focusable="true"
-    android:background="@drawable/bg_et_editable">
+    android:background="@drawable/bg_white_top_bottom_line">
 
     <ImageView
         android:id="@+id/iv_minus"
         android:layout_width="@dimen/size_28"
         android:layout_height="@dimen/size_28"
         android:layout_alignParentLeft="true"
-        android:background="@drawable/ic_arrows_square_minus"
+        android:background="@drawable/bg_left_right_line_grey"
+        android:src="@drawable/ic_icon_et_minus"
+        android:scaleType="center"
         android:contentDescription="@string/app_name"
         android:layout_alignParentStart="true"/>
     <ImageView
@@ -21,7 +23,9 @@
         android:layout_width="@dimen/size_28"
         android:layout_height="@dimen/size_28"
         android:layout_alignParentRight="true"
-        android:background="@drawable/ic_arrows_square_plus"
+        android:background="@drawable/bg_left_right_line_grey"
+        android:src="@drawable/ic_icon_et_plus"
+        android:scaleType="center"
         android:contentDescription="@string/app_name"
         android:layout_alignParentEnd="true"/>
 

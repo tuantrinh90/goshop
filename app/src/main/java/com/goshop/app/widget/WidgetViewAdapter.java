@@ -17,6 +17,7 @@ import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.goshop.app.widget.listener.OnSinglePicturClickListener;
 import com.goshop.app.widget.viewholder.PDPQaViewHolder;
 import com.goshop.app.widget.viewholder.PDPReviewsViewHolder;
+import com.goshop.app.widget.viewholder.WidgetBannerViewHolder;
 import com.goshop.app.widget.viewholder.WidgetVideoPlayerViewHolder;
 
 import android.support.v7.widget.RecyclerView;

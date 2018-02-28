@@ -2,11 +2,11 @@ package com.goshop.app.presentation.model;
 
 public class ShoppingCartModel {
 
-    public static final int CART_APPLY = 2;
+    public static final int CART_APPLY = 1;
 
-    public static final int CART_CHECKOUT = 3;
+    public static final int CART_BANNER = 2;
 
-    public static final int CART_PRODUCT = 1;
+    public static final int CART_PRODUCT = 3;
 
     private int viewType;
 

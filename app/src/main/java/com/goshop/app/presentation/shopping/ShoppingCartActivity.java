@@ -5,7 +5,10 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.model.ShoppingCartModel;
+import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.utils.SlideMenuUtil;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -33,7 +36,7 @@ import static com.goshop.app.utils.SlideMenuUtil.MENU_KEY;
 
 public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Presenter> implements
     ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener, NavigationView
-    .OnNavigationItemSelectedListener {
+    .OnNavigationItemSelectedListener, OnBannerItemClickListener, OnItemMenuClickListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -115,6 +118,8 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
         rvShoppintCart.setLayoutManager(layoutManager);
         shoppingCartAdapter = new ShoppingCartAdapter(new ArrayList<>(), this);
         rvShoppintCart.setAdapter(shoppingCartAdapter);
+        shoppingCartAdapter.setOnBannerItemClickListener(this);
+        shoppingCartAdapter.setOnItemMenuClickListener(this);
     }
 
     @Override
@@ -147,5 +152,15 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     @Override
     public void onCheckoutClick() {
         startActivity(new Intent(ShoppingCartActivity.this, CheckoutActivity.class));
+    }
+
+    @Override
+    public void onBannerItemClick(CarouselItemsVM carouselItemsVM) {
+        //todo wait for api
+    }
+
+    @Override
+    public void onItemMenuClick() {
+
     }
 }

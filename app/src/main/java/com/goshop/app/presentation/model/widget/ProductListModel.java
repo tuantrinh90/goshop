@@ -3,9 +3,9 @@ package com.goshop.app.presentation.model.widget;
 //todo this class may use later ,please keep it
 public class ProductListModel {
 
-    public static final int PRODUCT_LIST_BUY_NOW = 0x01;
+    public static final int TYPE_SHOPPING_CART = 0x01;
 
-    public static final int PRODUCT_LIST_MORE = 0x02;
+    public static final int TYPE_SHOPPING_CART_APPLY = 0x02;
 
     private int viewType;
 
