@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:state_selected="false"
+        android:drawable="@drawable/bg_white_bottom_line">
+    </item>
+
+    <item
+        android:state_selected="true">
+        <layer-list>
+            <item>
+                <shape>
+                    <solid android:color="@color/color_select_grey"/>
+                    <padding
+                        android:right="@dimen/size_16"
+                        android:left="@dimen/size_12"/>
+                </shape>
+            </item>
+            <item>
+                <bitmap
+                    android:gravity="end"
+                    android:src="@drawable/ic_right"/>
+            </item>
+        </layer-list>
+    </item>
+
+
+</selector>
+

@@ -18,10 +18,10 @@
             android:textSize="@dimen/size_font_16"
             android:padding="@dimen/size_10"
             android:text="@string/clear"
-            android:textColor="@color/color_main_pink"
+            android:textColor="@color/color_text_black"
             android:gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/bg_btn_pink_circle"/>
+            android:background="@drawable/bg_rectangle_black"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_btn_filter_done"
             android:layout_width="match_parent"
@@ -32,7 +32,7 @@
             android:textColor="@android:color/white"
             android:gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/bg_btn_pink"/>
+            android:background="@drawable/drawable_round_black"/>
 
     </LinearLayout>
 

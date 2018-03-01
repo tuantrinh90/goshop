@@ -1,12 +1,11 @@
 package com.goshop.app.presentation.home;
 
+import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.BrandsDetailFilterListVM;
-import com.goshop.app.presentation.model.BrandsDetailModel;
-import com.goshop.app.presentation.model.BrandsDetailTopVM;
-import com.goshop.app.presentation.model.widget.ProductFilterListVM;
+import com.goshop.app.presentation.model.BrandsDetailVM;
+import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
@@ -51,9 +50,7 @@ public class BrandsDetailPresenter extends RxPresenter<BrandsDetailContract.View
     }
 
     //todo this is mock data
-    private List<BrandsDetailModel> getMockData() {
-        List<BrandsDetailModel> brandsDetailModels = new ArrayList<>();
-        brandsDetailModels.add(new BrandsDetailTopVM());
+    private BrandsDetailVM getMockData() {
         ProductsVM productsVM = new ProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
@@ -70,7 +67,21 @@ public class BrandsDetailPresenter extends RxPresenter<BrandsDetailContract.View
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
 
-        brandsDetailModels.add(new BrandsDetailFilterListVM(new ProductFilterListVM(productsVMS)));
-        return brandsDetailModels;
+        //todo this is mock data will delete when api ready
+        SortVM sortVM1 = new SortVM("New Arrivals");
+        SortVM sortVM2 = new SortVM("Price from Low to High");
+        SortVM sortVM3 = new SortVM("Name A to Z");
+        SortVM sortVM4 = new SortVM("Promotion");
+        List<SortVM> sortVMS = new ArrayList<>();
+        sortVMS.add(sortVM1);
+        sortVMS.add(sortVM2);
+        sortVMS.add(sortVM3);
+        sortVMS.add(sortVM4);
+
+        return new BrandsDetailVM("", R.drawable.ic_brands_detail_logo,
+            "summarysummarysummarysummarysummarysummary" +
+                "summarysummarysummarysummarysummarysummarysummarysummary" +
+                "summarysummarysummarysummarysummarysummarysummarysummary",
+            productsVMS, sortVMS);
     }
 }

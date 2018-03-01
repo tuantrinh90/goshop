@@ -24,6 +24,12 @@ public class WidgetProductGridVerticalAdapter extends RecyclerView.Adapter {
         this.productsVMS = detailVMS;
     }
 
+    public void setUpdateDatas(List<ProductsVM> productsVMS) {
+        this.productsVMS.clear();
+        this.productsVMS = productsVMS;
+        notifyDataSetChanged();
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())

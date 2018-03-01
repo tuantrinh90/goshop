@@ -11,6 +11,7 @@
         android:background="@drawable/bg_white_bottom_line"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16">
+
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_btn_sort"
             android:layout_width="wrap_content"

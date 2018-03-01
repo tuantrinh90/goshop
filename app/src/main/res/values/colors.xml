@@ -21,6 +21,7 @@
     <color name="color_img_grey">#999999</color>
     <color name="color_press_grey">#eeeeee</color>
     <color name="color_top_grey">#cccccc</color>
+    <color name="color_select_grey">#0a000000</color>
 
     <color name="color_main_orange">#ff9911</color>
     <color name="color_main_green">#22aa11</color>
