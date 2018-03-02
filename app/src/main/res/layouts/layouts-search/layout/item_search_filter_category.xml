@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/size_40"
     android:paddingBottom="@dimen/size_12"
     android:paddingTop="@dimen/size_12"
-    android:background="@android:color/white"
+    android:background="@color/color_whole_bg"
     android:orientation="horizontal"
     tools:ignore="Overdraw">
 

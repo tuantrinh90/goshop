@@ -245,7 +245,7 @@
         <item name="colorControlActivated">@color/blackTrans12</item>
     </style>
     <style name="WhiteBackground" parent="AppTheme">
-        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowBackground">@color/color_whole_bg</item>
     </style>
 
     <declare-styleable name="animET">

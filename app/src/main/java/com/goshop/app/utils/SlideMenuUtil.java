@@ -3,8 +3,8 @@ package com.goshop.app.utils;
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.HelpSupportActivity;
+import com.goshop.app.presentation.account.MyAccountLandingActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.category.CategoryActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
@@ -60,7 +60,8 @@ public class SlideMenuUtil {
     private CustomTextView tvSlideUserName;
 
     public SlideMenuUtil(Activity activity, int currentMenuId, DrawerLayout drawerLayout,
-        NavigationView navigationView, boolean isLogin, NavigationView.OnNavigationItemSelectedListener itemSelectedListener) {
+        NavigationView navigationView, boolean isLogin,
+        NavigationView.OnNavigationItemSelectedListener itemSelectedListener) {
         this.drawerLayout = drawerLayout;
         this.currentMenuId = currentMenuId;
         this.activity = activity;
@@ -68,6 +69,35 @@ public class SlideMenuUtil {
         this.itemSelectedListener = itemSelectedListener;
         initNavigation(isLogin);
         drawerLisenter();
+    }
+
+    private void initNavigation(boolean isLogin) {
+        navigationView.setNavigationItemSelectedListener(itemSelectedListener);
+        slideMenuHome = getMenuItem(navigationView, R.id.slide_menu_home);
+        slideMenuCategories = getMenuItem(navigationView, R.id.slide_menu_categories);
+        slideMenuLoyalty = getMenuItem(navigationView, R.id.slide_menu_go_loyalty);
+        slideMenuCart = getMenuItem(navigationView, R.id.slide_menu_cart);
+        slideMenuWishlist = getMenuItem(navigationView, R.id.slide_menu_wishlist);
+        slideMenuOrder = getMenuItem(navigationView, R.id.slide_menu_orders);
+        slideMenuRewards = getMenuItem(navigationView, R.id.slide_menu_rewards);
+        slideMenuNotification = getMenuItem(navigationView, R.id.slide_menu_notifications);
+        slideMenuHelp = getMenuItem(navigationView, R.id.slide_menu_help);
+        slideMenuSettings = getMenuItem(navigationView, R.id.slide_menu_setting);
+        slideMenuOthers = getMenuItem(navigationView, R.id.slide_menu_others);
+        View headerView = navigationView.getHeaderView(0);
+        tvSlideSignUp = headerView.findViewById(R.id.tv_slide_sign_up);
+        llSlideUserInfo = headerView.findViewById(R.id.ll_slide_user_info);
+        ivSlideUser = headerView.findViewById(R.id.iv_slide_user);
+        tvSlideUserName = headerView.findViewById(R.id.tv_slide_user_name);
+
+        slideMenuWishlist.setVisible(isLogin);
+        slideMenuOrder.setVisible(isLogin);
+        slideMenuRewards.setVisible(isLogin);
+        tvSlideSignUp.setVisibility(isLogin ? View.GONE : View.VISIBLE);
+        llSlideUserInfo.setVisibility(isLogin ? View.VISIBLE : View.GONE);
+        initSlideMenuHeaderListener();
+        disableNavigationViewScrollbars();
+        initSlideMenuItem(currentMenuId);
     }
 
     public void drawerLisenter() {
@@ -92,7 +122,7 @@ public class SlideMenuUtil {
                             intent = new Intent(activity, MainPageActivity.class);
                             break;
                         case R.id.ll_slide_user_info:
-                            intent = new Intent(activity, EditProfileActivity.class);
+                            intent = new Intent(activity, MyAccountLandingActivity.class);
                             break;
                         case R.id.slide_menu_categories:
                             intent = new Intent(activity, CategoryActivity.class);
@@ -143,35 +173,6 @@ public class SlideMenuUtil {
             public void onDrawerStateChanged(int newState) {
             }
         });
-    }
-
-    private void initNavigation(boolean isLogin) {
-        navigationView.setNavigationItemSelectedListener(itemSelectedListener);
-        slideMenuHome = getMenuItem(navigationView, R.id.slide_menu_home);
-        slideMenuCategories = getMenuItem(navigationView, R.id.slide_menu_categories);
-        slideMenuLoyalty = getMenuItem(navigationView, R.id.slide_menu_go_loyalty);
-        slideMenuCart = getMenuItem(navigationView, R.id.slide_menu_cart);
-        slideMenuWishlist = getMenuItem(navigationView, R.id.slide_menu_wishlist);
-        slideMenuOrder = getMenuItem(navigationView, R.id.slide_menu_orders);
-        slideMenuRewards = getMenuItem(navigationView, R.id.slide_menu_rewards);
-        slideMenuNotification = getMenuItem(navigationView, R.id.slide_menu_notifications);
-        slideMenuHelp = getMenuItem(navigationView, R.id.slide_menu_help);
-        slideMenuSettings = getMenuItem(navigationView, R.id.slide_menu_setting);
-        slideMenuOthers = getMenuItem(navigationView, R.id.slide_menu_others);
-        View headerView = navigationView.getHeaderView(0);
-        tvSlideSignUp = headerView.findViewById(R.id.tv_slide_sign_up);
-        llSlideUserInfo = headerView.findViewById(R.id.ll_slide_user_info);
-        ivSlideUser = headerView.findViewById(R.id.iv_slide_user);
-        tvSlideUserName = headerView.findViewById(R.id.tv_slide_user_name);
-
-        slideMenuWishlist.setVisible(isLogin);
-        slideMenuOrder.setVisible(isLogin);
-        slideMenuRewards.setVisible(isLogin);
-        tvSlideSignUp.setVisibility(isLogin ? View.GONE : View.VISIBLE);
-        llSlideUserInfo.setVisibility(isLogin ? View.VISIBLE : View.GONE);
-        initSlideMenuHeaderListener();
-        disableNavigationViewScrollbars();
-        initSlideMenuItem(currentMenuId);
     }
 
     private MenuItem getMenuItem(NavigationView navigationView, int menuId) {

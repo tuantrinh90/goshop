@@ -15,6 +15,8 @@ import com.goshop.app.presentation.account.HelpSupportContract;
 import com.goshop.app.presentation.account.HelpSupportPresenter;
 import com.goshop.app.presentation.account.MyAddressBookContract;
 import com.goshop.app.presentation.account.MyAddressBookPresenter;
+import com.goshop.app.presentation.account.MyEGiftCardContract;
+import com.goshop.app.presentation.account.MyEGiftCardPresenter;
 import com.goshop.app.presentation.account.MyPointsContract;
 import com.goshop.app.presentation.account.MyPointsPresenter;
 import com.goshop.app.presentation.account.NotificationContract;
@@ -121,6 +123,13 @@ public class PresenterModule {
     public BrandsDetailContract.Presenter provideBrandsDetailPresenter(
         AccountDataRepository dataRepository) {
         return new BrandsDetailPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public MyEGiftCardContract.Presenter provideMyEGiftCardPresenter(
+        AccountDataRepository dataRepository) {
+        return new MyEGiftCardPresenter(dataRepository);
     }
 
     @Provides

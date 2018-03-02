@@ -4,8 +4,8 @@ import com.goshop.app.R;
 import com.goshop.app.common.FlowLayout;
 import com.goshop.app.common.view.CustomEditText;
 import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.presentation.model.FilterMenuCategoryVM;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
+import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.FilterMenuPriceVM;
 
@@ -62,16 +62,10 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.item_filter_menu_expand_title, parent, false);
                 viewHolder = new ExpandViewHolder(expandView);
                 break;
-            case FilterMenuModel.FILTER_CATEGORY:
+            case FilterMenuModel.FILTER_FLOWBUTTONS:
                 View categoryView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_filter_menu_category, parent, false);
-                viewHolder = new CategoryViewHolder(categoryView);
-                break;
-
-            case FilterMenuModel.FILTER_BRANDS:
-                View brandsView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_filter_menu_brands, parent, false);
-                viewHolder = new BrandsViewHolder(brandsView);
+                viewHolder = new FlowButtonViewHolder(categoryView);
                 break;
             case FilterMenuModel.FILTER_PRICE:
                 View priceView = LayoutInflater.from(parent.getContext())
@@ -87,8 +81,8 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         FilterMenuModel filterMenuModel = displayModels.get(position);
         if (holder instanceof ExpandViewHolder) {
             ((ExpandViewHolder) holder).bindingData((FilterMenuExpandVM) filterMenuModel, position);
-        } else if (holder instanceof CategoryViewHolder) {
-            ((CategoryViewHolder) holder).bindingData((FilterMenuCategoryVM) filterMenuModel);
+        } else if (holder instanceof FlowButtonViewHolder) {
+            ((FlowButtonViewHolder) holder).bindingData((FilterMenuFlowButtonVM) filterMenuModel);
         } else if (holder instanceof PriceViewHolder) {
             ((PriceViewHolder) holder).bindingData((FilterMenuPriceVM) filterMenuModel);
         }
@@ -172,20 +166,20 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         }
     }
 
-    class CategoryViewHolder extends RecyclerView.ViewHolder {
+    class FlowButtonViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.flow_search_filter)
         FlowLayout flowSearchFilter;
 
         private List<String> categorys;
 
-        public CategoryViewHolder(View itemView) {
+        public FlowButtonViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
             categorys = new ArrayList<>();
         }
 
-        void bindingData(FilterMenuCategoryVM categoryVM) {
+        void bindingData(FilterMenuFlowButtonVM categoryVM) {
             categorys.clear();
             categorys = categoryVM.getCategorys();
 

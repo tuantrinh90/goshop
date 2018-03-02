@@ -6,8 +6,10 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.BrandsDetailVM;
+import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.presentation.shopping.PDPDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.WidgetProductGridVerticalAdapter;
@@ -16,10 +18,11 @@ import com.goshop.app.widget.listener.OnProductItemClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -74,6 +77,8 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
 
     private WidgetProductGridVerticalAdapter gridVerticalAdapter;
 
+    private FilterMenuAdapter menuAdapter;
+
     private List<SortVM> sortVMS;
 
     @Override
@@ -81,6 +86,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
         super.onCreate(savedInstanceState);
         //todo wait for api
         mPresenter.brandsDetailRequest(null);
+        mPresenter.filterMenuRequest(null);
     }
 
     @Override
@@ -96,6 +102,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
         ivSortArrow.setSelected(false);
         initPresenter();
         initRecyclerView();
+        initFilterMenuRecyclerView();
     }
 
     private void initPresenter() {
@@ -109,9 +116,16 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     private void initRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerviewDetails.setLayoutManager(layoutManager);
-        gridVerticalAdapter = new WidgetProductGridVerticalAdapter(
-            this, new ArrayList<>());
+        gridVerticalAdapter = new WidgetProductGridVerticalAdapter(new ArrayList<>());
+        gridVerticalAdapter.setOnProductItemClickListener(this);
         recyclerviewDetails.setAdapter(gridVerticalAdapter);
+    }
+
+    private void initFilterMenuRecyclerView() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerviewFilter.setLayoutManager(layoutManager);
+        menuAdapter = new FilterMenuAdapter(new ArrayList<>());
+        recyclerviewFilter.setAdapter(menuAdapter);
     }
 
     @Override
@@ -131,18 +145,18 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
                 ivSortArrow.setSelected(!ivSortArrow.isSelected());
                 tvBtnSort.setSelected(!tvBtnSort.isSelected());
                 if (tvBtnSort.isSelected()) {
-                    for (int i = 0; i < sortVMS.size(); i++) {
-                        Log.d("PS--->", "state:" + sortVMS.get(i).isSelect());
-                    }
                     PopWindowUtil.showsSortListPop(tvBtnSort, sortVMS, this);
                 }
                 break;
             case R.id.iv_btn_filter:
+                drawerLayout.openDrawer(GravityCompat.END);
                 break;
 
             case R.id.tv_btn_filter_clear:
+                drawerLayout.closeDrawer(GravityCompat.END);
                 break;
             case R.id.tv_btn_filter_done:
+                drawerLayout.closeDrawer(GravityCompat.END);
                 break;
         }
     }
@@ -162,6 +176,11 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     }
 
     @Override
+    public void showFilterMenu(List<FilterMenuModel> filterMenuModels) {
+        menuAdapter.updateDatas(filterMenuModels);
+    }
+
+    @Override
     public void onProductItemClick(ProductsVM productItemVM) {
         startActivity(new Intent(this, PDPDetailActivity.class));
     }
@@ -176,5 +195,14 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     public void onDismiss() {
         ivSortArrow.setSelected(false);
         tvBtnSort.setSelected(false);
+    }
+
+    @Override
+    public void onBackPressed() {
+        if (drawerLayout.isDrawerOpen(GravityCompat.END)) {
+            drawerLayout.closeDrawer(GravityCompat.END);
+        } else {
+            super.onBackPressed();
+        }
     }
 }

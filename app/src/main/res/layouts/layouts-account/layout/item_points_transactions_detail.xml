@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@drawable/bg_white_top_line"
+    android:background="@drawable/bg_white_bottom_divider_line"
     android:layout_marginLeft="@dimen/size_16"
     android:layout_marginRight="@dimen/size_16"
-    android:paddingTop="@dimen/size_20"
-    android:paddingBottom="@dimen/size_20"
+    android:paddingTop="@dimen/size_12"
+    android:paddingBottom="@dimen/size_12"
     android:orientation="horizontal">
 
     <LinearLayout
@@ -21,18 +21,18 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/color_text_black"
-            android:textSize="@dimen/size_font_16"/>
+            android:textSize="@dimen/size_font_14"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_points_order_no"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_top_grey"
             android:textSize="@dimen/size_font_14"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_points_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_hint_grey"
+            android:textColor="@color/color_top_grey"
             android:textSize="@dimen/size_font_14"/>
     </LinearLayout>
 

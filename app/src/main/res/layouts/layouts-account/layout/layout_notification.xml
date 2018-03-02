@@ -7,8 +7,6 @@
 
     <include
         layout="@layout/toolbar_img_text_img_close"/>
-    <View
-        style="@style/homeWrapWidthLine"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_notification"

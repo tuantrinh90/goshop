@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/size_40"
     android:paddingBottom="@dimen/size_12"
     android:paddingTop="@dimen/size_12"
-    android:background="@android:color/white"
+    android:background="@color/color_whole_bg"
     android:textColor="@color/color_main_pink"
     android:textSize="@dimen/size_font_14"
     tools:ignore="Overdraw"/>

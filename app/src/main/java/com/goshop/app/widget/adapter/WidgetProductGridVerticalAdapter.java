@@ -18,10 +18,12 @@ public class WidgetProductGridVerticalAdapter extends RecyclerView.Adapter {
 
     private List<ProductsVM> productsVMS;
 
-    public WidgetProductGridVerticalAdapter(OnProductItemClickListener onProductItemClickListener,
-        List<ProductsVM> detailVMS) {
-        this.onProductItemClickListener = onProductItemClickListener;
+    public WidgetProductGridVerticalAdapter(List<ProductsVM> detailVMS) {
         this.productsVMS = detailVMS;
+    }
+
+    public void setOnProductItemClickListener(OnProductItemClickListener onProductItemClickListener) {
+        this.onProductItemClickListener = onProductItemClickListener;
     }
 
     public void setUpdateDatas(List<ProductsVM> productsVMS) {

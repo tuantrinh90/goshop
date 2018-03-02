@@ -31,10 +31,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".presentation.account.MyAccountLandingActivity"
+            android:theme="@style/WhiteBackground"/>
+
         <activity android:name=".presentation.shopping.PDPDetailActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.login.LoginActivity"/>
+        <activity android:name=".presentation.login.LoginActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.login.RegisterActivity"
             android:theme="@style/WhiteBackground"/>
@@ -80,19 +84,29 @@
         <activity android:name=".presentation.account.WebContentActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.checkout.CheckoutActivity"/>
+        <activity android:name=".presentation.checkout.CheckoutActivity"
+            android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.home.PromotionBannerActivity"/>
+        <activity android:name=".presentation.checkout.CheckoutPaymentActivity"
+            android:theme="@style/WhiteBackground">
 
-        <activity android:name=".presentation.home.PromotionLandingListActivity"/>
+        </activity>
+
+        <activity android:name=".presentation.home.PromotionBannerActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.home.PromotionLandingListActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.shopping.ProductDetailActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.myorder.MyOrderListActivity"/>
+        <activity android:name=".presentation.myorder.MyOrderListActivity"
+            android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.myorder.MyOrderDetailActivity"/>
+        <activity android:name=".presentation.myorder.MyOrderDetailActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.login.LoginComplementEmailActivity"
             android:theme="@style/WhiteBackground"/>
@@ -132,8 +146,12 @@
         <activity android:name=".presentation.home.BrandsDetailActivity"
             android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.account.MyEGiftCardsActivity"
+            android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.login.TestMenuActivity"/>
+
+        <activity android:name=".presentation.login.TestMenuActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <!-- FACEBOOK -->
         <activity

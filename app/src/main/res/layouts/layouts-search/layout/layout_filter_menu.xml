@@ -4,6 +4,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_filter_menu_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingTop="@dimen/size_8"
+        android:paddingBottom="@dimen/size_8"
+        android:textColor="@color/color_div_grey"
+        android:background="@color/color_press_grey"
+        android:text="@string/filter"/>
     <LinearLayout
         android:id="@+id/ll_filter_menu"
         android:layout_width="match_parent"
@@ -32,7 +42,7 @@
             android:textColor="@android:color/white"
             android:gravity="center"
             android:layout_weight="1"
-            android:background="@drawable/drawable_round_black"/>
+            android:background="@drawable/drawable_black"/>
 
     </LinearLayout>
 
@@ -40,6 +50,7 @@
         android:id="@+id/recyclerview_filter"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_below="@id/tv_filter_menu_top"
         android:layout_above="@id/ll_filter_menu"/>
 
 </RelativeLayout>

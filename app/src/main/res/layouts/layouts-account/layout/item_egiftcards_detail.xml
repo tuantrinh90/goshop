@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_white_bottom_divider_line"
+    android:layout_marginLeft="@dimen/size_16"
+    android:layout_marginRight="@dimen/size_16"
+    android:paddingTop="@dimen/size_12"
+    android:paddingBottom="@dimen/size_12"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="@dimen/size_0"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:orientation="vertical">
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:id="@+id/tv_egift_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_text_black"
+            android:textSize="@dimen/size_font_14"/>
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_egift_sender"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_top_grey"
+            android:textSize="@dimen/size_font_14"/>
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_egift_time"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_top_grey"
+            android:textSize="@dimen/size_font_14"/>
+    </LinearLayout>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_egift_price"
+        android:layout_width="@dimen/size_0"
+        android:layout_height="wrap_content"
+        android:paddingRight="@dimen/size_4"
+        android:textSize="@dimen/size_font_14"
+        android:gravity="right"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/color_text_black"
+        android:layout_weight="1"
+        tools:ignore="RtlHardcoded,RtlSymmetry"
+        android:paddingEnd="@dimen/size_4"/>
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_egift_status"
+        android:layout_width="@dimen/size_0"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:textColor="@color/color_text_black"
+        android:textSize="@dimen/size_font_14"
+        android:gravity="right"
+        android:layout_weight="1"
+        tools:ignore="RtlHardcoded"/>
+
+</LinearLayout>

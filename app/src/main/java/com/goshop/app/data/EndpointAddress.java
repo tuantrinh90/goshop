@@ -43,6 +43,8 @@ public class EndpointAddress {
 
     public static final String BRANDS_DETAIL = "";
 
+    public static final String MY_EGIFT_CARDS = "";
+
     //todo wait for api
     public static final String HOME_REQUEST = "";
 

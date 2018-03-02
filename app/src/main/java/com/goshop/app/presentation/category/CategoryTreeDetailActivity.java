@@ -7,7 +7,11 @@ import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SearchFilterModel;
+import com.goshop.app.presentation.model.SortVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
+import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,7 +35,7 @@ import injection.modules.PresenterModule;
 
 public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailContract
     .Presenter> implements CategoryTreeDetailContract.View, CategoryTreeDetailAdapter
-    .OnItemClickListener {
+    .OnItemClickListener, OnProductItemClickListener, PopWindowUtil.OnSortPopDismissListener  {
 
     public static final String CATEGORY_DETAIL_TITLE = "title";
 
@@ -83,12 +87,16 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
 
     private String title;
 
+    private List<SortVM> sortVMS;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initIntentData();
         //TODO  wait for api
         mPresenter.categoryDetailRequest(null);
+        sortVMS = mPresenter.getSortVMS();
+        sortVMS.get(0).setSelect(true);
     }
 
     @Override
@@ -128,7 +136,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
         textviewToolbarTitle.setText(title);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.iv_btn_filter, R.id.tv_btn_sort})
+    @OnClick({R.id.imageview_left_menu, R.id.iv_btn_filter, R.id.tv_btn_sort, R.id.iv_sort_arrow})
     public void onCategrayDetailsClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -138,6 +146,12 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
                 drawerLayout.openDrawer(GravityCompat.END);
                 break;
             case R.id.tv_btn_sort:
+            case R.id.iv_sort_arrow:
+                ivSortArrow.setSelected(!ivSortArrow.isSelected());
+                tvBtnSort.setSelected(!tvBtnSort.isSelected());
+                if (tvBtnSort.isSelected()) {
+                    PopWindowUtil.showsSortListPop(tvBtnSort, sortVMS, this);
+                }
                 break;
             case R.id.tv_btn_filter_clear:
                 drawerLayout.closeDrawer(GravityCompat.END);
@@ -190,5 +204,22 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
         recyclerviewFilter.setLayoutManager(layoutManager);
         menuAdapter = new FilterMenuAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
+    }
+
+    @Override
+    public void onProductItemClick(ProductsVM productItemVM) {
+
+    }
+
+    @Override
+    public void onPopItemClick(int position) {
+        sortVMS.get(position).setSelect(true);
+        tvBtnSort.setText(sortVMS.get(position).getTitle());
+    }
+
+    @Override
+    public void onDismiss() {
+        ivSortArrow.setSelected(false);
+        tvBtnSort.setSelected(false);
     }
 }

@@ -1,24 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_8"
-        android:background="@color/color_divider_grey"/>
+        android:background="@drawable/bg_top_bottom_shadow_grey"/>
     <com.goshop.app.common.view.CustomBoldTextView
         android:id="@+id/tv_title_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
-        android:textSize="@dimen/size_font_18"
+        android:textSize="@dimen/size_font_20"
         android:text="@string/transations"
         android:gravity="left"
         android:maxLines="1"
-        android:paddingBottom="@dimen/size_20"
+        android:paddingBottom="@dimen/size_16"
         android:paddingTop="@dimen/size_20"
         android:textColor="@color/color_text_black"
         tools:ignore="RtlHardcoded"/>
@@ -28,22 +29,21 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
+        android:background="@drawable/bg_white_bottom_divider_line"
         android:paddingBottom="@dimen/size_8"
         android:orientation="horizontal">
 
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_4"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_top_grey"
             android:textSize="@dimen/size_font_14"
             android:text="@string/transation_details"
             android:layout_weight="3"/>
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_4"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_top_grey"
             android:textSize="@dimen/size_font_14"
             android:text="@string/go_shop_points"
             android:gravity="right"
@@ -52,8 +52,7 @@
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_4"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_top_grey"
             android:textSize="@dimen/size_font_14"
             android:gravity="right"
             android:text="@string/valid_until"

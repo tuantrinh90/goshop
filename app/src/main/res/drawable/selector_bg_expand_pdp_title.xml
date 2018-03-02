@@ -9,8 +9,8 @@
                 <color android:color="@color/color_divider_grey"/>
             </item>
             <item
-                android:bottom="@dimen/size_1">
-                <color android:color="@android:color/white"/>
+                android:bottom="@dimen/size_divider">
+                <color android:color="@color/color_whole_bg"/>
             </item>
         </layer-list>
     </item>

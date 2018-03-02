@@ -10,20 +10,14 @@
     <include
         layout="@layout/toolbar_search_with_bottom_shadow"/>
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_48"
-        android:background="@drawable/bg_bottom_2dpline">
-        <include
-            layout="@layout/layout_filter_bar"/>
-    </RelativeLayout>
+    <include
+        layout="@layout/layout_filter_bar"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_search_result_display"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingRight="@dimen/size_10"
-        android:paddingLeft="@dimen/size_10"
-        android:background="@android:color/white"/>
+        android:paddingRight="@dimen/size_16"
+        android:background="@color/color_whole_bg"/>
 
 </LinearLayout>

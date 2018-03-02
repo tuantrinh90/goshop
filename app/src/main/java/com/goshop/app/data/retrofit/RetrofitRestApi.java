@@ -6,9 +6,9 @@ import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
-import com.goshop.app.data.model.GetSettingsResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
@@ -18,6 +18,7 @@ import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -64,6 +65,12 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<BrandsResponse> brandsDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<MyEGiftResponse> eGiftCardsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -239,9 +246,11 @@ public interface RetrofitRestApi {
     Observable<ContactUsResponse> contactMessageRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
+    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @GET
-    Observable<GetSettingsResponse> getSettingsDetail(@Url String fullUrl);
+    @POST
+    Observable<SettingsLogoutResponse> settingsLogoutRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

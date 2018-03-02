@@ -2,7 +2,7 @@
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:state_selected="false"
-        android:drawable="@drawable/bg_white_bottom_line">
+        android:drawable="@drawable/bg_bottom_line">
     </item>
 
     <item

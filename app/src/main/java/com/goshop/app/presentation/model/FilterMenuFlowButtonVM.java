@@ -2,12 +2,12 @@ package com.goshop.app.presentation.model;
 
 import java.util.List;
 
-public class FilterMenuCategoryVM extends FilterMenuModel {
+public class FilterMenuFlowButtonVM extends FilterMenuModel {
 
     private List<String> categorys;
 
-    public FilterMenuCategoryVM(List<String> categorys) {
-        super(FilterMenuModel.FILTER_CATEGORY);
+    public FilterMenuFlowButtonVM(List<String> categorys) {
+        super(FilterMenuModel.FILTER_FLOWBUTTONS);
         this.categorys = categorys;
     }
 

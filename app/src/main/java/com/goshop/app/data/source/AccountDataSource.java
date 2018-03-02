@@ -6,9 +6,9 @@ import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
-import com.goshop.app.data.model.GetSettingsResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
@@ -18,6 +18,7 @@ import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -44,6 +45,8 @@ public interface AccountDataSource {
 
     Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
+    Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params);
+
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
     Observable<UserInfo> getUserInfo(String userId);
@@ -68,7 +71,8 @@ public interface AccountDataSource {
 
     Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params);
 
-    Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(Map<String, Object> params);
+    Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(
+        Map<String, Object> params);
 
     Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
 
@@ -104,7 +108,7 @@ public interface AccountDataSource {
 
     Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params);
 
-    Observable<GetSettingsResponse> getSettingsDetail();
+    Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params);
 
     Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params);
 

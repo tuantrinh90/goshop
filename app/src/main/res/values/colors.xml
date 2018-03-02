@@ -6,6 +6,7 @@
 
     <!--Correction color-->
     <color name="color_hint_grey">#62000000</color>
+    <color name="color_apply_grey">#61212121</color>
     <color name="color_text_grey">#8a000000</color>
     <color name="color_text_old_grey">#a9a9a9</color>
     <color name="color_text_light_grey">#8a000000</color>
@@ -13,6 +14,7 @@
     <color name="color_text_bold_black">#dd000000</color>
     <color name="color_dark_black">#88000000</color>
     <color name="color_main_pink">#ec458b</color>
+    <color name="color_filter_grey">#89000000</color>
     <color name="color_litte_pink">#FFF0F5</color>
     <color name="color_litte_grey">#f1f1f1</color>
     <color name="color_back_grey">#42221f1f</color>
@@ -22,7 +24,7 @@
     <color name="color_press_grey">#eeeeee</color>
     <color name="color_top_grey">#cccccc</color>
     <color name="color_select_grey">#0a000000</color>
-
+    <color name="color_div_grey">#60000000</color>
     <color name="color_main_orange">#ff9911</color>
     <color name="color_main_green">#22aa11</color>
     <color name="color_main_grey">#bcbcbc</color>
@@ -33,6 +35,7 @@
     <color name="bluePoor">#00A9AC</color>
     <color name="blueNormal">#27A9E1</color>
     <color name="blueDark">#00609D</color>
+    <color name="color_ad_black">#ad000000</color>
 
     <color name="yellowNormal">#FBAF3F</color>
 
@@ -44,6 +47,7 @@
     <color name="color_shadow_two">#10CCCCCC</color>
     <color name="color_shadow_three">#20CCCCCC</color>
     <color name="color_shadow_four">#40CCCCCC</color>
+    <color name="color_check_black">#dd212121</color>
 
 
 
@@ -86,6 +90,24 @@
     <color name="transparent60Percent">#99000000</color>
     <color name="transparent80Percent">#CC000000</color>
 
-
+    <!--document color value-->
+    <color name="color_branding_pink">#df307a</color>
+    <color name="color_branding_light_pink">#ec008b</color>
+    <color name="color_grayscale_text">#de000000</color><!--87%-->
+    <color name="color_grayscale_secondary">#8a000000</color><!--54%-->
+    <color name="color_text_hint">#61000000</color><!--38%-->
+    <color name="color_bg_disabled_divider">#1f000000</color><!--12%-->
+    <color name="color_whole_bg">#fafafa</color>
+    <color name="color_bar_bg">#ffffff</color>
+    <color name="color_success_message">#23c15e</color>
+    <color name="color_success_bg">#3323c15e</color><!--20%-->
+    <color name="color_error_message">#f86060</color>
+    <color name="color_error_bg">#1af86060</color><!--10%-->
+    <color name="color_corporate_green">#8cc63e</color>
+    <color name="color_corporate_dark_green">#00a9ac</color>
+    <color name="color_corporate_blue">#27a9e1</color>
+    <color name="color_corporate_dark_blue">#00609d</color>
+    <color name="color_corporate_orange">#fbaf3f</color>
+    <color name="color_corporate_purple">#bc7bb4</color>
 
 </resources>

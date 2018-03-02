@@ -35,7 +35,8 @@
             android:textSize="15sp"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            tools:ignore="ContentDescription" android:layout_alignParentEnd="true"/>
+            tools:ignore="ContentDescription"
+            android:layout_alignParentEnd="true"/>
 
         <ImageView
             android:id="@+id/imageview_toolbar_title"

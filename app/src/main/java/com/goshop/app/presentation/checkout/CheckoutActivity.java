@@ -5,11 +5,10 @@ import com.goshop.app.R;
 import com.goshop.app.adapter.CheckoutListAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomButton;
+import com.goshop.app.common.view.CustomRadioButton;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.utils.ScreenHelper;
-import com.goshop.app.utils.ViewUtils;
 
 import android.annotation.SuppressLint;
 import android.graphics.drawable.Drawable;
@@ -33,10 +32,10 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     private static final int RADIO_BUTTON_W_AND_H = 25;
 
     @BindView(R.id.btn_checkout_place_my_order)
-    CustomButton btnCheckoutPlaceMyOrder;
+    CustomBoldTextView btnCheckoutPlaceMyOrder;
 
-    @BindView(R.id.imageview_left_menu)
-    ImageView imageviewLeftMenu;
+    @BindView(R.id.iv_checkout_shipping_more)
+    ImageView ivCheckoutShippingMore;
 
     String paymentType;
 
@@ -44,13 +43,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     RadioGroup radioPaymentType;
 
     @BindView(R.id.rb_checkout_payment_banking)
-    RadioButton rbCheckoutPaymentBanking;
+    CustomRadioButton rbCheckoutPaymentBanking;
 
     @BindView(R.id.rb_checkout_payment_cash_on_deliery)
-    RadioButton rbCheckoutPaymentCashOnDeliery;
+    CustomRadioButton rbCheckoutPaymentCashOnDeliery;
 
     @BindView(R.id.rb_checkout_payment_credit)
-    RadioButton rbCheckoutPaymentCredit;
+    CustomRadioButton rbCheckoutPaymentCredit;
 
     @BindView(R.id.rl_shipping_root)
     RelativeLayout rlShippingRoot;
@@ -58,11 +57,23 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.rv_order_list)
     RecyclerView rvOrderList;
 
+    @BindView(R.id.tv_btn_check_discount_apply)
+    CustomBoldTextView tvBtnCheckDiscountApply;
+
+    @BindView(R.id.tv_btn_check_gift_card_apply)
+    CustomBoldTextView tvBtnCheckGiftCardApply;
+
+    @BindView(R.id.tv_btn_check_points_apply)
+    CustomBoldTextView tvBtnCheckPointsApply;
+
     @BindView(R.id.tv_checkout_address_first)
     CustomTextView tvCheckoutAddressFirst;
 
     @BindView(R.id.tv_checkout_address_second)
     CustomTextView tvCheckoutAddressSecond;
+
+    @BindView(R.id.tv_checkout_attention)
+    CustomTextView tvCheckoutAttention;
 
     @BindView(R.id.tv_checkout_city_state_code)
     CustomTextView tvCheckoutCityStateCode;
@@ -70,29 +81,14 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.tv_checkout_country)
     CustomTextView tvCheckoutCountry;
 
-    @BindView(R.id.tv_checkout_discount)
-    CustomTextView tvCheckoutDiscount;
-
-    @BindView(R.id.tv_checkout_rounding_amout)
-    CustomTextView tvCheckoutRoundingAmout;
-
-    @BindView(R.id.tv_checkout_shipping)
-    CustomTextView tvCheckoutShipping;
-
     @BindView(R.id.tv_checkout_shipping_title)
     CustomBoldTextView tvCheckoutShippingTitle;
-
-    @BindView(R.id.tv_checkout_sub_total)
-    CustomTextView tvCheckoutSubTotal;
 
     @BindView(R.id.tv_checkout_tel)
     CustomTextView tvCheckoutTel;
 
-    @BindView(R.id.tv_checkout_total)
-    CustomBoldTextView tvCheckoutTotal;
-
     @BindView(R.id.tv_checkout_username)
-    CustomTextView tvCheckoutUsername;
+    CustomBoldTextView tvCheckoutUsername;
 
     @Override
     public void showCheckout(CheckoutResponse checkoutResponse) {
@@ -109,10 +105,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             .setText(checkoutResponse.getCity() + "," + checkoutResponse.getPostcode());
         tvCheckoutCountry.setText(checkoutResponse.getCountry());
         tvCheckoutTel.setText(checkoutResponse.getTel());
-
-        setRadioButtonDrawable(rbCheckoutPaymentBanking);
-        setRadioButtonDrawable(rbCheckoutPaymentCredit);
-        setRadioButtonDrawable(rbCheckoutPaymentCashOnDeliery);
         radioPaymentType.check(R.id.rb_checkout_payment_banking);
         radioPaymentType.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
@@ -138,13 +130,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         rvOrderList.setAdapter(new CheckoutListAdapter(response.getCheckoutItems()));
     }
 
-    private void setRadioButtonDrawable(RadioButton radioButton) {
-        Drawable rbDrawable = getResources().getDrawable(R.drawable.selector_check);
-        rbDrawable.setBounds(0, 0, ScreenHelper.dip2px(this, RADIO_BUTTON_W_AND_H),
-            ScreenHelper.dip2px(this, RADIO_BUTTON_W_AND_H));
-        radioButton.setCompoundDrawables(rbDrawable, null, null, null);
-    }
-
     @Override
     public void showNetwordErrorMessage() {
         //TODO wait for api
@@ -158,7 +143,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewUtils.setBg(imageviewLeftMenu, R.drawable.ic_icon_back);
         mPresenter.getCheckout("");
 
     }
@@ -170,6 +154,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void inject() {
+        hideRightMenu();
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -188,6 +173,9 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             case R.id.rl_shipping_root:
                 break;
             case R.id.btn_checkout_place_my_order:
+                break;
+            case R.id.imageview_left_menu:
+                finish();
                 break;
         }
     }

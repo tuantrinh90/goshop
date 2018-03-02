@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_pressed="true">
+        <layer-list
+            android:shape="rectangle">
+            <item>
+                <color android:color="@color/color_bg_disabled_divider"/>
+            </item>
+            <item
+                android:bottom="@dimen/size_1">
+                <color android:color="@color/color_bg_disabled_divider"/>
+            </item>
+        </layer-list>
+    </item>
+
+
+    <item>
+        <layer-list
+            android:shape="rectangle">
+            <item>
+                <color android:color="@color/color_bg_disabled_divider"/>
+            </item>
+            <item
+                android:bottom="@dimen/size_1">
+                <color android:color="@android:color/white"/>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

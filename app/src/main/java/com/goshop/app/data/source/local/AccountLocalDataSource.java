@@ -7,9 +7,9 @@ import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
-import com.goshop.app.data.model.GetSettingsResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
@@ -19,6 +19,7 @@ import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -61,6 +62,11 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -216,7 +222,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<GetSettingsResponse> getSettingsDetail() {
+    public Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params) {
         return null;
     }
 

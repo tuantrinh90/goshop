@@ -9,7 +9,7 @@
     android:layout_height="?attr/actionBarSize"
     app:contentInsetEnd="0dp"
     app:contentInsetStart="0dp"
-    android:background="@drawable/bg_bottom_shadow_white"
+    android:background="@drawable/bg_bar_bottom_line"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <RelativeLayout

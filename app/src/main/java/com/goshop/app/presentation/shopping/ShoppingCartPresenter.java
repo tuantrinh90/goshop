@@ -75,7 +75,8 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
         List<ProductListModel> listModels = new ArrayList<>();
         listModels.add(new ProductCartListVM(productsVM));
         listModels.add(new ProductCartListVM(productsVM));
-        cartModels.add(new ProductCartBannerVM(itemsVMS));
+        //todo this may add banner when need this widget
+//        cartModels.add(new ProductCartBannerVM(itemsVMS));
         cartModels.add(new ShoppingCartProductVM(listModels));
         cartModels.add(new ShoppingCartApplyVM());
         return cartModels;

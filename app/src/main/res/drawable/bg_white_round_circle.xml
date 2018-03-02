@@ -5,7 +5,7 @@
         android:radius="@dimen/size_2"/>
 
     <solid
-        android:color="@android:color/white"/>
+        android:color="@color/color_whole_bg"/>
 
     <stroke
         android:width="@dimen/size_1"

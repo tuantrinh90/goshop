@@ -6,7 +6,7 @@
     android:layout_height="wrap_content"
     android:layout_marginRight="@dimen/size_16"
     android:layout_marginLeft="@dimen/size_16"
-    android:background="@drawable/bg_white_bottom_line">
+    android:background="@drawable/bg_bottom_line">
 
 
     <Switch

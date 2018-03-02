@@ -2,22 +2,19 @@ package com.goshop.app.presentation.settings;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
-import com.goshop.app.presentation.model.SettingsModel;
 
-import java.util.List;
+import java.util.Map;
 
 public class SettingsContract {
 
     interface View extends BaseView {
 
-        void showSettingView(List<SettingsModel> settingsModelse);
-
-        void startChangePasswordScreen();
+        void logoutResult();
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void getSettingsDetail();
+        void settingsLogoutRequest(Map<String, Object> params);
     }
 
 }

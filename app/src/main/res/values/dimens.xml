@@ -168,5 +168,7 @@
     <dimen name="size_font_18">18sp</dimen>
     <dimen name="size_font_20">20sp</dimen>
     <dimen name="size_font_22">22sp</dimen>
+    <dimen name="size_font_28">28sp</dimen>
+    <dimen name="size_font_32">32sp</dimen>
 
 </resources>
