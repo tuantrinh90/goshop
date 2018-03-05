@@ -3,15 +3,18 @@ package com.goshop.app.data.retrofit;
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -74,6 +77,36 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_EGIFT_CARDS);
         return retrofitRestApi.eGiftCardsRequest(url, params);
+    }
+
+    @Override
+    public Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GO_LOYALTY);
+        return retrofitRestApi.goLoyaltyRequest(url, params);
+    }
+
+    @Override
+    public Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ALL_DEALS);
+        return retrofitRestApi.allDealsRequest(url, params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EXPIRED);
+        return retrofitRestApi.expiredRequest(url, params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> pendingRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PENDING);
+        return retrofitRestApi.pendingRequest(url, params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.REDEEMED);
+        return retrofitRestApi.redeemedRequest(url, params);
     }
 
     @Override

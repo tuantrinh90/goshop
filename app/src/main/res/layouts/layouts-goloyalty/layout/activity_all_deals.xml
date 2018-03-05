@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v4.widget.DrawerLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawer_layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    tools:openDrawer="end">
+
+    <include
+        layout="@layout/layout_all_deals"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_drawer_filter"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/color_whole_bg"
+        android:layout_gravity="end"
+        android:fitsSystemWindows="true">
+
+        <include
+            layout="@layout/layout_filter_menu"/>
+
+    </RelativeLayout>
+
+</android.support.v4.widget.DrawerLayout>

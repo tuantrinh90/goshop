@@ -1,15 +1,18 @@
 package com.goshop.app.data.source;
 
 import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -46,6 +49,16 @@ public interface AccountDataSource {
     Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
     Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params);
+
+    Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
+
+    Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params);
+
+    Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params);
+
+    Observable<MyRewardsResponse> pendingRequest(Map<String, Object> params);
+
+    Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params);
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 

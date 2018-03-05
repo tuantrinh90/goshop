@@ -17,6 +17,11 @@ import com.goshop.app.presentation.category.CategoryTreeDetailActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
+import com.goshop.app.presentation.goloyalty.AllDealsActivity;
+import com.goshop.app.presentation.goloyalty.ExpiredFragment;
+import com.goshop.app.presentation.goloyalty.GoLoyaltyActivity;
+import com.goshop.app.presentation.goloyalty.PendingFragment;
+import com.goshop.app.presentation.goloyalty.RedeemedFragment;
 import com.goshop.app.presentation.home.BrandsDetailActivity;
 import com.goshop.app.presentation.home.BrandsFragment;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
@@ -56,6 +61,16 @@ public interface PresenterComponent {
     void inject(BrandsDetailActivity brandsDetailActivity);
 
     void inject(MyEGiftCardsActivity myEGiftCardsActivity);
+
+    void inject(GoLoyaltyActivity goLoyaltyActivity);
+
+    void inject(AllDealsActivity allDealsActivity);
+
+    void inject(PendingFragment pendingFragment);
+
+    void inject(RedeemedFragment redeemedFragment);
+
+    void inject(ExpiredFragment expiredFragment);
 
     void inject(PDPDetailActivity pdpDetailActivity);
 

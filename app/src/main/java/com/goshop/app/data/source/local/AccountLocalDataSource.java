@@ -2,15 +2,18 @@ package com.goshop.app.data.source.local;
 
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -67,6 +70,31 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> pendingRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params) {
         return null;
     }
 

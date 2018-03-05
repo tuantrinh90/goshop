@@ -35,6 +35,16 @@ import com.goshop.app.presentation.checkout.CheckoutSelectContract;
 import com.goshop.app.presentation.checkout.CheckoutSelectPresenter;
 import com.goshop.app.presentation.checkout.PaymentStatusContract;
 import com.goshop.app.presentation.checkout.PaymentStatusPresenter;
+import com.goshop.app.presentation.goloyalty.AllDealsContract;
+import com.goshop.app.presentation.goloyalty.AllDealsPresenter;
+import com.goshop.app.presentation.goloyalty.ExpiredContract;
+import com.goshop.app.presentation.goloyalty.ExpiredPresenter;
+import com.goshop.app.presentation.goloyalty.GoLoyaltyContract;
+import com.goshop.app.presentation.goloyalty.GoLoyaltyPresenter;
+import com.goshop.app.presentation.goloyalty.PendingContract;
+import com.goshop.app.presentation.goloyalty.PendingPresenter;
+import com.goshop.app.presentation.goloyalty.RedeemedContract;
+import com.goshop.app.presentation.goloyalty.RedeemedPresenter;
 import com.goshop.app.presentation.home.BrandsContract;
 import com.goshop.app.presentation.home.BrandsDetailContract;
 import com.goshop.app.presentation.home.BrandsDetailPresenter;
@@ -130,6 +140,39 @@ public class PresenterModule {
     public MyEGiftCardContract.Presenter provideMyEGiftCardPresenter(
         AccountDataRepository dataRepository) {
         return new MyEGiftCardPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public GoLoyaltyContract.Presenter provideGoLoyaltyPresenter(
+        AccountDataRepository dataRepository) {
+        return new GoLoyaltyPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public AllDealsContract.Presenter provideAllDealsPresenter(
+        AccountDataRepository dataRepository) {
+        return new AllDealsPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public PendingContract.Presenter providePendingPresenter(AccountDataRepository dataRepository) {
+        return new PendingPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public RedeemedContract.Presenter provideRedeemedPresenter(
+        AccountDataRepository dataRepository) {
+        return new RedeemedPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public ExpiredContract.Presenter provideExpiredPresenter(AccountDataRepository dataRepository) {
+        return new ExpiredPresenter(dataRepository);
     }
 
     @Provides

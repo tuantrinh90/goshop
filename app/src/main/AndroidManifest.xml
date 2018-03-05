@@ -25,6 +25,17 @@
 
         <activity android:name=".presentation.home.MainPageActivity"
             android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.goloyalty.GoLoyaltyActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.goloyalty.AllDealsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.goloyalty.MyRewardsActivity"
+            android:theme="@style/WhiteBackground">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER"/>
@@ -152,6 +163,7 @@
 
         <activity android:name=".presentation.login.TestMenuActivity"
             android:theme="@style/WhiteBackground"/>
+
 
         <!-- FACEBOOK -->
         <activity

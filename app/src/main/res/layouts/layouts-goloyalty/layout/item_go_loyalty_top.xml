@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:paddingTop="@dimen/size_24"
+    android:paddingBottom="@dimen/size_24"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/iv_go_loyalty_thumb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/app_name"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/ic_icon_user_default"/>
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_go_loyalty_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/user_name"
+        android:textSize="@dimen/size_font_16"
+        android:textColor="@color/color_grayscale_text"
+        android:paddingTop="@dimen/size_16"
+        android:gravity="center_horizontal"/>
+
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_go_loyalty_member"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/go_shop_member"
+        android:textAllCaps="true"
+        android:textSize="@dimen/size_font_20"
+        android:textColor="@color/color_grayscale_text"
+        android:paddingTop="@dimen/size_4"
+        android:gravity="center_horizontal"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_32"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/ll_loyalty_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <com.goshop.app.common.view.CustomBoldTextView
+                android:id="@+id/tv_loyalty_id"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/go_shop_member"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@color/color_grayscale_text"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size_4"
+                android:gravity="center"
+                android:text="@string/go_loyalty_id"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_grayscale_text"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/ll_loyalty_points"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_weight="1">
+            <com.goshop.app.common.view.CustomBoldTextView
+                android:id="@+id/tv_loyalty_points"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="@string/go_shop_member"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@color/color_grayscale_text"/>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size_4"
+                android:gravity="center"
+                android:text="@string/go_shop_points"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_grayscale_text"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

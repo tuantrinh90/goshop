@@ -7,6 +7,7 @@ import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.MyAccountLandingActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.category.CategoryActivity;
+import com.goshop.app.presentation.goloyalty.GoLoyaltyActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.login.LoginActivity;
 import com.goshop.app.presentation.login.TestMenuActivity;
@@ -128,7 +129,7 @@ public class SlideMenuUtil {
                             intent = new Intent(activity, CategoryActivity.class);
                             break;
                         case R.id.slide_menu_go_loyalty:
-                            //TODO  this part need to decide
+                            intent = new Intent(activity, GoLoyaltyActivity.class);
                             break;
                         case R.id.slide_menu_cart:
                             intent = new Intent(activity, ShoppingCartActivity.class);

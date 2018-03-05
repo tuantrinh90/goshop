@@ -33,6 +33,7 @@ android {
         main {
             res.srcDirs = [
                     'src/main/res/layouts/layouts-widget',
+                    'src/main/res/layouts/layouts-goloyalty',
                     'src/main/res/layouts/layouts-notification',
                     'src/main/res/layouts/layouts-settings',
                     'src/main/res/layouts/layouts-search',
