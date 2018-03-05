@@ -9,6 +9,8 @@ public class EndpointAddress {
 
     public static final String ALL_DEALS = "";
 
+    public static final String ALL_REVIEWS = "";
+
     public static final String BRANDS_DETAIL = "";
 
     public static final String BRANDS_PAGE = "";
@@ -90,6 +92,8 @@ public class EndpointAddress {
 
     //todo wait for api
     public static final String RESET_PASSWORD = "";
+
+    public static final String REWARDS_DETAIL = "";
 
     //todo wait for api
     public static final String SEARCH_FILGER = "";

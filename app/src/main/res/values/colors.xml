@@ -95,6 +95,7 @@
     <color name="color_branding_light_pink">#ec008b</color>
     <color name="color_grayscale_text">#de000000</color><!--87%-->
     <color name="color_grayscale_secondary">#8a000000</color><!--54%-->
+    <color name="color_grayscale_text_two">#dd212121</color>
     <color name="color_text_hint">#61000000</color><!--38%-->
     <color name="color_bg_disabled_divider">#1f000000</color><!--12%-->
     <color name="color_whole_bg">#fafafa</color>

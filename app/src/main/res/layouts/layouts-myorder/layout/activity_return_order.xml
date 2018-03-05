@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:animSpinner="http://schemas.android.com/apk/res-auto"
+    xmlns:animET="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_img_text_img_close"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/size_16"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_grayscale_text"
+                android:text="@string/return_order_tips"/>
+            <com.goshop.app.common.CustomAnimEditText
+                android:id="@+id/et_return_order_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginLeft="@dimen/size_16"
+                android:layout_marginRight="@dimen/size_16"
+                animET:hint="@string/name"/>
+
+            <com.goshop.app.common.CustomAnimEditText
+                android:id="@+id/et_return_order_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginLeft="@dimen/size_16"
+                android:layout_marginRight="@dimen/size_16"
+                animET:hint="@string/email"/>
+
+            <com.goshop.app.common.CustomAnimEditText
+                android:id="@+id/et_return_order_mobile"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginLeft="@dimen/size_16"
+                android:layout_marginRight="@dimen/size_16"
+                animET:hint="@string/mobile_phone_no_optional"/>
+
+            <com.goshop.app.common.CustomAnimEditText
+                android:id="@+id/et_return_order_handing"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginLeft="@dimen/size_16"
+                android:layout_marginRight="@dimen/size_16"
+                animET:hint="@string/product_handing_optional"/>
+
+            <com.goshop.app.common.CustomAnimSpinner
+                android:id="@+id/et_return_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginLeft="@dimen/size_16"
+                android:layout_marginRight="@dimen/size_16"
+                animSpinner:sp_hint="@string/return_reason_optional"/>
+
+            <com.goshop.app.common.CustomAnimSpinner
+                android:id="@+id/et_return_detail_reason"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginLeft="@dimen/size_16"
+                android:layout_marginRight="@dimen/size_16"
+                android:layout_marginBottom="@dimen/size_30"
+                animSpinner:sp_hint="@string/return_detail_reson_optional"/>
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_btn_return_order"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="@dimen/size_8"
+                android:text="@string/submit"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@android:color/white"
+                android:padding="@dimen/size_14"
+                android:background="@drawable/bg_btn_round_pink"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

@@ -14,6 +14,7 @@ import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnReviewsViewMoreClickListener;
 import com.goshop.app.widget.listener.OnSinglePicturClickListener;
 import com.goshop.app.widget.viewholder.PDPQaViewHolder;
 import com.goshop.app.widget.viewholder.PDPReviewsViewHolder;
@@ -41,6 +42,8 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
 
     private OnProductItemClickListener onProductItemClickListener;
 
+    private OnReviewsViewMoreClickListener onReviewsViewMoreClickListener;
+
     private OnSinglePicturClickListener onSinglePicturClickListener;
 
     public WidgetViewAdapter(
@@ -65,6 +68,11 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
     public void setOnSinglePicturClickListener(
         OnSinglePicturClickListener onSinglePicturClickListener) {
         this.onSinglePicturClickListener = onSinglePicturClickListener;
+    }
+
+    public void setOnReviewsViewMoreClickListener(
+        OnReviewsViewMoreClickListener onReviewsViewMoreClickListener) {
+        this.onReviewsViewMoreClickListener = onReviewsViewMoreClickListener;
     }
 
     public void setUpdateDatas(List<WidgetViewModel> widgetViewModels) {
@@ -208,7 +216,8 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
         } else if (viewHolder instanceof PDPQaViewHolder) {
             ((PDPQaViewHolder) viewHolder).bindingData((WidgetPDPQaVM) widgetViewModel);
         } else if (viewHolder instanceof PDPReviewsViewHolder) {
-            ((PDPReviewsViewHolder) viewHolder).bindingData((WidgetPDPReviewsVM) widgetViewModel);
+            ((PDPReviewsViewHolder) viewHolder)
+                .bindingData((WidgetPDPReviewsVM) widgetViewModel, onReviewsViewMoreClickListener);
         }
     }
 

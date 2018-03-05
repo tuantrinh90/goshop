@@ -10,6 +10,7 @@ import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import com.goshop.app.widget.WidgetViewAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnReviewsViewMoreClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +30,8 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
-    implements PDPDetailContract.View, OnProductItemClickListener, OnBannerItemClickListener {
+    implements PDPDetailContract.View, OnProductItemClickListener, OnBannerItemClickListener,
+    OnReviewsViewMoreClickListener {
 
     @BindView(R.id.iv_pdp_detail_love)
     ImageView ivPdpDetailLove;
@@ -115,6 +117,7 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
         widgetViewAdapter.setOnBannerItemClickListener(this);
         widgetViewAdapter.setOnProductItemClickListener(this);
         widgetViewAdapter.setUpdateDatas(detailDatas);
+        widgetViewAdapter.setOnReviewsViewMoreClickListener(this);
     }
 
     @Override
@@ -125,5 +128,10 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
     @Override
     public void onBannerItemClick(CarouselItemsVM carouselItemsVM) {
         //TODO(helen)wait for design
+    }
+
+    @Override
+    public void onReviewsMoreClick() {
+        startActivity(new Intent(this, AllReviewsActivity.class));
     }
 }

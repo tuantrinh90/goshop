@@ -25,9 +25,15 @@ public class PDPReviewsItemAdapter extends RecyclerView.Adapter {
         this.reviewsVMS = reviewsVMS;
     }
 
+    public void setUpdateDatas(List<ReviewsVM> reviewsVMS) {
+        this.reviewsVMS.clear();
+        this.reviewsVMS = reviewsVMS;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reviews, parent,false);
+        View view = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.item_reviews, parent, false);
         return new ReviewsItemViewHolder(view);
     }
 

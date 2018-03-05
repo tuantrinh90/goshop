@@ -3,6 +3,7 @@ package com.goshop.app.data.source.local;
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -99,7 +100,17 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
+    public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
     public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
         return null;
     }
 

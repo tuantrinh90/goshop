@@ -45,6 +45,8 @@ import com.goshop.app.presentation.goloyalty.PendingContract;
 import com.goshop.app.presentation.goloyalty.PendingPresenter;
 import com.goshop.app.presentation.goloyalty.RedeemedContract;
 import com.goshop.app.presentation.goloyalty.RedeemedPresenter;
+import com.goshop.app.presentation.goloyalty.RewardsDetailContract;
+import com.goshop.app.presentation.goloyalty.RewardsDetailPresenter;
 import com.goshop.app.presentation.home.BrandsContract;
 import com.goshop.app.presentation.home.BrandsDetailContract;
 import com.goshop.app.presentation.home.BrandsDetailPresenter;
@@ -73,6 +75,8 @@ import com.goshop.app.presentation.search.SearchResultContract;
 import com.goshop.app.presentation.search.SearchResultPresenter;
 import com.goshop.app.presentation.settings.SettingsContract;
 import com.goshop.app.presentation.settings.SettingsPresenter;
+import com.goshop.app.presentation.shopping.AllReviewsContract;
+import com.goshop.app.presentation.shopping.AllReviewsPresenter;
 import com.goshop.app.presentation.shopping.PDPDetailContract;
 import com.goshop.app.presentation.shopping.PDPDetailPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
@@ -173,6 +177,20 @@ public class PresenterModule {
     @ActivityScope
     public ExpiredContract.Presenter provideExpiredPresenter(AccountDataRepository dataRepository) {
         return new ExpiredPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public AllReviewsContract.Presenter provideAllReviewsPresenter(
+        AccountDataRepository dataRepository) {
+        return new AllReviewsPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public RewardsDetailContract.Presenter provideRewardsDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new RewardsDetailPresenter(dataRepository);
     }
 
     @Provides

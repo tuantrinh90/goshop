@@ -8,6 +8,7 @@ import com.google.gson.JsonParser;
 
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -156,8 +157,18 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.rewardsDetailRequest(params);
+    }
+
+    @Override
     public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
         return accountCloudDataSource.pdpDetailRequest(params);
+    }
+
+    @Override
+    public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
+        return accountCloudDataSource.allReviewsRequest(params);
     }
 
     @Override

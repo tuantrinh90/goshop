@@ -191,7 +191,29 @@
                         tools:ignore="RelativeOverlap"
                         android:layout_alignParentEnd="true"/>
                 </RelativeLayout>
+
+
             </LinearLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_top_shadow_white"
+                android:padding="@dimen/size_16">
+                <com.goshop.app.common.view.CustomTextView
+                    android:id="@+id/tv_btn_order_detail_cancel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_white_round_circle"
+                    android:layout_alignParentRight="true"
+                    android:paddingTop="@dimen/size_8"
+                    android:paddingBottom="@dimen/size_8"
+                    android:paddingRight="@dimen/size_12"
+                    android:paddingLeft="@dimen/size_12"
+                    android:textSize="@dimen/size_14"
+                    android:textColor="@color/color_grayscale_text"
+                    android:text="@string/cancel"/>
+            </RelativeLayout>
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

@@ -4,6 +4,7 @@ import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -110,9 +111,21 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
+    public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.REWARDS_DETAIL);
+        return retrofitRestApi.rewardsDetailRequest(url, params);
+    }
+
+    @Override
     public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PDP_DETAILS);
         return retrofitRestApi.pdpDetailRequest(url, params);
+    }
+
+    @Override
+    public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ALL_REVIEWS);
+        return retrofitRestApi.allReviewsRequest(url, params);
     }
 
     @Override

@@ -12,6 +12,7 @@ import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.utils.ViewUtils;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -146,11 +147,14 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
         tvOrderDetailTotal.setText(reponse.getGrandTotal());
     }
 
-    @OnClick({R.id.imageview_left_menu})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_order_detail_cancel})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
+                break;
+            case R.id.tv_btn_order_detail_cancel:
+                startActivity(new Intent(this, CancelOrderActivity.class));
                 break;
         }
     }

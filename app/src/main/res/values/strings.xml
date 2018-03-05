@@ -385,8 +385,31 @@
     <string name="my_account">My Account</string>
     <string name="deals">Deals</string>
     <string name="all_deals">All Deals</string>
+    <string name="all_reviews">All Reviews</string>
     <string name="go_loyalty_id">Go+Loyalty ID</string>
     <string name="pending">Pending</string>
     <string name="redeemed">Redeemed</string>
     <string name="expired">Expired</string>
+    <string name="promo_details">Promo Details</string>
+    <string name="promo_terms">Promo Terms and Conditions</string>
+    <string name="promo_title">Promotion Title</string>
+    <string name="download">Download</string>
+    <string name="cancel">Cancel</string>
+    <string name="order_cancellation_form">Order Cancellation Form</string>
+    <string name="cancel_order_tips">Please fill in your details and reason for cancellation. Our
+        customer service will contact you soon.
+    </string>
+    <string name="mobile_phone_no_optional">Mobile Phone No.(Optional)</string>
+    <string name="product_handing_optional">Product Handing(Optional)</string>
+    <string name="cancel_reason_optional">Cancel Reason(Optional)</string>
+    <string name="cancel_detail_reson_optional">Cancel Detail Reason(Optional)</string>
+    <string name="return_reason_optional">Return Reason(Optional)</string>
+    <string name="return_detail_reson_optional">Return Detail Reason(Optional)</string>
+    <string name="return_order_tips">Please fill in your details and reason for return. Our customer
+        service will contact you soon.
+    </string>
+
+    <string name="title">Title</string>
+    <string name="review_content">Review Content</string>
+    <string name="content_count">0/1000</string>
 </resources>

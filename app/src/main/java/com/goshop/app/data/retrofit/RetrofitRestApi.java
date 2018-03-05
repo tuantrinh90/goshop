@@ -2,6 +2,7 @@ package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -109,7 +110,19 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
+    Observable<MyRewardsResponse> rewardsDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
     Observable<ProductDetailResponse> pdpDetailRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<AllReviewsResponse> allReviewsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})

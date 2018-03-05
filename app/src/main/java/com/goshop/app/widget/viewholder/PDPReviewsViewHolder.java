@@ -5,6 +5,7 @@ import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.widget.WidgetPDPReviewsVM;
 import com.goshop.app.widget.adapter.PDPReviewsItemAdapter;
+import com.goshop.app.widget.listener.OnReviewsViewMoreClickListener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -36,11 +37,12 @@ public class PDPReviewsViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void bindingData(WidgetPDPReviewsVM pdpReviewsVM) {
+    public void bindingData(WidgetPDPReviewsVM pdpReviewsVM,
+        OnReviewsViewMoreClickListener onReviewsViewMoreClickListener) {
         tvReviewsTotalCount.setText(pdpReviewsVM.getReviewsCounts());
         ratingBar.setRating(pdpReviewsVM.getTotalStarStep());
         tvBtnAddMore.setOnClickListener(v -> {
-            //TODO wait for decide
+            onReviewsViewMoreClickListener.onReviewsMoreClick();
         });
 
         LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());

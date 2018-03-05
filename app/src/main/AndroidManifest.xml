@@ -25,7 +25,10 @@
 
         <activity android:name=".presentation.home.MainPageActivity"
             android:theme="@style/WhiteBackground">
-
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
         </activity>
 
         <activity android:name=".presentation.goloyalty.GoLoyaltyActivity"
@@ -35,12 +38,10 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.goloyalty.MyRewardsActivity"
-            android:theme="@style/WhiteBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.goloyalty.RewardsDetailActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.MyAccountLandingActivity"
             android:theme="@style/WhiteBackground"/>
@@ -48,6 +49,11 @@
         <activity android:name=".presentation.shopping.PDPDetailActivity"
             android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.shopping.WriteReviewActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.shopping.AllReviewsActivity"
+            android:theme="@style/WhiteBackground"/>
         <activity android:name=".presentation.login.LoginActivity"
             android:theme="@style/WhiteBackground"/>
 
@@ -117,6 +123,12 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.myorder.MyOrderDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.CancelOrderActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.ReturnOrderActivity"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.login.LoginComplementEmailActivity"

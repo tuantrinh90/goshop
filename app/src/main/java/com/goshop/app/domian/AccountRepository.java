@@ -2,6 +2,7 @@ package com.goshop.app.domian;
 
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -60,7 +61,11 @@ public interface AccountRepository {
 
     Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params);
 
+    Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
+
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
+
+    Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params);
 
     Observable<UserInfo> getUserInfo(String userId);
 
