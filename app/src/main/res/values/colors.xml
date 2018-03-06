@@ -90,6 +90,7 @@
     <color name="transparent60Percent">#99000000</color>
     <color name="transparent80Percent">#CC000000</color>
 
+    <color name="color_greyish_brown">#494949</color>
     <!--document color value-->
     <color name="color_branding_pink">#df307a</color>
     <color name="color_branding_light_pink">#ec008b</color>
@@ -102,7 +103,7 @@
     <color name="color_bar_bg">#ffffff</color>
     <color name="color_success_message">#23c15e</color>
     <color name="color_success_bg">#3323c15e</color><!--20%-->
-    <color name="color_error_message">#f86060</color>
+    <color name="color_grapefruit">#f86060</color>
     <color name="color_error_bg">#1af86060</color><!--10%-->
     <color name="color_corporate_green">#8cc63e</color>
     <color name="color_corporate_dark_green">#00a9ac</color>

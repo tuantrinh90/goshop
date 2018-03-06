@@ -43,6 +43,9 @@
         <activity android:name=".presentation.goloyalty.RewardsDetailActivity"
             android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.goloyalty.CardRedeemActivity"
+            android:theme="@style/WhiteBackground"/>
+
         <activity android:name=".presentation.account.MyAccountLandingActivity"
             android:theme="@style/WhiteBackground"/>
 

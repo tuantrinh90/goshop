@@ -24,7 +24,8 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class PendingFragment extends BaseFragment<PendingContract.Presenter> implements
-    PendingContract.View, PendingAdapter.OnRewardsItemClickListener {
+    PendingContract.View, PendingAdapter.OnRewardsItemClickListener, PendingAdapter
+    .OnCardRedeemClickListener {
 
     @BindView(R.id.recyclerview_pending)
     RecyclerView recyclerviewPending;
@@ -72,6 +73,7 @@ public class PendingFragment extends BaseFragment<PendingContract.Presenter> imp
         pendingAdapter = new PendingAdapter(new ArrayList<>());
         recyclerviewPending.setAdapter(pendingAdapter);
         pendingAdapter.setOnRewardsItemClickListener(this);
+        pendingAdapter.setOnCardRedeemClickListener(this);
     }
 
     @Override
@@ -94,5 +96,10 @@ public class PendingFragment extends BaseFragment<PendingContract.Presenter> imp
     @Override
     public void onRewardItemClick() {
         startActivity(new Intent(getActivity(), RewardsDetailActivity.class));
+    }
+
+    @Override
+    public void onCardClick() {
+        startActivity(new Intent(getActivity(), CardRedeemActivity.class));
     }
 }

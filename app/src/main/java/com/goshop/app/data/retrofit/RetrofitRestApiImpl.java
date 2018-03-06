@@ -6,6 +6,7 @@ import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
+import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
@@ -108,6 +109,18 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.REDEEMED);
         return retrofitRestApi.redeemedRequest(url, params);
+    }
+
+    @Override
+    public Observable<CardRedeemResponse> cardRedeemRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.CARD_REDEEM);
+        return retrofitRestApi.cardRedeemRequest(url, params);
+    }
+
+    @Override
+    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.SWIPE_REDEEM);
+        return retrofitRestApi.swipeRedeemRequest(url, params);
     }
 
     @Override

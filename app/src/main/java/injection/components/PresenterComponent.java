@@ -18,6 +18,7 @@ import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.goloyalty.AllDealsActivity;
+import com.goshop.app.presentation.goloyalty.CardRedeemActivity;
 import com.goshop.app.presentation.goloyalty.ExpiredFragment;
 import com.goshop.app.presentation.goloyalty.GoLoyaltyActivity;
 import com.goshop.app.presentation.goloyalty.PendingFragment;
@@ -73,6 +74,8 @@ public interface PresenterComponent {
     void inject(RedeemedFragment redeemedFragment);
 
     void inject(ExpiredFragment expiredFragment);
+
+    void inject(CardRedeemActivity redeemActivity);
 
     void inject(RewardsDetailActivity rewardsDetailActivity);
 

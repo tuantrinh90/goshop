@@ -37,6 +37,8 @@ import com.goshop.app.presentation.checkout.PaymentStatusContract;
 import com.goshop.app.presentation.checkout.PaymentStatusPresenter;
 import com.goshop.app.presentation.goloyalty.AllDealsContract;
 import com.goshop.app.presentation.goloyalty.AllDealsPresenter;
+import com.goshop.app.presentation.goloyalty.CardRedeemContract;
+import com.goshop.app.presentation.goloyalty.CardRedeemPresenter;
 import com.goshop.app.presentation.goloyalty.ExpiredContract;
 import com.goshop.app.presentation.goloyalty.ExpiredPresenter;
 import com.goshop.app.presentation.goloyalty.GoLoyaltyContract;
@@ -171,6 +173,13 @@ public class PresenterModule {
     public RedeemedContract.Presenter provideRedeemedPresenter(
         AccountDataRepository dataRepository) {
         return new RedeemedPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public CardRedeemContract.Presenter provideCardRedeemPresenter(
+        AccountDataRepository dataRepository) {
+        return new CardRedeemPresenter(dataRepository);
     }
 
     @Provides

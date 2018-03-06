@@ -389,6 +389,8 @@
     <string name="go_loyalty_id">Go+Loyalty ID</string>
     <string name="pending">Pending</string>
     <string name="redeemed">Redeemed</string>
+    <string name="redeem">Redeem</string>
+    <string name="swipe_to_redeem">Swipe to Redeem</string>
     <string name="expired">Expired</string>
     <string name="promo_details">Promo Details</string>
     <string name="promo_terms">Promo Terms and Conditions</string>
@@ -412,4 +414,5 @@
     <string name="title">Title</string>
     <string name="review_content">Review Content</string>
     <string name="content_count">0/1000</string>
+    <string name="redeem_swipe_tip">Please make sure to swipe only when you are at merchant store.</string>
 </resources>

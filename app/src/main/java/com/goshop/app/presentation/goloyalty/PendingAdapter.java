@@ -21,10 +21,16 @@ public class PendingAdapter extends RecyclerView.Adapter {
 
     private List<GoLoyaltyDealsVM> dealsVMS;
 
+    private OnCardRedeemClickListener onCardRedeemClickListener;
+
     private OnRewardsItemClickListener onRewardsItemClickListener;
 
     public PendingAdapter(List<GoLoyaltyDealsVM> dealsVMS) {
         this.dealsVMS = dealsVMS;
+    }
+
+    public void setOnCardRedeemClickListener(OnCardRedeemClickListener onCardRedeemClickListener) {
+        this.onCardRedeemClickListener = onCardRedeemClickListener;
     }
 
     public void setUpdateDatas(List<GoLoyaltyDealsVM> dealsVMS) {
@@ -60,6 +66,11 @@ public class PendingAdapter extends RecyclerView.Adapter {
         void onRewardItemClick();
     }
 
+    public interface OnCardRedeemClickListener {
+
+        void onCardClick();
+    }
+
     class DealViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_pending_cards)
@@ -93,8 +104,7 @@ public class PendingAdapter extends RecyclerView.Adapter {
             tvPendingDetail.setText(dealsVM.getDetail());
             tvPendingTime.setText(dealsVM.getTime());
             tvPendingEnd.setText(dealsVM.getEnd());
-            ivPendingCards.setOnClickListener(v -> {
-            });
+            ivPendingCards.setOnClickListener(v -> onCardRedeemClickListener.onCardClick());
             itemView.setOnClickListener(v -> onRewardsItemClickListener.onRewardItemClick());
         }
     }

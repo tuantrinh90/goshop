@@ -10,6 +10,7 @@ import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
+import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
@@ -154,6 +155,16 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params) {
         return accountCloudDataSource.redeemedRequest(params);
+    }
+
+    @Override
+    public Observable<CardRedeemResponse> cardRedeemRequest(Map<String, Object> params) {
+        return accountCloudDataSource.cardRedeemRequest(params);
+    }
+
+    @Override
+    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
+        return accountCloudDataSource.swipeRedeemRequest(params);
     }
 
     @Override

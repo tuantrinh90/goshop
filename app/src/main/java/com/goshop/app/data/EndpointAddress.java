@@ -87,6 +87,10 @@ public class EndpointAddress {
 
     public static final String REDEEMED = "";
 
+    public static final String CARD_REDEEM = "";
+
+    public static final String SWIPE_REDEEM = "";
+
     //todo wait for api
     public static final String REGISTER = "";
 
