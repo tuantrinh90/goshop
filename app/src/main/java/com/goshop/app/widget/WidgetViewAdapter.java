@@ -12,6 +12,7 @@ import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
 import com.goshop.app.presentation.model.widget.WidgetVideoPlayerVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
+import com.goshop.app.widget.listener.OnChannelItemClickListener;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.goshop.app.widget.listener.OnReviewsViewMoreClickListener;
@@ -39,6 +40,8 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
     private List<WidgetViewModel> displayModels;
 
     private OnBannerItemClickListener onBannerItemClickListener;
+
+    private OnChannelItemClickListener onChannelItemClickListener;
 
     private OnProductItemClickListener onProductItemClickListener;
 

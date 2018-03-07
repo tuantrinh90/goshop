@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,13 +7,14 @@
     android:orientation="vertical">
 
     <RelativeLayout
+        android:id="@+id/rl_video_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/size_16"
         android:paddingTop="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
         android:paddingBottom="@dimen/size_24">
-        
+
         <ImageView
             android:id="@+id/iv_btn_on_air_right"
             android:layout_width="@dimen/size_24"
@@ -48,19 +49,19 @@
             android:layout_marginEnd="@dimen/size_4"/>
     </RelativeLayout>
 
-    <include
-        layout="@layout/layout_channels"/>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_video_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/rl_video_title"
+        android:layout_centerHorizontal="true"
+        android:paddingRight="@dimen/size_16"
+        android:paddingLeft="@dimen/size_16"/>
 
-    <ImageView
-        android:id="@+id/iv_on_air_video"
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_video_product"
+        android:layout_below="@id/recyclerview_video_player"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_208"
-        android:layout_marginTop="@dimen/size_18"
-        android:background="@drawable/ic_video"
-        android:contentDescription="@string/app_name"
-    />
+        android:layout_height="@dimen/size_375"/>
 
-    <include
-        layout="@layout/layout_widget_video_product"/>
-
-</LinearLayout>
+</RelativeLayout>

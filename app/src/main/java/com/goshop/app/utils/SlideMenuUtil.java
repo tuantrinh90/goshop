@@ -5,6 +5,7 @@ import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.MyAccountLandingActivity;
+import com.goshop.app.presentation.account.MyWishlistActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.category.CategoryActivity;
 import com.goshop.app.presentation.goloyalty.GoLoyaltyActivity;
@@ -136,7 +137,7 @@ public class SlideMenuUtil {
                             intent = new Intent(activity, ShoppingCartActivity.class);
                             break;
                         case R.id.slide_menu_wishlist:
-                            //TODO  this part need to decide
+                            intent = new Intent(activity, MyWishlistActivity.class);
                             break;
                         case R.id.slide_menu_orders:
                             intent = new Intent(activity, MyOrderListActivity.class);

@@ -15,7 +15,7 @@
         android:id="@+id/tv_help_support_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/color_whole_bg"
+        android:background="@android:color/white"
         android:textColor="@color/color_div_grey"
         android:textSize="@dimen/size_font_14"
         android:paddingLeft="@dimen/size_16"

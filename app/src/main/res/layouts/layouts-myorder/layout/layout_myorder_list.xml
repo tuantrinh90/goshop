@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:orientation="vertical"
-    android:background="@color/color_whole_bg"
+    android:background="@android:color/white"
     android:layout_height="match_parent">
     <include
         layout="@layout/toolbar_img_text_img_close"/>

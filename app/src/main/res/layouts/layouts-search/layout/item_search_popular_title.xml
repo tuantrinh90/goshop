@@ -7,7 +7,7 @@
     android:layout_height="wrap_content"
     android:paddingBottom="@dimen/size_12"
     android:paddingTop="@dimen/size_12"
-    android:background="@color/color_whole_bg"
+    android:background="@android:color/white"
     android:text="@string/popular_products"
     android:textColor="@color/color_text_black"
     android:textSize="@dimen/size_font_14"

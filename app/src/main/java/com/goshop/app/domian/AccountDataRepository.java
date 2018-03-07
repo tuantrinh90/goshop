@@ -21,6 +21,7 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -170,6 +171,11 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
         return accountCloudDataSource.rewardsDetailRequest(params);
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params) {
+        return accountCloudDataSource.myWishlistRequest(params);
     }
 
     @Override

@@ -415,4 +415,6 @@
     <string name="review_content">Review Content</string>
     <string name="content_count">0/1000</string>
     <string name="redeem_swipe_tip">Please make sure to swipe only when you are at merchant store.</string>
+    <string name="wishlist_nodata">There is no wishlist items yet.</string>
+    <string name="go_shop_now">Go Shop Now</string>
 </resources>

@@ -57,4 +57,9 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
 
         itemView.setOnClickListener(v -> onProductItemClickListener.onProductItemClick(productsVM));
     }
+
+    public View getItemView() {
+        return itemView;
+    }
+
 }

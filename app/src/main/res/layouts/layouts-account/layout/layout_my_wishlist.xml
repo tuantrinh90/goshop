@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_img_text_img_close"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_wishlist"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:id="@+id/rl_wishlist_nodata"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        android:paddingTop="@dimen/size_156"
+        android:paddingBottom="@dimen/size_80">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:layout_centerHorizontal="true"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="@dimen/size_70"
+                android:layout_height="@dimen/size_66"
+                android:contentDescription="@string/app_name"
+                android:background="@drawable/ic_no_wishlist"/>
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size_16"
+                android:text="@string/wishlist_nodata"
+                android:textColor="@color/color_grayscale_secondary"
+                android:textSize="@dimen/size_font_18"/>
+        </LinearLayout>
+
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_btn_go_shop_now"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_white_round_circle"
+            android:textColor="@color/color_grayscale_text"
+            android:textSize="@dimen/size_font_18"
+            android:paddingTop="@dimen/size_10"
+            android:paddingBottom="@dimen/size_10"
+            android:paddingLeft="@dimen/size_12"
+            android:paddingRight="@dimen/size_12"
+            android:text="@string/go_shop_now"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"/>
+
+
+    </RelativeLayout>
+
+</LinearLayout>

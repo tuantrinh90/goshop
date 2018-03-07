@@ -15,7 +15,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/color_whole_bg"
+            android:background="@android:color/white"
             android:paddingLeft="@dimen/size_16"
             android:paddingRight="@dimen/size_16"
             android:orientation="vertical">
@@ -31,7 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:nestedScrollingEnabled="false"
-                android:background="@color/color_whole_bg"
+                android:background="@android:color/white"
                 tools:targetApi="lollipop"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

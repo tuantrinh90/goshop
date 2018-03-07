@@ -5,7 +5,7 @@
         <layer-list>
             <item>
                 <shape>
-                    <solid android:color="@color/color_whole_bg"/>
+                    <solid android:color="@android:color/white"/>
                     <padding
                         android:right="@dimen/size_6"
                         android:left="@dimen/size_6" />
@@ -24,7 +24,7 @@
         <layer-list>
             <item>
                 <shape>
-                    <solid android:color="@color/color_whole_bg"/>
+                    <solid android:color="@android:color/white"/>
                     <padding
                         android:right="@dimen/size_6"
                     android:left="@dimen/size_6"/>

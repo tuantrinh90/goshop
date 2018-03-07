@@ -5,6 +5,6 @@
     </item>
     <item
         android:bottom="@dimen/size_1">
-        <color android:color="@color/color_whole_bg"/>
+        <color android:color="@android:color/white"/>
     </item>
 </layer-list>

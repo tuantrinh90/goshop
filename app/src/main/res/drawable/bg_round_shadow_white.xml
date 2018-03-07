@@ -54,7 +54,7 @@
         <shape>
             <corners
                 android:radius="@dimen/size_2"/>
-            <solid android:color="@color/color_whole_bg"/>
+            <solid android:color="@android:color/white"/>
         </shape>
     </item>
 </layer-list>

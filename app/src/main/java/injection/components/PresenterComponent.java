@@ -9,6 +9,7 @@ import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
 import com.goshop.app.presentation.account.MyEGiftCardsActivity;
 import com.goshop.app.presentation.account.MyPointsActivity;
+import com.goshop.app.presentation.account.MyWishlistActivity;
 import com.goshop.app.presentation.account.NotificationActivity;
 import com.goshop.app.presentation.account.TermsConditionsActivity;
 import com.goshop.app.presentation.account.WebContentActivity;
@@ -66,6 +67,8 @@ public interface PresenterComponent {
     void inject(MyEGiftCardsActivity myEGiftCardsActivity);
 
     void inject(GoLoyaltyActivity goLoyaltyActivity);
+
+    void inject(MyWishlistActivity myWishlistActivity);
 
     void inject(AllDealsActivity allDealsActivity);
 

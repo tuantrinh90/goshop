@@ -26,7 +26,7 @@
                     android:paddingTop="@dimen/size_16"
                     android:paddingRight="@dimen/size_16"
                     android:paddingBottom="@dimen/size_8"
-                    android:background="@color/color_whole_bg"
+                    android:background="@android:color/white"
                     android:text="@string/newsletter_subscription"
                     android:textColor="@color/color_div_grey"/>
 
@@ -144,7 +144,7 @@
                 <com.goshop.app.common.view.CustomBoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="@color/color_whole_bg"
+                    android:background="@android:color/white"
                     android:textSize="@dimen/size_font_14"
                     android:paddingLeft="@dimen/size_16"
                     android:paddingTop="@dimen/size_16"

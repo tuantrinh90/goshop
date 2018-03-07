@@ -32,7 +32,7 @@
     <!-- Background -->
     <item>
         <shape>
-            <solid android:color="@color/color_whole_bg" />
+            <solid android:color="@android:color/white" />
         </shape>
     </item>
 </layer-list>

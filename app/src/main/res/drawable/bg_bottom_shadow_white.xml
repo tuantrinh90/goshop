@@ -16,7 +16,7 @@
     <!-- content -->
     <item android:bottom="@dimen/size_4">
         <shape android:shape="rectangle" >
-            <solid android:color="@color/color_whole_bg" />
+            <solid android:color="@android:color/white" />
         </shape>
     </item>
 

@@ -99,6 +99,8 @@ public class EndpointAddress {
 
     public static final String REWARDS_DETAIL = "";
 
+    public static final String MY_WISHLIST = "";
+
     //todo wait for api
     public static final String SEARCH_FILGER = "";
 

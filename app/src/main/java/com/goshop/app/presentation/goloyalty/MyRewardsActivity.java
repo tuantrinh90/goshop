@@ -86,7 +86,7 @@ public class MyRewardsActivity extends BaseActivity implements NavigationView
     public void inject() {
         imageViewLeftMenu.setVisibility(View.GONE);
         hideRightMenu();
-        initSlideMenuListenerUtil(R.id.slide_menu_others);
+        initSlideMenuListenerUtil( R.id.slide_menu_rewards);
         initTabLayoutViewPager();
     }
 
