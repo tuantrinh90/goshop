@@ -55,6 +55,9 @@
         <activity android:name=".presentation.shopping.PDPDetailActivity"
             android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.shopping.PDPDetailImagesActivity"
+            android:theme="@style/WhiteBackground"/>
+
         <activity android:name=".presentation.shopping.WriteReviewActivity"
             android:theme="@style/WhiteBackground"/>
 
