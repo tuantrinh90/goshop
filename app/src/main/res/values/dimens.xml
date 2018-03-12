@@ -38,6 +38,8 @@
     <dimen name="home_slide_menu_item_height">52dp</dimen>
 
     <!--size-->
+    <dimen name="size_2_negative">-2dp</dimen>
+    <dimen name="size_16_negative">-10dp</dimen>
     <dimen name="size_0">0dp</dimen>
     <dimen name="size_half">0.5dp</dimen>
     <dimen name="size_divider">0.6dp</dimen>

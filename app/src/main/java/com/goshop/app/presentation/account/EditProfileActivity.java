@@ -4,19 +4,21 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.CustomAnimSpinner;
+import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.utils.EditTextUtil;
+import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PopWindowUtil;
 
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ImageView;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import butterknife.BindView;
@@ -25,10 +27,8 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class EditProfileActivity extends BaseActivity<EditProfileContract.Presenter> implements
-    EditProfileContract.View {
-
-    @BindView(R.id.et_profile_date)
-    CustomAnimSpinner etProfileDate;
+    EditProfileContract.View, PopWindowUtil.OnPopWindowDismissListener,
+    PopWindowUtil.OnDatePickerDialogClickListener {
 
     @BindView(R.id.et_profile_email)
     CustomAnimEditText etProfileEmail;
@@ -36,38 +36,55 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     @BindView(R.id.et_profile_first)
     CustomAnimEditText etProfileFirst;
 
-    @BindView(R.id.et_profile_language)
-    CustomAnimSpinner etProfileLanguage;
-
     @BindView(R.id.et_profile_last)
     CustomAnimEditText etProfileLast;
 
     @BindView(R.id.et_profile_mobile)
     CustomAnimEditText etProfileMobile;
 
-    @BindView(R.id.et_profile_race)
-    CustomAnimSpinner etProfileRace;
+    @BindView(R.id.iv_select_female)
+    ImageView ivSelectFemale;
 
-    @BindView(R.id.et_profile_title)
-    CustomAnimSpinner etProfileTitle;
+    @BindView(R.id.iv_select_male)
+    ImageView ivSelectMale;
 
-    @BindView(R.id.rb_edit_profile_female)
-    RadioButton rbEditProfileFemale;
+    @BindView(R.id.textview_right_menu)
+    CustomBoldTextView textviewRightMenu;
 
-    @BindView(R.id.rb_edit_profile_male)
-    RadioButton rbEditProfileMale;
+    @BindView(R.id.tv_gender_warning)
+    CustomTextView tvGenderWarning;
 
-    @BindView(R.id.rg_edit_profile_gender)
-    RadioGroup rgEditProfileGender;
+    @BindView(R.id.tv_profile_date_of_birth)
+    CustomTextView tvProfileDateOfBirth;
 
-    @BindView(R.id.tv_btn_layout_pink)
-    CustomTextView tvBtnLayout;
+    @BindView(R.id.tv_profile_date_of_birth_warning)
+    CustomTextView tvProfileDateOfBirthWarning;
 
-    private boolean isMale = false;
+    @BindView(R.id.tv_profile_language)
+    CustomTextView tvProfileLanguage;
+
+    @BindView(R.id.tv_profile_race)
+    CustomTextView tvProfileRace;
+
+    @BindView(R.id.tv_profile_title)
+    CustomTextView tvProfileTitle;
+
+    private String currentPopType = "";
+
+    private String gender = "";
+
+    private List<SingleChooseVM> languagesVMS;
+
+    private List<SingleChooseVM> raceVMS;
+
+    private List<SingleChooseVM> titleVMS;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        languagesVMS = mPresenter.getLanguageChoose();
+        titleVMS = mPresenter.getTitleChooses();
+        raceVMS = mPresenter.getRaceChoose();
     }
 
     @Override
@@ -77,15 +94,21 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     @Override
     public void inject() {
+        textviewRightMenu.setText(getResources().getString(R.string.done));
         hideRightMenu();
+        initEditText();
         initPresenter();
-        initSprinner();
-        initRadioGroup();
     }
 
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.edit_profile);
+    private void initEditText() {
+        etProfileFirst.initInputType(InputType.TYPE_CLASS_TEXT);
+        etProfileFirst.initImeOptions(EditorInfo.IME_ACTION_NEXT);
+        etProfileLast.initInputType(InputType.TYPE_CLASS_TEXT);
+        etProfileLast.initImeOptions(EditorInfo.IME_ACTION_NEXT);
+        etProfileEmail.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        etProfileEmail.initImeOptions(EditorInfo.IME_ACTION_NEXT);
+        etProfileMobile.initInputType(InputType.TYPE_CLASS_NUMBER);
+        etProfileMobile.initImeOptions(EditorInfo.IME_ACTION_NEXT);
     }
 
     private void initPresenter() {
@@ -96,72 +119,80 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             .inject(this);
     }
 
-    @SuppressWarnings("unchecked")
-    private void initSprinner() {
-        etProfileDate.getEditText().setItems(getMockDatas());
-        etProfileDate.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
-
-        });
-
-        etProfileTitle.getEditText().setItems(getMockDatas());
-        etProfileTitle.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
-
-        });
-
-        etProfileLanguage.getEditText().setItems(getMockDatas());
-        etProfileLanguage.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
-
-        });
-
-        etProfileRace.getEditText().setItems(getMockDatas());
-        etProfileRace.getEditText().setOnItemSelectedListener((item, selectedIndex) -> {
-
-        });
-
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.edit_profile);
     }
 
-    private void initRadioGroup() {
-        if (isMale) {
-            rbEditProfileMale.setChecked(true);
-        } else {
-            rbEditProfileFemale.setChecked(true);
-        }
-        rgEditProfileGender.setOnCheckedChangeListener((RadioGroup group, int checkedId) -> {
-            switch (checkedId) {
-                case R.id.rb_edit_profile_female:
-                    isMale = false;
-                    break;
-                case R.id.rb_edit_profile_male:
-                    isMale = true;
-                    break;
-            }
-        });
-    }
-
-    //TODO this is mock data will delete
-    private List<String> getMockDatas() {
-        List<String> list = new ArrayList<>();
-        Resources res = getResources();
-        String[] testList = res.getStringArray(R.array.test_list);
-        Collections.addAll(list, testList);
-        return list;
-    }
-
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_layout_pink})
+    @OnClick({R.id.imageview_left_menu, R.id.textview_right_menu, R.id.ll_select_female, R.id
+        .ll_select_male, R.id.tv_profile_date_of_birth, R.id.tv_profile_title, R.id
+        .tv_profile_language, R.id.tv_profile_race})
     public void onEditProfileClick(View view) {
+
         switch (view.getId()) {
             case R.id.imageview_left_menu:
+                KeyBoardUtils.hideKeyboard(this);
                 finish();
                 break;
-            case R.id.tv_btn_layout_pink:
-                judgmentInput(etProfileEmail.getText(), etProfileFirst.getText(),
-                    etProfileLast.getText(), etProfileDate.getText(), etProfileMobile.getText());
+            case R.id.textview_right_menu:
+                KeyBoardUtils.hideKeyboard(this);
+                String email = etProfileEmail.getText();
+                String firstName = etProfileFirst.getText();
+                String lastName = etProfileLast.getText();
+                String birth = tvProfileDateOfBirth.getText().toString();
+                String title = tvProfileTitle.getText().toString();
+                String mobile = etProfileMobile.getText();
+                String language = tvProfileLanguage.getText().toString();
+                String race = tvProfileRace.getText().toString();
+                judgmentInput(email, firstName, lastName, gender, birth, title, mobile, language,
+                    race);
+                break;
+            case R.id.ll_select_female:
+                EditTextUtil.eidtLoseFocus(view);
+                ivSelectFemale.setSelected(true);
+                gender = getResources().getString(R.string.female);
+                if (ivSelectMale.isSelected()) {
+                    ivSelectMale.setSelected(false);
+                }
+                break;
+            case R.id.ll_select_male:
+                EditTextUtil.eidtLoseFocus(view);
+                ivSelectMale.setSelected(true);
+                gender = getResources().getString(R.string.male);
+                if (ivSelectFemale.isSelected()) {
+                    ivSelectFemale.setSelected(false);
+                }
+                break;
+            case R.id.tv_profile_date_of_birth:
+                EditTextUtil.eidtLoseFocus(view);
+                PopWindowUtil.showDatePickerDialog(tvProfileDateOfBirth, this::onDatePicker);
+                break;
+
+            case R.id.tv_profile_title:
+                EditTextUtil.eidtLoseFocus(view);
+                currentPopType = PopWindowUtil.TITLE_POP;
+                PopWindowUtil.showSingleChoosePop(tvProfileTitle,
+                    getResources().getString(R.string.choose_title), titleVMS, this);
+                break;
+
+            case R.id.tv_profile_language:
+                EditTextUtil.eidtLoseFocus(view);
+                currentPopType = PopWindowUtil.LANGUAGE_POP;
+                PopWindowUtil.showSingleChoosePop(tvProfileLanguage,
+                    getResources().getString(R.string.choose_language), languagesVMS, this);
+                break;
+
+            case R.id.tv_profile_race:
+                EditTextUtil.eidtLoseFocus(view);
+                currentPopType = PopWindowUtil.RACE_POP;
+                PopWindowUtil.showSingleChoosePop(tvProfileRace,
+                    getResources().getString(R.string.choose_race), raceVMS, this);
                 break;
         }
     }
 
-    private void judgmentInput(String email, String firstName, String lastName, String birth,
-        String mobile) {
+    private void judgmentInput(String email, String firstName, String lastName, String gender,
+        String birth, String title, String mobile, String language, String race) {
         if (TextUtils.isEmpty(email)) {
             etProfileEmail.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
@@ -174,9 +205,17 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             etProfileLast.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        if (TextUtils.isEmpty(birth)) {
-            etProfileDate.setErrorMessage(getResources().getString(R.string.empty_error));
+        if (TextUtils.isEmpty(gender)) {
+            tvGenderWarning.setVisibility(View.VISIBLE);
             return;
+        } else {
+            tvGenderWarning.setVisibility(View.VISIBLE);
+        }
+        if (TextUtils.isEmpty(birth)) {
+            tvProfileDateOfBirthWarning.setVisibility(View.VISIBLE);
+            return;
+        } else {
+            tvProfileDateOfBirthWarning.setVisibility(View.GONE);
         }
         if (TextUtils.isEmpty(mobile)) {
             etProfileMobile.setErrorMessage(getResources().getString(R.string.empty_error));
@@ -190,4 +229,36 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     public void editProfileResult() {
         //TODO  wait for api
     }
+
+    @Override
+    public void onDatePicker(String time) {
+        tvProfileDateOfBirth.setText(time);
+        tvProfileDateOfBirthWarning.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onPopItemClick(int position) {
+        if (!TextUtils.isEmpty(currentPopType)) {
+            switch (currentPopType) {
+                case PopWindowUtil.LANGUAGE_POP:
+                    languagesVMS = PopWindowUtil.updateSinglePopDatas(position, languagesVMS);
+                    tvProfileLanguage
+                        .setText(languagesVMS.get(position).getContent());
+                    break;
+                case PopWindowUtil.TITLE_POP:
+                    titleVMS = PopWindowUtil.updateSinglePopDatas(position, titleVMS);
+                    tvProfileTitle.setText(titleVMS.get(position).getContent());
+                    break;
+                case PopWindowUtil.RACE_POP:
+                    raceVMS = PopWindowUtil.updateSinglePopDatas(position, raceVMS);
+                    tvProfileRace.setText(raceVMS.get(position).getContent());
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void onDismiss() {
+    }
+
 }

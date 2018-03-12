@@ -3,7 +3,10 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -44,4 +47,26 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
                 }
             }));
     }
+
+    @Override
+    public List<SingleChooseVM> getTitleChooses() {
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("Title " + (i + 1)));
+        }
+
+        return singleChooseVMS;
+    }
+
+    @Override
+    public List<SingleChooseVM> getLanguageChooses() {
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("Languages " + (i + 1)));
+        }
+        return singleChooseVMS;
+    }
+
 }

@@ -6,7 +6,6 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
-import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.shopping.PDPDetailActivity;
@@ -36,7 +35,7 @@ import injection.modules.PresenterModule;
 
 public class SearchResultActivity extends BaseActivity<SearchResultContract.Presenter> implements
     SearchResultContract.View, SearchResultAdapter.OnItemClickListener,
-    OnProductItemClickListener, PopWindowUtil.OnSortPopDismissListener {
+    OnProductItemClickListener, PopWindowUtil.OnPopWindowDismissListener {
 
     @BindView(R.id.cset_search)
     CustomSearchEditText csetSearch;

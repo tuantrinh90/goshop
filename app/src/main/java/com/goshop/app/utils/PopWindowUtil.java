@@ -1,9 +1,13 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.presentation.model.SortVM;
+import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.widget.adapter.SingleChooseListAdapter;
 import com.goshop.app.widget.adapter.SortListAdapter;
 
+import android.app.DatePickerDialog;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,15 +15,29 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.DatePicker;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class PopWindowUtil {
 
+    public static final String CITY_POP = "city";
+
+    public static final String COUNTRY_POP = "country";
+
+    public static final String LANGUAGE_POP = "language";
+
+    public static final String RACE_POP = "race";
+
+    public static final String STATE_POP = "state";
+
+    public static final String TITLE_POP = "title";
+
     public static void showsSortListPop(View parentView, List<SortVM> sortVMS,
-        OnSortPopDismissListener sortPopDismissListener) {
+        OnPopWindowDismissListener sortPopDismissListener) {
         View popView = LayoutInflater.from(parentView.getContext())
             .inflate(R.layout.layout_sort_pop, null);
         RecyclerView recyclerViewSortPop = popView.findViewById(R.id.recyclerview_sort_pop);
@@ -72,7 +90,63 @@ public class PopWindowUtil {
         });
     }
 
-    public interface OnSortPopDismissListener {
+    public static void showSingleChoosePop(View parentView, String title,
+        List<SingleChooseVM> singleChooseVMS,
+        OnPopWindowDismissListener onPopWindowDismissListener) {
+        View view = LayoutInflater.from(parentView.getContext())
+            .inflate(R.layout.layout_pop_single_choose, null);
+        CustomBoldTextView tvTitle = view.findViewById(R.id.tv_single_dialog_title);
+        tvTitle.setText(title);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerview_single_dialog);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(parentView.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        SingleChooseListAdapter chooseListAdapter = new SingleChooseListAdapter(singleChooseVMS);
+        recyclerView.setAdapter(chooseListAdapter);
+
+        PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAtLocation(parentView, Gravity.CENTER, 0, 0);
+
+        chooseListAdapter.setOnSingleChooseItemClickListener((position -> {
+            onPopWindowDismissListener.onPopItemClick(position);
+            popupWindow.dismiss();
+        }));
+
+    }
+
+    public static List<SingleChooseVM> updateSinglePopDatas(int position,
+        List<SingleChooseVM> singleChooseVMS) {
+        for (int i = 0; i < singleChooseVMS.size(); i++) {
+            singleChooseVMS.get(i).setChoose(i == position);
+        }
+        return singleChooseVMS;
+    }
+
+    public static void showDatePickerDialog(View parentView,
+        OnDatePickerDialogClickListener onDatePickerDialogClickListener) {
+        final StringBuffer time = new StringBuffer();
+        final Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int day = calendar.get(Calendar.DAY_OF_MONTH);
+        DatePickerDialog datePickerDialog = new DatePickerDialog(parentView.getContext(),
+            (DatePicker view, int pickYear, int monthOfYear,
+                int dayOfMonth) -> {
+                time.append((monthOfYear + 1) + "/" + dayOfMonth + "/" + pickYear);
+                onDatePickerDialogClickListener.onDatePicker(time.toString());
+            }, year, month, day);
+        datePickerDialog.show();
+    }
+
+    public interface OnDatePickerDialogClickListener {
+
+        void onDatePicker(String time);
+    }
+
+    public interface OnPopWindowDismissListener {
 
         void onPopItemClick(int position);
 

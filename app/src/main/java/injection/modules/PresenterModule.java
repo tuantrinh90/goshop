@@ -7,6 +7,8 @@ import com.goshop.app.presentation.account.ChangePasswordContract;
 import com.goshop.app.presentation.account.ChangePasswordPresenter;
 import com.goshop.app.presentation.account.ContactUsContract;
 import com.goshop.app.presentation.account.ContactUsPresenter;
+import com.goshop.app.presentation.account.EditAddressContract;
+import com.goshop.app.presentation.account.EditAddressPresenter;
 import com.goshop.app.presentation.account.EditProfileContract;
 import com.goshop.app.presentation.account.EditProfilePresenter;
 import com.goshop.app.presentation.account.FAQContract;
@@ -318,6 +320,13 @@ public class PresenterModule {
     public AddAddressContract.Presenter provideAddAddressPresenter(
         AccountDataRepository dataRepository) {
         return new AddAddressPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public EditAddressContract.Presenter provideEditAddressPresenter(
+        AccountDataRepository dataRepository) {
+        return new EditAddressPresenter(dataRepository);
     }
 
     @Provides

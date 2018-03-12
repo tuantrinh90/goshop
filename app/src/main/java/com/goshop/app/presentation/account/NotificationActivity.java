@@ -4,10 +4,11 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.NotificationAdapter;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.presentation.model.NotificationVM;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.utils.SlideMenuUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -23,6 +24,7 @@ import android.view.View;
 import android.widget.ImageView;
 
 import java.util.HashMap;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -33,7 +35,7 @@ import static com.goshop.app.utils.SlideMenuUtil.MENU_KEY;
 
 public class NotificationActivity extends BaseActivity<NotificationContract.Presenter>
     implements NotificationContract.View, NavigationView
-    .OnNavigationItemSelectedListener {
+    .OnNavigationItemSelectedListener, NotificationAdapter.OnNotificationItemClickListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -57,14 +59,11 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
     private SlideMenuUtil slideMenuUtil;
 
     @Override
-    public void notificationResult(NotificationsResponse notificationsResponse) {
+    public void notificationResult(List<NotificationVM> notificationVMS) {
         recyclerviewNotification.setLayoutManager(new LinearLayoutManager(this));
-        NotificationAdapter notificationAdapter = new NotificationAdapter(
-            notificationsResponse.getNotificationBean());
-        notificationAdapter.setiRecyclerItemClick((view, position) -> {
-            //TODO skip to webView container
-        });
+        NotificationAdapter notificationAdapter = new NotificationAdapter(notificationVMS);
         recyclerviewNotification.setAdapter(notificationAdapter);
+        notificationAdapter.setOnNotificationItemClickListener(this::onNotificationItemClick);
     }
 
     @Override
@@ -87,6 +86,7 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
                 slideMenuUtil.liftedDrawerLayout();
             }
         }
+        //todo wait for api
         mPresenter.notificationRequest(new HashMap<>());
     }
 
@@ -100,16 +100,20 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
         hideRightMenu();
         imageviewLeftMenu.setVisibility(View.GONE);
         initSlideMenuListenerUtil(R.id.slide_menu_notifications);
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenter();
     }
 
     private void initSlideMenuListenerUtil(int currentMenuId) {
         slideMenuUtil = new SlideMenuUtil(this, currentMenuId, drawerLayout,
             navigationSlideMenu, isLogin, this);
+    }
+
+    private void initPresenter() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
     }
 
     @Override
@@ -137,5 +141,10 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
     @OnClick(R.id.imageview_left_menu)
     public void onViewClicked() {
         finish();
+    }
+
+    @Override
+    public void onNotificationItemClick(int position) {
+        startActivity(new Intent(this, WebContentActivity.class));
     }
 }

@@ -266,15 +266,15 @@
     </style>
 
     <style name="errorAppearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/color_main_pink</item>
+        <item name="android:textColor">@color/color_orange_red</item>
         <item name="android:textSize">@dimen/size_font_12</item>
-        <item name="android:textColorHint">@color/color_main_pink</item>
+        <item name="android:textColorHint">@color/color_orange_red</item>
     </style>
 
     <style name="hintAppearance" parent="@android:style/TextAppearance">
-        <item name="android:textColor">@color/color_text_black</item>
+        <item name="android:textColor">@color/color_grayscale_secondary</item>
         <item name="android:textSize">@dimen/size_font_12</item>
-        <item name="android:textColorHint">@color/color_hint_grey</item>
+        <item name="android:textColorHint">@color/color_text_hint</item>
     </style>
 
     <style name="menuTextStyle">

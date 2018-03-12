@@ -3,6 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 
 import android.os.Bundle;
@@ -29,7 +30,7 @@ public class WriteReviewActivity extends BaseActivity {
     RatingBar ratingbarWriteReview;
 
     @BindView(R.id.textview_right_menu)
-    CustomTextView textviewRightMenu;
+    CustomBoldTextView textviewRightMenu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

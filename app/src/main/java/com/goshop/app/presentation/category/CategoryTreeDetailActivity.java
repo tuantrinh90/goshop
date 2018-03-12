@@ -35,7 +35,7 @@ import injection.modules.PresenterModule;
 
 public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailContract
     .Presenter> implements CategoryTreeDetailContract.View, CategoryTreeDetailAdapter
-    .OnItemClickListener, OnProductItemClickListener, PopWindowUtil.OnSortPopDismissListener  {
+    .OnItemClickListener, OnProductItemClickListener, PopWindowUtil.OnPopWindowDismissListener {
 
     public static final String CATEGORY_DETAIL_TITLE = "title";
 

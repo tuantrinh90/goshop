@@ -104,9 +104,8 @@ public class TestMenuActivity extends BaseActivity implements NavigationView
     }
 
     @OnClick({R.id.btn_test_login, R.id.imageview_left_menu, R.id.btn_test_complement_email, R.id
-        .btn_test_send_confirmation_link,
-        R.id.btn_test_editprofile, R.id.btn_test_my_address, R.id.btn_test_my_points, R.id
-        .btn_test_select_address, R.id.btn_test_paymentstatus})
+        .btn_test_send_reset_pwd, R.id.btn_test_editprofile, R.id.btn_test_my_address, R.id
+        .btn_test_my_points, R.id.btn_test_select_address, R.id.btn_test_paymentstatus})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_login:
@@ -118,8 +117,8 @@ public class TestMenuActivity extends BaseActivity implements NavigationView
             case R.id.btn_test_complement_email:
                 startActivity(new Intent(this, LoginComplementEmailActivity.class));
                 break;
-            case R.id.btn_test_send_confirmation_link:
-                startActivity(new Intent(this, LoginSendConfirmationLinkActivity.class));
+            case R.id.btn_test_send_reset_pwd:
+                startActivity(new Intent(this, LoginResetPasswordActivity.class));
                 break;
             case R.id.btn_test_editprofile:
                 startActivity(new Intent(this, EditProfileActivity.class));

@@ -115,6 +115,8 @@ public interface RestApi {
 
     Observable<AddressResponse> addAddressRequest(Map<String, Object> params);
 
+    Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
+
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
     Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);

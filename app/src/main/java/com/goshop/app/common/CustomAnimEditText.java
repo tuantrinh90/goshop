@@ -15,10 +15,17 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CustomAnimEditText extends RelativeLayout {
+
+    private final String INPUT_EMAIL = "Email";
+
+    private final String INPUT_MOBILE = "Mobile Number";
 
     @BindView(R.id.et_anim_edittext)
     CustomEditText etAnimEdittext;
@@ -31,6 +38,8 @@ public class CustomAnimEditText extends RelativeLayout {
 
     private int hintString;
 
+    private String hintText;
+
     public CustomAnimEditText(Context context) {
         super(context);
         initView(context, null);
@@ -39,10 +48,12 @@ public class CustomAnimEditText extends RelativeLayout {
     private void initView(Context context, AttributeSet attrs) {
         View editView = LayoutInflater.from(context).inflate(R.layout.layout_anim_edit, this, true);
         ButterKnife.bind(this, editView);
-        @SuppressLint("CustomViewStyleable") TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.animET);
+        @SuppressLint("CustomViewStyleable") TypedArray typedArray = context
+            .obtainStyledAttributes(attrs, R.styleable.animET);
         hintString = typedArray.getResourceId(R.styleable.animET_hint, 0);
         typedArray.recycle();
-        tilAnimEdittext.setHint(context.getString(hintString));
+        hintText = context.getString(hintString);
+        tilAnimEdittext.setHint(hintText);
         deleteImageShowListener(etAnimEdittext, ivAnimDelEdittext);
     }
 
@@ -59,6 +70,27 @@ public class CustomAnimEditText extends RelativeLayout {
                             targetEditText.requestFocus();
                             deleteIv.setVisibility(View.GONE);
                         });
+
+                        switch (hintText) {
+                            case INPUT_EMAIL:
+                                if (!isEmail(charSequence.toString())) {
+                                    tilAnimEdittext.setErrorEnabled(true);
+                                    tilAnimEdittext.setError(targetEditText.getContext()
+                                        .getString(R.string.format_email_warning));
+                                } else {
+                                    tilAnimEdittext.setErrorEnabled(false);
+                                }
+                                break;
+                            case INPUT_MOBILE:
+                                if (!isMobileNO(charSequence.toString())) {
+                                    tilAnimEdittext.setErrorEnabled(true);
+                                    tilAnimEdittext.setError(targetEditText.getContext()
+                                        .getString(R.string.format_mobile_warning));
+                                } else {
+                                    tilAnimEdittext.setErrorEnabled(false);
+                                }
+                                break;
+                        }
                     } else {
                         deleteIv.setVisibility(View.GONE);
                     }
@@ -68,6 +100,19 @@ public class CustomAnimEditText extends RelativeLayout {
                 deleteIv.setVisibility(View.GONE);
             }
         });
+    }
+
+    private boolean isEmail(String email) {
+        if (null == email || "".equals(email)) return false;
+        Pattern p = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
+        Matcher m = p.matcher(email);
+        return m.matches();
+    }
+
+    public static boolean isMobileNO(String mobiles) {
+        Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
+        Matcher m = p.matcher(mobiles);
+        return m.matches();
     }
 
     public CustomAnimEditText(Context context, AttributeSet attrs) {
@@ -101,5 +146,13 @@ public class CustomAnimEditText extends RelativeLayout {
 
     public void initImeOptions(int imeAction) {
         etAnimEdittext.onEditorAction(imeAction);
+    }
+
+    public TextInputLayout getTextInputLayout() {
+        return tilAnimEdittext;
+    }
+
+    public CustomEditText getEditText() {
+        return etAnimEdittext;
     }
 }

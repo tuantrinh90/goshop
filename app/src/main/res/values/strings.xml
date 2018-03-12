@@ -124,6 +124,7 @@
     <string name="phone">Phone</string>
     <string name="register_tips_email">Email me the latest shopping news</string>
     <string name="register_tips_sms">SMS me the latest shopping news</string>
+    <string name="add_address_box">Set it as default shipping address</string>
     <string name="register_tips">By registering account, I confirm that: I have read and agree to
         the Privacy Policy, Terms and Conditions, Terms of User at Go Shop.
     </string>
@@ -419,4 +420,15 @@
     <string name="go_shop_now">Go Shop Now</string>
     <string name="video">Video</string>
     <string name="images">Images</string>
+    <string name="choose_title">Choose your Title</string>
+    <string name="choose_language">Choose your Language</string>
+    <string name="choose_race">Choose your Race</string>
+    <string name="country_empty">Please choose a country!</string>
+    <string name="state_empty">Please choose a state!</string>
+    <string name="zip_empty">Please choose a zip/postal code</string>
+    <string name="birth_empty">Please choose a date of birth!</string>
+    <string name="gender_empty">Please choose a gender!</string>
+    <string name="confirm_warning">Password and Password Confirmation should be same!</string>
+    <string name="format_email_warning">Please enter a valid email address</string>
+    <string name="format_mobile_warning">Please enter a valid mobile number</string>
 </resources>

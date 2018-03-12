@@ -37,7 +37,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Presenter> implements
-    BrandsDetailContract.View, OnProductItemClickListener, PopWindowUtil.OnSortPopDismissListener {
+    BrandsDetailContract.View, OnProductItemClickListener, PopWindowUtil.OnPopWindowDismissListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;

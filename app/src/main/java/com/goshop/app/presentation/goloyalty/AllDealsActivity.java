@@ -30,7 +30,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> implements
-    AllDealsContract.View, PopWindowUtil.OnSortPopDismissListener {
+    AllDealsContract.View, PopWindowUtil.OnPopWindowDismissListener {
 
     AllDealsAdapter allDealsAdapter;
 

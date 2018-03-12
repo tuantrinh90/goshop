@@ -90,6 +90,7 @@
     <color name="transparent60Percent">#99000000</color>
     <color name="transparent80Percent">#CC000000</color>
 
+    <color name="color_orange_red">#ff5722</color>
     <color name="color_greyish_brown">#494949</color>
     <!--document color value-->
     <color name="color_branding_pink">#df307a</color>

@@ -266,6 +266,12 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
+    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_ADDRESS);
+        return retrofitRestApi.editAddressRequest(url, params);
+    }
+
+    @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_ADDRESS);
         return retrofitRestApi.myAddressRequest(url, params);

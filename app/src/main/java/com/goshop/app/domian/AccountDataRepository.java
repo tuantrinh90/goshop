@@ -315,6 +315,11 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
+        return accountCloudDataSource.editAddressRequest(params);
+    }
+
+    @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.addAddressRequest(params);
     }

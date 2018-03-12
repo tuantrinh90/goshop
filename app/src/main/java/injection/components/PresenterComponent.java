@@ -3,6 +3,7 @@ package injection.components;
 import com.goshop.app.presentation.account.AddAddressActivity;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.account.ContactUsActivity;
+import com.goshop.app.presentation.account.EditAddressActivity;
 import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.FAQActivity;
 import com.goshop.app.presentation.account.HelpSupportActivity;
@@ -119,6 +120,8 @@ public interface PresenterComponent {
     void inject(EditProfileActivity editProfileActivity);
 
     void inject(AddAddressActivity addAddressActivity);
+
+    void inject(EditAddressActivity editAddressActivity);
 
     void inject(MyAddressBookActivity myAddressBookActivity);
 

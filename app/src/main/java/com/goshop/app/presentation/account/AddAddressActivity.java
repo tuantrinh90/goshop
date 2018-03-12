@@ -4,13 +4,19 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.CustomAnimSpinner;
+import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.CheckBox;
+import android.view.inputmethod.EditorInfo;
+import android.widget.ImageView;
+
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -18,13 +24,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class AddAddressActivity extends BaseActivity<AddAddressContract.Presenter> implements
-    AddAddressContract.View {
-
-    @BindView(R.id.cb_register_email)
-    CheckBox cbRegisterEmail;
-
-    @BindView(R.id.cb_register_sms)
-    CheckBox cbRegisterSms;
+    AddAddressContract.View, PopWindowUtil.OnPopWindowDismissListener {
 
     @BindView(R.id.et_add_address_first)
     CustomAnimEditText etAddAddressFirst;
@@ -44,18 +44,44 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
     @BindView(R.id.et_add_address_zip)
     CustomAnimEditText etAddAddressZip;
 
-    @BindView(R.id.et_profile_city)
-    CustomAnimSpinner etProfileCity;
+    @BindView(R.id.iv_add_address_email)
+    ImageView ivAddAddressEmail;
 
-    @BindView(R.id.et_profile_country)
-    CustomAnimSpinner etProfileCountry;
+    @BindView(R.id.iv_add_address_sms)
+    ImageView ivAddAddressSms;
 
-    @BindView(R.id.et_profile_state)
-    CustomAnimSpinner etProfileState;
+    @BindView(R.id.tv_add_address_city)
+    CustomTextView tvAddAddressCity;
+
+    @BindView(R.id.tv_add_address_city_warning)
+    CustomTextView tvAddAddressCityWarning;
+
+    @BindView(R.id.tv_add_address_country)
+    CustomTextView tvAddAddressCountry;
+
+    @BindView(R.id.tv_add_address_country_warning)
+    CustomTextView tvAddAddressCountryWarning;
+
+    @BindView(R.id.tv_add_address_state)
+    CustomTextView tvAddAddressState;
+
+    @BindView(R.id.tv_add_address_state_warning)
+    CustomTextView tvAddAddressStateWarning;
+
+    private List<SingleChooseVM> cityVMS;
+
+    private List<SingleChooseVM> countryVMS;
+
+    private String currentPop = "";
+
+    private List<SingleChooseVM> stateVMS;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        countryVMS = mPresenter.getCountryChooses();
+        stateVMS = mPresenter.getStateChooses();
+        cityVMS = mPresenter.getCityChooses();
     }
 
     @Override
@@ -66,12 +92,25 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
     @Override
     public void inject() {
         hideRightMenu();
+        ivAddAddressEmail.setSelected(true);
+        ivAddAddressSms.setSelected(true);
+        initEditType();
         initPresenter();
     }
 
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.add_address);
+    private void initEditType() {
+        etAddAddressFirst.initInputType(InputType.TYPE_CLASS_TEXT);
+        etAddAddressFirst.initImeOptions(EditorInfo.IME_ACTION_NEXT);
+        etAddAddressLast.initInputType(InputType.TYPE_CLASS_TEXT);
+        etAddAddressLast.initImeOptions(EditorInfo.IME_ACTION_NEXT);
+        etAddAddressOne.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        etAddAddressOne.initImeOptions(EditorInfo.IME_ACTION_NEXT);
+        etAddAddressTwo.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+        etAddAddressTwo.initImeOptions(EditorInfo.IME_ACTION_NEXT);
+        etAddAddressPhone.initInputType(InputType.TYPE_CLASS_NUMBER);
+        etAddAddressPhone.initImeOptions(EditorInfo.IME_ACTION_NEXT);
+        etAddAddressZip.initInputType(InputType.TYPE_CLASS_NUMBER);
+        etAddAddressZip.initImeOptions(EditorInfo.IME_ACTION_NEXT);
     }
 
     private void initPresenter() {
@@ -82,23 +121,61 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
             .inject(this);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_layout_pink})
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.add_address);
+    }
+
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_layout_pink, R.id.ll_add_address_email, R.id
+        .ll_add_address_sms, R.id.tv_add_address_city, R.id.tv_add_address_country, R.id
+        .tv_add_address_state})
     public void onAddAddressClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
             case R.id.tv_btn_layout_pink:
-                judgmentInput(etAddAddressFirst.getText(), etAddAddressLast.getText(),
-                    etAddAddressOne.getText(), etAddAddressTwo.getText(),
-                    etProfileCountry.getText(), etProfileState.getText(), etAddAddressZip.getText(),
-                    etAddAddressPhone.getText());
+                String firstName = etAddAddressFirst.getText();
+                String lastName = etAddAddressLast.getText();
+                String addressOne = etAddAddressOne.getText();
+                String addressTwo = etAddAddressTwo.getText();
+                String country = tvAddAddressCountry.getText().toString();
+                String state = tvAddAddressState.getText().toString();
+                String city = tvAddAddressCity.getText().toString();
+                String zip = etAddAddressZip.getText();
+                String phone = etAddAddressPhone.getText();
+                judgmentInput(firstName, lastName, addressOne, addressTwo, country, state, city,
+                    zip, phone, ivAddAddressEmail.isSelected(), ivAddAddressSms.isSelected());
+                break;
+            case R.id.ll_add_address_email:
+                ivAddAddressEmail.setSelected(!ivAddAddressEmail.isSelected());
+                break;
+            case R.id.ll_add_address_sms:
+                ivAddAddressSms.setSelected(!ivAddAddressSms.isSelected());
+                break;
+            case R.id.tv_add_address_city:
+                currentPop = PopWindowUtil.CITY_POP;
+                PopWindowUtil
+                    .showSingleChoosePop(view, getResources().getString(R.string.city), cityVMS,
+                        this);
+                break;
+            case R.id.tv_add_address_country:
+                currentPop = PopWindowUtil.COUNTRY_POP;
+                PopWindowUtil.showSingleChoosePop(view, getResources().getString(R.string.country),
+                    countryVMS, this);
+                break;
+            case R.id.tv_add_address_state:
+                currentPop = PopWindowUtil.STATE_POP;
+                PopWindowUtil
+                    .showSingleChoosePop(view, getResources().getString(R.string.state), stateVMS,
+                        this);
                 break;
         }
     }
 
     private void judgmentInput(String firstName, String lastName, String addressOne,
-        String addressTwo, String country, String state, String zip, String phone) {
+        String addressTwo, String country, String state, String city, String zip, String phone,
+        boolean firstChecked, boolean secondChecked) {
         if (TextUtils.isEmpty(firstName)) {
             etAddAddressFirst.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
@@ -116,12 +193,22 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
             return;
         }
         if (TextUtils.isEmpty(country)) {
-            etProfileCountry.setErrorMessage(getResources().getString(R.string.empty_error));
+            tvAddAddressCountryWarning.setVisibility(View.VISIBLE);
             return;
+        } else {
+            tvAddAddressCountryWarning.setVisibility(View.GONE);
         }
         if (TextUtils.isEmpty(state)) {
-            etProfileState.setErrorMessage(getResources().getString(R.string.empty_error));
+            tvAddAddressStateWarning.setVisibility(View.VISIBLE);
             return;
+        } else {
+            tvAddAddressCountryWarning.setVisibility(View.GONE);
+        }
+        if (TextUtils.isEmpty(city)) {
+            tvAddAddressCityWarning.setVisibility(View.VISIBLE);
+            return;
+        } else {
+            tvAddAddressCityWarning.setVisibility(View.GONE);
         }
         if (TextUtils.isEmpty(zip)) {
             etAddAddressZip.setErrorMessage(getResources().getString(R.string.empty_error));
@@ -137,6 +224,32 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
 
     @Override
     public void addAddressResult() {
+
+    }
+
+    @Override
+    public void onPopItemClick(int position) {
+        if (!TextUtils.isEmpty(currentPop)) {
+            switch (currentPop) {
+                case PopWindowUtil.COUNTRY_POP:
+                    countryVMS = PopWindowUtil.updateSinglePopDatas(position, countryVMS);
+                    tvAddAddressCountry
+                        .setText(countryVMS.get(position).getContent());
+                    break;
+                case PopWindowUtil.STATE_POP:
+                    stateVMS = PopWindowUtil.updateSinglePopDatas(position, stateVMS);
+                    tvAddAddressState.setText(stateVMS.get(position).getContent());
+                    break;
+                case PopWindowUtil.CITY_POP:
+                    cityVMS = PopWindowUtil.updateSinglePopDatas(position, cityVMS);
+                    tvAddAddressCity.setText(cityVMS.get(position).getContent());
+                    break;
+            }
+        }
+    }
+
+    @Override
+    public void onDismiss() {
 
     }
 }

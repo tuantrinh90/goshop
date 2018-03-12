@@ -1,10 +1,8 @@
 package com.goshop.app.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.listener.IRecyclerItemClick;
 import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.data.model.response.NotificationsResponse;
-import com.jakewharton.rxbinding2.view.RxView;
+import com.goshop.app.presentation.model.NotificationVM;
 
 import android.annotation.SuppressLint;
 import android.support.v7.widget.RecyclerView;
@@ -12,7 +10,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -20,17 +17,17 @@ import butterknife.ButterKnife;
 
 public class NotificationAdapter extends RecyclerView.Adapter {
 
-    private List<NotificationsResponse.NotificationBean> notifications = new ArrayList<>();
+    private List<NotificationVM> notificationVMS;
 
-    public NotificationAdapter(
-        List<NotificationsResponse.NotificationBean> notifications) {
-        this.notifications = notifications;
+    private OnNotificationItemClickListener onNotificationItemClickListener;
+
+    public NotificationAdapter(List<NotificationVM> notificationVMS) {
+        this.notificationVMS = notificationVMS;
     }
 
-    IRecyclerItemClick iRecyclerItemClick;
-
-    public void setiRecyclerItemClick(IRecyclerItemClick iRecyclerItemClick) {
-        this.iRecyclerItemClick = iRecyclerItemClick;
+    public void setUpdateDatas(List<NotificationVM> notificationVMS) {
+        this.notificationVMS.clear();
+        this.notificationVMS = notificationVMS;
     }
 
     @Override
@@ -43,41 +40,49 @@ public class NotificationAdapter extends RecyclerView.Adapter {
     @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-        NotificationHolder holder = (NotificationHolder) viewHolder;
-        NotificationsResponse.NotificationBean notificationBean = notifications.get(position);
-        holder.viewNotificationIcon
-            .setVisibility(notificationBean.isNew() ? View.VISIBLE : View.INVISIBLE);
-        holder.tvNotificationName.setText(notificationBean.getNotifyName());
-        holder.tvNotificationDate.setText(notificationBean.getHour() + notificationBean.getDate());
-        RxView.clicks(holder.itemView).subscribe(v -> {
-            if (iRecyclerItemClick != null) {
-                iRecyclerItemClick.onItemClick(holder.itemView, position);
-            }
-        });
-
+        NotificationVM notificationVM = notificationVMS.get(position);
+        ((NotificationHolder) viewHolder).bindingData(notificationVM, position);
     }
 
     @Override
     public int getItemCount() {
-        return notifications.size();
+        return notificationVMS.size();
     }
 
-    static class NotificationHolder extends RecyclerView.ViewHolder {
+    public void setOnNotificationItemClickListener(
+        OnNotificationItemClickListener onNotificationItemClickListener) {
+        this.onNotificationItemClickListener = onNotificationItemClickListener;
+    }
 
-        @BindView(R.id.view_notification_icon)
-        View viewNotificationIcon;
+    public interface OnNotificationItemClickListener {
+
+        void onNotificationItemClick(int position);
+    }
+
+    class NotificationHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.tv_notification_date)
+        CustomTextView tvNotificationDate;
 
         @BindView(R.id.tv_notification_name)
         CustomTextView tvNotificationName;
 
-        @BindView(R.id.tv_notification_date)
-        CustomTextView tvNotificationDate;
+        @BindView(R.id.view_notification_icon)
+        View viewNotificationIcon;
 
         public NotificationHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-
+        void bindingData(NotificationVM notificationVM, int position) {
+            viewNotificationIcon
+                .setVisibility(notificationVM.isVisible() ? View.VISIBLE : View.GONE);
+            tvNotificationDate.setText(notificationVM.getDate());
+            tvNotificationName.setText(notificationVM.getTitle());
+            itemView.setOnClickListener(v -> {
+                onNotificationItemClickListener.onNotificationItemClick(position);
+            });
+        }
     }
 }
