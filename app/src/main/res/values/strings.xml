@@ -263,6 +263,7 @@
     <string name="sub_total">Sub Total:</string>
     <string name="rounding_amount">Rounding Amount:</string>
     <string name="shipping_fee">Shipping Fee:</string>
+    <string name="shipping">Shipping:</string>
     <string name="disscount">Disscount(ABCDE):</string>
     <string name="egift_card">eGift Card(ASDFG):</string>
     <string name="go_shop_points_num">Go Shop Points(200)</string>
@@ -431,4 +432,11 @@
     <string name="confirm_warning">Password and Password Confirmation should be same!</string>
     <string name="format_email_warning">Please enter a valid email address</string>
     <string name="format_mobile_warning">Please enter a valid mobile number</string>
+    <string name="order_number">Order Number:</string>
+    <string name="order_status">Order Status:</string>
+    <string name="track">Track</string>
+    <string name="placed_at">Placed at:</string>
+    <string name="items">Items</string>
+    <string name="order_detail">Order Detail</string>
+
 </resources>

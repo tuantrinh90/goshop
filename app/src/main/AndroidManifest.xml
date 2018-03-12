@@ -129,6 +129,12 @@
             android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.myorder.MyOrdersActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.OrderDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
         <activity android:name=".presentation.myorder.MyOrderListActivity"
             android:theme="@style/WhiteBackground"/>
 

@@ -12,7 +12,7 @@
         android:paddingRight="@dimen/size_16"
         android:text="@string/product_summary_tips"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:paddingBottom="@dimen/size_14"
     />
     <View

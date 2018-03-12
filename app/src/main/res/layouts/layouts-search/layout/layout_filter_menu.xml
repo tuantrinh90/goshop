@@ -28,7 +28,7 @@
             android:textSize="@dimen/size_font_16"
             android:padding="@dimen/size_10"
             android:text="@string/clear"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="center"
             android:layout_weight="1"
             android:background="@drawable/bg_rectangle_black"/>

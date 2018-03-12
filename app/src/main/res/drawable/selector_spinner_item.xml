@@ -19,7 +19,7 @@
             <item>
                 <bitmap
                     android:gravity="end"
-                    android:src="@drawable/ic_right"/>
+                    android:src="@drawable/ic_sorting_checked"/>
             </item>
         </layer-list>
     </item>

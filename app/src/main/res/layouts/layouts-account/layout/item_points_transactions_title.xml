@@ -36,14 +36,14 @@
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_top_grey"
+            android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"
             android:text="@string/transation_details"
             android:layout_weight="3"/>
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_top_grey"
+            android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"
             android:text="@string/go_shop_points"
             android:gravity="right"
@@ -52,7 +52,7 @@
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_top_grey"
+            android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"
             android:gravity="right"
             android:text="@string/valid_until"

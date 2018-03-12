@@ -7,6 +7,5 @@
     android:textColor="@color/color_text_black"
     android:textSize="@dimen/size_font_14"
     android:padding="@dimen/size_16"
-    android:button="@null"
     android:background="@drawable/selector_spinner_item"
     android:text="@string/new_arrivals"/>

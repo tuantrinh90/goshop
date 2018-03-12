@@ -13,7 +13,7 @@ import com.goshop.app.presentation.goloyalty.MyRewardsActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.login.LoginActivity;
 import com.goshop.app.presentation.login.TestMenuActivity;
-import com.goshop.app.presentation.myorder.MyOrderListActivity;
+import com.goshop.app.presentation.myorder.MyOrdersActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
@@ -140,7 +140,7 @@ public class SlideMenuUtil {
                             intent = new Intent(activity, MyWishlistActivity.class);
                             break;
                         case R.id.slide_menu_orders:
-                            intent = new Intent(activity, MyOrderListActivity.class);
+                            intent = new Intent(activity, MyOrdersActivity.class);
                             break;
                         case R.id.slide_menu_rewards:
                             intent = new Intent(activity, MyRewardsActivity.class);

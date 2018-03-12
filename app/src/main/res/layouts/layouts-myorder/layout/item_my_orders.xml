@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_my_orders"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/view_my_orders_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_10"
+        android:background="@color/color_divider_grey"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingTop="@dimen/size_14"
+        android:orientation="horizontal">
+
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_number"
+            android:textSize="@dimen/size_font_16"
+            android:textColor="@color/color_grayscale_text"/>
+
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:id="@+id/tv_myorders_number"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_16"
+            android:textColor="@color/color_grayscale_text"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingTop="@dimen/size_8"
+        android:paddingBottom="@dimen/size_14"
+        android:background="@drawable/bg_bottom_line"
+        android:orientation="horizontal">
+
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_status"
+            android:textSize="@dimen/size_font_16"
+            android:textColor="@color/color_grayscale_text"/>
+
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:id="@+id/tv_myorders_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_16"
+            android:textColor="@color/color_grayscale_text"/>
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_orders"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_16">
+
+        <com.goshop.app.common.view.CustomBoldTextView
+            android:id="@+id/tv_myorders_total"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:textSize="@dimen/size_font_16"
+            android:textColor="@color/color_grayscale_text"/>
+        <com.goshop.app.common.view.CustomTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tv_myorders_total"
+            android:text="@string/my_orders_total_price"
+            android:textSize="@dimen/size_font_16"
+            android:textColor="@color/color_grayscale_text"/>
+    </RelativeLayout>
+
+</LinearLayout>

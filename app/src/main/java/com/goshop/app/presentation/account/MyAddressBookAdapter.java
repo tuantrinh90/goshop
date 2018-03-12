@@ -9,8 +9,8 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 
 import java.util.List;
 
@@ -62,14 +62,17 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
 
     class MyAddressViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.iv_address_book_selector)
+        ImageView ivAddressBookSelector;
+
         @BindView(R.id.ll_address_book_edit)
         LinearLayout llAddressBookEdit;
 
         @BindView(R.id.ll_address_book_remove)
         LinearLayout llAddressBookRemove;
 
-        @BindView(R.id.rb_address_book_default)
-        RadioButton rbAddressBookDefault;
+        @BindView(R.id.ll_address_book_selector)
+        LinearLayout llAddressBookSelector;
 
         @BindView(R.id.tv_address_book_address)
         CustomTextView tvAddressBookAddress;
@@ -105,7 +108,9 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
             tvAddressBookCountry.setText(addressVM.getCountry());
             tvAddressBookState.setText(addressVM.getState());
             tvAddressBookTel.setText(addressVM.getTel());
-            rbAddressBookDefault.setChecked(addressVM.isDefault());
+            ivAddressBookSelector.setSelected(addressVM.isDefault());
+            llAddressBookSelector.setOnClickListener(
+                v -> ivAddressBookSelector.setSelected(!ivAddressBookSelector.isSelected()));
 
             llAddressBookEdit
                 .setOnClickListener(v -> addressBookClickListener.editAddress(addressVM));

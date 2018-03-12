@@ -7,7 +7,7 @@
                 <color android:color="@color/color_bg_disabled_divider"/>
             </item>
             <item
-                android:bottom="@dimen/size_1">
+                android:bottom="@dimen/size_divider">
                 <color android:color="@color/color_bg_disabled_divider"/>
             </item>
         </layer-list>
@@ -21,7 +21,7 @@
                 <color android:color="@color/color_bg_disabled_divider"/>
             </item>
             <item
-                android:bottom="@dimen/size_1">
+                android:bottom="@dimen/size_divider">
                 <color android:color="@android:color/white"/>
             </item>
         </layer-list>

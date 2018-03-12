@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_20"
+        android:textColor="@color/color_grayscale_text"
         android:textSize="@dimen/size_font_18"
         android:text="@string/active_egift_code"/>
 
@@ -30,17 +31,18 @@
             android:paddingBottom="@dimen/size_10"
             android:paddingLeft="@dimen/size_8"
             android:paddingRight="@dimen/size_8"
-            android:textColor="@color/color_filter_grey"
+            android:textColor="@color/color_grayscale_secondary"
             android:textSize="@dimen/size_font_14"
             android:text="@string/active_now"
-            android:background="@drawable/drawable_black_circle"/>
+            android:background="@drawable/drawable_hint_c_circle"/>
 
         <com.goshop.app.common.view.CustomEditText
             android:id="@+id/et_egift_cards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/unique_code"
-            android:textColorHint="@color/color_top_grey"
+            android:textColorHint="@color/color_text_hint"
+            android:textColor="@color/color_grayscale_text"
             android:paddingTop="@dimen/size_8"
             android:paddingBottom="@dimen/size_8"
             android:background="@drawable/bg_bottom_line"

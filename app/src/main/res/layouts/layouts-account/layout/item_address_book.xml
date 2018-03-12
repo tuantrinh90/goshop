@@ -14,8 +14,8 @@
         android:paddingRight="@dimen/size_16"
         android:paddingTop="@dimen/size_20"
         android:paddingBottom="@dimen/size_12"
-        android:textColor="@color/color_text_black"
-        android:textSize="@dimen/size_font_16"/>
+        android:textColor="@color/color_grayscale_text"
+        android:textSize="@dimen/size_font_18"/>
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_address_book_address"
         android:layout_width="match_parent"
@@ -24,7 +24,7 @@
         android:paddingRight="@dimen/size_16"
         android:paddingTop="@dimen/size_8"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:paddingLeft="@dimen/size_16"
             android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:paddingStart="@dimen/size_16"
             tools:ignore="RtlSymmetry"/>
 
@@ -47,7 +47,7 @@
             android:paddingTop="@dimen/size_8"
             android:text="@string/comma"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:paddingEnd="@dimen/size_4"
             tools:ignore="RtlSymmetry"/>
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"/>
+            android:textColor="@color/color_grayscale_text"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
             android:paddingTop="@dimen/size_8"
             android:text="@string/comma"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:paddingEnd="@dimen/size_4"
             tools:ignore="RtlSymmetry"/>
 
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"/>
+            android:textColor="@color/color_grayscale_text"/>
     </LinearLayout>
 
 
@@ -88,7 +88,7 @@
         android:paddingRight="@dimen/size_16"
         android:paddingTop="@dimen/size_8"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_address_book_tel"
@@ -99,11 +99,11 @@
         android:paddingTop="@dimen/size_8"
         android:paddingBottom="@dimen/size_12"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
+        android:layout_height="@dimen/size_divider"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
         android:background="@color/color_divider_grey"/>
@@ -113,21 +113,34 @@
         android:layout_height="wrap_content"
         android:paddingRight="@dimen/size_16"
         android:paddingLeft="@dimen/size_16">
-        <RadioButton
-            android:id="@+id/rb_address_book_default"
+
+        <LinearLayout
+            android:id="@+id/ll_address_book_selector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_text_black"
-            android:text="@string/default_text"
-            android:layout_alignParentStart="true"/>
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/iv_address_book_selector"
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:background="@drawable/selector_radio_button"
+                android:contentDescription="@string/app_name"/>
+            <com.goshop.app.common.view.CustomTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_8"
+                android:textColor="@color/color_grayscale_text"
+                android:text="@string/default_text"/>
+        </LinearLayout>
 
 
         <LinearLayout
             android:id="@+id/ll_address_book_remove"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:layout_alignParentRight="true"
             android:paddingTop="@dimen/size_14"
             android:paddingBottom="@dimen/size_14"
@@ -135,16 +148,18 @@
             android:layout_alignParentEnd="true">
 
             <ImageView
-                android:layout_width="@dimen/size_24"
-                android:layout_height="@dimen/size_24"
-                android:background="@drawable/ic_remove"
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_margin="@dimen/size_4"
+                android:scaleType="center"
+                android:background="@drawable/ic_icon_remove"
                 android:contentDescription="@string/app_name"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/remove"/>
         </LinearLayout>
 
@@ -152,26 +167,29 @@
             android:id="@+id/ll_address_book_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingRight="@dimen/size_12"
+            android:gravity="center_vertical"
+            android:paddingRight="@dimen/size_22"
             android:paddingTop="@dimen/size_14"
             android:paddingBottom="@dimen/size_14"
             android:layout_toLeftOf="@id/ll_address_book_remove"
             android:orientation="horizontal"
-            android:paddingEnd="@dimen/size_12"
+            android:paddingEnd="@dimen/size_22"
             android:layout_toStartOf="@id/ll_address_book_remove"
             tools:ignore="RelativeOverlap,RtlSymmetry">
 
             <ImageView
-                android:layout_width="@dimen/size_24"
-                android:layout_height="@dimen/size_24"
-                android:background="@drawable/ic_edit_f"
+                android:layout_width="@dimen/size_20"
+                android:layout_height="@dimen/size_20"
+                android:layout_margin="@dimen/size_4"
+                android:scaleType="center"
+                android:background="@drawable/ic_icon_edit"
                 android:contentDescription="@string/app_name"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/edit"/>
 
         </LinearLayout>
@@ -179,7 +197,7 @@
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
+        android:layout_height="@dimen/size_divider"
         android:background="@color/color_divider_grey"/>
 
 </LinearLayout>

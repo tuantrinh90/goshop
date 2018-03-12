@@ -75,6 +75,10 @@ import com.goshop.app.presentation.login.RegisterContract;
 import com.goshop.app.presentation.login.RegisterPresenter;
 import com.goshop.app.presentation.myorder.MyOrderContract;
 import com.goshop.app.presentation.myorder.MyOrderPresenter;
+import com.goshop.app.presentation.myorder.MyOrdersContract;
+import com.goshop.app.presentation.myorder.MyOrdersPresenter;
+import com.goshop.app.presentation.myorder.OrderDetailContract;
+import com.goshop.app.presentation.myorder.OrderDetailPresenter;
 import com.goshop.app.presentation.search.SearchContract;
 import com.goshop.app.presentation.search.SearchPresenter;
 import com.goshop.app.presentation.search.SearchResultContract;
@@ -231,6 +235,20 @@ public class PresenterModule {
     @ActivityScope
     public MyOrderContract.Presenter provideMyOrderPresenter(AccountDataRepository dataRepository) {
         return new MyOrderPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public MyOrdersContract.Presenter providerMyOrdersPresenter(
+        AccountDataRepository dataRepository) {
+        return new MyOrdersPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public OrderDetailContract.Presenter providerOrderDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new OrderDetailPresenter(dataRepository);
     }
 
     @Provides

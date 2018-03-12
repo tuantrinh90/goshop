@@ -47,7 +47,7 @@
             android:layout_alignParentRight="true"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_16"
             android:textAllCaps="true"
             android:minLines="1"

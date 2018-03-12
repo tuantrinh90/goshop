@@ -5,7 +5,7 @@
         android:angle="270"
         android:endColor="@color/color_litte_grey"
         android:centerColor="@color/color_litte_grey"
-        android:startColor="@color/color_top_grey"
+        android:startColor="@color/color_text_hint"
         android:centerY="0.4"
     />
 </shape>

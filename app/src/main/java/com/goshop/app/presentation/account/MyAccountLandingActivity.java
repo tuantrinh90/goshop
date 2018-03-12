@@ -3,7 +3,9 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.presentation.myorder.MyOrderListActivity;
+import com.goshop.app.presentation.goloyalty.MyRewardsActivity;
+import com.goshop.app.presentation.myorder.MyOrdersActivity;
+import com.goshop.app.presentation.shopping.AllReviewsActivity;
 import com.goshop.app.utils.SlideMenuUtil;
 
 import android.content.Intent;
@@ -112,9 +114,9 @@ public class MyAccountLandingActivity extends BaseActivity implements Navigation
         }
     }
 
-    @OnClick({R.id.rl_account_wishlist, R.id.rl_account_orders, R.id.rl_account_reviews, R.id
-        .rl_account_address, R.id.rl_account_rewards, R.id.rl_account_points, R.id
-        .rl_account_egift})
+    @OnClick({R.id.tv_my_account_edit, R.id.rl_account_wishlist, R.id.rl_account_orders, R.id
+        .rl_account_reviews, R.id.rl_account_address, R.id.rl_account_rewards, R.id
+        .rl_account_points, R.id.rl_account_egift})
     public void onAccountLandingClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
@@ -122,25 +124,25 @@ public class MyAccountLandingActivity extends BaseActivity implements Navigation
                 intent = new Intent(this, EditProfileActivity.class);
                 break;
             case R.id.rl_account_wishlist:
-//                intent = new Intent(this, );
+                intent = new Intent(this, MyWishlistActivity.class);
                 break;
             case R.id.rl_account_orders:
-                intent = new Intent(this, MyOrderListActivity.class);
+                intent = new Intent(this, MyOrdersActivity.class);
                 break;
             case R.id.rl_account_reviews:
-//                intent = new Intent(this, );
+                intent = new Intent(this, AllReviewsActivity.class);
                 break;
             case R.id.rl_account_address:
                 intent = new Intent(this, MyAddressBookActivity.class);
                 break;
             case R.id.rl_account_rewards:
-//                intent = new Intent(this, );
+                intent = new Intent(this, MyRewardsActivity.class);
                 break;
             case R.id.rl_account_points:
                 intent = new Intent(this, MyPointsActivity.class);
                 break;
             case R.id.rl_account_egift:
-//                intent = new Intent(this, );
+                intent = new Intent(this, MyEGiftCardsActivity.class);
                 break;
         }
         if (intent != null) {

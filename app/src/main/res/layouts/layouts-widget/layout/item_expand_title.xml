@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:text="@string/details"
         android:textSize="@dimen/size_font_18"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
 
     <ImageView
         android:id="@+id/iv_item_title_expand"

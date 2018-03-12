@@ -12,12 +12,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
@@ -85,5 +87,14 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
         ratingbarWriteReview.setRating(allReviewsVM.getStep());
         tvReviewsAmount.setText(allReviewsVM.getAmount());
         reviewsItemAdapter.setUpdateDatas(allReviewsVM.getReviewsVMS());
+    }
+
+    @OnClick({R.id.imageview_left_menu})
+    public void onAllReviewsClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                finish();
+                break;
+        }
     }
 }

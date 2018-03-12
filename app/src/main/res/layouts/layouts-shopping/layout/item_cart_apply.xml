@@ -63,7 +63,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/sub_total"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="start"
             android:layout_alignParentStart="true"/>
 
@@ -73,7 +73,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/demo_cart_price1"
             android:layout_alignParentRight="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="end"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap"/>
@@ -90,7 +90,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/rounding_amount"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="start"
             android:layout_alignParentStart="true"/>
 
@@ -100,7 +100,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/demo_cart_price1"
             android:layout_alignParentRight="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="end"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap"/>
@@ -117,7 +117,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/shipping_fee"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="start"
             android:layout_alignParentStart="true"/>
 
@@ -127,7 +127,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/demo_cart_price1"
             android:layout_alignParentRight="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="end"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap"/>
@@ -144,7 +144,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/disscount"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="start"
             android:layout_alignParentStart="true"/>
 
@@ -154,7 +154,7 @@
             android:textSize="@dimen/size_font_14"
             android:text="@string/demo_cart_price2"
             android:layout_alignParentRight="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="end"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap"/>
@@ -171,7 +171,7 @@
             android:textSize="@dimen/size_font_18"
             android:text="@string/total_incl_gst"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:gravity="start"
             android:layout_alignParentStart="true"/>
 

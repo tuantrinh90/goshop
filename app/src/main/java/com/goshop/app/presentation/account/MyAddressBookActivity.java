@@ -29,9 +29,6 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     @BindView(R.id.recyclerview_address_book)
     RecyclerView recyclerviewAddressBook;
 
-    @BindView(R.id.tv_btn_layout_white)
-    CustomTextView tvBtnLayoutWhite;
-
     private List<AddressVM> displayAddressVMs;
 
     @Override
@@ -59,7 +56,6 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     public void inject() {
         hideRightMenu();
         displayAddressVMs = new ArrayList<>();
-        tvBtnLayoutWhite.setText(getResources().getString(R.string.add_new_address));
         initPresenter();
         initRecyclerView();
     }
@@ -85,13 +81,13 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
         recyclerviewAddressBook.setAdapter(addressBookAdapter);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_layout_white})
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu})
     public void onAddressBookClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
-            case R.id.tv_btn_layout_white:
+            case R.id.imageview_right_menu:
                 startActivity(new Intent(this, AddAddressActivity.class));
                 break;
         }

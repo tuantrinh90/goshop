@@ -21,7 +21,7 @@
         android:maxLines="1"
         android:paddingBottom="@dimen/size_16"
         android:paddingTop="@dimen/size_20"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         tools:ignore="RtlHardcoded"/>
 
     <LinearLayout
@@ -36,14 +36,14 @@
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_top_grey"
+            android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"
             android:text="@string/code"
             android:layout_weight="3"/>
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_top_grey"
+            android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"
             android:text="@string/balance_rm"
             android:gravity="right"
@@ -52,7 +52,7 @@
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_top_grey"
+            android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"
             android:gravity="right"
             android:text="@string/status"

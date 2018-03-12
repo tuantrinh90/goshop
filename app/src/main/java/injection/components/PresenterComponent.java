@@ -39,6 +39,8 @@ import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
 import com.goshop.app.presentation.login.RegisterActivity;
 import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
 import com.goshop.app.presentation.myorder.MyOrderListActivity;
+import com.goshop.app.presentation.myorder.MyOrdersActivity;
+import com.goshop.app.presentation.myorder.OrderDetailActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.search.SearchResultActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
@@ -90,6 +92,10 @@ public interface PresenterComponent {
     void inject(MyOrderListActivity myOrderListActivity);
 
     void inject(MyOrderDetailActivity myOrderDetailActivity);
+
+    void inject(MyOrdersActivity myOrdersActivity);
+
+    void inject(OrderDetailActivity orderDetailActivity);
 
     void inject(NotificationActivity notificationActivity);
 
