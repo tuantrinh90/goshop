@@ -4,13 +4,20 @@ public class PdpAdditionalInformationVM extends ProductDetailModel {
 
     private String lable;
 
-    public PdpAdditionalInformationVM(String lable) {
+    private String unit;
+
+    public PdpAdditionalInformationVM(String lable, String unit) {
         super(ProductDetailModel.DETAIL_ADDITIONAL_INFORMATION);
         this.lable = lable;
+        this.unit = unit;
     }
 
-    public PdpAdditionalInformationVM() {
-        super(ProductDetailModel.DETAIL_ADDITIONAL_INFORMATION);
+    public String getUnit() {
+        return unit;
+    }
+
+    public void setUnit(String unit) {
+        this.unit = unit;
     }
 
     public String getLable() {

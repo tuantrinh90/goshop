@@ -22,6 +22,8 @@ import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -337,6 +339,21 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
         return null;
     }
 }

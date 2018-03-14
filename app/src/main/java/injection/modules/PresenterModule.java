@@ -59,6 +59,8 @@ import com.goshop.app.presentation.home.BrandsDetailPresenter;
 import com.goshop.app.presentation.home.BrandsPresenter;
 import com.goshop.app.presentation.home.PromotionContract;
 import com.goshop.app.presentation.home.PromotionPresenter;
+import com.goshop.app.presentation.home.PromotionSkuContract;
+import com.goshop.app.presentation.home.PromotionSkuPresenter;
 import com.goshop.app.presentation.home.TVShowPageContract;
 import com.goshop.app.presentation.home.TVShowPagePresenter;
 import com.goshop.app.presentation.home.TrendingNowContract;
@@ -85,12 +87,16 @@ import com.goshop.app.presentation.search.SearchResultContract;
 import com.goshop.app.presentation.search.SearchResultPresenter;
 import com.goshop.app.presentation.settings.SettingsContract;
 import com.goshop.app.presentation.settings.SettingsPresenter;
+import com.goshop.app.presentation.shopping.AllQAContract;
+import com.goshop.app.presentation.shopping.AllQAPresenter;
 import com.goshop.app.presentation.shopping.AllReviewsContract;
 import com.goshop.app.presentation.shopping.AllReviewsPresenter;
 import com.goshop.app.presentation.shopping.PDPDetailContract;
 import com.goshop.app.presentation.shopping.PDPDetailPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
+import com.goshop.app.presentation.shopping.QADetailContract;
+import com.goshop.app.presentation.shopping.QADetailPresenter;
 import com.goshop.app.presentation.shopping.ShoppingCartContract;
 import com.goshop.app.presentation.shopping.ShoppingCartPresenter;
 
@@ -442,6 +448,24 @@ public class PresenterModule {
     public TVShowPageContract.Presenter provideTVShowPresenter(
         AccountDataRepository dataRepository) {
         return new TVShowPagePresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public AllQAContract.Presenter provideAllQAPresenter(AccountDataRepository dataRepository) {
+        return new AllQAPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public QADetailContract.Presenter provideQADetailPresenter(AccountDataRepository dataRepository) {
+        return new QADetailPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public PromotionSkuContract.Presenter providePromotionSkuPresenter(AccountDataRepository dataRepository){
+        return new PromotionSkuPresenter(dataRepository);
     }
 
 }

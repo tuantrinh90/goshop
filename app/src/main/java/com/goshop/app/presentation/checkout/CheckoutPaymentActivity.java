@@ -2,14 +2,64 @@ package com.goshop.app.presentation.checkout;
 
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.presentation.account.TermsConditionsActivity;
+import com.goshop.app.utils.PopWindowUtil;
 
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TextInputLayout;
+import android.text.SpannableString;
+import android.text.Spanned;
+import android.text.method.LinkMovementMethod;
+import android.text.style.ClickableSpan;
+import android.text.style.ForegroundColorSpan;
+import android.text.style.UnderlineSpan;
 import android.view.View;
+import android.widget.ImageView;
 
+import butterknife.BindView;
 import butterknife.OnClick;
 
 public class CheckoutPaymentActivity extends BaseActivity {
+
+    @BindView(R.id.et_checkout_cvv)
+    CustomEditText etCheckoutCvv;
+
+    @BindView(R.id.et_checkout_payment_name)
+    CustomAnimEditText etCheckoutPaymentName;
+
+    @BindView(R.id.et_checkout_payment_number)
+    CustomAnimEditText etCheckoutPaymentNumber;
+
+    @BindView(R.id.iv_checkout_cvv_tip)
+    ImageView ivCheckoutCvvTip;
+
+    @BindView(R.id.textinputlayout_cvv)
+    TextInputLayout textinputlayoutCvv;
+
+    @BindView(R.id.tv_btn_checkout_payment)
+    CustomBoldTextView tvBtnCheckoutPayment;
+
+    @BindView(R.id.tv_checkout_payment_amount)
+    CustomBoldTextView tvCheckoutPaymentAmount;
+
+    @BindView(R.id.tv_checkout_payment_amount_percent)
+    CustomTextView tvCheckoutPaymentAmountPercent;
+
+    @BindView(R.id.tv_checkout_payment_date)
+    CustomTextView tvCheckoutPaymentDate;
+
+    @BindView(R.id.tv_checkout_payment_read)
+    CustomTextView tvCheckoutPaymentRead;
+
+    @BindView(R.id.tv_checkout_payment_time)
+    CustomTextView tvCheckoutPaymentTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -23,7 +73,8 @@ public class CheckoutPaymentActivity extends BaseActivity {
 
     @Override
     public void inject() {
-
+        hideRightMenu();
+        initRead();
     }
 
     @Override
@@ -31,13 +82,42 @@ public class CheckoutPaymentActivity extends BaseActivity {
         return getResources().getString(R.string.payment);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_checkout_payment})
+    private void initRead() {
+        SpannableString spannableString = new SpannableString(
+            getResources().getString(R.string.checkout_payment_tip));
+
+        spannableString.setSpan(new ForegroundColorSpan(Color.DKGRAY), 11, 29,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        spannableString.setSpan(new UnderlineSpan(), 194, 215, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ForegroundColorSpan(Color.DKGRAY), 194, 215,
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View widget) {
+                startActivity(
+                    new Intent(CheckoutPaymentActivity.this, TermsConditionsActivity.class));
+            }
+        }, 194, 215, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+        tvCheckoutPaymentRead.setText(spannableString);
+        tvCheckoutPaymentRead.setMovementMethod(LinkMovementMethod.getInstance());
+    }
+
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_checkout_payment, R.id
+        .tv_checkout_payment_date, R.id.iv_checkout_cvv_tip})
     public void onPaymentClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
             case R.id.tv_btn_checkout_payment:
+                break;
+            case R.id.tv_checkout_payment_date:
+                break;
+            case R.id.iv_checkout_cvv_tip:
+                PopWindowUtil.showInfoDisplayPop(ivCheckoutCvvTip,
+                    getResources().getString(R.string.cvv_info));
                 break;
         }
     }

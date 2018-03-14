@@ -5,7 +5,6 @@
     <color name="colorAccent">#EC458B</color>
 
     <!--Correction color-->
-    <color name="color_hint_grey">#62000000</color>
     <color name="color_apply_grey">#61212121</color>
     <color name="color_text_grey">#8a000000</color>
     <color name="color_text_old_grey">#a9a9a9</color>
@@ -34,7 +33,7 @@
     <color name="bluePoor">#00A9AC</color>
     <color name="blueNormal">#27A9E1</color>
     <color name="blueDark">#00609D</color>
-    <color name="color_ad_black">#ad000000</color>
+    <color name="color_ad_black">#ad000000</color><!--68%-->
 
     <color name="yellowNormal">#FBAF3F</color>
 
@@ -85,9 +84,11 @@
 
     facebookbook -->
     <color name="facebook">#3A5899</color>
+    <color name="color_facebook_blue">#4065b3</color>
 
     <color name="transparent60Percent">#99000000</color>
     <color name="transparent80Percent">#CC000000</color>
+    <color name="color_grey_edit">#0a000000</color><!--4%-->
 
     <color name="color_orange_red">#ff5722</color>
     <color name="color_greyish_brown">#494949</color>

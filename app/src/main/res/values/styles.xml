@@ -250,6 +250,8 @@
 
     <declare-styleable name="animET">
         <attr name="hint" format="reference"/>
+        <attr name="countable" format="boolean"/>
+        <attr name="count" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="animSpinner">
@@ -275,6 +277,18 @@
         <item name="android:textColor">@color/color_grayscale_secondary</item>
         <item name="android:textSize">@dimen/size_font_12</item>
         <item name="android:textColorHint">@color/color_text_hint</item>
+    </style>
+
+    <style name="counterTextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/color_text_hint</item>
+        <item name="android:textSize">@dimen/size_font_14</item>
+        <item name="android:paddingTop">@dimen/size_4</item>
+    </style>
+
+    <style name="OverflowTextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textColor">@color/color_orange_red</item>
+        <item name="android:textSize">@dimen/size_font_14</item>
+        <item name="android:paddingTop">@dimen/size_4</item>
     </style>
 
     <style name="menuTextStyle">

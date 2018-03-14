@@ -28,7 +28,7 @@
                     android:paddingBottom="@dimen/size_8"
                     android:background="@android:color/white"
                     android:text="@string/newsletter_subscription"
-                    android:textColor="@color/color_div_grey"/>
+                    android:textColor="@color/color_text_hint"/>
 
                 <RelativeLayout
                     android:layout_width="match_parent"
@@ -151,7 +151,7 @@
                     android:paddingRight="@dimen/size_16"
                     android:paddingBottom="@dimen/size_8"
                     android:text="@string/account"
-                    android:textColor="@color/color_div_grey"/>
+                    android:textColor="@color/color_text_hint"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_setting_change_password"

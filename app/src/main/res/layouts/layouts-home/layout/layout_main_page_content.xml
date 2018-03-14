@@ -17,7 +17,7 @@
         app:tabPaddingStart="@dimen/size_12"
         app:tabPaddingEnd="@dimen/size_12"
         app:tabMode="scrollable"
-        app:tabTextColor="@color/color_hint_grey"
+        app:tabTextColor="@color/color_text_hint"
         app:tabSelectedTextColor="@color/color_text_black"
         app:tabIndicatorColor="@color/color_text_black"
         app:tabTextAppearance="@style/mainTabStyle"/>

@@ -13,26 +13,6 @@ import butterknife.BindView;
 
 public class ReturnOrderActivity extends BaseActivity {
 
-    @BindView(R.id.et_cancel_detail_reason)
-    CustomAnimSpinner etCancelDetailReason;
-
-    @BindView(R.id.et_cancel_order_email)
-    CustomAnimEditText etCancelOrderEmail;
-
-    @BindView(R.id.et_cancel_order_handing)
-    CustomAnimEditText etCancelOrderHanding;
-
-    @BindView(R.id.et_cancel_order_mobile)
-    CustomAnimEditText etCancelOrderMobile;
-
-    @BindView(R.id.et_cancel_order_name)
-    CustomAnimEditText etCancelOrderName;
-
-    @BindView(R.id.et_cancel_reason)
-    CustomAnimSpinner etCancelReason;
-
-    @BindView(R.id.tv_btn_rewards_detail_download)
-    CustomTextView tvBtnRewardsDetailDownload;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -41,7 +21,7 @@ public class ReturnOrderActivity extends BaseActivity {
 
     @Override
     public int getContentView() {
-        return R.layout.activity_cancel_order;
+        return R.layout.activity_return_order;
     }
 
     @Override
@@ -51,6 +31,6 @@ public class ReturnOrderActivity extends BaseActivity {
 
     @Override
     public String getScreenTitle() {
-        return getResources().getString(R.string.order_cancellation_form);
+        return getResources().getString(R.string.order_return);
     }
 }

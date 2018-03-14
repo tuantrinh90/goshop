@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:id="@+id/ll_qa_detail_top_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+        <include
+            layout="@layout/toolbar_img_text_img_close"/>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_qa_detail_bottom"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:padding="@dimen/size_8"
+        android:background="@drawable/bg_top_shadow_white">
+        <com.goshop.app.common.view.CustomTextView
+            android:id="@+id/tv_qa_detail_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/size_18"
+            android:text="@string/submit"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/white"
+            android:background="@drawable/drawable_round_black"/>
+
+        <com.goshop.app.common.view.CustomEditText
+            android:id="@+id/et_qa_detail_enter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/drawable_round_gray"
+            android:layout_toLeftOf="@id/tv_qa_detail_submit"
+            android:layout_marginRight="@dimen/size_8"
+            android:paddingTop="@dimen/size_14"
+            android:paddingBottom="@dimen/size_14"
+            android:paddingLeft="@dimen/size_12"
+            android:paddingRight="@dimen/size_12"
+            android:textCursorDrawable="@null"
+            android:textColor="@color/color_grayscale_text"
+            android:textColorHint="@color/color_text_hint"
+            android:hint="@string/enter_question"/>
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_qa_detail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/rl_qa_detail_bottom"
+    android:layout_below="@id/ll_qa_detail_top_toolbar"/>
+
+
+</RelativeLayout>

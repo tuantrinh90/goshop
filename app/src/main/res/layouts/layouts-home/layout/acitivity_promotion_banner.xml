@@ -2,10 +2,14 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/toolbar_image_title_image"/>
+    <include
+        layout="@layout/toolbar_img_text_img_close"/>
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_promotion_banner"
         android:layout_width="match_parent"

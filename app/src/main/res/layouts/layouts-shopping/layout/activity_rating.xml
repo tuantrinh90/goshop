@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:animET="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <include
+        layout="@layout/toolbar_right_text"/>
+
+    <ImageView
+        android:id="@+id/iv_rating_thumb"
+        android:layout_width="@dimen/size_60"
+        android:layout_height="@dimen/size_60"
+        android:layout_marginTop="@dimen/size_26"
+        android:background="@drawable/ic_bought"/>
+    <RatingBar
+        android:id="@+id/ratingbar_rating"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_28"
+        android:layout_marginTop="@dimen/size_16"
+        android:progressDrawable="@drawable/bg_rating_biger"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="5"
+        android:numStars="5"/>
+
+    <com.goshop.app.common.CustomAnimEditText
+        android:id="@+id/et_rating_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_20"
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginRight="@dimen/size_16"
+        animET:hint="@string/title"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/textinputlayout_rating"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16"
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginRight="@dimen/size_16"
+        android:layout_marginBottom="@dimen/size_24"
+        android:hint="@string/details"
+        app:counterEnabled="true"
+        app:counterMaxLength="1000"
+        app:counterOverflowTextAppearance="@style/OverflowTextAppearance"
+        app:counterTextAppearance="@style/counterTextAppearance"
+        app:errorTextAppearance="@style/errorAppearance"
+        app:hintTextAppearance="@style/hintAppearance">
+
+        <com.goshop.app.common.view.CustomEditText
+            android:id="@+id/et_rating_detail"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_centerVertical="true"
+            android:paddingTop="@dimen/size_8"
+            android:paddingBottom="@dimen/size_8"
+            android:background="@drawable/selector_textinput_edittext"
+            android:textColor="@color/color_grayscale_text"
+            android:textColorHint="@color/color_text_hint"
+            android:textSize="@dimen/size_font_16"
+            android:textCursorDrawable="@null"/>
+
+    </android.support.design.widget.TextInputLayout>
+</LinearLayout>

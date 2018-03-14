@@ -3,6 +3,7 @@ package com.goshop.app.presentation.goloyalty;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.model.GoLoyaltyModel;
 import com.goshop.app.utils.SlideMenuUtil;
 
@@ -25,7 +26,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
@@ -34,7 +34,7 @@ import static com.goshop.app.utils.SlideMenuUtil.MENU_KEY;
 public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter> implements
     NavigationView
         .OnNavigationItemSelectedListener, GoLoyaltyContract.View, GoLoyaltyAdapter
-    .OnDealsViewAllClickListener {
+    .OnGoLoyaltyItemsClickListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -114,8 +114,8 @@ public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter>
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerviewGoLoyalty.setLayoutManager(layoutManager);
         goLoyaltyAdapter = new GoLoyaltyAdapter(new ArrayList<>());
-        goLoyaltyAdapter.setOnDealsViewAllClickListener(this);
         recyclerviewGoLoyalty.setAdapter(goLoyaltyAdapter);
+        goLoyaltyAdapter.setOnGoLoyaltyItemsClickListener(this);
     }
 
     @Override
@@ -146,8 +146,17 @@ public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter>
     }
 
     @Override
+    public void onPointsItemClick() {
+        startActivity(new Intent(this, MyPointsActivity.class));
+    }
+
+    @Override
+    public void onDealItemClick() {
+        startActivity(new Intent(this, RewardsDetailActivity.class));
+    }
+
+    @Override
     public void onViewAllClick() {
         startActivity(new Intent(this, AllDealsActivity.class));
     }
-
 }

@@ -81,7 +81,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/size_14"
-                        android:drawableRight="@drawable/selector_image_expand_selected"
+                        android:paddingRight="@dimen/size_8"
+                        android:drawableRight="@drawable/ic_icon_spinner_down"
                         android:background="@drawable/bg_bottom_line"
                         android:paddingBottom="@dimen/size_8"
                         android:paddingTop="@dimen/size_20"
@@ -89,7 +90,7 @@
                         android:textColor="@color/color_grayscale_text"
                         android:textSize="@dimen/size_font_16"
                         android:hint="@string/title_optional"
-                        android:drawableEnd="@drawable/selector_image_expand_selected"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
 
                     <include
                         layout="@layout/layout_gender_select"/>
@@ -108,7 +109,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/size_14"
-                        android:drawableRight="@drawable/selector_image_expand_selected"
+                        android:paddingRight="@dimen/size_8"
+                        android:drawableRight="@drawable/ic_icon_spinner_down"
                         android:background="@drawable/bg_bottom_line"
                         android:paddingBottom="@dimen/size_8"
                         android:paddingTop="@dimen/size_20"
@@ -116,7 +118,7 @@
                         android:textColorHint="@color/color_text_hint"
                         android:textColor="@color/color_grayscale_text"
                         android:hint="@string/date_of_birth"
-                        android:drawableEnd="@drawable/selector_image_expand_selected"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
 
                     <com.goshop.app.common.view.CustomTextView
                         android:id="@+id/tv_register_date_of_birth_warning"
@@ -134,7 +136,8 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/size_14"
-                        android:drawableRight="@drawable/selector_image_expand_selected"
+                        android:paddingRight="@dimen/size_8"
+                        android:drawableRight="@drawable/ic_icon_spinner_down"
                         android:background="@drawable/bg_bottom_line"
                         android:paddingBottom="@dimen/size_8"
                         android:paddingTop="@dimen/size_20"
@@ -142,7 +145,7 @@
                         android:textColorHint="@color/color_text_hint"
                         android:textColor="@color/color_grayscale_text"
                         android:hint="@string/language_optional"
-                        android:drawableEnd="@drawable/selector_image_expand_selected"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
 
                     <LinearLayout
                         android:id="@+id/ll_register_email"

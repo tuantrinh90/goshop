@@ -24,6 +24,15 @@ public class WidgetProductGridHorizontalAdapter extends RecyclerView.Adapter {
         this.productsVMS = detailVMS;
     }
 
+    public WidgetProductGridHorizontalAdapter(List<ProductsVM> detailVMS) {
+        this.productsVMS = detailVMS;
+    }
+
+    public void setOnProductItemClickListener(
+        OnProductItemClickListener onProductItemClickListener) {
+        this.onProductItemClickListener = onProductItemClickListener;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())

@@ -4,14 +4,13 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginTop="20dp">
+    android:layout_marginTop="@dimen/size_8">
 
     <ImageView
         android:id="@+id/iv_promotion_banner_item"
         android:layout_width="match_parent"
+        android:layout_height="@dimen/size_170"
         android:scaleType="fitXY"
-        android:contentDescription="@string/app_name"
-        android:layout_height="130dp">
+        android:contentDescription="@string/app_name"/>
 
-    </ImageView>
 </LinearLayout>

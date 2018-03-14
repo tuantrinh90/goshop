@@ -35,7 +35,7 @@
         android:layout_toRightOf="@id/tv_pdp_top_now_currency"
         android:layout_below="@id/tv_pdp_top_title"
         android:paddingLeft="@dimen/size_8"
-        android:textColor="@color/color_hint_grey"
+        android:textColor="@color/color_text_hint"
         android:textSize="@dimen/size_font_18"
         tools:ignore="RtlSymmetry"
         android:layout_toEndOf="@id/tv_pdp_top_now_currency"

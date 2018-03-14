@@ -36,7 +36,7 @@
             android:layout_below="@id/tv_pdp_qa_question"
             android:paddingTop="@dimen/size_2"
             android:textSize="@dimen/size_font_12"
-            android:textColor="@color/color_hint_grey"/>
+            android:textColor="@color/color_text_hint"/>
         <LinearLayout
             android:id="@+id/ll_btn_pdp_qa_answer"
             android:layout_width="wrap_content"
@@ -98,7 +98,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/size_2"
                     android:textSize="@dimen/size_font_12"
-                    android:textColor="@color/color_hint_grey"/>
+                    android:textColor="@color/color_text_hint"/>
             </LinearLayout>
         </LinearLayout>
     </RelativeLayout>

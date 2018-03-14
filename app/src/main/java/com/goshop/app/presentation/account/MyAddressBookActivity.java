@@ -3,7 +3,6 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.AddressVM;
 
 import android.content.Intent;
@@ -24,7 +23,7 @@ import injection.modules.PresenterModule;
 public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Presenter>
     implements MyAddressBookContract.View, MyAddressBookAdapter.OnAddressBookClickListener {
 
-    MyAddressBookAdapter addressBookAdapter;
+    private MyAddressBookAdapter addressBookAdapter;
 
     @BindView(R.id.recyclerview_address_book)
     RecyclerView recyclerviewAddressBook;
@@ -54,7 +53,6 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     @Override
     public void inject() {
-        hideRightMenu();
         displayAddressVMs = new ArrayList<>();
         initPresenter();
         initRecyclerView();

@@ -17,6 +17,6 @@
     />
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
+        android:layout_height="@dimen/size_divider"
         android:background="@color/color_divider_grey"/>
 </LinearLayout>

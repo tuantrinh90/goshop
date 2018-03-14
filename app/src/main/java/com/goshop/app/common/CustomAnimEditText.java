@@ -40,6 +40,9 @@ public class CustomAnimEditText extends RelativeLayout {
 
     private String hintText;
 
+    private boolean countAble;
+    private int count;
+
     public CustomAnimEditText(Context context) {
         super(context);
         initView(context, null);
@@ -51,11 +54,19 @@ public class CustomAnimEditText extends RelativeLayout {
         @SuppressLint("CustomViewStyleable") TypedArray typedArray = context
             .obtainStyledAttributes(attrs, R.styleable.animET);
         hintString = typedArray.getResourceId(R.styleable.animET_hint, 0);
+        countAble = typedArray.getBoolean(R.styleable.animET_countable, false);
+        count = typedArray.getInt(R.styleable.animET_count, 1000);
         typedArray.recycle();
         hintText = context.getString(hintString);
         tilAnimEdittext.setHint(hintText);
         deleteImageShowListener(etAnimEdittext, ivAnimDelEdittext);
+        if(countAble){
+            tilAnimEdittext.setCounterEnabled(true);
+            tilAnimEdittext.setCounterMaxLength(count);
+        }
     }
+
+
 
     private void deleteImageShowListener(final EditText targetEditText, final ImageView deleteIv) {
         targetEditText.setOnFocusChangeListener((View v, boolean hasFocus) -> {
@@ -63,13 +74,26 @@ public class CustomAnimEditText extends RelativeLayout {
                 RxTextView.textChanges(targetEditText).subscribe(charSequence -> {
                     if (charSequence.length() > 0) {
                         tilAnimEdittext.setErrorEnabled(false);
-                        deleteIv.setVisibility(View.VISIBLE);
-                        deleteIv.setOnClickListener(del -> {
-                            targetEditText.setText("");
-                            targetEditText.setFocusable(true);
-                            targetEditText.requestFocus();
+
+                        if(countAble) {
                             deleteIv.setVisibility(View.GONE);
-                        });
+                            if(charSequence.length() > count) {
+                                tilAnimEdittext.setErrorEnabled(true);
+                                tilAnimEdittext.setError(targetEditText.getContext()
+                                    .getString(R.string.exceed_number));
+                            } else {
+                                tilAnimEdittext.setErrorEnabled(false);
+                            }
+                        } else {
+                            deleteIv.setVisibility(View.VISIBLE);
+                            deleteIv.setOnClickListener(del -> {
+                                targetEditText.setText("");
+                                targetEditText.setFocusable(true);
+                                targetEditText.requestFocus();
+                                deleteIv.setVisibility(View.GONE);
+                            });
+                        }
+
 
                         switch (hintText) {
                             case INPUT_EMAIL:
@@ -91,6 +115,7 @@ public class CustomAnimEditText extends RelativeLayout {
                                 }
                                 break;
                         }
+
                     } else {
                         deleteIv.setVisibility(View.GONE);
                     }

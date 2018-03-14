@@ -21,6 +21,8 @@ public class DealsAdapter extends RecyclerView.Adapter {
 
     private List<GoLoyaltyDealsVM> dealsVMS;
 
+    private OnDealItemClickListener onDealItemClickListener;
+
     public DealsAdapter(List<GoLoyaltyDealsVM> dealsVMS) {
         this.dealsVMS = dealsVMS;
     }
@@ -40,6 +42,15 @@ public class DealsAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return dealsVMS.size();
+    }
+
+    public void setOnDealItemClickListener(OnDealItemClickListener onDealItemClickListener) {
+        this.onDealItemClickListener = onDealItemClickListener;
+    }
+
+    public interface OnDealItemClickListener {
+
+        void onDealItemClick();
     }
 
     class DealViewHolder extends RecyclerView.ViewHolder {
@@ -72,6 +83,7 @@ public class DealsAdapter extends RecyclerView.Adapter {
             tvDealDetail.setText(dealsVM.getDetail());
             tvDealTime.setText(dealsVM.getTime());
             tvDealEnd.setText(dealsVM.getEnd());
+            itemView.setOnClickListener(v -> onDealItemClickListener.onDealItemClick());
         }
     }
 }

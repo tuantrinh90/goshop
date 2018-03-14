@@ -39,6 +39,6 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_2"
         android:textSize="@dimen/size_font_12"
-        android:textColor="@color/color_hint_grey"/>
+        android:textColor="@color/color_text_hint"/>
 
 </LinearLayout>

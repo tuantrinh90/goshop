@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+    <View
+        android:id="@+id/view_qa_detail_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_divider"
+        android:background="@color/color_divider_grey"/>
+    <com.goshop.app.common.view.CustomBoldTextView
+        android:id="@+id/tv_qa_detail_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_20"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingBottom="@dimen/size_8"
+        android:textSize="@dimen/size_font_16"
+        android:textColor="@color/color_grayscale_text"
+    />
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_qa_detail_user"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingBottom="@dimen/size_16"
+        android:textSize="@dimen/size_14"
+        android:textColor="@color/color_text_hint"
+    />
+
+</LinearLayout>

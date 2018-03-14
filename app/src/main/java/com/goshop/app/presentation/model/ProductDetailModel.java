@@ -14,19 +14,19 @@ public class ProductDetailModel {
 
     public static final int DETAIL_PRODUCT_SUMMARY_CONTENT = 4;
 
-    public static final int DETAIL_QA_CONTENT = 8;
+    public static final int DETAIL_QUESTION_ANSWER = 8;
 
     public static final int DETAIL_QA_CONTENT_TOP = 7;
 
-    public static final int DETAIL_REVIEWS_CONTENT = 10;
+    public static final int DETAIL_REVIEWS = 10;
 
     public static final int DETAIL_REVIEWS_CONTENT_TOP = 9;
 
-    public static final int DETAIL_TOP_BANNER = 1;
+    public static final int DETAIL_TOP_VIEW = 1;
 
     public static final int DETAIL_TOP_CONTENT = 2;
 
-    public static final int DETAIL_VIEW_MORE = 13;
+    public static final int DETAIL_SINGLE_TEXT = 14;
 
     private int viewType;
 

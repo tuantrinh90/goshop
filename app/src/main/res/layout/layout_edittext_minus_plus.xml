@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/rl_et_minus_plus"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/size_28"
+    android:layout_height="match_parent"
     android:focusableInTouchMode="true"
     android:focusable="true"
     android:background="@drawable/bg_white_top_bottom_line">

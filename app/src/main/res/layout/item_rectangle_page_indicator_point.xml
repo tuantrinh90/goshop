@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="20dp"
     android:layout_height="3dp"
-    android:src="@drawable/selector_image_point_selected"
+    android:src="@drawable/selector_image_rectangle_selected"
     android:layout_marginLeft="3dp"
     android:layout_marginStart="3dp"
     android:contentDescription="@string/app_name"/>

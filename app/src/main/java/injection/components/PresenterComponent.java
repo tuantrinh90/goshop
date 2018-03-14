@@ -30,6 +30,7 @@ import com.goshop.app.presentation.home.BrandsDetailActivity;
 import com.goshop.app.presentation.home.BrandsFragment;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
+import com.goshop.app.presentation.home.PromotionSkuActivity;
 import com.goshop.app.presentation.home.TVShowPageFragment;
 import com.goshop.app.presentation.home.TrendingNowFragment;
 import com.goshop.app.presentation.login.LoginActivity;
@@ -44,9 +45,11 @@ import com.goshop.app.presentation.myorder.OrderDetailActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.search.SearchResultActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
+import com.goshop.app.presentation.shopping.AllQAActivity;
 import com.goshop.app.presentation.shopping.AllReviewsActivity;
 import com.goshop.app.presentation.shopping.PDPDetailActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
+import com.goshop.app.presentation.shopping.QuestionAnswerDetailActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
 import android.app.Activity;
@@ -156,5 +159,11 @@ public interface PresenterComponent {
     void inject(CategoryTreeDetailActivity categoryTreeDetailActivity);
 
     void inject(TVShowPageFragment tvShowPageFragment);
+
+    void inject(AllQAActivity allQAActivity);
+
+    void inject(QuestionAnswerDetailActivity detailActivity);
+
+    void inject(PromotionSkuActivity skuActivity);
 
 }

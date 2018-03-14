@@ -25,10 +25,7 @@
 
         <activity android:name=".presentation.home.MainPageActivity"
             android:theme="@style/WhiteBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
 
         <activity android:name=".presentation.account.MyWishlistActivity"
@@ -58,11 +55,12 @@
         <activity android:name=".presentation.shopping.PDPDetailImagesActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.shopping.WriteReviewActivity"
+        <activity android:name=".presentation.shopping.RatingActivity"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.shopping.AllReviewsActivity"
             android:theme="@style/WhiteBackground"/>
+
         <activity android:name=".presentation.login.LoginActivity"
             android:theme="@style/WhiteBackground"/>
 
@@ -115,9 +113,7 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.checkout.CheckoutPaymentActivity"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.home.PromotionBannerActivity"
             android:theme="@style/WhiteBackground"/>
@@ -125,9 +121,17 @@
         <activity android:name=".presentation.home.PromotionLandingListActivity"
             android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.home.PromotionSkuActivity"
+            android:theme="@style/WhiteBackground"/>
+
         <activity android:name=".presentation.shopping.ProductDetailActivity"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground"/>
+            android:theme="@style/WhiteBackground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
 
         <activity android:name=".presentation.myorder.MyOrdersActivity"
             android:theme="@style/WhiteBackground"/>
@@ -188,6 +192,12 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.MyEGiftCardsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.shopping.AllQAActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.shopping.QuestionAnswerDetailActivity"
             android:theme="@style/WhiteBackground"/>
 
 

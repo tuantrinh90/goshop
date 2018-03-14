@@ -122,6 +122,10 @@ public class EndpointAddress {
 
     public static final String TV_SHOWS = "";
 
+    public static final String QUESTION_ANSWER = "";
+
+    public static final String PROMOTION_SKU = "";
+
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
 

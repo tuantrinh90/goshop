@@ -64,7 +64,7 @@
         android:layout_below="@id/tv_item_cart_color"
         android:layout_marginLeft="@dimen/size_12"
         android:layout_marginRight="@dimen/size_12"
-        android:textColor="@color/color_hint_grey"
+        android:textColor="@color/color_text_hint"
         android:textSize="@dimen/size_font_14"
         android:layout_toLeftOf="@id/iv_item_cart_menu"
         android:layout_toRightOf="@id/iv_item_cart_product"

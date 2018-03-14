@@ -2,6 +2,7 @@ package com.goshop.app.utils;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.widget.adapter.SingleChooseListAdapter;
@@ -115,6 +116,27 @@ public class PopWindowUtil {
             popupWindow.dismiss();
         }));
 
+    }
+
+    public static void showInfoDisplayPop(View parentView, String info) {
+        View view = LayoutInflater.from(parentView.getContext())
+            .inflate(R.layout.layout_pop_info_display, null);
+        CustomTextView tvTitle = view.findViewById(R.id.tv_pop_info);
+        tvTitle.setText(info);
+
+        PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+
+        view.measure(View.MeasureSpec.UNSPECIFIED, View.MeasureSpec.UNSPECIFIED);
+        int popupHeight = parentView.getMeasuredHeight();
+
+        int[] location = new int[2];
+        parentView.getLocationOnScreen(location);
+        popupWindow.showAtLocation(parentView, Gravity.NO_GRAVITY, 0,
+            location[1] - popupHeight - 2 * parentView.getMeasuredHeight());
     }
 
     public static List<SingleChooseVM> updateSinglePopDatas(int position,

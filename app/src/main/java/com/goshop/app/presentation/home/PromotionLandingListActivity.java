@@ -7,6 +7,7 @@ import com.goshop.app.adapter.PromotionListAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.presentation.model.PromotionBannerModel;
 import com.goshop.app.utils.AnimUtils;
 import com.goshop.app.utils.PageIntentUtils;
 import com.orhanobut.logger.Logger;
@@ -189,6 +190,11 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
 
     @Override
     public void showFaildMessage(String errorMessage) {
+
+    }
+
+    @Override
+    public void showPromotionBannerResult(List<PromotionBannerModel> bannerModels) {
 
     }
 }

@@ -3,6 +3,7 @@
 
     <string name="app_network_error">network error</string>
     <!--home-->
+    <string name="payday_treat">Payday Treat</string>
     <string name="home_second_category">Categories</string>
     <string name="home_second_brand">Brands</string>
     <string name="home_second_tv_shows">TV Shows</string>
@@ -167,6 +168,8 @@
     <string name="delivery_info">Delivery Info</string>
     <string name="delivery_info_tips_overseas">Product deliver from overseas</string>
     <string name="delivery_info_tips_cash">Cash on Delivery is available</string>
+    <string name="seven_return">7 Days Easy Return</string>
+    <string name="six_month">6 Month of Installment</string>
     <string name="q_a">Q&#38;A</string>
     <string name="questions">Questions</string>
     <string name="answers">Answers</string>
@@ -378,7 +381,7 @@
     <string name="card_number">Card Number</string>
     <string name="cvv">CVV</string>
     <string name="expiration_date">Expiration Date</string>
-    <string name="checkout_payment_tip">By choosing "Agree &#38; Pay Now" you are authorizing us to
+    <string name="checkout_payment_tip">By choosing \"Agree &#38; Pay Now\" you are authorizing us to
         debit your credit card/debit card/saving account/current account for the above charges in
         favour of ASTRO GS SHOP SDN BHD and agree to the Terms and Conditions.
     </string>
@@ -400,6 +403,7 @@
     <string name="download">Download</string>
     <string name="cancel">Cancel</string>
     <string name="order_cancellation_form">Order Cancellation Form</string>
+    <string name="order_return">Order Return</string>
     <string name="cancel_order_tips">Please fill in your details and reason for cancellation. Our
         customer service will contact you soon.
     </string>
@@ -432,11 +436,15 @@
     <string name="confirm_warning">Password and Password Confirmation should be same!</string>
     <string name="format_email_warning">Please enter a valid email address</string>
     <string name="format_mobile_warning">Please enter a valid mobile number</string>
+    <string name="exceed_number">Exceeded number of words!</string>
     <string name="order_number">Order Number:</string>
     <string name="order_status">Order Status:</string>
     <string name="track">Track</string>
     <string name="placed_at">Placed at:</string>
     <string name="items">Items</string>
     <string name="order_detail">Order Detail</string>
+    <string name="cvv_info">The last 3 digits on the back of your card.</string>
+    <string name="enter_question">Enter your question</string>
+    <string name="all_qa">All Q&#38;A</string>
 
 </resources>

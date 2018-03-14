@@ -11,13 +11,12 @@ import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.utils.ScreenHelper;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
@@ -173,6 +172,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             case R.id.rl_shipping_root:
                 break;
             case R.id.btn_checkout_place_my_order:
+                startActivity(new Intent(this, CheckoutPaymentActivity.class));
                 break;
             case R.id.imageview_left_menu:
                 finish();

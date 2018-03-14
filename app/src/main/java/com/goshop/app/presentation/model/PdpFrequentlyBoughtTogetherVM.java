@@ -1,26 +1,25 @@
 package com.goshop.app.presentation.model;
 
+import com.goshop.app.presentation.model.widget.ProductsVM;
+
 import java.util.List;
 
 public class PdpFrequentlyBoughtTogetherVM extends ProductDetailModel {
 
-    List<PdpFrequentlyDataVM> dataVMS;
+    private List<ProductsVM> productsVMS;
 
     public PdpFrequentlyBoughtTogetherVM(
-        List<PdpFrequentlyDataVM> dataVMS) {
+        List<ProductsVM> productsVMS) {
         super(ProductDetailModel.DETAIL_FREQUENTLY_BOUGHT_TOGETHER);
-        this.dataVMS = dataVMS;
+        this.productsVMS = productsVMS;
     }
 
-    public PdpFrequentlyBoughtTogetherVM() {
-        super(ProductDetailModel.DETAIL_FREQUENTLY_BOUGHT_TOGETHER);
+    public List<ProductsVM> getProductsVMS() {
+        return productsVMS;
     }
 
-    public List<PdpFrequentlyDataVM> getDataVMS() {
-        return dataVMS;
-    }
-
-    public void setDataVMS(List<PdpFrequentlyDataVM> dataVMS) {
-        this.dataVMS = dataVMS;
+    public void setProductsVMS(
+        List<ProductsVM> productsVMS) {
+        this.productsVMS = productsVMS;
     }
 }

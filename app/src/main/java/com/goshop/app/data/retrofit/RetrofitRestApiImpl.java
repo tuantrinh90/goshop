@@ -23,6 +23,8 @@ import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -390,5 +392,23 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.TV_SHOWS);
         return retrofitRestApi.leftVideoRequest(url, params);
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.QUESTION_ANSWER);
+        return retrofitRestApi.allQARequest(url, params);
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.QUESTION_ANSWER);
+        return retrofitRestApi.qaDetailRequest(url, params);
+    }
+
+    @Override
+    public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_SKU);
+        return retrofitRestApi.promotionSkuRequest(url,params);
     }
 }

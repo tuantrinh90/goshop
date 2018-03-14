@@ -3,14 +3,11 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_whole_bg"
     android:orientation="vertical">
 
     <include
         layout="@layout/toolbar_img_text_img_close"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/color_divider_grey"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_terms_conditions"

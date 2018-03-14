@@ -17,7 +17,7 @@
         android:layout_weight="1"
         android:text="@string/pdp_additionall_value"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
     />
 
     <com.goshop.app.common.view.CustomTextView
@@ -28,7 +28,7 @@
         android:gravity="right"
         android:text="@string/pdp_additionall_value"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         tools:ignore="RtlHardcoded"/>
 
 

@@ -9,11 +9,6 @@
     <include
         layout="@layout/toolbar_right_text"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/color_divider_grey"/>
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -60,82 +55,60 @@
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/address_two"/>
 
-
-            <com.goshop.app.common.view.CustomTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_32"
-                android:layout_marginLeft="@dimen/size_16"
-                android:layout_marginRight="@dimen/size_16"
-                android:layout_marginBottom="@dimen/size_8"
-                android:textColor="@color/color_hint_grey"
-                android:text="@string/country"
-                android:textSize="@dimen/size_font_12"/>
-
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_new_address_country"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/size_16"
-                android:layout_marginRight="@dimen/size_16"
-                android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_text_black"
-                android:background="@drawable/bg_bottom_line"
-                android:paddingTop="@dimen/size_8"
-                android:paddingBottom="@dimen/size_8"
-                android:drawableRight="@drawable/ic_chevron_titlebar_down"
-                android:drawableEnd="@drawable/ic_chevron_titlebar_down"/>
-
-            <com.goshop.app.common.view.CustomTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_32"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
-                android:layout_marginBottom="@dimen/size_8"
-                android:textColor="@color/color_hint_grey"
-                android:text="@string/state"
-                android:textSize="@dimen/size_font_12"/>
+                android:paddingRight="@dimen/size_8"
+                android:drawableRight="@drawable/ic_icon_spinner_down"
+                android:background="@drawable/bg_bottom_line"
+                android:paddingBottom="@dimen/size_8"
+                android:paddingTop="@dimen/size_20"
+                android:textColorHint="@color/color_text_hint"
+                android:textColor="@color/color_grayscale_text"
+                android:textSize="@dimen/size_font_16"
+                android:hint="@string/country"
+                android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_new_address_state"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/size_16"
-                android:layout_marginRight="@dimen/size_16"
-                android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_text_black"
-                android:background="@drawable/bg_bottom_line"
-                android:paddingTop="@dimen/size_8"
-                android:paddingBottom="@dimen/size_8"
-                android:drawableRight="@drawable/ic_chevron_titlebar_down"
-                android:drawableEnd="@drawable/ic_chevron_titlebar_down"/>
-
-            <com.goshop.app.common.view.CustomTextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_32"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
-                android:layout_marginBottom="@dimen/size_8"
-                android:textColor="@color/color_hint_grey"
-                android:text="@string/city"
-                android:textSize="@dimen/size_font_12"/>
+                android:paddingRight="@dimen/size_8"
+                android:drawableRight="@drawable/ic_icon_spinner_down"
+                android:background="@drawable/bg_bottom_line"
+                android:paddingBottom="@dimen/size_8"
+                android:paddingTop="@dimen/size_20"
+                android:textColorHint="@color/color_text_hint"
+                android:textColor="@color/color_grayscale_text"
+                android:textSize="@dimen/size_font_16"
+                android:hint="@string/state"
+                android:drawableEnd="@drawable/ic_icon_spinner_down"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_new_address_city"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_32"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
-                android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_text_black"
+                android:paddingRight="@dimen/size_8"
+                android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/bg_bottom_line"
-                android:paddingTop="@dimen/size_8"
                 android:paddingBottom="@dimen/size_8"
-                android:drawableRight="@drawable/ic_chevron_titlebar_down"
-                android:drawableEnd="@drawable/ic_chevron_titlebar_down"/>
-
+                android:paddingTop="@dimen/size_20"
+                android:textColorHint="@color/color_text_hint"
+                android:textColor="@color/color_grayscale_text"
+                android:textSize="@dimen/size_font_16"
+                android:hint="@string/city"
+                android:drawableEnd="@drawable/ic_icon_spinner_down"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_new_address_zip"

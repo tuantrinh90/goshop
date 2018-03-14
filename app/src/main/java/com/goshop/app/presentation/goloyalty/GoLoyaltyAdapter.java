@@ -21,20 +21,15 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GoLoyaltyAdapter extends RecyclerView.Adapter {
+public class GoLoyaltyAdapter extends RecyclerView.Adapter implements DealsAdapter.OnDealItemClickListener{
 
     private List<GoLoyaltyModel> goLoyaltyModels;
 
-    private OnDealsViewAllClickListener onDealsViewAllClickListener;
+    private OnGoLoyaltyItemsClickListener onGoLoyaltyItemsClickListener;
 
     public GoLoyaltyAdapter(
         List<GoLoyaltyModel> goLoyaltyModels) {
         this.goLoyaltyModels = goLoyaltyModels;
-    }
-
-    public void setOnDealsViewAllClickListener(
-        OnDealsViewAllClickListener onDealsViewAllClickListener) {
-        this.onDealsViewAllClickListener = onDealsViewAllClickListener;
     }
 
     public void setUpdatas(List<GoLoyaltyModel> goLoyaltyModels) {
@@ -67,7 +62,7 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter {
         if (holder instanceof TopViewHolder) {
             ((TopViewHolder) holder).bindingData((GoLoyaltyTopVM) goLoyaltyModel);
         } else if (holder instanceof DetailViewHolder) {
-            ((DetailViewHolder) holder).bindingData((GoLoyaltyDetailsVM) goLoyaltyModel);
+            ((DetailViewHolder) holder).bindingData((GoLoyaltyDetailsVM) goLoyaltyModel, this::onDealItemClick);
         }
     }
 
@@ -81,7 +76,21 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter {
         return goLoyaltyModels.size();
     }
 
-    public interface OnDealsViewAllClickListener {
+    public void setOnGoLoyaltyItemsClickListener(
+        OnGoLoyaltyItemsClickListener onGoLoyaltyItemsClickListener) {
+        this.onGoLoyaltyItemsClickListener = onGoLoyaltyItemsClickListener;
+    }
+
+    @Override
+    public void onDealItemClick() {
+        onGoLoyaltyItemsClickListener.onDealItemClick();
+    }
+
+    public interface OnGoLoyaltyItemsClickListener {
+
+        void onPointsItemClick();
+
+        void onDealItemClick();
 
         void onViewAllClick();
     }
@@ -121,6 +130,7 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter {
             llLoyaltyId.setOnClickListener(v -> {
             });
             llLoyaltyPoints.setOnClickListener(v -> {
+                onGoLoyaltyItemsClickListener.onPointsItemClick();
             });
         }
     }
@@ -141,15 +151,15 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(GoLoyaltyDetailsVM goLoyaltyDetailsVM) {
+        void bindingData(GoLoyaltyDetailsVM goLoyaltyDetailsVM, DealsAdapter.OnDealItemClickListener onDealItemClickListener) {
             tvGoLoyaltyTitle.setText(goLoyaltyDetailsVM.getTitle());
-            tvBtnGoLoyaltyMore.setOnClickListener(v -> {
-                onDealsViewAllClickListener.onViewAllClick();
-            });
+            tvBtnGoLoyaltyMore.setOnClickListener(v -> onGoLoyaltyItemsClickListener.onViewAllClick());
             LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerViewDeals.setLayoutManager(manager);
-            recyclerViewDeals.setAdapter(new DealsAdapter(goLoyaltyDetailsVM.getDealsVMS()));
+            DealsAdapter dealsAdapter = new DealsAdapter(goLoyaltyDetailsVM.getDealsVMS());
+            recyclerViewDeals.setAdapter(dealsAdapter);
+            dealsAdapter.setOnDealItemClickListener(onDealItemClickListener);
         }
     }
 }

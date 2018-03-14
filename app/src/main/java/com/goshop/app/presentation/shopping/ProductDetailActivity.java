@@ -3,8 +3,9 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.model.ProductDetailModel;
+import com.goshop.app.widget.adapter.WidgetPdpAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,8 +13,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,27 +23,12 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Presenter>
-    implements ProductDetailContract.View {
-
-    @BindView(R.id.imageview_right_cart)
-    ImageView imageviewRightCart;
-
-    @BindView(R.id.iv_pdp_love)
-    ImageView ivPdpLove;
+    implements ProductDetailContract.View, WidgetPdpAdapter.OnProductDetailItemClickListener {
 
     @BindView(R.id.rcv_pdp_details)
     RecyclerView rcvPdpDetails;
 
-    @BindView(R.id.rl_pdp_bottom)
-    RelativeLayout rlPdpBottom;
-
-    @BindView(R.id.tv_btn_pdp_add_to_cart)
-    CustomTextView tvBtnPdpAddToCart;
-
-    @BindView(R.id.tv_btn_pdp_buy_now)
-    CustomTextView tvBtnPdpBuyNow;
-
-    private ProductDetailAdapter detailAdapter;
+    private WidgetPdpAdapter pdpAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -81,28 +65,25 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcvPdpDetails.setLayoutManager(layoutManager);
-        detailAdapter = new ProductDetailAdapter(new ArrayList<>());
-        rcvPdpDetails.setAdapter(detailAdapter);
+        pdpAdapter = new WidgetPdpAdapter(new ArrayList<>());
+        rcvPdpDetails.setAdapter(pdpAdapter);
+        pdpAdapter.setOnProductDetailItemClickListener(this);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu, R.id.imageview_right_cart, R
-        .id.iv_pdp_love, R.id.tv_btn_pdp_buy_now, R.id
-        .tv_btn_pdp_add_to_cart})
-    public void onPdpClick(View view) {
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu,   R
+        .id.tv_btn_add_to_cart, R.id.tv_btn_buy_now})
+    public void onProductDetailClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
             case R.id.imageview_right_menu:
-                break;
-            case R.id.imageview_right_cart:
                 startActivity(new Intent(this, ShoppingCartActivity.class));
                 break;
-            case R.id.tv_btn_pdp_buy_now:
+
+            case R.id.tv_btn_buy_now:
                 break;
-            case R.id.tv_btn_pdp_add_to_cart:
-                break;
-            case R.id.iv_pdp_love:
+            case R.id.tv_btn_add_to_cart:
                 break;
         }
     }
@@ -110,6 +91,31 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     @Override
     public void productDetailRequestSuccess(List<ProductDetailModel> detailDatas) {
         //todo(helen)wait for complete
-        detailAdapter.updateDatas(detailDatas);
+        pdpAdapter.setUpdateDatas(detailDatas);
+    }
+
+    @Override
+    public void onCheckClick() {
+        startActivity(new Intent(this, CheckoutActivity.class));
+    }
+
+    @Override
+    public void onWriteAReviewClick() {
+        startActivity(new Intent(this, RatingActivity.class));
+    }
+
+    @Override
+    public void onMoreReviewClick() {
+        startActivity(new Intent(this, AllReviewsActivity.class));
+    }
+
+    @Override
+    public void onAskQuestionClick() {
+        startActivity(new Intent(this, AllQAActivity.class));
+    }
+
+    @Override
+    public void onMoreQuestionClick() {
+        startActivity(new Intent(this, AllQAActivity.class));
     }
 }

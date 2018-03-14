@@ -61,7 +61,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_video_left_title"
         android:gravity="left"
-        android:textColor="@color/color_hint_grey"
+        android:textColor="@color/color_text_hint"
         android:textSize="@dimen/size_font_12"
         android:paddingTop="@dimen/size_4"
         android:background="@android:color/transparent"

@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <include
-        layout="@layout/toolbar_img_text_img_close"/>
+        layout="@layout/toolbar_img_text_img_add"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_address_book"

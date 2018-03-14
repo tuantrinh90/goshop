@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/size_16" >
+
+    <com.goshop.app.common.view.CustomTextView
+        android:id="@+id/tv_pop_info"
+        android:layout_width="@dimen/size_150"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_round_shadow_white"
+        android:paddingTop="@dimen/size_8"
+        android:paddingBottom="@dimen/size_8"
+        android:paddingLeft="@dimen/size_12"
+        android:paddingRight="@dimen/size_12"
+        android:textSize="@dimen/size_font_12"
+        android:textColor="@color/color_greyish_brown"
+        android:text="@string/cvv_info"/>
+
+</RelativeLayout>

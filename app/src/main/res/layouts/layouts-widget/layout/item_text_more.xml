@@ -12,11 +12,11 @@
         android:padding="@dimen/size_16"
         android:gravity="center"
         android:text="@string/view_more"
-        android:textColor="@color/color_hint_grey"
+        android:textColor="@color/color_text_hint"
         android:textSize="@dimen/size_font_14"/>
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/color_divider_grey"/>
+        android:layout_height="@dimen/size_divider"
+        android:background="@color/color_bg_disabled_divider"/>
 
 </LinearLayout>

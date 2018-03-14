@@ -16,7 +16,7 @@
         android:id="@+id/tv_deal_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_grayscale_text"
+        android:textColor="@color/color_grayscale_text_two"
         android:textSize="@dimen/size_font_14"
         android:maxLines="1"
         android:ellipsize="end"
@@ -25,7 +25,7 @@
         android:id="@+id/tv_deal_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_grayscale_text"
+        android:textColor="@color/color_grayscale_text_two"
         android:textSize="@dimen/size_font_16"
         android:maxLines="1"
         android:ellipsize="end"/>
@@ -34,7 +34,7 @@
         android:id="@+id/tv_deal_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_grayscale_text"
+        android:textColor="@color/color_grayscale_text_two"
         android:textSize="@dimen/size_font_14"
         android:maxLines="1"
         android:ellipsize="end"/>
@@ -43,7 +43,7 @@
         android:id="@+id/tv_deal_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_grayscale_text"
+        android:textColor="@color/color_grayscale_text_two"
         android:textSize="@dimen/size_font_14"
         android:maxLines="1"
         android:ellipsize="end"/>

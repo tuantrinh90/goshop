@@ -135,7 +135,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
                 intent.putExtra(PROMOTION_BANNER_URL, image);
                 break;
             case SKU:
-                intent = new Intent(getActivity(), PromotionLandingListActivity.class);
+                intent = new Intent(getActivity(), PromotionSkuActivity.class);
                 intent.putExtra(PROMOTION_BANNER_URL, image);
                 break;
             case BANNER:
@@ -150,7 +150,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onSinglePictureClick(WidgetSinglePictureVM singlePictureVM) {
-        Intent intent = new Intent(getActivity(), PromotionLandingListActivity.class);
+        Intent intent = new Intent(getActivity(), PromotionSkuActivity.class);
         intent.putExtra(PROMOTION_BANNER_URL,
             singlePictureVM.getOfferListItemsVMS().get(0).getImage());
         startActivity(intent);

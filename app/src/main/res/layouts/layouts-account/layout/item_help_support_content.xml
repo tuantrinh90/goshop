@@ -21,7 +21,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_16"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:maxLines="1"
         android:ellipsize="end"
         android:layout_alignParentLeft="true"

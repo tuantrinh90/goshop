@@ -9,6 +9,6 @@
 
     <stroke
         android:width="@dimen/size_1"
-        android:color="@color/color_div_grey"/>
+        android:color="@color/color_text_hint"/>
 
 </shape>
