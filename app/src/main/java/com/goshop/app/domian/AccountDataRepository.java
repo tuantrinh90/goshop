@@ -418,8 +418,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
-        return accountCloudDataSource.leftVideoRequest(params);
+    public Observable<TVShowResponse> tvShowRequest(Map<String, Object> params) {
+        return accountCloudDataSource.tvShowRequest(params);
     }
 
     @Override

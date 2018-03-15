@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -31,7 +32,8 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:background="@drawable/ic_icon_user_default"/>
+                    android:background="@drawable/ic_icon_user_default"
+                    tools:ignore="RtlHardcoded"/>
                 <com.goshop.app.common.view.CustomBoldTextView
                     android:id="@+id/tv_my_account_username"
                     android:layout_width="match_parent"
@@ -39,7 +41,8 @@
                     android:layout_toLeftOf="@+id/iv_my_account_thumb"
                     android:text="@string/user_name"
                     android:textSize="@dimen/size_font_32"
-                    android:textColor="@color/color_grayscale_text"/>
+                    android:textColor="@color/color_grayscale_text"
+                    tools:ignore="RtlHardcoded"/>
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_my_account_edit"
                     android:layout_width="match_parent"
@@ -49,7 +52,8 @@
                     android:layout_toLeftOf="@+id/iv_my_account_thumb"
                     android:text="@string/edit_profile"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_grayscale_secondary"/>
+                    android:textColor="@color/color_grayscale_secondary"
+                    tools:ignore="RtlHardcoded"/>
 
             </RelativeLayout>
             <View
@@ -73,7 +77,8 @@
                     android:layout_alignParentLeft="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_my_wishlist"/>
+                    android:src="@drawable/ic_icon_my_wishlist"
+                    tools:ignore="RtlHardcoded"/>
 
                 <ImageView
                     android:id="@+id/iv_right_wishlist"
@@ -82,7 +87,8 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_right_expand"/>
+                    android:src="@drawable/ic_icon_right_expand"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -92,7 +98,8 @@
                     android:text="@string/my_wishlist"
                     android:paddingLeft="@dimen/size_16"
                     android:layout_toRightOf="@id/iv_left_wishlist"
-                    android:layout_toLeftOf="@id/iv_right_wishlist"/>
+                    android:layout_toLeftOf="@id/iv_right_wishlist"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_account_orders"
@@ -110,7 +117,8 @@
                     android:layout_alignParentLeft="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_my_orders"/>
+                    android:src="@drawable/ic_icon_my_orders"
+                    tools:ignore="RtlHardcoded"/>
 
                 <ImageView
                     android:id="@+id/iv_right_orders"
@@ -119,7 +127,8 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_right_expand"/>
+                    android:src="@drawable/ic_icon_right_expand"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -129,7 +138,8 @@
                     android:text="@string/my_orders"
                     android:paddingLeft="@dimen/size_16"
                     android:layout_toRightOf="@id/iv_left_orders"
-                    android:layout_toLeftOf="@id/iv_right_orders"/>
+                    android:layout_toLeftOf="@id/iv_right_orders"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_account_reviews"
@@ -148,7 +158,8 @@
                     android:layout_centerVertical="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_review"/>
+                    android:src="@drawable/ic_icon_review"
+                    tools:ignore="RtlHardcoded"/>
 
                 <ImageView
                     android:id="@+id/iv_right_reviews"
@@ -157,7 +168,8 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_right_expand"/>
+                    android:src="@drawable/ic_icon_right_expand"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -167,7 +179,8 @@
                     android:text="@string/my_product_reviews"
                     android:paddingLeft="@dimen/size_16"
                     android:layout_toRightOf="@id/iv_left_reviews"
-                    android:layout_toLeftOf="@id/iv_right_reviews"/>
+                    android:layout_toLeftOf="@id/iv_right_reviews"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_account_address"
@@ -186,7 +199,8 @@
                     android:layout_alignParentLeft="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_address_book"/>
+                    android:src="@drawable/ic_icon_address_book"
+                    tools:ignore="RtlHardcoded"/>
 
                 <ImageView
                     android:id="@+id/iv_right_address"
@@ -195,7 +209,8 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_right_expand"/>
+                    android:src="@drawable/ic_icon_right_expand"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -205,7 +220,8 @@
                     android:text="@string/my_address_book"
                     android:paddingLeft="@dimen/size_16"
                     android:layout_toRightOf="@id/iv_left_address"
-                    android:layout_toLeftOf="@id/iv_right_address"/>
+                    android:layout_toLeftOf="@id/iv_right_address"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_account_rewards"
@@ -224,7 +240,8 @@
                     android:layout_centerVertical="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_rewards"/>
+                    android:src="@drawable/ic_icon_rewards"
+                    tools:ignore="RtlHardcoded"/>
 
                 <ImageView
                     android:id="@+id/iv_right_rewards"
@@ -233,7 +250,8 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_right_expand"/>
+                    android:src="@drawable/ic_icon_right_expand"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -243,7 +261,8 @@
                     android:text="@string/my_rewards"
                     android:paddingLeft="@dimen/size_16"
                     android:layout_toRightOf="@id/iv_left_rewards"
-                    android:layout_toLeftOf="@id/iv_right_rewards"/>
+                    android:layout_toLeftOf="@id/iv_right_rewards"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_account_points"
@@ -262,7 +281,8 @@
                     android:layout_centerVertical="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_goshop_points"/>
+                    android:src="@drawable/ic_icon_goshop_points"
+                    tools:ignore="RtlHardcoded"/>
 
                 <ImageView
                     android:id="@+id/iv_right_points"
@@ -271,7 +291,8 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_right_expand"/>
+                    android:src="@drawable/ic_icon_right_expand"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -281,7 +302,8 @@
                     android:text="@string/my_point"
                     android:paddingLeft="@dimen/size_16"
                     android:layout_toRightOf="@id/iv_left_points"
-                    android:layout_toLeftOf="@id/iv_right_points"/>
+                    android:layout_toLeftOf="@id/iv_right_points"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </RelativeLayout>
             <RelativeLayout
                 android:id="@+id/rl_account_egift"
@@ -300,7 +322,8 @@
                     android:layout_centerVertical="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_egift"/>
+                    android:src="@drawable/ic_icon_egift"
+                    tools:ignore="RtlHardcoded"/>
 
                 <ImageView
                     android:id="@+id/iv_right_egift"
@@ -309,7 +332,8 @@
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
-                    android:src="@drawable/ic_icon_right_expand"/>
+                    android:src="@drawable/ic_icon_right_expand"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:layout_width="match_parent"
@@ -319,7 +343,8 @@
                     android:text="@string/my_egift_cards"
                     android:paddingLeft="@dimen/size_16"
                     android:layout_toRightOf="@id/iv_left_egift"
-                    android:layout_toLeftOf="@id/iv_right_egift"/>
+                    android:layout_toLeftOf="@id/iv_right_egift"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </RelativeLayout>
 
 

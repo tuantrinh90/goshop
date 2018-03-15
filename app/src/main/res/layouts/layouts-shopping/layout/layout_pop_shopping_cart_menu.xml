@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -10,7 +11,8 @@
         android:layout_height="wrap_content"
         android:layout_marginRight="@dimen/size_8"
         android:background="@drawable/bg_round_shadow_white"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="RtlHardcoded">
         <LinearLayout
             android:id="@+id/ll_wishlist"
             android:layout_width="match_parent"
@@ -22,7 +24,8 @@
             android:layout_marginTop="@dimen/size_8"
             android:layout_marginBottom="@dimen/size_8"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded,RtlSymmetry">
             <ImageView
                 android:layout_width="@dimen/size_24"
                 android:layout_height="@dimen/size_24"
@@ -51,7 +54,8 @@
             android:layout_marginTop="@dimen/size_8"
             android:layout_marginBottom="@dimen/size_8"
             android:gravity="center_vertical"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded,RtlSymmetry">
             <ImageView
                 android:layout_width="@dimen/size_24"
                 android:layout_height="@dimen/size_24"

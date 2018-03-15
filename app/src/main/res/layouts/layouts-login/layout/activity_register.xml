@@ -35,7 +35,8 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:layout_marginRight="@dimen/size_8"
-                    animET:hint="@string/register_firstname"/>
+                    animET:hint="@string/register_firstname"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.CustomAnimEditText
                     android:id="@+id/ctd_et_register_lastname"
@@ -45,7 +46,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginLeft="@dimen/size_8"
                     animET:hint="@string/register_lastname"
-                    android:layout_toEndOf="@id/ctd_et_register_firstname"/>
+                    android:layout_toEndOf="@id/ctd_et_register_firstname"
+                    tools:ignore="RtlHardcoded"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -90,7 +92,8 @@
                         android:textColor="@color/color_grayscale_text"
                         android:textSize="@dimen/size_font_16"
                         android:hint="@string/title_optional"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"
+                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
                     <include
                         layout="@layout/layout_gender_select"/>
@@ -118,7 +121,8 @@
                         android:textColorHint="@color/color_text_hint"
                         android:textColor="@color/color_grayscale_text"
                         android:hint="@string/date_of_birth"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"
+                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
                     <com.goshop.app.common.view.CustomTextView
                         android:id="@+id/tv_register_date_of_birth_warning"
@@ -145,7 +149,8 @@
                         android:textColorHint="@color/color_text_hint"
                         android:textColor="@color/color_grayscale_text"
                         android:hint="@string/language_optional"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"
+                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
                     <LinearLayout
                         android:id="@+id/ll_register_email"
@@ -167,7 +172,8 @@
                             android:textSize="@dimen/size_font_12"
                             android:paddingLeft="@dimen/size_8"
                             android:text="@string/register_tips_email"
-                            android:textColor="@color/color_greyish_brown"/>
+                            android:textColor="@color/color_greyish_brown"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -190,7 +196,8 @@
                             android:textSize="@dimen/size_font_12"
                             android:paddingLeft="@dimen/size_8"
                             android:text="@string/register_tips_sms"
-                            android:textColor="@color/color_greyish_brown"/>
+                            android:textColor="@color/color_greyish_brown"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
                     </LinearLayout>
 
 
@@ -228,9 +235,7 @@
                     </LinearLayout>
                 </LinearLayout>
 
-
             </RelativeLayout>
-
 
         </LinearLayout>
     </ScrollView>

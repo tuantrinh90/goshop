@@ -28,7 +28,7 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
         android:paddingBottom="@dimen/size_16"
-        android:textSize="@dimen/size_14"
+        android:textSize="@dimen/size_font_14"
         android:textColor="@color/color_text_hint"
     />
 

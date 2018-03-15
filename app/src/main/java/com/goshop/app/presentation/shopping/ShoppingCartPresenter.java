@@ -7,7 +7,6 @@ import com.goshop.app.presentation.model.ShoppingCartApplyVM;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-import com.goshop.app.presentation.model.widget.ProductCartBannerVM;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
 import com.goshop.app.presentation.model.widget.ProductListModel;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;

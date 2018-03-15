@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
@@ -29,7 +30,8 @@
             android:layout_height="wrap_content"
             android:gravity="right"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_main_pink"/>
+            android:textColor="@color/color_main_pink"
+            tools:ignore="RtlHardcoded"/>
 
     </LinearLayout>
 
@@ -50,7 +52,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="@dimen/size_10"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded,RtlSymmetry">
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_order_product_title"
                 android:layout_width="match_parent"
@@ -86,12 +89,10 @@
                     android:layout_height="wrap_content"
                     android:gravity="right"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_greyish_brown"/>
+                    android:textColor="@color/color_greyish_brown"
+                    tools:ignore="RtlHardcoded"/>
             </LinearLayout>
-
-
         </LinearLayout>
-
     </LinearLayout>
 
     <RelativeLayout
@@ -115,7 +116,8 @@
             android:paddingRight="@dimen/size_16"
             android:text="@string/track"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"/>
+            android:textColor="@color/color_grayscale_text"
+            tools:ignore="RtlHardcoded"/>
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_order_product_write"
             android:layout_width="wrap_content"
@@ -126,8 +128,7 @@
             android:layout_marginRight="@dimen/size_8"
             android:text="@string/write_a_review"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"/>
+            android:textColor="@color/color_grayscale_text"
+            tools:ignore="RtlHardcoded"/>
     </RelativeLayout>
-
-
 </LinearLayout>

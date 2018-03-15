@@ -84,7 +84,6 @@
                     android:layout_marginTop="@dimen/size_14"
                     android:layout_marginLeft="@dimen/size_16"
                     android:layout_marginRight="@dimen/size_16"
-                    android:layout_below="@id/et_login_email"
                     pwd:pwd_hint="@string/password"
                 />
 
@@ -99,7 +98,7 @@
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_grayscale_secondary"
                     android:text="@string/login_forgot_password"
-                    android:gravity="right"/>
+                    android:gravity="end"/>
 
                 <com.goshop.app.common.view.CustomBoldTextView
                     android:id="@+id/tv_btn_login"
@@ -111,7 +110,7 @@
                     android:padding="@dimen/size_14"
                     android:gravity="center"
                     android:text="@string/login"
-                    android:textSize="@dimen/size_16"
+                    android:textSize="@dimen/size_font_16"
                     android:textColor="@android:color/white"
                     android:background="@drawable/bg_btn_round_pink"
                 />
@@ -163,7 +162,7 @@
                     android:padding="@dimen/size_14"
                     android:gravity="center"
                     android:text="@string/login_facebook"
-                    android:textSize="@dimen/size_16"
+                    android:textSize="@dimen/size_font_16"
                     android:textColor="@android:color/white"
                     android:background="@drawable/bg_btn_round_blue"
                 />

@@ -389,9 +389,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
+    public Observable<TVShowResponse> tvShowRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.TV_SHOWS);
-        return retrofitRestApi.leftVideoRequest(url, params);
+        return retrofitRestApi.tvShowRequest(url, params);
     }
 
     @Override

@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:animET="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -73,7 +74,8 @@
                         android:textColor="@color/color_grayscale_text"
                         android:textSize="@dimen/size_font_16"
                         android:hint="@string/country"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"
+                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
                     <com.goshop.app.common.view.CustomTextView
                         android:id="@+id/tv_edit_address_country_warning"
                         android:layout_width="match_parent"
@@ -98,7 +100,8 @@
                         android:textColor="@color/color_grayscale_text"
                         android:textSize="@dimen/size_font_16"
                         android:hint="@string/state"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"
+                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
                     <com.goshop.app.common.view.CustomTextView
                         android:id="@+id/tv_edit_address_state_warning"
                         android:layout_width="match_parent"
@@ -123,7 +126,8 @@
                         android:textColor="@color/color_grayscale_text"
                         android:textSize="@dimen/size_font_16"
                         android:hint="@string/city"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                        android:drawableEnd="@drawable/ic_icon_spinner_down"
+                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
                     <com.goshop.app.common.view.CustomTextView
                         android:id="@+id/tv_edit_address_city_warning"
@@ -169,7 +173,8 @@
                             android:textSize="@dimen/size_font_12"
                             android:paddingLeft="@dimen/size_8"
                             android:text="@string/add_address_box"
-                            android:textColor="@color/color_greyish_brown"/>
+                            android:textColor="@color/color_greyish_brown"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
                     </LinearLayout>
 
                     <LinearLayout
@@ -192,7 +197,8 @@
                             android:textSize="@dimen/size_font_12"
                             android:paddingLeft="@dimen/size_8"
                             android:text="@string/add_address_box"
-                            android:textColor="@color/color_greyish_brown"/>
+                            android:textColor="@color/color_greyish_brown"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
                     </LinearLayout>
                 </LinearLayout>
                 <LinearLayout
@@ -204,7 +210,7 @@
                     android:paddingBottom="@dimen/size_10"
                     android:paddingLeft="@dimen/size_16"
                     android:paddingRight="@dimen/size_16"
-                    android:layout_alignParentBottom="true">
+                >
                     <include
                         layout="@layout/layout_button_pink"/>
                 </LinearLayout>

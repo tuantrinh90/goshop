@@ -338,7 +338,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
+    public Observable<TVShowResponse> tvShowRequest(Map<String, Object> params) {
         return null;
     }
 

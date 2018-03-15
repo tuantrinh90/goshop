@@ -382,7 +382,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<TVShowResponse> leftVideoRequest(@Url String fullUrl,
+    Observable<TVShowResponse> tvShowRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

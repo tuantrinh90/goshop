@@ -2,6 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:animET="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:focusableInTouchMode="true"
     android:focusable="true"
     android:clipChildren="false"
@@ -61,7 +62,9 @@
                 android:textColorHint="@color/color_text_hint"
                 android:textColor="@color/color_grayscale_text"
                 android:hint="@string/date_of_birth"
-                android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                android:drawableEnd="@drawable/ic_icon_spinner_down"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_8"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_profile_date_of_birth_warning"
@@ -88,7 +91,9 @@
                 android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
                 android:hint="@string/title_optional"
-                android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                android:drawableEnd="@drawable/ic_icon_spinner_down"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_8"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_profile_mobile"
@@ -111,7 +116,9 @@
                 android:textColorHint="@color/color_text_hint"
                 android:textColor="@color/color_grayscale_text"
                 android:hint="@string/language_optional"
-                android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                android:drawableEnd="@drawable/ic_icon_spinner_down"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_8"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_profile_race"
@@ -127,7 +134,9 @@
                 android:textColorHint="@color/color_text_hint"
                 android:textColor="@color/color_grayscale_text"
                 android:hint="@string/race_optional"
-                android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                android:drawableEnd="@drawable/ic_icon_spinner_down"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_8"/>
 
         </LinearLayout>
     </ScrollView>

@@ -78,14 +78,16 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"/>
+            android:textColor="@color/color_grayscale_text"
+            android:layout_alignParentEnd="true"/>
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/tv_myorders_total"
             android:text="@string/my_orders_total_price"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"/>
+            android:textColor="@color/color_grayscale_text"
+            android:layout_toStartOf="@id/tv_myorders_total"/>
     </RelativeLayout>
 
 </LinearLayout>

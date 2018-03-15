@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -53,7 +54,9 @@
                         android:textColor="@color/color_text_black"
                         android:textSize="@dimen/size_font_16"
                         android:layout_toLeftOf="@id/switch_setting_email"
-                        android:layout_toStartOf="@id/switch_setting_email"/>
+                        android:layout_toStartOf="@id/switch_setting_email"
+                        tools:ignore="RtlSymmetry"
+                        android:paddingEnd="@dimen/size_20"/>
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -79,7 +82,9 @@
                         android:textColor="@color/color_text_black"
                         android:textSize="@dimen/size_font_16"
                         android:layout_toLeftOf="@id/switch_setting_sms"
-                        android:layout_toStartOf="@id/switch_setting_sms"/>
+                        android:layout_toStartOf="@id/switch_setting_sms"
+                        tools:ignore="RtlSymmetry"
+                        android:paddingEnd="@dimen/size_20"/>
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -105,7 +110,9 @@
                         android:textColor="@color/color_text_black"
                         android:textSize="@dimen/size_font_16"
                         android:layout_toLeftOf="@id/switch_setting_notification"
-                        android:layout_toStartOf="@id/switch_setting_notification"/>
+                        android:layout_toStartOf="@id/switch_setting_notification"
+                        tools:ignore="RtlSymmetry"
+                        android:paddingEnd="@dimen/size_20"/>
 
                 </RelativeLayout>
                 <RelativeLayout
@@ -131,7 +138,9 @@
                         android:textColor="@color/color_text_black"
                         android:textSize="@dimen/size_font_16"
                         android:layout_toLeftOf="@id/switch_setting_market"
-                        android:layout_toStartOf="@id/switch_setting_market"/>
+                        android:layout_toStartOf="@id/switch_setting_market"
+                        tools:ignore="RtlSymmetry"
+                        android:paddingEnd="@dimen/size_20"/>
 
                 </RelativeLayout>
 
@@ -162,7 +171,9 @@
                     android:paddingRight="@dimen/size_20"
                     android:text="@string/change_password"
                     android:textColor="@color/color_text_black"
-                    android:textSize="@dimen/size_font_16"/>
+                    android:textSize="@dimen/size_font_16"
+                    tools:ignore="RtlSymmetry"
+                    android:paddingEnd="@dimen/size_20"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_setting_logout"
@@ -173,7 +184,9 @@
                     android:paddingRight="@dimen/size_20"
                     android:text="@string/logout"
                     android:textColor="@color/color_text_black"
-                    android:textSize="@dimen/size_font_16"/>
+                    android:textSize="@dimen/size_font_16"
+                    tools:ignore="RtlSymmetry"
+                    android:paddingEnd="@dimen/size_20"/>
 
             </LinearLayout>
 

@@ -41,9 +41,7 @@ public class PDPReviewsViewHolder extends RecyclerView.ViewHolder {
         OnReviewsViewMoreClickListener onReviewsViewMoreClickListener) {
         tvReviewsTotalCount.setText(pdpReviewsVM.getReviewsCounts());
         ratingBar.setRating(pdpReviewsVM.getTotalStarStep());
-        tvBtnAddMore.setOnClickListener(v -> {
-            onReviewsViewMoreClickListener.onReviewsMoreClick();
-        });
+        tvBtnAddMore.setOnClickListener(v -> onReviewsViewMoreClickListener.onReviewsMoreClick());
 
         LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
         manager.setOrientation(LinearLayoutManager.VERTICAL);

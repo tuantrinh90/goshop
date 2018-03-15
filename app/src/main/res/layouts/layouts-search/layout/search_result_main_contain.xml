@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
@@ -18,6 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingRight="@dimen/size_16"
-        android:background="@android:color/white"/>
+        android:background="@android:color/white"
+        tools:ignore="RtlSymmetry"
+        android:paddingEnd="@dimen/size_16"/>
 
 </LinearLayout>

@@ -3,11 +3,12 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
-import com.goshop.app.presentation.model.TVVideoLeftVM;
-import com.goshop.app.presentation.model.TVVideoRightVM;
+import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.presentation.model.TVShowVM;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -25,24 +26,51 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presenter> implements
-    TVShowPageContract.View {
+    TVShowPageContract.View, TVShowRightAdapter.OnTVShowRightItemClickListener,
+    TVShowCalendarAdapter.OnCalendarItemClickListener {
 
-    @BindView(R.id.recyclerview_video_left)
-    RecyclerView recyclerviewVideoLeft;
+    @BindView(R.id.appbarlayout_tvshow)
+    AppBarLayout appBarLayoutTvShow;
 
-    @BindView(R.id.recyclerview_video_right)
-    RecyclerView recyclerviewVideoRight;
+    boolean isSelectScroll = false;
+
+    @BindView(R.id.recyclerview_calendar)
+    RecyclerView recyclerviewCalendar;
+
+    @BindView(R.id.recyclerview_left)
+    RecyclerView recyclerviewLeft;
+
+    @BindView(R.id.recyclerview_right)
+    RecyclerView recyclerviewRight;
 
     @BindView(R.id.rg_channels)
     RadioGroup rgChannels;
 
+    /*  @BindView(R.id.toolbar)
+      Toolbar toolbar;
+
+     */
+    @BindView(R.id.tv_calandar)
+    CustomTextView tvCalandar;
+
     Unbinder unbinder;
 
-    private TVCalendarAdapter calendarAdapter;
+    private TVShowCalendarAdapter calendarAdapter;
 
-    private TVVideoLeftAdapter leftAdapter;
+    private LinearLayoutManager calendarManager;
 
-    private TVVideoRightAdapter rightAdapter;
+    //todo this is mock data
+    private String currentDay = "15";
+
+    private TVShowLeftAdapter leftAdapter;
+
+    private LinearLayoutManager leftManager;
+
+    private TVShowRightAdapter rightAdapter;
+
+    private LinearLayoutManager rightManager;
+
+    private List<TVShowVM> tvShowVMDatas;
 
     public static TVShowPageFragment getInstance() {
         return new TVShowPageFragment();
@@ -66,22 +94,32 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
     @Override
     public void initView() {
+        tvShowVMDatas = new ArrayList<>();
         initRecyclerView();
         initPresenter();
+        initRecyclerViewListener();
+        appBarLayoutListener();
     }
 
     private void initRecyclerView() {
-        LinearLayoutManager leftManager = new LinearLayoutManager(getActivity());
-        leftManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerviewVideoLeft.setLayoutManager(leftManager);
-        leftAdapter = new TVVideoLeftAdapter(new ArrayList<>());
-        recyclerviewVideoLeft.setAdapter(leftAdapter);
+        calendarManager = new LinearLayoutManager(getContext());
+        calendarManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        leftManager = new LinearLayoutManager(getContext());
+        rightManager = new LinearLayoutManager(getContext());
+        recyclerviewCalendar.setLayoutManager(calendarManager);
+        recyclerviewLeft.setLayoutManager(leftManager);
+        recyclerviewRight.setLayoutManager(rightManager);
 
-        LinearLayoutManager rightManager = new LinearLayoutManager(getActivity());
-        rightManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recyclerviewVideoRight.setLayoutManager(rightManager);
-        rightAdapter = new TVVideoRightAdapter(new ArrayList<>());
-        recyclerviewVideoRight.setAdapter(rightAdapter);
+        calendarAdapter = new TVShowCalendarAdapter(new ArrayList<>(), currentDay);
+        leftAdapter = new TVShowLeftAdapter(new ArrayList<>());
+        rightAdapter = new TVShowRightAdapter(new ArrayList<>());
+        recyclerviewCalendar.setAdapter(calendarAdapter);
+        recyclerviewLeft.setAdapter(leftAdapter);
+        recyclerviewRight.setAdapter(rightAdapter);
+
+        rightAdapter.setOnTVShowRightItemClickListener(this::onTVShowRightItemClick);
+        calendarAdapter.setOnCalendarItemClickListener(this::onCalendarItemClick);
+
     }
 
     private void initPresenter() {
@@ -92,23 +130,67 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             .inject(this);
     }
 
+    private void initRecyclerViewListener() {
+        recyclerviewLeft.addOnScrollListener(new RecyclerView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (!isSelectScroll) {
+                    int firstItemPosition = leftManager.findFirstVisibleItemPosition();
+                    int lastItemPosition = leftManager.findLastVisibleItemPosition();
+                    if (lastItemPosition == leftManager.getItemCount() - 1) {
+                        scollRightToPosition(lastItemPosition);
+                        rightAdapter.updateCurrentVMS(lastItemPosition);
+                    } else {
+                        scollRightToPosition(firstItemPosition);
+                        rightAdapter.updateCurrentVMS(firstItemPosition);
+                    }
+                } else {
+                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
+                        isSelectScroll = false;
+                    }
+                }
+
+            }
+
+            @Override
+            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                super.onScrolled(recyclerView, dx, dy);
+            }
+        });
+    }
+
+    private void appBarLayoutListener() {
+        appBarLayoutTvShow
+            .addOnOffsetChangedListener((AppBarLayout appBarLayout, int verticalOffset) -> {
+                    if (Math.abs(verticalOffset) >= appBarLayoutTvShow.getTotalScrollRange()) {
+                        tvCalandar.setVisibility(View.VISIBLE);
+                        tvCalandar.setText(currentDay);
+                    } else {
+                        tvCalandar.setVisibility(View.GONE);
+                    }
+                }
+            );
+    }
+
+    private void scollRightToPosition(int position) {
+        int firstItem = rightManager.findFirstVisibleItemPosition();
+        int lastItem = rightManager.findLastVisibleItemPosition();
+        if (position <= firstItem) {
+            recyclerviewRight.smoothScrollToPosition(position);
+        } else if (position <= lastItem) {
+            int top = recyclerviewRight.getChildAt(position - firstItem).getTop();
+            recyclerviewRight.smoothScrollBy(0, top);
+        } else {
+            recyclerviewRight.smoothScrollToPosition(position);
+        }
+    }
+
     @Override
     public void setup() {
         //TODO(helen)wait for api
-        mPresenter.rightVideoRequest(null);
-        mPresenter.leftVideoRequest(null);
-        rgChannels.setOnCheckedChangeListener((RadioGroup group, int checkedId) -> {
-            switch (checkedId) {
-                case R.id.rb_ch118:
-                    break;
-                case R.id.rb_ch120:
-                    break;
-                case R.id.rb_ch303:
-                    break;
-                case R.id.rb_fb_live:
-                    break;
-            }
-        });
+        mPresenter.tvShowRequest(null);
+
     }
 
     @Override
@@ -118,12 +200,32 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     }
 
     @Override
-    public void showRightVideoResult(List<TVVideoRightVM> videoRightVMS) {
-        rightAdapter.setUpdateDatas(videoRightVMS);
+    public void showTvShowResult(List<TVShowVM> tvShowVMS) {
+        tvShowVMDatas.clear();
+        tvShowVMDatas = tvShowVMS;
+
+        calendarAdapter.setUpdateDatas(tvShowVMDatas, currentDay);
+        leftAdapter.setUpdateDatas(tvShowVMDatas);
+        rightAdapter.setUpdateDatas(tvShowVMDatas);
+        for (TVShowVM tvShowVM : tvShowVMDatas) {
+            if (tvShowVM.getDay().equals(currentDay)) {
+                recyclerviewLeft.smoothScrollToPosition(tvShowVMDatas.indexOf(tvShowVM));
+                break;
+            }
+        }
     }
 
     @Override
-    public void showLeftVideoResult(List<TVVideoLeftVM> videoLeftVMS) {
-        leftAdapter.setUpdateDatas(videoLeftVMS);
+    public void onTVShowRightItemClick(int position) {
+        isSelectScroll = true;
+        recyclerviewLeft.smoothScrollToPosition(position);
+
     }
+
+    @Override
+    public void onCalendarItemClick(int position) {
+        //todo need decide
+//        recyclerviewLeft.smoothScrollToPosition(position);
+    }
+
 }

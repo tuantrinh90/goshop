@@ -210,9 +210,10 @@
                     android:paddingBottom="@dimen/size_8"
                     android:paddingRight="@dimen/size_12"
                     android:paddingLeft="@dimen/size_12"
-                    android:textSize="@dimen/size_14"
+                    android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_grayscale_text"
-                    android:text="@string/cancel"/>
+                    android:text="@string/cancel"
+                    android:layout_alignParentEnd="true"/>
             </RelativeLayout>
 
         </LinearLayout>

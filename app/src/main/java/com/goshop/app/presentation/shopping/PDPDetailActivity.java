@@ -89,7 +89,7 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
         recyclerviewPdpDetails.setAdapter(widgetViewAdapter);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu, R.id.imageview_right_cart, R
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu,   R
         .id.iv_pdp_detail_love, R.id.tv_btn_pdp_detail_buy, R.id
         .tv_btn_pdp_detail_cart})
     public void onPdpDetailClick(View view) {
@@ -98,8 +98,6 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
                 finish();
                 break;
             case R.id.imageview_right_menu:
-                break;
-            case R.id.imageview_right_cart:
                 startActivity(new Intent(this, ShoppingCartActivity.class));
                 break;
             case R.id.tv_btn_pdp_detail_buy:

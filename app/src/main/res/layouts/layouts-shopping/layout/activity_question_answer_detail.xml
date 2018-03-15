@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
@@ -30,7 +31,8 @@
             android:text="@string/submit"
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
-            android:background="@drawable/drawable_round_black"/>
+            android:background="@drawable/drawable_round_black"
+            tools:ignore="RtlHardcoded"/>
 
         <com.goshop.app.common.view.CustomEditText
             android:id="@+id/et_qa_detail_enter"
@@ -46,7 +48,8 @@
             android:textCursorDrawable="@null"
             android:textColor="@color/color_grayscale_text"
             android:textColorHint="@color/color_text_hint"
-            android:hint="@string/enter_question"/>
+            android:hint="@string/enter_question"
+            tools:ignore="RtlHardcoded"/>
     </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
@@ -54,7 +57,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/rl_qa_detail_bottom"
-    android:layout_below="@id/ll_qa_detail_top_toolbar"/>
+        android:layout_below="@id/ll_qa_detail_top_toolbar"/>
 
 
 </RelativeLayout>

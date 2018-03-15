@@ -247,9 +247,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             recyclerViewQA.setLayoutManager(manager);
             PDPQaItemAdapter detailAdapter = new PDPQaItemAdapter(widgetPDPQaVM.getQavms());
             recyclerViewQA.setAdapter(detailAdapter);
-            tvBtnAddMore.setOnClickListener(v -> {
-                onProductDetailItemClickListener.onMoreQuestionClick();
-            });
+            tvBtnAddMore.setOnClickListener(v -> onProductDetailItemClickListener.onMoreQuestionClick());
 
             tvBtnAskQuestion.setOnClickListener(v->onProductDetailItemClickListener.onAskQuestionClick());
         }
@@ -280,9 +278,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         public void bindingData(PdpReviewsVM pdpReviewsVM) {
             tvReviewsTotalCount.setText(pdpReviewsVM.getReviewsCounts());
             ratingBar.setRating(pdpReviewsVM.getTotalStarStep());
-            tvBtnAddMore.setOnClickListener(v -> {
-                onProductDetailItemClickListener.onMoreReviewClick();
-            });
+            tvBtnAddMore.setOnClickListener(v -> onProductDetailItemClickListener.onMoreReviewClick());
 
             tvBtnReviewTop.setOnClickListener(v->onProductDetailItemClickListener.onWriteAReviewClick());
 
@@ -363,21 +359,18 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             tvProductDetailNow.setText(bannerVM.getPriceNow());
             tvProductDetailOld.setText(bannerVM.getPriceOld());
             tvProductDetailOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
+            //todo hard code wait for decide
             tvProductDetailPercent.setText("(" + bannerVM.getPercent() + ")");
 
             ivProductDetailWish.setSelected(false);
             ivProductDetailShare.setOnClickListener(v -> {
             });
-            ivProductDetailWish.setOnClickListener(v -> {
-                ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected());
-            });
+            ivProductDetailWish.setOnClickListener(v -> ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected()));
             rlProductDetailColor.setOnClickListener(v -> {
             });
             rlProductDetailSize.setOnClickListener(v -> {
             });
-            tvBtnProductDetailCheck.setOnClickListener(v -> {
-                onProductDetailItemClickListener.onCheckClick();
-            });
+            tvBtnProductDetailCheck.setOnClickListener(v -> onProductDetailItemClickListener.onCheckClick());
             //todo this is mock data
             tvProductDetailColor.setText(bannerVM.getColorVMS().get(0).getColorName());
             tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSize());

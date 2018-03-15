@@ -120,7 +120,8 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded">
             <ImageView
                 android:id="@+id/iv_address_book_selector"
                 android:layout_width="@dimen/size_20"
@@ -132,7 +133,8 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_8"
                 android:textColor="@color/color_grayscale_text"
-                android:text="@string/default_text"/>
+                android:text="@string/default_text"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
         </LinearLayout>
 
 

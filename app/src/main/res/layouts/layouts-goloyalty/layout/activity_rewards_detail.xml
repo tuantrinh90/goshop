@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -39,7 +40,7 @@
                     android:textColor="@color/color_grayscale_text"
                     android:text="@string/app_name"
                     android:paddingLeft="@dimen/size_10"
-                />
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </LinearLayout>
 
             <com.goshop.app.common.view.CustomBoldTextView
@@ -51,7 +52,7 @@
                 android:text="@string/promo_title"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_20"
-            />
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_rewards_detail_time"
@@ -61,7 +62,8 @@
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_12"
                 android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_grayscale_text_two"/>
+                android:textColor="@color/color_grayscale_text_two"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -76,7 +78,8 @@
                     android:layout_alignParentLeft="true"
                     android:text="@string/app_name"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_grayscale_text_two"/>
+                    android:textColor="@color/color_grayscale_text_two"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomBoldTextView
                     android:id="@+id/tv_rewards_detail_time_left"
@@ -85,7 +88,8 @@
                     android:layout_alignParentRight="true"
                     android:text="@string/app_name"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_grayscale_text_two"/>
+                    android:textColor="@color/color_grayscale_text_two"
+                    tools:ignore="RtlHardcoded"/>
             </RelativeLayout>
 
             <ImageView
@@ -105,19 +109,19 @@
                 android:text="@string/promo_details"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_8"
-            />
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_promo_details_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:paddingTop="@dimen/size_12"
                 android:text="@string/app_name"
                 android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_grayscale_text_two"/>
+                android:textColor="@color/color_grayscale_text_two"
+                tools:ignore="RtlHardcoded"/>
 
             <com.goshop.app.common.view.CustomBoldTextView
                 android:id="@+id/tv_promo_terms"
@@ -128,20 +132,20 @@
                 android:text="@string/promo_terms"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_16"
-            />
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_promo_terms_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="true"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:paddingTop="@dimen/size_12"
                 android:paddingBottom="@dimen/size_16"
                 android:text="@string/app_name"
                 android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_grayscale_text_two"/>
+                android:textColor="@color/color_grayscale_text_two"
+                tools:ignore="RtlHardcoded"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_btn_rewards_detail_download"

@@ -42,7 +42,8 @@
             android:layout_toLeftOf="@id/tv_btn_cart_apply"
             android:layout_toStartOf="@id/tv_btn_cart_apply"
             android:textColorHint="@color/color_divider_grey"
-            android:background="@drawable/bg_et_editable" />
+            android:background="@drawable/bg_et_editable"
+            tools:ignore="RtlSymmetry"/>
 
     </RelativeLayout>
 

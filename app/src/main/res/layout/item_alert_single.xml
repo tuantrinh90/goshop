@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/ll_single_select"
@@ -22,7 +23,7 @@
         android:paddingLeft="@dimen/size_28"
         android:textSize="@dimen/size_font_16"
         android:textColor="@color/color_grayscale_text"
-    />
+        tools:ignore="RtlSymmetry"/>
 
 
 </LinearLayout>

@@ -80,9 +80,7 @@ public class NotificationAdapter extends RecyclerView.Adapter {
                 .setVisibility(notificationVM.isVisible() ? View.VISIBLE : View.GONE);
             tvNotificationDate.setText(notificationVM.getDate());
             tvNotificationName.setText(notificationVM.getTitle());
-            itemView.setOnClickListener(v -> {
-                onNotificationItemClickListener.onNotificationItemClick(position);
-            });
+            itemView.setOnClickListener(v -> onNotificationItemClickListener.onNotificationItemClick(position));
         }
     }
 }

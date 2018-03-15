@@ -349,8 +349,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
-        return restApi.leftVideoRequest(params);
+    public Observable<TVShowResponse> tvShowRequest(Map<String, Object> params) {
+        return restApi.tvShowRequest(params);
     }
 
     @Override

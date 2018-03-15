@@ -121,12 +121,12 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
         tvRewardsDetailTimeLeft.setText(rewardsDetailVM.getTimeLeft());
         List<String> terms = rewardsDetailVM.getPromoTermsSummarys();
         //todo this wait for api
-        String termsSummary = "";
+        StringBuilder termsSummary = new StringBuilder();
         for (String content : terms) {
             content = "· " + content + "\n";
-            termsSummary += content;
+            termsSummary.append(content);
         }
-        tvPromoTermsSummary.setText(termsSummary);
+        tvPromoTermsSummary.setText(termsSummary.toString());
 
     }
 }

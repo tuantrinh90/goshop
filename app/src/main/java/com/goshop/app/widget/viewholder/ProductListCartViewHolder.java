@@ -55,7 +55,7 @@ public class ProductListCartViewHolder extends RecyclerView.ViewHolder {
             .error(R.drawable.ic_bought)
             .into(ivCartProductThumb);
         tvCartProductTitle.setText(productsVM.getTitle());
-        //todo wait for api
+        //todo hard code wait for api
         tvProductCartAttr.setText("Color:Blue;Size:L");
         tvProductCartNow
             .setText(NumberFormater.formaterMoney(productsVM.getPriceVM().getRm().getDiscounted()));
@@ -66,8 +66,6 @@ public class ProductListCartViewHolder extends RecyclerView.ViewHolder {
         etProductCart.setEditBackGround(android.R.color.transparent);
         etProductCart.setMinusBackGround(R.drawable.bg_rectangle_corner_black);
         etProductCart.setPlusBackGround(R.drawable.bg_rectangle_corner_black);
-        llCartMenu.setOnClickListener(v -> {
-            menuClickListener.onItemMenuClick(llCartMenu);
-        });
+        llCartMenu.setOnClickListener(v -> menuClickListener.onItemMenuClick(llCartMenu));
     }
 }

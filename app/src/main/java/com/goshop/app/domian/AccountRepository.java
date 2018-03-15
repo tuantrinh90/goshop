@@ -159,7 +159,7 @@ public interface AccountRepository {
 
     Observable<TVShowResponse> rightVideoRequest(Map<String, Object> params);
 
-    Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params);
+    Observable<TVShowResponse> tvShowRequest(Map<String, Object> params);
 
     Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params);
 

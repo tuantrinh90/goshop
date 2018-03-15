@@ -54,10 +54,8 @@ public class PopWindowUtil {
         int[] location = new int[2];
         parentView.getLocationOnScreen(location);
         int height = parentView.getHeight();
-        popupWindow.showAtLocation(parentView, Gravity.TOP | Gravity.LEFT, 0, location[1] + height);
-        popupWindow.setOnDismissListener(() -> {
-            sortPopDismissListener.onDismiss();
-        });
+        popupWindow.showAtLocation(parentView, Gravity.TOP | Gravity.START, 0, location[1] + height);
+        popupWindow.setOnDismissListener(sortPopDismissListener::onDismiss);
         sortListAdapter.setOnSortListItemClickListener((int position) -> {
             popupWindow.dismiss();
             sortPopDismissListener.onPopItemClick(position);
@@ -80,7 +78,7 @@ public class PopWindowUtil {
         popupWindow.setOutsideTouchable(true);
         int[] location = new int[2];
         parentView.getLocationOnScreen(location);
-        popupWindow.showAtLocation(parentView, Gravity.TOP | Gravity.RIGHT, 0, location[1] - 12);
+        popupWindow.showAtLocation(parentView, Gravity.TOP | Gravity.END, 0, location[1] - 12);
         llDelete.setOnClickListener(v -> {
             itemMenuClickListener.onCartDeleteClick();
             popupWindow.dismiss();
@@ -157,7 +155,8 @@ public class PopWindowUtil {
         DatePickerDialog datePickerDialog = new DatePickerDialog(parentView.getContext(),
             (DatePicker view, int pickYear, int monthOfYear,
                 int dayOfMonth) -> {
-                time.append((monthOfYear + 1) + "/" + dayOfMonth + "/" + pickYear);
+                time.append(monthOfYear + 1).append("/").append(dayOfMonth).append("/")
+                    .append(pickYear);
                 onDatePickerDialogClickListener.onDatePicker(time.toString());
             }, year, month, day);
         datePickerDialog.show();

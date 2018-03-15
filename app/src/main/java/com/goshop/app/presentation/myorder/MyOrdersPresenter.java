@@ -7,8 +7,6 @@ import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
 import com.goshop.app.presentation.model.MyOrdersVM;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;

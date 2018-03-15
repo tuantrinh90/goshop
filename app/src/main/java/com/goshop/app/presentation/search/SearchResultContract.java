@@ -3,7 +3,6 @@ package com.goshop.app.presentation.search;
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.FilterMenuModel;
-import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 

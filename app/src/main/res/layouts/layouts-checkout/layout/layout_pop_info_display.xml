@@ -17,6 +17,7 @@
         android:paddingRight="@dimen/size_12"
         android:textSize="@dimen/size_font_12"
         android:textColor="@color/color_greyish_brown"
-        android:text="@string/cvv_info"/>
+        android:text="@string/cvv_info"
+        android:layout_alignParentEnd="true"/>
 
 </RelativeLayout>

@@ -65,9 +65,7 @@ public class MyAccountLandingActivity extends BaseActivity implements Navigation
         if (menuTag == null) {
             slideMenuUtil.disabledDrawerLayout();
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> {
-                finish();
-            });
+            toolbar.setNavigationOnClickListener(v -> finish());
         } else {
             if (menuTag.equals(SlideMenuUtil.MENU_VALUE)) {
                 slideMenuUtil.liftedDrawerLayout();

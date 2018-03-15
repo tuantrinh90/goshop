@@ -8,6 +8,7 @@
         android:id="@+id/iv_video_pdp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_224"
+        android:contentDescription="@string/app_name"
         android:background="@drawable/ic_video"
         android:layout_centerVertical="true"/>
 

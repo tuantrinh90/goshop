@@ -143,6 +143,7 @@
     <dimen name="size_98">98dp</dimen>
     <dimen name="size_99">99dp</dimen>
     <dimen name="size_100">100dp</dimen>
+    <dimen name="size_104">104dp</dimen>
     <dimen name="size_106">106dp</dimen>
     <dimen name="size_112">112dp</dimen>
     <dimen name="size_120">120dp</dimen>

@@ -196,6 +196,7 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
                 .into(ivProductIcon);
             tvOrderProductPrice.setText(resultsBean.getPrice());
             tvOrderProductTitle.setText(resultsBean.getName());
+            //todo hard code need decide
             tvOrderProductAmount.setText(resultsBean.getQty() + "");
         }
 

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:focusableInTouchMode="true"
@@ -48,7 +49,8 @@
                     android:paddingLeft="@dimen/size_4"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"
-                    android:text="@string/order_number"/>
+                    android:text="@string/order_number"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             </LinearLayout>
 
@@ -73,7 +75,8 @@
                     android:paddingLeft="@dimen/size_4"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"
-                    android:text="@string/order_number"/>
+                    android:text="@string/order_number"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             </LinearLayout>
             <LinearLayout
@@ -97,7 +100,8 @@
                     android:paddingLeft="@dimen/size_4"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"
-                    android:text="@string/order_number"/>
+                    android:text="@string/order_number"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             </LinearLayout>
 
@@ -197,7 +201,8 @@
                 android:id="@+id/recyclerview_order_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:nestedScrollingEnabled="false"/>
+                android:nestedScrollingEnabled="false"
+                tools:targetApi="lollipop"/>
 
 
             <LinearLayout
@@ -343,7 +348,8 @@
                     android:paddingRight="@dimen/size_12"
                     android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
-                    android:text="@string/cancel"/>
+                    android:text="@string/cancel"
+                    tools:ignore="RtlHardcoded"/>
             </RelativeLayout>
 
 

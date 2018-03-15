@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
@@ -22,7 +23,8 @@
             android:layout_height="@dimen/size_96"
             android:background="@drawable/ic_bought"
             android:layout_alignParentLeft="true"
-            android:contentDescription="@string/app_name"/>
+            android:contentDescription="@string/app_name"
+            tools:ignore="RtlHardcoded"/>
 
         <ImageView
             android:id="@+id/iv_wishlist_menu"
@@ -31,7 +33,8 @@
             android:src="@drawable/ic_icon_cart_menu"
             android:scaleType="center"
             android:layout_alignParentRight="true"
-            android:contentDescription="@string/app_name"/>
+            android:contentDescription="@string/app_name"
+            tools:ignore="RtlHardcoded"/>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -40,7 +43,8 @@
             android:layout_toLeftOf="@id/iv_wishlist_menu"
             android:paddingLeft="@dimen/size_10"
             android:paddingRight="@dimen/size_10"
-            android:orientation="vertical">
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded">
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/tv_wishlist_title"
                 android:layout_width="match_parent"

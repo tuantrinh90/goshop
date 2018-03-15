@@ -30,7 +30,8 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/drawable_round_black"
                 android:text="@string/add_to_cart"
-                android:padding="@dimen/size_14"/>
+                android:padding="@dimen/size_14"
+                android:layout_marginEnd="@dimen/size_4"/>
             <com.goshop.app.common.view.CustomBoldTextView
                 android:id="@+id/tv_btn_buy_now"
                 android:layout_width="match_parent"
@@ -42,7 +43,8 @@
                 android:textColor="@android:color/white"
                 android:background="@drawable/bg_btn_round_pink"
                 android:text="@string/buy_now"
-                android:padding="@dimen/size_14"/>
+                android:padding="@dimen/size_14"
+                android:layout_marginStart="@dimen/size_4"/>
 
         </LinearLayout>
         <android.support.v7.widget.RecyclerView

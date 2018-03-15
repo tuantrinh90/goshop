@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:paddingRight="@dimen/size_16"
@@ -34,7 +35,8 @@
             android:textColor="@color/color_grayscale_secondary"
             android:textSize="@dimen/size_font_14"
             android:text="@string/active_now"
-            android:background="@drawable/drawable_hint_c_circle"/>
+            android:background="@drawable/drawable_hint_c_circle"
+            tools:ignore="RtlHardcoded"/>
 
         <com.goshop.app.common.view.CustomEditText
             android:id="@+id/et_egift_cards"
@@ -46,7 +48,8 @@
             android:paddingTop="@dimen/size_8"
             android:paddingBottom="@dimen/size_8"
             android:background="@drawable/bg_bottom_line"
-            android:layout_toLeftOf="@id/tv_btn_active_now"/>
+            android:layout_toLeftOf="@id/tv_btn_active_now"
+            tools:ignore="RtlHardcoded"/>
     </RelativeLayout>
 
 </LinearLayout>

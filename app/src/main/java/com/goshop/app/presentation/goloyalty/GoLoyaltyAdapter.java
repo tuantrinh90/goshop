@@ -129,9 +129,7 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter implements DealsAdapt
             tvLoyaltyPoints.setText(goLoyaltyTopVM.getUserPoints());
             llLoyaltyId.setOnClickListener(v -> {
             });
-            llLoyaltyPoints.setOnClickListener(v -> {
-                onGoLoyaltyItemsClickListener.onPointsItemClick();
-            });
+            llLoyaltyPoints.setOnClickListener(v -> onGoLoyaltyItemsClickListener.onPointsItemClick());
         }
     }
 

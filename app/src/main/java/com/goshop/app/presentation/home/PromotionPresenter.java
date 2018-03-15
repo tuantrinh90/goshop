@@ -14,7 +14,6 @@ import com.goshop.app.presentation.model.widget.OfferListItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
-import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.utils.JToolUtils;
 
 import java.util.ArrayList;

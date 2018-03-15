@@ -99,7 +99,7 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
             tvOrderProductOld.setText(NumberFormater.formaterMoney(productVM.getPriceOld()));
             tvOrderProductOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             tvOrderProductNow.setText(NumberFormater.formaterMoney(productVM.getPriceNow()));
-            //todo wait for decide
+            //todo hard code wait for decide
             tvOrderProductCount.setText("x" + productVM.getCount());
             List<String> attrs = productVM.getAttr();
             String attr = "Color:" + attrs.get(0) + ", Size:" + attrs.get(1);

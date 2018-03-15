@@ -17,7 +17,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_10"
         android:paddingBottom="@dimen/size_10"
-        android:paddingRight="@dimen/size_16">
+        android:paddingRight="@dimen/size_16"
+        tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <ImageView
             android:id="@+id/imageview_left_menu"
@@ -29,7 +30,7 @@
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             android:background="@drawable/ic_icon_back"
-            tools:ignore="ContentDescription"
+            tools:ignore="ContentDescription,RtlHardcoded"
             android:layout_alignParentStart="true"/>
 
         <ImageView
@@ -54,7 +55,8 @@
             android:minLines="1"
             android:maxLines="1"
             android:ellipsize="end"
-            android:paddingEnd="@dimen/size_60"/>
+            android:paddingEnd="@dimen/size_60"
+            tools:ignore="RtlHardcoded,RtlSymmetry"/>
     </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>

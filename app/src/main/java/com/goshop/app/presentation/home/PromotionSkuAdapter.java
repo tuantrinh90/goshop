@@ -135,9 +135,7 @@ public class PromotionSkuAdapter extends RecyclerView.Adapter {
             //todo wait for api
             tvBtnDataSort.setText(sortVMS.get(0).getTitle());
             sortVMS.get(0).setSelect(true);
-            ivBtnDataFilter.setOnClickListener(v -> {
-                onPromotionSkuItemClickListener.onFilterDrawerClick();
-            });
+            ivBtnDataFilter.setOnClickListener(v -> onPromotionSkuItemClickListener.onFilterDrawerClick());
             ivSortDataArrow.setOnClickListener(v -> {
                 ivSortDataArrow.setSelected(!ivSortDataArrow.isSelected());
                 tvBtnDataSort.setSelected(!tvBtnDataSort.isSelected());

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -28,7 +29,8 @@
             android:text="@string/submit"
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
-            android:background="@drawable/drawable_round_black"/>
+            android:background="@drawable/drawable_round_black"
+            tools:ignore="RtlHardcoded"/>
 
         <com.goshop.app.common.view.CustomEditText
             android:id="@+id/et_all_qa_enter"
@@ -44,7 +46,8 @@
             android:textCursorDrawable="@null"
             android:textColor="@color/color_grayscale_text"
             android:textColorHint="@color/color_text_hint"
-            android:hint="@string/enter_question"/>
+            android:hint="@string/enter_question"
+            tools:ignore="RtlHardcoded"/>
     </RelativeLayout>
 
     <LinearLayout
@@ -74,7 +77,8 @@
                 android:paddingLeft="@dimen/size_4"
                 android:text="@string/questions"
                 android:textColor="@color/color_grayscale_text"
-                android:textSize="@dimen/size_font_16"/>
+                android:textSize="@dimen/size_font_16"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             <com.goshop.app.common.view.CustomBoldTextView
                 android:id="@+id/tv_all_qa_answers"
@@ -82,7 +86,8 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_20"
                 android:textColor="@color/color_grayscale_text"
-                android:textSize="@dimen/size_font_20"/>
+                android:textSize="@dimen/size_font_20"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:layout_width="wrap_content"
@@ -90,7 +95,8 @@
                 android:paddingLeft="@dimen/size_4"
                 android:text="@string/answers"
                 android:textColor="@color/color_grayscale_text"
-                android:textSize="@dimen/size_font_16"/>
+                android:textSize="@dimen/size_font_16"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
         </LinearLayout>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview_all_qa"

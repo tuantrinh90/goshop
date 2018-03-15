@@ -3,6 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:animET="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -24,7 +25,8 @@
                 android:paddingTop="@dimen/size_24"
                 android:text="@string/total_order_cost"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_grayscale_text"/>
+                android:textColor="@color/color_grayscale_text"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -39,7 +41,8 @@
                     android:paddingRight="@dimen/size_4"
                     android:text="@string/myr"
                     android:textSize="@dimen/size_font_20"
-                    android:textColor="@color/color_grayscale_text"/>
+                    android:textColor="@color/color_grayscale_text"
+                    tools:ignore="RtlHardcoded"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_checkout_payment_amount_percent"
@@ -62,7 +65,8 @@
                     android:layout_alignParentRight="true"
                     android:textSize="@dimen/size_font_14"
                     android:textColor="@color/color_grayscale_secondary"
-                    android:text="@string/left_time"/>
+                    android:text="@string/left_time"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
                 <com.goshop.app.common.view.CustomBoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -71,7 +75,8 @@
                     android:layout_toLeftOf="@id/tv_checkout_payment_time"
                     android:text="@string/pay_with_credit_or"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_grayscale_text"/>
+                    android:textColor="@color/color_grayscale_text"
+                    tools:ignore="RtlHardcoded"/>
 
             </RelativeLayout>
 
@@ -128,8 +133,10 @@
                     android:layout_width="@dimen/size_24"
                     android:layout_height="@dimen/size_24"
                     android:background="@drawable/ic_info"
+                    android:contentDescription="@string/app_name"
                     android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"/>
+                    android:layout_centerVertical="true"
+                    tools:ignore="RtlHardcoded"/>
 
             </RelativeLayout>
 
@@ -150,7 +157,8 @@
                 android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
                 android:hint="@string/expiration_date"
-                android:drawableEnd="@drawable/ic_icon_spinner_down"/>
+                android:drawableEnd="@drawable/ic_icon_spinner_down"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
 
             <com.goshop.app.common.view.CustomTextView

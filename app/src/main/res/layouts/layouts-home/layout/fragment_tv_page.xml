@@ -1,226 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.NestedScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:scrollbars="none">
-
+    android:paddingTop="@dimen/size_16"
+    android:orientation="vertical">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_16"
-        android:orientation="vertical">
+        android:paddingTop="@dimen/size_4"
+        android:paddingBottom="@dimen/size_4">
         <include
             layout="@layout/layout_channels"/>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_8"
-            android:paddingLeft="@dimen/size_16"
-            android:paddingRight="@dimen/size_16"
-            android:paddingBottom="@dimen/size_16"
-            android:orientation="vertical">
-            <LinearLayout android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/size_8"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
-                    android:text="12"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/size_8"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
-                    android:text="13"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/size_8"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
-                    android:text="14"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/size_8"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
-                    android:text="15"
-                    tools:ignore="HardcodedText"/>
-
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/size_8"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_main_pink"
-                    android:text="16"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/size_8"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
-                    android:text="17"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/size_8"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
-                    android:text="18"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:padding="@dimen/size_8"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
-                    android:text="19"
-                    tools:ignore="HardcodedText"/>
-
-            </LinearLayout>
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_text_black"
-                    android:text="MON"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_text_black"
-                    android:text="TUE"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_text_black"
-                    android:text="WED"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_text_black"
-                    android:text="THU"
-                    tools:ignore="HardcodedText"/>
-
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_main_pink"
-                    android:text="FRI"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_text_black"
-                    android:text="SAT"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_text_black"
-                    android:text="SUN"
-                    tools:ignore="HardcodedText"/>
-                <com.goshop.app.common.view.CustomTextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_text_black"
-                    android:text="MON"
-                    tools:ignore="HardcodedText"/>
-
-            </LinearLayout>
-
-        </LinearLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1"
-            android:background="@color/color_divider_grey"/>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview_video_right"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:nestedScrollingEnabled="false"
-                android:layout_alignParentRight="true"
-                tools:targetApi="lollipop"
-                android:layout_alignParentEnd="true"/>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview_video_left"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:nestedScrollingEnabled="false"
-                android:layout_toLeftOf="@id/recyclerview_video_right"
-                tools:targetApi="lollipop"
-                android:layout_toStartOf="@id/recyclerview_video_right"/>
-
-        </RelativeLayout>
     </LinearLayout>
 
 
-</android.support.v4.widget.NestedScrollView>
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/white"
+        android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbarlayout_tvshow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:orientation="vertical">
+            <android.support.design.widget.CollapsingToolbarLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:contentScrim="@color/transparent20"
+                android:minHeight="@dimen/size_2"
+                app:layout_scrollFlags="scroll|enterAlways|snap">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7"
+                    android:background="@drawable/bg_bottom_line"
+                />
+
+            </android.support.design.widget.CollapsingToolbarLayout>
+
+        </android.support.design.widget.AppBarLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+            >
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    tools:ignore="RtlHardcoded"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/recyclerview_right"
+                    tools:ignore="RtlHardcoded"/>
+            </RelativeLayout>
+
+            <com.goshop.app.common.view.CustomTextView
+                android:id="@+id/tv_calandar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_40"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:textSize="@dimen/size_font_16"
+                android:visibility="gone"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:paddingLeft="@dimen/size_16"
+                android:background="@color/color_bg_disabled_divider"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+        </FrameLayout>
+
+
+    </android.support.design.widget.CoordinatorLayout>
+
+
+</LinearLayout>
+
 

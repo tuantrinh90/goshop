@@ -40,7 +40,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_32"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:baselineAligned="false">
         <LinearLayout
             android:id="@+id/ll_loyalty_id"
             android:layout_width="match_parent"
@@ -76,7 +77,6 @@
                 android:id="@+id/tv_loyalty_points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/go_shop_member"
                 android:textSize="@dimen/size_font_16"
