@@ -10,7 +10,7 @@ import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
-import com.goshop.app.presentation.shopping.PDPDetailActivity;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.WidgetProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
@@ -37,7 +37,8 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Presenter> implements
-    BrandsDetailContract.View, OnProductItemClickListener, PopWindowUtil.OnPopWindowDismissListener {
+    BrandsDetailContract.View, OnProductItemClickListener, PopWindowUtil
+    .OnPopWindowDismissListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -182,7 +183,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
 
     @Override
     public void onProductItemClick(ProductsVM productItemVM) {
-        startActivity(new Intent(this, PDPDetailActivity.class));
+        startActivity(new Intent(this, ProductDetailActivity.class));
     }
 
     @Override

@@ -32,7 +32,7 @@
         android:layout_alignRight="@id/iv_grid_pic"
         android:layout_below="@id/iv_grid_pic"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:layout_alignStart="@id/iv_grid_pic"
         android:layout_alignEnd="@id/iv_grid_pic"/>
 
@@ -57,7 +57,7 @@
         android:layout_alignRight="@id/iv_grid_pic"
         android:layout_below="@id/tv_grid_old"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:paddingTop="@dimen/size_2"
         android:layout_alignStart="@id/iv_grid_pic"
         android:layout_alignEnd="@id/iv_grid_pic"/>

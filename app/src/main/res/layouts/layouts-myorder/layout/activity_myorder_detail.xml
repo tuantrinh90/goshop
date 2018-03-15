@@ -184,7 +184,7 @@
                         android:paddingLeft="@dimen/size_0"
                         android:paddingRight="@dimen/size_0"
                         android:textSize="16sp"
-                        android:textColor="@color/blackTrans87"
+                        android:textColor="@color/color_grayscale_text"
                         android:fontFamily="sans-serif-medium"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"

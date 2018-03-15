@@ -40,7 +40,7 @@
         android:layout_alignRight="@id/iv_item_item_frequently"
         android:layout_below="@id/iv_item_item_frequently"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:layout_alignStart="@id/iv_item_item_frequently"
         android:layout_alignEnd="@id/iv_item_item_frequently"/>
 
@@ -65,7 +65,7 @@
         android:layout_alignRight="@id/iv_item_item_frequently"
         android:layout_below="@id/tv_item_item_old_price"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:paddingTop="@dimen/size_2"
         android:paddingBottom="@dimen/size_8"
         android:layout_alignStart="@id/iv_item_item_frequently"

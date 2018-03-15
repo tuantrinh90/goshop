@@ -8,7 +8,7 @@
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/view_video"
-        android:background="@color/green_common"
+        android:background="@color/color_corporate_green"
         android:layout_width="match_parent"
         android:textColor="@color/black"
         android:textSize="25sp"

@@ -23,7 +23,7 @@
         android:paddingBottom="@dimen/size_28"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:text="@string/product_summary_tips"
         android:textSize="@dimen/size_font_14"
         android:gravity="center"/>

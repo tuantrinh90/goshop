@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/wishlist"/>
         </LinearLayout>
 
@@ -69,7 +69,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/delete"/>
         </LinearLayout>
     </LinearLayout>

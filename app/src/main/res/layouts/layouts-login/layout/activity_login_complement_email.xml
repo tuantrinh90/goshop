@@ -17,7 +17,7 @@
         android:layout_marginTop="@dimen/size_14"
         android:text="@string/complement_email_tips"
         android:textSize="@dimen/size_font_16"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"/>
 

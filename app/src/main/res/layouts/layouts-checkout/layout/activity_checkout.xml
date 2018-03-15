@@ -36,7 +36,7 @@
                     android:id="@+id/tv_checkout_shipping_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/color_text_black"
+                    android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/checkout_shipping"/>
 
@@ -47,7 +47,7 @@
                     android:paddingTop="@dimen/size_20"
                     android:textSize="@dimen/size_font_16"
                     android:layout_below="@id/tv_checkout_shipping_title"
-                    android:textColor="@color/color_text_black"
+                    android:textColor="@color/color_grayscale_text"
                     android:text="@string/user_name_test"
                 />
                 <com.goshop.app.common.view.CustomTextView
@@ -58,7 +58,7 @@
                     android:layout_below="@id/tv_checkout_username"
                     android:text="@string/address_one"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"/>
+                    android:textColor="@color/color_grayscale_text"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_checkout_address_second"
@@ -68,7 +68,7 @@
                     android:layout_below="@id/tv_checkout_address_first"
                     android:text="@string/address_two"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"/>
+                    android:textColor="@color/color_grayscale_text"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_checkout_city_state_code"
@@ -78,7 +78,7 @@
                     android:layout_below="@id/tv_checkout_address_second"
                     android:text="@string/city_state_1000"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"/>
+                    android:textColor="@color/color_grayscale_text"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_checkout_country"
@@ -88,7 +88,7 @@
                     android:layout_below="@id/tv_checkout_city_state_code"
                     android:text="@string/country"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"/>
+                    android:textColor="@color/color_grayscale_text"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_checkout_tel"
@@ -98,7 +98,7 @@
                     android:layout_below="@id/tv_checkout_country"
                     android:text="@string/tel"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"/>
+                    android:textColor="@color/color_grayscale_text"/>
 
                 <ImageView
                     android:id="@+id/iv_checkout_shipping_more"
@@ -121,7 +121,7 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_20"
                 android:paddingLeft="@dimen/size_16"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
                 android:text="@string/checkout_shipping"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
@@ -140,21 +140,21 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
+                    android:textColor="@color/color_grayscale_text"
                     android:text="@string/checkout_payment_bank"/>
                 <com.goshop.app.common.view.CustomRadioButton
                     android:id="@+id/rb_checkout_payment_credit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
+                    android:textColor="@color/color_grayscale_text"
                     android:text="@string/checkout_payment_credit"/>
                 <com.goshop.app.common.view.CustomRadioButton
                     android:id="@+id/rb_checkout_payment_cash_on_deliery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_text_black"
+                    android:textColor="@color/color_grayscale_text"
                     android:text="@string/checkout_payment_cash_on_deliery"/>
             </RadioGroup>
 
@@ -169,7 +169,7 @@
                 android:paddingTop="@dimen/size_20"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingBottom="@dimen/size_4"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
                 android:text="@string/my_orders_items"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
@@ -303,7 +303,7 @@
                             android:textSize="@dimen/size_font_14"
                             android:layout_gravity="center_vertical"
                             android:paddingRight="@dimen/size_8"
-                            android:textColor="@color/color_check_black"
+                            android:textColor="@color/color_grayscale_text_two"
                             android:text="@string/use"
                             tools:ignore="RtlHardcoded,RtlSymmetry"/>
                         <com.goshop.app.common.view.CustomEditText
@@ -325,7 +325,7 @@
                             android:textSize="@dimen/size_font_14"
                             android:layout_gravity="center_vertical"
                             android:paddingLeft="@dimen/size_8"
-                            android:textColor="@color/color_check_black"
+                            android:textColor="@color/color_grayscale_text_two"
                             android:text="@string/go_shop_points"
                             tools:ignore="RtlHardcoded,RtlSymmetry"/>
                     </LinearLayout>
@@ -339,7 +339,7 @@
                     android:textSize="@dimen/size_font_14"
                     android:layout_gravity="center_vertical"
                     android:paddingTop="@dimen/size_12"
-                    android:textColor="@color/color_check_black"
+                    android:textColor="@color/color_grayscale_text_two"
                     android:text="@string/checkout_tip"
                 />
 
@@ -360,7 +360,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/sub_total"
                         android:layout_alignParentLeft="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
@@ -370,7 +370,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/demo_cart_price1"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="end"
                         android:layout_alignParentEnd="true"
                         tools:ignore="RelativeOverlap"/>
@@ -387,7 +387,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/rounding_amount"
                         android:layout_alignParentLeft="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
@@ -397,7 +397,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/demo_cart_price1"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="end"
                         android:layout_alignParentEnd="true"
                         tools:ignore="RelativeOverlap"/>
@@ -414,7 +414,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/shipping_fee"
                         android:layout_alignParentLeft="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
@@ -424,7 +424,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/demo_cart_price1"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="end"
                         android:layout_alignParentEnd="true"
                         tools:ignore="RelativeOverlap"/>
@@ -441,7 +441,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/disscount"
                         android:layout_alignParentLeft="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
@@ -451,7 +451,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/demo_cart_price2"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="end"
                         android:layout_alignParentEnd="true"
                         tools:ignore="RelativeOverlap"/>
@@ -468,7 +468,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/egift_card"
                         android:layout_alignParentLeft="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
@@ -478,7 +478,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/demo_cart_price2"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="end"
                         android:layout_alignParentEnd="true"
                         tools:ignore="RelativeOverlap"/>
@@ -495,7 +495,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/go_shop_points_num"
                         android:layout_alignParentLeft="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
@@ -505,7 +505,7 @@
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/demo_cart_price2"
                         android:layout_alignParentRight="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="end"
                         android:layout_alignParentEnd="true"
                         tools:ignore="RelativeOverlap"/>
@@ -522,7 +522,7 @@
                         android:textSize="@dimen/size_font_18"
                         android:text="@string/total_incl_gst"
                         android:layout_alignParentLeft="true"
-                        android:textColor="@color/color_text_black"
+                        android:textColor="@color/color_grayscale_text"
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 

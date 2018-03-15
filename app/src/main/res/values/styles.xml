@@ -52,8 +52,8 @@
     </style>
 
     <style name="textInputEditTheme" parent="AppTheme">
-        <item name="android:textColorHint">@color/blackTrans38</item>
-        <item name="colorControlNormal">@color/blackTrans38</item>
+        <item name="android:textColorHint">@color/color_text_hint</item>
+        <item name="colorControlNormal">@color/color_text_hint</item>
         <item name="colorControlActivated">@color/colorAccent</item>
         <item name="colorControlHighlight">@color/colorAccent</item>
     </style>
@@ -63,7 +63,7 @@
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:background">@drawable/big_button_style_config</item>
-        <item name="android:textColor">@color/blackTrans87</item>
+        <item name="android:textColor">@color/color_grayscale_text</item>
     </style>
 
     <style name="textInputErrorStyle">
@@ -75,7 +75,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:gravity">center</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/blackTrans87</item>
+        <item name="android:textColor">@color/color_grayscale_text</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:layout_marginTop">4dp</item>
     </style>
@@ -86,7 +86,7 @@
         <item name="android:layout_alignParentBottom">true</item>
         <item name="android:layout_alignParentLeft">true</item>
         <item name="android:background">@color/colorAccent</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:textSize">12sp</item>
         <item name="android:paddingLeft">4dp</item>
         <item name="android:paddingRight">4dp</item>
@@ -118,7 +118,7 @@
     <style name="homeWrapWidthLine">
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">@dimen/line_height</item>
-        <item name="android:background">@color/blackTrans12</item>
+        <item name="android:background">@color/color_bg_disabled_divider</item>
     </style>
 
     <style name="pageCardInterval" parent="homeWrapWidthLine">
@@ -132,7 +132,7 @@
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:lineSpacingExtra">4sp</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/blackTrans87</item>
+        <item name="android:textColor">@color/color_grayscale_text</item>
         <item name="android:text">@string/home_item_test_product_name</item>
     </style>
 
@@ -145,7 +145,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:textColor">@color/blackTrans38</item>
+        <item name="android:textColor">@color/color_text_hint</item>
         <item name="android:text">@string/home_item_test_product_price</item>
     </style>
 
@@ -154,7 +154,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/blackTrans87</item>
+        <item name="android:textColor">@color/color_grayscale_text</item>
         <item name="android:text">@string/home_item_test_product_price</item>
     </style>
 
@@ -190,7 +190,7 @@
         <item name="android:text">99+</item>
         <item name="android:layout_centerVertical">true</item>
         <item name="android:textSize">10sp</item>
-        <item name="android:textColor">@color/white</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:layout_alignParentRight">true</item>
     </style>
 
@@ -212,7 +212,7 @@
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
         <item name="android:textSize">18sp</item>
-        <item name="android:textColor">@color/blackTrans87</item>
+        <item name="android:textColor">@color/color_grayscale_text</item>
         <item name="android:fontFamily">sans-serif-medium</item>
         <item name="android:gravity">center_vertical</item>
     </style>
@@ -223,7 +223,7 @@
         <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
         <item name="android:textSize">14sp</item>
-        <item name="android:textColor">@color/blackTrans38</item>
+        <item name="android:textColor">@color/color_text_hint</item>
         <item name="android:fontFamily">sans-serif-light</item>
         <item name="android:gravity">center_vertical</item>
     </style>
@@ -235,14 +235,14 @@
         <item name="android:button">@null</item>
         <item name="android:drawablePadding">8dp</item>
         <item name="android:textSize">16sp</item>
-        <item name="android:textColor">@color/blackTrans54</item>
+        <item name="android:textColor">@color/color_grayscale_secondary</item>
         <item name="android:drawableLeft">@drawable/selector_check</item>
     </style>
 
 
     <style name="MyEditText" parent="AppTheme">
-        <item name="colorControlNormal">@color/blackTrans12</item>
-        <item name="colorControlActivated">@color/blackTrans12</item>
+        <item name="colorControlNormal">@color/color_bg_disabled_divider</item>
+        <item name="colorControlActivated">@color/color_bg_disabled_divider</item>
     </style>
     <style name="WhiteBackground" parent="AppTheme">
         <item name="android:windowBackground">@android:color/white</item>

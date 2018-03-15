@@ -45,7 +45,7 @@
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:textColor="@color/blackTrans87"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="20sp"
             android:minLines="1"
             android:maxLines="1"

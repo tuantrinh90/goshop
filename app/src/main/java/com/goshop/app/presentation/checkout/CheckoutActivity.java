@@ -166,7 +166,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         return ScreenHelper.getString(R.string.checkout_title);
     }
 
-    @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order})
+    @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order, R.id.imageview_left_menu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_shipping_root:

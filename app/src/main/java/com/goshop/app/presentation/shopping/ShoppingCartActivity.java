@@ -30,6 +30,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
@@ -172,5 +173,10 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     @Override
     public void onCartDeleteClick() {
         //todo wait for api
+    }
+
+    @OnClick(R.id.tv_btn_cart_checkout)
+    public void onCartClick(View view) {
+        startActivity(new Intent(this, CheckoutActivity.class));
     }
 }

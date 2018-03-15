@@ -27,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"/>
+            android:textColor="@color/color_grayscale_text"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:id="@+id/tv_pdp_qa_questioner_detail"
@@ -90,7 +90,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_text_black"/>
+                    android:textColor="@color/color_grayscale_text"/>
 
                 <com.goshop.app.common.view.CustomTextView
                     android:id="@+id/tv_pdp_qa_answer_detail"

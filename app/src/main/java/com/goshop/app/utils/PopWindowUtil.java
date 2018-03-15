@@ -134,7 +134,7 @@ public class PopWindowUtil {
         int[] location = new int[2];
         parentView.getLocationOnScreen(location);
         popupWindow.showAtLocation(parentView, Gravity.NO_GRAVITY, 0,
-            location[1] - popupHeight - 2 * parentView.getMeasuredHeight());
+            location[1] - popupHeight - parentView.getMeasuredHeight()*3/2);
     }
 
     public static List<SingleChooseVM> updateSinglePopDatas(int position,

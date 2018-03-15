@@ -13,7 +13,7 @@
     <com.goshop.app.common.view.CustomTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:textSize="@dimen/size_font_16"
         android:text="@string/you_have"/>
 
@@ -28,7 +28,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/size_8"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_28"
             tools:ignore="RtlSymmetry"
             android:paddingEnd="@dimen/size_8"/>
@@ -36,7 +36,7 @@
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_16"
             android:text="@string/pts"/>
     </LinearLayout>

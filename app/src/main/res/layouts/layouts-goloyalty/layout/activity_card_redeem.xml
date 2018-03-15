@@ -10,10 +10,6 @@
     <include
         layout="@layout/toolbar_white_title"/>
 
-    <View android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/color_greyish_brown"/>
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">

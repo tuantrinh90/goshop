@@ -21,7 +21,7 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iv_search_detail"
         android:textSize="@dimen/size_font_12"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingLeft="@dimen/size_12"

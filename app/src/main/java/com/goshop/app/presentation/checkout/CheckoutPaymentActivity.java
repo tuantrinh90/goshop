@@ -10,12 +10,13 @@ import com.goshop.app.presentation.account.TermsConditionsActivity;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
+import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
@@ -86,23 +87,28 @@ public class CheckoutPaymentActivity extends BaseActivity {
         SpannableString spannableString = new SpannableString(
             getResources().getString(R.string.checkout_payment_tip));
 
-        spannableString.setSpan(new ForegroundColorSpan(Color.DKGRAY), 11, 29,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString
+            .setSpan(new ForegroundColorSpan(ContextCompat.getColor(this, R.color.color_grayscale_text)),
+                11, 29, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
-        spannableString.setSpan(new UnderlineSpan(), 194, 215, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ForegroundColorSpan(Color.DKGRAY), 194, 215,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         spannableString.setSpan(new ClickableSpan() {
             @Override
             public void onClick(View widget) {
                 startActivity(
                     new Intent(CheckoutPaymentActivity.this, TermsConditionsActivity.class));
             }
-        }, 194, 215, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+
+            @Override
+            public void updateDrawState(TextPaint ds) {
+                ds.setColor(ContextCompat.getColor(CheckoutPaymentActivity.this, R.color.color_grayscale_text));
+                ds.setUnderlineText(true);
+            }
+        }, 195, 215, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
 
         tvCheckoutPaymentRead.setText(spannableString);
         tvCheckoutPaymentRead.setMovementMethod(LinkMovementMethod.getInstance());
     }
+
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_checkout_payment, R.id
         .tv_checkout_payment_date, R.id.iv_checkout_cvv_tip})
@@ -112,6 +118,7 @@ public class CheckoutPaymentActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.tv_btn_checkout_payment:
+                startActivity(new Intent(this, PaymentStatusActivity.class));
                 break;
             case R.id.tv_checkout_payment_date:
                 break;

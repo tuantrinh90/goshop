@@ -5,6 +5,6 @@
         android:radius="@dimen/size_2"/>
 
     <solid
-        android:color="@color/color_grey_edit"/>
+        android:color="@color/color_select_grey"/>
 
 </shape>

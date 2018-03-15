@@ -5,7 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.presentation.model.SearchFilterModel;
-import com.goshop.app.presentation.shopping.PDPDetailActivity;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
@@ -160,6 +160,6 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
 
     @Override
     public void onClick() {
-        startActivity(new Intent(this, PDPDetailActivity.class));
+        startActivity(new Intent(this, ProductDetailActivity.class));
     }
 }

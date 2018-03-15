@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/pdp_title"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:textSize="@dimen/size_font_20"
         android:paddingTop="@dimen/size_18"
         android:paddingBottom="@dimen/size_8"/>
@@ -75,7 +75,7 @@
             android:id="@+id/tv_pdp_top_rating_counts"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_18"
             android:paddingLeft="@dimen/size_8"
             tools:ignore="RtlSymmetry"
@@ -120,7 +120,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/color"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_14"/>
         <com.goshop.app.common.CustomDynamicRadioGroup
             android:id="@+id/radio_group_pdp_color"
@@ -142,7 +142,7 @@
             android:layout_height="wrap_content"
             android:text="@string/quantity"
             android:paddingRight="@dimen/size_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_16"
             tools:ignore="RtlSymmetry"
             android:paddingEnd="@dimen/size_14"/>

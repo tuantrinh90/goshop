@@ -5,7 +5,7 @@
     android:id="@+id/view_video"
     android:textColor="@color/black"
     android:textSize="26sp"
-    android:background="@color/green_common"
+    android:background="@color/color_corporate_green"
     android:padding="@dimen/home_padding"
     android:layout_width="match_parent"
     android:layout_height="150dp"/>

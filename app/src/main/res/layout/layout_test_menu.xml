@@ -24,7 +24,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/size_16"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
                 android:text="@string/login"/>
@@ -35,7 +35,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/size_16"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
                 android:text="@string/reset_password"/>
@@ -45,7 +45,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/size_16"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
                 android:text="@string/complement_email"/>
@@ -55,32 +55,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/size_16"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
                 android:text="@string/my_address_book"/>
-
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/btn_test_editprofile"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/size_16"
-                android:textColor="@color/color_text_black"
-                android:background="@drawable/bg_white_top_bottom_line"
-                android:textSize="@dimen/size_font_14"
-                android:text="@string/edit_profile"/>
-
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/btn_test_my_points"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/size_16"
-                android:textColor="@color/color_text_black"
-                android:background="@drawable/bg_white_top_bottom_line"
-                android:textSize="@dimen/size_font_14"
-                android:text="@string/my_point"/>
 
             <com.goshop.app.common.view.CustomTextView
                 android:id="@+id/btn_test_select_address"
@@ -88,21 +66,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:padding="@dimen/size_16"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
                 android:text="@string/select_address"/>
-
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/btn_test_paymentstatus"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/size_16"
-                android:textColor="@color/color_text_black"
-                android:background="@drawable/bg_white_top_bottom_line"
-                android:textSize="@dimen/size_font_14"
-                android:text="@string/payment_status"/>
 
         </LinearLayout>
     </ScrollView>

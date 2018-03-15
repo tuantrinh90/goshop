@@ -21,7 +21,7 @@
         android:maxLines="1"
         android:paddingBottom="@dimen/size_16"
         android:paddingTop="@dimen/size_20"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         tools:ignore="RtlHardcoded"/>
 
     <LinearLayout

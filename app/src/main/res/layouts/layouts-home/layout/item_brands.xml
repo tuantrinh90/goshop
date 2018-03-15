@@ -35,9 +35,10 @@
             android:paddingLeft="@dimen/size_12"
             android:text="@string/samsung"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textAllCaps="true"
-            tools:ignore="RtlSymmetry" android:paddingStart="@dimen/size_12"/>
+            tools:ignore="RtlSymmetry"
+            android:paddingStart="@dimen/size_12"/>
 
     </LinearLayout>
 

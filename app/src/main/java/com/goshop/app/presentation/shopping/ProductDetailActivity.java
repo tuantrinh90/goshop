@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
+import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.widget.adapter.WidgetPdpAdapter;
 
@@ -82,6 +83,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
                 break;
 
             case R.id.tv_btn_buy_now:
+                startActivity(new Intent(this, PaymentStatusActivity.class));
                 break;
             case R.id.tv_btn_add_to_cart:
                 break;

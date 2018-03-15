@@ -8,7 +8,7 @@ import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
-import com.goshop.app.presentation.shopping.PDPDetailActivity;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.WidgetProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
@@ -189,12 +189,12 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
 
     @Override
     public void onClick() {
-        startActivity(new Intent(this, PDPDetailActivity.class));
+        startActivity(new Intent(this, ProductDetailActivity.class));
     }
 
     @Override
     public void onProductItemClick(ProductsVM productItemVM) {
-        startActivity(new Intent(this, PDPDetailActivity.class));
+        startActivity(new Intent(this, ProductDetailActivity.class));
     }
 
     @Override

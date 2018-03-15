@@ -3,11 +3,8 @@ package com.goshop.app.presentation.login;
 import com.crashlytics.android.Crashlytics;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.presentation.account.EditProfileActivity;
 import com.goshop.app.presentation.account.MyAddressBookActivity;
-import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.checkout.CheckoutSelectAddressActivity;
-import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.utils.SlideMenuUtil;
 
 import android.content.Intent;
@@ -102,8 +99,7 @@ public class TestMenuActivity extends BaseActivity implements NavigationView
     }
 
     @OnClick({R.id.btn_test_login, R.id.imageview_left_menu, R.id.btn_test_complement_email, R.id
-        .btn_test_send_reset_pwd, R.id.btn_test_editprofile, R.id.btn_test_my_address, R.id
-        .btn_test_my_points, R.id.btn_test_select_address, R.id.btn_test_paymentstatus})
+        .btn_test_send_reset_pwd, R.id.btn_test_my_address, R.id.btn_test_select_address})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_login:
@@ -118,21 +114,15 @@ public class TestMenuActivity extends BaseActivity implements NavigationView
             case R.id.btn_test_send_reset_pwd:
                 startActivity(new Intent(this, LoginResetPasswordActivity.class));
                 break;
-            case R.id.btn_test_editprofile:
-                startActivity(new Intent(this, EditProfileActivity.class));
-                break;
+
             case R.id.btn_test_my_address:
                 startActivity(new Intent(this, MyAddressBookActivity.class));
                 break;
-            case R.id.btn_test_my_points:
-                startActivity(new Intent(this, MyPointsActivity.class));
-                break;
+
             case R.id.btn_test_select_address:
                 startActivity(new Intent(this, CheckoutSelectAddressActivity.class));
                 break;
-            case R.id.btn_test_paymentstatus:
-                startActivity(new Intent(this, PaymentStatusActivity.class));
-                break;
+
         }
     }
 

@@ -14,7 +14,7 @@
         android:paddingRight="@dimen/size_16"
         android:paddingTop="@dimen/size_20"
         android:paddingBottom="@dimen/size_12"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:textSize="@dimen/size_font_16"/>
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_select_address_address"
@@ -24,7 +24,7 @@
         android:paddingRight="@dimen/size_16"
         android:paddingTop="@dimen/size_8"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:paddingLeft="@dimen/size_16"
             android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:paddingStart="@dimen/size_16"
             tools:ignore="RtlSymmetry"/>
 
@@ -47,7 +47,7 @@
             android:paddingTop="@dimen/size_8"
             android:text="@string/comma"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:paddingEnd="@dimen/size_4"
             tools:ignore="RtlSymmetry"/>
 
@@ -57,7 +57,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"/>
+            android:textColor="@color/color_grayscale_text"/>
 
         <com.goshop.app.common.view.CustomTextView
             android:layout_width="wrap_content"
@@ -66,7 +66,7 @@
             android:paddingTop="@dimen/size_8"
             android:text="@string/comma"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:paddingEnd="@dimen/size_4"
             tools:ignore="RtlSymmetry"/>
 
@@ -76,7 +76,7 @@
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"/>
+            android:textColor="@color/color_grayscale_text"/>
     </LinearLayout>
 
 
@@ -88,7 +88,7 @@
         android:paddingRight="@dimen/size_16"
         android:paddingTop="@dimen/size_8"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
 
     <com.goshop.app.common.view.CustomTextView
         android:id="@+id/tv_select_address_tel"
@@ -99,7 +99,7 @@
         android:paddingTop="@dimen/size_8"
         android:paddingBottom="@dimen/size_12"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
 
     <View
         android:layout_width="match_parent"
@@ -120,7 +120,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:text="@string/set_it_as_shipping_address"
             android:layout_alignParentStart="true"/>
 
@@ -149,7 +149,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/edit"/>
 
         </LinearLayout>

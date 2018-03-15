@@ -127,7 +127,7 @@
                         android:layout_height="wrap_content"
                         android:padding="@dimen/size_16"
                         android:layout_centerInParent="true"
-                        android:textColor="@color/color_text_light_grey"
+                        android:textColor="@color/color_grayscale_secondary"
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/or"/>
 

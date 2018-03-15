@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:textSize="@dimen/size_font_18"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:layout_centerVertical="true"
             android:text="@string/on_air"
             android:layout_alignParentStart="true"/>
@@ -40,7 +40,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/iv_btn_on_air_right"
             android:layout_marginRight="@dimen/size_4"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_14"
             android:layout_centerVertical="true"
             android:text="@string/tv_schedule"

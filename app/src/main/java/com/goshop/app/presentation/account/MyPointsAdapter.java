@@ -145,7 +145,7 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
             } else {
                 tvPointsCounts.setText(DECLINE + detailVM.getPoints());
                 tvPointsCounts.setTextColor(
-                    ContextCompat.getColor(itemView.getContext(), R.color.color_text_black));
+                    ContextCompat.getColor(itemView.getContext(), R.color.color_grayscale_text));
             }
             tvPointsDate.setText(detailVM.getDate());
             tvPointsDescription.setText(detailVM.getDescription());

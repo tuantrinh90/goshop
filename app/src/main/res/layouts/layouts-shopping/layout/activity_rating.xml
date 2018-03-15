@@ -21,10 +21,10 @@
     <RatingBar
         android:id="@+id/ratingbar_rating"
         android:layout_width="wrap_content"
-        android:layout_height="@dimen/size_28"
+        android:layout_height="@dimen/size_24"
         android:layout_marginTop="@dimen/size_16"
         android:progressDrawable="@drawable/bg_rating_biger"
-        android:isIndicator="true"
+        android:isIndicator="false"
         android:stepSize="1"
         android:rating="5"
         android:numStars="5"/>

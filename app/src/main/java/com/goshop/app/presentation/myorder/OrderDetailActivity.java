@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.OrderDetailVM;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -114,6 +115,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
     public void onOrderDetailClick(View view) {
         switch (view.getId()) {
             case R.id.tv_order_detail_cancel:
+                startActivity(new Intent(this, CancelOrderActivity.class));
                 break;
             case R.id.imageview_left_menu:
                 finish();

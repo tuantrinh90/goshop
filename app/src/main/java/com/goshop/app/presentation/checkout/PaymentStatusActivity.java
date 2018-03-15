@@ -7,10 +7,10 @@ import com.goshop.app.common.view.CustomBoldTextView;
 import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.PaymentStatusVM;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import butterknife.BindView;
@@ -20,9 +20,6 @@ import injection.modules.PresenterModule;
 
 public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Presenter>
     implements PaymentStatusContract.View {
-
-    @BindView(R.id.imageview_left_menu)
-    ImageView imageviewLeftMenu;
 
     @BindView(R.id.ll_status_success_layout)
     LinearLayout llStatusSuccessLayout;
@@ -53,7 +50,7 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
 
     @Override
     public void inject() {
-        imageviewLeftMenu.setVisibility(View.GONE);
+        hideRightMenu();
         initPresenter();
     }
 
@@ -70,18 +67,18 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
             .inject(this);
     }
 
-    @OnClick({R.id.imageview_right_menu, R.id.tv_btn_payment_status, R.id
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_payment_status, R.id
         .tv_btn_status_success_check})
     public void onStatusClick(View view) {
         switch (view.getId()) {
-            case R.id.imageview_right_menu:
+            case R.id.imageview_left_menu:
                 finish();
                 break;
             case R.id.tv_btn_payment_status:
                 //TODO  this is need decide
                 break;
             case R.id.tv_btn_status_success_check:
-                //TODO  this is need decide
+                startActivity(new Intent(this, CheckoutPaymentActivity.class));
                 break;
         }
     }

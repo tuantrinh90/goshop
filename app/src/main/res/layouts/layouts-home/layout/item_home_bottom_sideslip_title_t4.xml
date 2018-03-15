@@ -15,7 +15,7 @@
         android:layout_marginTop="@dimen/home_bottom_slide_title_margin_top_and_bottom"
         android:layout_marginBottom="@dimen/home_bottom_slide_title_margin_top_and_bottom"
         android:fontFamily="sans-serif-medium"
-        android:textColor="@color/blackTrans87"
+        android:textColor="@color/color_grayscale_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         tools:ignore="HardcodedText"

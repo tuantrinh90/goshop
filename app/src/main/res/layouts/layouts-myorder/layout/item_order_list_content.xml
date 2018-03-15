@@ -29,7 +29,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_order_list_product_body"
-        android:background="@color/blackTrans12"
+        android:background="@color/color_bg_disabled_divider"
         android:layout_width="match_parent"
         style="@style/windowMargin"
         android:paddingTop="@dimen/activity_horizontal_margin"

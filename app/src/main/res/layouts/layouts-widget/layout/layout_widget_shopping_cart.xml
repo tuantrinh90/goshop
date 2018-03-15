@@ -42,7 +42,7 @@
         android:id="@+id/tv_cart_product_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:textSize="@dimen/size_font_14"
         android:layout_toLeftOf="@id/ll_cart_menu"
         android:layout_toRightOf="@id/iv_cart_product_thumb"
@@ -78,7 +78,7 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_2"
         android:layout_below="@id/tv_product_cart_old"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:textSize="@dimen/size_font_14"
         android:layout_toRightOf="@id/iv_cart_product_thumb"
         tools:ignore="RtlHardcoded"/>
