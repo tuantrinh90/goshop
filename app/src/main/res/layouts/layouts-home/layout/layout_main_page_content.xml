@@ -10,7 +10,7 @@
 
     <include layout="@layout/toolbar_slide_menu"/>
 
-    <com.goshop.app.common.view.RobotoBoldTabLayout
+    <com.goshop.app.common.view.RobotoMediumTabLayout
         android:id="@+id/tablayout_main"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -20,8 +20,7 @@
         app:tabMode="scrollable"
         app:tabTextColor="@color/color_text_hint"
         app:tabSelectedTextColor="@color/color_grayscale_text"
-        app:tabIndicatorColor="@color/color_grayscale_text"
-        app:tabTextAppearance="@style/mainTabStyle"/>
+        app:tabIndicatorColor="@color/color_grayscale_text"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_main"

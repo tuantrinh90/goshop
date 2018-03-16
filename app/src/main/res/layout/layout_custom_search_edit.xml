@@ -12,11 +12,9 @@
         android:layout_height="@dimen/size_20"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:layout_marginRight="@dimen/size_8"
         android:background="@drawable/ic_close"
         android:contentDescription="@string/app_name"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="@dimen/size_8"/>
+        android:layout_alignParentEnd="true" />
 
     <com.goshop.app.common.view.RobotoRegularEditText
         android:id="@+id/et_search_search"
@@ -27,7 +25,6 @@
         android:textSize="@dimen/size_font_16"
         android:maxLines="1"
         android:textCursorDrawable="@null"
-        android:paddingLeft="@dimen/size_8"
         android:paddingRight="@dimen/size_8"
         android:background="@null"
         android:gravity="left"
