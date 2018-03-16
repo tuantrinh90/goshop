@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomSearchEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
@@ -59,13 +59,13 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     RelativeLayout rlDrawerFilter;
 
     @BindView(R.id.tv_btn_filter_clear)
-    CustomTextView tvBtnSearchFilterClear;
+    RobotoRegularTextView tvBtnSearchFilterClear;
 
     @BindView(R.id.tv_btn_filter_done)
-    CustomTextView tvBtnSearchFilterDone;
+    RobotoRegularTextView tvBtnSearchFilterDone;
 
     @BindView(R.id.tv_btn_sort)
-    CustomTextView tvBtnSort;
+    RobotoRegularTextView tvBtnSort;
 
     private WidgetProductGridVerticalAdapter gridVerticalAdapter;
 

@@ -3,7 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseFragment;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ImagesVM;
 
 import android.os.Bundle;
@@ -28,10 +28,10 @@ public class PDPDetailImagesActivity extends BaseActivity {
     LinearLayout llPdpImagesBottom;
 
     @BindView(R.id.tv_btn_pdp_images)
-    CustomTextView tvBtnPdpImages;
+    RobotoRegularTextView tvBtnPdpImages;
 
     @BindView(R.id.tv_btn_pdp_video)
-    CustomTextView tvBtnPdpVideo;
+    RobotoRegularTextView tvBtnPdpVideo;
 
     @BindView(R.id.viewpager_pdp_images)
     ViewPager viewpagerPdpImages;

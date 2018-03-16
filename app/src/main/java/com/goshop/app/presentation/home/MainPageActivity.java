@@ -4,8 +4,8 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.CustomSearchEditText;
-import com.goshop.app.common.view.CustomBoldTabLayout;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTabLayout;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import com.goshop.app.utils.SlideMenuUtil;
@@ -46,13 +46,13 @@ public class MainPageActivity extends BaseActivity implements NavigationView
     NavigationView navigationSlideMenu;
 
     @BindView(R.id.tablayout_main)
-    CustomBoldTabLayout tablayoutMain;
+    RobotoBoldTabLayout tablayoutMain;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @BindView(R.id.tv_toolbar_cart_counter)
-    CustomTextView tvToolbarCartCounter;
+    RobotoRegularTextView tvToolbarCartCounter;
 
     @BindView(R.id.viewpager_main)
     ViewPager viewpagerMain;

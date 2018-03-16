@@ -3,8 +3,8 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PaymentStatusVM;
 
 import android.content.Intent;
@@ -28,13 +28,13 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
     LinearLayout llStatusWrongLayout;
 
     @BindView(R.id.tv_status_success_order)
-    CustomBoldTextView tvStatusSuccessOrder;
+    RobotoBoldTextView tvStatusSuccessOrder;
 
     @BindView(R.id.tv_status_wrong_email)
-    CustomTextView tvStatusWrongEmail;
+    RobotoRegularTextView tvStatusWrongEmail;
 
     @BindView(R.id.tv_status_wrong_tel)
-    CustomTextView tvStatusWrongTel;
+    RobotoRegularTextView tvStatusWrongTel;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

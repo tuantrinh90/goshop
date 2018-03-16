@@ -9,7 +9,7 @@
     android:background="@drawable/bg_bottom_line"
     android:orientation="vertical">
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_20"
@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/size_20"
         android:layout_marginTop="@dimen/size_40">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_btn_active_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
             android:background="@drawable/drawable_hint_c_circle"
             tools:ignore="RtlHardcoded"/>
 
-        <com.goshop.app.common.view.CustomEditText
+        <com.goshop.app.common.view.RobotoRegularEditText
             android:id="@+id/et_egift_cards"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

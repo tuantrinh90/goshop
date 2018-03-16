@@ -27,7 +27,7 @@
                 android:layout_gravity="center_horizontal"
                 android:contentDescription="@string/app_name"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_brands_detail_summary"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

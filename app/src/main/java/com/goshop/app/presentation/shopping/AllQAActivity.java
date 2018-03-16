@@ -3,9 +3,9 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerVM;
 
 import android.content.Intent;
@@ -27,7 +27,7 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     .View, QuestionAnswerDataAdapter.OnQuestionAnswerItemClickListener {
 
     @BindView(R.id.et_all_qa_enter)
-    CustomEditText etAllQaEnter;
+    RobotoRegularEditText etAllQaEnter;
 
     @BindView(R.id.ll_qa_top_toolbar)
     LinearLayout llQaTopToolbar;
@@ -39,13 +39,13 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     RelativeLayout rlAllQaBottom;
 
     @BindView(R.id.tv_all_qa_answers)
-    CustomBoldTextView tvAllQaAnswers;
+    RobotoBoldTextView tvAllQaAnswers;
 
     @BindView(R.id.tv_all_qa_question)
-    CustomBoldTextView tvAllQaQuestion;
+    RobotoBoldTextView tvAllQaQuestion;
 
     @BindView(R.id.tv_all_qa_submit)
-    CustomTextView tvAllQaSubmit;
+    RobotoRegularTextView tvAllQaSubmit;
 
     private QuestionAnswerDataAdapter dataAdapter;
 

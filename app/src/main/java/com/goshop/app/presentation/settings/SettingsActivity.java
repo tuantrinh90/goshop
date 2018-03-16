@@ -3,7 +3,7 @@ package com.goshop.app.presentation.settings;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.utils.SlideMenuUtil;
 
@@ -58,10 +58,10 @@ public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> i
     Toolbar toolbar;
 
     @BindView(R.id.tv_setting_change_password)
-    CustomTextView tvSettingChangePassword;
+    RobotoRegularTextView tvSettingChangePassword;
 
     @BindView(R.id.tv_setting_logout)
-    CustomTextView tvSettingLogout;
+    RobotoRegularTextView tvSettingLogout;
 
     @BindView(R.id.view_brand_divider)
     View viewBrandDivider;

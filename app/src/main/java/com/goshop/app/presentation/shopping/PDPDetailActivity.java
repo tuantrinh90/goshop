@@ -3,7 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
@@ -43,10 +43,10 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
     RelativeLayout rlPdpDetailBottom;
 
     @BindView(R.id.tv_btn_pdp_detail_buy)
-    CustomTextView tvBtnPdpDetailBuy;
+    RobotoRegularTextView tvBtnPdpDetailBuy;
 
     @BindView(R.id.tv_btn_pdp_detail_cart)
-    CustomTextView tvBtnPdpDetailCart;
+    RobotoRegularTextView tvBtnPdpDetailCart;
 
     private WidgetViewAdapter widgetViewAdapter;
 

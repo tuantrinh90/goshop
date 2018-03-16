@@ -2,8 +2,8 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -54,16 +54,16 @@ public class ExpiredAdapter extends RecyclerView.Adapter {
         ImageView ivExpiredThumb;
 
         @BindView(R.id.tv_expired_detail)
-        CustomBoldTextView tvExpiredDetail;
+        RobotoBoldTextView tvExpiredDetail;
 
         @BindView(R.id.tv_expired_end)
-        CustomTextView tvExpiredEnd;
+        RobotoRegularTextView tvExpiredEnd;
 
         @BindView(R.id.tv_expired_name)
-        CustomTextView tvExpiredName;
+        RobotoRegularTextView tvExpiredName;
 
         @BindView(R.id.tv_expired_time)
-        CustomTextView tvExpiredTime;
+        RobotoRegularTextView tvExpiredTime;
 
         public DealViewHolder(View itemView) {
             super(itemView);

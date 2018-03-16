@@ -13,7 +13,7 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16">
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_btn_ask_question"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             android:layout_centerVertical="true"
             android:orientation="horizontal"
             android:layout_alignParentStart="true">
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_question_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -42,7 +42,7 @@
                 android:paddingRight="@dimen/size_4"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_4"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/questions"
@@ -51,7 +51,7 @@
                 android:paddingRight="@dimen/size_18"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_18"/>
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_answers_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -61,7 +61,7 @@
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_4"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/questions"

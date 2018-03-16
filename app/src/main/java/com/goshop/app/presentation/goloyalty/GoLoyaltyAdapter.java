@@ -2,8 +2,8 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDetailsVM;
 import com.goshop.app.presentation.model.GoLoyaltyModel;
 import com.goshop.app.presentation.model.GoLoyaltyTopVM;
@@ -107,13 +107,13 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter implements DealsAdapt
         LinearLayout llLoyaltyPoints;
 
         @BindView(R.id.tv_go_loyalty_name)
-        CustomTextView tvGoLoyaltyName;
+        RobotoRegularTextView tvGoLoyaltyName;
 
         @BindView(R.id.tv_loyalty_id)
-        CustomBoldTextView tvLoyaltyId;
+        RobotoBoldTextView tvLoyaltyId;
 
         @BindView(R.id.tv_loyalty_points)
-        CustomBoldTextView tvLoyaltyPoints;
+        RobotoBoldTextView tvLoyaltyPoints;
 
         public TopViewHolder(View itemView) {
             super(itemView);
@@ -139,10 +139,10 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter implements DealsAdapt
         RecyclerView recyclerViewDeals;
 
         @BindView(R.id.tv_btn_go_loyalty_more)
-        CustomTextView tvBtnGoLoyaltyMore;
+        RobotoRegularTextView tvBtnGoLoyaltyMore;
 
         @BindView(R.id.tv_go_loyalty_title)
-        CustomBoldTextView tvGoLoyaltyTitle;
+        RobotoBoldTextView tvGoLoyaltyTitle;
 
         public DetailViewHolder(View itemView) {
             super(itemView);

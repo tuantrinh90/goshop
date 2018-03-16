@@ -2,8 +2,8 @@ package com.goshop.app.presentation.home;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.TVShowVM;
 
 import android.graphics.Paint;
@@ -56,22 +56,22 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
         ImageView ivTvShowLeft;
 
         @BindView(R.id.tv_btn_tvshow_buy)
-        CustomTextView tvBtnTvShowBuy;
+        RobotoRegularTextView tvBtnTvShowBuy;
 
         @BindView(R.id.tv_tvshow_left_percent)
-        CustomBoldTextView tvTvShowLeftPercent;
+        RobotoBoldTextView tvTvShowLeftPercent;
 
         @BindView(R.id.tv_tvshow_lefttime)
-        CustomBoldTextView tvTvShowLeftTime;
+        RobotoBoldTextView tvTvShowLeftTime;
 
         @BindView(R.id.tv_tvshow_price_now)
-        CustomBoldTextView tvTvShowPriceNow;
+        RobotoBoldTextView tvTvShowPriceNow;
 
         @BindView(R.id.tv_tvshow_price_old)
-        CustomTextView tvTvShowPriceOld;
+        RobotoRegularTextView tvTvShowPriceOld;
 
         @BindView(R.id.tv_tvshow_title)
-        CustomTextView tvTvShowTitle;
+        RobotoRegularTextView tvTvShowTitle;
 
         public TVShowLeftViewHolder(View itemView) {
             super(itemView);

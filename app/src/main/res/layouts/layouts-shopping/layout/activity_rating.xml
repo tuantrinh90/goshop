@@ -54,7 +54,7 @@
         app:errorTextAppearance="@style/errorAppearance"
         app:hintTextAppearance="@style/hintAppearance">
 
-        <com.goshop.app.common.view.CustomEditText
+        <com.goshop.app.common.view.RobotoRegularEditText
             android:id="@+id/et_rating_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"

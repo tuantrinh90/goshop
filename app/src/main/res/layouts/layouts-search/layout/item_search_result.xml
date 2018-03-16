@@ -36,7 +36,7 @@
             android:contentDescription="@string/app_name"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_search_result_percent"
             android:layout_width="@dimen/size_60"
             android:layout_height="@dimen/size_20"
@@ -48,7 +48,7 @@
             android:textSize="@dimen/size_font_12"
             android:layout_alignParentStart="true"/>
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoBoldTextView
             android:id="@+id/tv_search_result_best"
             android:layout_width="@dimen/size_44"
             android:layout_height="@dimen/size_24"
@@ -62,7 +62,7 @@
             android:textSize="@dimen/size_font_12"
             android:layout_alignParentStart="true"/>
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoBoldTextView
             android:id="@+id/tv_search_result_new"
             android:layout_width="@dimen/size_38"
             android:layout_height="@dimen/size_38"
@@ -77,7 +77,7 @@
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_search_result_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
         android:layout_alignStart="@id/rl_search_result"
         android:layout_alignEnd="@id/rl_search_result"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_search_result_price_old"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -105,7 +105,7 @@
         android:layout_alignRight="@id/rl_search_result"
         android:layout_alignStart="@id/rl_search_result"
         android:layout_alignEnd="@id/rl_search_result"/>
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_search_result_price_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -9,7 +9,7 @@
         android:contentDescription="@string/app_name"
         android:layout_width="100dp"
         android:layout_height="100dp"/>
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_home_top_category_name"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/iv_home_top_category_icon"

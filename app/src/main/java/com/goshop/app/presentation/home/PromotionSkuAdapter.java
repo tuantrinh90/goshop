@@ -2,7 +2,7 @@ package com.goshop.app.presentation.home;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.PromotionSkuModel;
 import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
@@ -118,7 +118,7 @@ public class PromotionSkuAdapter extends RecyclerView.Adapter {
         RecyclerView recyclerViewFilter;
 
         @BindView(R.id.tv_btn_data_sort)
-        CustomTextView tvBtnDataSort;
+        RobotoRegularTextView tvBtnDataSort;
 
         private List<SortVM> sortVMS;
 

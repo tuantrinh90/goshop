@@ -32,7 +32,7 @@
                 android:paddingBottom="@dimen/size_20"
                 android:background="@drawable/bg_bottom_line">
 
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_checkout_shipping_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,7 +40,7 @@
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/checkout_shipping"/>
 
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_checkout_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
                     android:textColor="@color/color_grayscale_text"
                     android:text="@string/user_name_test"
                 />
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_checkout_address_first"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -60,7 +60,7 @@
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_checkout_address_second"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -70,7 +70,7 @@
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_checkout_city_state_code"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -80,7 +80,7 @@
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_checkout_country"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_checkout_tel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
                 android:layout_height="@dimen/size_8"
                 android:background="@drawable/bg_top_bottom_shadow_grey"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_20"
@@ -135,21 +135,21 @@
                 android:layout_marginBottom="@dimen/size_20"
                 android:orientation="vertical"
                 tools:ignore="RelativeOverlap">
-                <com.goshop.app.common.view.CustomRadioButton
+                <com.goshop.app.common.view.RobotoRegularRadioButton
                     android:id="@+id/rb_checkout_payment_banking"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"
                     android:text="@string/checkout_payment_bank"/>
-                <com.goshop.app.common.view.CustomRadioButton
+                <com.goshop.app.common.view.RobotoRegularRadioButton
                     android:id="@+id/rb_checkout_payment_credit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"
                     android:text="@string/checkout_payment_credit"/>
-                <com.goshop.app.common.view.CustomRadioButton
+                <com.goshop.app.common.view.RobotoRegularRadioButton
                     android:id="@+id/rb_checkout_payment_cash_on_deliery"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
                 android:layout_height="@dimen/size_8"
                 android:background="@drawable/bg_top_bottom_shadow_grey"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_20"
@@ -194,7 +194,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.goshop.app.common.view.CustomBoldTextView
+                    <com.goshop.app.common.view.RobotoBoldTextView
                         android:id="@+id/tv_btn_check_discount_apply"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_40"
@@ -210,7 +210,7 @@
                         android:layout_alignParentEnd="true"
                         tools:ignore="RtlHardcoded"/>
 
-                    <com.goshop.app.common.view.CustomEditText
+                    <com.goshop.app.common.view.RobotoRegularEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -234,7 +234,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/size_16">
 
-                    <com.goshop.app.common.view.CustomBoldTextView
+                    <com.goshop.app.common.view.RobotoBoldTextView
                         android:id="@+id/tv_btn_check_gift_card_apply"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_40"
@@ -250,7 +250,7 @@
                         android:layout_alignParentEnd="true"
                         tools:ignore="RtlHardcoded"/>
 
-                    <com.goshop.app.common.view.CustomEditText
+                    <com.goshop.app.common.view.RobotoRegularEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -275,7 +275,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/size_16">
 
-                    <com.goshop.app.common.view.CustomBoldTextView
+                    <com.goshop.app.common.view.RobotoBoldTextView
                         android:id="@+id/tv_btn_check_points_apply"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_40"
@@ -297,7 +297,7 @@
                         android:layout_toLeftOf="@id/tv_btn_check_points_apply"
                         android:layout_toStartOf="@id/tv_btn_check_points_apply"
                         android:orientation="horizontal">
-                        <com.goshop.app.common.view.CustomTextView
+                        <com.goshop.app.common.view.RobotoRegularTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_14"
@@ -306,7 +306,7 @@
                             android:textColor="@color/color_grayscale_text_two"
                             android:text="@string/use"
                             tools:ignore="RtlHardcoded,RtlSymmetry"/>
-                        <com.goshop.app.common.view.CustomEditText
+                        <com.goshop.app.common.view.RobotoRegularEditText
                             android:layout_width="@dimen/size_86"
                             android:layout_height="@dimen/size_36"
                             android:textSize="@dimen/size_font_14"
@@ -319,7 +319,7 @@
                             android:background="@drawable/bg_et_editable"
                             tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-                        <com.goshop.app.common.view.CustomTextView
+                        <com.goshop.app.common.view.RobotoRegularTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_14"
@@ -332,7 +332,7 @@
 
 
                 </RelativeLayout>
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_checkout_attention"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -354,7 +354,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_16">
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -364,7 +364,7 @@
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -381,7 +381,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_8">
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -391,7 +391,7 @@
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -408,7 +408,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_8">
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -418,7 +418,7 @@
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -435,7 +435,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_8">
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -445,7 +445,7 @@
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -462,7 +462,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_8">
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -472,7 +472,7 @@
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -489,7 +489,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_8">
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -499,7 +499,7 @@
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_14"
@@ -516,7 +516,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_8">
 
-                    <com.goshop.app.common.view.CustomBoldTextView
+                    <com.goshop.app.common.view.RobotoBoldTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_18"
@@ -526,7 +526,7 @@
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
-                    <com.goshop.app.common.view.CustomBoldTextView
+                    <com.goshop.app.common.view.RobotoBoldTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_18"
@@ -541,7 +541,7 @@
 
             </LinearLayout>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/btn_checkout_place_my_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -5,8 +5,8 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.CustomPasswordEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -72,28 +72,28 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     ImageView ivSelectMale;
 
     @BindView(R.id.textview_right_menu)
-    CustomBoldTextView textviewRightMenu;
+    RobotoBoldTextView textviewRightMenu;
 
     @BindView(R.id.tv_btn_register_login)
-    CustomBoldTextView tvBtnRegisterLogin;
+    RobotoBoldTextView tvBtnRegisterLogin;
 
     @BindView(R.id.tv_gender_warning)
-    CustomTextView tvGenderWarning;
+    RobotoRegularTextView tvGenderWarning;
 
     @BindView(R.id.tv_register_date_of_birth)
-    CustomTextView tvRegisterDateOfBirth;
+    RobotoRegularTextView tvRegisterDateOfBirth;
 
     @BindView(R.id.tv_register_date_of_birth_warning)
-    CustomTextView tvRegisterDateOfBirthWarning;
+    RobotoRegularTextView tvRegisterDateOfBirthWarning;
 
     @BindView(R.id.tv_register_language)
-    CustomTextView tvRegisterLanguage;
+    RobotoRegularTextView tvRegisterLanguage;
 
     @BindView(R.id.tv_register_read)
-    CustomTextView tvRegisterRead;
+    RobotoRegularTextView tvRegisterRead;
 
     @BindView(R.id.tv_register_title)
-    CustomTextView tvRegisterTitle;
+    RobotoRegularTextView tvRegisterTitle;
 
     private String currentPopType = "";
 

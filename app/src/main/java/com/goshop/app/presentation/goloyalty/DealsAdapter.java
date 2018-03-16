@@ -2,8 +2,8 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -59,16 +59,16 @@ public class DealsAdapter extends RecyclerView.Adapter {
         ImageView ivDealThumb;
 
         @BindView(R.id.tv_deal_detail)
-        CustomBoldTextView tvDealDetail;
+        RobotoBoldTextView tvDealDetail;
 
         @BindView(R.id.tv_deal_end)
-        CustomTextView tvDealEnd;
+        RobotoRegularTextView tvDealEnd;
 
         @BindView(R.id.tv_deal_name)
-        CustomTextView tvDealName;
+        RobotoRegularTextView tvDealName;
 
         @BindView(R.id.tv_deal_time)
-        CustomTextView tvDealTime;
+        RobotoRegularTextView tvDealTime;
 
         public DealViewHolder(View itemView) {
             super(itemView);

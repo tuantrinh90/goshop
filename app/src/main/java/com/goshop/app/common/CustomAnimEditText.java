@@ -1,7 +1,7 @@
 package com.goshop.app.common;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.view.RobotoRegularEditText;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.annotation.SuppressLint;
@@ -28,7 +28,7 @@ public class CustomAnimEditText extends RelativeLayout {
     private final String INPUT_MOBILE = "Mobile Number";
 
     @BindView(R.id.et_anim_edittext)
-    CustomEditText etAnimEdittext;
+    RobotoRegularEditText etAnimEdittext;
 
     @BindView(R.id.iv_anim_del_edittext)
     ImageView ivAnimDelEdittext;
@@ -177,7 +177,7 @@ public class CustomAnimEditText extends RelativeLayout {
         return tilAnimEdittext;
     }
 
-    public CustomEditText getEditText() {
+    public RobotoRegularEditText getEditText() {
         return etAnimEdittext;
     }
 }

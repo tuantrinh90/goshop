@@ -1,8 +1,8 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ReviewsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -53,16 +53,16 @@ public class PDPReviewsItemAdapter extends RecyclerView.Adapter {
         RatingBar ratingBar;
 
         @BindView(R.id.tv_reviews_date)
-        CustomTextView tvReviewsDate;
+        RobotoRegularTextView tvReviewsDate;
 
         @BindView(R.id.tv_reviews_detail)
-        CustomTextView tvReviewsDetail;
+        RobotoRegularTextView tvReviewsDetail;
 
         @BindView(R.id.tv_reviews_title)
-        CustomBoldTextView tvReviewsTitle;
+        RobotoBoldTextView tvReviewsTitle;
 
         @BindView(R.id.tv_reviews_user_name)
-        CustomTextView tvReviewsUserName;
+        RobotoRegularTextView tvReviewsUserName;
 
         public ReviewsItemViewHolder(View itemView) {
             super(itemView);

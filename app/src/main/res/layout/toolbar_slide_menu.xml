@@ -28,19 +28,20 @@
 
         <ImageView
             android:id="@+id/imageview_right_menu"
-            android:layout_width="@dimen/size_20"
-            android:layout_height="@dimen/size_20"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/size_26"
+            android:layout_marginRight="@dimen/size_22"
             android:layout_marginLeft="@dimen/size_16"
             android:src="@drawable/ic_icon_shopping_cart"
+            android:scaleType="fitXY"
             tools:ignore="ContentDescription"
             android:layout_alignParentEnd="true"
             android:layout_marginEnd="@dimen/size_26"
             android:layout_marginStart="@dimen/size_16"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_toolbar_cart_counter"
             android:layout_width="@dimen/size_14"
             android:layout_height="@dimen/size_14"
@@ -57,7 +58,7 @@
             android:layout_marginEnd="@dimen/size_16"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoBoldTextView
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -3,8 +3,8 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,16 +34,16 @@ public class CheckoutEditAddressActivity extends BaseActivity {
     CustomAnimEditText etCheckoutAddressZip;
 
     @BindView(R.id.textview_right_menu)
-    CustomBoldTextView textviewRightMenu;
+    RobotoBoldTextView textviewRightMenu;
 
     @BindView(R.id.tv_checkout_address_city)
-    CustomTextView tvCheckoutAddressCity;
+    RobotoRegularTextView tvCheckoutAddressCity;
 
     @BindView(R.id.tv_checkout_address_country)
-    CustomTextView tvCheckoutAddressCountry;
+    RobotoRegularTextView tvCheckoutAddressCountry;
 
     @BindView(R.id.tv_checkout_address_state)
-    CustomTextView tvCheckoutAddressState;
+    RobotoRegularTextView tvCheckoutAddressState;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
 import com.goshop.app.presentation.model.BrandsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -76,7 +76,7 @@ public class BrandsAdapter extends RecyclerView.Adapter {
         ImageView ivBrandsThumbThird;
 
         @BindView(R.id.tv_brands_name)
-        CustomBoldTextView tvBrandsName;
+        RobotoBoldTextView tvBrandsName;
 
         @BindView(R.id.view_brand_divider)
         View viewBrandDivider;

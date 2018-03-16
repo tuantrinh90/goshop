@@ -2,8 +2,8 @@ package com.goshop.app.presentation.search;
 
 import com.goshop.app.R;
 import com.goshop.app.common.FlowLayout;
-import com.goshop.app.common.view.CustomEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -134,7 +134,7 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         RelativeLayout rlFilterExpandTitle;
 
         @BindView(R.id.tv_item_search_filter_expand)
-        CustomTextView tvItemSearchFilterExpand;
+        RobotoRegularTextView tvItemSearchFilterExpand;
 
         public ExpandViewHolder(View itemView) {
             super(itemView);
@@ -210,10 +210,10 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
     class PriceViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.et_search_filter_max)
-        CustomEditText etSearchFilterMax;
+        RobotoRegularEditText etSearchFilterMax;
 
         @BindView(R.id.et_search_filter_min)
-        CustomEditText etSearchFilterMin;
+        RobotoRegularEditText etSearchFilterMin;
 
         public PriceViewHolder(View itemView) {
             super(itemView);

@@ -17,7 +17,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_16"
@@ -61,7 +61,7 @@
                 animET:hint="@string/product_handing_optional"/>
 
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_cancel_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_8"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_cancel_detail_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -101,7 +101,7 @@
                 android:drawableEnd="@drawable/ic_icon_spinner_down"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_8"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_btn_cancel_order_submit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

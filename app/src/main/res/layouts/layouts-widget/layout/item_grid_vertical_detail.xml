@@ -15,7 +15,7 @@
         android:layout_height="@dimen/size_156"
         android:contentDescription="@string/app_name"/>
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_grid_percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:layout_alignBottom="@id/iv_grid_pic"
         android:background="@color/color_main_pink"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_grid_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         android:layout_alignStart="@id/iv_grid_pic"
         android:layout_alignEnd="@id/iv_grid_pic"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_grid_old"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -51,7 +51,7 @@
         android:layout_alignStart="@id/iv_grid_pic"
         android:layout_alignEnd="@id/iv_grid_pic"/>
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_grid_now_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

@@ -1,9 +1,9 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.MyEGiftCardsDetailsVM;
 import com.goshop.app.presentation.model.MyEGiftModel;
 import com.goshop.app.utils.NumberFormater;
@@ -81,10 +81,10 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
     class TopViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.et_egift_cards)
-        CustomEditText etEgiftCards;
+        RobotoRegularEditText etEgiftCards;
 
         @BindView(R.id.tv_btn_active_now)
-        CustomTextView tvBtnActiveNow;
+        RobotoRegularTextView tvBtnActiveNow;
 
         public TopViewHolder(View itemView) {
             super(itemView);
@@ -100,19 +100,19 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
     class DetailViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_egift_title)
-        CustomBoldTextView tvEGiftTitle;
+        RobotoBoldTextView tvEGiftTitle;
 
         @BindView(R.id.tv_egift_price)
-        CustomTextView tvEgiftPrice;
+        RobotoRegularTextView tvEgiftPrice;
 
         @BindView(R.id.tv_egift_sender)
-        CustomTextView tvEgiftSender;
+        RobotoRegularTextView tvEgiftSender;
 
         @BindView(R.id.tv_egift_status)
-        CustomTextView tvEgiftStatus;
+        RobotoRegularTextView tvEgiftStatus;
 
         @BindView(R.id.tv_egift_time)
-        CustomTextView tvEgiftTime;
+        RobotoRegularTextView tvEgiftTime;
 
         public DetailViewHolder(View itemView) {
             super(itemView);

@@ -12,7 +12,7 @@
         android:orientation="vertical"
         android:padding="@dimen/size_20"
         android:background="@drawable/bg_round_shadow_white">
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoBoldTextView
             android:id="@+id/tv_single_dialog_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

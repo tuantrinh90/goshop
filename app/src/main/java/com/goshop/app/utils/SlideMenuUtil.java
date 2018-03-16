@@ -1,8 +1,8 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.MyAccountLandingActivity;
 import com.goshop.app.presentation.account.MyWishlistActivity;
@@ -58,9 +58,9 @@ public class SlideMenuUtil {
         slideMenuWishlist, slideMenuOrder, slideMenuRewards, slideMenuNotification,
         slideMenuHelp, slideMenuSettings, slideMenuOthers;
 
-    private CustomBoldTextView tvSlideSignUp;
+    private RobotoBoldTextView tvSlideSignUp;
 
-    private CustomTextView tvSlideUserName;
+    private RobotoRegularTextView tvSlideUserName;
 
     public SlideMenuUtil(Activity activity, int currentMenuId, DrawerLayout drawerLayout,
         NavigationView navigationView, boolean isLogin,

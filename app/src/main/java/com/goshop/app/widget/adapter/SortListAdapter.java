@@ -1,7 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.widget.listener.OnSortListItemClickListener;
 
@@ -57,7 +57,7 @@ public class SortListAdapter extends RecyclerView.Adapter {
     class SortViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_sort_select)
-        CustomTextView tvSortSelect;
+        RobotoRegularTextView tvSortSelect;
 
         public SortViewHolder(View itemView) {
             super(itemView);

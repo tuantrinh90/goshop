@@ -1,8 +1,8 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PdpFrequentlyDataVM;
 
 import android.graphics.Paint;
@@ -50,16 +50,16 @@ public class PdpFrequentlyBoughtAdapter extends RecyclerView.Adapter {
         ImageView ivItemItemFrequently;
 
         @BindView(R.id.tv_item_item_now_price)
-        CustomBoldTextView tvItemItemNowPrice;
+        RobotoBoldTextView tvItemItemNowPrice;
 
         @BindView(R.id.tv_item_item_old_price)
-        CustomTextView tvItemItemOldPrice;
+        RobotoRegularTextView tvItemItemOldPrice;
 
         @BindView(R.id.tv_item_item_percent)
-        CustomTextView tvItemItemPercent;
+        RobotoRegularTextView tvItemItemPercent;
 
         @BindView(R.id.tv_item_item_title)
-        CustomTextView tvItemItemTitle;
+        RobotoRegularTextView tvItemItemTitle;
 
         public FrequentlyViewHolder(View itemView) {
             super(itemView);

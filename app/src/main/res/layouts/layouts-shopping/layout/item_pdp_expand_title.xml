@@ -10,7 +10,7 @@
     android:background="@drawable/selector_bg_expand_pdp_title"
     tools:ignore="Overdraw">
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_item_pdp_expand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

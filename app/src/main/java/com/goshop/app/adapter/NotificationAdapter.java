@@ -1,7 +1,7 @@
 package com.goshop.app.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.NotificationVM;
 
 import android.annotation.SuppressLint;
@@ -62,10 +62,10 @@ public class NotificationAdapter extends RecyclerView.Adapter {
     class NotificationHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_notification_date)
-        CustomTextView tvNotificationDate;
+        RobotoRegularTextView tvNotificationDate;
 
         @BindView(R.id.tv_notification_name)
-        CustomTextView tvNotificationName;
+        RobotoRegularTextView tvNotificationName;
 
         @BindView(R.id.view_notification_icon)
         View viewNotificationIcon;

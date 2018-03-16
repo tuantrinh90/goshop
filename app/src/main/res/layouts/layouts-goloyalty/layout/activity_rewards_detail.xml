@@ -32,7 +32,7 @@
                     android:background="@drawable/ic_sbk"
                     android:contentDescription="@string/app_name"/>
 
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_rewards_merchant_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                     tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </LinearLayout>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_promotion_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -54,7 +54,7 @@
                 android:paddingTop="@dimen/size_20"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_rewards_detail_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -71,7 +71,7 @@
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:paddingTop="@dimen/size_8">
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_rewards_detail_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -81,7 +81,7 @@
                     android:textColor="@color/color_grayscale_text_two"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_rewards_detail_time_left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                 android:contentDescription="@string/app_name"/>
 
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_promo_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,7 +111,7 @@
                 android:paddingTop="@dimen/size_8"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_promo_details_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -123,7 +123,7 @@
                 android:textColor="@color/color_grayscale_text_two"
                 tools:ignore="RtlHardcoded"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_promo_terms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -134,7 +134,7 @@
                 android:paddingTop="@dimen/size_16"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_promo_terms_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -147,7 +147,7 @@
                 android:textColor="@color/color_grayscale_text_two"
                 tools:ignore="RtlHardcoded"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_btn_rewards_detail_download"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

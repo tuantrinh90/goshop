@@ -3,7 +3,7 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SelectAddressVM;
 
 import android.content.Intent;
@@ -32,7 +32,7 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
     RecyclerView recyclerviewSelectAddress;
 
     @BindView(R.id.tv_btn_layout_white)
-    CustomTextView tvBtnLayoutWhite;
+    RobotoRegularTextView tvBtnLayoutWhite;
 
     private CheckoutSelectAddressAdapter addressAdapter;
 

@@ -1,8 +1,8 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -66,16 +66,16 @@ public class QuestionAnswerDataAdapter extends RecyclerView.Adapter {
         View divider;
 
         @BindView(R.id.tv_question_answer_content)
-        CustomTextView tvQuestionAnswerContent;
+        RobotoRegularTextView tvQuestionAnswerContent;
 
         @BindView(R.id.tv_question_answer_counts)
-        CustomTextView tvQuestionAnswerCounts;
+        RobotoRegularTextView tvQuestionAnswerCounts;
 
         @BindView(R.id.tv_question_answer_title)
-        CustomBoldTextView tvQuestionAnswerTitle;
+        RobotoBoldTextView tvQuestionAnswerTitle;
 
         @BindView(R.id.tv_question_answer_update)
-        CustomTextView tvQuestionAnswerUpdate;
+        RobotoRegularTextView tvQuestionAnswerUpdate;
 
         public QuestionAnswerViewHolder(View itemView) {
             super(itemView);

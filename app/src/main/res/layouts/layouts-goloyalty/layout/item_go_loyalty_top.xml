@@ -15,7 +15,7 @@
         android:layout_gravity="center_horizontal"
         android:background="@drawable/ic_icon_user_default"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_go_loyalty_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -25,7 +25,7 @@
         android:paddingTop="@dimen/size_16"
         android:gravity="center_horizontal"/>
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_go_loyalty_member"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1">
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_loyalty_id"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -57,7 +57,7 @@
                 android:textSize="@dimen/size_font_16"
                 android:textColor="@color/color_grayscale_text"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_4"
@@ -73,7 +73,7 @@
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:layout_weight="1">
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_loyalty_points"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,7 +82,7 @@
                 android:textSize="@dimen/size_font_16"
                 android:textColor="@color/color_grayscale_text"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_4"

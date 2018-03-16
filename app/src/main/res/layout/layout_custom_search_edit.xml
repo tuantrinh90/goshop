@@ -18,7 +18,7 @@
         android:layout_alignParentEnd="true"
         android:layout_marginEnd="@dimen/size_8"/>
 
-    <com.goshop.app.common.view.CustomEditText
+    <com.goshop.app.common.view.RobotoRegularEditText
         android:id="@+id/et_search_search"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

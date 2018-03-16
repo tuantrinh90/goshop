@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ContactUsVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.NumberFormater;
@@ -42,13 +42,13 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
     LinearLayout llContactUsBottom;
 
     @BindView(R.id.tv_btn_layout_pink)
-    CustomTextView tvBtnLayoutPink;
+    RobotoRegularTextView tvBtnLayoutPink;
 
     @BindView(R.id.tv_contact_email)
-    CustomTextView tvContactEmail;
+    RobotoRegularTextView tvContactEmail;
 
     @BindView(R.id.tv_contact_phone)
-    CustomTextView tvContactPhone;
+    RobotoRegularTextView tvContactPhone;
 
     private ToastUtil toastUtil;
 

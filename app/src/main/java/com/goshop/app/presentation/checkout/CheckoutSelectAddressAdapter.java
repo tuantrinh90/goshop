@@ -1,8 +1,8 @@
 package com.goshop.app.presentation.checkout;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SelectAddressVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -65,25 +65,25 @@ public class CheckoutSelectAddressAdapter extends RecyclerView.Adapter {
         RadioButton rbSelectAddressSet;
 
         @BindView(R.id.tv_select_address_address)
-        CustomTextView tvSelectAddressAddress;
+        RobotoRegularTextView tvSelectAddressAddress;
 
         @BindView(R.id.tv_select_address_city)
-        CustomTextView tvSelectAddressCity;
+        RobotoRegularTextView tvSelectAddressCity;
 
         @BindView(R.id.tv_select_address_code)
-        CustomTextView tvSelectAddressCode;
+        RobotoRegularTextView tvSelectAddressCode;
 
         @BindView(R.id.tv_select_address_country)
-        CustomTextView tvSelectAddressCountry;
+        RobotoRegularTextView tvSelectAddressCountry;
 
         @BindView(R.id.tv_select_address_name)
-        CustomBoldTextView tvSelectAddressName;
+        RobotoBoldTextView tvSelectAddressName;
 
         @BindView(R.id.tv_select_address_state)
-        CustomTextView tvSelectAddressState;
+        RobotoRegularTextView tvSelectAddressState;
 
         @BindView(R.id.tv_select_address_tel)
-        CustomTextView tvSelectAddressTel;
+        RobotoRegularTextView tvSelectAddressTel;
 
         public SelectAddressViewHolder(View itemView) {
             super(itemView);

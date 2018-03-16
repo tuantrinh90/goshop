@@ -3,7 +3,7 @@ package com.goshop.app.adapter;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.listener.IRecyclerItemClick;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.CheckoutResponse;
 
 import android.annotation.SuppressLint;
@@ -79,22 +79,22 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
         ImageView ivCheckoutItemIcon;
 
         @BindView(R.id.tv_home_home_item_sale_symbol)
-        CustomTextView tvHomeHomeItemSaleSymbol;
+        RobotoRegularTextView tvHomeHomeItemSaleSymbol;
 
         @BindView(R.id.tv_checkout_product_name)
-        CustomTextView tvCheckoutProductName;
+        RobotoRegularTextView tvCheckoutProductName;
 
         @BindView(R.id.tv_checkout_color_and_size)
-        CustomTextView tvCheckoutColorAndSize;
+        RobotoRegularTextView tvCheckoutColorAndSize;
 
         @BindView(R.id.tv_checkout_old_price)
-        CustomTextView tvCheckoutOldPrice;
+        RobotoRegularTextView tvCheckoutOldPrice;
 
         @BindView(R.id.tv_checkout_price)
-        CustomTextView tvCheckoutPrice;
+        RobotoRegularTextView tvCheckoutPrice;
 
         @BindView(R.id.tv_checkout_amount)
-        CustomTextView tvCheckoutAmount;
+        RobotoRegularTextView tvCheckoutAmount;
 
         public CheckoutHolder(View itemView) {
             super(itemView);

@@ -1,7 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ChannelVM;
 import com.goshop.app.widget.listener.OnChannelItemClickListener;
 
@@ -71,7 +71,7 @@ public class ChannelAdapter extends RecyclerView.Adapter {
         ImageView ivChannel;
 
         @BindView(R.id.tv_channel)
-        CustomTextView tvChannel;
+        RobotoRegularTextView tvChannel;
 
         public ChannelViewHolder(View itemView) {
             super(itemView);

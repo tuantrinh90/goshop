@@ -3,8 +3,8 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -19,7 +19,7 @@ import butterknife.OnClick;
 public class RatingActivity extends BaseActivity {
 
     @BindView(R.id.et_rating_detail)
-    CustomEditText etRatingDetail;
+    RobotoRegularEditText etRatingDetail;
 
     @BindView(R.id.et_rating_title)
     CustomAnimEditText etRatingTitle;
@@ -34,7 +34,7 @@ public class RatingActivity extends BaseActivity {
     TextInputLayout textinputlayoutRating;
 
     @BindView(R.id.textview_right_menu)
-    CustomBoldTextView textviewRightMenu;
+    RobotoBoldTextView textviewRightMenu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

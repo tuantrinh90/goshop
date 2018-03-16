@@ -4,8 +4,8 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.MyOrderDetailAdapter;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.utils.ScreenHelper;
@@ -48,46 +48,46 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
     RecyclerView rvOrderList;
 
     @BindView(R.id.tv_order_detail_address)
-    CustomTextView tvOrderDetailAddress;
+    RobotoRegularTextView tvOrderDetailAddress;
 
     @BindView(R.id.tv_order_detail_city_and_postcode)
-    CustomTextView tvOrderDetailCityAndPostcode;
+    RobotoRegularTextView tvOrderDetailCityAndPostcode;
 
     @BindView(R.id.tv_order_detail_country)
-    CustomTextView tvOrderDetailCountry;
+    RobotoRegularTextView tvOrderDetailCountry;
 
     @BindView(R.id.tv_order_detail_discount)
-    CustomTextView tvOrderDetailDiscount;
+    RobotoRegularTextView tvOrderDetailDiscount;
 
     @BindView(R.id.tv_order_detail_number)
-    CustomTextView tvOrderDetailNumber;
+    RobotoRegularTextView tvOrderDetailNumber;
 
     @BindView(R.id.tv_order_detail_pay_method)
-    CustomTextView tvOrderDetailPayMethod;
+    RobotoRegularTextView tvOrderDetailPayMethod;
 
     @BindView(R.id.tv_order_detail_person_name)
-    CustomTextView tvOrderDetailPersonName;
+    RobotoRegularTextView tvOrderDetailPersonName;
 
     @BindView(R.id.tv_order_detail_rounding_amout)
-    CustomTextView tvOrderDetailRoundingAmout;
+    RobotoRegularTextView tvOrderDetailRoundingAmout;
 
     @BindView(R.id.tv_order_detail_shipping)
-    CustomTextView tvOrderDetailShipping;
+    RobotoRegularTextView tvOrderDetailShipping;
 
     @BindView(R.id.tv_order_detail_status)
-    CustomTextView tvOrderDetailStatus;
+    RobotoRegularTextView tvOrderDetailStatus;
 
     @BindView(R.id.tv_order_detail_sub_total)
-    CustomTextView tvOrderDetailSubTotal;
+    RobotoRegularTextView tvOrderDetailSubTotal;
 
     @BindView(R.id.tv_order_detail_tel)
-    CustomTextView tvOrderDetailTel;
+    RobotoRegularTextView tvOrderDetailTel;
 
     @BindView(R.id.tv_order_detail_total)
-    CustomBoldTextView tvOrderDetailTotal;
+    RobotoBoldTextView tvOrderDetailTotal;
 
     @BindView(R.id.tv_order_detail_track)
-    CustomTextView tvOrderDetailTrack;
+    RobotoRegularTextView tvOrderDetailTrack;
 
     @Override
     public void showOrderList(MyOrderListResponse response) {

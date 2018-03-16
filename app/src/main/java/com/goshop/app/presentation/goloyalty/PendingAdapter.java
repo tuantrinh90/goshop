@@ -2,8 +2,8 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -80,16 +80,16 @@ public class PendingAdapter extends RecyclerView.Adapter {
         ImageView ivPendingThumb;
 
         @BindView(R.id.tv_pending_detail)
-        CustomBoldTextView tvPendingDetail;
+        RobotoBoldTextView tvPendingDetail;
 
         @BindView(R.id.tv_pending_end)
-        CustomTextView tvPendingEnd;
+        RobotoRegularTextView tvPendingEnd;
 
         @BindView(R.id.tv_pending_name)
-        CustomTextView tvPendingName;
+        RobotoRegularTextView tvPendingName;
 
         @BindView(R.id.tv_pending_time)
-        CustomTextView tvPendingTime;
+        RobotoRegularTextView tvPendingTime;
 
         public DealViewHolder(View itemView) {
             super(itemView);

@@ -1,8 +1,8 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.TVShowVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -93,10 +93,10 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
         LinearLayout llTvShowCalendar;
 
         @BindView(R.id.tv_tv_show_day)
-        CustomBoldTextView tvTvShowDay;
+        RobotoBoldTextView tvTvShowDay;
 
         @BindView(R.id.tv_tv_show_week)
-        CustomTextView tvTvShowWeek;
+        RobotoRegularTextView tvTvShowWeek;
 
         public CalenderViewHolder(View itemView) {
             super(itemView);

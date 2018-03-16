@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AllReviewsVM;
 import com.goshop.app.widget.adapter.PDPReviewsItemAdapter;
 
@@ -36,7 +36,7 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
     RecyclerView recyclerviewAllReviews;
 
     @BindView(R.id.tv_reviews_amount)
-    CustomTextView tvReviewsAmount;
+    RobotoRegularTextView tvReviewsAmount;
 
     private PDPReviewsItemAdapter reviewsItemAdapter;
 

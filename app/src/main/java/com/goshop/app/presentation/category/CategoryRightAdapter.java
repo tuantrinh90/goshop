@@ -1,8 +1,8 @@
 package com.goshop.app.presentation.category;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
 import com.goshop.app.presentation.model.CategoryRightParentVM;
@@ -116,7 +116,7 @@ public class CategoryRightAdapter extends RecyclerView.Adapter {
         ImageView ivItemCategoryExpand;
 
         @BindView(R.id.tv_category_right_parent)
-        CustomBoldTextView tvCategoryRightParent;
+        RobotoBoldTextView tvCategoryRightParent;
 
         public ParentViewHolder(View itemView) {
             super(itemView);
@@ -133,7 +133,7 @@ public class CategoryRightAdapter extends RecyclerView.Adapter {
     class ChildViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_item_category_child)
-        CustomTextView tvItemCategoryChild;
+        RobotoRegularTextView tvItemCategoryChild;
 
         public ChildViewHolder(View itemView) {
             super(itemView);

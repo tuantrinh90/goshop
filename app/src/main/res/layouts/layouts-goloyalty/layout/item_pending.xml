@@ -16,7 +16,7 @@
         android:layout_marginRight="@dimen/size_16"
         android:contentDescription="@string/app_name"
         tools:ignore="RtlHardcoded"/>
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_pending_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -26,7 +26,7 @@
         android:maxLines="1"
         android:ellipsize="end"
         tools:ignore="RtlHardcoded"/>
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_pending_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -38,7 +38,7 @@
         android:ellipsize="end"
         tools:ignore="RtlHardcoded"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_pending_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,7 +50,7 @@
         android:ellipsize="end"
         tools:ignore="RtlHardcoded"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_pending_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -2,7 +2,7 @@ package com.goshop.app.presentation.category;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -77,7 +77,7 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
         RelativeLayout rlLayoutCategoryLeft;
 
         @BindView(R.id.tv_category_left_menu)
-        CustomTextView tvCategoryLeftMenu;
+        RobotoRegularTextView tvCategoryLeftMenu;
 
         public CategoryLeftViewHolder(View itemView) {
             super(itemView);

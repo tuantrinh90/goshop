@@ -19,7 +19,7 @@
             android:padding="@dimen/size_8"
             android:orientation="horizontal">
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_btn_add_to_cart"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
                 android:text="@string/add_to_cart"
                 android:padding="@dimen/size_14"
                 android:layout_marginEnd="@dimen/size_4"/>
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_btn_buy_now"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

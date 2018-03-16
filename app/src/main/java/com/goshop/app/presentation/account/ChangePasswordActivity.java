@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomPasswordEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -29,7 +29,7 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
     CustomPasswordEditText cpEtNew;
 
     @BindView(R.id.tv_btn_layout_pink)
-    CustomTextView tvBtnLayout;
+    RobotoRegularTextView tvBtnLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

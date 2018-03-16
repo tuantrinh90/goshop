@@ -2,8 +2,8 @@ package com.goshop.app.widget.viewholder;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
@@ -22,16 +22,16 @@ public class ProductGridViewHolder extends RecyclerView.ViewHolder {
     ImageView ivGridPic;
 
     @BindView(R.id.tv_grid_now_price)
-    CustomBoldTextView tvGridNowPrice;
+    RobotoBoldTextView tvGridNowPrice;
 
     @BindView(R.id.tv_grid_old)
-    CustomTextView tvGridOld;
+    RobotoRegularTextView tvGridOld;
 
     @BindView(R.id.tv_grid_percent)
-    CustomBoldTextView tvGridPercent;
+    RobotoBoldTextView tvGridPercent;
 
     @BindView(R.id.tv_grid_title)
-    CustomTextView tvGridTitle;
+    RobotoRegularTextView tvGridTitle;
 
     public ProductGridViewHolder(View itemView) {
         super(itemView);

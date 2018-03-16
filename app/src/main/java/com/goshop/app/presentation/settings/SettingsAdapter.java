@@ -1,8 +1,8 @@
 package com.goshop.app.presentation.settings;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SettingsModel;
 import com.goshop.app.presentation.model.SettingsSingleDetailVM;
 import com.goshop.app.presentation.model.SettingsSwitchVM;
@@ -87,7 +87,7 @@ public class SettingsAdapter extends RecyclerView.Adapter {
         ImageView ivTitleSpace;
 
         @BindView(R.id.tv_title_name)
-        CustomBoldTextView tvTitleName;
+        RobotoBoldTextView tvTitleName;
 
         public TitleViewHolder(View itemView) {
             super(itemView);
@@ -106,7 +106,7 @@ public class SettingsAdapter extends RecyclerView.Adapter {
         Switch swtchSetting;
 
         @BindView(R.id.tv_switch_content)
-        CustomTextView tvSwitchContent;
+        RobotoRegularTextView tvSwitchContent;
 
         public SwitchViewHolder(View itemView) {
             super(itemView);
@@ -121,7 +121,7 @@ public class SettingsAdapter extends RecyclerView.Adapter {
     class DetailViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_item_detail)
-        CustomTextView tvItemDetail;
+        RobotoRegularTextView tvItemDetail;
 
         public DetailViewHolder(View itemView) {
             super(itemView);

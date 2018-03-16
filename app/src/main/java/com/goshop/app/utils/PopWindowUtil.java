@@ -1,8 +1,8 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.widget.adapter.SingleChooseListAdapter;
@@ -94,7 +94,7 @@ public class PopWindowUtil {
         OnPopWindowDismissListener onPopWindowDismissListener) {
         View view = LayoutInflater.from(parentView.getContext())
             .inflate(R.layout.layout_pop_single_choose, null);
-        CustomBoldTextView tvTitle = view.findViewById(R.id.tv_single_dialog_title);
+        RobotoBoldTextView tvTitle = view.findViewById(R.id.tv_single_dialog_title);
         tvTitle.setText(title);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_single_dialog);
         LinearLayoutManager layoutManager = new LinearLayoutManager(parentView.getContext());
@@ -119,7 +119,7 @@ public class PopWindowUtil {
     public static void showInfoDisplayPop(View parentView, String info) {
         View view = LayoutInflater.from(parentView.getContext())
             .inflate(R.layout.layout_pop_info_display, null);
-        CustomTextView tvTitle = view.findViewById(R.id.tv_pop_info);
+        RobotoRegularTextView tvTitle = view.findViewById(R.id.tv_pop_info);
         tvTitle.setText(info);
 
         PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,

@@ -1,8 +1,8 @@
 package com.goshop.app.widget.viewholder;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ChannelVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 import com.goshop.app.presentation.model.widget.WidgetVideoPlayerVM;
@@ -31,10 +31,10 @@ public class WidgetVideoPlayerViewHolder extends RecyclerView.ViewHolder impleme
     RecyclerView recyclerViewVideoPlayer;
 
     @BindView(R.id.tv_btn_videoplayer_detail_title)
-    CustomTextView tvBtnVideoPlayerDetailTitle;
+    RobotoRegularTextView tvBtnVideoPlayerDetailTitle;
 
     @BindView(R.id.tv_videoplayer_title)
-    CustomBoldTextView tvVideoPlayerTitle;
+    RobotoBoldTextView tvVideoPlayerTitle;
 
     @BindView(R.id.viewpager_video_product)
     ViewPager viewPager;

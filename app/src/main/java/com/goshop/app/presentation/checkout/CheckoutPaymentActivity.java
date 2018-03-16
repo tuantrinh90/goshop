@@ -3,9 +3,9 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.account.TermsConditionsActivity;
 import com.goshop.app.utils.PopWindowUtil;
 
@@ -20,7 +20,6 @@ import android.text.TextPaint;
 import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
-import android.text.style.UnderlineSpan;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -30,7 +29,7 @@ import butterknife.OnClick;
 public class CheckoutPaymentActivity extends BaseActivity {
 
     @BindView(R.id.et_checkout_cvv)
-    CustomEditText etCheckoutCvv;
+    RobotoRegularEditText etCheckoutCvv;
 
     @BindView(R.id.et_checkout_payment_name)
     CustomAnimEditText etCheckoutPaymentName;
@@ -45,22 +44,22 @@ public class CheckoutPaymentActivity extends BaseActivity {
     TextInputLayout textinputlayoutCvv;
 
     @BindView(R.id.tv_btn_checkout_payment)
-    CustomBoldTextView tvBtnCheckoutPayment;
+    RobotoBoldTextView tvBtnCheckoutPayment;
 
     @BindView(R.id.tv_checkout_payment_amount)
-    CustomBoldTextView tvCheckoutPaymentAmount;
+    RobotoBoldTextView tvCheckoutPaymentAmount;
 
     @BindView(R.id.tv_checkout_payment_amount_percent)
-    CustomTextView tvCheckoutPaymentAmountPercent;
+    RobotoRegularTextView tvCheckoutPaymentAmountPercent;
 
     @BindView(R.id.tv_checkout_payment_date)
-    CustomTextView tvCheckoutPaymentDate;
+    RobotoRegularTextView tvCheckoutPaymentDate;
 
     @BindView(R.id.tv_checkout_payment_read)
-    CustomTextView tvCheckoutPaymentRead;
+    RobotoRegularTextView tvCheckoutPaymentRead;
 
     @BindView(R.id.tv_checkout_payment_time)
-    CustomTextView tvCheckoutPaymentTime;
+    RobotoRegularTextView tvCheckoutPaymentTime;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

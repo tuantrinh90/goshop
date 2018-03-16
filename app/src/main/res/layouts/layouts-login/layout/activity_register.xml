@@ -78,7 +78,7 @@
                         pwd:pwd_hint="@string/confirmation_password"
                     />
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_register_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -107,7 +107,7 @@
                         animET:hint="@string/mobile_number"
                     />
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_register_date_of_birth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -124,7 +124,7 @@
                         android:drawableEnd="@drawable/ic_icon_spinner_down"
                         tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_register_date_of_birth_warning"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -135,7 +135,7 @@
                         android:textSize="@dimen/size_font_12"
                         android:textColor="@color/color_orange_red"/>
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_register_language"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -166,7 +166,7 @@
                             android:contentDescription="@string/app_name"
                             android:background="@drawable/selector_box_button"/>
 
-                        <com.goshop.app.common.view.CustomTextView
+                        <com.goshop.app.common.view.RobotoRegularTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_12"
@@ -190,7 +190,7 @@
                             android:contentDescription="@string/app_name"
                             android:background="@drawable/selector_box_button"/>
 
-                        <com.goshop.app.common.view.CustomTextView
+                        <com.goshop.app.common.view.RobotoRegularTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_12"
@@ -201,7 +201,7 @@
                     </LinearLayout>
 
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_register_read"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
@@ -216,13 +216,13 @@
                         android:paddingTop="@dimen/size_20"
                         android:paddingBottom="@dimen/size_40"
                         android:gravity="center">
-                        <com.goshop.app.common.view.CustomTextView
+                        <com.goshop.app.common.view.RobotoRegularTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/register_have_account"
                             android:textSize="@dimen/size_font_14"
                             android:textColor="@color/color_greyish_brown"/>
-                        <com.goshop.app.common.view.CustomBoldTextView
+                        <com.goshop.app.common.view.RobotoBoldTextView
                             android:id="@+id/tv_btn_register_login"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

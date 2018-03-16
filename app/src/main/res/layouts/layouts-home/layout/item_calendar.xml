@@ -8,14 +8,14 @@
     android:orientation="vertical"
     android:padding="@dimen/size_16">
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_tv_show_day"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@drawable/selector_text_black_pink_color"
         android:textSize="@dimen/size_font_16"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_tv_show_week"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

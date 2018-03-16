@@ -2,7 +2,7 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
 import com.goshop.app.presentation.goloyalty.MyRewardsActivity;
 import com.goshop.app.presentation.myorder.MyOrdersActivity;
 import com.goshop.app.presentation.shopping.AllReviewsActivity;
@@ -45,7 +45,7 @@ public class MyAccountLandingActivity extends BaseActivity implements Navigation
     Toolbar toolbar;
 
     @BindView(R.id.tv_my_account_username)
-    CustomBoldTextView tvMyAccountUsername;
+    RobotoBoldTextView tvMyAccountUsername;
 
     private boolean isLogin = true;
 

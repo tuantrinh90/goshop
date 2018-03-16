@@ -2,9 +2,9 @@ package com.goshop.app.presentation.myorder;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomItaticTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoItaticTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
 import com.goshop.app.utils.NumberFormater;
 
@@ -57,31 +57,31 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
         ImageView ivOrderProductThumb;
 
         @BindView(R.id.tv_order_product_attr)
-        CustomTextView tvOrderProductAttr;
+        RobotoRegularTextView tvOrderProductAttr;
 
         @BindView(R.id.tv_order_product_count)
-        CustomTextView tvOrderProductCount;
+        RobotoRegularTextView tvOrderProductCount;
 
         @BindView(R.id.tv_order_product_now)
-        CustomBoldTextView tvOrderProductNow;
+        RobotoBoldTextView tvOrderProductNow;
 
         @BindView(R.id.tv_order_product_number)
-        CustomTextView tvOrderProductNumber;
+        RobotoRegularTextView tvOrderProductNumber;
 
         @BindView(R.id.tv_order_product_old)
-        CustomTextView tvOrderProductOld;
+        RobotoRegularTextView tvOrderProductOld;
 
         @BindView(R.id.tv_order_product_statu)
-        CustomItaticTextView tvOrderProductStatu;
+        RobotoItaticTextView tvOrderProductStatu;
 
         @BindView(R.id.tv_order_product_title)
-        CustomTextView tvOrderProductTitle;
+        RobotoRegularTextView tvOrderProductTitle;
 
         @BindView(R.id.tv_order_product_track)
-        CustomTextView tvOrderProductTrack;
+        RobotoRegularTextView tvOrderProductTrack;
 
         @BindView(R.id.tv_order_product_write)
-        CustomTextView tvOrderProductWrite;
+        RobotoRegularTextView tvOrderProductWrite;
 
         public MyOrdersProductViewHolder(View itemView) {
             super(itemView);

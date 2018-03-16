@@ -16,7 +16,7 @@
         android:paddingBottom="@dimen/size_8"
         android:orientation="horizontal">
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_number"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -24,7 +24,7 @@
             android:textSize="@dimen/size_font_16"
             android:textColor="@color/color_grayscale_text"/>
 
-        <com.goshop.app.common.view.CustomItaticTextView
+        <com.goshop.app.common.view.RobotoItaticTextView
             android:id="@+id/tv_order_product_statu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -54,19 +54,19 @@
             android:paddingLeft="@dimen/size_10"
             android:orientation="vertical"
             tools:ignore="RtlHardcoded,RtlSymmetry">
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_product_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_16"
                 android:textColor="@color/color_grayscale_text"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_product_attr"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
                 android:textColor="@color/color_greyish_brown"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_product_old"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -77,13 +77,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_order_product_now"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@color/color_grayscale_text"/>
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_order_product_count"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
         android:paddingTop="@dimen/size_10"
         android:paddingBottom="@dimen/size_10"
         android:background="@color/color_litte_grey">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_track"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -118,7 +118,7 @@
             android:textSize="@dimen/size_font_16"
             android:textColor="@color/color_grayscale_text"
             tools:ignore="RtlHardcoded"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_write"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

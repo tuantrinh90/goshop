@@ -3,7 +3,7 @@ package com.goshop.app.presentation.myorder;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.OrderDetailVM;
 
 import android.content.Intent;
@@ -27,34 +27,34 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
     RecyclerView recyclerviewOrderDetail;
 
     @BindView(R.id.tv_order_detail_address)
-    CustomTextView tvOrderDetailAddress;
+    RobotoRegularTextView tvOrderDetailAddress;
 
     @BindView(R.id.tv_order_detail_cancel)
-    CustomTextView tvOrderDetailCancel;
+    RobotoRegularTextView tvOrderDetailCancel;
 
     @BindView(R.id.tv_order_detail_city)
-    CustomTextView tvOrderDetailCity;
+    RobotoRegularTextView tvOrderDetailCity;
 
     @BindView(R.id.tv_order_detail_country)
-    CustomTextView tvOrderDetailCountry;
+    RobotoRegularTextView tvOrderDetailCountry;
 
     @BindView(R.id.tv_order_detail_method)
-    CustomTextView tvOrderDetailMethod;
+    RobotoRegularTextView tvOrderDetailMethod;
 
     @BindView(R.id.tv_order_detail_name)
-    CustomTextView tvOrderDetailName;
+    RobotoRegularTextView tvOrderDetailName;
 
     @BindView(R.id.tv_order_detail_order_number)
-    CustomTextView tvOrderDetailOrderNumber;
+    RobotoRegularTextView tvOrderDetailOrderNumber;
 
     @BindView(R.id.tv_order_detail_order_placed)
-    CustomTextView tvOrderDetailOrderPlaced;
+    RobotoRegularTextView tvOrderDetailOrderPlaced;
 
     @BindView(R.id.tv_order_detail_order_status)
-    CustomTextView tvOrderDetailOrderStatus;
+    RobotoRegularTextView tvOrderDetailOrderStatus;
 
     @BindView(R.id.tv_order_detail_tel)
-    CustomTextView tvOrderDetailTel;
+    RobotoRegularTextView tvOrderDetailTel;
 
     private MyOrderProductAdapter myOrderProductAdapter;
 

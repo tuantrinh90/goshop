@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.BrandsDetailVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
@@ -65,16 +65,16 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     RelativeLayout rlDrawerFilter;
 
     @BindView(R.id.tv_brands_detail_summary)
-    CustomTextView tvBrandsDetailSummary;
+    RobotoRegularTextView tvBrandsDetailSummary;
 
     @BindView(R.id.tv_btn_filter_clear)
-    CustomTextView tvBtnFilterClear;
+    RobotoRegularTextView tvBtnFilterClear;
 
     @BindView(R.id.tv_btn_filter_done)
-    CustomTextView tvBtnFilterDone;
+    RobotoRegularTextView tvBtnFilterDone;
 
     @BindView(R.id.tv_btn_sort)
-    CustomTextView tvBtnSort;
+    RobotoRegularTextView tvBtnSort;
 
     private WidgetProductGridVerticalAdapter gridVerticalAdapter;
 

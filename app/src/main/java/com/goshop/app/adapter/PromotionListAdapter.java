@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.common.listener.IRecyclerItemClick;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
 import android.support.v7.widget.RecyclerView;
@@ -157,10 +157,10 @@ public class PromotionListAdapter extends RecyclerView.Adapter {
         RelativeLayout rlItemLeftTopTv;
 
         @BindView(R.id.tv_promotion_item_new_symbol)
-        CustomTextView tvPromotionItemNewSymbol;
+        RobotoRegularTextView tvPromotionItemNewSymbol;
 
         @BindView(R.id.tv_promotion_item_sale_symbol)
-        CustomTextView tvPromotionItemSaleSymbol;
+        RobotoRegularTextView tvPromotionItemSaleSymbol;
 
         @BindView(R.id.iv_promotion_item_gift_symbol)
         ImageView ivPromotionItemGiftSymbol;
@@ -172,13 +172,13 @@ public class PromotionListAdapter extends RecyclerView.Adapter {
         RelativeLayout rlPromotionImageRoot;
 
         @BindView(R.id.tv_promotion_item_product_name)
-        CustomTextView tvSearchItemProductName;
+        RobotoRegularTextView tvSearchItemProductName;
 
         @BindView(R.id.tv_promotion_item_product_old_price)
-        CustomTextView tvPromotionItemProductOldPrice;
+        RobotoRegularTextView tvPromotionItemProductOldPrice;
 
         @BindView(R.id.tv_promotion_item_product_price)
-        CustomTextView tvPromotionItemProductPrice;
+        RobotoRegularTextView tvPromotionItemProductPrice;
 
         @BindView(R.id.view_center_line)
         View viewCenterLine;

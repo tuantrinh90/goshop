@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.TermsConditionsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -57,7 +57,7 @@ public class TermsConditionsAdapter extends RecyclerView.Adapter {
     class ContentViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_help_support_content)
-        CustomTextView tvHelpSupportContent;
+        RobotoRegularTextView tvHelpSupportContent;
 
         public ContentViewHolder(View itemView) {
             super(itemView);

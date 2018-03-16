@@ -22,67 +22,67 @@
             android:layout_height="match_parent">
 
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 style="@style/myOrderDetailTitle"
                 android:text="@string/my_orders_information"
             />
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_number"
                 style="@style/myOrderDetailInfo"
                 android:text="@string/my_orders_title_number"
             />
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_status"
                 android:text="@string/my_orders_title_status"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_track"
                 android:text="@string/my_orders_placed_at"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 style="@style/myOrderDetailTitle"
                 android:text="@string/my_orders_shipping_address"
             />
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_person_name"
                 style="@style/myOrderDetailInfo"
                 android:text="@string/my_orders_title_number"
             />
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_address"
                 android:text="@string/my_orders_title_status"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_city_and_postcode"
                 android:text="@string/my_orders_placed_at"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_country"
                 android:text="@string/my_orders_placed_at"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_tel"
                 android:text="@string/my_orders_placed_at"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 style="@style/myOrderDetailTitle"
                 android:text="@string/my_orders_payment_method"
             />
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_order_detail_pay_method"
                 android:text="@string/my_orders_placed_at"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 style="@style/myOrderDetailTitle"
                 android:text="@string/my_orders_items"
             />
@@ -100,12 +100,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:text="@string/my_orders_sub_total"
                         style="@style/otherItemProductName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_order_detail_sub_total"
                         android:text="@string/home_item_test_product_price"
                         android:layout_alignParentRight="true"
@@ -118,12 +118,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:text="@string/my_orders_rounding_amout"
                         style="@style/otherItemProductName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_order_detail_rounding_amout"
                         android:text="@string/home_item_test_product_price"
                         android:layout_alignParentRight="true"
@@ -136,12 +136,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:text="@string/my_orders_shipping"
                         style="@style/otherItemProductName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_order_detail_shipping"
                         android:text="@string/home_item_test_product_price"
                         android:layout_alignParentRight="true"
@@ -154,12 +154,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:text="@string/my_orders_discount"
                         style="@style/otherItemProductName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_order_detail_discount"
                         android:text="@string/home_item_test_product_price"
                         android:layout_alignParentRight="true"
@@ -172,12 +172,12 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:text="@string/my_orders_total_price"
                         style="@style/otherItemProductName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomBoldTextView
+                    <com.goshop.app.common.view.RobotoBoldTextView
                         android:id="@+id/tv_order_detail_total"
                         android:text="@string/home_item_test_product_price"
                         android:layout_alignParentRight="true"
@@ -200,7 +200,7 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_top_shadow_white"
                 android:padding="@dimen/size_16">
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_btn_order_detail_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

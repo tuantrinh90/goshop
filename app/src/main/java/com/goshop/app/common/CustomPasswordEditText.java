@@ -1,7 +1,7 @@
 package com.goshop.app.common;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.view.RobotoRegularEditText;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.annotation.SuppressLint;
@@ -21,7 +21,7 @@ import butterknife.ButterKnife;
 public class CustomPasswordEditText extends RelativeLayout {
 
     @BindView(R.id.et_password_edittext)
-    CustomEditText etPasswordEdittext;
+    RobotoRegularEditText etPasswordEdittext;
 
     @BindView(R.id.iv_password_edittext_del)
     ImageView ivPasswordEdittextDel;

@@ -34,7 +34,7 @@
                     android:contentDescription="@string/app_name"
                     android:background="@drawable/ic_icon_user_default"
                     tools:ignore="RtlHardcoded"/>
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_my_account_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
                     android:textSize="@dimen/size_font_32"
                     android:textColor="@color/color_grayscale_text"
                     tools:ignore="RtlHardcoded"/>
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_my_account_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -90,7 +90,7 @@
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_grayscale_text"
@@ -130,7 +130,7 @@
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_grayscale_text"
@@ -171,7 +171,7 @@
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_grayscale_text"
@@ -212,7 +212,7 @@
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_grayscale_text"
@@ -253,7 +253,7 @@
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_grayscale_text"
@@ -294,7 +294,7 @@
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_grayscale_text"
@@ -335,7 +335,7 @@
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textColor="@color/color_grayscale_text"

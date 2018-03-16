@@ -19,7 +19,7 @@
         android:paddingBottom="@dimen/size_14"
         android:background="@android:color/white">
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoBoldTextView
             android:id="@+id/tv_go_loyalty_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,7 +27,7 @@
             android:textColor="@color/color_grayscale_text"
             android:text="@string/deals"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_btn_go_loyalty_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

@@ -3,7 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.SlideMenuUtil;
@@ -57,7 +57,7 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
     Toolbar toolbar;
 
     @BindView(R.id.tv_btn_go_shop_now)
-    CustomTextView tvBtnGoShopNow;
+    RobotoRegularTextView tvBtnGoShopNow;
 
     private boolean isLogin = true;
 

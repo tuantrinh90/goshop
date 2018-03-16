@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_12"
@@ -33,7 +33,7 @@
                 android:contentDescription="@string/app_name"
                 android:background="@drawable/selector_radio_button"
             />
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_8"
@@ -56,7 +56,7 @@
                 android:layout_height="@dimen/size_20"
                 android:contentDescription="@string/app_name"
                 android:background="@drawable/selector_radio_button"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_8"
@@ -68,7 +68,7 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_gender_warning"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

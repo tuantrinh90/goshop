@@ -1,8 +1,8 @@
 package com.goshop.app.presentation.search;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SearchCategoryVM;
 import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SearchKeywordsVM;
@@ -116,10 +116,10 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
     class SearchFilterCategoryViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_search_category)
-        CustomTextView tvSearchCategory;
+        RobotoRegularTextView tvSearchCategory;
 
         @BindView(R.id.tv_search_category_keywords)
-        CustomTextView tvSearchCategoryKeywords;
+        RobotoRegularTextView tvSearchCategoryKeywords;
 
         public SearchFilterCategoryViewHolder(View itemView) {
             super(itemView);
@@ -137,7 +137,7 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
     class SearchFilterKeywordsViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_search_keyword)
-        CustomTextView tvSearchKeyword;
+        RobotoRegularTextView tvSearchKeyword;
 
         public SearchFilterKeywordsViewHolder(View itemView) {
             super(itemView);
@@ -165,13 +165,13 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
         ImageView ivSearchDetail;
 
         @BindView(R.id.tv_search_detail_now)
-        CustomBoldTextView tvSearchDetailNow;
+        RobotoBoldTextView tvSearchDetailNow;
 
         @BindView(R.id.tv_search_detail_old)
-        CustomTextView tvSearchDetailOld;
+        RobotoRegularTextView tvSearchDetailOld;
 
         @BindView(R.id.tv_search_detail_title)
-        CustomTextView tvSearchDetailTitle;
+        RobotoRegularTextView tvSearchDetailTitle;
 
         public SearchFilterPopularDetailViewHolder(View itemView) {
             super(itemView);

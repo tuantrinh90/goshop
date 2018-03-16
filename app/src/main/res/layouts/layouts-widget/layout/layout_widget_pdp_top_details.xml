@@ -9,7 +9,7 @@
     android:focusable="true"
 >
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_pdp_top_detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:textSize="@dimen/size_font_20"
         android:padding="@dimen/size_16"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_pdp_top_detail_old_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:paddingTop="@dimen/size_4"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16">
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoBoldTextView
             android:id="@+id/tv_pdp_top_detail_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -43,7 +43,7 @@
             android:textSize="@dimen/size_font_20"
             android:layout_alignParentStart="true"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_pdp_top_detail_percent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -74,7 +74,7 @@
                 android:stepSize="1"
                 android:rating="5"
                 android:numStars="5"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_pdp_top_star_num"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
     </RelativeLayout>
 
 
-    <com.goshop.app.common.view.CustomBoldItaticTextView
+    <com.goshop.app.common.view.RobotoBoldItaticTextView
         android:id="@+id/tv_pdp_top_tips"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                 android:background="@color/color_corporate_dark_green"
                 android:contentDescription="@string/app_name"
                 android:layout_marginStart="@dimen/size_8"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_pdp_color"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -163,7 +163,7 @@
             android:orientation="horizontal"
             android:layout_marginStart="@dimen/size_4">
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_pdp_size"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

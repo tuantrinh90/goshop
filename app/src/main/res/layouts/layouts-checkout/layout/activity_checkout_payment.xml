@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_16"
@@ -34,7 +34,7 @@
                 android:paddingTop="@dimen/size_8"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_checkout_payment_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                     android:textColor="@color/color_grayscale_text"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_checkout_payment_amount_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -58,7 +58,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_16">
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_checkout_payment_time"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +68,7 @@
                     android:textColor="@color/color_grayscale_secondary"
                     android:text="@string/left_time"
                     tools:ignore="RtlHardcoded,RtlSymmetry"/>
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/size_16"
@@ -114,7 +114,7 @@
                     app:errorTextAppearance="@style/errorAppearance"
                     app:hintTextAppearance="@style/hintAppearance">
 
-                    <com.goshop.app.common.view.CustomEditText
+                    <com.goshop.app.common.view.RobotoRegularEditText
                         android:id="@+id/et_checkout_cvv"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
@@ -142,7 +142,7 @@
             </RelativeLayout>
 
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_checkout_payment_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -162,7 +162,7 @@
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_checkout_payment_read"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -171,7 +171,7 @@
                 android:textSize="@dimen/size_font_12"
                 android:textColor="@color/color_grayscale_secondary"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_btn_checkout_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

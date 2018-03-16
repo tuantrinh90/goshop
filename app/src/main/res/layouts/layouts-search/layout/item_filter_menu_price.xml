@@ -20,7 +20,7 @@
         android:contentDescription="@string/app_name"
         android:background="@color/color_grayscale_text"/>
 
-    <com.goshop.app.common.view.CustomEditText
+    <com.goshop.app.common.view.RobotoRegularEditText
         android:id="@+id/et_search_filter_min"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_32"
@@ -37,7 +37,7 @@
         android:layout_toStartOf="@id/iv_center_price"
         tools:ignore="RtlHardcoded"/>
 
-    <com.goshop.app.common.view.CustomEditText
+    <com.goshop.app.common.view.RobotoRegularEditText
         android:id="@+id/et_search_filter_max"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_32"

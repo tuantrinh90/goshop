@@ -25,7 +25,7 @@
                 android:contentDescription="@string/app_name"
                 android:background="@mipmap/ic_launcher"
             />
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_home_home_item_sale_symbol"
                 style="@style/homeItemTextSaleSymbol"
             />
@@ -38,28 +38,28 @@
             android:layout_marginLeft="@dimen/home_padding"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/home_padding">
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_checkout_product_name"
                 android:text="@string/home_item_test_product_name"
                 style="@style/homeItemProductName"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_checkout_color_and_size"
                 android:layout_below="@id/tv_checkout_product_name"
                 android:text="@string/checkout_item_color_and_size"
                 style="@style/homeItemProductName"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_checkout_old_price"
                 android:layout_below="@id/tv_checkout_color_and_size"
                 android:layout_marginTop="@dimen/home_list_item_main_and_sub_title_margin"
                 android:text="@string/home_item_test_product_price"
                 style="@style/homeItemProductOldPrice"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_checkout_price"
                 android:layout_below="@id/tv_checkout_old_price"
                 android:text="@string/home_item_test_product_price"
                 style="@style/homeItemProductPrice"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_checkout_amount"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"

@@ -3,8 +3,8 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
 
 import android.os.Bundle;
@@ -27,7 +27,7 @@ public class QuestionAnswerDetailActivity extends BaseActivity<QADetailContract.
     implements QADetailContract.View {
 
     @BindView(R.id.et_qa_detail_enter)
-    CustomEditText etQaDetailEnter;
+    RobotoRegularEditText etQaDetailEnter;
 
     @BindView(R.id.ll_qa_detail_top_toolbar)
     LinearLayout llQaDetailTopToolbar;
@@ -39,7 +39,7 @@ public class QuestionAnswerDetailActivity extends BaseActivity<QADetailContract.
     RelativeLayout rlQaDetailBottom;
 
     @BindView(R.id.tv_qa_detail_submit)
-    CustomTextView tvQaDetailSubmit;
+    RobotoRegularTextView tvQaDetailSubmit;
 
     private QADetailAdapter detailAdapter;
 

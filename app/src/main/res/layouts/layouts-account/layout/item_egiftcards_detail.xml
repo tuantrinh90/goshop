@@ -16,19 +16,19 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:orientation="vertical">
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoBoldTextView
             android:id="@+id/tv_egift_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_14"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_egift_sender"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_egift_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -36,7 +36,7 @@
             android:textSize="@dimen/size_font_14"/>
     </LinearLayout>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_egift_price"
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"
@@ -48,7 +48,7 @@
         android:layout_weight="1"
         tools:ignore="RtlHardcoded,RtlSymmetry"
         android:paddingEnd="@dimen/size_4"/>
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_egift_status"
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"

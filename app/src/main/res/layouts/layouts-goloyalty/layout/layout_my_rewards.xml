@@ -9,7 +9,7 @@
     <include
         layout="@layout/toolbar_img_text_img_close"/>
 
-    <com.goshop.app.common.view.CustomBoldTabLayout
+    <com.goshop.app.common.view.RobotoBoldTabLayout
         android:id="@+id/tablayout_my_rewards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

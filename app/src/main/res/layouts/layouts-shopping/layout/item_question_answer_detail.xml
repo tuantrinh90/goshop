@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_divider"
         android:background="@color/color_divider_grey"/>
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_qa_detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         android:textColor="@color/color_grayscale_text"
     />
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_qa_detail_user"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

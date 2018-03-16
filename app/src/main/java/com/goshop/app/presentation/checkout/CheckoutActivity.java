@@ -4,9 +4,9 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.CheckoutListAdapter;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomRadioButton;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularRadioButton;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.utils.ScreenHelper;
 
@@ -31,7 +31,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     private static final int RADIO_BUTTON_W_AND_H = 25;
 
     @BindView(R.id.btn_checkout_place_my_order)
-    CustomBoldTextView btnCheckoutPlaceMyOrder;
+    RobotoBoldTextView btnCheckoutPlaceMyOrder;
 
     @BindView(R.id.iv_checkout_shipping_more)
     ImageView ivCheckoutShippingMore;
@@ -42,13 +42,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     RadioGroup radioPaymentType;
 
     @BindView(R.id.rb_checkout_payment_banking)
-    CustomRadioButton rbCheckoutPaymentBanking;
+    RobotoRegularRadioButton rbCheckoutPaymentBanking;
 
     @BindView(R.id.rb_checkout_payment_cash_on_deliery)
-    CustomRadioButton rbCheckoutPaymentCashOnDeliery;
+    RobotoRegularRadioButton rbCheckoutPaymentCashOnDeliery;
 
     @BindView(R.id.rb_checkout_payment_credit)
-    CustomRadioButton rbCheckoutPaymentCredit;
+    RobotoRegularRadioButton rbCheckoutPaymentCredit;
 
     @BindView(R.id.rl_shipping_root)
     RelativeLayout rlShippingRoot;
@@ -57,37 +57,37 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     RecyclerView rvOrderList;
 
     @BindView(R.id.tv_btn_check_discount_apply)
-    CustomBoldTextView tvBtnCheckDiscountApply;
+    RobotoBoldTextView tvBtnCheckDiscountApply;
 
     @BindView(R.id.tv_btn_check_gift_card_apply)
-    CustomBoldTextView tvBtnCheckGiftCardApply;
+    RobotoBoldTextView tvBtnCheckGiftCardApply;
 
     @BindView(R.id.tv_btn_check_points_apply)
-    CustomBoldTextView tvBtnCheckPointsApply;
+    RobotoBoldTextView tvBtnCheckPointsApply;
 
     @BindView(R.id.tv_checkout_address_first)
-    CustomTextView tvCheckoutAddressFirst;
+    RobotoRegularTextView tvCheckoutAddressFirst;
 
     @BindView(R.id.tv_checkout_address_second)
-    CustomTextView tvCheckoutAddressSecond;
+    RobotoRegularTextView tvCheckoutAddressSecond;
 
     @BindView(R.id.tv_checkout_attention)
-    CustomTextView tvCheckoutAttention;
+    RobotoRegularTextView tvCheckoutAttention;
 
     @BindView(R.id.tv_checkout_city_state_code)
-    CustomTextView tvCheckoutCityStateCode;
+    RobotoRegularTextView tvCheckoutCityStateCode;
 
     @BindView(R.id.tv_checkout_country)
-    CustomTextView tvCheckoutCountry;
+    RobotoRegularTextView tvCheckoutCountry;
 
     @BindView(R.id.tv_checkout_shipping_title)
-    CustomBoldTextView tvCheckoutShippingTitle;
+    RobotoBoldTextView tvCheckoutShippingTitle;
 
     @BindView(R.id.tv_checkout_tel)
-    CustomTextView tvCheckoutTel;
+    RobotoRegularTextView tvCheckoutTel;
 
     @BindView(R.id.tv_checkout_username)
-    CustomBoldTextView tvCheckoutUsername;
+    RobotoBoldTextView tvCheckoutUsername;
 
     @Override
     public void showCheckout(CheckoutResponse checkoutResponse) {

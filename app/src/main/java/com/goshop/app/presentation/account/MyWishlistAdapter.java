@@ -2,8 +2,8 @@ package com.goshop.app.presentation.account;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
@@ -66,13 +66,13 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
         ImageView ivWishlistThumb;
 
         @BindView(R.id.tv_wishlist_now)
-        CustomBoldTextView tvWishlistNow;
+        RobotoBoldTextView tvWishlistNow;
 
         @BindView(R.id.tv_wishlist_old)
-        CustomTextView tvWishlistOld;
+        RobotoRegularTextView tvWishlistOld;
 
         @BindView(R.id.tv_wishlist_title)
-        CustomTextView tvWishlistTitle;
+        RobotoRegularTextView tvWishlistTitle;
 
         @BindView(R.id.view_wishlist_divider)
         View viewWishlistDivider;

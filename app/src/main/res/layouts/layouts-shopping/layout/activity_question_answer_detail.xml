@@ -23,7 +23,7 @@
         android:layout_alignParentBottom="true"
         android:padding="@dimen/size_8"
         android:background="@drawable/bg_top_shadow_white">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_qa_detail_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:background="@drawable/drawable_round_black"
             tools:ignore="RtlHardcoded"/>
 
-        <com.goshop.app.common.view.CustomEditText
+        <com.goshop.app.common.view.RobotoRegularEditText
             android:id="@+id/et_qa_detail_enter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

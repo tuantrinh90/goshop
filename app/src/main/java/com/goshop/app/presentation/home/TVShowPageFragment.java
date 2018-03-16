@@ -3,7 +3,7 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.TVShowVM;
 
 import android.os.Bundle;
@@ -51,7 +51,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
      */
     @BindView(R.id.tv_calandar)
-    CustomTextView tvCalandar;
+    RobotoRegularTextView tvCalandar;
 
     Unbinder unbinder;
 

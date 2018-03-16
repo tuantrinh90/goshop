@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/size_16"
     android:orientation="horizontal">
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_pdp_additional_lable"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
         android:textColor="@color/color_grayscale_text"
     />
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_pdp_additional_value"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

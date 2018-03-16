@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.PopWindowUtil;
@@ -62,22 +62,22 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     LinearLayout llEditAddressSms;
 
     @BindView(R.id.tv_edit_address_city)
-    CustomTextView tvEditAddressCity;
+    RobotoRegularTextView tvEditAddressCity;
 
     @BindView(R.id.tv_edit_address_city_warning)
-    CustomTextView tvEditAddressCityWarning;
+    RobotoRegularTextView tvEditAddressCityWarning;
 
     @BindView(R.id.tv_edit_address_country)
-    CustomTextView tvEditAddressCountry;
+    RobotoRegularTextView tvEditAddressCountry;
 
     @BindView(R.id.tv_edit_address_country_warning)
-    CustomTextView tvEditAddressCountryWarning;
+    RobotoRegularTextView tvEditAddressCountryWarning;
 
     @BindView(R.id.tv_edit_address_state)
-    CustomTextView tvEditAddressState;
+    RobotoRegularTextView tvEditAddressState;
 
     @BindView(R.id.tv_edit_address_state_warning)
-    CustomTextView tvEditAddressStateWarning;
+    RobotoRegularTextView tvEditAddressStateWarning;
 
     private List<SingleChooseVM> cityVMS;
 

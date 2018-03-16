@@ -23,7 +23,7 @@
         android:layout_alignParentBottom="true"
         android:padding="@dimen/size_8"
         android:background="@drawable/bg_top_shadow_white">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_all_qa_submit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
             android:background="@drawable/drawable_round_black"
             tools:ignore="RtlHardcoded"/>
 
-        <com.goshop.app.common.view.CustomEditText
+        <com.goshop.app.common.view.RobotoRegularEditText
             android:id="@+id/et_all_qa_enter"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -67,13 +67,13 @@
             android:paddingBottom="@dimen/size_8"
             android:orientation="horizontal">
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_all_qa_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_20"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_4"
@@ -82,7 +82,7 @@
                 android:textSize="@dimen/size_font_16"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoBoldTextView
                 android:id="@+id/tv_all_qa_answers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -91,7 +91,7 @@
                 android:textSize="@dimen/size_font_20"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_4"

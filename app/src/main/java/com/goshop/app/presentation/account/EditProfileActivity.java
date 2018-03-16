@@ -4,8 +4,8 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -49,25 +49,25 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     ImageView ivSelectMale;
 
     @BindView(R.id.textview_right_menu)
-    CustomBoldTextView textviewRightMenu;
+    RobotoBoldTextView textviewRightMenu;
 
     @BindView(R.id.tv_gender_warning)
-    CustomTextView tvGenderWarning;
+    RobotoRegularTextView tvGenderWarning;
 
     @BindView(R.id.tv_profile_date_of_birth)
-    CustomTextView tvProfileDateOfBirth;
+    RobotoRegularTextView tvProfileDateOfBirth;
 
     @BindView(R.id.tv_profile_date_of_birth_warning)
-    CustomTextView tvProfileDateOfBirthWarning;
+    RobotoRegularTextView tvProfileDateOfBirthWarning;
 
     @BindView(R.id.tv_profile_language)
-    CustomTextView tvProfileLanguage;
+    RobotoRegularTextView tvProfileLanguage;
 
     @BindView(R.id.tv_profile_race)
-    CustomTextView tvProfileRace;
+    RobotoRegularTextView tvProfileRace;
 
     @BindView(R.id.tv_profile_title)
-    CustomTextView tvProfileTitle;
+    RobotoRegularTextView tvProfileTitle;
 
     private String currentPopType = "";
 

@@ -27,14 +27,14 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
             android:text="@string/login_bottom_describe"
             android:textColor="@color/color_greyish_brown"
         />
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -87,7 +87,7 @@
                     pwd:pwd_hint="@string/password"
                 />
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_login_forgot_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -100,7 +100,7 @@
                     android:text="@string/login_forgot_password"
                     android:gravity="end"/>
 
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_btn_login"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -121,7 +121,7 @@
                     android:paddingLeft="@dimen/size_16"
                     android:paddingRight="@dimen/size_16">
 
-                    <com.goshop.app.common.view.CustomTextView
+                    <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_search_or"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -152,7 +152,7 @@
 
                 </RelativeLayout>
 
-                <com.goshop.app.common.view.CustomBoldTextView
+                <com.goshop.app.common.view.RobotoBoldTextView
                     android:id="@+id/tv_btn_login_facebook"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

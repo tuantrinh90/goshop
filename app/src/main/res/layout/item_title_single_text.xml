@@ -13,7 +13,7 @@
         android:background="@color/color_divider_grey"
         android:contentDescription="@string/app_name"/>
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoBoldTextView
         android:id="@+id/tv_title_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

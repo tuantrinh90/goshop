@@ -1,7 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -67,7 +67,7 @@ public class SingleChooseListAdapter extends RecyclerView.Adapter {
         ImageView ivSingleSelect;
 
         @BindView(R.id.tv_single_select)
-        CustomTextView tvSingleSelect;
+        RobotoRegularTextView tvSingleSelect;
 
         public SingleChooseListViewHolder(View itemView) {
             super(itemView);

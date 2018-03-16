@@ -60,7 +60,7 @@
                     tools:ignore="ContentDescription"
                 />
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_toolbar_shoppingCart_num"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
@@ -89,7 +89,7 @@
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@id/rl_image_left"
                 android:layout_toStartOf="@id/rl_image_right">
-                <com.goshop.app.common.view.CustomEditText
+                <com.goshop.app.common.view.RobotoRegularEditText
                     android:id="@+id/et_home_search"
                     android:paddingLeft="25dp"
                     android:theme="@style/MyEditText"

@@ -10,7 +10,7 @@
     android:orientation="vertical"
     tools:ignore="RtlSymmetry"
     android:paddingStart="@dimen/size_16">
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/color_grayscale_text"
@@ -23,7 +23,7 @@
         android:gravity="center_vertical"
         android:paddingTop="@dimen/size_8"
         android:orientation="horizontal">
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoBoldTextView
             android:id="@+id/tv_points_totals"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -33,7 +33,7 @@
             tools:ignore="RtlSymmetry"
             android:paddingEnd="@dimen/size_8"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/color_grayscale_text"

@@ -1,7 +1,7 @@
 package com.goshop.app.base;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.RobotoBoldTextView;
 import com.goshop.app.utils.StatusBarUtils;
 
 import android.app.ProgressDialog;
@@ -37,7 +37,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
 
     @BindView(R.id.textview_toolbar_title)
     @Nullable
-    CustomBoldTextView titleToolbar;
+    RobotoBoldTextView titleToolbar;
 
     @BindView(R.id.toolbar)
     @Nullable

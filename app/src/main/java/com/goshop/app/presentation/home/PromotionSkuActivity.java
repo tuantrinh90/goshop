@@ -3,7 +3,7 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.PromotionSkuModel;
 import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
@@ -58,16 +58,16 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
     RelativeLayout rlDrawerFilter;
 
     @BindView(R.id.tv_btn_filter_clear)
-    CustomTextView tvBtnFilterClear;
+    RobotoRegularTextView tvBtnFilterClear;
 
     @BindView(R.id.tv_btn_filter_done)
-    CustomTextView tvBtnFilterDone;
+    RobotoRegularTextView tvBtnFilterDone;
 
     @BindView(R.id.tv_btn_sort)
-    CustomTextView tvBtnSort;
+    RobotoRegularTextView tvBtnSort;
 
     @BindView(R.id.tv_filter_menu_top)
-    CustomTextView tvFilterMenuTop;
+    RobotoRegularTextView tvFilterMenuTop;
 
     private String intentUrl = "";
 

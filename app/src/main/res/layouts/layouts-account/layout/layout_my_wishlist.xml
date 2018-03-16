@@ -31,7 +31,7 @@
                 android:layout_height="@dimen/size_66"
                 android:contentDescription="@string/app_name"
                 android:background="@drawable/ic_no_wishlist"/>
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_16"
@@ -40,7 +40,7 @@
                 android:textSize="@dimen/size_font_18"/>
         </LinearLayout>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_btn_go_shop_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
