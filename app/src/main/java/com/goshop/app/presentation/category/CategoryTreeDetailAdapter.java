@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.category;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SearchResultVM;
@@ -85,16 +85,16 @@ public class CategoryTreeDetailAdapter extends RecyclerView.Adapter {
         ImageView ivSearchResultTv;
 
         @BindView(R.id.tv_search_result_best)
-        RobotoBoldTextView tvSearchResultBest;
+        RobotoMediumTextView tvSearchResultBest;
 
         @BindView(R.id.tv_search_result_new)
-        RobotoBoldTextView tvSearchResultNew;
+        RobotoMediumTextView tvSearchResultNew;
 
         @BindView(R.id.tv_search_result_percent)
         RobotoRegularTextView tvSearchResultPercent;
 
         @BindView(R.id.tv_search_result_price_now)
-        RobotoBoldTextView tvSearchResultPriceNow;
+        RobotoMediumTextView tvSearchResultPriceNow;
 
         @BindView(R.id.tv_search_result_price_old)
         RobotoRegularTextView tvSearchResultPriceOld;

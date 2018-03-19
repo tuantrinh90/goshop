@@ -38,7 +38,7 @@
             android:contentDescription="@string/app_name"
             android:background="@drawable/ic_wrong_red"/>
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_34"
@@ -128,7 +128,7 @@
             android:contentDescription="@string/app_name"
             android:background="@drawable/ic_right_green"/>
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_34"
@@ -162,7 +162,7 @@
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_4"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_status_success_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -186,7 +186,7 @@
             android:id="@+id/tv_btn_status_success_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_round_circle"
+            android:background="@drawable/bg_btn_buy_now"
             android:layout_marginTop="@dimen/size_16"
             android:paddingTop="@dimen/size_8"
             android:paddingBottom="@dimen/size_8"

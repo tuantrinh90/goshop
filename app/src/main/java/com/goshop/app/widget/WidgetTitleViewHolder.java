@@ -1,7 +1,7 @@
 package com.goshop.app.widget;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -23,7 +23,7 @@ public class WidgetTitleViewHolder extends RecyclerView.ViewHolder {
     RelativeLayout rlExpandTitle;
 
     @BindView(R.id.tv_item_title_expand)
-    RobotoBoldTextView tvItemTitleExpand;
+    RobotoMediumTextView tvItemTitleExpand;
 
     public WidgetTitleViewHolder(View itemView, ExpandTitleClickListener expandTitleClickListener) {
         super(itemView);

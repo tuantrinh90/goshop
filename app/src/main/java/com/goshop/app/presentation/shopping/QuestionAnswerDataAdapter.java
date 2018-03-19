@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
 
@@ -72,7 +72,7 @@ public class QuestionAnswerDataAdapter extends RecyclerView.Adapter {
         RobotoRegularTextView tvQuestionAnswerCounts;
 
         @BindView(R.id.tv_question_answer_title)
-        RobotoBoldTextView tvQuestionAnswerTitle;
+        RobotoMediumTextView tvQuestionAnswerTitle;
 
         @BindView(R.id.tv_question_answer_update)
         RobotoRegularTextView tvQuestionAnswerUpdate;

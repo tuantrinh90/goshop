@@ -3,7 +3,7 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PaymentStatusVM;
 
@@ -28,7 +28,7 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
     LinearLayout llStatusWrongLayout;
 
     @BindView(R.id.tv_status_success_order)
-    RobotoBoldTextView tvStatusSuccessOrder;
+    RobotoMediumTextView tvStatusSuccessOrder;
 
     @BindView(R.id.tv_status_wrong_email)
     RobotoRegularTextView tvStatusWrongEmail;

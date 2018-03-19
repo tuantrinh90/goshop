@@ -7,7 +7,8 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.CustomPasswordEditText;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
@@ -44,19 +45,16 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     LinearLayout llLoginTop;
 
     @BindView(R.id.tv_btn_login)
-    RobotoBoldTextView tvBtnLogin;
+    RobotoMediumTextView tvBtnLogin;
 
     @BindView(R.id.tv_btn_login_facebook)
-    RobotoBoldTextView tvBtnLoginFacebook;
+    RobotoMediumTextView tvBtnLoginFacebook;
 
     @BindView(R.id.tv_login_forgot_password)
-    RobotoRegularTextView tvLoginForgotPassword;
+    RobotoLightTextView tvLoginForgotPassword;
 
     @BindView(R.id.tv_register)
     RobotoRegularTextView tvRegister;
-
-    @BindView(R.id.tv_search_or)
-    RobotoRegularTextView tvSearchOr;
 
     private CallbackManager facebookCallbackManager;
 

@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.checkout;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SelectAddressVM;
 
@@ -77,7 +77,7 @@ public class CheckoutSelectAddressAdapter extends RecyclerView.Adapter {
         RobotoRegularTextView tvSelectAddressCountry;
 
         @BindView(R.id.tv_select_address_name)
-        RobotoBoldTextView tvSelectAddressName;
+        RobotoMediumTextView tvSelectAddressName;
 
         @BindView(R.id.tv_select_address_state)
         RobotoRegularTextView tvSelectAddressState;

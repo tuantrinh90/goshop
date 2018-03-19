@@ -28,7 +28,7 @@
         tools:ignore="RtlHardcoded"
         android:layout_alignEnd="@id/iv_video_right"/>
 
-    <com.goshop.app.common.view.RobotoBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_video_right_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

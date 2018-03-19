@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.TVShowVM;
 
@@ -93,7 +93,7 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
         LinearLayout llTvShowCalendar;
 
         @BindView(R.id.tv_tv_show_day)
-        RobotoBoldTextView tvTvShowDay;
+        RobotoMediumTextView tvTvShowDay;
 
         @BindView(R.id.tv_tv_show_week)
         RobotoRegularTextView tvTvShowWeek;

@@ -10,7 +10,6 @@
     app:contentInsetStart="@dimen/size_0"
     app:contentInsetLeft="@dimen/size_0"
     app:contentInsetStartWithNavigation="@dimen/size_0"
-    android:background="@drawable/bg_bottom_line"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <RelativeLayout
@@ -34,8 +33,7 @@
             android:layout_height="@dimen/size_24"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/size_18"
-            android:layout_marginLeft="@dimen/size_16"
+            android:layout_margin="@dimen/size_16"
             android:src="@drawable/ic_icon_home_cart"
             android:scaleType="center"
             tools:ignore="ContentDescription"
@@ -43,13 +41,12 @@
 
         <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_toolbar_cart_counter"
-            android:layout_width="@dimen/size_14"
-            android:layout_height="@dimen/size_14"
+            android:layout_width="@dimen/size_13"
+            android:layout_height="@dimen/size_13"
             android:background="@drawable/bg_slide_menu_number"
             android:text="1"
             android:textSize="@dimen/size_font_10"
-            android:layout_marginTop="@dimen/size_12"
-            android:layout_marginRight="@dimen/size_14"
+            android:layout_margin="@dimen/size_12"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:textColor="@color/white"
@@ -57,7 +54,7 @@
             tools:ignore="HardcodedText"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,6 +72,7 @@
             android:layout_height="match_parent"
             android:layout_toLeftOf="@id/imageview_right_menu"
             android:layout_marginBottom="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_17"
             android:paddingBottom="@dimen/size_6"
             android:background="@drawable/bg_white_bottom_divider_line"
             android:layout_toStartOf="@id/imageview_right_menu">

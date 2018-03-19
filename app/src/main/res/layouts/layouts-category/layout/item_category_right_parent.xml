@@ -17,7 +17,7 @@
         android:layout_marginRight="@dimen/size_16"
         android:layout_marginEnd="@dimen/size_16"/>
 
-    <com.goshop.app.common.view.RobotoBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_category_right_parent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

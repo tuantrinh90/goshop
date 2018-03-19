@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="2"
         android:orientation="vertical">
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_egift_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

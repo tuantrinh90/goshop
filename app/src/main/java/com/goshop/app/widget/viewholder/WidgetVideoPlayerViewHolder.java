@@ -1,7 +1,7 @@
 package com.goshop.app.widget.viewholder;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ChannelVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
@@ -34,7 +34,7 @@ public class WidgetVideoPlayerViewHolder extends RecyclerView.ViewHolder impleme
     RobotoRegularTextView tvBtnVideoPlayerDetailTitle;
 
     @BindView(R.id.tv_videoplayer_title)
-    RobotoBoldTextView tvVideoPlayerTitle;
+    RobotoMediumTextView tvVideoPlayerTitle;
 
     @BindView(R.id.viewpager_video_product)
     ViewPager viewPager;
@@ -67,6 +67,7 @@ public class WidgetVideoPlayerViewHolder extends RecyclerView.ViewHolder impleme
         tvVideoPlayerTitle.setText(videoPlayerVM.getTitle());
         tvBtnVideoPlayerDetailTitle.setText(videoPlayerVM.getDetailTitle());
         tvBtnVideoPlayerDetailTitle.setOnClickListener(v -> {
+
         });
 
         List<VideoPlayerItemsVM> videoPlayerItemsVMS = videoPlayerVM.getVideoPlayerItemsVMS();

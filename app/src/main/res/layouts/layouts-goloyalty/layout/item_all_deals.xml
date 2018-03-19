@@ -28,7 +28,7 @@
             android:maxLines="1"
             android:ellipsize="end"
         />
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_all_deal_detail"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

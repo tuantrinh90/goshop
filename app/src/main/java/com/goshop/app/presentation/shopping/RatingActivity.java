@@ -3,7 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 
 import android.os.Bundle;
@@ -34,7 +34,7 @@ public class RatingActivity extends BaseActivity {
     TextInputLayout textinputlayoutRating;
 
     @BindView(R.id.textview_right_menu)
-    RobotoBoldTextView textviewRightMenu;
+    RobotoMediumTextView textviewRightMenu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -53,7 +53,7 @@ public class VideoViewPagerAdapter extends PagerAdapter {
         LinearLayout llImageViewMore = pagerLayout.findViewById(R.id.ll_image_view_more);
         RecyclerView recyclerViewVideoBuy = pagerLayout.findViewById(R.id.recyclerview_video_buy);
         Glide.with(container.getContext()).load("").asBitmap()
-            .error(R.drawable.ic_coffee)
+            .error(R.drawable.ic_video)
             .into(ivOnAirVideo);
         List<ProductsVM> productsVMS = videoPlayerItemsVMS.get(position).getProductsVMS();
         VideoProductItemAdapter listAdapter = new VideoProductItemAdapter(productsVMS,

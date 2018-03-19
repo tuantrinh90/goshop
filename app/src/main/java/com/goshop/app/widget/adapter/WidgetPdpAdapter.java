@@ -2,7 +2,7 @@ package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMPEditText;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -223,13 +223,13 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         RecyclerView recyclerViewQA;
 
         @BindView(R.id.tv_answers_num)
-        RobotoBoldTextView tvAnswersNum;
+        RobotoMediumTextView tvAnswersNum;
 
         @BindView(R.id.tv_btn_add_more)
-        RobotoBoldTextView tvBtnAddMore;
+        RobotoMediumTextView tvBtnAddMore;
 
         @BindView(R.id.tv_question_num)
-        RobotoBoldTextView tvQuestionNum;
+        RobotoMediumTextView tvQuestionNum;
 
         @BindView(R.id.tv_btn_ask_question)
         RobotoRegularTextView tvBtnAskQuestion;
@@ -262,13 +262,13 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         RecyclerView recyclerView;
 
         @BindView(R.id.tv_btn_add_more)
-        RobotoBoldTextView tvBtnAddMore;
+        RobotoMediumTextView tvBtnAddMore;
 
         @BindView(R.id.tv_btn_review_top)
         RobotoRegularTextView tvBtnReviewTop;
 
         @BindView(R.id.tv_reviews_total_count)
-        RobotoBoldTextView tvReviewsTotalCount;
+        RobotoMediumTextView tvReviewsTotalCount;
 
         public PDPReviewsViewHolder(View itemView) {
             super(itemView);
@@ -322,13 +322,13 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         RelativeLayout rlProductDetailSize;
 
         @BindView(R.id.tv_btn_product_detail_check)
-        RobotoBoldTextView tvBtnProductDetailCheck;
+        RobotoMediumTextView tvBtnProductDetailCheck;
 
         @BindView(R.id.tv_product_detail_color)
         RobotoRegularTextView tvProductDetailColor;
 
         @BindView(R.id.tv_product_detail_now)
-        RobotoBoldTextView tvProductDetailNow;
+        RobotoMediumTextView tvProductDetailNow;
 
         @BindView(R.id.tv_product_detail_old)
         RobotoRegularTextView tvProductDetailOld;
@@ -340,7 +340,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         RobotoRegularTextView tvProductDetailSize;
 
         @BindView(R.id.tv_product_detail_title)
-        RobotoBoldTextView tvProductDetailTitle;
+        RobotoMediumTextView tvProductDetailTitle;
 
         @BindView(R.id.viewpager_product_detail_top)
         ViewPager viewPager;
@@ -389,7 +389,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         RelativeLayout rlExpandTitle;
 
         @BindView(R.id.tv_item_title_expand)
-        RobotoBoldTextView tvItemTitleExpand;
+        RobotoMediumTextView tvItemTitleExpand;
 
         public WidgetExpandTitleViewHolder(View itemView) {
             super(itemView);

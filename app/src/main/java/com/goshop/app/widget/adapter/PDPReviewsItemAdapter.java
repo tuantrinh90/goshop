@@ -1,7 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ReviewsVM;
 
@@ -59,7 +59,7 @@ public class PDPReviewsItemAdapter extends RecyclerView.Adapter {
         RobotoRegularTextView tvReviewsDetail;
 
         @BindView(R.id.tv_reviews_title)
-        RobotoBoldTextView tvReviewsTitle;
+        RobotoMediumTextView tvReviewsTitle;
 
         @BindView(R.id.tv_reviews_user_name)
         RobotoRegularTextView tvReviewsUserName;

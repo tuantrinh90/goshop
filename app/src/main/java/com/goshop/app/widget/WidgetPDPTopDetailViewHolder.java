@@ -3,7 +3,7 @@ package com.goshop.app.widget;
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
 import com.goshop.app.common.view.RobotoBoldItaticTextView;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ColorVM;
 import com.goshop.app.presentation.model.widget.WidgetPDPTopDetailsVM;
@@ -45,7 +45,7 @@ public class WidgetPDPTopDetailViewHolder extends RecyclerView.ViewHolder {
     RobotoRegularTextView tvPdpSize;
 
     @BindView(R.id.tv_pdp_top_detail_now)
-    RobotoBoldTextView tvPdpTopDetailNow;
+    RobotoMediumTextView tvPdpTopDetailNow;
 
     @BindView(R.id.tv_pdp_top_detail_old_price)
     RobotoRegularTextView tvPdpTopDetailOldPrice;
@@ -54,7 +54,7 @@ public class WidgetPDPTopDetailViewHolder extends RecyclerView.ViewHolder {
     RobotoRegularTextView tvPdpTopDetailPercent;
 
     @BindView(R.id.tv_pdp_top_detail_title)
-    RobotoBoldTextView tvPdpTopDetailTitle;
+    RobotoMediumTextView tvPdpTopDetailTitle;
 
     @BindView(R.id.tv_pdp_top_star_num)
     RobotoRegularTextView tvPdpTopStarNum;

@@ -3,7 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerVM;
@@ -39,10 +39,10 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     RelativeLayout rlAllQaBottom;
 
     @BindView(R.id.tv_all_qa_answers)
-    RobotoBoldTextView tvAllQaAnswers;
+    RobotoMediumTextView tvAllQaAnswers;
 
     @BindView(R.id.tv_all_qa_question)
-    RobotoBoldTextView tvAllQaQuestion;
+    RobotoMediumTextView tvAllQaQuestion;
 
     @BindView(R.id.tv_all_qa_submit)
     RobotoRegularTextView tvAllQaSubmit;

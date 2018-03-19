@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/size_16"
     android:paddingRight="@dimen/size_16">
 
-    <com.goshop.app.common.view.RobotoBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_video_left_time"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -84,7 +84,7 @@
         android:id="@+id/tv_btn_left_buy_now"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_white_round_circle"
+        android:background="@drawable/bg_btn_buy_now"
         android:layout_alignParentRight="true"
         android:layout_below="@id/tv_video_left_title"
         android:layout_marginTop="@dimen/size_4"

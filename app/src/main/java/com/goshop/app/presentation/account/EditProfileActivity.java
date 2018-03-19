@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.EditTextUtil;
@@ -49,7 +49,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     ImageView ivSelectMale;
 
     @BindView(R.id.textview_right_menu)
-    RobotoBoldTextView textviewRightMenu;
+    RobotoMediumTextView textviewRightMenu;
 
     @BindView(R.id.tv_gender_warning)
     RobotoRegularTextView tvGenderWarning;

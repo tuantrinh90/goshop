@@ -10,6 +10,10 @@
 
     <include
         layout="@layout/toolbar_img_text_img_close"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -18,7 +22,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_16"
@@ -34,7 +38,7 @@
                 android:paddingTop="@dimen/size_8"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_checkout_payment_amount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -68,7 +72,7 @@
                     android:textColor="@color/color_grayscale_secondary"
                     android:text="@string/left_time"
                     tools:ignore="RtlHardcoded,RtlSymmetry"/>
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/size_16"
@@ -171,7 +175,7 @@
                 android:textSize="@dimen/size_font_12"
                 android:textColor="@color/color_grayscale_secondary"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_btn_checkout_payment"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

@@ -7,6 +7,10 @@
     android:orientation="vertical">
     <include
         layout="@layout/toolbar_img_text_img_close"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -19,7 +23,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical">
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_14"
@@ -150,7 +154,7 @@
                     android:layout_height="@dimen/size_8"
                     android:background="@drawable/bg_top_bottom_shadow_grey"/>
 
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:background="@android:color/white"

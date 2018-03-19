@@ -3,7 +3,7 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 
 import android.os.Bundle;
@@ -34,7 +34,7 @@ public class CheckoutEditAddressActivity extends BaseActivity {
     CustomAnimEditText etCheckoutAddressZip;
 
     @BindView(R.id.textview_right_menu)
-    RobotoBoldTextView textviewRightMenu;
+    RobotoMediumTextView textviewRightMenu;
 
     @BindView(R.id.tv_checkout_address_city)
     RobotoRegularTextView tvCheckoutAddressCity;

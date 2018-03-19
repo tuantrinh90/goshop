@@ -19,7 +19,7 @@
         android:rating="5"
         android:numStars="5"/>
 
-    <com.goshop.app.common.view.RobotoBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_reviews_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

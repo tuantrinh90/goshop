@@ -36,7 +36,7 @@
             android:textSize="@dimen/size_font_14"/>
     </LinearLayout>
 
-    <com.goshop.app.common.view.RobotoBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_points_counts"
         android:layout_width="@dimen/size_0"
         android:layout_height="wrap_content"

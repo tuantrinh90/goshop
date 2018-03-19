@@ -9,7 +9,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textSize="@dimen/size_font_12"
-        android:paddingTop="@dimen/size_14"
+        android:paddingTop="@dimen/size_21"
         android:text="@string/gender"
         android:textColor="@color/color_grayscale_secondary"/>
     <LinearLayout

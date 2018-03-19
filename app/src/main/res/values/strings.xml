@@ -44,8 +44,8 @@
     <string name="login_login">LOGIN</string>
     <string name="login_forgot_password">Forgot password?</string>
     <string name="login_or">OR</string>
-    <string name="login_facebook">Login with Facbook</string>
-    <string name="login_bottom_describe">Not have an account yet?&#160;</string>
+    <string name="login_facebook">Login with Facebook</string>
+    <string name="login_bottom_describe">Dont have an account yet?&#160;</string>
     <string name="login_register">Register now.</string>
 
     <string name="required_field">This is a required field.</string>
@@ -133,13 +133,13 @@
     <string name="register_have_account">Already have an account?</string>
     <string name="login">Login</string>
     <string name="complement_email">Complement Email</string>
-    <string name="complement_email_tips">Your email can\'t be got from your Facebook account. In
-        order to finish Facebook connection process, please complement your email as below:
+    <string name="complement_email_tips">Your email cannot be retrieved from your email address.
+        In order to complete the registration, please provide your email address below:
     </string>
     <string name="submit">Submit</string>
     <string name="send">Send</string>
-    <string name="reset_password_tips">Please enter the email address associated with your account.
-        We will email you a link to reset your password.
+    <string name="reset_password_tips">Please specify your email address used for registration and
+        we will send you a link to reset your password.
     </string>
     <string name="reset_password">Reset Password</string>
     <string name="send_confirmation_link">Send Confirmation Link</string>
@@ -381,7 +381,8 @@
     <string name="card_number">Card Number</string>
     <string name="cvv">CVV</string>
     <string name="expiration_date">Expiration Date</string>
-    <string name="checkout_payment_tip">By choosing \"Agree &#38; Pay Now\" you are authorizing us to
+    <string name="checkout_payment_tip">By choosing \"Agree &#38; Pay Now\" you are authorizing us
+        to
         debit your credit card/debit card/saving account/current account for the above charges in
         favour of ASTRO GS SHOP SDN BHD and agree to the Terms and Conditions.
     </string>
@@ -420,7 +421,8 @@
     <string name="title">Title</string>
     <string name="review_content">Review Content</string>
     <string name="content_count">0/1000</string>
-    <string name="redeem_swipe_tip">Please make sure to swipe only when you are at merchant store.</string>
+    <string name="redeem_swipe_tip">Please make sure to swipe only when you are at merchant store.
+    </string>
     <string name="wishlist_nodata">There is no wishlist items yet.</string>
     <string name="go_shop_now">Go Shop Now</string>
     <string name="video">Video</string>

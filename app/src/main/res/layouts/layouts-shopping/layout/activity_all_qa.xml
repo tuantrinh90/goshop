@@ -11,9 +11,14 @@
         android:id="@+id/ll_qa_top_toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentTop="true">
         <include
             layout="@layout/toolbar_img_text_img_close"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
     </LinearLayout>
 
     <RelativeLayout
@@ -67,7 +72,7 @@
             android:paddingBottom="@dimen/size_8"
             android:orientation="horizontal">
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_all_qa_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -82,7 +87,7 @@
                 android:textSize="@dimen/size_font_16"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_all_qa_answers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

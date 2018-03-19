@@ -10,6 +10,10 @@
     android:focusable="true">
     <include
         layout="@layout/toolbar_img_text_img_close"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_below="@id/toolbar"
@@ -32,7 +36,7 @@
                 android:paddingBottom="@dimen/size_20"
                 android:background="@drawable/bg_bottom_line">
 
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_checkout_shipping_title"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -40,7 +44,7 @@
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/checkout_shipping"/>
 
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_checkout_username"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -116,7 +120,7 @@
                 android:layout_height="@dimen/size_8"
                 android:background="@drawable/bg_top_bottom_shadow_grey"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_20"
@@ -163,7 +167,7 @@
                 android:layout_height="@dimen/size_8"
                 android:background="@drawable/bg_top_bottom_shadow_grey"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_20"
@@ -194,7 +198,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
 
-                    <com.goshop.app.common.view.RobotoBoldTextView
+                    <com.goshop.app.common.view.RobotoMediumTextView
                         android:id="@+id/tv_btn_check_discount_apply"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_40"
@@ -234,7 +238,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/size_16">
 
-                    <com.goshop.app.common.view.RobotoBoldTextView
+                    <com.goshop.app.common.view.RobotoMediumTextView
                         android:id="@+id/tv_btn_check_gift_card_apply"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_40"
@@ -275,7 +279,7 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/size_16">
 
-                    <com.goshop.app.common.view.RobotoBoldTextView
+                    <com.goshop.app.common.view.RobotoMediumTextView
                         android:id="@+id/tv_btn_check_points_apply"
                         android:layout_width="wrap_content"
                         android:layout_height="@dimen/size_40"
@@ -516,7 +520,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_8">
 
-                    <com.goshop.app.common.view.RobotoBoldTextView
+                    <com.goshop.app.common.view.RobotoMediumTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_18"
@@ -526,7 +530,7 @@
                         android:gravity="start"
                         android:layout_alignParentStart="true"/>
 
-                    <com.goshop.app.common.view.RobotoBoldTextView
+                    <com.goshop.app.common.view.RobotoMediumTextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:textSize="@dimen/size_font_18"
@@ -541,7 +545,7 @@
 
             </LinearLayout>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/btn_checkout_place_my_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

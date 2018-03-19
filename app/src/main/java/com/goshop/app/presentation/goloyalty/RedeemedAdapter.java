@@ -2,7 +2,7 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 
@@ -53,7 +53,7 @@ public class RedeemedAdapter extends RecyclerView.Adapter {
         ImageView ivRedeemedThumb;
 
         @BindView(R.id.tv_redeemed_detail)
-        RobotoBoldTextView tvRedeemedDetail;
+        RobotoMediumTextView tvRedeemedDetail;
 
         @BindView(R.id.tv_redeemed_end)
         RobotoRegularTextView tvRedeemedEnd;

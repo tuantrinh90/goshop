@@ -8,6 +8,11 @@
     <include
         layout="@layout/toolbar_img_text_img_close"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
+
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -18,23 +23,22 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_40"
-                android:paddingBottom="@dimen/size_40"
+                android:layout_height="@dimen/size_142"
+                android:paddingTop="@dimen/size_36"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:background="@drawable/ic_icon_account_top">
 
                 <ImageView
                     android:id="@+id/iv_my_account_thumb"
-                    android:layout_width="@dimen/size_64"
+                    android:layout_width="@dimen/size_62"
                     android:layout_height="@dimen/size_64"
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:background="@drawable/ic_icon_user_default"
                     tools:ignore="RtlHardcoded"/>
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_my_account_username"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -64,17 +68,17 @@
             <RelativeLayout
                 android:id="@+id/rl_account_wishlist"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_66"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_24"
                 android:paddingRight="@dimen/size_16"
-                android:paddingBottom="@dimen/size_24"
                 android:background="@drawable/selector_btn_press_gray_line">
                 <ImageView
                     android:id="@+id/iv_left_wishlist"
                     android:layout_width="@dimen/size_24"
                     android:layout_height="@dimen/size_24"
                     android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_my_wishlist"
@@ -85,14 +89,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/my_wishlist"
@@ -104,16 +110,16 @@
             <RelativeLayout
                 android:id="@+id/rl_account_orders"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_66"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_24"
                 android:paddingRight="@dimen/size_16"
-                android:paddingBottom="@dimen/size_24"
                 android:background="@drawable/selector_btn_press_gray_line">
                 <ImageView
                     android:id="@+id/iv_left_orders"
                     android:layout_width="@dimen/size_24"
                     android:layout_height="@dimen/size_24"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
@@ -125,14 +131,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/my_orders"
@@ -144,18 +152,17 @@
             <RelativeLayout
                 android:id="@+id/rl_account_reviews"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_66"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_24"
                 android:paddingRight="@dimen/size_16"
-                android:paddingBottom="@dimen/size_24"
                 android:background="@drawable/selector_btn_press_gray_line">
                 <ImageView
                     android:id="@+id/iv_left_reviews"
                     android:layout_width="@dimen/size_24"
                     android:layout_height="@dimen/size_24"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_review"
@@ -165,15 +172,17 @@
                     android:id="@+id/iv_right_reviews"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/my_product_reviews"
@@ -185,18 +194,17 @@
             <RelativeLayout
                 android:id="@+id/rl_account_address"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_66"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_24"
                 android:paddingRight="@dimen/size_16"
-                android:paddingBottom="@dimen/size_24"
                 android:background="@drawable/selector_btn_press_gray_line">
                 <ImageView
                     android:id="@+id/iv_left_address"
                     android:layout_width="@dimen/size_24"
                     android:layout_height="@dimen/size_24"
-                    android:layout_centerVertical="true"
                     android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_address_book"
@@ -207,14 +215,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/my_address_book"
@@ -226,18 +236,17 @@
             <RelativeLayout
                 android:id="@+id/rl_account_rewards"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_66"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_24"
                 android:paddingRight="@dimen/size_16"
-                android:paddingBottom="@dimen/size_24"
                 android:background="@drawable/selector_btn_press_gray_line">
                 <ImageView
                     android:id="@+id/iv_left_rewards"
                     android:layout_width="@dimen/size_24"
                     android:layout_height="@dimen/size_24"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_rewards"
@@ -247,15 +256,17 @@
                     android:id="@+id/iv_right_rewards"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/my_rewards"
@@ -267,18 +278,17 @@
             <RelativeLayout
                 android:id="@+id/rl_account_points"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_66"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_24"
                 android:paddingRight="@dimen/size_16"
-                android:paddingBottom="@dimen/size_24"
                 android:background="@drawable/selector_btn_press_gray_line">
                 <ImageView
                     android:id="@+id/iv_left_points"
                     android:layout_width="@dimen/size_24"
                     android:layout_height="@dimen/size_24"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
+                    android:layout_alignParentTop="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_goshop_points"
@@ -289,14 +299,16 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
+                    android:layout_alignParentTop="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/my_point"
@@ -308,18 +320,17 @@
             <RelativeLayout
                 android:id="@+id/rl_account_egift"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_66"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_24"
                 android:paddingRight="@dimen/size_16"
-                android:paddingBottom="@dimen/size_24"
                 android:background="@drawable/selector_btn_press_gray_line">
                 <ImageView
                     android:id="@+id/iv_left_egift"
                     android:layout_width="@dimen/size_24"
                     android:layout_height="@dimen/size_24"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentLeft="true"
-                    android:layout_centerVertical="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_egift"
@@ -329,15 +340,17 @@
                     android:id="@+id/iv_right_egift"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:layout_alignParentRight="true"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"
                     android:src="@drawable/ic_icon_right_expand"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_alignParentTop="true"
                     android:textColor="@color/color_grayscale_text"
                     android:textSize="@dimen/size_font_16"
                     android:text="@string/my_egift_cards"

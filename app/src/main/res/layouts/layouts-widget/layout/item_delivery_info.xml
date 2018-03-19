@@ -66,7 +66,7 @@
         android:paddingRight="@dimen/size_16"
         android:paddingBottom="@dimen/size_16">
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_btn_delivery_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

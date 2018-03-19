@@ -1,10 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_8"
+        android:background="@color/color_litte_grey"/>
 
     <RelativeLayout
         android:id="@+id/rl_video_title"
@@ -13,18 +18,18 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingTop="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
-        android:paddingBottom="@dimen/size_24">
+        android:paddingBottom="@dimen/size_8">
 
         <ImageView
             android:id="@+id/iv_btn_on_air_right"
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
-            android:background="@drawable/ic_arrow_right"
+            android:background="@drawable/ic_icon_right_expand"
             android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
             android:contentDescription="@string/app_name"
             android:layout_alignParentEnd="true"/>
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_videoplayer_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,7 +45,7 @@
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/iv_btn_on_air_right"
             android:layout_marginRight="@dimen/size_4"
-            android:textColor="@color/color_grayscale_text"
+            android:textColor="@color/color_grayscale_secondary"
             android:textSize="@dimen/size_font_14"
             android:layout_centerVertical="true"
             android:text="@string/tv_schedule"
@@ -53,15 +58,12 @@
         android:id="@+id/recyclerview_video_player"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/rl_video_title"
-        android:layout_centerHorizontal="true"
         android:paddingRight="@dimen/size_16"
         android:paddingLeft="@dimen/size_16"/>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_video_product"
-        android:layout_below="@id/recyclerview_video_player"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_375"/>
+        android:layout_height="@dimen/size_370"/>
 
-</RelativeLayout>
+</LinearLayout>

@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PdpFrequentlyDataVM;
 
@@ -50,7 +50,7 @@ public class PdpFrequentlyBoughtAdapter extends RecyclerView.Adapter {
         ImageView ivItemItemFrequently;
 
         @BindView(R.id.tv_item_item_now_price)
-        RobotoBoldTextView tvItemItemNowPrice;
+        RobotoMediumTextView tvItemItemNowPrice;
 
         @BindView(R.id.tv_item_item_old_price)
         RobotoRegularTextView tvItemItemOldPrice;

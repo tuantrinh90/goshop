@@ -2,7 +2,7 @@ package com.goshop.app.presentation.home;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.TVShowVM;
 
@@ -59,13 +59,13 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
         RobotoRegularTextView tvBtnTvShowBuy;
 
         @BindView(R.id.tv_tvshow_left_percent)
-        RobotoBoldTextView tvTvShowLeftPercent;
+        RobotoMediumTextView tvTvShowLeftPercent;
 
         @BindView(R.id.tv_tvshow_lefttime)
-        RobotoBoldTextView tvTvShowLeftTime;
+        RobotoMediumTextView tvTvShowLeftTime;
 
         @BindView(R.id.tv_tvshow_price_now)
-        RobotoBoldTextView tvTvShowPriceNow;
+        RobotoMediumTextView tvTvShowPriceNow;
 
         @BindView(R.id.tv_tvshow_price_old)
         RobotoRegularTextView tvTvShowPriceOld;

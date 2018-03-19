@@ -292,9 +292,8 @@
     </style>
 
     <style name="menuTextStyle">
-        <item name="android:textSize">@dimen/size_font_16</item>
-        <item name="android:typeface">sans</item>
-        <item name="android:textStyle">normal</item>
+        <item name="android:textSize">@dimen/size_font_14</item>
+        <item name="android:listPreferredItemHeightSmall">@dimen/size_52</item>
     </style>
 
     <style name="mainTabStyle">

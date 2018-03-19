@@ -9,7 +9,7 @@
     android:focusable="true"
 >
 
-    <com.goshop.app.common.view.RobotoBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_pdp_top_detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -34,7 +34,7 @@
         android:paddingTop="@dimen/size_4"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16">
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_pdp_top_detail_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

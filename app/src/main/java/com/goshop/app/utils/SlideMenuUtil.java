@@ -1,7 +1,8 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.RobotoRegularTypefaceSpan;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.MyAccountLandingActivity;
@@ -19,10 +20,13 @@ import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.support.design.internal.NavigationMenuView;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.text.Spannable;
+import android.text.SpannableString;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -58,9 +62,9 @@ public class SlideMenuUtil {
         slideMenuWishlist, slideMenuOrder, slideMenuRewards, slideMenuNotification,
         slideMenuHelp, slideMenuSettings, slideMenuOthers;
 
-    private RobotoBoldTextView tvSlideSignUp;
+    private RobotoMediumTextView tvSlideSignUp;
 
-    private RobotoRegularTextView tvSlideUserName;
+    private RobotoMediumTextView tvSlideUserName;
 
     public SlideMenuUtil(Activity activity, int currentMenuId, DrawerLayout drawerLayout,
         NavigationView navigationView, boolean isLogin,
@@ -101,6 +105,27 @@ public class SlideMenuUtil {
         initSlideMenuHeaderListener();
         disableNavigationViewScrollbars();
         initSlideMenuItem(currentMenuId);
+        setTypeFonts();
+    }
+
+    private void setTypeFonts() {
+        applyFontToMenuItem(slideMenuHome);
+        applyFontToMenuItem(slideMenuCategories);
+        applyFontToMenuItem(slideMenuLoyalty);
+        applyFontToMenuItem(slideMenuCart);
+        applyFontToMenuItem(slideMenuWishlist);
+        applyFontToMenuItem(slideMenuOrder);
+        applyFontToMenuItem(slideMenuRewards);
+        applyFontToMenuItem(slideMenuNotification);
+        applyFontToMenuItem(slideMenuHelp);
+        applyFontToMenuItem(slideMenuSettings);
+    }
+
+    private void applyFontToMenuItem(MenuItem menuItem) {
+        Typeface font = Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Regular.ttf");
+        SpannableString newTitle = new SpannableString(menuItem.getTitle());
+        newTitle.setSpan(new RobotoRegularTypefaceSpan("" , font), 0 , newTitle.length(),  Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        menuItem.setTitle(newTitle);
     }
 
     public void drawerLisenter() {

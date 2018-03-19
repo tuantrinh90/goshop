@@ -4,13 +4,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/toolbar"
+    android:background="@android:color/white"
     app:layout_scrollFlags="enterAlways"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="@dimen/size_56"
     app:contentInsetEnd="0dp"
-    app:contentInsetStart="0dp"
-    android:background="@drawable/bg_bar_bottom_line"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    app:contentInsetStart="0dp" >
 
     <!-- TODO modify this class according to your needs -->
     <RelativeLayout
@@ -42,7 +41,7 @@
             tools:ignore="ContentDescription"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/textview_right_menu"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -58,7 +57,7 @@
             tools:ignore="RelativeOverlap,RtlHardcoded"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

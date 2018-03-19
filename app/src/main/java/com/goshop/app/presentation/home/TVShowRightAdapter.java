@@ -2,7 +2,7 @@ package com.goshop.app.presentation.home;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.TVShowVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -76,7 +76,7 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
         ImageView ivTvshowRightCover;
 
         @BindView(R.id.tv_tv_show_right_time)
-        RobotoBoldTextView tvTvShowRightTime;
+        RobotoMediumTextView tvTvShowRightTime;
 
         public TVShowRightViewHolder(View itemView) {
             super(itemView);

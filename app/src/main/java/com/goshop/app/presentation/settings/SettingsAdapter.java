@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.settings;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SettingsModel;
 import com.goshop.app.presentation.model.SettingsSingleDetailVM;
@@ -87,7 +87,7 @@ public class SettingsAdapter extends RecyclerView.Adapter {
         ImageView ivTitleSpace;
 
         @BindView(R.id.tv_title_name)
-        RobotoBoldTextView tvTitleName;
+        RobotoMediumTextView tvTitleName;
 
         public TitleViewHolder(View itemView) {
             super(itemView);

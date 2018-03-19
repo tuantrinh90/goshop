@@ -13,9 +13,14 @@
         android:id="@+id/ll_login_top"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:layout_alignParentTop="true">
         <include
             layout="@layout/toolbar_img_text_img_close"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
     </LinearLayout>
 
     <LinearLayout
@@ -27,12 +32,12 @@
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
             android:text="@string/login_bottom_describe"
-            android:textColor="@color/color_greyish_brown"
+            android:textColor="@color/color_black_light"
         />
         <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_register"
@@ -63,7 +68,7 @@
                     android:layout_width="@dimen/size_70"
                     android:layout_height="@dimen/size_70"
                     android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_app_logo"
+                    android:background="@drawable/ic_app_logo"
                     android:scaleType="center"
                     android:contentDescription="@string/app_name"/>
 
@@ -81,38 +86,36 @@
                     android:id="@+id/et_login_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/size_14"
                     android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginTop="@dimen/size_21"
                     android:layout_marginRight="@dimen/size_16"
                     pwd:pwd_hint="@string/password"
                 />
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:id="@+id/tv_login_forgot_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/size_8"
+                    android:paddingTop="@dimen/size_2"
                     android:paddingLeft="@dimen/size_16"
                     android:paddingRight="@dimen/size_16"
-                    android:paddingBottom="@dimen/size_4"
                     android:textSize="@dimen/size_font_14"
-                    android:textColor="@color/color_grayscale_secondary"
+                    android:textColor="@color/color_greyish_brown"
                     android:text="@string/login_forgot_password"
                     android:gravity="end"/>
 
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_btn_login"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/size_48"
                     android:layout_marginLeft="@dimen/size_16"
                     android:layout_marginRight="@dimen/size_16"
-                    android:layout_marginTop="@dimen/size_16"
-                    android:padding="@dimen/size_14"
+                    android:layout_marginTop="@dimen/size_20"
                     android:gravity="center"
                     android:text="@string/login"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@android:color/white"
-                    android:background="@drawable/bg_btn_round_pink"
+                    android:background="@drawable/bg_login_btn_pink"
                 />
 
                 <RelativeLayout
@@ -121,13 +124,13 @@
                     android:paddingLeft="@dimen/size_16"
                     android:paddingRight="@dimen/size_16">
 
-                    <com.goshop.app.common.view.RobotoRegularTextView
+                    <com.goshop.app.common.view.RobotoLightTextView
                         android:id="@+id/tv_search_or"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:padding="@dimen/size_16"
                         android:layout_centerInParent="true"
-                        android:textColor="@color/color_grayscale_secondary"
+                        android:textColor="@color/color_text_hint"
                         android:textSize="@dimen/size_font_14"
                         android:text="@string/or"/>
 
@@ -137,7 +140,7 @@
                         android:layout_centerVertical="true"
                         android:layout_toLeftOf="@id/tv_search_or"
                         android:layout_alignParentLeft="true"
-                        android:background="@color/color_divider_grey"
+                        android:background="@color/color_bg_disabled_divider"
                         android:layout_toStartOf="@id/tv_search_or"
                         android:layout_alignParentStart="true"/>
                     <View
@@ -146,20 +149,22 @@
                         android:layout_centerVertical="true"
                         android:layout_toRightOf="@id/tv_search_or"
                         android:layout_alignParentRight="true"
-                        android:background="@color/color_divider_grey"
+                        android:background="@color/color_bg_disabled_divider"
                         android:layout_toEndOf="@id/tv_search_or"
                         android:layout_alignParentEnd="true"/>
 
                 </RelativeLayout>
 
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_btn_login_facebook"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="@dimen/size_48"
                     android:layout_marginLeft="@dimen/size_16"
                     android:layout_marginRight="@dimen/size_16"
-                    android:layout_marginBottom="@dimen/size_50"
-                    android:padding="@dimen/size_14"
+                    android:layout_marginBottom="@dimen/size_36"
+                    android:drawableLeft="@drawable/ic_icon_facebook_login"
+                    android:paddingLeft="@dimen/size_12"
+                    android:paddingRight="@dimen/size_12"
                     android:gravity="center"
                     android:text="@string/login_facebook"
                     android:textSize="@dimen/size_font_16"

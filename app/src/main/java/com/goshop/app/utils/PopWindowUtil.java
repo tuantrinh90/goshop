@@ -1,7 +1,7 @@
 package com.goshop.app.utils;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
@@ -94,7 +94,7 @@ public class PopWindowUtil {
         OnPopWindowDismissListener onPopWindowDismissListener) {
         View view = LayoutInflater.from(parentView.getContext())
             .inflate(R.layout.layout_pop_single_choose, null);
-        RobotoBoldTextView tvTitle = view.findViewById(R.id.tv_single_dialog_title);
+        RobotoMediumTextView tvTitle = view.findViewById(R.id.tv_single_dialog_title);
         tvTitle.setText(title);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_single_dialog);
         LinearLayoutManager layoutManager = new LinearLayoutManager(parentView.getContext());

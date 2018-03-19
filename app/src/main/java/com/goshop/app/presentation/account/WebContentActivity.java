@@ -3,7 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -30,7 +30,7 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
     public static final String ECMC = "ECMC";
 
     @BindView(R.id.textview_toolbar_title)
-    RobotoBoldTextView textviewToolbarTitle;
+    RobotoMediumTextView textviewToolbarTitle;
 
     @BindView(R.id.wv_content)
     WebView wvContent;

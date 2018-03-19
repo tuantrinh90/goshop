@@ -21,7 +21,7 @@
             android:text="@string/write_a_review"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_grayscale_text"
-            android:background="@drawable/bg_white_round_circle"
+            android:background="@drawable/bg_btn_buy_now"
             android:padding="@dimen/size_8"
             android:layout_alignParentRight="true"
             android:layout_alignParentEnd="true"
@@ -40,7 +40,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal">
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_reviews_total_count"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"

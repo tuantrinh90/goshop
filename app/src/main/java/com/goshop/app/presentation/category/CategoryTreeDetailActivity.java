@@ -3,7 +3,7 @@ package com.goshop.app.presentation.category;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SearchFilterModel;
@@ -67,7 +67,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     RelativeLayout rlDrawerFilter;
 
     @BindView(R.id.textview_toolbar_title)
-    RobotoBoldTextView textviewToolbarTitle;
+    RobotoMediumTextView textviewToolbarTitle;
 
     @BindView(R.id.tv_btn_filter_clear)
     RobotoRegularTextView tvBtnSearchFilterClear;

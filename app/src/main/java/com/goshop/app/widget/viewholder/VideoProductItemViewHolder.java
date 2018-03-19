@@ -2,7 +2,8 @@ package com.goshop.app.widget.viewholder;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
@@ -22,19 +23,19 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
     ImageView ivVideoProductThumb;
 
     @BindView(R.id.tv_btn_video_product_buy)
-    RobotoRegularTextView tvBtnVideoProductBuy;
+    RobotoLightTextView tvBtnVideoProductBuy;
 
     @BindView(R.id.tv_video_product_now)
-    RobotoBoldTextView tvVideoProductNow;
+    RobotoMediumTextView tvVideoProductNow;
 
     @BindView(R.id.tv_video_product_old)
-    RobotoRegularTextView tvVideoProductOld;
+    RobotoLightTextView tvVideoProductOld;
 
     @BindView(R.id.tv_video_product_percent)
-    RobotoBoldTextView tvVideoProductPercent;
+    RobotoRegularTextView tvVideoProductPercent;
 
     @BindView(R.id.tv_video_product_title)
-    RobotoRegularTextView tvVideoProductTitle;
+    RobotoLightTextView tvVideoProductTitle;
 
     public VideoProductItemViewHolder(View itemView) {
         super(itemView);

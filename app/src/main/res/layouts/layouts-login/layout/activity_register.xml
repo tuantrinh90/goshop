@@ -12,23 +12,27 @@
 
     <include
         layout="@layout/toolbar_right_text"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingRight="@dimen/size_16"
         android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size_16"
+            android:paddingRight="@dimen/size_16"
             android:orientation="vertical">
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_30">
+                android:paddingTop="@dimen/size_29">
                 <com.goshop.app.common.CustomAnimEditText
                     android:id="@+id/ctd_et_register_firstname"
                     android:layout_width="@dimen/size_156"
@@ -58,7 +62,7 @@
                         android:id="@+id/ctd_et_register_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_21"
                         animET:hint="@string/email"
                     />
 
@@ -66,7 +70,7 @@
                         android:id="@+id/ctd_et_register_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_21"
                         pwd:pwd_hint="@string/password"
                     />
 
@@ -74,7 +78,7 @@
                         android:id="@+id/ctd_et_register_confirmation_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_21"
                         pwd:pwd_hint="@string/confirmation_password"
                     />
 
@@ -82,10 +86,10 @@
                         android:id="@+id/tv_register_title"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_21"
                         android:paddingRight="@dimen/size_8"
                         android:drawableRight="@drawable/ic_icon_spinner_down"
-                        android:background="@drawable/bg_bottom_line"
+                        android:background="@drawable/selector_textinput_edittext"
                         android:paddingBottom="@dimen/size_8"
                         android:paddingTop="@dimen/size_20"
                         android:textColorHint="@color/color_text_hint"
@@ -103,7 +107,7 @@
                         android:id="@+id/ctd_et_register_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_21"
                         animET:hint="@string/mobile_number"
                     />
 
@@ -111,10 +115,10 @@
                         android:id="@+id/tv_register_date_of_birth"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_21"
                         android:paddingRight="@dimen/size_8"
                         android:drawableRight="@drawable/ic_icon_spinner_down"
-                        android:background="@drawable/bg_bottom_line"
+                        android:background="@drawable/selector_textinput_edittext"
                         android:paddingBottom="@dimen/size_8"
                         android:paddingTop="@dimen/size_20"
                         android:textSize="@dimen/size_font_16"
@@ -139,10 +143,10 @@
                         android:id="@+id/tv_register_language"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_14"
+                        android:layout_marginTop="@dimen/size_21"
                         android:paddingRight="@dimen/size_8"
                         android:drawableRight="@drawable/ic_icon_spinner_down"
-                        android:background="@drawable/bg_bottom_line"
+                        android:background="@drawable/selector_textinput_edittext"
                         android:paddingBottom="@dimen/size_8"
                         android:paddingTop="@dimen/size_20"
                         android:textSize="@dimen/size_font_16"
@@ -156,7 +160,7 @@
                         android:id="@+id/ll_register_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_24"
+                        android:layout_marginTop="@dimen/size_21"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
                         <ImageView
@@ -166,7 +170,7 @@
                             android:contentDescription="@string/app_name"
                             android:background="@drawable/selector_box_button"/>
 
-                        <com.goshop.app.common.view.RobotoRegularTextView
+                        <com.goshop.app.common.view.RobotoLightTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_12"
@@ -180,7 +184,7 @@
                         android:id="@+id/ll_register_sms"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_10"
+                        android:layout_marginTop="@dimen/size_4"
                         android:gravity="center_vertical"
                         android:orientation="horizontal">
                         <ImageView
@@ -190,7 +194,7 @@
                             android:contentDescription="@string/app_name"
                             android:background="@drawable/selector_box_button"/>
 
-                        <com.goshop.app.common.view.RobotoRegularTextView
+                        <com.goshop.app.common.view.RobotoLightTextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_12"
@@ -201,11 +205,12 @@
                     </LinearLayout>
 
 
-                    <com.goshop.app.common.view.RobotoRegularTextView
+                    <com.goshop.app.common.view.RobotoLightTextView
                         android:id="@+id/tv_register_read"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/size_26"
+                        android:paddingTop="@dimen/size_21"
+                        android:lineSpacingMultiplier="1.2"
                         android:textSize="@dimen/size_font_12"
                         android:textColor="@color/color_greyish_brown"/>
 
@@ -216,13 +221,13 @@
                         android:paddingTop="@dimen/size_20"
                         android:paddingBottom="@dimen/size_40"
                         android:gravity="center">
-                        <com.goshop.app.common.view.RobotoRegularTextView
+                        <com.goshop.app.common.view.RobotoLightTextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/register_have_account"
                             android:textSize="@dimen/size_font_14"
-                            android:textColor="@color/color_greyish_brown"/>
-                        <com.goshop.app.common.view.RobotoBoldTextView
+                            android:textColor="@color/color_black_light"/>
+                        <com.goshop.app.common.view.RobotoRegularTextView
                             android:id="@+id/tv_btn_register_login"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"

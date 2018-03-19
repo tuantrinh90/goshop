@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.RewardsDetailVM;
 
@@ -33,19 +33,19 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
     RobotoRegularTextView tvBtnDownload;
 
     @BindView(R.id.tv_promo_details)
-    RobotoBoldTextView tvPromoDetails;
+    RobotoMediumTextView tvPromoDetails;
 
     @BindView(R.id.tv_promo_details_summary)
     RobotoRegularTextView tvPromoDetailsSummary;
 
     @BindView(R.id.tv_promo_terms)
-    RobotoBoldTextView tvPromoTerms;
+    RobotoMediumTextView tvPromoTerms;
 
     @BindView(R.id.tv_promo_terms_summary)
     RobotoRegularTextView tvPromoTermsSummary;
 
     @BindView(R.id.tv_promotion_title)
-    RobotoBoldTextView tvPromotionTitle;
+    RobotoMediumTextView tvPromotionTitle;
 
     @BindView(R.id.tv_rewards_detail_location)
     RobotoRegularTextView tvRewardsDetailLocation;
@@ -54,10 +54,10 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
     RobotoRegularTextView tvRewardsDetailTime;
 
     @BindView(R.id.tv_rewards_detail_time_left)
-    RobotoBoldTextView tvRewardsDetailTimeLeft;
+    RobotoMediumTextView tvRewardsDetailTimeLeft;
 
     @BindView(R.id.tv_rewards_merchant_name)
-    RobotoBoldTextView tvRewardsMerchantName;
+    RobotoMediumTextView tvRewardsMerchantName;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

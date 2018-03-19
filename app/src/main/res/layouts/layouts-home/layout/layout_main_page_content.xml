@@ -17,7 +17,10 @@
         android:background="@drawable/bg_tab_line"
         app:tabPaddingStart="@dimen/size_12"
         app:tabPaddingEnd="@dimen/size_12"
+        app:tabPaddingTop="@dimen/size_14"
+        app:tabPaddingBottom="@dimen/size_16"
         app:tabMode="scrollable"
+        app:tabIndicatorHeight="@dimen/size_2"
         app:tabTextColor="@color/color_text_hint"
         app:tabSelectedTextColor="@color/color_grayscale_text"
         app:tabIndicatorColor="@color/color_grayscale_text"/>

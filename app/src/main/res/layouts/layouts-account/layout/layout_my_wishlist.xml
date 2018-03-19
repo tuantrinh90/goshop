@@ -6,6 +6,10 @@
     android:orientation="vertical">
     <include
         layout="@layout/toolbar_img_text_img_close"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_wishlist"
@@ -44,7 +48,7 @@
             android:id="@+id/tv_btn_go_shop_now"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_round_circle"
+            android:background="@drawable/bg_btn_buy_now"
             android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_18"
             android:paddingTop="@dimen/size_10"

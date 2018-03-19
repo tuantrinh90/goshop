@@ -2,8 +2,8 @@ package com.goshop.app.presentation.myorder;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
 import com.goshop.app.common.view.RobotoItaticTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
 import com.goshop.app.utils.NumberFormater;
@@ -63,7 +63,7 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
         RobotoRegularTextView tvOrderProductCount;
 
         @BindView(R.id.tv_order_product_now)
-        RobotoBoldTextView tvOrderProductNow;
+        RobotoMediumTextView tvOrderProductNow;
 
         @BindView(R.id.tv_order_product_number)
         RobotoRegularTextView tvOrderProductNumber;

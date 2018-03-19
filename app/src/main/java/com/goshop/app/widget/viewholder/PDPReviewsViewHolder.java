@@ -1,7 +1,7 @@
 package com.goshop.app.widget.viewholder;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.WidgetPDPReviewsVM;
 import com.goshop.app.widget.adapter.PDPReviewsItemAdapter;
@@ -24,13 +24,13 @@ public class PDPReviewsViewHolder extends RecyclerView.ViewHolder {
     RecyclerView recyclerView;
 
     @BindView(R.id.tv_btn_add_more)
-    RobotoBoldTextView tvBtnAddMore;
+    RobotoMediumTextView tvBtnAddMore;
 
     @BindView(R.id.tv_btn_review_top)
     RobotoRegularTextView tvBtnReviewTop;
 
     @BindView(R.id.tv_reviews_total_count)
-    RobotoBoldTextView tvReviewsTotalCount;
+    RobotoMediumTextView tvReviewsTotalCount;
 
     public PDPReviewsViewHolder(View itemView) {
         super(itemView);

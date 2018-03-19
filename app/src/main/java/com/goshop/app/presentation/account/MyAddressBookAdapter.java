@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AddressVM;
 
@@ -87,7 +87,7 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
         RobotoRegularTextView tvAddressBookCountry;
 
         @BindView(R.id.tv_address_book_name)
-        RobotoBoldTextView tvAddressBookName;
+        RobotoMediumTextView tvAddressBookName;
 
         @BindView(R.id.tv_address_book_state)
         RobotoRegularTextView tvAddressBookState;

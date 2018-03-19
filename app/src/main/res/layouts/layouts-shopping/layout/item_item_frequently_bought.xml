@@ -57,7 +57,7 @@
         android:layout_alignStart="@id/iv_item_item_frequently"
         android:layout_alignEnd="@id/iv_item_item_frequently"/>
 
-    <com.goshop.app.common.view.RobotoBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_item_item_now_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

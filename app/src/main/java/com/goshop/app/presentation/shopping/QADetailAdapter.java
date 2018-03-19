@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
 
@@ -53,7 +53,7 @@ public class QADetailAdapter extends RecyclerView.Adapter {
         View divider;
 
         @BindView(R.id.tv_qa_detail_title)
-        RobotoBoldTextView tvQaDetailTitle;
+        RobotoMediumTextView tvQaDetailTitle;
 
         @BindView(R.id.tv_qa_detail_user)
         RobotoRegularTextView tvQaDetailUser;

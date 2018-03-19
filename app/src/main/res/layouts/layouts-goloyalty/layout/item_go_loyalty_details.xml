@@ -19,7 +19,7 @@
         android:paddingBottom="@dimen/size_14"
         android:background="@android:color/white">
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_go_loyalty_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

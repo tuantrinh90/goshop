@@ -2,7 +2,7 @@ package com.goshop.app.presentation.account;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.NumberFormater;
@@ -66,7 +66,7 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
         ImageView ivWishlistThumb;
 
         @BindView(R.id.tv_wishlist_now)
-        RobotoBoldTextView tvWishlistNow;
+        RobotoMediumTextView tvWishlistNow;
 
         @BindView(R.id.tv_wishlist_old)
         RobotoRegularTextView tvWishlistOld;

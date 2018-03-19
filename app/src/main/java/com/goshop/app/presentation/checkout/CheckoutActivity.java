@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.CheckoutListAdapter;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularRadioButton;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.CheckoutResponse;
@@ -31,7 +31,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     private static final int RADIO_BUTTON_W_AND_H = 25;
 
     @BindView(R.id.btn_checkout_place_my_order)
-    RobotoBoldTextView btnCheckoutPlaceMyOrder;
+    RobotoMediumTextView btnCheckoutPlaceMyOrder;
 
     @BindView(R.id.iv_checkout_shipping_more)
     ImageView ivCheckoutShippingMore;
@@ -57,13 +57,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     RecyclerView rvOrderList;
 
     @BindView(R.id.tv_btn_check_discount_apply)
-    RobotoBoldTextView tvBtnCheckDiscountApply;
+    RobotoMediumTextView tvBtnCheckDiscountApply;
 
     @BindView(R.id.tv_btn_check_gift_card_apply)
-    RobotoBoldTextView tvBtnCheckGiftCardApply;
+    RobotoMediumTextView tvBtnCheckGiftCardApply;
 
     @BindView(R.id.tv_btn_check_points_apply)
-    RobotoBoldTextView tvBtnCheckPointsApply;
+    RobotoMediumTextView tvBtnCheckPointsApply;
 
     @BindView(R.id.tv_checkout_address_first)
     RobotoRegularTextView tvCheckoutAddressFirst;
@@ -81,13 +81,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     RobotoRegularTextView tvCheckoutCountry;
 
     @BindView(R.id.tv_checkout_shipping_title)
-    RobotoBoldTextView tvCheckoutShippingTitle;
+    RobotoMediumTextView tvCheckoutShippingTitle;
 
     @BindView(R.id.tv_checkout_tel)
     RobotoRegularTextView tvCheckoutTel;
 
     @BindView(R.id.tv_checkout_username)
-    RobotoBoldTextView tvCheckoutUsername;
+    RobotoMediumTextView tvCheckoutUsername;
 
     @Override
     public void showCheckout(CheckoutResponse checkoutResponse) {

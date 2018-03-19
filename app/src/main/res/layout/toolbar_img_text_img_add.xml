@@ -47,7 +47,7 @@
             tools:ignore="ContentDescription"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

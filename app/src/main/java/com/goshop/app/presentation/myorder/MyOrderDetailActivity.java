@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.MyOrderDetailAdapter;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
@@ -84,7 +84,7 @@ public class MyOrderDetailActivity extends BaseActivity<MyOrderContract.Presente
     RobotoRegularTextView tvOrderDetailTel;
 
     @BindView(R.id.tv_order_detail_total)
-    RobotoBoldTextView tvOrderDetailTotal;
+    RobotoMediumTextView tvOrderDetailTotal;
 
     @BindView(R.id.tv_order_detail_track)
     RobotoRegularTextView tvOrderDetailTrack;

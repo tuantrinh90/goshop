@@ -2,7 +2,8 @@ package com.goshop.app.widget.viewholder;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.NumberFormater;
@@ -22,16 +23,16 @@ public class ProductGridViewHolder extends RecyclerView.ViewHolder {
     ImageView ivGridPic;
 
     @BindView(R.id.tv_grid_now_price)
-    RobotoBoldTextView tvGridNowPrice;
+    RobotoMediumTextView tvGridNowPrice;
 
     @BindView(R.id.tv_grid_old)
-    RobotoRegularTextView tvGridOld;
+    RobotoLightTextView tvGridOld;
 
     @BindView(R.id.tv_grid_percent)
-    RobotoBoldTextView tvGridPercent;
+    RobotoMediumTextView tvGridPercent;
 
     @BindView(R.id.tv_grid_title)
-    RobotoRegularTextView tvGridTitle;
+    RobotoLightTextView tvGridTitle;
 
     public ProductGridViewHolder(View itemView) {
         super(itemView);
@@ -47,8 +48,8 @@ public class ProductGridViewHolder extends RecyclerView.ViewHolder {
         tvGridTitle.setText(productsVM.getTitle());
         String oldPrice = productsVM.getPriceVM().getRm().getOriginal();
         String nowPrice = productsVM.getPriceVM().getRm().getDiscounted();
-        tvGridOld.setText(NumberFormater.formaterMoney(oldPrice));
-        tvGridNowPrice.setText(NumberFormater.formaterMoney(nowPrice));
+        tvGridOld.setText(oldPrice);
+        tvGridNowPrice.setText(nowPrice);
         tvGridOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         itemView
             .setOnClickListener(v -> onProductItemClickListener.onProductItemClick(productsVM));

@@ -6,18 +6,14 @@
     android:id="@+id/toolbar"
     app:layout_scrollFlags="enterAlways"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="@dimen/size_56"
     app:contentInsetEnd="0dp"
     app:contentInsetStart="0dp"
-    android:background="@drawable/bg_bar_bottom_line"
-    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
+    android:background="@android:color/white" >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_10"
-        android:paddingBottom="@dimen/size_10"
-        android:paddingRight="@dimen/size_16"
         tools:ignore="RtlHardcoded,RtlSymmetry">
 
         <ImageView
@@ -25,7 +21,7 @@
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
             android:layout_marginLeft="@dimen/size_16"
-            android:layout_marginRight="@dimen/size_34"
+            android:layout_marginRight="@dimen/size_32"
             android:scaleType="centerInside"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
@@ -37,6 +33,7 @@
             android:id="@+id/imageview_right_menu"
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
+            android:layout_marginRight="@dimen/size_16"
             android:scaleType="centerInside"
             android:src="@drawable/ic_close"
             android:layout_alignParentRight="true"
@@ -44,12 +41,13 @@
             tools:ignore="ContentDescription"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.RobotoBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_toRightOf="@id/imageview_left_menu"
             android:paddingRight="@dimen/size_60"
+            android:layout_centerVertical="true"
             android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_20"
             android:minLines="1"
@@ -57,6 +55,7 @@
             android:ellipsize="end"
             android:paddingEnd="@dimen/size_60"
             tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
     </RelativeLayout>
 
 </android.support.v7.widget.Toolbar>

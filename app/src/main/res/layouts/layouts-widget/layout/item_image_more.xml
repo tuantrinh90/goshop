@@ -5,15 +5,16 @@
     android:layout_height="wrap_content"
     android:id="@+id/ll_image_view_more"
     android:orientation="horizontal"
-    android:paddingTop="@dimen/size_20"
+    android:paddingTop="@dimen/size_24"
     android:paddingBottom="@dimen/size_20"
     android:gravity="center">
 
     <ImageView
         android:id="@+id/iv_btn_view_more"
-        android:layout_width="@dimen/size_24"
-        android:layout_height="@dimen/size_24"
-        android:background="@drawable/selector_image_expand_selected"
+        android:layout_width="@dimen/size_14"
+        android:layout_height="@dimen/size_8"
+        android:src="@drawable/ic_icon_home_dropdown"
+        android:scaleType="center"
         android:contentDescription="@string/app_name"/>
 
 </LinearLayout>

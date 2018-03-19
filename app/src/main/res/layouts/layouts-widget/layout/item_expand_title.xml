@@ -5,25 +5,43 @@
     android:layout_width="match_parent"
     android:id="@+id/rl_expand_title"
     android:layout_height="wrap_content"
-    android:padding="@dimen/size_16"
+    android:orientation="vertical"
     android:background="@drawable/selector_bg_expand_pdp_title"
     tools:ignore="Overdraw">
 
-    <com.goshop.app.common.view.RobotoBoldTextView
-        android:id="@+id/tv_item_title_expand"
+    <View
+        android:id="@+id/view_expand_divider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_8"
+        android:layout_alignParentTop="true"
+        android:background="@color/color_litte_grey"/>
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/details"
-        android:textSize="@dimen/size_font_18"
-        android:textColor="@color/color_grayscale_text"/>
+        android:layout_below="@id/view_expand_divider"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingBottom="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingTop="@dimen/size_24">
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:id="@+id/tv_item_title_expand"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/details"
+            android:textSize="@dimen/size_font_18"
+            android:textColor="@color/color_grayscale_text"/>
 
-    <ImageView
-        android:id="@+id/iv_item_title_expand"
-        android:layout_width="@dimen/size_24"
-        android:layout_height="@dimen/size_24"
-        android:src="@drawable/selector_image_expand_selected"
-        android:layout_centerVertical="true"
-        android:layout_alignParentRight="true"
-        android:contentDescription="@string/app_name"
-        android:layout_alignParentEnd="true"/>
+        <ImageView
+            android:id="@+id/iv_item_title_expand"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
+            android:src="@drawable/selector_image_expand_selected"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
+
 </RelativeLayout>

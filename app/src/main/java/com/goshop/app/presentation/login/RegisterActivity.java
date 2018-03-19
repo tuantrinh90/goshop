@@ -5,7 +5,8 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.CustomPasswordEditText;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.EditTextUtil;
@@ -72,10 +73,10 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     ImageView ivSelectMale;
 
     @BindView(R.id.textview_right_menu)
-    RobotoBoldTextView textviewRightMenu;
+    RobotoMediumTextView textviewRightMenu;
 
     @BindView(R.id.tv_btn_register_login)
-    RobotoBoldTextView tvBtnRegisterLogin;
+    RobotoRegularTextView tvBtnRegisterLogin;
 
     @BindView(R.id.tv_gender_warning)
     RobotoRegularTextView tvGenderWarning;
@@ -90,7 +91,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     RobotoRegularTextView tvRegisterLanguage;
 
     @BindView(R.id.tv_register_read)
-    RobotoRegularTextView tvRegisterRead;
+    RobotoLightTextView tvRegisterRead;
 
     @BindView(R.id.tv_register_title)
     RobotoRegularTextView tvRegisterTitle;

@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -29,7 +30,7 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     CustomAnimEditText ctdEtComplementEmail;
 
     @BindView(R.id.tv_btn_complement_email_submit)
-    RobotoRegularTextView tvBtnComplementEmailSubmit;
+    RobotoMediumTextView tvBtnComplementEmailSubmit;
 
     private ToastUtil toastUtil;
 

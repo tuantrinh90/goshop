@@ -41,7 +41,7 @@
                 android:textSize="@dimen/size_font_16"
                 android:gravity="center_horizontal"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_card_redeem_merchant_detail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

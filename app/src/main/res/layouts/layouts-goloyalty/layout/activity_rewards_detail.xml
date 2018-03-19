@@ -7,6 +7,10 @@
     android:orientation="vertical">
     <include
         layout="@layout/toolbar_img_text_img_close"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -32,7 +36,7 @@
                     android:background="@drawable/ic_sbk"
                     android:contentDescription="@string/app_name"/>
 
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_rewards_merchant_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -43,7 +47,7 @@
                     tools:ignore="RtlHardcoded,RtlSymmetry"/>
             </LinearLayout>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_promotion_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -81,7 +85,7 @@
                     android:textColor="@color/color_grayscale_text_two"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoBoldTextView
+                <com.goshop.app.common.view.RobotoMediumTextView
                     android:id="@+id/tv_rewards_detail_time_left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -100,7 +104,7 @@
                 android:contentDescription="@string/app_name"/>
 
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_promo_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -123,7 +127,7 @@
                 android:textColor="@color/color_grayscale_text_two"
                 tools:ignore="RtlHardcoded"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_promo_terms"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

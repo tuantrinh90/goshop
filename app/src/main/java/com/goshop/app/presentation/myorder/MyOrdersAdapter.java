@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.myorder;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MyOrdersVM;
 import com.goshop.app.utils.NumberFormater;
 
@@ -69,13 +69,13 @@ public class MyOrdersAdapter extends RecyclerView.Adapter {
         RecyclerView recyclerViewOrders;
 
         @BindView(R.id.tv_myorders_status)
-        RobotoBoldTextView tvMyOrdersStatus;
+        RobotoMediumTextView tvMyOrdersStatus;
 
         @BindView(R.id.tv_myorders_total)
-        RobotoBoldTextView tvMyOrdersTotal;
+        RobotoMediumTextView tvMyOrdersTotal;
 
         @BindView(R.id.tv_myorders_number)
-        RobotoBoldTextView tvMyordersNumber;
+        RobotoMediumTextView tvMyordersNumber;
 
         @BindView(R.id.view_my_orders_divider)
         View viewMyOrdersDivider;

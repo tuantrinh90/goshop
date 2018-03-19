@@ -2,7 +2,7 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 
@@ -54,7 +54,7 @@ public class ExpiredAdapter extends RecyclerView.Adapter {
         ImageView ivExpiredThumb;
 
         @BindView(R.id.tv_expired_detail)
-        RobotoBoldTextView tvExpiredDetail;
+        RobotoMediumTextView tvExpiredDetail;
 
         @BindView(R.id.tv_expired_end)
         RobotoRegularTextView tvExpiredEnd;

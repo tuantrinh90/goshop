@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PointsDetailVM;
 import com.goshop.app.presentation.model.PointsModel;
@@ -98,7 +98,7 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
     class PointTotalViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_points_totals)
-        RobotoBoldTextView tvPointsTotals;
+        RobotoMediumTextView tvPointsTotals;
 
         public PointTotalViewHolder(View itemView) {
             super(itemView);
@@ -117,7 +117,7 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
         private final String INCREASE = "+ ";
 
         @BindView(R.id.tv_points_counts)
-        RobotoBoldTextView tvPointsCounts;
+        RobotoMediumTextView tvPointsCounts;
 
         @BindView(R.id.tv_points_date)
         RobotoRegularTextView tvPointsDate;

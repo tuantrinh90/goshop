@@ -71,7 +71,7 @@
         android:layout_toStartOf="@id/iv_item_cart_menu"
         android:layout_toEndOf="@id/iv_item_cart_product"/>
 
-    <com.goshop.app.common.view.RobotoBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_item_cart_now_price"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

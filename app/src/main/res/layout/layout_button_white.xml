@@ -10,4 +10,4 @@
     android:textSize="@dimen/size_font_16"
     android:paddingBottom="@dimen/size_14"
     android:paddingTop="@dimen/size_10"
-    android:background="@drawable/bg_white_round_circle"/>
+    android:background="@drawable/bg_btn_buy_now"/>

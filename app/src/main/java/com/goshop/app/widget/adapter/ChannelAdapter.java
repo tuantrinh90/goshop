@@ -1,6 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
+import com.goshop.app.common.Typefaces;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ChannelVM;
 import com.goshop.app.widget.listener.OnChannelItemClickListener;
@@ -64,7 +65,6 @@ public class ChannelAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-
     class ChannelViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_channel)
@@ -80,8 +80,10 @@ public class ChannelAdapter extends RecyclerView.Adapter {
 
         void bindingData(ChannelVM channelVM, int position) {
             tvChannel.setText(channelVM.getName());
-            tvChannel.setTypeface(Typeface.SANS_SERIF,
-                channelVM.isSelect() ? Typeface.BOLD : Typeface.NORMAL);
+            Typeface typeface = Typefaces.get(itemView.getContext(), channelVM
+                .isSelect() ? Typefaces.PATH_FONT_ROBOTO_MEDIUM : Typefaces
+                .PATH_FONT_ROBOTO_REGULAR);
+            tvChannel.setTypeface(typeface);
             tvChannel.setSelected(channelVM.isSelect());
             tvChannel.setTextColor(ContextCompat.getColor(itemView.getContext(),
                 channelVM

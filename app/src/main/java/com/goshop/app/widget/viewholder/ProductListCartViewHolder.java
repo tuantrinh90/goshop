@@ -3,7 +3,7 @@ package com.goshop.app.widget.viewholder;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
@@ -37,7 +37,7 @@ public class ProductListCartViewHolder extends RecyclerView.ViewHolder {
     RobotoRegularTextView tvProductCartAttr;
 
     @BindView(R.id.tv_product_cart_now)
-    RobotoBoldTextView tvProductCartNow;
+    RobotoMediumTextView tvProductCartNow;
 
     @BindView(R.id.tv_product_cart_old)
     RobotoRegularTextView tvProductCartOld;

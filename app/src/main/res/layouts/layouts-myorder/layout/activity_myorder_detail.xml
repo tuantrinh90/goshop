@@ -22,7 +22,7 @@
             android:layout_height="match_parent">
 
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 style="@style/myOrderDetailTitle"
                 android:text="@string/my_orders_information"
             />
@@ -42,7 +42,7 @@
                 android:text="@string/my_orders_placed_at"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 style="@style/myOrderDetailTitle"
                 android:text="@string/my_orders_shipping_address"
             />
@@ -72,7 +72,7 @@
                 android:text="@string/my_orders_placed_at"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 style="@style/myOrderDetailTitle"
                 android:text="@string/my_orders_payment_method"
             />
@@ -82,7 +82,7 @@
                 android:text="@string/my_orders_placed_at"
                 style="@style/myOrderDetailInfo"/>
 
-            <com.goshop.app.common.view.RobotoBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 style="@style/myOrderDetailTitle"
                 android:text="@string/my_orders_items"
             />
@@ -177,7 +177,7 @@
                         style="@style/otherItemProductName"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.RobotoBoldTextView
+                    <com.goshop.app.common.view.RobotoMediumTextView
                         android:id="@+id/tv_order_detail_total"
                         android:text="@string/home_item_test_product_price"
                         android:layout_alignParentRight="true"
@@ -204,7 +204,7 @@
                     android:id="@+id/tv_btn_order_detail_cancel"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_white_round_circle"
+                    android:background="@drawable/bg_btn_buy_now"
                     android:layout_alignParentRight="true"
                     android:paddingTop="@dimen/size_8"
                     android:paddingBottom="@dimen/size_8"

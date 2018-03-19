@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.search;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SearchCategoryVM;
 import com.goshop.app.presentation.model.SearchFilterModel;
@@ -165,7 +165,7 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
         ImageView ivSearchDetail;
 
         @BindView(R.id.tv_search_detail_now)
-        RobotoBoldTextView tvSearchDetailNow;
+        RobotoMediumTextView tvSearchDetailNow;
 
         @BindView(R.id.tv_search_detail_old)
         RobotoRegularTextView tvSearchDetailOld;
