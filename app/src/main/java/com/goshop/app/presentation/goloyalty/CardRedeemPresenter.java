@@ -67,7 +67,7 @@ public class CardRedeemPresenter extends RxPresenter<CardRedeemContract.View> im
     }
 
     private CardRedeemVM getMockCardData() {
-        return new CardRedeemVM("", R.drawable.ic_sbk, "Starbucks(Merchant)",
+        return new CardRedeemVM("", R.drawable.ic_coffee, "Starbucks(Merchant)",
             "Buy 1 cup and get 1 cup", "12 Jan 2017 - 14 Jan 2017", "Kuala Lumpor");
     }
 }

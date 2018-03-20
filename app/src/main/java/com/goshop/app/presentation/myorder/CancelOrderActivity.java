@@ -6,8 +6,10 @@ import com.goshop.app.common.CustomAnimEditText;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class CancelOrderActivity extends BaseActivity {
 
@@ -41,6 +43,15 @@ public class CancelOrderActivity extends BaseActivity {
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.order_cancellation_form);
+    }
+
+    @OnClick({R.id.imageview_left_menu})
+    public void onCancelOrderClick(View view){
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                finish();
+                break;
+        }
     }
 
 

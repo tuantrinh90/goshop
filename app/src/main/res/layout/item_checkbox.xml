@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<CheckBox
+<com.goshop.app.common.view.RobotoRegularCheckBox
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="@drawable/selector_category_flow"
     android:textColor="@drawable/selector_text_filter_flow"
+    android:textSize="@dimen/size_font_12"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:button="@null"
@@ -11,5 +12,6 @@
     android:paddingRight="@dimen/size_20"
     android:paddingLeft="@dimen/size_20"
     android:gravity="center"
-    android:layout_margin="@dimen/size_4"
+    android:layout_marginRight="@dimen/size_10"
+    android:layout_marginBottom="@dimen/size_10"
     />

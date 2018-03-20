@@ -163,7 +163,7 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
 
     @Override
     public void onItemMenuClick(View parentView) {
-        PopWindowUtil.showShoppingCartMenuPop(parentView, this);
+        PopWindowUtil.showWishlistMenuPop(parentView, this);
     }
 
     @Override

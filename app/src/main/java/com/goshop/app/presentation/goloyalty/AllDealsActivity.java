@@ -3,6 +3,7 @@ package com.goshop.app.presentation.goloyalty;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
@@ -62,7 +63,7 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     RobotoRegularTextView tvBtnFilterDone;
 
     @BindView(R.id.tv_btn_sort)
-    RobotoRegularTextView tvBtnSort;
+    RobotoLightTextView tvBtnSort;
 
     @BindView(R.id.tv_filter_menu_top)
     RobotoRegularTextView tvFilterMenuTop;

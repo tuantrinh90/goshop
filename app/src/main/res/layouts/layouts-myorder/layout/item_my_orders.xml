@@ -9,30 +9,31 @@
     <View
         android:id="@+id/view_my_orders_divider"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_10"
-        android:background="@color/color_divider_grey"/>
+        android:layout_height="@dimen/size_8"
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
-        android:paddingTop="@dimen/size_14"
+        android:paddingTop="@dimen/size_20"
         android:orientation="horizontal">
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_number"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"/>
+            android:textColor="@color/color_black_light"/>
 
         <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_myorders_number"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size_8"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"/>
+            android:textColor="@color/color_black_light"/>
 
     </LinearLayout>
 
@@ -41,24 +42,25 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
-        android:paddingTop="@dimen/size_8"
-        android:paddingBottom="@dimen/size_14"
+        android:paddingTop="@dimen/size_4"
+        android:paddingBottom="@dimen/size_16"
         android:background="@drawable/bg_bottom_line"
         android:orientation="horizontal">
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/order_status"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"/>
+            android:textColor="@color/color_black_light"/>
 
         <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_myorders_status"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size_8"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"/>
+            android:textColor="@color/color_black_light"/>
 
     </LinearLayout>
 
@@ -78,15 +80,15 @@
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"
+            android:textColor="@color/color_black_light"
             android:layout_alignParentEnd="true"/>
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_toLeftOf="@id/tv_myorders_total"
             android:text="@string/my_orders_total_price"
             android:textSize="@dimen/size_font_16"
-            android:textColor="@color/color_grayscale_text"
+            android:textColor="@color/color_black_light"
             android:layout_toStartOf="@id/tv_myorders_total"/>
     </RelativeLayout>
 

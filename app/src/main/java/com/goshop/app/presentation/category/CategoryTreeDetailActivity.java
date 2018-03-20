@@ -3,6 +3,7 @@ package com.goshop.app.presentation.category;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -76,7 +77,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     RobotoRegularTextView tvBtnSearchFilterDone;
 
     @BindView(R.id.tv_btn_sort)
-    RobotoRegularTextView tvBtnSort;
+    RobotoLightTextView tvBtnSort;
 
     @BindView(R.id.tv_search_or)
     RobotoRegularTextView tvSearchOr;

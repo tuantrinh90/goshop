@@ -3,13 +3,17 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/white"
+    android:background="@color/color_litte_grey"
     android:orientation="vertical">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_pending"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_20"
-        android:background="@drawable/bg_bar_bottom_line"/>
+        android:background="@android:color/white"
+        android:paddingTop="@dimen/size_20" />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_8"
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
 </LinearLayout>

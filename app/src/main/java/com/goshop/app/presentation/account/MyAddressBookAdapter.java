@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AddressVM;
@@ -75,25 +76,25 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
         LinearLayout llAddressBookSelector;
 
         @BindView(R.id.tv_address_book_address)
-        RobotoRegularTextView tvAddressBookAddress;
+        RobotoLightTextView tvAddressBookAddress;
 
         @BindView(R.id.tv_address_book_city)
-        RobotoRegularTextView tvAddressBookCity;
+        RobotoLightTextView tvAddressBookCity;
 
         @BindView(R.id.tv_address_book_code)
-        RobotoRegularTextView tvAddressBookCode;
+        RobotoLightTextView tvAddressBookCode;
 
         @BindView(R.id.tv_address_book_country)
-        RobotoRegularTextView tvAddressBookCountry;
+        RobotoLightTextView tvAddressBookCountry;
 
         @BindView(R.id.tv_address_book_name)
         RobotoMediumTextView tvAddressBookName;
 
         @BindView(R.id.tv_address_book_state)
-        RobotoRegularTextView tvAddressBookState;
+        RobotoLightTextView tvAddressBookState;
 
         @BindView(R.id.tv_address_book_tel)
-        RobotoRegularTextView tvAddressBookTel;
+        RobotoLightTextView tvAddressBookTel;
 
         public MyAddressViewHolder(View itemView) {
             super(itemView);

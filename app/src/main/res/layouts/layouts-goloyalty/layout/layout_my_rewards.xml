@@ -4,6 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color_whole_bg"
     android:orientation="vertical">
 
     <include
@@ -13,12 +14,15 @@
         android:layout_height="@dimen/size_4"
         android:background="@drawable/bg_navigation_bar_shadow"/>
 
-    <com.goshop.app.common.view.RobotoBoldTabLayout
+    <com.goshop.app.common.view.RobotoMediumTabLayout
         android:id="@+id/tablayout_my_rewards"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_tab_line"
         app:tabPaddingStart="@dimen/size_12"
         app:tabPaddingEnd="@dimen/size_12"
+        app:tabPaddingTop="@dimen/size_12"
+        app:tabPaddingBottom="@dimen/size_16"
         app:tabMode="fixed"
         app:tabTextColor="@color/color_grayscale_secondary"
         app:tabSelectedTextColor="@color/color_grayscale_text"
@@ -29,5 +33,7 @@
         android:id="@+id/viewpager_my_rewards"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
+
+
 
 </LinearLayout>

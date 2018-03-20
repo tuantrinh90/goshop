@@ -53,7 +53,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/size_8"
-                android:background="@drawable/bg_top_bottom_shadow_grey"/>
+                android:background="@drawable/drawable_biger_divider_with_shadow"/>
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_all_reviews"

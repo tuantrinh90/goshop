@@ -3,8 +3,8 @@ package com.goshop.app.presentation.myorder;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoItaticTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
 import com.goshop.app.utils.NumberFormater;
 
@@ -23,6 +23,8 @@ import butterknife.ButterKnife;
 public class MyOrderProductAdapter extends RecyclerView.Adapter {
 
     private List<MyOrdersProductVM> myOrdersProductVMS;
+
+    private OnOrderDetailItemClickListener onOrderDetailItemClickListener;
 
     public MyOrderProductAdapter(
         List<MyOrdersProductVM> myOrdersProductVMS) {
@@ -51,37 +53,51 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
         return myOrdersProductVMS.size();
     }
 
+    public void setOnOrderDetailItemClickListener(
+        OnOrderDetailItemClickListener onOrderDetailItemClickListener) {
+        this.onOrderDetailItemClickListener = onOrderDetailItemClickListener;
+    }
+
+    public interface OnOrderDetailItemClickListener {
+
+        void onWriteReviewClick();
+
+        void onTrackClick();
+
+        void onReturnClick();
+    }
+
     class MyOrdersProductViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_order_product_thumb)
         ImageView ivOrderProductThumb;
 
         @BindView(R.id.tv_order_product_attr)
-        RobotoRegularTextView tvOrderProductAttr;
+        RobotoLightTextView tvOrderProductAttr;
 
         @BindView(R.id.tv_order_product_count)
-        RobotoRegularTextView tvOrderProductCount;
+        RobotoLightTextView tvOrderProductCount;
 
         @BindView(R.id.tv_order_product_now)
         RobotoMediumTextView tvOrderProductNow;
 
         @BindView(R.id.tv_order_product_number)
-        RobotoRegularTextView tvOrderProductNumber;
+        RobotoLightTextView tvOrderProductNumber;
 
         @BindView(R.id.tv_order_product_old)
-        RobotoRegularTextView tvOrderProductOld;
+        RobotoLightTextView tvOrderProductOld;
 
         @BindView(R.id.tv_order_product_statu)
         RobotoItaticTextView tvOrderProductStatu;
 
         @BindView(R.id.tv_order_product_title)
-        RobotoRegularTextView tvOrderProductTitle;
+        RobotoLightTextView tvOrderProductTitle;
 
         @BindView(R.id.tv_order_product_track)
-        RobotoRegularTextView tvOrderProductTrack;
+        RobotoLightTextView tvOrderProductTrack;
 
         @BindView(R.id.tv_order_product_write)
-        RobotoRegularTextView tvOrderProductWrite;
+        RobotoLightTextView tvOrderProductWrite;
 
         public MyOrdersProductViewHolder(View itemView) {
             super(itemView);
@@ -91,6 +107,9 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
         void bindingDatas(MyOrdersProductVM productVM) {
             tvOrderProductNumber.setText(productVM.getStatuNo());
             tvOrderProductStatu.setText(productVM.getStatuContent());
+            //todo this hard code is wait for api
+            tvOrderProductTrack
+                .setText(productVM.getStatuContent().equals("Delivered") ? "Return" : "Track");
 
             Glide.with(itemView.getContext()).load(productVM.getThumb()).asBitmap()
                 .error(productVM.getThumbDefault())
@@ -105,8 +124,15 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
             String attr = "Color:" + attrs.get(0) + ", Size:" + attrs.get(1);
             tvOrderProductAttr.setText(attr);
             tvOrderProductTrack.setOnClickListener(v -> {
+                if (productVM.getStatuContent().equals("Delivered")) {
+                    onOrderDetailItemClickListener.onReturnClick();
+                } else {
+                    onOrderDetailItemClickListener.onTrackClick();
+                }
+
             });
             tvOrderProductWrite.setOnClickListener(v -> {
+                onOrderDetailItemClickListener.onWriteReviewClick();
             });
         }
     }

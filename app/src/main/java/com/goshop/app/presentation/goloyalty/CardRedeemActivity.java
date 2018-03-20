@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CardRedeemVM;
@@ -36,16 +37,16 @@ public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presente
     RobotoMediumTextView tvCardRedeemMerchantDetail;
 
     @BindView(R.id.tv_card_redeem_merchant_end)
-    RobotoRegularTextView tvCardRedeemMerchantEnd;
+    RobotoLightTextView tvCardRedeemMerchantEnd;
 
     @BindView(R.id.tv_card_redeem_merchant_time)
-    RobotoRegularTextView tvCardRedeemMerchantTime;
+    RobotoLightTextView tvCardRedeemMerchantTime;
 
     @BindView(R.id.tv_card_redeem_merchant_title)
-    RobotoRegularTextView tvCardRedeemMerchantTitle;
+    RobotoLightTextView tvCardRedeemMerchantTitle;
 
     @BindView(R.id.tv_card_redeem_tip)
-    RobotoRegularTextView tvCardRedeemTip;
+    RobotoLightTextView tvCardRedeemTip;
 
     @BindView(R.id.tv_redeemed_show)
     RobotoRegularTextView tvRedeemedShow;

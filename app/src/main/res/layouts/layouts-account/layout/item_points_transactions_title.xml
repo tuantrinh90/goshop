@@ -8,7 +8,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_8"
-        android:background="@drawable/bg_top_bottom_shadow_grey"/>
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
     <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_title_name"
         android:layout_width="match_parent"
@@ -33,27 +33,27 @@
         android:paddingBottom="@dimen/size_8"
         android:orientation="horizontal">
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_hint"
-            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_secondary"
+            android:textSize="@dimen/size_font_13"
             android:text="@string/transation_details"
             android:layout_weight="3"/>
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_hint"
-            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_secondary"
+            android:textSize="@dimen/size_font_13"
             android:text="@string/go_shop_points"
             android:gravity="right"
             android:layout_weight="2"
             tools:ignore="RtlHardcoded"/>
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="@dimen/size_0"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_hint"
-            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_secondary"
+            android:textSize="@dimen/size_font_13"
             android:gravity="right"
             android:text="@string/valid_until"
             android:layout_weight="1.5"

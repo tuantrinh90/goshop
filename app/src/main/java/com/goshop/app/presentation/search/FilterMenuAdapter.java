@@ -2,8 +2,9 @@ package com.goshop.app.presentation.search;
 
 import com.goshop.app.R;
 import com.goshop.app.common.FlowLayout;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoRegularCheckBox;
 import com.goshop.app.common.view.RobotoRegularEditText;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -13,7 +14,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.CheckBox;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -134,7 +134,7 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         RelativeLayout rlFilterExpandTitle;
 
         @BindView(R.id.tv_item_search_filter_expand)
-        RobotoRegularTextView tvItemSearchFilterExpand;
+        RobotoLightTextView tvItemSearchFilterExpand;
 
         public ExpandViewHolder(View itemView) {
             super(itemView);
@@ -185,8 +185,9 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
 
             LayoutInflater mInflater = LayoutInflater.from(itemView.getContext());
             for (int i = 0; i < categorys.size(); i++) {
-                CheckBox categoryCheckView = (CheckBox) mInflater.inflate(R.layout.item_checkbox,
-                    flowSearchFilter, false);
+                RobotoRegularCheckBox categoryCheckView = (RobotoRegularCheckBox) mInflater
+                    .inflate(R.layout.item_checkbox,
+                        flowSearchFilter, false);
                 categoryCheckView.setText(categorys.get(i));
                 categoryCheckView.setOnCheckedChangeListener(((buttonView, isChecked) -> {
                     if (isChecked) {

@@ -51,12 +51,14 @@
     <color name="color_facebook_blue">#4065b3</color>
     <color name="transparent60Percent">#99000000</color>
     <color name="transparent80Percent">#CC000000</color>
-
+    <color name="color_redeem_start">#323232</color>
+    <color name="color_redeem_end">#181818</color>
     <!--document color value and zeplin color start-->
     <color name="color_select_grey">#0a000000</color><!--4%-->
     <color name="color_orange_red">#ff5722</color>
     <color name="color_greyish_brown">#494949</color>
     <color name="color_black_light">#212121</color>
+    <color name="color_black_light_second">#dc212121</color>
     <color name="color_shadow_top_grey">#dcdcdc</color>
     <color name="color_branding_pink">#df307a</color>
     <color name="color_branding_light_pink">#ec008b</color>

@@ -23,7 +23,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_20"
+                android:paddingTop="@dimen/size_21"
                 android:paddingRight="@dimen/size_16"
                 android:paddingLeft="@dimen/size_16"
                 android:gravity="center_vertical"
@@ -32,7 +32,7 @@
                 <ImageView
                     android:id="@+id/iv_rewards_details_thumb"
                     android:layout_width="@dimen/size_48"
-                    android:layout_height="@dimen/size_48"
+                    android:layout_height="@dimen/size_47"
                     android:background="@drawable/ic_sbk"
                     android:contentDescription="@string/app_name"/>
 
@@ -41,7 +41,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_20"
-                    android:textColor="@color/color_grayscale_text"
+                    android:textColor="@color/color_black_light_second"
                     android:text="@string/app_name"
                     android:paddingLeft="@dimen/size_10"
                     tools:ignore="RtlHardcoded,RtlSymmetry"/>
@@ -52,13 +52,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_24"
-                android:textColor="@color/color_grayscale_text"
+                android:textColor="@color/color_black_light_second"
                 android:text="@string/promo_title"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_20"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_rewards_detail_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -66,7 +66,7 @@
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_12"
                 android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_grayscale_text_two"
+                android:textColor="@color/color_black_light_second"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
             <RelativeLayout
@@ -75,33 +75,42 @@
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:paddingTop="@dimen/size_8">
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:id="@+id/tv_rewards_detail_location"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentLeft="true"
                     android:text="@string/app_name"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_grayscale_text_two"
+                    android:textColor="@color/color_black_light_second"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoMediumTextView
+                <com.goshop.app.common.view.RobotoMediumItalicTextView
                     android:id="@+id/tv_rewards_detail_time_left"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentRight="true"
                     android:text="@string/app_name"
                     android:textSize="@dimen/size_font_16"
-                    android:textColor="@color/color_grayscale_text_two"
+                    android:textColor="@color/color_black_light_second"
                     tools:ignore="RtlHardcoded"/>
             </RelativeLayout>
 
-            <ImageView
-                android:id="@+id/iv_rewards_detail_pic"
+
+            <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_328"
-                android:layout_margin="@dimen/size_16"
-                android:contentDescription="@string/app_name"/>
+                android:layout_height="@dimen/size_344" >
+                <ImageView
+                    android:id="@+id/iv_rewards_detail_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_coffee"
+                    android:contentDescription="@string/app_name"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_round_cover"/>
+            </RelativeLayout>
 
 
             <com.goshop.app.common.view.RobotoMediumTextView
@@ -109,13 +118,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_20"
-                android:textColor="@color/color_grayscale_text"
+                android:textColor="@color/color_black_light"
                 android:text="@string/promo_details"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_8"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_promo_details_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -124,7 +133,7 @@
                 android:paddingTop="@dimen/size_12"
                 android:text="@string/app_name"
                 android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_grayscale_text_two"
+                android:textColor="@color/color_black_light"
                 tools:ignore="RtlHardcoded"/>
 
             <com.goshop.app.common.view.RobotoMediumTextView
@@ -132,13 +141,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_20"
-                android:textColor="@color/color_grayscale_text"
+                android:textColor="@color/color_black_light"
                 android:text="@string/promo_terms"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingTop="@dimen/size_16"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_promo_terms_summary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -148,10 +157,10 @@
                 android:paddingBottom="@dimen/size_16"
                 android:text="@string/app_name"
                 android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_grayscale_text_two"
+                android:textColor="@color/color_black_light"
                 tools:ignore="RtlHardcoded"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_btn_rewards_detail_download"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

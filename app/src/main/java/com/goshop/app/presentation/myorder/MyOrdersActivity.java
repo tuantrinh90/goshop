@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.MyOrdersVM;
+import com.goshop.app.presentation.shopping.RatingActivity;
 import com.goshop.app.utils.SlideMenuUtil;
 
 import android.content.Intent;
@@ -107,7 +108,7 @@ public class MyOrdersActivity extends BaseActivity<MyOrdersContract.Presenter> i
         recyclerviewMyOrders.setLayoutManager(layoutManager);
         myOrdersAdapter = new MyOrdersAdapter(new ArrayList<>());
         recyclerviewMyOrders.setAdapter(myOrdersAdapter);
-        myOrdersAdapter.setOnOrdersItemClickListener(this::onOrdersItemClick);
+        myOrdersAdapter.setOnOrdersItemClickListener(this);
     }
 
     private void initPresenter() {
@@ -143,5 +144,20 @@ public class MyOrdersActivity extends BaseActivity<MyOrdersContract.Presenter> i
     @Override
     public void onOrdersItemClick() {
         startActivity(new Intent(this, OrderDetailActivity.class));
+    }
+
+    @Override
+    public void onWriteReviewClick() {
+        startActivity(new Intent(this, RatingActivity.class));
+    }
+
+    @Override
+    public void onTrackClick() {
+
+    }
+
+    @Override
+    public void onReturnClick() {
+        startActivity(new Intent(this, ReturnOrderActivity.class));
     }
 }

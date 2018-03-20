@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
@@ -61,6 +62,9 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     @BindView(R.id.ll_edit_address_sms)
     LinearLayout llEditAddressSms;
 
+    @BindView(R.id.textview_right_menu)
+    RobotoMediumTextView textviewRightMenu;
+
     @BindView(R.id.tv_edit_address_city)
     RobotoRegularTextView tvEditAddressCity;
 
@@ -102,7 +106,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
 
     @Override
     public void inject() {
-        hideRightMenu();
+        textviewRightMenu.setText(getResources().getString(R.string.done));
         ivEditAddressSms.setSelected(true);
         ivEditAddressEmail.setSelected(true);
         initEditType();
@@ -152,14 +156,14 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.ll_edit_address_email, R.id.ll_edit_address_sms, R
-        .id.tv_btn_layout_pink, R.id.tv_edit_address_city, R.id.tv_edit_address_country, R.id
+        .id.textview_right_menu, R.id.tv_edit_address_city, R.id.tv_edit_address_country, R.id
         .tv_edit_address_state})
     public void onEditAddressClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
-            case R.id.tv_btn_layout_pink:
+            case R.id.textview_right_menu:
                 break;
             case R.id.ll_edit_address_email:
                 ivEditAddressEmail.setSelected(!ivEditAddressEmail.isSelected());

@@ -53,7 +53,9 @@ public class RewardsDetailPresenter extends RxPresenter<RewardsDetailContract.Vi
         return new RewardsDetailVM("Merchant Name", "", R.drawable.ic_sbk, "Promotion Title",
             "12 Jan 2017 - 14 Jan 2017", "12 Locations", "15 days Left!!", "",
             R.drawable.ic_coffee, "Promo Detail",
-            "vooujondada inadiananfa ajkdfja adaf adealjie dafafd idmflaj dfad geaw dafgjfaaafs " +
+            "Voucher information information information information information information " +
+                "information information Voucher information information information information " +
+                "information information information informationVo " +
                 "faefagadsgfa agere jdajfjafjalkdl lkjluh", "Promo Terms and Conditions",
             terms);
     }

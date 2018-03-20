@@ -58,9 +58,16 @@ public class MyOrdersAdapter extends RecyclerView.Adapter {
     interface OnOrdersItemClickListener {
 
         void onOrdersItemClick();
+
+        void onWriteReviewClick();
+
+        void onTrackClick();
+
+        void onReturnClick();
     }
 
-    class MyOrdersViewHolder extends RecyclerView.ViewHolder {
+    class MyOrdersViewHolder extends RecyclerView.ViewHolder implements MyOrderProductAdapter
+        .OnOrderDetailItemClickListener {
 
         @BindView(R.id.ll_my_orders)
         LinearLayout llMyOrders;
@@ -95,7 +102,23 @@ public class MyOrdersAdapter extends RecyclerView.Adapter {
             MyOrderProductAdapter orderProductAdapter = new MyOrderProductAdapter(
                 myOrdersVM.getMyOrdersProductVMS());
             recyclerViewOrders.setAdapter(orderProductAdapter);
+            orderProductAdapter.setOnOrderDetailItemClickListener(this);
             llMyOrders.setOnClickListener(v -> onOrdersItemClickListener.onOrdersItemClick());
+        }
+
+        @Override
+        public void onWriteReviewClick() {
+            onOrdersItemClickListener.onWriteReviewClick();
+        }
+
+        @Override
+        public void onTrackClick() {
+            onOrdersItemClickListener.onTrackClick();
+        }
+
+        @Override
+        public void onReturnClick() {
+            onOrdersItemClickListener.onReturnClick();
         }
     }
 

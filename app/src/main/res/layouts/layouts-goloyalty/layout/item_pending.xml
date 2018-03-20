@@ -10,18 +10,18 @@
 
     <ImageView
         android:id="@+id/iv_pending_thumb"
-        android:layout_width="@dimen/size_84"
-        android:layout_height="@dimen/size_84"
+        android:layout_width="@dimen/size_85"
+        android:layout_height="@dimen/size_85"
         android:layout_alignParentLeft="true"
         android:layout_marginRight="@dimen/size_16"
         android:contentDescription="@string/app_name"
         tools:ignore="RtlHardcoded"/>
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_pending_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iv_pending_thumb"
-        android:textColor="@color/color_grayscale_text_two"
+        android:textColor="@color/color_black_light_second"
         android:textSize="@dimen/size_font_14"
         android:maxLines="1"
         android:ellipsize="end"
@@ -32,39 +32,41 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iv_pending_thumb"
         android:layout_below="@id/tv_pending_name"
-        android:textColor="@color/color_grayscale_text_two"
+        android:textColor="@color/color_black_light_second"
         android:textSize="@dimen/size_font_16"
         android:maxLines="1"
         android:ellipsize="end"
         tools:ignore="RtlHardcoded"/>
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_pending_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_8"
         android:layout_toRightOf="@id/iv_pending_thumb"
         android:layout_below="@id/tv_pending_detail"
-        android:textColor="@color/color_grayscale_text_two"
-        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_black_light_second"
+        android:textSize="@dimen/size_font_13"
         android:maxLines="1"
         android:ellipsize="end"
         tools:ignore="RtlHardcoded"/>
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_pending_end"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iv_pending_thumb"
+        android:paddingTop="@dimen/size_2"
         android:layout_below="@id/tv_pending_time"
-        android:textColor="@color/color_grayscale_text_two"
+        android:textColor="@color/color_black_light_second"
         android:textSize="@dimen/size_font_14"
         android:maxLines="1"
         android:ellipsize="end"
         tools:ignore="RtlHardcoded"/>
     <ImageView
         android:id="@+id/iv_pending_cards"
-        android:layout_width="@dimen/size_26"
-        android:layout_height="@dimen/size_26"
+        android:layout_width="@dimen/size_28"
+        android:layout_height="@dimen/size_28"
         android:src="@drawable/ic_icon_redeem_ticket"
         android:scaleType="center"
         android:layout_alignParentRight="true"

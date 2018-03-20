@@ -3,8 +3,10 @@ package com.goshop.app.presentation.myorder;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.OrderDetailVM;
+import com.goshop.app.presentation.shopping.RatingActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -21,40 +23,40 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presenter> implements
-    OrderDetailContract.View {
+    OrderDetailContract.View , MyOrderProductAdapter.OnOrderDetailItemClickListener{
 
     @BindView(R.id.recyclerview_order_detail)
     RecyclerView recyclerviewOrderDetail;
 
     @BindView(R.id.tv_order_detail_address)
-    RobotoRegularTextView tvOrderDetailAddress;
+    RobotoLightTextView tvOrderDetailAddress;
 
     @BindView(R.id.tv_order_detail_cancel)
     RobotoRegularTextView tvOrderDetailCancel;
 
     @BindView(R.id.tv_order_detail_city)
-    RobotoRegularTextView tvOrderDetailCity;
+    RobotoLightTextView tvOrderDetailCity;
 
     @BindView(R.id.tv_order_detail_country)
-    RobotoRegularTextView tvOrderDetailCountry;
+    RobotoLightTextView tvOrderDetailCountry;
 
     @BindView(R.id.tv_order_detail_method)
-    RobotoRegularTextView tvOrderDetailMethod;
+    RobotoLightTextView tvOrderDetailMethod;
 
     @BindView(R.id.tv_order_detail_name)
-    RobotoRegularTextView tvOrderDetailName;
+    RobotoLightTextView tvOrderDetailName;
 
     @BindView(R.id.tv_order_detail_order_number)
-    RobotoRegularTextView tvOrderDetailOrderNumber;
+    RobotoLightTextView tvOrderDetailOrderNumber;
 
     @BindView(R.id.tv_order_detail_order_placed)
-    RobotoRegularTextView tvOrderDetailOrderPlaced;
+    RobotoLightTextView tvOrderDetailOrderPlaced;
 
     @BindView(R.id.tv_order_detail_order_status)
-    RobotoRegularTextView tvOrderDetailOrderStatus;
+    RobotoLightTextView tvOrderDetailOrderStatus;
 
     @BindView(R.id.tv_order_detail_tel)
-    RobotoRegularTextView tvOrderDetailTel;
+    RobotoLightTextView tvOrderDetailTel;
 
     private MyOrderProductAdapter myOrderProductAdapter;
 
@@ -82,6 +84,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
         recyclerviewOrderDetail.setLayoutManager(layoutManager);
         myOrderProductAdapter = new MyOrderProductAdapter(new ArrayList<>());
         recyclerviewOrderDetail.setAdapter(myOrderProductAdapter);
+        myOrderProductAdapter.setOnOrderDetailItemClickListener(this);
     }
 
     private void initPresenter() {
@@ -121,5 +124,20 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void onWriteReviewClick() {
+        startActivity(new Intent(this, RatingActivity.class));
+    }
+
+    @Override
+    public void onTrackClick() {
+
+    }
+
+    @Override
+    public void onReturnClick() {
+        startActivity(new Intent(this, ReturnOrderActivity.class));
     }
 }

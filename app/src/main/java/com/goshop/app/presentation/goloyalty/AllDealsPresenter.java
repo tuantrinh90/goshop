@@ -72,7 +72,7 @@ public class AllDealsPresenter extends RxPresenter<AllDealsContract.View> implem
     public List<SortVM> getSortVMS() {
         SortVM sortVM1 = new SortVM("Latest");
         SortVM sortVM2 = new SortVM("Hot");
-        SortVM sortVM3 = new SortVM("Nearby(drop 2");
+        SortVM sortVM3 = new SortVM("Nearby (drop 2)");
         List<SortVM> sortVMS = new ArrayList<>();
         sortVMS.add(sortVM1);
         sortVMS.add(sortVM2);

@@ -2,6 +2,7 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
@@ -83,13 +84,13 @@ public class PendingAdapter extends RecyclerView.Adapter {
         RobotoMediumTextView tvPendingDetail;
 
         @BindView(R.id.tv_pending_end)
-        RobotoRegularTextView tvPendingEnd;
+        RobotoLightTextView tvPendingEnd;
 
         @BindView(R.id.tv_pending_name)
-        RobotoRegularTextView tvPendingName;
+        RobotoLightTextView tvPendingName;
 
         @BindView(R.id.tv_pending_time)
-        RobotoRegularTextView tvPendingTime;
+        RobotoLightTextView tvPendingTime;
 
         public DealViewHolder(View itemView) {
             super(itemView);

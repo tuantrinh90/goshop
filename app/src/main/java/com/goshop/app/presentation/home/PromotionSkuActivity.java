@@ -3,6 +3,7 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.PromotionSkuModel;
 import com.goshop.app.data.model.SkuBannerVM;
@@ -64,7 +65,7 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
     RobotoRegularTextView tvBtnFilterDone;
 
     @BindView(R.id.tv_btn_sort)
-    RobotoRegularTextView tvBtnSort;
+    RobotoLightTextView tvBtnSort;
 
     @BindView(R.id.tv_filter_menu_top)
     RobotoRegularTextView tvFilterMenuTop;

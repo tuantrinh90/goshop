@@ -10,7 +10,7 @@
     android:orientation="vertical"
     tools:ignore="RtlSymmetry"
     android:paddingStart="@dimen/size_16">
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@color/color_grayscale_text"
@@ -33,7 +33,7 @@
             tools:ignore="RtlSymmetry"
             android:paddingEnd="@dimen/size_8"/>
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textColor="@color/color_grayscale_text"

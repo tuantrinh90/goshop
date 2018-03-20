@@ -1,6 +1,8 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
+import com.goshop.app.common.Typefaces;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.widget.listener.OnSortListItemClickListener;
@@ -57,7 +59,7 @@ public class SortListAdapter extends RecyclerView.Adapter {
     class SortViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_sort_select)
-        RobotoRegularTextView tvSortSelect;
+        RobotoLightTextView tvSortSelect;
 
         public SortViewHolder(View itemView) {
             super(itemView);
@@ -67,11 +69,10 @@ public class SortListAdapter extends RecyclerView.Adapter {
         void bindingData(SortVM sortVM, int position) {
             tvSortSelect.setSelected(sortVM.isSelect());
             tvSortSelect.setText(sortVM.getTitle());
-            if (sortVM.isSelect()) {
-                tvSortSelect.setTypeface(Typeface.SANS_SERIF, Typeface.BOLD);
-            } else {
-                tvSortSelect.setTypeface(Typeface.SANS_SERIF, Typeface.NORMAL);
-            }
+            Typeface face = Typefaces.get(itemView.getContext(), sortVM
+                .isSelect() ? Typefaces.PATH_FONT_ROBOTO_REGULAR : Typefaces
+                .PATH_FONT_ROBOTO_LIGHT);
+            tvSortSelect.setTypeface(face);
             tvSortSelect.setOnClickListener(v -> {
                 updateSort(position);
                 itemClickListener.onSortItemClick(position);

@@ -9,7 +9,7 @@
         android:id="@+id/v_help_support_divider"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_8"
-        android:background="@drawable/bg_top_bottom_shadow_grey"/>
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
 
     <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_help_support_title"

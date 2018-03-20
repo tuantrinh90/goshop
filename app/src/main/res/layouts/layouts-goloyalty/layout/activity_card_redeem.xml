@@ -4,24 +4,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/ic_icon_redeem_bg"
+    android:background="@drawable/bg_redeem_gradient"
     android:orientation="vertical">
 
     <include
         layout="@layout/toolbar_white_title"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_divider"
+        android:background="@color/color_greyish_brown"/>
+
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_icon_redeem_trans_bg">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_centerInParent="true"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/size_24"
             android:layout_marginRight="@dimen/size_24"
-            android:paddingTop="@dimen/size_50"
             android:paddingBottom="@dimen/size_50"
+            android:paddingTop="@dimen/size_50"
             android:background="@drawable/bg_white_redeem"
             android:orientation="vertical">
 
@@ -29,15 +35,17 @@
                 android:id="@+id/iv_card_redeem_thumb"
                 android:layout_width="@dimen/size_100"
                 android:layout_height="@dimen/size_100"
-            android:contentDescription="@string/app_name"/>
+                android:src="@drawable/ic_coffee"
+                android:scaleType="center"
+                android:contentDescription="@string/app_name"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_card_redeem_merchant_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_20"
                 android:text="@string/app_name"
-                android:textColor="@color/color_grayscale_text"
+                android:textColor="@color/color_black_light_second"
                 android:textSize="@dimen/size_font_16"
                 android:gravity="center_horizontal"/>
 
@@ -48,37 +56,36 @@
                 android:paddingTop="@dimen/size_4"
                 android:paddingBottom="@dimen/size_12"
                 android:text="@string/app_name"
-                android:textColor="@color/color_grayscale_text"
+                android:textColor="@color/color_black_light_second"
                 android:textSize="@dimen/size_font_20"
                 android:gravity="center_horizontal"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_card_redeem_merchant_time"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="@string/app_name"
-                android:textColor="@color/color_grayscale_text"
-                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_black_light_second"
+                android:textSize="@dimen/size_font_13"
                 android:gravity="center_horizontal"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_card_redeem_merchant_end"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_2"
                 android:paddingBottom="@dimen/size_22"
                 android:text="@string/app_name"
-                android:textColor="@color/color_grayscale_text"
+                android:textColor="@color/color_black_light_second"
                 android:textSize="@dimen/size_font_14"
                 android:gravity="center_horizontal"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_card_redeem_tip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_2"
-                android:paddingRight="@dimen/size_60"
-                android:paddingLeft="@dimen/size_60"
+                android:layout_marginLeft="@dimen/size_50"
+                android:layout_marginRight="@dimen/size_50"
                 android:text="@string/redeem_swipe_tip"
                 android:textColor="@color/color_grapefruit"
                 android:textSize="@dimen/size_font_14"
@@ -90,7 +97,7 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
-                android:paddingTop="@dimen/size_16">
+                android:paddingTop="@dimen/size_15">
 
                 <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_redeemed_show"
@@ -106,7 +113,7 @@
                     android:id="@+id/slidetoactview_redeem"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    app:area_margin="@dimen/size_4"
+                    app:area_margin="@dimen/size_5"
                     app:slider_height="@dimen/size_60"
                     app:slider_locked="false"
                     app:outer_color="@color/color_grayscale_secondary"

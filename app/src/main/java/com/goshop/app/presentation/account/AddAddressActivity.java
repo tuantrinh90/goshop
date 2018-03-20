@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.PopWindowUtil;
@@ -15,6 +16,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -49,6 +51,15 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
 
     @BindView(R.id.iv_add_address_sms)
     ImageView ivAddAddressSms;
+
+    @BindView(R.id.ll_add_address_email)
+    LinearLayout llAddAddressEmail;
+
+    @BindView(R.id.ll_add_address_sms)
+    LinearLayout llAddAddressSms;
+
+    @BindView(R.id.textview_right_menu)
+    RobotoMediumTextView textviewRightMenu;
 
     @BindView(R.id.tv_add_address_city)
     RobotoRegularTextView tvAddAddressCity;
@@ -91,7 +102,7 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
 
     @Override
     public void inject() {
-        hideRightMenu();
+        textviewRightMenu.setText(getResources().getString(R.string.done));
         ivAddAddressEmail.setSelected(true);
         ivAddAddressSms.setSelected(true);
         initEditType();
@@ -126,7 +137,7 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
         return getResources().getString(R.string.add_address);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_layout_pink, R.id.ll_add_address_email, R.id
+    @OnClick({R.id.imageview_left_menu, R.id.textview_right_menu, R.id.ll_add_address_email, R.id
         .ll_add_address_sms, R.id.tv_add_address_city, R.id.tv_add_address_country, R.id
         .tv_add_address_state})
     public void onAddAddressClick(View view) {
@@ -134,7 +145,7 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
             case R.id.imageview_left_menu:
                 finish();
                 break;
-            case R.id.tv_btn_layout_pink:
+            case R.id.textview_right_menu:
                 String firstName = etAddAddressFirst.getText();
                 String lastName = etAddAddressLast.getText();
                 String addressOne = etAddAddressOne.getText();

@@ -21,18 +21,17 @@
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_16"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_grayscale_text"
+                android:textColor="@color/color_black_light"
                 android:text="@string/cancel_order_tips"/>
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_cancel_order_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/name"/>
@@ -41,7 +40,7 @@
                 android:id="@+id/et_cancel_order_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_21"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/email"/>
@@ -50,7 +49,7 @@
                 android:id="@+id/et_cancel_order_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_21"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/mobile_phone_no_optional"/>
@@ -59,7 +58,7 @@
                 android:id="@+id/et_cancel_order_handing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_21"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/product_handing_optional"/>
@@ -69,14 +68,14 @@
                 android:id="@+id/tv_cancel_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_21"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
-                android:background="@drawable/bg_bottom_line"
+                android:background="@drawable/selector_textinput_edittext"
                 android:paddingBottom="@dimen/size_8"
-                android:paddingTop="@dimen/size_20"
+                android:paddingTop="@dimen/size_29"
                 android:textColorHint="@color/color_text_hint"
                 android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
@@ -89,15 +88,14 @@
                 android:id="@+id/tv_cancel_detail_reason"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_21"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
-                android:layout_marginBottom="@dimen/size_30"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
-                android:background="@drawable/bg_bottom_line"
+                android:background="@drawable/selector_textinput_edittext"
                 android:paddingBottom="@dimen/size_8"
-                android:paddingTop="@dimen/size_20"
+                android:paddingTop="@dimen/size_29"
                 android:textColorHint="@color/color_text_hint"
                 android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
@@ -105,16 +103,18 @@
                 android:drawableEnd="@drawable/ic_icon_spinner_down"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_8"/>
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_btn_cancel_order_submit"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_48"
                 android:gravity="center"
-                android:layout_margin="@dimen/size_8"
+                android:layout_marginLeft="@dimen/size_8"
+                android:layout_marginRight="@dimen/size_8"
+                android:layout_marginBottom="@dimen/size_8"
+                android:layout_marginTop="@dimen/size_37"
                 android:text="@string/submit"
                 android:textSize="@dimen/size_font_16"
                 android:textColor="@android:color/white"
-                android:padding="@dimen/size_14"
                 android:background="@drawable/bg_btn_round_pink"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>

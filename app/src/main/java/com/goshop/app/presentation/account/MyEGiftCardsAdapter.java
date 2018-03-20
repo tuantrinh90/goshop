@@ -1,6 +1,8 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightItalicTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -100,16 +102,16 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
     class DetailViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_egift_title)
-        RobotoMediumTextView tvEGiftTitle;
+        RobotoRegularTextView tvEGiftTitle;
 
         @BindView(R.id.tv_egift_price)
-        RobotoRegularTextView tvEgiftPrice;
+        RobotoLightTextView tvEgiftPrice;
 
         @BindView(R.id.tv_egift_sender)
         RobotoRegularTextView tvEgiftSender;
 
         @BindView(R.id.tv_egift_status)
-        RobotoRegularTextView tvEgiftStatus;
+        RobotoLightItalicTextView tvEgiftStatus;
 
         @BindView(R.id.tv_egift_time)
         RobotoRegularTextView tvEgiftTime;

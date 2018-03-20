@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.RobotoBoldTabLayout;
+import com.goshop.app.common.view.RobotoMediumTabLayout;
 import com.goshop.app.utils.SlideMenuUtil;
 
 import android.os.Bundle;
@@ -40,7 +41,7 @@ public class MyRewardsActivity extends BaseActivity implements NavigationView
     NavigationView navigationSlideMenu;
 
     @BindView(R.id.tablayout_my_rewards)
-    RobotoBoldTabLayout tablayoutMyRewards;
+    RobotoMediumTabLayout tablayoutMyRewards;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -134,6 +135,7 @@ public class MyRewardsActivity extends BaseActivity implements NavigationView
     public void onMyRewardsClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
+                finish();
                 break;
         }
     }

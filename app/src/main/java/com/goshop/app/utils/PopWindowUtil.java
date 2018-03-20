@@ -54,7 +54,8 @@ public class PopWindowUtil {
         int[] location = new int[2];
         parentView.getLocationOnScreen(location);
         int height = parentView.getHeight();
-        popupWindow.showAtLocation(parentView, Gravity.TOP | Gravity.START, 0, location[1] + height);
+        popupWindow
+            .showAtLocation(parentView, Gravity.TOP | Gravity.START, 0, location[1] + height);
         popupWindow.setOnDismissListener(sortPopDismissListener::onDismiss);
         sortListAdapter.setOnSortListItemClickListener((int position) -> {
             popupWindow.dismiss();
@@ -85,6 +86,27 @@ public class PopWindowUtil {
         });
         llWishlist.setOnClickListener(v -> {
             itemMenuClickListener.onCartWishlist();
+            popupWindow.dismiss();
+        });
+    }
+
+    public static void showWishlistMenuPop(View parentView,
+        OnCartItemMenuClickListener itemMenuClickListener) {
+        View popView = LayoutInflater.from(parentView.getContext())
+            .inflate(R.layout.layout_pop_wishlist_menu, null);
+
+        LinearLayout llDelete = popView.findViewById(R.id.ll_delete);
+
+        PopupWindow popupWindow = new PopupWindow(popView, ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        int[] location = new int[2];
+        parentView.getLocationOnScreen(location);
+        popupWindow.showAtLocation(parentView, Gravity.TOP | Gravity.END, 0, location[1] - 12);
+        llDelete.setOnClickListener(v -> {
+            itemMenuClickListener.onCartDeleteClick();
             popupWindow.dismiss();
         });
     }
@@ -134,7 +156,7 @@ public class PopWindowUtil {
         int[] location = new int[2];
         parentView.getLocationOnScreen(location);
         popupWindow.showAtLocation(parentView, Gravity.NO_GRAVITY, 0,
-            location[1] - popupHeight - parentView.getMeasuredHeight()*3/2);
+            location[1] - popupHeight - parentView.getMeasuredHeight() * 3 / 2);
     }
 
     public static List<SingleChooseVM> updateSinglePopDatas(int position,

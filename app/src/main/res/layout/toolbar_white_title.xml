@@ -6,7 +6,7 @@
     android:id="@+id/toolbar"
     app:layout_scrollFlags="enterAlways"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="@dimen/size_64"
     app:contentInsetEnd="0dp"
     app:contentInsetStart="0dp"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">

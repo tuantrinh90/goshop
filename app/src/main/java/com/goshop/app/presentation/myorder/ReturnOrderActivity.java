@@ -5,6 +5,9 @@ import com.goshop.app.base.BaseActivity;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+
+import butterknife.OnClick;
 
 public class ReturnOrderActivity extends BaseActivity {
 
@@ -26,5 +29,14 @@ public class ReturnOrderActivity extends BaseActivity {
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.order_return);
+    }
+
+    @OnClick({R.id.imageview_left_menu})
+    public void onReturnOrderClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                finish();
+            break;
+        }
     }
 }
