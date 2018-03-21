@@ -4,7 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_white_bottom_divider_line"
-    android:padding="@dimen/size_16">
+    android:paddingLeft="@dimen/size_16"
+    android:paddingTop="@dimen/size_16"
+    android:paddingBottom="@dimen/size_16"
+    android:paddingRight="@dimen/size_10">
 
     <ImageView
         android:id="@+id/iv_help_right_arrow"
@@ -12,7 +15,8 @@
         android:layout_height="@dimen/size_24"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
-        android:background="@drawable/ic_icon_right_expand"
+        android:src="@drawable/ic_icon_right_expand"
+        android:scaleType="center"
         android:contentDescription="@string/app_name"
         android:layout_alignParentEnd="true"/>
 

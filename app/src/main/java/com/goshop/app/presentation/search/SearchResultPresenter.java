@@ -60,7 +60,7 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
     //todo this is mock data, please do not delete
     private List<ProductsVM> getProductsVMS() {
         ProductsVM productsVM = new ProductsVM();
-        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");

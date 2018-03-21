@@ -6,16 +6,17 @@
     android:id="@+id/toolbar"
     app:layout_scrollFlags="enterAlways"
     android:layout_width="match_parent"
-    android:layout_height="?attr/actionBarSize"
+    android:layout_height="@dimen/size_56"
     app:contentInsetEnd="0dp"
     app:contentInsetStart="0dp"
-    android:background="@drawable/bg_bottom_shadow_white"
+    android:background="@android:color/white"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp">
+        android:paddingLeft="@dimen/size_16"
+    android:paddingRight="@dimen/size_16">
 
         <ImageView
             android:id="@+id/imageview_left_menu"

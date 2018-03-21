@@ -66,7 +66,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     RelativeLayout rlDrawerFilter;
 
     @BindView(R.id.tv_brands_detail_summary)
-    RobotoRegularTextView tvBrandsDetailSummary;
+    RobotoLightTextView tvBrandsDetailSummary;
 
     @BindView(R.id.tv_btn_filter_clear)
     RobotoRegularTextView tvBtnFilterClear;

@@ -3,6 +3,7 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -50,13 +51,13 @@ public class CheckoutPaymentActivity extends BaseActivity {
     RobotoMediumTextView tvCheckoutPaymentAmount;
 
     @BindView(R.id.tv_checkout_payment_amount_percent)
-    RobotoRegularTextView tvCheckoutPaymentAmountPercent;
+    RobotoLightTextView tvCheckoutPaymentAmountPercent;
 
     @BindView(R.id.tv_checkout_payment_date)
     RobotoRegularTextView tvCheckoutPaymentDate;
 
     @BindView(R.id.tv_checkout_payment_read)
-    RobotoRegularTextView tvCheckoutPaymentRead;
+    RobotoLightTextView tvCheckoutPaymentRead;
 
     @BindView(R.id.tv_checkout_payment_time)
     RobotoRegularTextView tvCheckoutPaymentTime;

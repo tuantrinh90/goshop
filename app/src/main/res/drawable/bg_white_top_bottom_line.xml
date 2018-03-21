@@ -8,8 +8,8 @@
         </shape>
     </item>
     <item
-        android:top="@dimen/size_1"
-        android:bottom="@dimen/size_1">
+        android:top="@dimen/size_divider"
+        android:bottom="@dimen/size_divider">
         <shape
             android:shape="rectangle">
             <solid

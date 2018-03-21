@@ -4,11 +4,13 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.CheckoutListAdapter;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.RobotoLightRadioButton;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularRadioButton;
-import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.utils.ScreenHelper;
+import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -33,6 +35,12 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.btn_checkout_place_my_order)
     RobotoMediumTextView btnCheckoutPlaceMyOrder;
 
+    @BindView(R.id.et_checkout_discount)
+    RobotoRegularEditText etCheckoutDiscount;
+
+    @BindView(R.id.et_checkout_egift)
+    RobotoRegularEditText etCheckoutEgift;
+
     @BindView(R.id.iv_checkout_shipping_more)
     ImageView ivCheckoutShippingMore;
 
@@ -42,13 +50,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     RadioGroup radioPaymentType;
 
     @BindView(R.id.rb_checkout_payment_banking)
-    RobotoRegularRadioButton rbCheckoutPaymentBanking;
+    RobotoLightRadioButton rbCheckoutPaymentBanking;
 
     @BindView(R.id.rb_checkout_payment_cash_on_deliery)
-    RobotoRegularRadioButton rbCheckoutPaymentCashOnDeliery;
+    RobotoLightRadioButton rbCheckoutPaymentCashOnDeliery;
 
     @BindView(R.id.rb_checkout_payment_credit)
-    RobotoRegularRadioButton rbCheckoutPaymentCredit;
+    RobotoLightRadioButton rbCheckoutPaymentCredit;
 
     @BindView(R.id.rl_shipping_root)
     RelativeLayout rlShippingRoot;
@@ -66,25 +74,25 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     RobotoMediumTextView tvBtnCheckPointsApply;
 
     @BindView(R.id.tv_checkout_address_first)
-    RobotoRegularTextView tvCheckoutAddressFirst;
+    RobotoLightTextView tvCheckoutAddressFirst;
 
     @BindView(R.id.tv_checkout_address_second)
-    RobotoRegularTextView tvCheckoutAddressSecond;
+    RobotoLightTextView tvCheckoutAddressSecond;
 
     @BindView(R.id.tv_checkout_attention)
-    RobotoRegularTextView tvCheckoutAttention;
+    RobotoLightTextView tvCheckoutAttention;
 
     @BindView(R.id.tv_checkout_city_state_code)
-    RobotoRegularTextView tvCheckoutCityStateCode;
+    RobotoLightTextView tvCheckoutCityStateCode;
 
     @BindView(R.id.tv_checkout_country)
-    RobotoRegularTextView tvCheckoutCountry;
+    RobotoLightTextView tvCheckoutCountry;
 
     @BindView(R.id.tv_checkout_shipping_title)
     RobotoMediumTextView tvCheckoutShippingTitle;
 
     @BindView(R.id.tv_checkout_tel)
-    RobotoRegularTextView tvCheckoutTel;
+    RobotoLightTextView tvCheckoutTel;
 
     @BindView(R.id.tv_checkout_username)
     RobotoMediumTextView tvCheckoutUsername;
@@ -136,14 +144,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void showFaildMessage(String errorMessage) {
-//TODO wait for api
+        //TODO wait for api
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.getCheckout("");
-
     }
 
     @Override
@@ -159,6 +166,62 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        initRadioGroup();
+        initAboutEditText();
+    }
+
+    private void initRadioGroup() {
+        rbCheckoutPaymentCredit.setSelected(true);
+        radioPaymentType.setOnCheckedChangeListener((RadioGroup group, int checkedId) -> {
+            switch (checkedId) {
+                case R.id.rb_checkout_payment_banking:
+                    break;
+                case R.id.rb_checkout_payment_cash_on_deliery:
+                    break;
+                case R.id.rb_checkout_payment_credit:
+                    break;
+
+            }
+        });
+    }
+
+    private void initAboutEditText() {
+
+        RxTextView.textChanges(etCheckoutDiscount).subscribe(charSequence -> {
+            if (charSequence.length() > 0) {
+                if(!tvBtnCheckDiscountApply.getText().equals(getResources().getString(R.string.cancel))) {
+                    tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
+                    tvBtnCheckDiscountApply.setBackgroundResource(R.drawable.drawable_round_cancel);
+                }
+            } else {
+                tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
+                tvBtnCheckDiscountApply.setBackgroundResource(R.drawable.drawable_round_black);
+            }
+        });
+
+        tvBtnCheckDiscountApply.setOnClickListener(v -> {
+            if (etCheckoutDiscount.getText().toString().length() > 0) {
+                etCheckoutDiscount.setText("");
+            }
+        });
+
+        RxTextView.textChanges(etCheckoutEgift).subscribe(charSequence -> {
+            if (charSequence.length() > 0) {
+                if(!tvBtnCheckGiftCardApply.getText().equals(getResources().getString(R.string.cancel))) {
+                    tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
+                    tvBtnCheckGiftCardApply.setBackgroundResource(R.drawable.drawable_round_cancel);
+                }
+            } else {
+                tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.apply));
+                tvBtnCheckGiftCardApply.setBackgroundResource(R.drawable.drawable_round_black);
+            }
+        });
+
+        tvBtnCheckGiftCardApply.setOnClickListener(v -> {
+            if (etCheckoutEgift.getText().toString().length() > 0) {
+                etCheckoutEgift.setText("");
+            }
+        });
     }
 
     @Override
@@ -170,6 +233,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_shipping_root:
+                startActivity(new Intent(this, CheckoutSelectAddressActivity.class));
                 break;
             case R.id.btn_checkout_place_my_order:
                 startActivity(new Intent(this, CheckoutPaymentActivity.class));

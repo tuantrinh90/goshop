@@ -3,20 +3,20 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/size_10"
-    android:paddingRight="@dimen/size_10"
-    android:paddingTop="@dimen/size_14"
+    android:paddingLeft="@dimen/size_8"
+    android:paddingRight="@dimen/size_8"
     android:layout_weight="1">
 
     <RelativeLayout
         android:id="@+id/rl_search_result"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_150"
+        android:layout_height="@dimen/size_156"
         android:layout_centerHorizontal="true">
         <ImageView
             android:id="@+id/iv_search_result_detail"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:scaleType="fitXY"
             android:contentDescription="@string/app_name"/>
         <ImageView
             android:id="@+id/iv_search_result_tv"
@@ -36,16 +36,16 @@
             android:contentDescription="@string/app_name"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_search_result_percent"
             android:layout_width="@dimen/size_60"
-            android:layout_height="@dimen/size_20"
+            android:layout_height="@dimen/size_21"
             android:layout_alignParentLeft="true"
             android:layout_alignParentBottom="true"
             android:background="@color/color_main_pink"
             android:gravity="center"
             android:textColor="@android:color/white"
-            android:textSize="@dimen/size_font_12"
+            android:textSize="@dimen/size_font_13"
             android:layout_alignParentStart="true"/>
 
         <com.goshop.app.common.view.RobotoMediumTextView
@@ -77,7 +77,7 @@
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_search_result_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -93,13 +93,12 @@
         android:layout_alignStart="@id/rl_search_result"
         android:layout_alignEnd="@id/rl_search_result"/>
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_search_result_price_old"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/color_text_old_grey"
+        android:textColor="@color/color_text_hint"
         android:layout_below="@id/tv_search_result_title"
-        android:paddingBottom="@dimen/size_4"
         android:textSize="@dimen/size_font_12"
         android:layout_alignLeft="@id/rl_search_result"
         android:layout_alignRight="@id/rl_search_result"

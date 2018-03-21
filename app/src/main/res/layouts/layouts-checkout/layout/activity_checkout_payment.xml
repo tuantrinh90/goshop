@@ -22,11 +22,11 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
-            <com.goshop.app.common.view.RobotoMediumTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_16"
-                android:paddingTop="@dimen/size_24"
+                android:paddingTop="@dimen/size_20"
                 android:text="@string/total_order_cost"
                 android:textSize="@dimen/size_font_14"
                 android:textColor="@color/color_grayscale_text"
@@ -49,7 +49,7 @@
                     android:textColor="@color/color_grayscale_text"
                     tools:ignore="RtlHardcoded"/>
 
-                <com.goshop.app.common.view.RobotoRegularTextView
+                <com.goshop.app.common.view.RobotoLightTextView
                     android:id="@+id/tv_checkout_payment_amount_percent"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -72,7 +72,7 @@
                     android:textColor="@color/color_grayscale_secondary"
                     android:text="@string/left_time"
                     tools:ignore="RtlHardcoded,RtlSymmetry"/>
-                <com.goshop.app.common.view.RobotoMediumTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingLeft="@dimen/size_16"
@@ -89,7 +89,7 @@
                 android:id="@+id/et_checkout_payment_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_36"
+                android:layout_marginTop="@dimen/size_21"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/name_on_card"
@@ -98,7 +98,7 @@
                 android:id="@+id/et_checkout_payment_number"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_21"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/card_number"
@@ -107,7 +107,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_21"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16">
                 <android.support.design.widget.TextInputLayout
@@ -150,7 +150,7 @@
                 android:id="@+id/tv_checkout_payment_date"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_29"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
@@ -166,24 +166,24 @@
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_checkout_payment_read"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_4"
-                android:padding="@dimen/size_16"
+                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginBottom="@dimen/size_16"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_16"
                 android:textSize="@dimen/size_font_12"
                 android:textColor="@color/color_grayscale_secondary"/>
 
             <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_btn_checkout_payment"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="@dimen/size_48"
                 android:background="@drawable/bg_btn_round_pink"
                 android:layout_margin="@dimen/size_8"
                 android:gravity="center"
-                android:paddingTop="@dimen/size_12"
-                android:paddingBottom="@dimen/size_16"
                 android:textColor="@android:color/white"
                 android:textSize="@dimen/size_font_16"
                 android:text="@string/agree_pay_now"/>

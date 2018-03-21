@@ -13,13 +13,13 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16">
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_btn_data_sort"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_grayscale_text"
+            android:textColor="@color/color_greyish_brown"
             android:textSize="@dimen/size_font_14"
             android:layout_alignParentStart="true"/>
 

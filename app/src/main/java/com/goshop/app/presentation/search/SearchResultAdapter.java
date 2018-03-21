@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.search;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SearchFilterModel;
@@ -91,16 +92,16 @@ public class SearchResultAdapter extends RecyclerView.Adapter {
         RobotoMediumTextView tvSearchResultNew;
 
         @BindView(R.id.tv_search_result_percent)
-        RobotoRegularTextView tvSearchResultPercent;
+        RobotoLightTextView tvSearchResultPercent;
 
         @BindView(R.id.tv_search_result_price_now)
         RobotoMediumTextView tvSearchResultPriceNow;
 
         @BindView(R.id.tv_search_result_price_old)
-        RobotoRegularTextView tvSearchResultPriceOld;
+        RobotoLightTextView tvSearchResultPriceOld;
 
         @BindView(R.id.tv_search_result_title)
-        RobotoRegularTextView tvSearchResultTitle;
+        RobotoLightTextView tvSearchResultTitle;
 
         public SearchResultViewHolder(View itemView) {
             super(itemView);

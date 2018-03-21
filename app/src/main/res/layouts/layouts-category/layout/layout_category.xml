@@ -24,12 +24,10 @@
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycleview_category_right"
-            android:paddingLeft="@dimen/size_16"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:layout_marginTop="-1dp"
-            tools:ignore="RtlSymmetry"
-            android:paddingStart="@dimen/size_16"/>
+            tools:ignore="RtlSymmetry" />
     </LinearLayout>
 
 

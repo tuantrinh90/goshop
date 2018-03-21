@@ -100,14 +100,7 @@ public class PromotionBannerActivity extends BaseActivity<PromotionContract.Pres
 
     @Override
     public void showPromotionBanner(PromotionBannerResponse response) {
-//        initRecyclerView(response.getImageUrl());
     }
-
-   /* private void initRecyclerView(List<String> urls) {
-        recyclerPromotionBanner.setLayoutManager(new LinearLayoutManager(this));
-        recyclerPromotionBanner.setAdapter(
-            new PromotionBannerAdapter(topBannerUrl, urls));
-    }*/
 
     @Override
     public void showNetwordErrorMessage() {

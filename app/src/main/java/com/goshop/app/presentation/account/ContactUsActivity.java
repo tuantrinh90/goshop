@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ContactUsVM;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -38,17 +39,11 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
     @BindView(R.id.iv_contact_twitter)
     ImageView ivContactTwitter;
 
-    @BindView(R.id.ll_contact_us_bottom)
-    LinearLayout llContactUsBottom;
-
-    @BindView(R.id.tv_btn_layout_pink)
-    RobotoRegularTextView tvBtnLayoutPink;
-
     @BindView(R.id.tv_contact_email)
-    RobotoRegularTextView tvContactEmail;
+    RobotoLightTextView tvContactEmail;
 
     @BindView(R.id.tv_contact_phone)
-    RobotoRegularTextView tvContactPhone;
+    RobotoLightTextView tvContactPhone;
 
     private ToastUtil toastUtil;
 
@@ -66,7 +61,6 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
     @Override
     public void inject() {
         hideRightMenu();
-        tvBtnLayoutPink.setText(getResources().getString(R.string.send));
         initPresenter();
         toastUtil = new ToastUtil(this, this);
         initInputEdit();
@@ -108,7 +102,7 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.iv_contact_facebook, R.id.iv_contact_group, R.id
-        .iv_contact_twitter, R.id.tv_btn_layout_pink})
+        .iv_contact_twitter, R.id.tv_btn_contact_us})
     public void onContactUsClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -122,7 +116,7 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
             case R.id.iv_contact_group:
             case R.id.iv_contact_twitter:
                 break;
-            case R.id.tv_btn_layout_pink:
+            case R.id.tv_btn_contact_us:
                 //TODO wait for api
                 mPresenter.contactMessageRequest(null);
                 break;

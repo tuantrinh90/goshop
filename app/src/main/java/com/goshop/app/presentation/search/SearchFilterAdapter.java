@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.search;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SearchCategoryVM;
@@ -63,11 +64,6 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
                     .inflate(R.layout.item_search_popular_detail, parent, false);
                 viewHolder = new SearchFilterPopularDetailViewHolder(detailView);
                 break;
-            case SearchFilterModel.SEARCH_POPULAR_DIVIDING:
-                View dividingView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_list_dividing, parent, false);
-                viewHolder = new SearchFixedViewHolder(dividingView);
-                break;
             case SearchFilterModel.SEARCH_NO_DATA:
                 View noDataView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_list_nodata, parent, false);
@@ -116,10 +112,10 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
     class SearchFilterCategoryViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_search_category)
-        RobotoRegularTextView tvSearchCategory;
+        RobotoLightTextView tvSearchCategory;
 
         @BindView(R.id.tv_search_category_keywords)
-        RobotoRegularTextView tvSearchCategoryKeywords;
+        RobotoLightTextView tvSearchCategoryKeywords;
 
         public SearchFilterCategoryViewHolder(View itemView) {
             super(itemView);
@@ -137,7 +133,7 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
     class SearchFilterKeywordsViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_search_keyword)
-        RobotoRegularTextView tvSearchKeyword;
+        RobotoLightTextView tvSearchKeyword;
 
         public SearchFilterKeywordsViewHolder(View itemView) {
             super(itemView);
@@ -171,7 +167,7 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
         RobotoRegularTextView tvSearchDetailOld;
 
         @BindView(R.id.tv_search_detail_title)
-        RobotoRegularTextView tvSearchDetailTitle;
+        RobotoLightTextView tvSearchDetailTitle;
 
         public SearchFilterPopularDetailViewHolder(View itemView) {
             super(itemView);
@@ -181,13 +177,15 @@ public class SearchFilterAdapter extends RecyclerView.Adapter {
         void bindingData(SearchPopularDetailVM popularDetailVM) {
             ivSearchDetail.setBackgroundResource(popularDetailVM.getIcon());
             tvSearchDetailTitle.setText(popularDetailVM.getTitle());
-            if (popularDetailVM.getOld() == null || TextUtils.isEmpty(popularDetailVM.getOld())) {
+            tvSearchDetailOld.setVisibility(View.GONE);
+            //todo this is wait for api
+            /*if (popularDetailVM.getOld() == null || TextUtils.isEmpty(popularDetailVM.getOld())) {
                 tvSearchDetailOld.setVisibility(View.GONE);
             } else {
                 tvSearchDetailOld.setVisibility(View.VISIBLE);
                 tvSearchDetailOld.setText(popularDetailVM.getOld());
                 tvSearchDetailOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            }
+            }*/
             tvSearchDetailNow.setText(popularDetailVM.getNow());
         }
     }

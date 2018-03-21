@@ -3,8 +3,8 @@
 
     <item
         android:state_checked="true"
-        android:drawable="@drawable/ic_radio_checked"/>
+        android:drawable="@drawable/ic_icon_radio_select"/>
     <item
         android:state_checked="false"
-        android:drawable="@drawable/ic_radio_uncheck"/>
+        android:drawable="@drawable/ic_icon_radio_unselect"/>
 </selector>

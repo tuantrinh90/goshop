@@ -1,40 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <LinearLayout
-        android:id="@+id/ll_select_address_bottom"
+    <include
+        layout="@layout/toolbar_img_text_img_add"/>
+    <View
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_top_shadow_white"
-        android:padding="@dimen/size_8"
-        android:layout_alignParentBottom="true">
-        <include
-            layout="@layout/layout_button_white"/>
-    </LinearLayout>
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
 
-    <LinearLayout
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_select_address"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:orientation="vertical"
-        android:layout_above="@id/ll_select_address_bottom">
-        <include
-            layout="@layout/toolbar_img_text_img_close"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_4"
-            android:background="@drawable/bg_navigation_bar_shadow"/>
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/recyclerview_select_address"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </LinearLayout>
+        android:layout_height="match_parent"/>
 
 
-
-</RelativeLayout>
+</LinearLayout>

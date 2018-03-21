@@ -9,14 +9,11 @@
 
     <include
         layout="@layout/toolbar_img_text_img_close"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
+
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recyclerview_sku"
@@ -32,6 +29,10 @@
                 layout="@layout/layout_filter_bar"/>
 
         </LinearLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
     </FrameLayout>
 
 </LinearLayout>

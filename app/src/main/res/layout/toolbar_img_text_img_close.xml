@@ -9,7 +9,8 @@
     android:layout_height="@dimen/size_56"
     app:contentInsetEnd="0dp"
     app:contentInsetStart="0dp"
-    android:background="@android:color/white" >
+    android:background="@android:color/white"
+    app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <RelativeLayout
         android:layout_width="match_parent"

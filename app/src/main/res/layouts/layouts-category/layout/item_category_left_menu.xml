@@ -3,8 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="@dimen/size_85"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/size_16"
-    android:paddingBottom="@dimen/size_16"
     android:id="@+id/rl_item_category_left"
     android:background="@drawable/selector_menu_white_grey"
     android:gravity="center">
@@ -13,6 +11,9 @@
         android:id="@+id/iv_category_left_menu"
         android:layout_width="@dimen/size_26"
         android:layout_height="@dimen/size_26"
+        android:layout_marginTop="@dimen/size_16"
+        android:layout_marginBottom="@dimen/size_4"
+        android:scaleType="center"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/app_name"
         android:layout_centerHorizontal="true"/>
@@ -21,8 +22,8 @@
         android:id="@+id/tv_category_left_menu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_6"
         android:textSize="@dimen/size_font_12"
+        android:layout_marginBottom="@dimen/size_16"
         android:gravity="center"
         android:textColor="@drawable/selector_text_black_pink_color"
         android:layout_below="@id/iv_category_left_menu"/>

@@ -2,7 +2,9 @@ package com.goshop.app.widget.viewholder;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.goshop.app.common.CustomMPCartEditText;
 import com.goshop.app.common.CustomMinusPlusEditText;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
@@ -22,7 +24,7 @@ import butterknife.ButterKnife;
 public class ProductListCartViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.et_product_cart)
-    CustomMinusPlusEditText etProductCart;
+    CustomMPCartEditText etProductCart;
 
     @BindView(R.id.iv_cart_product_thumb)
     ImageView ivCartProductThumb;
@@ -31,16 +33,16 @@ public class ProductListCartViewHolder extends RecyclerView.ViewHolder {
     LinearLayout llCartMenu;
 
     @BindView(R.id.tv_cart_product_title)
-    RobotoRegularTextView tvCartProductTitle;
+    RobotoLightTextView tvCartProductTitle;
 
     @BindView(R.id.tv_product_cart_attr)
-    RobotoRegularTextView tvProductCartAttr;
+    RobotoLightTextView tvProductCartAttr;
 
     @BindView(R.id.tv_product_cart_now)
     RobotoMediumTextView tvProductCartNow;
 
     @BindView(R.id.tv_product_cart_old)
-    RobotoRegularTextView tvProductCartOld;
+    RobotoLightTextView tvProductCartOld;
 
     public ProductListCartViewHolder(View itemView) {
         super(itemView);

@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_8"
         android:layout_alignParentTop="true"
-        android:background="@color/color_litte_grey"/>
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
 
     <RelativeLayout
         android:layout_width="match_parent"

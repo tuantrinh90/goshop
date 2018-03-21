@@ -4,160 +4,139 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_line"
     android:orientation="vertical">
 
     <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_select_address_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingRight="@dimen/size_16"
-        android:paddingTop="@dimen/size_20"
-        android:paddingBottom="@dimen/size_12"
+        android:layout_margin="@dimen/size_16"
         android:textColor="@color/color_grayscale_text"
-        android:textSize="@dimen/size_font_16"/>
-    <com.goshop.app.common.view.RobotoRegularTextView
+        android:textSize="@dimen/size_font_18"/>
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_select_address_address"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
-        android:paddingTop="@dimen/size_8"
+        android:layout_marginBottom="@dimen/size_6"
         android:textSize="@dimen/size_font_14"
         android:textColor="@color/color_grayscale_text"/>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/size_6"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
         android:orientation="horizontal">
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_select_address_city"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/size_16"
-            android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_grayscale_text"
-            android:paddingStart="@dimen/size_16"
             tools:ignore="RtlSymmetry"/>
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/size_4"
-            android:paddingTop="@dimen/size_8"
             android:text="@string/comma"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_grayscale_text"
             android:paddingEnd="@dimen/size_4"
             tools:ignore="RtlSymmetry"/>
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_select_address_state"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_grayscale_text"/>
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingRight="@dimen/size_4"
-            android:paddingTop="@dimen/size_8"
             android:text="@string/comma"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_grayscale_text"
             android:paddingEnd="@dimen/size_4"
             tools:ignore="RtlSymmetry"/>
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_select_address_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_8"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_grayscale_text"/>
     </LinearLayout>
 
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_select_address_country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
-        android:paddingTop="@dimen/size_8"
+        android:paddingBottom="@dimen/size_6"
         android:textSize="@dimen/size_font_14"
         android:textColor="@color/color_grayscale_text"/>
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_select_address_tel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingRight="@dimen/size_16"
-        android:paddingTop="@dimen/size_8"
-        android:paddingBottom="@dimen/size_12"
-        android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_grayscale_text"/>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
-        android:background="@color/color_divider_grey"/>
+        android:paddingBottom="@dimen/size_16"
+        android:background="@drawable/bg_bottom_line"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_grayscale_text"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_14"
+        android:paddingBottom="@dimen/size_14"
         android:paddingRight="@dimen/size_16"
         android:paddingLeft="@dimen/size_16">
 
-        <RadioButton
+        <com.goshop.app.common.view.RobotoRegularRadioButton
             android:id="@+id/rb_select_address_set"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
+            android:gravity="center_vertical"
+            android:textSize="@dimen/size_font_14"
+            android:paddingLeft="@dimen/size_8"
+            android:button="@drawable/checked_radio_button"
             android:textColor="@color/color_grayscale_text"
-            android:text="@string/set_it_as_shipping_address"
+            android:text="@string/set_default"
             android:layout_alignParentStart="true"/>
 
-        <LinearLayout
-            android:id="@+id/ll_select_address_edit"
+        <com.goshop.app.common.view.RobotoRegularTextView
+            android:id="@+id/tv_select_address_edit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
             android:layout_alignParentRight="true"
-            android:paddingRight="@dimen/size_12"
-            android:paddingTop="@dimen/size_14"
-            android:paddingBottom="@dimen/size_14"
-            android:layout_toLeftOf="@id/ll_address_book_remove"
-            android:orientation="horizontal"
-            android:paddingEnd="@dimen/size_12"
-            android:layout_toStartOf="@id/ll_address_book_remove"
-            tools:ignore="RelativeOverlap,RtlSymmetry"
-            android:layout_alignParentEnd="true">
+            android:layout_centerVertical="true"
+            android:textColor="@color/color_grayscale_text"
+            android:text="@string/edit"/>
 
-            <ImageView
-                android:layout_width="@dimen/size_24"
-                android:layout_height="@dimen/size_24"
-                android:background="@drawable/ic_edit_f"
-                android:contentDescription="@string/app_name"/>
+        <ImageView
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
+            android:layout_toLeftOf="@id/tv_select_address_edit"
+            android:layout_marginRight="@dimen/size_4"
+            android:layout_centerVertical="true"
+            android:src="@drawable/ic_icon_edit"
+            android:scaleType="center"
+            android:contentDescription="@string/app_name"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_grayscale_text"
-                android:text="@string/edit"/>
 
-        </LinearLayout>
     </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/color_divider_grey"/>
 
 </LinearLayout>

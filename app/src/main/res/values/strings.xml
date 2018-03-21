@@ -283,9 +283,9 @@
     <string name="faq">FAQ</string>
     <string name="terms_conditions">Terms &#38; Conditions</string>
     <string name="office_address_">Office Address:</string>
-    <string name="contact_us_address_content">Astro GS Shop Sdn Bhd (1081077-X) Astro All Asia
-        Broadcast Centre, Technology Park Malaysia, Lebuhraya Puchong-Sungai Besi, Bukit Jalil,
-        57000 Kuala Lumpur, Malaysia.
+    <string name="contact_us_address_content">Astro GS Shop Sdn Bhd (1081077-X) \nAstro All Asia
+        Broadcast Centre, \nTechnology Park Malaysia, \nLebuhraya Puchong-Sungai Besi, \nBukit Jalil,
+        57000 \nKuala Lumpur, Malaysia.
     </string>
 
     <string name="via_email">Via Email:</string>
@@ -325,6 +325,7 @@
     <string name="check_order">Check Order</string>
     <string name="payment_status">Payment Status</string>
     <string name="set_it_as_shipping_address">Set it as shipping address</string>
+    <string name="set_default">Default</string>
     <string name="select_address">Select Address</string>
     <string name="search_hint">Search products or brands</string>
     <string name="category">Category</string>
@@ -359,6 +360,7 @@
     <string name="samsung">Samsung</string>
     <string name="loreal">Loreal</string>
     <string name="wishlist">Wishlist</string>
+    <string name="add_to_wishlist">Add to Wishlist</string>
     <string name="delete">Delete</string>
     <string name="newsletter_subscription">Newsletter Subscription</string>
     <string name="my_egift_cards">My eGiftCards</string>
@@ -372,6 +374,7 @@
     <string name="user_name_test">User Name test</string>
     <string name="use">Use</string>
     <string name="checkout_tip">You have 300 Go Shop Points available</string>
+    <string name="checkout_points">300</string>
     <string name="total_order_cost">Total order cost</string>
     <string name="myr">MYR 1413.00</string>
     <string name="inclusive_of">(Inclusive of GST 6%)</string>

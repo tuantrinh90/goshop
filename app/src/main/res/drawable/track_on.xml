@@ -10,5 +10,5 @@
     <stroke android:width="@dimen/size_6"
         android:color="@android:color/transparent"/>
 
-    <solid android:color="@color/color_hot_pink" />
+    <solid android:color="@color/color_swich_pink" />
 </shape>

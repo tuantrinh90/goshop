@@ -280,23 +280,23 @@ public class ServiceData {
      */
     public static Observable<CheckoutResponse> getCheckout() {
         CheckoutResponse response = new CheckoutResponse();
-        response.setCity("Taibei");
-        response.setUserName("test1");
-        response.setFirstAddress("new Land");
-        response.setSecondAddress("new Land2");
-        response.setPostcode("0000");
+        response.setCity("City, State");
+        response.setUserName("User Name test");
+        response.setFirstAddress("Address 1");
+        response.setSecondAddress("Address 2");
+        response.setPostcode("1000");
         response.setCountry("China");
-        response.setTel("+1234567");
+        response.setTel("T:+1234567890");
         List<CheckoutResponse.CheckoutItem> checkoutItems = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
+        for (int i = 0; i < 2; i++) {
             CheckoutResponse.CheckoutItem checkoutItem = new CheckoutResponse.CheckoutItem();
             checkoutItem
                 .setProductName(ScreenHelper.getString(R.string.home_item_test_product_name));
-            checkoutItem.setAmount(String.valueOf(i));
+            checkoutItem.setAmount("x " + String.valueOf(i+1));
             checkoutItem.setColor("Blue");
             checkoutItem.setCurrentPrice("RM 119.00");
             checkoutItem.setOldPrice("RM 269.00");
-            checkoutItem.setImage(Const.BANNER_IMG4);
+            checkoutItem.setImage("");
             checkoutItems.add(checkoutItem);
         }
         response.setCheckoutItems(checkoutItems);

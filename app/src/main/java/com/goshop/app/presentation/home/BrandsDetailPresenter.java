@@ -90,7 +90,7 @@ public class BrandsDetailPresenter extends RxPresenter<BrandsDetailContract.View
     //todo this is mock data
     private BrandsDetailVM getMockData() {
         ProductsVM productsVM = new ProductsVM();
-        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
@@ -118,7 +118,6 @@ public class BrandsDetailPresenter extends RxPresenter<BrandsDetailContract.View
 
         return new BrandsDetailVM("", R.drawable.ic_brands_detail_logo,
             "summarysummarysummarysummarysummarysummary" +
-                "summarysummarysummarysummarysummarysummarysummarysummary" +
                 "summarysummarysummarysummarysummarysummarysummarysummary",
             productsVMS, sortVMS);
     }

@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_4"
-        android:paddingBottom="@dimen/size_4">
+        android:paddingBottom="@dimen/size_16">
         <include
             layout="@layout/layout_channels"/>
     </LinearLayout>
@@ -20,6 +20,8 @@
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
         android:background="@android:color/white"
         android:orientation="vertical">
 
@@ -27,7 +29,8 @@
             android:id="@+id/appbarlayout_tvshow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@android:color/white"
+            app:elevation="@dimen/size_0"
+            android:background="@drawable/bg_bottom_line"
             android:orientation="vertical">
             <android.support.design.widget.CollapsingToolbarLayout
                 android:layout_width="match_parent"

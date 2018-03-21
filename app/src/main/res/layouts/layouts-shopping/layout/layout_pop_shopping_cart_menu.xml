@@ -20,7 +20,7 @@
             android:background="@drawable/selector_btn_press_gray"
             android:paddingTop="@dimen/size_6"
             android:paddingBottom="@dimen/size_6"
-            android:paddingRight="@dimen/size_38"
+            android:paddingRight="@dimen/size_16"
             android:layout_marginTop="@dimen/size_8"
             android:layout_marginBottom="@dimen/size_8"
             android:gravity="center_vertical"
@@ -40,7 +40,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
                 android:textColor="@color/color_grayscale_text"
-                android:text="@string/wishlist"/>
+                android:text="@string/add_to_wishlist"/>
         </LinearLayout>
 
         <LinearLayout

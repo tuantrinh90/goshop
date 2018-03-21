@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/size_16"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:id="@+id/tv_btn_check_discount_apply"
+            android:layout_width="@dimen/size_68"
+            android:layout_height="@dimen/size_36"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/apply"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:background="@drawable/drawable_round_black"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RtlHardcoded"/>
+
+        <com.goshop.app.common.view.RobotoRegularEditText
+            android:id="@+id/et_checkout_discount"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_36"
+            android:layout_marginRight="@dimen/size_8"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_text"
+            android:hint="@string/enter_discount_code"
+            android:paddingLeft="@dimen/size_12"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:layout_toLeftOf="@id/tv_btn_check_discount_apply"
+            android:layout_toStartOf="@id/tv_btn_check_discount_apply"
+            android:textColorHint="@color/color_apply_grey"
+            android:background="@drawable/bg_et_editable"
+            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_16">
+
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:id="@+id/tv_btn_check_gift_card_apply"
+            android:layout_width="@dimen/size_68"
+            android:layout_height="@dimen/size_36"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/apply"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:background="@drawable/drawable_round_black"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RtlHardcoded"/>
+
+        <com.goshop.app.common.view.RobotoRegularEditText
+            android:id="@+id/et_checkout_egift"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_36"
+            android:layout_marginRight="@dimen/size_8"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_text"
+            android:hint="@string/enter_egift_card_code"
+            android:paddingLeft="@dimen/size_12"
+            android:gravity="center_vertical"
+            android:maxLines="1"
+            android:layout_alignBottom="@id/tv_btn_check_gift_card_apply"
+            android:layout_toLeftOf="@id/tv_btn_check_gift_card_apply"
+            android:layout_toStartOf="@id/tv_btn_check_gift_card_apply"
+            android:textColorHint="@color/color_apply_grey"
+            android:background="@drawable/bg_et_editable"
+            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_16">
+
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:id="@+id/tv_btn_check_points_apply"
+            android:layout_width="@dimen/size_68"
+            android:layout_height="@dimen/size_36"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/apply"
+            android:layout_alignParentRight="true"
+            android:textColor="@android:color/white"
+            android:gravity="center"
+            android:background="@drawable/drawable_round_black"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RtlHardcoded"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toLeftOf="@id/tv_btn_check_points_apply"
+            android:layout_toStartOf="@id/tv_btn_check_points_apply"
+            android:orientation="horizontal">
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:layout_gravity="center_vertical"
+                android:paddingRight="@dimen/size_8"
+                android:textColor="@color/color_black_light_second"
+                android:text="@string/use"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+            <com.goshop.app.common.view.RobotoMediumEditText
+                android:layout_width="@dimen/size_86"
+                android:layout_height="@dimen/size_36"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_black_light_second"
+                android:text="@string/checkout_points"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/size_8"
+                android:maxLines="1"
+                android:textColorHint="@color/color_apply_grey"
+                android:background="@drawable/bg_et_editable"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:layout_gravity="center_vertical"
+                android:paddingLeft="@dimen/size_8"
+                android:textColor="@color/color_black_light_second"
+                android:text="@string/go_shop_points"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <com.goshop.app.common.view.RobotoLightTextView
+        android:id="@+id/tv_checkout_attention"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/size_font_14"
+        android:layout_gravity="center_vertical"
+        android:paddingTop="@dimen/size_12"
+        android:paddingBottom="@dimen/size_20"
+        android:background="@drawable/bg_bottom_line"
+        android:textColor="@color/color_black_light_second"
+        android:text="@string/checkout_tip"
+    />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_16">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/sub_total"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"
+            android:layout_alignParentStart="true"/>
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/demo_cart_price1"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
+    </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/rounding_amount"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"
+            android:layout_alignParentStart="true"/>
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/demo_cart_price1"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/shipping_fee"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"
+            android:layout_alignParentStart="true"/>
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/demo_cart_price1"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/disscount"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"
+            android:layout_alignParentStart="true"/>
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/demo_cart_price2"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/egift_card"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"
+            android:layout_alignParentStart="true"/>
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/demo_cart_price2"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/go_shop_points_num"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"
+            android:layout_alignParentStart="true"/>
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/demo_cart_price2"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_6">
+
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_18"
+            android:text="@string/total_incl_gst"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"
+            android:layout_alignParentStart="true"/>
+
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_18"
+            android:text="@string/demo_cart_price3"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/color_main_pink"
+            android:gravity="end"
+            android:layout_alignParentEnd="true"
+            tools:ignore="RelativeOverlap"/>
+    </RelativeLayout>
+
+
+
+</LinearLayout>

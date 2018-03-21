@@ -53,27 +53,8 @@
                 android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
                 android:text="@string/whoops_email"/>
-            <com.goshop.app.common.view.RobotoRegularTextView
-                android:id="@+id/btn_test_my_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/size_16"
-                android:textColor="@color/color_grayscale_text"
-                android:background="@drawable/bg_white_top_bottom_line"
-                android:textSize="@dimen/size_font_14"
-                android:text="@string/my_address_book"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
-                android:id="@+id/btn_test_select_address"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/size_16"
-                android:textColor="@color/color_grayscale_text"
-                android:background="@drawable/bg_white_top_bottom_line"
-                android:textSize="@dimen/size_font_14"
-                android:text="@string/select_address"/>
+
 
         </LinearLayout>
     </ScrollView>

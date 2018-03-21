@@ -9,7 +9,7 @@
                 android:color="@android:color/transparent"/>
             <stroke
                 android:width="@dimen/size_4"
-                android:color="@color/color_greyish_brown"/>
+                android:color="@color/color_grayscale_secondary"/>
         </shape>
 
     </item>

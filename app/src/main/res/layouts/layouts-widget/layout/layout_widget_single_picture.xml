@@ -9,7 +9,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_8"
-        android:background="@color/color_whole_bg"/>
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
 
     <ImageView
         android:id="@+id/iv_single_picture"

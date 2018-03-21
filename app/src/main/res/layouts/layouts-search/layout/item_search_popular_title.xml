@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.goshop.app.common.view.RobotoRegularTextView
+<com.goshop.app.common.view.RobotoLightTextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/tv_search_popular_title"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginLeft="@dimen/size_8"
+    android:layout_marginRight="@dimen/size_8"
     android:paddingBottom="@dimen/size_12"
     android:paddingTop="@dimen/size_12"
-    android:background="@android:color/white"
+    android:background="@drawable/bg_white_top_line"
     android:text="@string/popular_products"
     android:textColor="@color/color_grayscale_text"
     android:textSize="@dimen/size_font_14"

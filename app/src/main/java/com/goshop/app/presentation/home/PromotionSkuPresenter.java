@@ -66,7 +66,7 @@ public class PromotionSkuPresenter extends RxPresenter<PromotionSkuContract.View
         sortVMS.add(sortVM3);
         sortVMS.add(sortVM4);
         List<PromotionSkuModel> skuModels = new ArrayList<>();
-        SkuBannerVM bannerVM = new SkuBannerVM("", R.drawable.ic_samsung_detail);
+        SkuBannerVM bannerVM = new SkuBannerVM("", R.drawable.ic_banner_demo);
         SkuFilterWithDataVM withDataVM = new SkuFilterWithDataVM(getProductsVMS(), sortVMS,
             getFilterMenu());
         skuModels.add(bannerVM);
@@ -77,7 +77,7 @@ public class PromotionSkuPresenter extends RxPresenter<PromotionSkuContract.View
     //todo this is mock data, please do not delete
     private List<ProductsVM> getProductsVMS() {
         ProductsVM productsVM = new ProductsVM();
-        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");

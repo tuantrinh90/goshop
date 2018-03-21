@@ -2,6 +2,7 @@ package com.goshop.app.presentation.home;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.PromotionSkuModel;
 import com.goshop.app.data.model.SkuBannerVM;
@@ -99,7 +100,8 @@ public class PromotionSkuAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(SkuBannerVM bannerVM) {
-            Glide.with(itemView.getContext()).load(bannerVM.getBannerUrl()).asBitmap()
+            //todo wait for api
+            Glide.with(itemView.getContext()).load(""/*bannerVM.getBannerUrl()*/).asBitmap()
                 .error(bannerVM.getBannerDefault())
                 .into(ivSkuBanner);
         }
@@ -118,7 +120,7 @@ public class PromotionSkuAdapter extends RecyclerView.Adapter {
         RecyclerView recyclerViewFilter;
 
         @BindView(R.id.tv_btn_data_sort)
-        RobotoRegularTextView tvBtnDataSort;
+        RobotoLightTextView tvBtnDataSort;
 
         private List<SortVM> sortVMS;
 

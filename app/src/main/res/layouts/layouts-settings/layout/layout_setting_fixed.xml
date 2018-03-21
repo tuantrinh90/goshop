@@ -43,7 +43,7 @@
 
                     <Switch
                         android:id="@+id/switch_setting_email"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/size_40"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/switch_thumb_selector"
                         android:track="@drawable/switch_track_selector"
@@ -71,7 +71,7 @@
 
                     <Switch
                         android:id="@+id/switch_setting_sms"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/size_40"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/switch_thumb_selector"
                         android:track="@drawable/switch_track_selector"
@@ -99,7 +99,7 @@
 
                     <Switch
                         android:id="@+id/switch_setting_notification"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/size_40"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/switch_thumb_selector"
                         android:track="@drawable/switch_track_selector"
@@ -127,7 +127,7 @@
 
                     <Switch
                         android:id="@+id/switch_setting_market"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/size_40"
                         android:layout_height="wrap_content"
                         android:thumb="@drawable/switch_thumb_selector"
                         android:track="@drawable/switch_track_selector"

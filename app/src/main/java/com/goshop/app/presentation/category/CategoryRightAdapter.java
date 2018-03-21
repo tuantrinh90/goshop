@@ -1,7 +1,9 @@
 package com.goshop.app.presentation.category;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularCheckBox;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
@@ -116,7 +118,7 @@ public class CategoryRightAdapter extends RecyclerView.Adapter {
         ImageView ivItemCategoryExpand;
 
         @BindView(R.id.tv_category_right_parent)
-        RobotoMediumTextView tvCategoryRightParent;
+        RobotoRegularTextView tvCategoryRightParent;
 
         public ParentViewHolder(View itemView) {
             super(itemView);
@@ -133,7 +135,7 @@ public class CategoryRightAdapter extends RecyclerView.Adapter {
     class ChildViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_item_category_child)
-        RobotoRegularTextView tvItemCategoryChild;
+        RobotoLightTextView tvItemCategoryChild;
 
         public ChildViewHolder(View itemView) {
             super(itemView);

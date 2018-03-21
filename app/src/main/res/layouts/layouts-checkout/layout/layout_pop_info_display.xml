@@ -5,11 +5,12 @@
     android:layout_height="wrap_content"
     android:paddingRight="@dimen/size_8">
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_pop_info"
         android:layout_width="@dimen/size_150"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
+        android:lineSpacingMultiplier="1.2"
         android:background="@drawable/ic_icon_tip_pop"
         android:paddingTop="@dimen/size_8"
         android:paddingBottom="@dimen/size_8"

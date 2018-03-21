@@ -4,15 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:paddingRight="@dimen/size_8"
+    android:paddingLeft="@dimen/size_8"
     android:orientation="vertical"
     android:background="@android:color/white"
     tools:ignore="Overdraw">
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_20"
-        android:paddingBottom="@dimen/size_14"
+        android:paddingTop="@dimen/size_8"
         android:gravity="center"
         android:textColor="@color/color_grayscale_secondary"
         android:textSize="@dimen/size_font_14"
@@ -22,48 +23,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_search_or"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textColor="@color/color_grayscale_secondary"
+            android:padding="@dimen/size_16"
+            android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"
             android:text="@string/or"/>
 
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1"
+            android:layout_height="@dimen/size_divider"
             android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/tv_search_or"
             android:layout_alignParentLeft="true"
-            android:layout_marginRight="@dimen/size_16"
-            android:layout_marginLeft="@dimen/size_32"
-            android:background="@color/color_divider_grey"
+            android:layout_marginLeft="@dimen/size_58"
+            android:background="@color/color_bg_disabled_divider"
             android:layout_toStartOf="@id/tv_search_or"
             android:layout_alignParentStart="true"
-            android:layout_marginEnd="@dimen/size_16"
-            android:layout_marginStart="@dimen/size_32"/>
+            android:layout_marginStart="@dimen/size_58"/>
         <View
             android:layout_width="match_parent"
-            android:layout_height="@dimen/size_1"
+            android:layout_height="@dimen/size_divider"
             android:layout_centerVertical="true"
             android:layout_toRightOf="@id/tv_search_or"
             android:layout_alignParentRight="true"
-            android:layout_marginLeft="@dimen/size_16"
-            android:layout_marginRight="@dimen/size_32"
-            android:background="@color/color_divider_grey"
+            android:layout_marginRight="@dimen/size_58"
+            android:background="@color/color_bg_disabled_divider"
             android:layout_toEndOf="@id/tv_search_or"
             android:layout_alignParentEnd="true"
-            android:layout_marginStart="@dimen/size_16"
-            android:layout_marginEnd="@dimen/size_32"/>
+            android:layout_marginEnd="@dimen/size_58"/>
 
     </RelativeLayout>
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_14"
-        android:paddingBottom="@dimen/size_20"
+        android:paddingBottom="@dimen/size_24"
         android:gravity="center"
         android:textColor="@color/color_grayscale_secondary"
         android:textSize="@dimen/size_font_14"

@@ -11,6 +11,11 @@
     <include
         layout="@layout/toolbar_search_with_bottom_shadow"/>
 
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
+
     <include
         layout="@layout/layout_filter_bar"/>
 

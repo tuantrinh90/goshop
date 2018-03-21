@@ -79,9 +79,6 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     @BindView(R.id.tv_btn_sort)
     RobotoLightTextView tvBtnSort;
 
-    @BindView(R.id.tv_search_or)
-    RobotoRegularTextView tvSearchOr;
-
     private CategoryTreeDetailAdapter detailAdapter;
 
     private FilterMenuAdapter menuAdapter;
