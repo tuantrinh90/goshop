@@ -1,6 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.QAVM;
@@ -46,10 +47,10 @@ public class PDPQaItemAdapter extends RecyclerView.Adapter {
         RobotoMediumTextView tvPdpQaTitle;
 
         @BindView(R.id.tv_qa_item_answer_count)
-        RobotoRegularTextView tvQaItemAnswerCount;
+        RobotoLightTextView tvQaItemAnswerCount;
 
         @BindView(R.id.tv_qa_item_update)
-        RobotoRegularTextView tvQaItemUpdate;
+        RobotoLightTextView tvQaItemUpdate;
 
         public QaItemViewHolder(View itemView) {
             super(itemView);

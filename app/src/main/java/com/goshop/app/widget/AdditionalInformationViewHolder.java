@@ -1,6 +1,7 @@
 package com.goshop.app.widget;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.AdditionalInformationVM;
 
@@ -13,10 +14,10 @@ import butterknife.ButterKnife;
 public class AdditionalInformationViewHolder extends RecyclerView.ViewHolder {
 
     @BindView(R.id.tv_additional_info_lable)
-    RobotoRegularTextView tvAdditionalInfoLable;
+    RobotoLightTextView tvAdditionalInfoLable;
 
     @BindView(R.id.tv_additional_info_value)
-    RobotoRegularTextView tvAdditionalInfoValue;
+    RobotoLightTextView tvAdditionalInfoValue;
 
     public AdditionalInformationViewHolder(View itemView) {
         super(itemView);

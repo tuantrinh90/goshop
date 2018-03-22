@@ -54,6 +54,8 @@
     <color name="color_redeem_start">#323232</color>
     <color name="color_redeem_end">#181818</color>
     <color name="color_swich_pink">#50ee418b</color>
+    <color name="color_white_circle">#30ffffff</color>
+    <color name="color_grey_count">#611a1a1a</color>
     <!--document color value and zeplin color start-->
     <color name="color_select_grey">#0a000000</color><!--4%-->
     <color name="color_orange_red">#ff5722</color>

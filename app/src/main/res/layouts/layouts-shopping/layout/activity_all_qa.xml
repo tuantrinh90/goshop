@@ -28,12 +28,13 @@
         android:layout_alignParentBottom="true"
         android:padding="@dimen/size_8"
         android:background="@drawable/bg_top_shadow_white">
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_all_qa_submit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:padding="@dimen/size_18"
+            android:layout_width="@dimen/size_84"
+            android:layout_height="@dimen/size_48"
             android:text="@string/submit"
+            android:gravity="center"
+            android:textSize="@dimen/size_font_14"
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
             android:background="@drawable/drawable_round_black"
@@ -42,16 +43,16 @@
         <com.goshop.app.common.view.RobotoRegularEditText
             android:id="@+id/et_all_qa_enter"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/size_48"
             android:background="@drawable/drawable_round_gray"
             android:layout_toLeftOf="@id/tv_all_qa_submit"
             android:layout_marginRight="@dimen/size_8"
-            android:paddingTop="@dimen/size_14"
-            android:paddingBottom="@dimen/size_14"
             android:paddingLeft="@dimen/size_12"
             android:paddingRight="@dimen/size_12"
+            android:gravity="center_vertical"
             android:textCursorDrawable="@null"
-            android:textColor="@color/color_grayscale_text"
+            android:textSize="@dimen/size_font_16"
+            android:textColor="@color/color_black_light"
             android:textColorHint="@color/color_text_hint"
             android:hint="@string/enter_question"
             tools:ignore="RtlHardcoded"/>
@@ -66,7 +67,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_24"
+            android:paddingTop="@dimen/size_20"
             android:paddingLeft="@dimen/size_16"
             android:paddingRight="@dimen/size_16"
             android:paddingBottom="@dimen/size_8"
@@ -76,12 +77,14 @@
                 android:id="@+id/tv_all_qa_question"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_grayscale_text"
+                android:textColor="@color/color_black_light"
                 android:textSize="@dimen/size_font_20"/>
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_4"
+                android:paddingRight="@dimen/size_8"
+                android:background="@drawable/bg_right_line"
                 android:text="@string/questions"
                 android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
@@ -91,12 +94,12 @@
                 android:id="@+id/tv_all_qa_answers"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:paddingLeft="@dimen/size_20"
-                android:textColor="@color/color_grayscale_text"
+                android:paddingLeft="@dimen/size_8"
+                android:textColor="@color/color_black_light"
                 android:textSize="@dimen/size_font_20"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
 
-            <com.goshop.app.common.view.RobotoRegularTextView
+            <com.goshop.app.common.view.RobotoLightTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_4"

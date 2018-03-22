@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
@@ -49,14 +50,11 @@ public class QADetailAdapter extends RecyclerView.Adapter {
 
     class QADetailViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.view_qa_detail_divider)
-        View divider;
-
         @BindView(R.id.tv_qa_detail_title)
-        RobotoMediumTextView tvQaDetailTitle;
+        RobotoLightTextView tvQaDetailTitle;
 
         @BindView(R.id.tv_qa_detail_user)
-        RobotoRegularTextView tvQaDetailUser;
+        RobotoLightTextView tvQaDetailUser;
 
         public QADetailViewHolder(View itemView) {
             super(itemView);
@@ -64,7 +62,6 @@ public class QADetailAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(QuestionAnswerDataVM dataVM, int position) {
-            divider.setVisibility(position == 0 ? View.GONE : View.VISIBLE);
             tvQaDetailTitle.setText(dataVM.getTitle());
             tvQaDetailUser.setText(dataVM.getUser());
         }

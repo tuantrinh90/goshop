@@ -3,6 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
@@ -39,7 +40,7 @@ public class QuestionAnswerDetailActivity extends BaseActivity<QADetailContract.
     RelativeLayout rlQaDetailBottom;
 
     @BindView(R.id.tv_qa_detail_submit)
-    RobotoRegularTextView tvQaDetailSubmit;
+    RobotoMediumTextView tvQaDetailSubmit;
 
     private QADetailAdapter detailAdapter;
 

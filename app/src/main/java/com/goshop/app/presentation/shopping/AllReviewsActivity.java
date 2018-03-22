@@ -6,7 +6,6 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AllReviewsVM;
-import com.goshop.app.widget.adapter.PDPReviewsItemAdapter;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -38,7 +37,7 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
     @BindView(R.id.tv_reviews_amount)
     RobotoRegularTextView tvReviewsAmount;
 
-    private PDPReviewsItemAdapter reviewsItemAdapter;
+    private AllReviewsItemAdapter reviewsItemAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -70,7 +69,7 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerviewAllReviews.setLayoutManager(layoutManager);
-        reviewsItemAdapter = new PDPReviewsItemAdapter(new ArrayList<>());
+        reviewsItemAdapter = new AllReviewsItemAdapter(new ArrayList<>());
         recyclerviewAllReviews.setAdapter(reviewsItemAdapter);
     }
 

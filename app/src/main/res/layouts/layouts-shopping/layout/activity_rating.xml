@@ -10,12 +10,16 @@
 
     <include
         layout="@layout/toolbar_right_text"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
 
     <ImageView
         android:id="@+id/iv_rating_thumb"
         android:layout_width="@dimen/size_60"
         android:layout_height="@dimen/size_60"
-        android:layout_marginTop="@dimen/size_26"
+        android:layout_marginTop="@dimen/size_21"
         android:contentDescription="@string/app_name"
         android:background="@drawable/ic_bought"/>
     <RatingBar
@@ -33,7 +37,7 @@
         android:id="@+id/et_rating_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_20"
+        android:layout_marginTop="@dimen/size_29"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
         animET:hint="@string/title"/>
@@ -42,11 +46,11 @@
         android:id="@+id/textinputlayout_rating"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_16"
+        android:layout_marginTop="@dimen/size_21"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginRight="@dimen/size_16"
         android:layout_marginBottom="@dimen/size_24"
-        android:hint="@string/details"
+        android:hint="@string/review_content"
         app:counterEnabled="true"
         app:counterMaxLength="1000"
         app:counterOverflowTextAppearance="@style/OverflowTextAppearance"

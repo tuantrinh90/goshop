@@ -3,20 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_line"
+    android:paddingBottom="@dimen/size_4"
+    android:paddingTop="@dimen/size_12"
     android:orientation="vertical">
 
     <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_btn_add_more"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="@dimen/size_16"
+        android:paddingBottom="@dimen/size_16"
         android:gravity="center"
         android:text="@string/view_more"
-        android:textColor="@color/color_text_hint"
+        android:textColor="@color/color_grayscale_secondary"
         android:textSize="@dimen/size_font_14"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_divider"
-        android:background="@color/color_bg_disabled_divider"/>
 
 </LinearLayout>

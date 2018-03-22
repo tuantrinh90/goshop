@@ -149,6 +149,8 @@
     <string name="buy_now">Buy Now</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="details">Details</string>
+    <string name="details_top_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </string>
+    <string name="by_user_time">By User Name on 1/2/18</string>
     <string name="details_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam
         velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit
         elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit,

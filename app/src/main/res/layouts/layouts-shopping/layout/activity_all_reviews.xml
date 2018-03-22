@@ -27,7 +27,7 @@
                 android:id="@+id/iv_all_reviews_thumb"
                 android:layout_width="@dimen/size_60"
                 android:layout_height="@dimen/size_60"
-                android:layout_marginTop="@dimen/size_26"
+                android:layout_marginTop="@dimen/size_20"
                 android:contentDescription="@string/app_name"
                 android:background="@drawable/ic_bought"/>
             <RatingBar
@@ -58,9 +58,7 @@
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/recyclerview_all_reviews"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:paddingLeft="@dimen/size_16"
-                android:paddingRight="@dimen/size_16"/>
+                android:layout_height="match_parent" />
         </LinearLayout>
 
 

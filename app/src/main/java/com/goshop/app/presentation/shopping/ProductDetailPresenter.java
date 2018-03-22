@@ -4,6 +4,7 @@ import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
+import com.goshop.app.presentation.model.PdpAdditionalItemVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
 import com.goshop.app.presentation.model.PdpFrequentlyBoughtTogetherVM;
 import com.goshop.app.presentation.model.PdpQAVM;
@@ -65,6 +66,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         detailModels.add(getProductTopData());
         detailModels.addAll(getProductSummary());
         detailModels.addAll(getProductsDetail());
+        detailModels.addAll(getProductsDelivery());
         detailModels.addAll(getProductReviews());
         detailModels.addAll(getProductQuestionAnswer());
         detailModels.addAll(getAdditionalInformation());
@@ -94,7 +96,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         sizeVMS.add(new SizeVM("L"));
         return new ProductDetailTopVM(images,
             "Kloken Living Box Value Set Kloken Living Box Value Set",
-            "RM 199.00", "RM 268.00", "-30%", colorVMS, sizeVMS, "2");
+            "RM 269.00", "RM 199.00", "-30%", colorVMS, sizeVMS, "2");
     }
 
     //TODO(helen) this is mock data
@@ -114,6 +116,14 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     }
 
     //TODO(helen) this is mock data
+    private List<ProductDetailModel> getProductsDelivery() {
+        List<ProductDetailModel> detailModels = new ArrayList<>();
+        detailModels.add(new PdpExpandTitleVM(false, false, "Delivery Info"));
+        detailModels.add(new ProductDetailModel(ProductDetailModel.DETAIL_DELIVERY_INFO));
+        return detailModels;
+    }
+
+    //TODO(helen) this is mock data
     private List<ProductDetailModel> getProductReviews() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(true, true, "Reviews"));
@@ -123,7 +133,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
             "User Name", "1/2/18");
         reviewsVMS.add(reviewsVM);
         reviewsVMS.add(reviewsVM);
-        detailModels.add(new PdpReviewsVM(5, "100", reviewsVMS));
+        detailModels.add(new PdpReviewsVM(5, "(100)", reviewsVMS));
         return detailModels;
     }
 
@@ -145,15 +155,19 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     private List<ProductDetailModel> getAdditionalInformation() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(true, true, "Additional Information"));
-        detailModels.add(new PdpAdditionalInformationVM("A/S Processing Standard", "N/A"));
-        detailModels.add(new PdpAdditionalInformationVM("Quality Guarantee Period", "N/A"));
-        detailModels.add(new PdpAdditionalInformationVM("Basic Constitution", "N/A"));
-        detailModels.add(new PdpAdditionalInformationVM("Precaution", "N/A"));
-        detailModels
-            .add(new PdpAdditionalInformationVM("Return/Cancel Processing Standard", "N/A"));
-        detailModels.add(new PdpAdditionalInformationVM("Model Name", "N/A"));
-        detailModels.add(new PdpAdditionalInformationVM("Material", "N/A"));
-        detailModels.add(new PdpAdditionalInformationVM("Product Features", "N/A"));
+
+        List<PdpAdditionalItemVM> additionalItemVMS = new ArrayList<>();
+
+        additionalItemVMS.add(new PdpAdditionalItemVM("A/S Processing Standard", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Quality Guarantee Period", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Basic Constitution", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Precaution", "N/A"));
+        additionalItemVMS
+            .add(new PdpAdditionalItemVM("Return/Cancel Processing Standard", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Model Name", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Material", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Product Features", "N/A"));
+        detailModels.add(new PdpAdditionalInformationVM(additionalItemVMS));
         return detailModels;
     }
 
@@ -162,7 +176,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(false, false, "Frequently Bought Together"));
         ProductsVM productsVM = new ProductsVM();
-        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");

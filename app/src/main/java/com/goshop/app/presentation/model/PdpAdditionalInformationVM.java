@@ -1,30 +1,21 @@
 package com.goshop.app.presentation.model;
 
+import java.util.List;
+
 public class PdpAdditionalInformationVM extends ProductDetailModel {
 
-    private String lable;
+    private List<PdpAdditionalItemVM> itemVMS;
 
-    private String unit;
-
-    public PdpAdditionalInformationVM(String lable, String unit) {
+    public PdpAdditionalInformationVM(List<PdpAdditionalItemVM> itemVMS) {
         super(ProductDetailModel.DETAIL_ADDITIONAL_INFORMATION);
-        this.lable = lable;
-        this.unit = unit;
+        this.itemVMS = itemVMS;
     }
 
-    public String getUnit() {
-        return unit;
+    public List<PdpAdditionalItemVM> getItemVMS() {
+        return itemVMS;
     }
 
-    public void setUnit(String unit) {
-        this.unit = unit;
-    }
-
-    public String getLable() {
-        return lable;
-    }
-
-    public void setLable(String lable) {
-        this.lable = lable;
+    public void setItemVMS(List<PdpAdditionalItemVM> itemVMS) {
+        this.itemVMS = itemVMS;
     }
 }

@@ -1,9 +1,8 @@
-package com.goshop.app.widget.adapter;
+package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ReviewsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -17,11 +16,11 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PDPReviewsItemAdapter extends RecyclerView.Adapter {
+public class AllReviewsItemAdapter extends RecyclerView.Adapter {
 
     List<ReviewsVM> reviewsVMS;
 
-    public PDPReviewsItemAdapter(
+    public AllReviewsItemAdapter(
         List<ReviewsVM> reviewsVMS) {
         this.reviewsVMS = reviewsVMS;
     }
@@ -34,7 +33,7 @@ public class PDPReviewsItemAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.item_reviews, parent, false);
+            .inflate(R.layout.item_all_reviews, parent, false);
         return new ReviewsItemViewHolder(view);
     }
 

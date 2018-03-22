@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
@@ -62,20 +63,17 @@ public class QuestionAnswerDataAdapter extends RecyclerView.Adapter {
 
     class QuestionAnswerViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.view_question_answer_divider)
-        View divider;
-
         @BindView(R.id.tv_question_answer_content)
-        RobotoRegularTextView tvQuestionAnswerContent;
+        RobotoLightTextView tvQuestionAnswerContent;
 
         @BindView(R.id.tv_question_answer_counts)
-        RobotoRegularTextView tvQuestionAnswerCounts;
+        RobotoLightTextView tvQuestionAnswerCounts;
 
         @BindView(R.id.tv_question_answer_title)
         RobotoMediumTextView tvQuestionAnswerTitle;
 
         @BindView(R.id.tv_question_answer_update)
-        RobotoRegularTextView tvQuestionAnswerUpdate;
+        RobotoLightTextView tvQuestionAnswerUpdate;
 
         public QuestionAnswerViewHolder(View itemView) {
             super(itemView);
@@ -83,7 +81,6 @@ public class QuestionAnswerDataAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(QuestionAnswerDataVM questionAnswerDataVM, int position) {
-            divider.setVisibility(position == 0 ? View.GONE : View.VISIBLE);
             tvQuestionAnswerTitle.setText(questionAnswerDataVM.getTitle());
             tvQuestionAnswerContent.setText(questionAnswerDataVM.getContent());
             tvQuestionAnswerCounts.setText(questionAnswerDataVM.getCount());

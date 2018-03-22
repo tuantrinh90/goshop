@@ -2,9 +2,9 @@ package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMPEditText;
-import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
@@ -13,6 +13,7 @@ import com.goshop.app.presentation.model.PdpQAVM;
 import com.goshop.app.presentation.model.PdpReviewsVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.presentation.model.ProductDetailTopVM;
+import com.goshop.app.presentation.shopping.AdditionalItemAdapter;
 import com.goshop.app.presentation.shopping.PdpBannerAdapter;
 
 import android.graphics.Paint;
@@ -95,13 +96,18 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
                 break;
             case ProductDetailModel.DETAIL_ADDITIONAL_INFORMATION:
                 View additionalView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_additional_information, parent, false);
+                    .inflate(R.layout.layout_additional_infomation, parent, false);
                 viewHolder = new AdditionalInformationViewHolder(additionalView);
                 break;
             case ProductDetailModel.DETAIL_FREQUENTLY_BOUGHT_TOGETHER:
                 View boughtView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.layout_widget_horizontal, parent, false);
                 viewHolder = new WidgetProductScrollerViewHolder(boughtView);
+                break;
+            case ProductDetailModel.DETAIL_DELIVERY_INFO:
+                View deliveryView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_pdp_delivery_info, parent, false);
+                viewHolder = new DeliveryInfoViewHolder(deliveryView);
                 break;
         }
         return viewHolder;
@@ -126,6 +132,8 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         } else if (holder instanceof WidgetProductScrollerViewHolder) {
             ((WidgetProductScrollerViewHolder) holder).bindingData(
                 (PdpFrequentlyBoughtTogetherVM) displayDetailModels.get(position));
+        } else if (holder instanceof DeliveryInfoViewHolder) {
+            //todo wait for api
         }
     }
 
@@ -200,11 +208,8 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
 
     class AdditionalInformationViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.tv_additional_info_lable)
-        RobotoRegularTextView tvAdditionalInfoLable;
-
-        @BindView(R.id.tv_additional_info_value)
-        RobotoRegularTextView tvAdditionalInfoValue;
+        @BindView(R.id.recyclerview_additional)
+        RecyclerView recyclerViewAdditional;
 
         public AdditionalInformationViewHolder(View itemView) {
             super(itemView);
@@ -212,8 +217,10 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(PdpAdditionalInformationVM additionalInformationVM) {
-            tvAdditionalInfoLable.setText(additionalInformationVM.getLable());
-            tvAdditionalInfoValue.setText(additionalInformationVM.getUnit());
+            LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
+            recyclerViewAdditional.setLayoutManager(layoutManager);
+            recyclerViewAdditional
+                .setAdapter(new AdditionalItemAdapter(additionalInformationVM.getItemVMS()));
         }
     }
 
@@ -228,11 +235,11 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_btn_add_more)
         RobotoMediumTextView tvBtnAddMore;
 
+        @BindView(R.id.tv_btn_ask_question)
+        RobotoLightTextView tvBtnAskQuestion;
+
         @BindView(R.id.tv_question_num)
         RobotoMediumTextView tvQuestionNum;
-
-        @BindView(R.id.tv_btn_ask_question)
-        RobotoRegularTextView tvBtnAskQuestion;
 
         public PDPQaViewHolder(View itemView) {
             super(itemView);
@@ -247,9 +254,11 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             recyclerViewQA.setLayoutManager(manager);
             PDPQaItemAdapter detailAdapter = new PDPQaItemAdapter(widgetPDPQaVM.getQavms());
             recyclerViewQA.setAdapter(detailAdapter);
-            tvBtnAddMore.setOnClickListener(v -> onProductDetailItemClickListener.onMoreQuestionClick());
+            tvBtnAddMore
+                .setOnClickListener(v -> onProductDetailItemClickListener.onMoreQuestionClick());
 
-            tvBtnAskQuestion.setOnClickListener(v->onProductDetailItemClickListener.onAskQuestionClick());
+            tvBtnAskQuestion
+                .setOnClickListener(v -> onProductDetailItemClickListener.onAskQuestionClick());
         }
     }
 
@@ -265,7 +274,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         RobotoMediumTextView tvBtnAddMore;
 
         @BindView(R.id.tv_btn_review_top)
-        RobotoRegularTextView tvBtnReviewTop;
+        RobotoLightTextView tvBtnReviewTop;
 
         @BindView(R.id.tv_reviews_total_count)
         RobotoMediumTextView tvReviewsTotalCount;
@@ -278,9 +287,11 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         public void bindingData(PdpReviewsVM pdpReviewsVM) {
             tvReviewsTotalCount.setText(pdpReviewsVM.getReviewsCounts());
             ratingBar.setRating(pdpReviewsVM.getTotalStarStep());
-            tvBtnAddMore.setOnClickListener(v -> onProductDetailItemClickListener.onMoreReviewClick());
+            tvBtnAddMore
+                .setOnClickListener(v -> onProductDetailItemClickListener.onMoreReviewClick());
 
-            tvBtnReviewTop.setOnClickListener(v->onProductDetailItemClickListener.onWriteAReviewClick());
+            tvBtnReviewTop
+                .setOnClickListener(v -> onProductDetailItemClickListener.onWriteAReviewClick());
 
             LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
             manager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -288,6 +299,13 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             PDPReviewsItemAdapter detailAdapter = new PDPReviewsItemAdapter(
                 pdpReviewsVM.getReviewsVMS());
             recyclerView.setAdapter(detailAdapter);
+        }
+    }
+
+    class DeliveryInfoViewHolder extends RecyclerView.ViewHolder {
+
+        public DeliveryInfoViewHolder(View itemView) {
+            super(itemView);
         }
     }
 
@@ -302,9 +320,6 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
 
         @BindView(R.id.indicator_product_detail_top)
         CustomPagerCircleIndicator circleIndicator;
-
-        @BindView(R.id.et_product_detail_delivery)
-        RobotoRegularEditText etProductDetailDelivery;
 
         @BindView(R.id.et_product_minus_plus)
         CustomMPEditText etProductMinusPlus;
@@ -321,9 +336,6 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         @BindView(R.id.rl_product_detail_size)
         RelativeLayout rlProductDetailSize;
 
-        @BindView(R.id.tv_btn_product_detail_check)
-        RobotoMediumTextView tvBtnProductDetailCheck;
-
         @BindView(R.id.tv_product_detail_color)
         RobotoRegularTextView tvProductDetailColor;
 
@@ -331,10 +343,10 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         RobotoMediumTextView tvProductDetailNow;
 
         @BindView(R.id.tv_product_detail_old)
-        RobotoRegularTextView tvProductDetailOld;
+        RobotoLightTextView tvProductDetailOld;
 
         @BindView(R.id.tv_product_detail_percent)
-        RobotoRegularTextView tvProductDetailPercent;
+        RobotoLightTextView tvProductDetailPercent;
 
         @BindView(R.id.tv_product_detail_size)
         RobotoRegularTextView tvProductDetailSize;
@@ -365,12 +377,12 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             ivProductDetailWish.setSelected(false);
             ivProductDetailShare.setOnClickListener(v -> {
             });
-            ivProductDetailWish.setOnClickListener(v -> ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected()));
+            ivProductDetailWish.setOnClickListener(
+                v -> ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected()));
             rlProductDetailColor.setOnClickListener(v -> {
             });
             rlProductDetailSize.setOnClickListener(v -> {
             });
-            tvBtnProductDetailCheck.setOnClickListener(v -> onProductDetailItemClickListener.onCheckClick());
             //todo this is mock data
             tvProductDetailColor.setText(bannerVM.getColorVMS().get(0).getColorName());
             tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSize());

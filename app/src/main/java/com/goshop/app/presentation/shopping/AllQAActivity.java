@@ -45,7 +45,7 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     RobotoMediumTextView tvAllQaQuestion;
 
     @BindView(R.id.tv_all_qa_submit)
-    RobotoRegularTextView tvAllQaSubmit;
+    RobotoMediumTextView tvAllQaSubmit;
 
     private QuestionAnswerDataAdapter dataAdapter;
 
