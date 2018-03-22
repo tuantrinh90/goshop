@@ -81,8 +81,10 @@ public class CustomAnimEditText extends RelativeLayout {
                                 tilAnimEdittext.setErrorEnabled(true);
                                 tilAnimEdittext.setError(targetEditText.getContext()
                                     .getString(R.string.exceed_number));
+                                tilAnimEdittext.setHintTextAppearance(R.style.errorAppearance);
                             } else {
                                 tilAnimEdittext.setErrorEnabled(false);
+                                tilAnimEdittext.setHintTextAppearance(R.style.hintAppearance);
                             }
                         } else {
                             deleteIv.setVisibility(View.VISIBLE);
@@ -99,19 +101,23 @@ public class CustomAnimEditText extends RelativeLayout {
                             case INPUT_EMAIL:
                                 if (!isEmail(charSequence.toString())) {
                                     tilAnimEdittext.setErrorEnabled(true);
+                                    tilAnimEdittext.setHintTextAppearance(R.style.errorAppearance);
                                     tilAnimEdittext.setError(targetEditText.getContext()
                                         .getString(R.string.format_email_warning));
                                 } else {
                                     tilAnimEdittext.setErrorEnabled(false);
+                                    tilAnimEdittext.setHintTextAppearance(R.style.hintAppearance);
                                 }
                                 break;
                             case INPUT_MOBILE:
                                 if (!isMobileNO(charSequence.toString())) {
                                     tilAnimEdittext.setErrorEnabled(true);
+                                    tilAnimEdittext.setHintTextAppearance(R.style.errorAppearance);
                                     tilAnimEdittext.setError(targetEditText.getContext()
                                         .getString(R.string.format_mobile_warning));
                                 } else {
                                     tilAnimEdittext.setErrorEnabled(false);
+                                    tilAnimEdittext.setHintTextAppearance(R.style.hintAppearance);
                                 }
                                 break;
                         }
@@ -161,6 +167,7 @@ public class CustomAnimEditText extends RelativeLayout {
     public void setErrorMessage(String errorMessage) {
         tilAnimEdittext.setErrorEnabled(true);
         tilAnimEdittext.setError(errorMessage);
+        tilAnimEdittext.setHintTextAppearance(R.style.errorAppearance);
         etAnimEdittext.setFocusable(true);
         etAnimEdittext.requestFocus();
     }
