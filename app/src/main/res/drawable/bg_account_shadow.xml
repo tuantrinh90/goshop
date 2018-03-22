@@ -5,10 +5,9 @@
         <shape android:shape="rectangle">
             <gradient
                 android:angle="270"
-                android:endColor="@color/color_end_shadow"
-                android:centerColor="@color/color_end_shadow"
-                android:startColor="@color/color_bg_disabled_divider"
-                android:centerY="0.12"
+                android:endColor="@android:color/transparent"
+                android:startColor="@color/color_account_shadow"
+                android:centerY="0.5"
             />
         </shape>
     </item>

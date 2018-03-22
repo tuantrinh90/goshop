@@ -45,7 +45,7 @@
             android:textSize="@dimen/size_font_14"
             android:paddingRight="@dimen/size_8"
             tools:ignore="RtlSymmetry"
-            android:paddingEnd="@dimen/size_18"/>
+            android:paddingEnd="@dimen/size_8"/>
         <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_answers_num"
             android:layout_width="wrap_content"

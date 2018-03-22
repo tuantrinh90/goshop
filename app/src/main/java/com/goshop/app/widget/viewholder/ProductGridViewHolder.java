@@ -4,9 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
-import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.graphics.Paint;
@@ -51,7 +49,10 @@ public class ProductGridViewHolder extends RecyclerView.ViewHolder {
         tvGridOld.setText(oldPrice);
         tvGridNowPrice.setText(nowPrice);
         tvGridOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        itemView
-            .setOnClickListener(v -> onProductItemClickListener.onProductItemClick(productsVM));
+        if (onProductItemClickListener != null) {
+            itemView
+                .setOnClickListener(v -> onProductItemClickListener.onProductItemClick(productsVM));
+        }
+
     }
 }

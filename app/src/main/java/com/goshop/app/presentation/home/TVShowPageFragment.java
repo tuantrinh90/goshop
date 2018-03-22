@@ -46,10 +46,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     @BindView(R.id.rg_channels)
     RadioGroup rgChannels;
 
-    /*  @BindView(R.id.toolbar)
-      Toolbar toolbar;
-
-     */
     @BindView(R.id.tv_calandar)
     RobotoRegularTextView tvCalandar;
 

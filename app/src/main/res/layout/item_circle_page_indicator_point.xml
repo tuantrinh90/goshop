@@ -4,6 +4,6 @@
     android:layout_width="@dimen/size_12"
     android:layout_height="@dimen/size_12"
     android:src="@drawable/selector_image_point_selected"
-    android:scaleType="fitXY"
-    android:layout_margin="@dimen/size_2"
+    android:scaleType="center"
+    android:layout_margin="@dimen/size_4"
     android:contentDescription="@string/app_name"/>

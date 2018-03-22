@@ -4,11 +4,11 @@
         <layer-list
             android:shape="rectangle">
             <item>
-                <color android:color="@color/color_bg_disabled_divider"/>
+                <color android:color="@color/color_account_press"/>
             </item>
             <item
                 android:bottom="@dimen/size_divider">
-                <color android:color="@color/color_bg_disabled_divider"/>
+                <color android:color="@color/color_account_press"/>
             </item>
         </layer-list>
     </item>
@@ -18,7 +18,7 @@
         <layer-list
             android:shape="rectangle">
             <item>
-                <color android:color="@color/color_bg_disabled_divider"/>
+                <color android:color="@color/color_account_press"/>
             </item>
             <item
                 android:bottom="@dimen/size_divider">

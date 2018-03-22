@@ -9,4 +9,5 @@
         android:height="@dimen/size_10"/>
 
     <solid android:color="@color/color_text_hint"/>
+
 </shape>

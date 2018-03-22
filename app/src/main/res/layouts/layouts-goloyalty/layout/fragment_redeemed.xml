@@ -15,5 +15,5 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_8"
-        android:background="@drawable/drawable_biger_divider_with_shadow"/>
+        android:background="@drawable/drawable_end_divider_with_shadow"/>
 </LinearLayout>

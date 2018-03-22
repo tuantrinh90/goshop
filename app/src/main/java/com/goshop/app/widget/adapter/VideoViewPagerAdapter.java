@@ -66,8 +66,7 @@ public class VideoViewPagerAdapter extends PagerAdapter {
 
         llImageViewMore.setOnClickListener(v -> {
             int itemHeight = listAdapter.getItemMeasuredHeight();
-            Log.d("VideoPagerAdapter", "itemHeight-->" + itemHeight);
-            //todo please done delete
+            //todo please dont delete
             llImageViewMore.setSelected(!llImageViewMore.isSelected());
             onPagerHeightChangeListener.onHeightChange(position, (productsVMS.size() - 1) * itemHeight,
                 llImageViewMore.isSelected());

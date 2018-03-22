@@ -203,6 +203,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
                 WidgetProductGridHorizontalAdapter(
                 productScrollerVM.getProductsVMS());
             recyclerViewHorizontal.setAdapter(detailAdapter);
+
         }
     }
 
