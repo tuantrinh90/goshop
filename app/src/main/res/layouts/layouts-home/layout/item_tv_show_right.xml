@@ -14,8 +14,7 @@
             android:id="@+id/iv_tv_show_right"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:contentDescription="@string/app_name"
-            android:background="@drawable/ic_bought"/>
+            android:contentDescription="@string/app_name" />
 
         <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_tv_show_right_time"

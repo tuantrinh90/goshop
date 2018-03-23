@@ -60,7 +60,13 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
     private TVShowLeftAdapter leftAdapter;
 
+    private int leftIndex, rightIndex;
+
     private LinearLayoutManager leftManager;
+
+    private boolean move = false;
+
+    private boolean moveRight = false;
 
     private TVShowRightAdapter rightAdapter;
 
@@ -76,7 +82,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
         @Nullable Bundle savedInstanceState) {
-
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         assert rootView != null;
         unbinder = ButterKnife.bind(this, rootView);
@@ -112,10 +117,8 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         recyclerviewCalendar.setAdapter(calendarAdapter);
         recyclerviewLeft.setAdapter(leftAdapter);
         recyclerviewRight.setAdapter(rightAdapter);
-
         rightAdapter.setOnTVShowRightItemClickListener(this::onTVShowRightItemClick);
         calendarAdapter.setOnCalendarItemClickListener(this::onCalendarItemClick);
-
     }
 
     private void initPresenter() {
@@ -131,27 +134,53 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (!isSelectScroll) {
-                    int firstItemPosition = leftManager.findFirstVisibleItemPosition();
-                    int lastItemPosition = leftManager.findLastVisibleItemPosition();
-                    if (lastItemPosition == leftManager.getItemCount() - 1) {
-                        scollRightToPosition(lastItemPosition);
-                        rightAdapter.updateCurrentVMS(lastItemPosition);
-                    } else {
-                        scollRightToPosition(firstItemPosition);
-                        rightAdapter.updateCurrentVMS(firstItemPosition);
+                int firstItemPosition = leftManager.findFirstVisibleItemPosition();
+                if (move) {
+                    move = false;
+                    int n = leftIndex - firstItemPosition;
+                    if (0 <= n && n < recyclerviewLeft.getChildCount()) {
+                        int top = recyclerviewLeft.getChildAt(n).getTop();
+                        recyclerviewLeft.scrollBy(0, top);
                     }
+
                 } else {
-                    if (newState == RecyclerView.SCROLL_STATE_IDLE) {
-                        isSelectScroll = false;
+                    switch (newState) {
+                        case RecyclerView.SCROLL_STATE_IDLE:
+                            View childView = leftManager
+                                .findViewByPosition(firstItemPosition);
+                            int childViewHeight = childView.getHeight();
+                            int childViewTop = childView.getTop();
+                            if (Math.abs(childViewTop) == recyclerView.getPaddingTop() || Math
+                                .abs(childViewTop) == recyclerView.getPaddingTop() * 2) {
+                            } else if (Math.abs(childViewTop) >= childViewHeight / 2.0f) {
+                                int nextPosition = firstItemPosition + 1;
+                                moveLeftToPosition(nextPosition);
+                            } else {
+                                moveLeftToPosition(firstItemPosition);
+                            }
+                            break;
                     }
                 }
 
+                if (firstItemPosition == 0 && rightAdapter.getCurrentPosition() != 0) {
+                    rightAdapter.updateCurrentVMS(0);
+                    scollRightToPosition(0);
+                }
             }
+        });
 
+        recyclerviewRight.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
-            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
-                super.onScrolled(recyclerView, dx, dy);
+            public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
+                super.onScrollStateChanged(recyclerView, newState);
+                if (moveRight) {
+                    moveRight = false;
+                    int n = rightIndex - rightManager.findFirstVisibleItemPosition();
+                    if (0 <= n && n < recyclerviewRight.getChildCount()) {
+                        int top = recyclerviewRight.getChildAt(n).getTop();
+                        recyclerviewRight.scrollBy(0, top);
+                    }
+                }
             }
         });
     }
@@ -169,7 +198,30 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             );
     }
 
+    private void moveLeftToPosition(int index) {
+        leftIndex = index;
+        int firstItem = leftManager.findFirstVisibleItemPosition();
+        int lastItem = leftManager.findLastVisibleItemPosition();
+        if (index <= firstItem) {
+            recyclerviewLeft.scrollToPosition(index);
+        } else if (index <= lastItem) {
+            int top = recyclerviewLeft.getChildAt(index - firstItem).getTop();
+            recyclerviewLeft.scrollBy(0, top);
+        } else {
+            recyclerviewLeft.scrollToPosition(index);
+            move = true;
+        }
+
+        if (!isSelectScroll) {
+            rightAdapter.updateCurrentVMS(index);
+            scollRightToPosition(index);
+        } else {
+            isSelectScroll = false;
+        }
+    }
+
     private void scollRightToPosition(int position) {
+        rightIndex = position;
         int firstItem = rightManager.findFirstVisibleItemPosition();
         int lastItem = rightManager.findLastVisibleItemPosition();
         if (position <= firstItem) {
@@ -179,6 +231,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             recyclerviewRight.smoothScrollBy(0, top);
         } else {
             recyclerviewRight.smoothScrollToPosition(position);
+            moveRight = true;
         }
     }
 
@@ -205,7 +258,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         rightAdapter.setUpdateDatas(tvShowVMDatas);
         for (TVShowVM tvShowVM : tvShowVMDatas) {
             if (tvShowVM.getDay().equals(currentDay)) {
-                recyclerviewLeft.smoothScrollToPosition(tvShowVMDatas.indexOf(tvShowVM));
+                moveLeftToPosition(tvShowVMDatas.indexOf(tvShowVM));
                 break;
             }
         }
@@ -214,8 +267,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     @Override
     public void onTVShowRightItemClick(int position) {
         isSelectScroll = true;
-        recyclerviewLeft.smoothScrollToPosition(position);
-
+        moveLeftToPosition(position);
     }
 
     @Override

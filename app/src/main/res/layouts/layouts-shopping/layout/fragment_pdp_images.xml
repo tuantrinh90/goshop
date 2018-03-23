@@ -5,16 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/viewpager_pdp_image_display"
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_375" />
-
     <RelativeLayout
+        android:id="@+id/rl_pdp_scroll_image"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_70"
-        android:layout_marginTop="@dimen/size_16"
-        android:layout_below="@id/viewpager_pdp_image_display">
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/size_16">
 
         <RelativeLayout
             android:id="@+id/rl_left_page"
@@ -56,5 +52,12 @@
             tools:ignore="RtlHardcoded"/>
     </RelativeLayout>
 
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_pdp_image_display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/size_25"
+        android:layout_marginBottom="@dimen/size_25"
+        android:layout_above="@id/rl_pdp_scroll_image"/>
 
 </RelativeLayout>

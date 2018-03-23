@@ -174,7 +174,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
 
     public interface OnProductDetailItemClickListener {
 
-        void onCheckClick();
+        void onBannerClick();
 
         void onWriteAReviewClick();
 
@@ -317,7 +317,8 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         }
     }
 
-    class ProductDetailTopViewHolder extends RecyclerView.ViewHolder {
+    class ProductDetailTopViewHolder extends RecyclerView.ViewHolder implements PdpBannerAdapter
+        .OnPdpBannerClickListener {
 
         @BindView(R.id.indicator_product_detail_top)
         CustomPagerCircleIndicator circleIndicator;
@@ -366,7 +367,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         void bindingData(ProductDetailTopVM bannerVM) {
 
             viewPager
-                .setAdapter(new PdpBannerAdapter(itemView.getContext(), bannerVM.getBannerUrls()));
+                .setAdapter(new PdpBannerAdapter(bannerVM.getBannerUrls(), this::onBannerClick));
             circleIndicator.setViewPager(viewPager);
             etProductMinusPlus.setText(bannerVM.getAmount());
             tvProductDetailNow.setText(bannerVM.getPriceNow());
@@ -387,6 +388,11 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             //todo this is mock data
             tvProductDetailColor.setText(bannerVM.getColorVMS().get(0).getColorName());
             tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSize());
+        }
+
+        @Override
+        public void onBannerClick() {
+            onProductDetailItemClickListener.onBannerClick();
         }
     }
 

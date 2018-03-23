@@ -61,13 +61,13 @@ public class TVShowPagePresenter extends RxPresenter<TVShowPageContract.View> im
             R.drawable.ic_right_video_demo);
         TVShowVM tvShowVM4 = new TVShowVM("3", "14", "WED",
             "9:00", "30% OFF", "Manjung Korean Crispy Seaweed (Sea Salt)", "RM 220.00", "RM 119.00", "",
-            R.drawable.ic_right_video_demo);
+            R.drawable.ic_coffee);
         TVShowVM tvShowVM5 = new TVShowVM("3", "14", "WED",
             "9:00", "30% OFF", "Manjung Korean Crispy Seaweed (Sea Salt)", "RM 220.00", "RM 119.00", "",
-            R.drawable.ic_left_demo);
+            R.drawable.ic_product_two);
         TVShowVM tvShowVM6 = new TVShowVM("3", "15", "THU",
             "9:00", "30% OFF", "Manjung Korean Crispy Seaweed (Sea Salt)", "RM 220.00", "RM 119.00", "",
-            R.drawable.ic_right_video_demo);
+            R.drawable.ic_left_demo);
         TVShowVM tvShowVM7 = new TVShowVM("3", "15", "THU",
             "9:00", "30% OFF", "Manjung Korean Crispy Seaweed (Sea Salt)", "RM 220.00", "RM 119.00", "",
             R.drawable.ic_product_one);
@@ -76,7 +76,7 @@ public class TVShowPagePresenter extends RxPresenter<TVShowPageContract.View> im
             R.drawable.ic_right_video_demo);
         TVShowVM tvShowVM9 = new TVShowVM("3", "16", "FRI",
             "9:00", "30% OFF", "Manjung Korean Crispy Seaweed (Sea Salt)", "RM 220.00", "RM 119.00", "",
-            R.drawable.ic_left_demo);
+            R.drawable.ic_product_one);
         TVShowVM tvShowVM10 = new TVShowVM("3", "17", "SAT",
             "9:00", "30% OFF", "Manjung Korean Crispy Seaweed (Sea Salt)", "RM 220.00", "RM 119.00", "",
             R.drawable.ic_right_video_demo);

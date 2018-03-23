@@ -22,6 +22,8 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
 
     private List<TVShowVM> tvShowVMS;
 
+    private int currentPosition;
+
     public TVShowRightAdapter(List<TVShowVM> tvShowVMS) {
         this.tvShowVMS = tvShowVMS;
     }
@@ -33,10 +35,15 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
     }
 
     public void updateCurrentVMS(int position) {
+        currentPosition = position;
         for (int i = 0; i < tvShowVMS.size(); i++) {
             tvShowVMS.get(i).setCurrent(position == i);
         }
         notifyDataSetChanged();
+    }
+
+    public int getCurrentPosition() {
+        return currentPosition;
     }
 
     @Override

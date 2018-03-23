@@ -9,8 +9,9 @@
         android:layout_width="@dimen/size_24"
         android:layout_height="@dimen/size_24"
         android:layout_margin="@dimen/size_16"
+        android:scaleType="center"
         android:contentDescription="@string/app_name"
-        android:background="@drawable/ic_close"/>
+        android:src="@drawable/ic_icon_search_del"/>
 
     <LinearLayout
         android:id="@+id/ll_pdp_images_bottom"
@@ -21,30 +22,22 @@
         android:paddingBottom="@dimen/size_30"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_btn_pdp_video"
             android:layout_width="@dimen/size_76"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/size_38"
             android:gravity="center"
             android:background="@drawable/selector_pdp_images"
-            android:paddingTop="@dimen/size_8"
-            android:paddingBottom="@dimen/size_8"
-            android:paddingLeft="@dimen/size_12"
-            android:paddingRight="@dimen/size_12"
             android:textColor="@drawable/selector_text_black_white"
             android:textSize="@dimen/size_font_14"
             android:text="@string/video"/>
-        <com.goshop.app.common.view.RobotoRegularTextView
+        <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_btn_pdp_images"
             android:layout_width="@dimen/size_76"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/size_38"
             android:gravity="center"
             android:background="@drawable/selector_pdp_images"
             android:layout_marginLeft="@dimen/size_12"
-            android:paddingTop="@dimen/size_8"
-            android:paddingBottom="@dimen/size_8"
-            android:paddingLeft="@dimen/size_12"
-            android:paddingRight="@dimen/size_12"
             android:textColor="@drawable/selector_text_black_white"
             android:textSize="@dimen/size_font_14"
             android:text="@string/images"

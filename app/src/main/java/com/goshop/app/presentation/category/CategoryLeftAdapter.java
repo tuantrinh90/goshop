@@ -2,9 +2,11 @@ package com.goshop.app.presentation.category;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.goshop.app.common.Typefaces;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 
+import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -92,7 +94,10 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
 
             tvCategoryLeftMenu.setSelected(leftMenuVM.isSelect());
             ivCategoryLeftMenu.setSelected(leftMenuVM.isSelect());
-
+            Typeface typeface = Typefaces.get(itemView.getContext(), leftMenuVM
+                .isSelect() ? Typefaces.PATH_FONT_ROBOTO_REGULAR : Typefaces
+                .PATH_FONT_ROBOTO_LIGHT);
+            tvCategoryLeftMenu.setTypeface(typeface);
             ivCategoryLeftMenu.setColorFilter(
                 itemView.getContext().getResources()
                     .getColor(ivCategoryLeftMenu

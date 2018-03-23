@@ -3,7 +3,6 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.widget.adapter.WidgetPdpAdapter;
@@ -71,7 +70,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         pdpAdapter.setOnProductDetailItemClickListener(this);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu,   R
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu, R
         .id.tv_btn_add_to_cart, R.id.tv_btn_buy_now})
     public void onProductDetailClick(View view) {
         switch (view.getId()) {
@@ -97,8 +96,8 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     @Override
-    public void onCheckClick() {
-        startActivity(new Intent(this, CheckoutActivity.class));
+    public void onBannerClick() {
+        startActivity(new Intent(this, PDPDetailImagesActivity.class));
     }
 
     @Override
