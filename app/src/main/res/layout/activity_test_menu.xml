@@ -16,7 +16,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <android.support.design.widget.NavigationView
+    <!--<android.support.design.widget.NavigationView
         android:id="@+id/navigation_slide_menu"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
@@ -28,7 +28,17 @@
         app:itemBackground="@drawable/selector_menu_item_color"
         app:theme="@style/menuTextStyle"
         app:headerLayout="@layout/layout_slide_menu_header"
-        app:menu="@menu/menu_main_drawer"/>
+        app:menu="@menu/menu_main_drawer"/>-->
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_menu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/drawable_white"
+        android:paddingBottom="@dimen/size_11"
+        android:clipChildren="true"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start" />
 
 
 </android.support.v4.widget.DrawerLayout>

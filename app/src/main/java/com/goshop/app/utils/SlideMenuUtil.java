@@ -93,7 +93,8 @@ public class SlideMenuUtil {
         slideMenuOthers = getMenuItem(navigationView, R.id.slide_menu_others);
         View headerView = navigationView.getHeaderView(0);
         tvSlideSignUp = headerView.findViewById(R.id.tv_slide_sign_up);
-        llSlideUserInfo = headerView.findViewById(R.id.ll_slide_user_info);
+        //todo need decide
+//        llSlideUserInfo = headerView.findViewById(R.id.ll_slide_user_info);
         ivSlideUser = headerView.findViewById(R.id.iv_slide_user);
         tvSlideUserName = headerView.findViewById(R.id.tv_slide_user_name);
 
@@ -180,7 +181,8 @@ public class SlideMenuUtil {
                             intent = new Intent(activity, SettingsActivity.class);
                             break;
                         case R.id.slide_menu_others:
-                            intent = new Intent(activity, TestMenuActivity.class);
+                            //todo need decide
+//                            intent = new Intent(activity, TestMenuActivity.class);
                             break;
                     }
                 }
