@@ -101,9 +101,12 @@ public class PDPDetailImagesActivity extends BaseActivity {
         return null;
     }
 
-    @OnClick({R.id.tv_btn_pdp_video, R.id.tv_btn_pdp_images})
+    @OnClick({R.id.iv_pdp_images_finish, R.id.tv_btn_pdp_video, R.id.tv_btn_pdp_images})
     public void onPdpVideoImagesClick(View view) {
         switch (view.getId()) {
+            case R.id.iv_pdp_images_finish:
+                finish();
+                break;
             case R.id.tv_btn_pdp_video:
                 viewpagerPdpImages.setCurrentItem(0);
                 break;
