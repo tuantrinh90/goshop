@@ -48,6 +48,7 @@
     <color name="parting_line">#1d000000</color>
     <color name="grey_background">#c9c9c9</color>
     <color name="grey_slidemenu_selected_bg">#26cccccc</color>
+    <color name="color_menu_press_grey">#cccccc</color>
     <color name="facebook">#3A5899</color>
     <color name="color_facebook_blue">#4065b3</color>
     <color name="transparent60Percent">#99000000</color>

@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:animET="http://schemas.android.com/apk/res-auto"
+    xmlns:pwd="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:focusableInTouchMode="true"
+    android:focusable="true"
+    android:background="@android:color/white"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:id="@+id/ll_login_top"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true">
+        <include
+            layout="@layout/toolbar_img_text_img_close"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_login_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="@dimen/size_16"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/login_bottom_describe"
+            android:textColor="@color/color_black_light"
+        />
+        <com.goshop.app.common.view.RobotoRegularTextView
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/login_register"
+            android:textColor="@color/color_main_pink"
+            android:textSize="@dimen/size_font_14"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@id/ll_login_bottom"
+        android:layout_below="@id/ll_login_top"
+        android:orientation="vertical">
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size_48"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/iv_login_logo"
+                    android:layout_width="@dimen/size_70"
+                    android:layout_height="@dimen/size_70"
+                    android:layout_gravity="center_horizontal"
+                    android:background="@drawable/ic_app_logo"
+                    android:scaleType="center"
+                    android:contentDescription="@string/app_name"/>
+
+                <com.goshop.app.common.CustomAnimEditText
+                    android:id="@+id/et_login_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/size_32"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    animET:hint="@string/email"
+                />
+
+                <com.goshop.app.common.CustomPasswordEditText
+                    android:id="@+id/et_login_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginTop="@dimen/size_21"
+                    android:layout_marginRight="@dimen/size_16"
+                    pwd:pwd_hint="@string/password"
+                />
+
+                <com.goshop.app.common.view.RobotoLightTextView
+                    android:id="@+id/tv_login_forgot_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/size_2"
+                    android:paddingLeft="@dimen/size_16"
+                    android:paddingRight="@dimen/size_16"
+                    android:textSize="@dimen/size_font_14"
+                    android:textColor="@color/color_greyish_brown"
+                    android:text="@string/login_forgot_password"
+                    android:gravity="end"/>
+
+                <com.goshop.app.common.view.RobotoMediumTextView
+                    android:id="@+id/tv_btn_login"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_48"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    android:layout_marginTop="@dimen/size_20"
+                    android:gravity="center"
+                    android:text="@string/login"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/ic_icon_pink_btn"
+                />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/size_16"
+                    android:paddingRight="@dimen/size_16">
+
+                    <com.goshop.app.common.view.RobotoLightTextView
+                        android:id="@+id/tv_search_or"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/size_16"
+                        android:layout_centerInParent="true"
+                        android:textColor="@color/color_text_hint"
+                        android:textSize="@dimen/size_font_14"
+                        android:text="@string/or"/>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_divider"
+                        android:layout_centerVertical="true"
+                        android:layout_toLeftOf="@id/tv_search_or"
+                        android:layout_alignParentLeft="true"
+                        android:background="@color/color_bg_disabled_divider"
+                        android:layout_toStartOf="@id/tv_search_or"
+                        android:layout_alignParentStart="true"/>
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/size_divider"
+                        android:layout_centerVertical="true"
+                        android:layout_toRightOf="@id/tv_search_or"
+                        android:layout_alignParentRight="true"
+                        android:background="@color/color_bg_disabled_divider"
+                        android:layout_toEndOf="@id/tv_search_or"
+                        android:layout_alignParentEnd="true"/>
+
+                </RelativeLayout>
+
+                <com.goshop.app.common.view.RobotoMediumTextView
+                    android:id="@+id/tv_btn_login_facebook"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_48"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    android:layout_marginBottom="@dimen/size_36"
+                    android:drawableLeft="@drawable/ic_icon_facebook_login"
+                    android:paddingLeft="@dimen/size_12"
+                    android:paddingRight="@dimen/size_12"
+                    android:gravity="center"
+                    android:text="@string/login_facebook"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/ic_icon_blue_btn"
+                />
+            </LinearLayout>
+
+        </android.support.v4.widget.NestedScrollView>
+
+    </LinearLayout>
+
+
+</RelativeLayout>

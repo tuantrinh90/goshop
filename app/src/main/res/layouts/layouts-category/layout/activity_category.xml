@@ -16,19 +16,23 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 
-    <android.support.design.widget.NavigationView
-        android:id="@+id/navigation_slide_menu"
-        android:layout_width="wrap_content"
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:layout_gravity="start"
-        android:fitsSystemWindows="true"
-        app:itemTextColor="@drawable/selector_menu_color"
-        app:itemIconTint="@drawable/selector_menu_color"
-        app:itemBackground="@drawable/selector_menu_item_color"
-        app:theme="@style/menuTextStyle"
-        app:headerLayout="@layout/layout_slide_menu_header"
-        app:menu="@menu/menu_main_drawer"/>
+        android:background="@drawable/drawable_white"
+        android:layout_gravity="start">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_menu"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:layout_marginBottom="@dimen/size_11"
+            />
+        </LinearLayout>
 
+    </android.support.v4.widget.NestedScrollView>
 
 </android.support.v4.widget.DrawerLayout>

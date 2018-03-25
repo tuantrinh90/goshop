@@ -3,6 +3,7 @@ package com.goshop.app.widget.adapter;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.MenuHearderVM;
 import com.goshop.app.presentation.model.MenuItemVM;
 import com.goshop.app.presentation.model.MenuModel;
 
@@ -14,6 +15,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 import java.util.List;
 
@@ -59,7 +61,8 @@ public class MenuAdapter extends RecyclerView.Adapter {
         if (holder instanceof ItemViewHolder) {
             ((ItemViewHolder) holder).bindingData((MenuItemVM) menuModels.get(position), position);
         } else if (holder instanceof HeaderViewHolder) {
-
+            ((HeaderViewHolder) holder)
+                .bindingData((MenuHearderVM) menuModels.get(position), position);
         }
     }
 
@@ -82,23 +85,34 @@ public class MenuAdapter extends RecyclerView.Adapter {
         for (int i = 0; i < menuModels.size(); i++) {
             MenuModel model = menuModels.get(i);
             if (model instanceof MenuItemVM) {
-                Log.d("updateSelection", "boolen" + (position == i));
                 ((MenuItemVM) model).setSelect(position == i);
             }
         }
         notifyDataSetChanged();
     }
 
+    public void updateLoginState(boolean loginState) {
+        MenuModel model = menuModels.get(0);
+        if (model instanceof MenuHearderVM) {
+            Log.d("updateSelection", "boolen" + (loginState));
+            ((MenuHearderVM) model).setLoginState(loginState);
+        }
+        notifyDataSetChanged();
+    }
+
     public interface OnSlideMenuItemClickListener {
 
-        void onHeaderUserClick();
+        void onHeaderUserClick(int position);
 
-        void onHeaderLoginClick();
+        void onHeaderLoginClick(int position);
 
         void onItemClick(int position);
     }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
+
+        @BindView(R.id.rl_slide_user_info)
+        RelativeLayout rlSlideUserInfo;
 
         @BindView(R.id.tv_slide_sign_up)
         RobotoMediumTextView tvSlideSignUp;
@@ -108,8 +122,11 @@ public class MenuAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData() {
-
+        void bindingData(MenuHearderVM menuHearderVM, int position) {
+            rlSlideUserInfo.setVisibility(menuHearderVM.isLoginState() ? View.VISIBLE : View.GONE);
+            tvSlideSignUp.setVisibility(menuHearderVM.isLoginState() ? View.GONE : View.VISIBLE);
+            rlSlideUserInfo.setOnClickListener(v -> onSlideMenuItemClickListener.onHeaderUserClick(position));
+            tvSlideSignUp.setOnClickListener(v -> onSlideMenuItemClickListener.onHeaderLoginClick(position));
         }
     }
 
@@ -134,14 +151,8 @@ public class MenuAdapter extends RecyclerView.Adapter {
                 ivMenuItem.setVisibility(View.GONE);
             } else {
                 ivMenuItem.setVisibility(View.VISIBLE);
-                ivMenuItem.setImageResource(itemVM.getIcon());
-                if (itemVM.isSelect()) {
-                    ivMenuItem.setColorFilter(
-                        ContextCompat.getColor(itemView.getContext(), R.color.color_dark_pink));
-                } else {
-                    ivMenuItem.setColorFilter(ContextCompat
-                        .getColor(itemView.getContext(), R.color.color_grayscale_text));
-                }
+                ivMenuItem.setBackgroundResource(itemVM.getIcon());
+                ivMenuItem.setSelected(itemVM.isSelect());
             }
             tvMenuItem.setText(itemVM.getTitle());
             tvMenuItem.setSelected(itemVM.isSelect());

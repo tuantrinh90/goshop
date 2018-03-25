@@ -23,17 +23,6 @@
             android:orientation="vertical">
 
             <com.goshop.app.common.view.RobotoRegularTextView
-                android:id="@+id/btn_test_login"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:padding="@dimen/size_16"
-                android:textColor="@color/color_grayscale_text"
-                android:background="@drawable/bg_white_top_bottom_line"
-                android:textSize="@dimen/size_font_14"
-                android:text="@string/login"/>
-
-            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/btn_test_send_reset_pwd"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -53,7 +42,6 @@
                 android:background="@drawable/bg_white_top_bottom_line"
                 android:textSize="@dimen/size_font_14"
                 android:text="@string/whoops_email"/>
-
 
 
         </LinearLayout>

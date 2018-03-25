@@ -4,25 +4,23 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.CustomSearchEditText;
-import com.goshop.app.common.view.RobotoBoldTabLayout;
 import com.goshop.app.common.view.RobotoMediumTabLayout;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
-import com.goshop.app.utils.SlideMenuUtil;
+import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.widget.adapter.MenuAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -32,8 +30,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainPageActivity extends BaseActivity implements NavigationView
-    .OnNavigationItemSelectedListener {
+public class MainPageActivity extends BaseActivity implements MenuAdapter
+    .OnSlideMenuItemClickListener {
 
     @BindView(R.id.cset_search)
     CustomSearchEditText csetSearch;
@@ -44,8 +42,8 @@ public class MainPageActivity extends BaseActivity implements NavigationView
     @BindView(R.id.iv_search_icon)
     ImageView ivSearchIcon;
 
-    @BindView(R.id.navigation_slide_menu)
-    NavigationView navigationSlideMenu;
+    @BindView(R.id.recyclerview_menu)
+    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.tablayout_main)
     RobotoMediumTabLayout tablayoutMain;
@@ -59,19 +57,25 @@ public class MainPageActivity extends BaseActivity implements NavigationView
     @BindView(R.id.viewpager_main)
     ViewPager viewpagerMain;
 
+    private int currentMenu;
+
     private boolean isLogin = true;
 
-    private MainPagerAdapter pagerAdapter;
+    private MenuAdapter menuAdapter;
 
-    private SlideMenuUtil slideMenuUtil;
+    private MenuUtil menuUtil;
+
+    private MainPagerAdapter pagerAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initMenuUtil();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0,
             0);
         toggle.syncState();
+        initMenuRecyclerview();
     }
 
     @Override
@@ -81,7 +85,6 @@ public class MainPageActivity extends BaseActivity implements NavigationView
 
     @Override
     public void inject() {
-        initSlideMenuListenerUtil(R.id.slide_menu_home);
         initTabLayoutViewPager();
         initSearch();
     }
@@ -89,11 +92,6 @@ public class MainPageActivity extends BaseActivity implements NavigationView
     @Override
     public String getScreenTitle() {
         return null;
-    }
-
-    private void initSlideMenuListenerUtil(int currentMenuId) {
-        slideMenuUtil = new SlideMenuUtil(this, currentMenuId, drawerLayout,
-            navigationSlideMenu, isLogin, this);
     }
 
     private void initTabLayoutViewPager() {
@@ -120,12 +118,42 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         });
     }
 
+    private void initMenuUtil() {
+        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
+    }
+
+    private void initMenuRecyclerview() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewMenu.setLayoutManager(layoutManager);
+        menuAdapter = new MenuAdapter(
+            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
+        recyclerViewMenu.setAdapter(menuAdapter);
+        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_HOME : MenuUtil.UNLOGIN_MENU_HOME;
+        menuAdapter.updateSelection(currentMenu);
+        menuAdapter.setOnSlideMenuItemClickListener(this);
+        menuAdapter.updateLoginState(isLogin);
+    }
+
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        slideMenuUtil.setDrawerHasSelect(true);
-        slideMenuUtil.setSelectMenuId(item.getItemId());
+    public void onHeaderUserClick(int position) {
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
+    }
+
+    @Override
+    public void onHeaderLoginClick(int position) {
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
+    }
+
+    @Override
+    public void onItemClick(int position) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
     }
 
     @OnClick({R.id.imageview_right_menu})

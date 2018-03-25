@@ -4,7 +4,6 @@ import com.crashlytics.android.Crashlytics;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.utils.MenuUtil;
-import com.goshop.app.utils.SlideMenuUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
 
 import android.content.Intent;
@@ -40,7 +39,9 @@ public class TestMenuActivity extends BaseActivity implements MenuAdapter
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private boolean isLogin = true;
+    private int currentMenu;
+
+    private boolean isLogin = false;
 
     private MenuAdapter menuAdapter;
 
@@ -48,32 +49,31 @@ public class TestMenuActivity extends BaseActivity implements MenuAdapter
 
     private MenuUtil menuUtil;
 
-    private SlideMenuUtil slideMenuUtil;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Fabric.with(this, new Crashlytics());
+        initMenuUtil();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0,
             0);
         toggle.syncState();
-        //todo need decide
-       /* menuTag = getIntent().getStringExtra(MENU_KEY);
+        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
         if (menuTag == null) {
-            slideMenuUtil.disabledDrawerLayout();
+            menuUtil.disabledDrawerLayout();
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             toolbar.setNavigationOnClickListener(v -> finish());
         } else {
-            if (menuTag.equals(SlideMenuUtil.MENU_VALUE)) {
-                slideMenuUtil.liftedDrawerLayout();
+            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                toolbar.setNavigationOnClickListener(v -> {
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                    drawerLayout.openDrawer(Gravity.LEFT);
+                });
             }
-        }*/
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-        toolbar.setNavigationOnClickListener(v -> {
-            drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-            drawerLayout.openDrawer(Gravity.LEFT);
-        });
+        }
+
+        initMenuRecyclerview();
     }
 
     @Override
@@ -85,44 +85,33 @@ public class TestMenuActivity extends BaseActivity implements MenuAdapter
     public void inject() {
         imageViewLeftMenu.setVisibility(View.GONE);
         hideRightMenu();
-        initMenuUtil();
-        initMenuRecyclerview();
-    }
-
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(menuUtil.getMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        menuAdapter.updateSelection(MenuUtil.MENU_OTHER);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
     }
 
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.other_page);
     }
-    //todo need decide
 
-   /* @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        slideMenuUtil.setDrawerHasSelect(true);
-        slideMenuUtil.setSelectMenuId(item.getItemId());
-        drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
-    }*/
+    private void initMenuUtil() {
+        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
+    }
 
-    @OnClick({R.id.btn_test_login, R.id.btn_test_complement_email, R.id
-        .btn_test_send_reset_pwd})
+    private void initMenuRecyclerview() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewMenu.setLayoutManager(layoutManager);
+        menuAdapter = new MenuAdapter(
+            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
+        recyclerViewMenu.setAdapter(menuAdapter);
+        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_SETTING : MenuUtil.UNLOGIN_MENU_SETTINGS;
+        menuAdapter
+            .updateSelection(currentMenu);
+        menuAdapter.setOnSlideMenuItemClickListener(this);
+        menuAdapter.updateLoginState(isLogin);
+    }
+
+    @OnClick({R.id.btn_test_complement_email, R.id.btn_test_send_reset_pwd})
     public void onMenuClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_test_login:
-                startActivity(new Intent(this, LoginActivity.class));
-                break;
             case R.id.btn_test_complement_email:
                 startActivity(new Intent(this, LoginComplementEmailActivity.class));
                 break;
@@ -142,18 +131,24 @@ public class TestMenuActivity extends BaseActivity implements MenuAdapter
     }
 
     @Override
-    public void onHeaderUserClick() {
-
+    public void onHeaderUserClick(int position) {
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
     }
 
     @Override
-    public void onHeaderLoginClick() {
-
+    public void onHeaderLoginClick(int position) {
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
     }
 
     @Override
     public void onItemClick(int position) {
         drawerLayout.closeDrawer(GravityCompat.START);
-
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
     }
 }

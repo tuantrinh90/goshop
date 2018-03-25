@@ -12,11 +12,20 @@ import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.ScreenHelper;
+import com.goshop.app.widget.adapter.MenuAdapter;
 import com.orhanobut.logger.Logger;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -30,7 +39,10 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements LoginContract
-    .View {
+    .View, MenuAdapter.OnSlideMenuItemClickListener {
+
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
     @BindView(R.id.et_login_email)
     CustomAnimEditText etLoginEmail;
@@ -38,11 +50,20 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @BindView(R.id.et_login_password)
     CustomPasswordEditText etLoginPassword;
 
+    @BindView(R.id.imageview_left_menu)
+    ImageView imageViewLeftMenu;
+
     @BindView(R.id.iv_login_logo)
     ImageView ivLoginLogo;
 
     @BindView(R.id.ll_login_top)
     LinearLayout llLoginTop;
+
+    @BindView(R.id.recyclerview_menu)
+    RecyclerView recyclerViewMenu;
+
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
     @BindView(R.id.tv_btn_login)
     RobotoMediumTextView tvBtnLogin;
@@ -56,12 +77,62 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @BindView(R.id.tv_register)
     RobotoRegularTextView tvRegister;
 
+    private int currentMenu;
+
     private CallbackManager facebookCallbackManager;
+
+    private boolean isLogin = true;
+
+    private MenuAdapter menuAdapter;
+
+    private String menuTag;
+
+    private MenuUtil menuUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         facebookCallbackManager = mPresenter.initFaceBook();
+
+        initMenuUtil();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+            this, drawerLayout, toolbar, 0,
+            0);
+        toggle.syncState();
+        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
+        if (menuTag == null) {
+            menuUtil.disabledDrawerLayout();
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setNavigationOnClickListener(v -> finish());
+        } else {
+            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
+                menuUtil.liftedDrawerLayout();
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                toolbar.setNavigationOnClickListener(v -> {
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                    drawerLayout.openDrawer(Gravity.LEFT);
+                });
+            }
+        }
+
+        initMenuRecyclerview();
+        //TODO(helen) wait for api
+    }
+
+    private void initMenuUtil() {
+        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
+    }
+
+    private void initMenuRecyclerview() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewMenu.setLayoutManager(layoutManager);
+        menuAdapter = new MenuAdapter(
+            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
+        recyclerViewMenu.setAdapter(menuAdapter);
+        currentMenu = MenuUtil.UNLOGIN_LOGIN;
+        menuAdapter.updateSelection(currentMenu);
+        menuAdapter.setOnSlideMenuItemClickListener(this);
+        menuAdapter.updateLoginState(isLogin);
     }
 
     @Override
@@ -71,6 +142,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void inject() {
+        imageViewLeftMenu.setVisibility(View.GONE);
         hideRightMenu();
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
@@ -82,6 +154,28 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.login);
+    }
+
+    @Override
+    public void onHeaderUserClick(int position) {
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
+    }
+
+    @Override
+    public void onHeaderLoginClick(int position) {
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
     }
 
     @Override

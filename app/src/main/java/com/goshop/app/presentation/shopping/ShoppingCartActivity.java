@@ -6,23 +6,22 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
+import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.utils.SlideMenuUtil;
+import com.goshop.app.widget.adapter.MenuAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -34,11 +33,9 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-import static com.goshop.app.utils.SlideMenuUtil.MENU_KEY;
-
 public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Presenter> implements
-    ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener, NavigationView
-    .OnNavigationItemSelectedListener, OnBannerItemClickListener, OnItemMenuClickListener,
+    ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener, MenuAdapter
+    .OnSlideMenuItemClickListener, OnBannerItemClickListener, OnItemMenuClickListener,
     PopWindowUtil.OnCartItemMenuClickListener {
 
     @BindView(R.id.drawer_layout)
@@ -47,8 +44,8 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
 
-    @BindView(R.id.navigation_slide_menu)
-    NavigationView navigationSlideMenu;
+    @BindView(R.id.recyclerview_menu)
+    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.rv_shoppint_cart)
     RecyclerView rvShoppintCart;
@@ -56,32 +53,44 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
+    private int currentMenu;
+
     private boolean isLogin = true;
+
+    private MenuAdapter menuAdapter;
 
     private String menuTag;
 
-    private ShoppingCartAdapter shoppingCartAdapter;
+    private MenuUtil menuUtil;
 
-    private SlideMenuUtil slideMenuUtil;
+    private ShoppingCartAdapter shoppingCartAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        initMenuUtil();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0,
             0);
         toggle.syncState();
-        menuTag = getIntent().getStringExtra(MENU_KEY);
+        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
         if (menuTag == null) {
-            slideMenuUtil.disabledDrawerLayout();
+            menuUtil.disabledDrawerLayout();
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             toolbar.setNavigationOnClickListener(v -> finish());
         } else {
-            if (menuTag.equals(SlideMenuUtil.MENU_VALUE)) {
-                slideMenuUtil.liftedDrawerLayout();
+            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
+                menuUtil.liftedDrawerLayout();
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                toolbar.setNavigationOnClickListener(v -> {
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                    drawerLayout.openDrawer(Gravity.LEFT);
+                });
             }
         }
+
+        initMenuRecyclerview();
         //TODO(helen) wait for api
         mPresenter.shoppingCartRequest(null);
     }
@@ -95,14 +104,8 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     public void inject() {
         hideRightMenu();
         imageViewLeftMenu.setVisibility(View.GONE);
-        initSlideMenuListenerUtil(R.id.slide_menu_cart);
         initPresenter();
         initRecyclerView();
-    }
-
-    private void initSlideMenuListenerUtil(int currentMenuId) {
-        slideMenuUtil = new SlideMenuUtil(this, currentMenuId, drawerLayout,
-            navigationSlideMenu, isLogin, this);
     }
 
     private void initPresenter() {
@@ -128,12 +131,43 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
         return getResources().getString(R.string.shopping_cart);
     }
 
+    private void initMenuUtil() {
+        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
+    }
+
+    private void initMenuRecyclerview() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewMenu.setLayoutManager(layoutManager);
+        menuAdapter = new MenuAdapter(
+            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
+        recyclerViewMenu.setAdapter(menuAdapter);
+        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_SHOPPING_CART : MenuUtil
+            .UNLOGIN_MENU_SHOPPING_CART;
+        menuAdapter.updateSelection(currentMenu);
+        menuAdapter.setOnSlideMenuItemClickListener(this);
+        menuAdapter.updateLoginState(isLogin);
+    }
+
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        slideMenuUtil.setDrawerHasSelect(true);
-        slideMenuUtil.setSelectMenuId(item.getItemId());
+    public void onHeaderUserClick(int position) {
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
+    }
+
+    @Override
+    public void onHeaderLoginClick(int position) {
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
+    }
+
+    @Override
+    public void onItemClick(int position) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
     }
 
     @Override

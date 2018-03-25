@@ -31,6 +31,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 public class SlideMenuUtil {
 
@@ -50,7 +51,7 @@ public class SlideMenuUtil {
 
     private ImageView ivSlideUser;
 
-    private LinearLayout llSlideUserInfo;
+//    private RelativeLayout rlSlideUserInfo;
 
     private NavigationView navigationView;
 
@@ -102,7 +103,7 @@ public class SlideMenuUtil {
         slideMenuOrder.setVisible(isLogin);
         slideMenuRewards.setVisible(isLogin);
         tvSlideSignUp.setVisibility(isLogin ? View.GONE : View.VISIBLE);
-        llSlideUserInfo.setVisibility(isLogin ? View.VISIBLE : View.GONE);
+//        rlSlideUserInfo.setVisibility(isLogin ? View.VISIBLE : View.GONE);
         initSlideMenuHeaderListener();
         disableNavigationViewScrollbars();
         initSlideMenuItem(currentMenuId);
@@ -150,7 +151,7 @@ public class SlideMenuUtil {
                         case R.id.slide_menu_home:
                             intent = new Intent(activity, MainPageActivity.class);
                             break;
-                        case R.id.ll_slide_user_info:
+                        case R.id.rl_slide_user_info:
                             intent = new Intent(activity, MyAccountLandingActivity.class);
                             break;
                         case R.id.slide_menu_categories:
@@ -215,11 +216,11 @@ public class SlideMenuUtil {
             setSelectMenuId(R.id.tv_slide_sign_up);
             drawerLayout.closeDrawer(GravityCompat.START);
         });
-        llSlideUserInfo.setOnClickListener(v -> {
-            setDrawerHasSelect(true);
-            setSelectMenuId(R.id.ll_slide_user_info);
-            drawerLayout.closeDrawer(GravityCompat.START);
-        });
+//        rlSlideUserInfo.setOnClickListener(v -> {
+//            setDrawerHasSelect(true);
+//            setSelectMenuId(R.id.rl_slide_user_info);
+//            drawerLayout.closeDrawer(GravityCompat.START);
+//        });
     }
 
     private void disableNavigationViewScrollbars() {

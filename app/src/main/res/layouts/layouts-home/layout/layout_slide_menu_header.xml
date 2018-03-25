@@ -18,7 +18,7 @@
         android:textSize="@dimen/size_font_18"  />
 
     <RelativeLayout
-        android:id="@+id/ll_slide_user_info"
+        android:id="@+id/rl_slide_user_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/size_16"

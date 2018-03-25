@@ -29,7 +29,7 @@
             android:textColorHint="@color/color_text_hint"
             android:singleLine="true"
             android:textSize="@dimen/size_font_16"
-            android:textCursorDrawable="@null"
+            android:textCursorDrawable="@drawable/drawable_cursor"
             tools:ignore="RtlSymmetry"/>
 
     </android.support.design.widget.TextInputLayout>
