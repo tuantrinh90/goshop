@@ -123,6 +123,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         textviewRightMenu.setText(getResources().getString(R.string.done));
         ivRegisterSms.setSelected(true);
         ivRegisterEmail.setSelected(true);
+        ivSelectFemale.setSelected(true);
         tvGenderWarning.setVisibility(View.GONE);
         tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
         initPresenter();

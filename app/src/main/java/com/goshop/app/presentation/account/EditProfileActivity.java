@@ -42,6 +42,9 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     @BindView(R.id.et_profile_mobile)
     CustomAnimEditText etProfileMobile;
 
+    @BindView(R.id.tv_date_birth_hint)
+    RobotoRegularTextView tvDateBirthHint;
+
     @BindView(R.id.iv_select_female)
     ImageView ivSelectFemale;
 
@@ -95,6 +98,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     @Override
     public void inject() {
         textviewRightMenu.setText(getResources().getString(R.string.done));
+        ivSelectFemale.setSelected(true);
         hideRightMenu();
         initEditText();
         initPresenter();
@@ -215,7 +219,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             tvProfileDateOfBirthWarning.setVisibility(View.VISIBLE);
             return;
         } else {
-            tvProfileDateOfBirthWarning.setVisibility(View.GONE);
+            tvProfileDateOfBirthWarning.setVisibility(View.INVISIBLE);
         }
         if (TextUtils.isEmpty(mobile)) {
             etProfileMobile.setErrorMessage(getResources().getString(R.string.empty_error));
@@ -233,7 +237,8 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     @Override
     public void onDatePicker(String time) {
         tvProfileDateOfBirth.setText(time);
-        tvProfileDateOfBirthWarning.setVisibility(View.GONE);
+        tvDateBirthHint.setVisibility(View.VISIBLE);
+        tvProfileDateOfBirthWarning.setVisibility(View.INVISIBLE);
     }
 
     @Override

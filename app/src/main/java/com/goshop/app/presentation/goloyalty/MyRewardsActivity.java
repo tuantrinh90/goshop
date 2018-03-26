@@ -137,6 +137,7 @@ public class MyRewardsActivity extends BaseActivity implements MenuAdapter
 
     @Override
     public void onHeaderUserClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }
@@ -144,6 +145,7 @@ public class MyRewardsActivity extends BaseActivity implements MenuAdapter
 
     @Override
     public void onHeaderLoginClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }

@@ -11,21 +11,35 @@
     <include
         layout="@layout/toolbar_search_with_bottom_shadow"/>
 
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/layout_filter_bar"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </RelativeLayout>
 
-    <include
-        layout="@layout/layout_filter_bar"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_search_result_display"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingRight="@dimen/size_16"
-        android:background="@android:color/white"
-        tools:ignore="RtlSymmetry"
-        android:paddingEnd="@dimen/size_16"/>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size_16">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_search_result_display"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:nestedScrollingEnabled="false"
+                android:paddingRight="@dimen/size_16"
+                android:background="@android:color/white"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_16"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
 
 </LinearLayout>

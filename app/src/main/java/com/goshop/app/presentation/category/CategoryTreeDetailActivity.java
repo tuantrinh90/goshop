@@ -49,8 +49,8 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     @BindView(R.id.iv_sort_arrow)
     ImageView ivSortArrow;
 
-    @BindView(R.id.ll_category_nodata)
-    LinearLayout llCategoryNodata;
+    @BindView(R.id.rl_category_nodata)
+    RelativeLayout llCategoryNodata;
 
     @BindView(R.id.ll_filter_menu)
     LinearLayout llFilterMenu;

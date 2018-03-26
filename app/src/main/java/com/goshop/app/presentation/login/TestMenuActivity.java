@@ -132,9 +132,7 @@ public class TestMenuActivity extends BaseActivity implements MenuAdapter
 
     @Override
     public void onHeaderUserClick(int position) {
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
+        //todo this is empty
     }
 
     @Override

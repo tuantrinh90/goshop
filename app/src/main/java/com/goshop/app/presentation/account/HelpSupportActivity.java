@@ -151,6 +151,7 @@ public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presen
 
     @Override
     public void onHeaderUserClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }
@@ -158,6 +159,7 @@ public class HelpSupportActivity extends BaseActivity<HelpSupportContract.Presen
 
     @Override
     public void onHeaderLoginClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }

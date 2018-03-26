@@ -9,25 +9,31 @@
 
     <include
         layout="@layout/toolbar_img_text_img_close"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
 
-    <com.goshop.app.common.view.RobotoMediumTabLayout
-        android:id="@+id/tablayout_my_rewards"
+
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/bg_tab_line"
-        app:tabPaddingStart="@dimen/size_12"
-        app:tabPaddingEnd="@dimen/size_12"
-        app:tabPaddingTop="@dimen/size_12"
-        app:tabPaddingBottom="@dimen/size_16"
-        app:tabMode="fixed"
-        app:tabTextColor="@color/color_grayscale_secondary"
-        app:tabSelectedTextColor="@color/color_grayscale_text"
-        app:tabIndicatorColor="@color/color_grayscale_text"
-        app:tabTextAppearance="@style/mainTabStyle"/>
+        android:layout_height="wrap_content">
+        <com.goshop.app.common.view.RobotoMediumTabLayout
+            android:id="@+id/tablayout_my_rewards"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_48"
+            android:background="@drawable/bg_tab_line"
+            app:tabPaddingStart="@dimen/size_12"
+            app:tabPaddingEnd="@dimen/size_12"
+            app:tabPaddingTop="@dimen/size_12"
+            app:tabPaddingBottom="@dimen/size_14"
+            app:tabMode="fixed"
+            app:tabTextColor="@color/color_grayscale_secondary"
+            app:tabSelectedTextColor="@color/color_grayscale_text"
+            app:tabIndicatorColor="@color/color_grayscale_text"
+            app:tabTextAppearance="@style/mainTabStyle"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </RelativeLayout>
+
 
     <android.support.v4.view.ViewPager
         android:id="@+id/viewpager_my_rewards"

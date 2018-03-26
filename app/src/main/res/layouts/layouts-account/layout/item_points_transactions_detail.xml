@@ -33,7 +33,7 @@
             android:id="@+id/tv_points_time"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_4"
+            android:paddingTop="@dimen/size_2"
             android:textColor="@color/color_grayscale_secondary"
             android:textSize="@dimen/size_font_14"/>
     </LinearLayout>

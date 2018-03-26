@@ -5,13 +5,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:focusableInTouchMode="true"
     android:focusable="true"
-    android:clipChildren="false"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <include
         layout="@layout/toolbar_right_text"/>
+
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_4"
@@ -32,38 +32,38 @@
                 android:id="@+id/et_profile_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_14"
+                android:layout_marginTop="@dimen/size_24"
                 animET:hint="@string/email"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_profile_first"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_6"
                 animET:hint="@string/register_firstname"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_profile_last"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_6"
                 animET:hint="@string/register_lastname"/>
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_6"
                 android:orientation="vertical">
                 <com.goshop.app.common.view.RobotoRegularTextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="@dimen/size_font_12"
-                    android:paddingTop="@dimen/size_34"
                     android:text="@string/gender"
                     android:textColor="@color/color_grayscale_secondary"/>
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/size_12"
+                    android:paddingTop="@dimen/size_14"
                     android:orientation="horizontal"
                     android:baselineAligned="false">
 
@@ -129,10 +129,19 @@
             </LinearLayout>
 
             <com.goshop.app.common.view.RobotoRegularTextView
-                android:id="@+id/tv_profile_date_of_birth"
+                android:id="@+id/tv_date_birth_hint"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_29"
+                android:textSize="@dimen/size_font_12"
+                android:layout_marginTop="@dimen/size_28"
+                android:layout_marginBottom="@dimen/size_18_negative"
+                android:visibility="invisible"
+                android:textColor="@color/color_grayscale_secondary"
+                android:text="@string/date_of_birth"/>
+            <com.goshop.app.common.view.RobotoRegularTextView
+                android:id="@+id/tv_profile_date_of_birth"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_50"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"
@@ -150,9 +159,8 @@
                 android:id="@+id/tv_profile_date_of_birth_warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/size_8"
                 android:paddingTop="@dimen/size_4"
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:text="@string/birth_empty"
                 android:textSize="@dimen/size_font_12"
                 android:textColor="@color/color_orange_red"/>
@@ -160,8 +168,8 @@
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_profile_title"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_29"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_11"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"
@@ -179,14 +187,14 @@
                 android:id="@+id/et_profile_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_35"
                 animET:hint="@string/mobile_number"/>
 
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_profile_language"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_2"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"
@@ -203,8 +211,8 @@
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_profile_race"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_29"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_28"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"

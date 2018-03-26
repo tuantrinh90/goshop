@@ -6,6 +6,6 @@
     <solid
         android:color="@color/color_grayscale_text" />
     <padding
-        android:top="@dimen/size_4_negative"
+        android:top="@dimen/size_1_negative"
         android:bottom="@dimen/size_2_negative" />
 </shape>

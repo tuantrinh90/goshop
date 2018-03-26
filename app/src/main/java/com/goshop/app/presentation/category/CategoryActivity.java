@@ -153,6 +153,7 @@ public class CategoryActivity extends BaseActivity<CategoryContract.Presenter> i
 
     @Override
     public void onHeaderUserClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }
@@ -160,6 +161,7 @@ public class CategoryActivity extends BaseActivity<CategoryContract.Presenter> i
 
     @Override
     public void onHeaderLoginClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }

@@ -32,7 +32,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_29">
+                android:paddingTop="@dimen/size_26">
                 <com.goshop.app.common.CustomAnimEditText
                     android:id="@+id/ctd_et_register_firstname"
                     android:layout_width="@dimen/size_156"
@@ -62,7 +62,7 @@
                         android:id="@+id/ctd_et_register_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_21"
+                        android:layout_marginTop="@dimen/size_4"
                         animET:hint="@string/email"
                     />
 
@@ -70,7 +70,7 @@
                         android:id="@+id/ctd_et_register_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_21"
+                        android:layout_marginTop="@dimen/size_4"
                         pwd:pwd_hint="@string/password"
                     />
 
@@ -78,15 +78,14 @@
                         android:id="@+id/ctd_et_register_confirmation_password"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_21"
+                        android:layout_marginTop="@dimen/size_4"
                         pwd:pwd_hint="@string/confirmation_password"
                     />
 
                     <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_register_title"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_21"
+                        android:layout_height="@dimen/size_50"
                         android:paddingRight="@dimen/size_8"
                         android:drawableRight="@drawable/ic_icon_spinner_down"
                         android:background="@drawable/selector_textinput_edittext"
@@ -107,15 +106,14 @@
                         android:id="@+id/ctd_et_register_mobile"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_21"
+                        android:layout_marginTop="@dimen/size_30"
                         animET:hint="@string/mobile_number"
                     />
 
                     <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_register_date_of_birth"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_21"
+                        android:layout_height="@dimen/size_50"
                         android:paddingRight="@dimen/size_8"
                         android:drawableRight="@drawable/ic_icon_spinner_down"
                         android:background="@drawable/selector_textinput_edittext"
@@ -132,9 +130,8 @@
                         android:id="@+id/tv_register_date_of_birth_warning"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingBottom="@dimen/size_8"
                         android:paddingTop="@dimen/size_4"
-                        android:visibility="gone"
+                        android:visibility="invisible"
                         android:text="@string/birth_empty"
                         android:textSize="@dimen/size_font_12"
                         android:textColor="@color/color_orange_red"/>
@@ -142,8 +139,8 @@
                     <com.goshop.app.common.view.RobotoRegularTextView
                         android:id="@+id/tv_register_language"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_21"
+                        android:layout_height="@dimen/size_50"
+                        android:layout_marginTop="@dimen/size_28"
                         android:paddingRight="@dimen/size_8"
                         android:drawableRight="@drawable/ic_icon_spinner_down"
                         android:background="@drawable/selector_textinput_edittext"
@@ -210,7 +207,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/size_21"
-                        android:lineSpacingMultiplier="1.2"
+                        android:lineSpacingMultiplier="1.3"
                         android:textSize="@dimen/size_font_12"
                         android:textColor="@color/color_greyish_brown"/>
 

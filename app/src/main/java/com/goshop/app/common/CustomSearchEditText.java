@@ -25,6 +25,8 @@ public class CustomSearchEditText extends RelativeLayout {
     @BindView(R.id.iv_search_del)
     ImageView ivDelete;
 
+    private boolean delState = true;
+
     public CustomSearchEditText(Context context) {
         super(context);
         initView(context);
@@ -36,7 +38,7 @@ public class CustomSearchEditText extends RelativeLayout {
         ButterKnife.bind(this, searchView);
         editText.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         RxTextView.textChanges(editText).subscribe(charSequence -> {
-            if (charSequence.length() > 0) {
+            if (charSequence.length() > 0 && delState) {
                 ivDelete.setVisibility(View.VISIBLE);
                 ivDelete.setOnClickListener(v -> {
                     editText.setText("");
@@ -66,6 +68,11 @@ public class CustomSearchEditText extends RelativeLayout {
 
     public RobotoRegularEditText getEditText() {
         return editText;
+    }
+
+    public void setDeleteGone() {
+        ivDelete.setVisibility(GONE);
+        delState = false;
     }
 
 }

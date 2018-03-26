@@ -15,7 +15,8 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_4_negative">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -26,12 +27,14 @@
                 android:layout_height="wrap_content"
                 android:padding="@dimen/size_16"
                 android:textSize="@dimen/size_font_14"
+                android:lineSpacingMultiplier="1.2"
                 android:textColor="@color/color_black_light"
                 android:text="@string/return_order_tips"/>
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_return_order_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_16"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/name"/>
@@ -40,7 +43,7 @@
                 android:id="@+id/et_return_order_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_4"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/email"/>
@@ -49,7 +52,7 @@
                 android:id="@+id/et_return_order_mobile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_4"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/mobile_phone_no_optional"/>
@@ -58,7 +61,7 @@
                 android:id="@+id/et_return_order_handing"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_4"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 animET:hint="@string/product_handing_optional"/>
@@ -66,15 +69,15 @@
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_return_reason"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_2"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"
                 android:paddingBottom="@dimen/size_8"
-                android:paddingTop="@dimen/size_29"
+                android:paddingTop="@dimen/size_20"
                 android:textColorHint="@color/color_text_hint"
                 android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
@@ -86,15 +89,15 @@
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_return_detail_reason"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_28"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"
                 android:paddingBottom="@dimen/size_8"
-                android:paddingTop="@dimen/size_29"
+                android:paddingTop="@dimen/size_20"
                 android:textColorHint="@color/color_text_hint"
                 android:textColor="@color/color_grayscale_text"
                 android:textSize="@dimen/size_font_16"
@@ -105,16 +108,16 @@
             <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_btn_return_order"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_48"
+                android:layout_height="@dimen/size_54"
                 android:gravity="center"
                 android:layout_marginLeft="@dimen/size_8"
-                android:layout_marginTop="@dimen/size_37"
+                android:layout_marginTop="@dimen/size_35"
                 android:layout_marginRight="@dimen/size_8"
-                android:layout_marginBottom="@dimen/size_8"
+                android:layout_marginBottom="@dimen/size_6"
                 android:text="@string/submit"
                 android:textSize="@dimen/size_font_16"
                 android:textColor="@android:color/white"
-                android:background="@drawable/bg_btn_round_pink"/>
+                android:background="@drawable/ic_icon_pink_btn"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 

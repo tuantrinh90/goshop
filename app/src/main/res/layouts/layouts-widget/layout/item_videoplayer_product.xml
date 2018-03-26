@@ -23,6 +23,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignBottom="@id/iv_video_product_thumb"
         android:textSize="@dimen/size_font_13"
+        android:paddingLeft="@dimen/size_4"
         android:textColor="@android:color/white"
         android:background="@color/color_main_pink"
         android:gravity="left|center_vertical"

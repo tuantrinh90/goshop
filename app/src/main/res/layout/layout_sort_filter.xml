@@ -46,13 +46,24 @@
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_filter"
+    <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingRight="@dimen/size_16"
-        tools:ignore="RtlSymmetry"
-        android:paddingEnd="@dimen/size_16"/>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size_16">
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerview_filter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="@dimen/size_16"
+                android:nestedScrollingEnabled="false"
+                tools:ignore="RtlSymmetry"
+                android:paddingEnd="@dimen/size_16"/>
+
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
 
 
 </LinearLayout>

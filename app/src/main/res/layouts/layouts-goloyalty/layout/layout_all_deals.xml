@@ -7,13 +7,16 @@
     android:orientation="vertical">
     <include
         layout="@layout/toolbar_img_text_img_close"/>
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
-
-    <include
-        layout="@layout/layout_filter_bar"/>
+        android:layout_height="wrap_content">
+        <include
+            layout="@layout/layout_filter_bar"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </RelativeLayout>
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycleview_all_deals"
@@ -24,6 +27,6 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_8"
-        android:background="@drawable/drawable_biger_divider_with_shadow"/>
+        android:background="@drawable/drawable_end_divider_with_shadow"/>
 
 </LinearLayout>

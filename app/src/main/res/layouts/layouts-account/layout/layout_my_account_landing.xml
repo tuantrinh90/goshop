@@ -23,8 +23,8 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_142"
-                android:paddingTop="@dimen/size_36"
+                android:layout_height="@dimen/size_138"
+                android:paddingTop="@dimen/size_32"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:background="@drawable/ic_icon_account_top">
@@ -51,7 +51,7 @@
                     android:id="@+id/tv_my_account_edit"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="@dimen/size_8"
+                    android:paddingTop="@dimen/size_6"
                     android:layout_below="@id/tv_my_account_username"
                     android:layout_toLeftOf="@+id/iv_my_account_thumb"
                     android:text="@string/edit_profile"
@@ -65,7 +65,7 @@
             <RelativeLayout
                 android:id="@+id/rl_account_wishlist"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_66"
+                android:layout_height="@dimen/size_67"
                 android:background="@drawable/selector_btn_press_gray_line">
                 <ImageView
                     android:id="@+id/iv_left_wishlist"
@@ -112,7 +112,7 @@
             <RelativeLayout
                 android:id="@+id/rl_account_orders"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_66"
+                android:layout_height="@dimen/size_67"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:background="@drawable/selector_btn_press_gray_line">
@@ -153,7 +153,7 @@
             <RelativeLayout
                 android:id="@+id/rl_account_reviews"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_66"
+                android:layout_height="@dimen/size_67"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:background="@drawable/selector_btn_press_gray_line">
@@ -194,7 +194,7 @@
             <RelativeLayout
                 android:id="@+id/rl_account_address"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_66"
+                android:layout_height="@dimen/size_67"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:background="@drawable/selector_btn_press_gray_line">
@@ -235,7 +235,7 @@
             <RelativeLayout
                 android:id="@+id/rl_account_rewards"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_66"
+                android:layout_height="@dimen/size_67"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:background="@drawable/selector_btn_press_gray_line">
@@ -276,7 +276,7 @@
             <RelativeLayout
                 android:id="@+id/rl_account_points"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_66"
+                android:layout_height="@dimen/size_67"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:background="@drawable/selector_btn_press_gray_line">
@@ -317,7 +317,7 @@
             <RelativeLayout
                 android:id="@+id/rl_account_egift"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_66"
+                android:layout_height="@dimen/size_67"
                 android:paddingLeft="@dimen/size_16"
                 android:paddingRight="@dimen/size_16"
                 android:background="@drawable/selector_btn_press_gray_line">

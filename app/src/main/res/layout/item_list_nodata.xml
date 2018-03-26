@@ -28,7 +28,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:padding="@dimen/size_16"
+            android:paddingLeft="@dimen/size_16"
+            android:paddingRight="@dimen/size_16"
+            android:paddingTop="@dimen/size_14"
+            android:paddingBottom="@dimen/size_14"
             android:textColor="@color/color_text_hint"
             android:textSize="@dimen/size_font_14"
             android:text="@string/or"/>

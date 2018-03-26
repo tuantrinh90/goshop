@@ -42,7 +42,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/color_black_light_second"
-            android:paddingTop="@dimen/size_8"
+            android:paddingTop="@dimen/size_7"
             android:textSize="@dimen/size_font_13"
             android:maxLines="1"
             android:ellipsize="end"/>

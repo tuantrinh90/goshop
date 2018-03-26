@@ -43,7 +43,14 @@
     <dimen name="size_1_negative">-1dp</dimen>
     <dimen name="size_2_negative">-2dp</dimen>
     <dimen name="size_4_negative">-4dp</dimen>
-    <dimen name="size_16_negative">-10dp</dimen>
+    <dimen name="size_6_negative">-6dp</dimen>
+    <dimen name="size_8_negative">-8dp</dimen>
+    <dimen name="size_10_negative">-10dp</dimen>
+    <dimen name="size_12_negative">-12dp</dimen>
+    <dimen name="size_16_negative">-16dp</dimen>
+    <dimen name="size_18_negative">-18dp</dimen>
+    <dimen name="size_20_negative">-20dp</dimen>
+    <dimen name="size_22_negative">-22dp</dimen>
     <dimen name="size_0">0dp</dimen>
     <dimen name="size_half">0.5dp</dimen>
     <dimen name="size_divider">0.6dp</dimen>
@@ -155,6 +162,7 @@
     <dimen name="size_124">124dp</dimen>
     <dimen name="size_126">126dp</dimen>
     <dimen name="size_128">128dp</dimen>
+    <dimen name="size_138">138dp</dimen>
     <dimen name="size_142">142dp</dimen>
     <dimen name="size_146">146dp</dimen>
     <dimen name="size_150">150dp</dimen>

@@ -46,8 +46,8 @@
             <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/btn_checkout_place_my_order"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/size_48"
-                android:background="@drawable/bg_btn_round_pink"
+                android:layout_height="@dimen/size_54"
+                android:background="@drawable/ic_icon_pink_btn"
                 android:layout_marginLeft="@dimen/size_8"
                 android:layout_marginRight="@dimen/size_8"
                 android:layout_marginBottom="@dimen/size_8"

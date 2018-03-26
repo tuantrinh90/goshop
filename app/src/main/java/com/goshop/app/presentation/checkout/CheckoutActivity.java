@@ -189,7 +189,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
         RxTextView.textChanges(etCheckoutDiscount).subscribe(charSequence -> {
             if (charSequence.length() > 0) {
-                if(!tvBtnCheckDiscountApply.getText().equals(getResources().getString(R.string.cancel))) {
+                if (!tvBtnCheckDiscountApply.getText()
+                    .equals(getResources().getString(R.string.cancel))) {
                     tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
                     tvBtnCheckDiscountApply.setBackgroundResource(R.drawable.drawable_round_cancel);
                 }
@@ -207,7 +208,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
         RxTextView.textChanges(etCheckoutEgift).subscribe(charSequence -> {
             if (charSequence.length() > 0) {
-                if(!tvBtnCheckGiftCardApply.getText().equals(getResources().getString(R.string.cancel))) {
+                if (!tvBtnCheckGiftCardApply.getText()
+                    .equals(getResources().getString(R.string.cancel))) {
                     tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
                     tvBtnCheckGiftCardApply.setBackgroundResource(R.drawable.drawable_round_cancel);
                 }

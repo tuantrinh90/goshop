@@ -42,8 +42,8 @@
         android:layout_height="wrap_content"
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
-        android:paddingTop="@dimen/size_4"
-        android:paddingBottom="@dimen/size_16"
+        android:paddingTop="@dimen/size_6"
+        android:paddingBottom="@dimen/size_20"
         android:background="@drawable/bg_bottom_line"
         android:orientation="horizontal">
 

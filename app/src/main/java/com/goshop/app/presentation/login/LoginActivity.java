@@ -81,7 +81,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     private CallbackManager facebookCallbackManager;
 
-    private boolean isLogin = true;
+    private boolean isLogin = false;
 
     private MenuAdapter menuAdapter;
 
@@ -158,13 +158,12 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void onHeaderUserClick(int position) {
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
+        //todo this is empty
     }
 
     @Override
     public void onHeaderLoginClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }

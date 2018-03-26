@@ -45,7 +45,7 @@
     <string name="login_forgot_password">Forgot password?</string>
     <string name="login_or">OR</string>
     <string name="login_facebook">Login with Facebook</string>
-    <string name="login_bottom_describe">Dont have an account yet?&#160;</string>
+    <string name="login_bottom_describe">Don\'t have an account yet?&#160;</string>
     <string name="login_register">Register now.</string>
 
     <string name="required_field">This is a required field.</string>

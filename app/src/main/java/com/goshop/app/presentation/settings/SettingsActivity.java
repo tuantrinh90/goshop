@@ -193,6 +193,7 @@ public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> i
 
     @Override
     public void onHeaderUserClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }
@@ -200,6 +201,7 @@ public class SettingsActivity extends BaseActivity<SettingsContract.Presenter> i
 
     @Override
     public void onHeaderLoginClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }

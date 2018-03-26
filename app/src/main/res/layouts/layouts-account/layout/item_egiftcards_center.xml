@@ -19,8 +19,8 @@
         android:text="@string/egift_cards"
         android:gravity="left"
         android:maxLines="1"
-        android:paddingBottom="@dimen/size_16"
-        android:paddingTop="@dimen/size_20"
+        android:paddingBottom="@dimen/size_14"
+        android:paddingTop="@dimen/size_18"
         android:textColor="@color/color_grayscale_text"
         tools:ignore="RtlHardcoded"/>
 

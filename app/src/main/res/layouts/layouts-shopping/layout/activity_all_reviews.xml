@@ -27,7 +27,7 @@
                 android:id="@+id/iv_all_reviews_thumb"
                 android:layout_width="@dimen/size_60"
                 android:layout_height="@dimen/size_60"
-                android:layout_marginTop="@dimen/size_20"
+                android:layout_marginTop="@dimen/size_16"
                 android:contentDescription="@string/app_name"
                 android:background="@drawable/ic_bought"/>
             <RatingBar

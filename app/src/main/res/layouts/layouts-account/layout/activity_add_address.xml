@@ -31,35 +31,35 @@
                 android:id="@+id/et_add_address_first"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_24"
                 animET:hint="@string/register_firstname"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_add_address_last"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_4"
                 animET:hint="@string/register_lastname"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_add_address_one"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_4"
                 animET:hint="@string/address_one"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_add_address_two"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_4"
                 animET:hint="@string/address_two"/>
 
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_add_address_country"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_2"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"
@@ -75,17 +75,16 @@
                 android:id="@+id/tv_add_address_country_warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/size_8"
                 android:paddingTop="@dimen/size_4"
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:text="@string/country_empty"
                 android:textSize="@dimen/size_font_12"
                 android:textColor="@color/color_orange_red"/>
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_add_address_state"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_8"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"
@@ -101,17 +100,16 @@
                 android:id="@+id/tv_add_address_state_warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/size_8"
                 android:paddingTop="@dimen/size_4"
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:text="@string/state_empty"
                 android:textSize="@dimen/size_font_12"
                 android:textColor="@color/color_orange_red"/>
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_add_address_city"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_height="@dimen/size_50"
+                android:layout_marginTop="@dimen/size_8"
                 android:paddingRight="@dimen/size_8"
                 android:drawableRight="@drawable/ic_icon_spinner_down"
                 android:background="@drawable/selector_textinput_edittext"
@@ -128,9 +126,8 @@
                 android:id="@+id/tv_add_address_city_warning"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingBottom="@dimen/size_8"
                 android:paddingTop="@dimen/size_4"
-                android:visibility="gone"
+                android:visibility="invisible"
                 android:text="@string/state_empty"
                 android:textSize="@dimen/size_font_12"
                 android:textColor="@color/color_orange_red"/>
@@ -138,21 +135,21 @@
                 android:id="@+id/et_add_address_zip"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_16"
                 animET:hint="@string/zip_postal_code"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_add_address_phone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_2"
                 animET:hint="@string/phone_number"/>
 
             <LinearLayout
                 android:id="@+id/ll_add_address_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/size_21"
+                android:layout_marginTop="@dimen/size_6_negative"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
                 <ImageView

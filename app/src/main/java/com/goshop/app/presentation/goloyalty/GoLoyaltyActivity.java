@@ -152,6 +152,7 @@ public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter>
 
     @Override
     public void onHeaderUserClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }
@@ -159,6 +160,7 @@ public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter>
 
     @Override
     public void onHeaderLoginClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }

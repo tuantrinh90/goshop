@@ -12,6 +12,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -74,8 +75,8 @@ public class PendingAdapter extends RecyclerView.Adapter {
 
     class DealViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.iv_pending_cards)
-        ImageView ivPendingCards;
+        @BindView(R.id.ll_pending_cards)
+        LinearLayout llPendingCards;
 
         @BindView(R.id.iv_pending_thumb)
         ImageView ivPendingThumb;
@@ -105,7 +106,7 @@ public class PendingAdapter extends RecyclerView.Adapter {
             tvPendingDetail.setText(dealsVM.getDetail());
             tvPendingTime.setText(dealsVM.getTime());
             tvPendingEnd.setText(dealsVM.getEnd());
-            ivPendingCards.setOnClickListener(v -> onCardRedeemClickListener.onCardClick());
+            llPendingCards.setOnClickListener(v -> onCardRedeemClickListener.onCardClick());
             itemView.setOnClickListener(v -> onRewardsItemClickListener.onRewardItemClick());
         }
     }

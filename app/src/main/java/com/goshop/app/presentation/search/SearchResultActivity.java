@@ -105,6 +105,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     }
 
     private void initSearchView() {
+        csetSearch.setDeleteGone();
         String keywords = getIntent().getStringExtra(SearchActivity.KEYWORDS);
         csetSearch.getEditText().setText(keywords);
         csetSearch.getEditText().setSelection(csetSearch.getEditText().getText().length());

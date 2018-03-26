@@ -150,6 +150,7 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
 
     @Override
     public void onHeaderUserClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }
@@ -157,6 +158,7 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
 
     @Override
     public void onHeaderLoginClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
         if (currentMenu != position) {
             menuUtil.startNewScreen(position);
         }
