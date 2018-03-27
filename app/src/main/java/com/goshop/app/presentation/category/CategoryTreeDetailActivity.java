@@ -83,9 +83,9 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
 
     private FilterMenuAdapter menuAdapter;
 
-    private String title;
-
     private List<SortVM> sortVMS;
+
+    private String title;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -206,7 +206,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
 
     @Override
     public void onProductItemClick(ProductsVM productItemVM) {
-
+        //todo wait for api
     }
 
     @Override

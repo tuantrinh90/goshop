@@ -175,10 +175,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         radioPaymentType.setOnCheckedChangeListener((RadioGroup group, int checkedId) -> {
             switch (checkedId) {
                 case R.id.rb_checkout_payment_banking:
+                    //TODO wait for api
                     break;
                 case R.id.rb_checkout_payment_cash_on_deliery:
+                    //TODO wait for api
                     break;
                 case R.id.rb_checkout_payment_credit:
+                    //TODO wait for api
                     break;
 
             }

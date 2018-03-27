@@ -164,6 +164,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                 finish();
                 break;
             case R.id.textview_right_menu:
+                //todo wait for api
                 break;
             case R.id.ll_edit_address_email:
                 ivEditAddressEmail.setSelected(!ivEditAddressEmail.isSelected());
@@ -214,11 +215,11 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
 
     @Override
     public void onDismiss() {
-
+        //todo wait for api
     }
 
     @Override
     public void showEditAddressResult() {
-
+        //todo wait for api
     }
 }

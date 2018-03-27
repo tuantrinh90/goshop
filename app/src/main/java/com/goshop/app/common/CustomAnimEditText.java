@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.design.widget.TextInputLayout;
+import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,6 +24,8 @@ import butterknife.ButterKnife;
 
 public class CustomAnimEditText extends RelativeLayout {
 
+    private final static int COUNT_DEFAULT = 1000;
+
     private final String INPUT_EMAIL = "Email";
 
     private final String INPUT_MOBILE = "Mobile Number";
@@ -36,12 +39,13 @@ public class CustomAnimEditText extends RelativeLayout {
     @BindView(R.id.til_anim_edittext)
     TextInputLayout tilAnimEdittext;
 
+    private int count;
+
+    private boolean countAble;
+
     private int hintString;
 
     private String hintText;
-
-    private boolean countAble;
-    private int count;
 
     public CustomAnimEditText(Context context) {
         super(context);
@@ -55,18 +59,16 @@ public class CustomAnimEditText extends RelativeLayout {
             .obtainStyledAttributes(attrs, R.styleable.animET);
         hintString = typedArray.getResourceId(R.styleable.animET_hint, 0);
         countAble = typedArray.getBoolean(R.styleable.animET_countable, false);
-        count = typedArray.getInt(R.styleable.animET_count, 1000);
+        count = typedArray.getInt(R.styleable.animET_count, COUNT_DEFAULT);
         typedArray.recycle();
         hintText = context.getString(hintString);
         tilAnimEdittext.setHint(hintText);
         deleteImageShowListener(etAnimEdittext, ivAnimDelEdittext);
-        if(countAble){
+        if (countAble) {
             tilAnimEdittext.setCounterEnabled(true);
             tilAnimEdittext.setCounterMaxLength(count);
         }
     }
-
-
 
     private void deleteImageShowListener(final EditText targetEditText, final ImageView deleteIv) {
         targetEditText.setOnFocusChangeListener((View v, boolean hasFocus) -> {
@@ -75,9 +77,9 @@ public class CustomAnimEditText extends RelativeLayout {
                     if (charSequence.length() > 0) {
                         tilAnimEdittext.setErrorEnabled(false);
 
-                        if(countAble) {
+                        if (countAble) {
                             deleteIv.setVisibility(View.GONE);
-                            if(charSequence.length() > count) {
+                            if (charSequence.length() > count) {
                                 tilAnimEdittext.setErrorEnabled(true);
                                 tilAnimEdittext.setError(targetEditText.getContext()
                                     .getString(R.string.exceed_number));
@@ -95,7 +97,6 @@ public class CustomAnimEditText extends RelativeLayout {
                                 deleteIv.setVisibility(View.GONE);
                             });
                         }
-
 
                         switch (hintText) {
                             case INPUT_EMAIL:
@@ -134,7 +135,7 @@ public class CustomAnimEditText extends RelativeLayout {
     }
 
     private boolean isEmail(String email) {
-        if (null == email || "".equals(email)) return false;
+        if (TextUtils.isEmpty(email)) return false;
         Pattern p = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
         Matcher m = p.matcher(email);
         return m.matches();
