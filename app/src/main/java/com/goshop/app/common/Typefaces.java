@@ -13,12 +13,6 @@ public class Typefaces {
 
     public static final String PATH_FONT_CUSTOM_TEXT = "";
 
-    private static final String TAG = "Typefaces";
-
-    public static final String PATH_FONT_ROBOTO_BOLD = "fonts/Roboto-Bold.ttf";
-
-    public static final String PATH_FONT_ROBOTO_BOLD_ITALIC = "fonts/Roboto-BoldItalic.ttf";
-
     public static final String PATH_FONT_ROBOTO_ITALIC = "fonts/Roboto-Italic.ttf";
 
     public static final String PATH_FONT_ROBOTO_LIGHT = "fonts/Roboto-Light.ttf";
@@ -30,6 +24,8 @@ public class Typefaces {
     public static final String PATH_FONT_ROBOTO_MEDIUM_ITALIC = "fonts/Roboto-MediumItalic.ttf";
 
     public static final String PATH_FONT_ROBOTO_REGULAR = "fonts/Roboto-Regular.ttf";
+
+    private static final String TAG = "Typefaces";
 
     private static final Hashtable<String, Typeface> cache = new Hashtable<>();
 

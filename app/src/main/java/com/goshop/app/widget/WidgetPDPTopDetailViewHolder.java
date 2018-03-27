@@ -2,7 +2,7 @@ package com.goshop.app.widget;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
-import com.goshop.app.common.view.RobotoBoldItaticTextView;
+import com.goshop.app.common.view.RobotoMediumItalicTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ColorVM;
@@ -60,7 +60,7 @@ public class WidgetPDPTopDetailViewHolder extends RecyclerView.ViewHolder {
     RobotoRegularTextView tvPdpTopStarNum;
 
     @BindView(R.id.tv_pdp_top_tips)
-    RobotoBoldItaticTextView tvPdpTopTips;
+    RobotoMediumItalicTextView tvPdpTopTips;
 
     public WidgetPDPTopDetailViewHolder(View itemView) {
         super(itemView);
