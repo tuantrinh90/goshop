@@ -102,7 +102,7 @@ public class TestMenuActivity extends BaseActivity implements MenuAdapter
         menuAdapter = new MenuAdapter(
             isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
         recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_SETTING : MenuUtil.UNLOGIN_MENU_SETTINGS;
+        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_OTHER : MenuUtil.UNLOGIN_MENU_OTHER;
         menuAdapter
             .updateSelection(currentMenu);
         menuAdapter.setOnSlideMenuItemClickListener(this);

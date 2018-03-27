@@ -7,13 +7,14 @@
     <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_btn_cart_checkout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/size_8"
-        android:background="@drawable/bg_btn_round_pink"
+        android:layout_height="@dimen/size_54"
+        android:layout_marginLeft="@dimen/size_8"
+        android:layout_marginTop="@dimen/size_8"
+        android:layout_marginBottom="@dimen/size_6"
+        android:background="@drawable/ic_icon_pink_btn"
         android:gravity="center"
         android:text="@string/proceed_to_checkout"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/size_font_16"
-        android:padding="@dimen/size_14"/>
+        android:textSize="@dimen/size_font_16" />
 
 </LinearLayout>

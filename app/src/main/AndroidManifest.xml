@@ -80,7 +80,8 @@
         <activity android:name=".presentation.shopping.ShoppingCartActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.account.NotificationActivity"/>
+        <activity android:name=".presentation.account.NotificationActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.HelpSupportActivity"
             android:theme="@style/WhiteBackground"/>

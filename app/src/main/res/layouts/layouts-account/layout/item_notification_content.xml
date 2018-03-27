@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="horizontal"
-    android:paddingTop="@dimen/size_8"
-    android:paddingBottom="@dimen/size_8"
+    android:paddingTop="@dimen/size_10"
+    android:paddingBottom="@dimen/size_10"
     android:background="@drawable/bg_bottom_line">
 
     <View
@@ -26,7 +26,7 @@
             android:id="@+id/tv_notification_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:lineSpacingMultiplier="1.2"
+            android:lineSpacingMultiplier="1.3"
             android:maxLines="2"
             android:textSize="@dimen/size_font_16"
             android:text="@string/home_item_test_product_name"
@@ -34,6 +34,7 @@
         <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_notification_date"
             android:textColor="@color/color_text_hint"
+            android:layout_marginTop="@dimen/size_2"
             android:textSize="@dimen/size_font_14"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
