@@ -135,7 +135,9 @@ public class CustomAnimEditText extends RelativeLayout {
     }
 
     private boolean isEmail(String email) {
-        if (TextUtils.isEmpty(email)) return false;
+        if (TextUtils.isEmpty(email)) {
+            return false;
+        }
         Pattern p = Pattern.compile("\\w+([-+.]\\w+)*@\\w+([-.]\\w+)*\\.\\w+([-.]\\w+)*");
         Matcher m = p.matcher(email);
         return m.matches();
