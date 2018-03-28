@@ -40,6 +40,7 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.WidgetListResponse;
 
 import java.util.Map;
@@ -48,7 +49,7 @@ import io.reactivex.Observable;
 
 public interface AccountRepository {
 
-    Observable<WidgetListResponse> trendingNowRequest(Map<String, Object> params);
+    Observable<TrendingNowResponse> trendingNowRequest(Map<String, Object> params);
 
     Observable<BrandsResponse> brandsRequest(Map<String, Object> params);
 

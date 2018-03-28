@@ -14,19 +14,18 @@
     <RelativeLayout
         android:id="@+id/rl_video_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/size_45"
         android:paddingLeft="@dimen/size_16"
-        android:paddingTop="@dimen/size_16"
-        android:paddingRight="@dimen/size_16"
-        android:paddingBottom="@dimen/size_8">
+        android:paddingBottom="@dimen/size_8"
+        android:paddingRight="@dimen/size_16">
 
         <ImageView
             android:id="@+id/iv_btn_on_air_right"
             android:layout_width="@dimen/size_24"
             android:layout_height="@dimen/size_24"
             android:background="@drawable/ic_icon_right_expand"
-            android:layout_centerVertical="true"
             android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
             android:contentDescription="@string/app_name"
             android:layout_alignParentEnd="true"/>
         <com.goshop.app.common.view.RobotoMediumTextView
@@ -34,20 +33,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_alignParentBottom="true"
             android:textSize="@dimen/size_font_18"
             android:textColor="@color/color_grayscale_text"
-            android:layout_centerVertical="true"
             android:text="@string/on_air"
             android:layout_alignParentStart="true"/>
         <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_btn_videoplayer_detail_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_toLeftOf="@id/iv_btn_on_air_right"
             android:layout_marginRight="@dimen/size_4"
             android:textColor="@color/color_grayscale_secondary"
             android:textSize="@dimen/size_font_14"
-            android:layout_centerVertical="true"
             android:text="@string/tv_schedule"
             tools:ignore="RelativeOverlap"
             android:layout_toStartOf="@id/iv_btn_on_air_right"

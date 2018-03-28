@@ -41,6 +41,7 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.WidgetListResponse;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.utils.ServiceData;
@@ -61,7 +62,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<WidgetListResponse> trendingNowRequest(Map<String, Object> params) {
+    public Observable<TrendingNowResponse> trendingNowRequest(Map<String, Object> params) {
         return restApi.trendingNowRequest(params);
     }
 

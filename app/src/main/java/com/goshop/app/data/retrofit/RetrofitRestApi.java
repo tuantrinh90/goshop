@@ -41,6 +41,7 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.WidgetListResponse;
 
 import java.util.Map;
@@ -61,7 +62,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<WidgetListResponse> trendingNowRequest(@Url String fullUrl,
+    Observable<TrendingNowResponse> trendingNowRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

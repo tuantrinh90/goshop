@@ -291,6 +291,13 @@
         <item name="android:paddingTop">@dimen/size_4</item>
     </style>
 
+    <style name="tabTextAppearance" parent="@android:style/TextAppearance">
+        <item name="android:textSize">@dimen/size_font_14</item>
+        <item name="android:paddingBottom">@dimen/size_17</item>
+        <item name="android:gravity">bottom</item>
+        <item name="android:textAllCaps">true</item>
+    </style>
+
     <style name="menuTextStyle">
         <item name="android:textSize">@dimen/size_font_14</item>
         <item name="android:listPreferredItemHeightSmall">@dimen/size_52</item>
