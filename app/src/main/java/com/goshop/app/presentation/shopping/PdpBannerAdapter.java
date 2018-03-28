@@ -22,6 +22,11 @@ public class PdpBannerAdapter extends PagerAdapter {
         this.imageUrls = imageUrls;
     }
 
+    public void setImageUrls(List<String> imageUrls) {
+        this.imageUrls = imageUrls;
+        notifyDataSetChanged();
+    }
+
     @Override
     public int getCount() {
         return imageUrls.size();

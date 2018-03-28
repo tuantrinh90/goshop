@@ -43,10 +43,16 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     Unbinder unbinder;
 
+    private OnScheduleClickListener onScheduleClickListener;
+
     private TrendingNowAdapter trendingNowAdapter;
 
     public static TrendingNowFragment getInstance() {
         return new TrendingNowFragment();
+    }
+
+    public void setOnScheduleClickListener(OnScheduleClickListener onScheduleClickListener) {
+        this.onScheduleClickListener = onScheduleClickListener;
     }
 
     @Nullable
@@ -114,7 +120,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onTVScheduleClick() {
-        //todo wait decide
+        onScheduleClickListener.onScheduleClick();
     }
 
     @Override
@@ -155,5 +161,8 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         }
     }
 
+    public interface OnScheduleClickListener {
 
+        void onScheduleClick();
+    }
 }

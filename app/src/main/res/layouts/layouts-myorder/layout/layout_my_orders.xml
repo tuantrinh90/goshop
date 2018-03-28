@@ -8,15 +8,18 @@
     android:orientation="vertical">
     <include
         layout="@layout/toolbar_img_text_img_close"/>
-    <View
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_my_orders"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_my_orders"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/size_4_negative"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </RelativeLayout>
 
 </LinearLayout>

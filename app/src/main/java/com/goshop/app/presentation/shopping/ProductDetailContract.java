@@ -12,6 +12,8 @@ public class ProductDetailContract {
     interface View extends BaseView {
 
         void productDetailRequestSuccess(List<ProductDetailModel> detailDatas);
+
+        void productBannerResult(List<String> imageUrls);
     }
 
     public interface Presenter extends BasePresenter<View> {

@@ -1,4 +1,4 @@
-package com.goshop.app.widget.adapter;
+package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMPEditText;
@@ -13,8 +13,9 @@ import com.goshop.app.presentation.model.PdpQAVM;
 import com.goshop.app.presentation.model.PdpReviewsVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.presentation.model.ProductDetailTopVM;
-import com.goshop.app.presentation.shopping.AdditionalItemAdapter;
-import com.goshop.app.presentation.shopping.PdpBannerAdapter;
+import com.goshop.app.widget.adapter.PDPQaItemAdapter;
+import com.goshop.app.widget.adapter.PDPReviewsItemAdapter;
+import com.goshop.app.widget.adapter.WidgetProductGridHorizontalAdapter;
 
 import android.graphics.Paint;
 import android.support.v4.view.ViewPager;
@@ -33,7 +34,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class WidgetPdpAdapter extends RecyclerView.Adapter {
+public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     private List<ProductDetailModel> allDetailModels;
 
@@ -41,8 +42,9 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
 
     private OnProductDetailItemClickListener onProductDetailItemClickListener;
 
-    public WidgetPdpAdapter(
+    public ProductDetailAdapter(OnProductDetailItemClickListener onProductDetailItemClickListener,
         List<ProductDetailModel> detailModels) {
+        this.onProductDetailItemClickListener = onProductDetailItemClickListener;
         this.allDetailModels = new ArrayList<>();
         this.displayDetailModels = detailModels;
     }
@@ -71,7 +73,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         switch (viewType) {
             case ProductDetailModel.DETAIL_TOP_VIEW:
                 View bannerView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_product_detail_top_fix, parent, false);
+                    .inflate(R.layout.layout_product_detail_top, parent, false);
                 viewHolder = new ProductDetailTopViewHolder(bannerView);
                 break;
             case ProductDetailModel.DETAIL_EXPAND_TITLE:
@@ -167,14 +169,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    public void setOnProductDetailItemClickListener(
-        OnProductDetailItemClickListener onProductDetailItemClickListener) {
-        this.onProductDetailItemClickListener = onProductDetailItemClickListener;
-    }
-
     public interface OnProductDetailItemClickListener {
-
-        void onBannerClick();
 
         void onWriteAReviewClick();
 
@@ -317,11 +312,7 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         }
     }
 
-    class ProductDetailTopViewHolder extends RecyclerView.ViewHolder implements PdpBannerAdapter
-        .OnPdpBannerClickListener {
-
-        @BindView(R.id.indicator_product_detail_top)
-        CustomPagerCircleIndicator circleIndicator;
+    class ProductDetailTopViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.et_product_minus_plus)
         CustomMPEditText etProductMinusPlus;
@@ -356,9 +347,6 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_product_detail_title)
         RobotoMediumTextView tvProductDetailTitle;
 
-        @BindView(R.id.viewpager_product_detail_top)
-        ViewPager viewPager;
-
         public ProductDetailTopViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -386,10 +374,6 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSize());
         }
 
-        @Override
-        public void onBannerClick() {
-            onProductDetailItemClickListener.onBannerClick();
-        }
     }
 
     class WidgetExpandTitleViewHolder extends RecyclerView.ViewHolder {

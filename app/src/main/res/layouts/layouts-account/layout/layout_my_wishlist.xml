@@ -6,16 +6,19 @@
     android:orientation="vertical">
     <include
         layout="@layout/toolbar_img_text_img_close"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_wishlist"
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_4_negative"/>
+        android:layout_height="match_parent">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_wishlist"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/rl_wishlist_nodata"
