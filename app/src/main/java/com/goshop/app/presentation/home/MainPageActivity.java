@@ -4,35 +4,25 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.CustomSearchEditText;
-import com.goshop.app.common.view.CustomBoldTabLayout;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
-import com.goshop.app.presentation.account.EditProfileActivity;
-import com.goshop.app.presentation.account.HelpSupportActivity;
-import com.goshop.app.presentation.account.NotificationActivity;
-import com.goshop.app.presentation.category.CategoryActivity;
-import com.goshop.app.presentation.login.LoginActivity;
-import com.goshop.app.presentation.login.TestMenuActivity;
-import com.goshop.app.presentation.myorder.MyOrderListActivity;
+import com.goshop.app.common.view.RobotoMediumTabLayout;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.search.SearchActivity;
-import com.goshop.app.presentation.settings.SettingsActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
+import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.widget.adapter.MenuAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.support.design.internal.NavigationMenuView;
-import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,8 +30,8 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MainPageActivity extends BaseActivity implements NavigationView
-    .OnNavigationItemSelectedListener {
+public class MainPageActivity extends BaseActivity implements MenuAdapter
+    .OnSlideMenuItemClickListener {
 
     @BindView(R.id.cset_search)
     CustomSearchEditText csetSearch;
@@ -52,50 +42,40 @@ public class MainPageActivity extends BaseActivity implements NavigationView
     @BindView(R.id.iv_search_icon)
     ImageView ivSearchIcon;
 
-    @BindView(R.id.navigation_slide_menu)
-    NavigationView navigationSlideMenu;
+    @BindView(R.id.recyclerview_menu)
+    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.tablayout_main)
-    CustomBoldTabLayout tablayoutMain;
+    RobotoMediumTabLayout tablayoutMain;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
     @BindView(R.id.tv_toolbar_cart_counter)
-    CustomTextView tvToolbarCartCounter;
+    RobotoMediumTextView tvToolbarCartCounter;
 
     @BindView(R.id.viewpager_main)
     ViewPager viewpagerMain;
 
-    private boolean drawerHasSelect = false;
+    private int currentMenu;
 
     private boolean isLogin = true;
 
-    private ImageView ivSlideUser;
+    private MenuAdapter menuAdapter;
 
-    private LinearLayout llSlideUserInfo;
-
-    private int menuId;
+    private MenuUtil menuUtil;
 
     private MainPagerAdapter pagerAdapter;
-
-    private MenuItem slideMenuHome, slideMenuCategories, slideMenuLoyalty, slideMenuCart,
-        slideMenuWishlist, slideMenuOrder, slideMenuRewards, slideMenuNotification,
-        slideMenuHelp, slideMenuSettings;
-
-    private CustomBoldTextView tvSlideSignUp;
-
-    private CustomTextView tvSlideUserName;
-
-    private CustomTextView tvToolbarShoppingCartNum;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initMenuUtil();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0,
             0);
         toggle.syncState();
+        initMenuRecyclerview();
     }
 
     @Override
@@ -105,8 +85,6 @@ public class MainPageActivity extends BaseActivity implements NavigationView
 
     @Override
     public void inject() {
-        initNavigation();
-        drawerLisenter();
         initTabLayoutViewPager();
         initSearch();
     }
@@ -114,103 +92,6 @@ public class MainPageActivity extends BaseActivity implements NavigationView
     @Override
     public String getScreenTitle() {
         return null;
-    }
-
-    private void initNavigation() {
-        navigationSlideMenu.setNavigationItemSelectedListener(this);
-        slideMenuHome = getMenuItem(R.id.slide_menu_home);
-        slideMenuCategories = getMenuItem(R.id.slide_menu_categories);
-        slideMenuLoyalty = getMenuItem(R.id.slide_menu_go_loyalty);
-        slideMenuCart = getMenuItem(R.id.slide_menu_cart);
-        slideMenuWishlist = getMenuItem(R.id.slide_menu_wishlist);
-        slideMenuOrder = getMenuItem(R.id.slide_menu_orders);
-        slideMenuRewards = getMenuItem(R.id.slide_menu_rewards);
-        slideMenuNotification = getMenuItem(R.id.slide_menu_notifications);
-        slideMenuHelp = getMenuItem(R.id.slide_menu_help);
-        slideMenuSettings = getMenuItem(R.id.slide_menu_setting);
-
-        View headerView = navigationSlideMenu.getHeaderView(0);
-        tvSlideSignUp = headerView.findViewById(R.id.tv_slide_sign_up);
-        llSlideUserInfo = headerView.findViewById(R.id.ll_slide_user_info);
-        ivSlideUser = headerView.findViewById(R.id.iv_slide_user);
-        tvSlideUserName = headerView.findViewById(R.id.tv_slide_user_name);
-
-        slideMenuWishlist.setVisible(isLogin);
-        slideMenuOrder.setVisible(isLogin);
-        slideMenuRewards.setVisible(isLogin);
-        tvSlideSignUp.setVisibility(isLogin ? View.GONE : View.VISIBLE);
-        llSlideUserInfo.setVisibility(isLogin ? View.VISIBLE : View.GONE);
-        initSlideMenuHeaderListener();
-        disableNavigationViewScrollbars(navigationSlideMenu);
-    }
-
-    private void drawerLisenter() {
-        drawerLayout.addDrawerListener(new DrawerLayout.DrawerListener() {
-            @Override
-            public void onDrawerSlide(View drawerView, float slideOffset) {
-            }
-
-            @Override
-            public void onDrawerOpened(View drawerView) {
-            }
-
-            @Override
-            public void onDrawerClosed(View drawerView) {
-                Intent intent = null;
-                if (drawerHasSelect) {
-                    switch (menuId) {
-                        case R.id.tv_slide_sign_up:
-                            intent = new Intent(MainPageActivity.this, LoginActivity.class);
-                            break;
-                        case R.id.ll_slide_user_info:
-                            intent = new Intent(MainPageActivity.this, EditProfileActivity.class);
-                            break;
-                        case R.id.slide_menu_categories:
-                            intent = new Intent(MainPageActivity.this, CategoryActivity.class);
-                            break;
-                        case R.id.slide_menu_go_loyalty:
-                            //TODO  this part need to decide
-                            break;
-                        case R.id.slide_menu_cart:
-                            intent = new Intent(MainPageActivity.this, ShoppingCartActivity.class);
-                            break;
-                        case R.id.slide_menu_wishlist:
-                            //TODO  this part need to decide
-                            break;
-                        case R.id.slide_menu_orders:
-                            intent = new Intent(MainPageActivity.this,
-                                MyOrderListActivity.class);
-                            break;
-                        case R.id.slide_menu_rewards:
-                            //TODO  this part need to decide
-                            break;
-                        case R.id.slide_menu_notifications:
-                            intent = new Intent(MainPageActivity.this, NotificationActivity.class);
-                            break;
-                        case R.id.slide_menu_help:
-                            intent = new Intent(MainPageActivity.this, HelpSupportActivity.class);
-                            break;
-                        case R.id.slide_menu_setting:
-                            intent = new Intent(MainPageActivity.this, SettingsActivity.class);
-                            break;
-                        case R.id.slide_menu_others:
-                            intent = new Intent(MainPageActivity.this, TestMenuActivity.class);
-                            break;
-                    }
-                }
-
-                drawerHasSelect = false;
-                if (intent != null) {
-                    startActivity(intent);
-                    overridePendingTransition(R.anim.slide_from_right,
-                        R.anim.slide_to_left);
-                }
-            }
-
-            @Override
-            public void onDrawerStateChanged(int newState) {
-            }
-        });
     }
 
     private void initTabLayoutViewPager() {
@@ -221,7 +102,7 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         List<BaseFragment> fragments = new ArrayList<>();
         fragments.add(TrendingNowFragment.getInstance());
         fragments.add(TVShowPageFragment.getInstance());
-        fragments.add(BrandsPageFragment.getInstance());
+        fragments.add(BrandsFragment.getInstance());
         pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragments,
             tabLayoutArrays);
         viewpagerMain.setAdapter(pagerAdapter);
@@ -237,39 +118,44 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         });
     }
 
-    private MenuItem getMenuItem(int menuId) {
-        return navigationSlideMenu.getMenu().findItem(menuId);
+    private void initMenuUtil() {
+        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
     }
 
-    private void initSlideMenuHeaderListener() {
-        tvSlideSignUp.setOnClickListener(v -> {
-            drawerHasSelect = true;
-            menuId = R.id.tv_slide_sign_up;
-            drawerLayout.closeDrawer(GravityCompat.START);
-        });
-        llSlideUserInfo.setOnClickListener(v -> {
-            drawerHasSelect = true;
-            menuId = R.id.ll_slide_user_info;
-            drawerLayout.closeDrawer(GravityCompat.START);
-        });
+    private void initMenuRecyclerview() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewMenu.setLayoutManager(layoutManager);
+        menuAdapter = new MenuAdapter(
+            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
+        recyclerViewMenu.setAdapter(menuAdapter);
+        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_HOME : MenuUtil.UNLOGIN_MENU_HOME;
+        menuAdapter.updateSelection(currentMenu);
+        menuAdapter.setOnSlideMenuItemClickListener(this);
+        menuAdapter.updateLoginState(isLogin);
     }
 
-    private void disableNavigationViewScrollbars(NavigationView navigationView) {
-        if (navigationView != null) {
-            NavigationMenuView navigationMenuView = (NavigationMenuView) navigationView
-                .getChildAt(0);
-            if (navigationMenuView != null) {
-                navigationMenuView.setVerticalScrollBarEnabled(false);
-            }
+    @Override
+    public void onHeaderUserClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
         }
     }
 
     @Override
-    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-        drawerHasSelect = true;
-        menuId = item.getItemId();
+    public void onHeaderLoginClick(int position) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        return true;
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
+    }
+
+    @Override
+    public void onItemClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
+        }
     }
 
     @OnClick({R.id.imageview_right_menu})
@@ -300,4 +186,6 @@ public class MainPageActivity extends BaseActivity implements NavigationView
         finish();
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
+
+
 }

@@ -5,24 +5,25 @@
     android:layout_width="match_parent"
     android:id="@+id/rl_filter_expand_title"
     android:layout_height="@dimen/size_50"
-    android:layout_marginLeft="@dimen/size_12"
-    android:layout_marginRight="@dimen/size_12"
+    android:paddingLeft="@dimen/size_16"
+    android:paddingRight="@dimen/size_16"
+    android:paddingTop="@dimen/size_20"
     android:background="@drawable/selector_bg_expand_pdp_title"
     tools:ignore="Overdraw">
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_item_search_filter_expand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerVertical="true"
         android:text="@string/details"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
 
     <ImageView
         android:id="@+id/iv_item_search_filter_expand"
-        android:layout_width="@dimen/size_16"
-        android:layout_height="@dimen/size_16"
+        android:layout_width="@dimen/size_24"
+        android:layout_height="@dimen/size_24"
         android:src="@drawable/selector_image_expand_selected"
         android:layout_centerVertical="true"
         android:layout_alignParentRight="true"

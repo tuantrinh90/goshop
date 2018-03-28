@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <item
+        android:id="@android:id/background"
+        android:height="@dimen/size_24"
+        android:drawable="@drawable/ic_icon_biger_star_empty"/>
+    <item
+        android:id="@android:id/secondaryProgress"
+        android:height="@dimen/size_24"
+        android:drawable="@drawable/ic_icon_biger_star_empty"/>
+    <item
+        android:id="@android:id/progress"
+        android:height="@dimen/size_24"
+        android:drawable="@drawable/ic_icon_biger_star_filled"/>
+</layer-list>

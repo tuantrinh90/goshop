@@ -12,7 +12,7 @@
         android:background="@drawable/ic_bought"
         android:contentDescription="@string/app_name"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_video_right_status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
         tools:ignore="RtlHardcoded"
         android:layout_alignEnd="@id/iv_video_right"/>
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_video_right_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

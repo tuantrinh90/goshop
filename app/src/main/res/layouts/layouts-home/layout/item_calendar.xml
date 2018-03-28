@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_tvshow_calendar"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:paddingTop="@dimen/size_8"
+    android:paddingBottom="@dimen/size_16"
+    android:paddingLeft="@dimen/size_10"
+    android:paddingRight="@dimen/size_10">
+
+    <com.goshop.app.common.view.RobotoMediumTextView
+        android:id="@+id/tv_tv_show_day"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@drawable/selector_text_black_pink_color"
+        android:textSize="@dimen/size_font_16"/>
+
+    <com.goshop.app.common.view.RobotoLightTextView
+        android:id="@+id/tv_tv_show_week"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@drawable/selector_text_black_pink_color"
+        android:paddingTop="@dimen/size_7"/>
+</LinearLayout>

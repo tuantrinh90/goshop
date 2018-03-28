@@ -3,11 +3,16 @@ package com.goshop.app.presentation.category;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SearchFilterModel;
+import com.goshop.app.presentation.model.SortVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
+import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,7 +36,7 @@ import injection.modules.PresenterModule;
 
 public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailContract
     .Presenter> implements CategoryTreeDetailContract.View, CategoryTreeDetailAdapter
-    .OnItemClickListener {
+    .OnItemClickListener, OnProductItemClickListener, PopWindowUtil.OnPopWindowDismissListener {
 
     public static final String CATEGORY_DETAIL_TITLE = "title";
 
@@ -44,8 +49,8 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     @BindView(R.id.iv_sort_arrow)
     ImageView ivSortArrow;
 
-    @BindView(R.id.ll_category_nodata)
-    LinearLayout llCategoryNodata;
+    @BindView(R.id.rl_category_nodata)
+    RelativeLayout llCategoryNodata;
 
     @BindView(R.id.ll_filter_menu)
     LinearLayout llFilterMenu;
@@ -63,23 +68,22 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     RelativeLayout rlDrawerFilter;
 
     @BindView(R.id.textview_toolbar_title)
-    CustomBoldTextView textviewToolbarTitle;
+    RobotoMediumTextView textviewToolbarTitle;
 
     @BindView(R.id.tv_btn_filter_clear)
-    CustomTextView tvBtnSearchFilterClear;
+    RobotoRegularTextView tvBtnSearchFilterClear;
 
     @BindView(R.id.tv_btn_filter_done)
-    CustomTextView tvBtnSearchFilterDone;
+    RobotoRegularTextView tvBtnSearchFilterDone;
 
     @BindView(R.id.tv_btn_sort)
-    CustomTextView tvBtnSort;
-
-    @BindView(R.id.tv_search_or)
-    CustomTextView tvSearchOr;
+    RobotoLightTextView tvBtnSort;
 
     private CategoryTreeDetailAdapter detailAdapter;
 
     private FilterMenuAdapter menuAdapter;
+
+    private List<SortVM> sortVMS;
 
     private String title;
 
@@ -89,6 +93,8 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
         initIntentData();
         //TODO  wait for api
         mPresenter.categoryDetailRequest(null);
+        sortVMS = mPresenter.getSortVMS();
+        sortVMS.get(0).setSelect(true);
     }
 
     @Override
@@ -128,7 +134,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
         textviewToolbarTitle.setText(title);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.iv_btn_filter, R.id.tv_btn_sort})
+    @OnClick({R.id.imageview_left_menu, R.id.iv_btn_filter, R.id.tv_btn_sort, R.id.iv_sort_arrow})
     public void onCategrayDetailsClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -138,6 +144,12 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
                 drawerLayout.openDrawer(GravityCompat.END);
                 break;
             case R.id.tv_btn_sort:
+            case R.id.iv_sort_arrow:
+                ivSortArrow.setSelected(!ivSortArrow.isSelected());
+                tvBtnSort.setSelected(!tvBtnSort.isSelected());
+                if (tvBtnSort.isSelected()) {
+                    PopWindowUtil.showsSortListPop(tvBtnSort, sortVMS, this);
+                }
                 break;
             case R.id.tv_btn_filter_clear:
                 drawerLayout.closeDrawer(GravityCompat.END);
@@ -190,5 +202,22 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
         recyclerviewFilter.setLayoutManager(layoutManager);
         menuAdapter = new FilterMenuAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
+    }
+
+    @Override
+    public void onProductItemClick(ProductsVM productItemVM) {
+        //todo wait for api
+    }
+
+    @Override
+    public void onPopItemClick(int position) {
+        sortVMS.get(position).setSelect(true);
+        tvBtnSort.setText(sortVMS.get(position).getTitle());
+    }
+
+    @Override
+    public void onDismiss() {
+        ivSortArrow.setSelected(false);
+        tvBtnSort.setSelected(false);
     }
 }

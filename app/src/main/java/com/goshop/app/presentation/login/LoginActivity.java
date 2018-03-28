@@ -5,28 +5,30 @@ import com.facebook.login.LoginManager;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.CustomPasswordEditText;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
-import com.goshop.app.utils.AnimUtils;
-import com.goshop.app.utils.JDataUtils;
+import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.ScreenHelper;
-import com.jakewharton.rxbinding2.view.RxView;
-import com.jakewharton.rxbinding2.widget.RxTextView;
+import com.goshop.app.widget.adapter.MenuAdapter;
 import com.orhanobut.logger.Logger;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.TextInputLayout;
-import android.text.TextUtils;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
 import android.view.View;
-import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Arrays;
@@ -35,87 +37,113 @@ import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
-import io.reactivex.disposables.Disposable;
 
 public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements LoginContract
-    .View {
+    .View, MenuAdapter.OnSlideMenuItemClickListener {
 
-    @BindView(R.id.btn_login)
-    Button btnLogin;
+    @BindView(R.id.drawer_layout)
+    DrawerLayout drawerLayout;
 
-    @BindView(R.id.et_email)
-    EditText etEmail;
+    @BindView(R.id.et_login_email)
+    CustomAnimEditText etLoginEmail;
 
-    @BindView(R.id.et_password)
-    EditText etPassword;
+    @BindView(R.id.et_login_password)
+    CustomPasswordEditText etLoginPassword;
 
-    @BindView(R.id.imageview_right_menu)
-    ImageView imageviewRightMenu;
-
-    boolean isVisible;
-
-    @BindView(R.id.iv_clear_mail)
-    ImageView ivClearMail;
-
-    @BindView(R.id.iv_clear_password)
-    ImageView ivClearPassword;
-
-    @BindView(R.id.iv_login_facebook_icon)
-    ImageView ivLoginFacebookIcon;
+    @BindView(R.id.imageview_left_menu)
+    ImageView imageViewLeftMenu;
 
     @BindView(R.id.iv_login_logo)
     ImageView ivLoginLogo;
 
-    @BindView(R.id.iv_visible_password)
-    ImageView ivVisiblePassword;
+    @BindView(R.id.ll_login_top)
+    LinearLayout llLoginTop;
 
-    @BindView(R.id.rl_login_facebook)
-    RelativeLayout rlLoginFacebook;
+    @BindView(R.id.recyclerview_menu)
+    RecyclerView recyclerViewMenu;
 
-    @BindView(R.id.rl_password_root)
-    RelativeLayout rlPasswordRoot;
+    @BindView(R.id.toolbar)
+    Toolbar toolbar;
 
-    @BindView(R.id.rl_text_or)
-    RelativeLayout rlTextOr;
+    @BindView(R.id.tv_btn_login)
+    RobotoMediumTextView tvBtnLogin;
 
-    @BindView(R.id.text_email)
-    TextInputLayout textEmail;
+    @BindView(R.id.tv_btn_login_facebook)
+    RobotoMediumTextView tvBtnLoginFacebook;
 
-    @BindView(R.id.text_password)
-    TextInputLayout textPassword;
-
-    @BindView(R.id.tv_forgot_password)
-    TextView tvForgotPassword;
-
-    @BindView(R.id.tv_login_facebook)
-    CustomTextView tvLoginFacebook;
-
-    @BindView(R.id.tv_new_to_shop)
-    TextView tvNewToShop;
+    @BindView(R.id.tv_login_forgot_password)
+    RobotoLightTextView tvLoginForgotPassword;
 
     @BindView(R.id.tv_register)
-    TextView tvRegister;
+    RobotoRegularTextView tvRegister;
 
-    @BindView(R.id.view_bottom_line)
-    View viewBottomLine;
+    private int currentMenu;
 
     private CallbackManager facebookCallbackManager;
+
+    private boolean isLogin = false;
+
+    private MenuAdapter menuAdapter;
+
+    private String menuTag;
+
+    private MenuUtil menuUtil;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         facebookCallbackManager = mPresenter.initFaceBook();
-        initTitleBar();
-        initView();
+
+        initMenuUtil();
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+            this, drawerLayout, toolbar, 0,
+            0);
+        toggle.syncState();
+        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
+        if (menuTag == null) {
+            menuUtil.disabledDrawerLayout();
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            toolbar.setNavigationOnClickListener(v -> finish());
+        } else {
+            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
+                menuUtil.liftedDrawerLayout();
+                getSupportActionBar().setDisplayShowHomeEnabled(true);
+                toolbar.setNavigationOnClickListener(v -> {
+                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+                    drawerLayout.openDrawer(Gravity.LEFT);
+                });
+            }
+        }
+
+        initMenuRecyclerview();
+        //TODO(helen) wait for api
+    }
+
+    private void initMenuUtil() {
+        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
+    }
+
+    private void initMenuRecyclerview() {
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
+        recyclerViewMenu.setLayoutManager(layoutManager);
+        menuAdapter = new MenuAdapter(
+            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
+        recyclerViewMenu.setAdapter(menuAdapter);
+        currentMenu = MenuUtil.UNLOGIN_LOGIN;
+        menuAdapter.updateSelection(currentMenu);
+        menuAdapter.setOnSlideMenuItemClickListener(this);
+        menuAdapter.updateLoginState(isLogin);
     }
 
     @Override
     public int getContentView() {
-        return R.layout.account_login;
+        return R.layout.activity_login;
     }
 
     @Override
     public void inject() {
+        imageViewLeftMenu.setVisibility(View.GONE);
+        hideRightMenu();
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -125,70 +153,27 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public String getScreenTitle() {
-        return null;
+        return getResources().getString(R.string.login);
     }
 
-    private void initTitleBar() {
-        imageviewRightMenu.setBackgroundResource(R.drawable.ic_close);
+    @Override
+    public void onHeaderUserClick(int position) {
+        //todo this is empty
     }
 
-    private void initView() {
-        textEmail.setHintAnimationEnabled(true);
-        textEmail.setErrorEnabled(true);
-
-        textPassword.setHintAnimationEnabled(true);
-        textPassword.setErrorEnabled(true);
-
-        rxEditTextChange(etEmail, ivClearMail);
-        rxEditTextChange(etPassword, ivClearPassword);
-
-    }
-
-    private void rxEditTextChange(EditText editText, ImageView deleteView) {
-        Disposable subscribe = RxTextView.textChanges(editText)
-            .compose(lifecycleProvider.bindToLifecycle()).subscribe(charSequence -> {
-                if (charSequence.length() > 0) {
-                    deleteView.setVisibility(View.VISIBLE);
-                    RxView.clicks(deleteView).compose(lifecycleProvider.bindToLifecycle())
-                        .subscribe(v -> {
-                            editText.setText("");
-                            editText.setFocusable(true);
-                            editText.requestFocus();
-                            deleteView.setVisibility(View.GONE);
-                        });
-                    switch (editText.getId()) {
-                        case R.id.et_email:
-                            isEmail();
-                            break;
-                        case R.id.et_password:
-                            isPassword();
-                            break;
-                    }
-                } else {
-                    deleteView.setVisibility(View.GONE);
-                }
-
-            });
-    }
-
-    private boolean isEmail() {
-        if (!JDataUtils.isEmail(etEmail.getText().toString())) {
-            textEmail.setError(
-                ScreenHelper.getString(R.string.loginregister_emailbound_tips_error_email_format));
-            return false;
-        } else {
-            textEmail.setError(null);
-            return true;
+    @Override
+    public void onHeaderLoginClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
         }
     }
 
-    private boolean isPassword() {
-        if (etPassword.getText().toString().length() <= 4) {
-            textPassword.setError(ScreenHelper.getString(R.string.enter_characters_ignored));
-            return false;
-        } else {
-            textPassword.setError(null);
-            return true;
+    @Override
+    public void onItemClick(int position) {
+        drawerLayout.closeDrawer(GravityCompat.START);
+        if (currentMenu != position) {
+            menuUtil.startNewScreen(position);
         }
     }
 
@@ -198,35 +183,19 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
-    @OnClick({R.id.iv_visible_password, R.id
-        .btn_login, R.id.tv_forgot_password, R.id.rl_login_facebook, R.id.tv_register, R.id
-        .imageview_right_menu})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_login, R.id.tv_login_forgot_password, R.id
+        .tv_btn_login_facebook, R.id.tv_register})
     public void onViewClicked(View view) {
         switch (view.getId()) {
-            case R.id.iv_visible_password:
-                if (!TextUtils.isEmpty(etPassword.getText().toString().trim())) {
-                    if (isVisible) {
-                        isVisible = false;
-                        ivVisiblePassword.setBackgroundResource(R.drawable.ic_password_not_visible);
-                        etPassword
-                            .setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    } else {
-                        isVisible = true;
-                        ivVisiblePassword.setBackgroundResource(R.drawable.ic_password_visible);
-                        etPassword
-                            .setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    }
-                }
+            case R.id.imageview_left_menu:
+                finish();
                 break;
-            case R.id.btn_login:
-                if (isEmail() && isPassword()) {
-                    finish();
-                }
+            case R.id.tv_btn_login:
                 break;
-            case R.id.tv_forgot_password:
+            case R.id.tv_login_forgot_password:
                 startActivity(new Intent(this, ChangePasswordActivity.class));
                 break;
-            case R.id.rl_login_facebook:
+            case R.id.tv_btn_login_facebook:
                 //facebook sdk code
                 LoginManager.getInstance().logInWithReadPermissions(this, Arrays
                     .asList("public_profile", "email", "user_friends"));
@@ -234,11 +203,6 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
             case R.id.tv_register:
                 startActivity(new Intent(this, RegisterActivity.class));
                 break;
-            case R.id.imageview_right_menu:
-                finish();
-                AnimUtils.setPageTopToBottomAnim(this);
-                break;
-
         }
     }
 

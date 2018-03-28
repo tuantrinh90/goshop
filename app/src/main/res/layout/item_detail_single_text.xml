@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.goshop.app.common.view.CustomTextView
+<com.goshop.app.common.view.RobotoRegularTextView
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:id="@+id/tv_item_detail"
     android:textSize="@dimen/size_font_16"
-    android:textColor="@color/color_text_black"
+    android:textColor="@color/color_grayscale_text"
     android:layout_marginLeft="@dimen/size_16"
     android:layout_marginRight="@dimen/size_16"
     android:paddingTop="@dimen/size_20"
     android:paddingBottom="@dimen/size_20"
-    android:background="@drawable/bg_white_bottom_line"/>
+    android:background="@drawable/bg_item_bottom_line"/>

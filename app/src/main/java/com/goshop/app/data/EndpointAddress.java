@@ -7,6 +7,16 @@ public class EndpointAddress {
 
     public static final String ADD_ADDRESS = "";
 
+    public static final String EDIT_ADDRESS = "";
+
+    public static final String ALL_DEALS = "";
+
+    public static final String ALL_REVIEWS = "";
+
+    public static final String BRANDS_DETAIL = "";
+
+    public static final String BRANDS_PAGE = "";
+
     public static final String CATEGORY_DETAIL = "";
 
     public static final String CATEGORY_LEFT = "";
@@ -27,6 +37,8 @@ public class EndpointAddress {
     //todo wait for api
     public static final String EDIT_PROFILE = "";
 
+    public static final String EXPIRED = "";
+
     public static final String FAQ = "";
 
     public static final String GET_CONTACT_INFO = "";
@@ -35,11 +47,11 @@ public class EndpointAddress {
 
     public static final String GET_ECMC = "";
 
+    public static final String GO_LOYALTY = "";
+
     public static final String HELP_SUPPORT = "";
 
     public static final String HOME_PAGE = "";
-
-    public static final String BRANDS_PAGE = "";
 
     //todo wait for api
     public static final String HOME_REQUEST = "";
@@ -53,6 +65,8 @@ public class EndpointAddress {
     //todo wait for api
     public static final String MY_ADDRESS = "";
 
+    public static final String MY_EGIFT_CARDS = "";
+
     public static final String MY_POINTS = "";
 
     //todo wait for api
@@ -61,6 +75,8 @@ public class EndpointAddress {
     public static final String PAYMENT_STATUS = "";
 
     public static final String PDP_DETAILS = "";
+
+    public static final String PENDING = "";
 
     //todo wait for api
     public static final String PRODUCT_DETAIL = "";
@@ -71,11 +87,21 @@ public class EndpointAddress {
     //todo wait for api
     public static final String PROMOTION_LIST = "";
 
+    public static final String REDEEMED = "";
+
+    public static final String CARD_REDEEM = "";
+
+    public static final String SWIPE_REDEEM = "";
+
     //todo wait for api
     public static final String REGISTER = "";
 
     //todo wait for api
     public static final String RESET_PASSWORD = "";
+
+    public static final String REWARDS_DETAIL = "";
+
+    public static final String MY_WISHLIST = "";
 
     //todo wait for api
     public static final String SEARCH_FILGER = "";
@@ -95,6 +121,10 @@ public class EndpointAddress {
     public static final String TERMS_CONDITIONS = "";
 
     public static final String TV_SHOWS = "";
+
+    public static final String QUESTION_ANSWER = "";
+
+    public static final String PROMOTION_SKU = "";
 
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";

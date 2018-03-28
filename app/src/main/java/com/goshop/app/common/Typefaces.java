@@ -13,6 +13,18 @@ public class Typefaces {
 
     public static final String PATH_FONT_CUSTOM_TEXT = "";
 
+    public static final String PATH_FONT_ROBOTO_ITALIC = "fonts/Roboto-Italic.ttf";
+
+    public static final String PATH_FONT_ROBOTO_LIGHT = "fonts/Roboto-Light.ttf";
+
+    public static final String PATH_FONT_ROBOTO_LIGHT_ITALIC = "fonts/Roboto-LightItalic.ttf";
+
+    public static final String PATH_FONT_ROBOTO_MEDIUM = "fonts/Roboto-Medium.ttf";
+
+    public static final String PATH_FONT_ROBOTO_MEDIUM_ITALIC = "fonts/Roboto-MediumItalic.ttf";
+
+    public static final String PATH_FONT_ROBOTO_REGULAR = "fonts/Roboto-Regular.ttf";
+
     private static final String TAG = "Typefaces";
 
     private static final Hashtable<String, Typeface> cache = new Hashtable<>();

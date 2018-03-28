@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <include
+        layout="@layout/toolbar_img_text_img_close"/>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_4"
+        android:background="@drawable/bg_navigation_bar_shadow"/>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size_21"
+                android:paddingRight="@dimen/size_16"
+                android:paddingLeft="@dimen/size_16"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/iv_rewards_details_thumb"
+                    android:layout_width="@dimen/size_48"
+                    android:layout_height="@dimen/size_47"
+                    android:background="@drawable/ic_sbk"
+                    android:contentDescription="@string/app_name"/>
+
+                <com.goshop.app.common.view.RobotoMediumTextView
+                    android:id="@+id/tv_rewards_merchant_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_font_20"
+                    android:textColor="@color/color_black_light_second"
+                    android:text="@string/app_name"
+                    android:paddingLeft="@dimen/size_10"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
+            </LinearLayout>
+
+            <com.goshop.app.common.view.RobotoMediumTextView
+                android:id="@+id/tv_promotion_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_24"
+                android:textColor="@color/color_black_light_second"
+                android:text="@string/promo_title"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingTop="@dimen/size_20"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:id="@+id/tv_rewards_detail_time"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/app_name"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingTop="@dimen/size_12"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@color/color_black_light_second"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_16"
+                android:paddingTop="@dimen/size_8">
+                <com.goshop.app.common.view.RobotoLightTextView
+                    android:id="@+id/tv_rewards_detail_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentLeft="true"
+                    android:text="@string/app_name"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColor="@color/color_black_light_second"
+                    tools:ignore="RtlHardcoded"/>
+
+                <com.goshop.app.common.view.RobotoMediumItalicTextView
+                    android:id="@+id/tv_rewards_detail_time_left"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:text="@string/app_name"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColor="@color/color_black_light_second"
+                    tools:ignore="RtlHardcoded"/>
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_344" >
+                <ImageView
+                    android:id="@+id/iv_rewards_detail_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_coffee"
+                    android:contentDescription="@string/app_name"/>
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/drawable_round_cover"/>
+            </RelativeLayout>
+
+
+            <com.goshop.app.common.view.RobotoMediumTextView
+                android:id="@+id/tv_promo_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_20"
+                android:textColor="@color/color_black_light"
+                android:text="@string/promo_details"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingTop="@dimen/size_8"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:id="@+id/tv_promo_details_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_16"
+                android:paddingTop="@dimen/size_12"
+                android:text="@string/app_name"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@color/color_black_light"
+                tools:ignore="RtlHardcoded"/>
+
+            <com.goshop.app.common.view.RobotoMediumTextView
+                android:id="@+id/tv_promo_terms"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_20"
+                android:textColor="@color/color_black_light"
+                android:text="@string/promo_terms"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingTop="@dimen/size_16"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:id="@+id/tv_promo_terms_summary"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_16"
+                android:paddingTop="@dimen/size_12"
+                android:paddingBottom="@dimen/size_16"
+                android:text="@string/app_name"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@color/color_black_light"
+                tools:ignore="RtlHardcoded"/>
+
+            <com.goshop.app.common.view.RobotoMediumTextView
+                android:id="@+id/tv_btn_rewards_detail_download"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:layout_margin="@dimen/size_8"
+                android:text="@string/download"
+                android:textSize="@dimen/size_font_16"
+                android:textColor="@android:color/white"
+                android:padding="@dimen/size_14"
+                android:background="@drawable/bg_btn_round_pink"/>
+        </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+
+</LinearLayout>

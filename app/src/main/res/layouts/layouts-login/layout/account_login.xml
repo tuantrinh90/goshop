@@ -31,7 +31,7 @@
             app:errorTextAppearance="@style/textInputErrorStyle"
             android:theme="@style/textInputEditTheme"
             android:layout_height="wrap_content">
-            <com.goshop.app.common.view.CustomEditText
+            <com.goshop.app.common.view.RobotoRegularEditText
                 android:id="@+id/et_email"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -39,7 +39,7 @@
                 android:textColor="@color/black"
                 android:hint="@string/login_email"
                 android:singleLine="true"
-                android:textColorHint="@color/blackTrans38"
+                android:textColorHint="@color/color_text_hint"
                 android:textSize="@dimen/editTextFontSize"
                 android:textCursorDrawable="@null"
             />
@@ -74,7 +74,7 @@
             app:errorTextAppearance="@style/textInputErrorStyle"
             android:theme="@style/textInputEditTheme"
             android:layout_height="wrap_content">
-            <com.goshop.app.common.view.CustomEditText
+            <com.goshop.app.common.view.RobotoRegularEditText
                 android:id="@+id/et_password"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -84,7 +84,7 @@
                 android:hint="@string/login_password"
                 android:singleLine="true"
                 android:inputType="textPassword"
-                android:textColorHint="@color/blackTrans38"
+                android:textColorHint="@color/color_text_hint"
                 android:textSize="@dimen/editTextFontSize"
                 android:textCursorDrawable="@null"
                 android:layout_toStartOf="@+id/iv_visible_password"/>
@@ -115,7 +115,7 @@
             android:layout_marginEnd="@dimen/home_padding"
             android:layout_toStartOf="@id/iv_visible_password"/>
     </RelativeLayout>
-    <com.goshop.app.common.view.CustomButton
+    <com.goshop.app.common.view.RobotoRegularButton
         android:layout_margin="@dimen/activity_horizontal_margin"
         android:id="@+id/btn_login"
         android:layout_centerHorizontal="true"
@@ -126,7 +126,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_forgot_password"
         android:layout_centerHorizontal="true"
         android:text="@string/login_forgot_password"
@@ -145,7 +145,7 @@
         <View
             android:layout_centerVertical="true"
             style="@style/homeWrapWidthLine"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:text="@string/login_or"
             android:padding="24dp"
             android:background="@color/white"
@@ -160,7 +160,7 @@
         android:id="@+id/rl_login_facebook"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_login_facebook"
             android:layout_margin="@dimen/activity_horizontal_margin"
             android:layout_centerHorizontal="true"
@@ -197,14 +197,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_new_to_shop"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/login_bottom_describe"
-                android:textColor="@color/blackTrans87"
+                android:textColor="@color/color_grayscale_text"
             />
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_register"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_line"
+    android:padding="@dimen/size_16"
+    android:orientation="vertical">
+
+    <RatingBar
+        android:id="@+id/ratingbar_item_reviews"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/size_18"
+        android:progressDrawable="@drawable/bg_rating"
+        android:layout_marginLeft="@dimen/size_2_negative"
+        android:isIndicator="true"
+        android:stepSize="1"
+        android:rating="5"
+        android:numStars="5"/>
+
+    <com.goshop.app.common.view.RobotoMediumTextView
+        android:id="@+id/tv_reviews_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_8"
+        android:textSize="@dimen/size_font_16"
+        android:textColor="@color/color_grayscale_text"/>
+
+    <com.goshop.app.common.view.RobotoLightTextView
+        android:id="@+id/tv_reviews_detail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:lineSpacingMultiplier="1.2"
+        android:paddingTop="@dimen/size_4"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_grayscale_text"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_4"
+        android:orientation="horizontal">
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/size_4"
+            android:text="@string/by"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_text_hint"
+            tools:ignore="RtlSymmetry"
+            android:paddingEnd="@dimen/size_4"/>
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_reviews_user_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/size_4"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_text_hint"
+            tools:ignore="RtlSymmetry"
+            android:paddingEnd="@dimen/size_4"/>
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/size_4"
+            android:text="@string/on"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_text_hint"
+            tools:ignore="RtlSymmetry"
+            android:paddingEnd="@dimen/size_4"/>
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_reviews_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/size_2"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_text_hint"/>
+    </LinearLayout>
+
+</LinearLayout>

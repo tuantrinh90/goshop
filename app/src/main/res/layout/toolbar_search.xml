@@ -60,7 +60,7 @@
                     tools:ignore="ContentDescription"
                 />
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_toolbar_shoppingCart_num"
                     android:layout_width="13dp"
                     android:layout_height="13dp"
@@ -72,7 +72,7 @@
                     android:fontFamily="sans-serif-medium"
                     android:layout_alignParentRight="true"
                     android:layout_alignParentTop="true"
-                    android:textColor="@color/white"
+                    android:textColor="@android:color/white"
                     android:gravity="center"
                     tools:ignore="HardcodedText"
                     android:layout_marginEnd="12dp"
@@ -89,14 +89,14 @@
                 android:layout_height="match_parent"
                 android:layout_toEndOf="@id/rl_image_left"
                 android:layout_toStartOf="@id/rl_image_right">
-                <com.goshop.app.common.view.CustomEditText
+                <com.goshop.app.common.view.RobotoRegularEditText
                     android:id="@+id/et_home_search"
                     android:paddingLeft="25dp"
                     android:theme="@style/MyEditText"
                     android:hint="@string/home_search_hint"
                     android:layout_width="match_parent"
                     android:textSize="16sp"
-                    android:textColorHint="@color/blackTrans38"
+                    android:textColorHint="@color/color_text_hint"
                     android:textCursorDrawable="@drawable/edittext_cursor_color"
                     android:layout_height="match_parent"
                     tools:ignore="RtlSymmetry"

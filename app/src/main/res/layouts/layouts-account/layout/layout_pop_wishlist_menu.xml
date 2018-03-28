@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="@dimen/size_150"
+        android:layout_height="@dimen/size_52"
+        android:layout_marginRight="@dimen/size_8"
+        android:background="@drawable/bg_round_shadow_white"
+        android:orientation="vertical"
+        tools:ignore="RtlHardcoded">
+
+        <LinearLayout
+            android:id="@+id/ll_delete"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/selector_btn_press_gray"
+            android:paddingTop="@dimen/size_6"
+            android:paddingBottom="@dimen/size_6"
+            android:paddingRight="@dimen/size_38"
+            android:layout_marginTop="@dimen/size_8"
+            android:layout_marginBottom="@dimen/size_8"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            tools:ignore="RtlHardcoded,RtlSymmetry">
+            <ImageView
+                android:layout_width="@dimen/size_24"
+                android:layout_height="@dimen/size_24"
+                android:contentDescription="@string/app_name"
+                android:scaleType="center"
+                android:layout_marginLeft="@dimen/size_8"
+                android:layout_marginRight="@dimen/size_8"
+                android:src="@drawable/ic_icon_cart_delete"/>
+
+            <com.goshop.app.common.view.RobotoRegularTextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_15"
+                android:textColor="@color/color_grayscale_text"
+                android:text="@string/delete"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

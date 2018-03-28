@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_8"
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingTop="@dimen/size_18"
+        android:paddingBottom="@dimen/size_15"
+        android:background="@android:color/white">
+
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:id="@+id/tv_go_loyalty_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_18"
+            android:textColor="@color/color_grayscale_text"
+            android:text="@string/deals"/>
+
+        <com.goshop.app.common.view.RobotoRegularTextView
+            android:id="@+id/tv_btn_go_loyalty_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/view_all"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_secondary"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:drawableRight="@drawable/ic_icon_right_expand"
+            tools:ignore="RtlHardcoded"/>
+
+    </RelativeLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_deals"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

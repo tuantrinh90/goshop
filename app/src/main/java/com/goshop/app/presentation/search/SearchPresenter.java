@@ -62,11 +62,6 @@ public class SearchPresenter extends RxPresenter<SearchContract.View> implements
                         displayFilterModels.addAll(filterModels);
                     }
 
-                    if (displayFilterModels.size() > 0) {
-                        displayFilterModels
-                            .add(new SearchFilterModel(SearchFilterModel.SEARCH_POPULAR_DIVIDING));
-                    }
-
                     if (displayFilterModels.isEmpty()) {
                         displayFilterModels
                             .add(new SearchFilterModel(SearchFilterModel.SEARCH_NO_DATA));

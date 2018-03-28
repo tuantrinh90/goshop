@@ -4,21 +4,21 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.CheckoutListAdapter;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomButton;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoLightRadioButton;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.utils.ScreenHelper;
-import com.goshop.app.utils.ViewUtils;
+import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.annotation.SuppressLint;
-import android.graphics.drawable.Drawable;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 
@@ -33,10 +33,16 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     private static final int RADIO_BUTTON_W_AND_H = 25;
 
     @BindView(R.id.btn_checkout_place_my_order)
-    CustomButton btnCheckoutPlaceMyOrder;
+    RobotoMediumTextView btnCheckoutPlaceMyOrder;
 
-    @BindView(R.id.imageview_left_menu)
-    ImageView imageviewLeftMenu;
+    @BindView(R.id.et_checkout_discount)
+    RobotoRegularEditText etCheckoutDiscount;
+
+    @BindView(R.id.et_checkout_egift)
+    RobotoRegularEditText etCheckoutEgift;
+
+    @BindView(R.id.iv_checkout_shipping_more)
+    ImageView ivCheckoutShippingMore;
 
     String paymentType;
 
@@ -44,13 +50,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     RadioGroup radioPaymentType;
 
     @BindView(R.id.rb_checkout_payment_banking)
-    RadioButton rbCheckoutPaymentBanking;
+    RobotoLightRadioButton rbCheckoutPaymentBanking;
 
     @BindView(R.id.rb_checkout_payment_cash_on_deliery)
-    RadioButton rbCheckoutPaymentCashOnDeliery;
+    RobotoLightRadioButton rbCheckoutPaymentCashOnDeliery;
 
     @BindView(R.id.rb_checkout_payment_credit)
-    RadioButton rbCheckoutPaymentCredit;
+    RobotoLightRadioButton rbCheckoutPaymentCredit;
 
     @BindView(R.id.rl_shipping_root)
     RelativeLayout rlShippingRoot;
@@ -58,41 +64,38 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.rv_order_list)
     RecyclerView rvOrderList;
 
+    @BindView(R.id.tv_btn_check_discount_apply)
+    RobotoMediumTextView tvBtnCheckDiscountApply;
+
+    @BindView(R.id.tv_btn_check_gift_card_apply)
+    RobotoMediumTextView tvBtnCheckGiftCardApply;
+
+    @BindView(R.id.tv_btn_check_points_apply)
+    RobotoMediumTextView tvBtnCheckPointsApply;
+
     @BindView(R.id.tv_checkout_address_first)
-    CustomTextView tvCheckoutAddressFirst;
+    RobotoLightTextView tvCheckoutAddressFirst;
 
     @BindView(R.id.tv_checkout_address_second)
-    CustomTextView tvCheckoutAddressSecond;
+    RobotoLightTextView tvCheckoutAddressSecond;
+
+    @BindView(R.id.tv_checkout_attention)
+    RobotoLightTextView tvCheckoutAttention;
 
     @BindView(R.id.tv_checkout_city_state_code)
-    CustomTextView tvCheckoutCityStateCode;
+    RobotoLightTextView tvCheckoutCityStateCode;
 
     @BindView(R.id.tv_checkout_country)
-    CustomTextView tvCheckoutCountry;
-
-    @BindView(R.id.tv_checkout_discount)
-    CustomTextView tvCheckoutDiscount;
-
-    @BindView(R.id.tv_checkout_rounding_amout)
-    CustomTextView tvCheckoutRoundingAmout;
-
-    @BindView(R.id.tv_checkout_shipping)
-    CustomTextView tvCheckoutShipping;
+    RobotoLightTextView tvCheckoutCountry;
 
     @BindView(R.id.tv_checkout_shipping_title)
-    CustomBoldTextView tvCheckoutShippingTitle;
-
-    @BindView(R.id.tv_checkout_sub_total)
-    CustomTextView tvCheckoutSubTotal;
+    RobotoMediumTextView tvCheckoutShippingTitle;
 
     @BindView(R.id.tv_checkout_tel)
-    CustomTextView tvCheckoutTel;
-
-    @BindView(R.id.tv_checkout_total)
-    CustomBoldTextView tvCheckoutTotal;
+    RobotoLightTextView tvCheckoutTel;
 
     @BindView(R.id.tv_checkout_username)
-    CustomTextView tvCheckoutUsername;
+    RobotoMediumTextView tvCheckoutUsername;
 
     @Override
     public void showCheckout(CheckoutResponse checkoutResponse) {
@@ -109,10 +112,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             .setText(checkoutResponse.getCity() + "," + checkoutResponse.getPostcode());
         tvCheckoutCountry.setText(checkoutResponse.getCountry());
         tvCheckoutTel.setText(checkoutResponse.getTel());
-
-        setRadioButtonDrawable(rbCheckoutPaymentBanking);
-        setRadioButtonDrawable(rbCheckoutPaymentCredit);
-        setRadioButtonDrawable(rbCheckoutPaymentCashOnDeliery);
         radioPaymentType.check(R.id.rb_checkout_payment_banking);
         radioPaymentType.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
@@ -138,13 +137,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         rvOrderList.setAdapter(new CheckoutListAdapter(response.getCheckoutItems()));
     }
 
-    private void setRadioButtonDrawable(RadioButton radioButton) {
-        Drawable rbDrawable = getResources().getDrawable(R.drawable.selector_check);
-        rbDrawable.setBounds(0, 0, ScreenHelper.dip2px(this, RADIO_BUTTON_W_AND_H),
-            ScreenHelper.dip2px(this, RADIO_BUTTON_W_AND_H));
-        radioButton.setCompoundDrawables(rbDrawable, null, null, null);
-    }
-
     @Override
     public void showNetwordErrorMessage() {
         //TODO wait for api
@@ -152,15 +144,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void showFaildMessage(String errorMessage) {
-//TODO wait for api
+        //TODO wait for api
     }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        ViewUtils.setBg(imageviewLeftMenu, R.drawable.ic_icon_back);
         mPresenter.getCheckout("");
-
     }
 
     @Override
@@ -170,11 +160,73 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void inject() {
+        hideRightMenu();
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        initRadioGroup();
+        initAboutEditText();
+    }
+
+    private void initRadioGroup() {
+        rbCheckoutPaymentCredit.setSelected(true);
+        radioPaymentType.setOnCheckedChangeListener((RadioGroup group, int checkedId) -> {
+            switch (checkedId) {
+                case R.id.rb_checkout_payment_banking:
+                    //TODO wait for api
+                    break;
+                case R.id.rb_checkout_payment_cash_on_deliery:
+                    //TODO wait for api
+                    break;
+                case R.id.rb_checkout_payment_credit:
+                    //TODO wait for api
+                    break;
+
+            }
+        });
+    }
+
+    private void initAboutEditText() {
+
+        RxTextView.textChanges(etCheckoutDiscount).subscribe(charSequence -> {
+            if (charSequence.length() > 0) {
+                if (!tvBtnCheckDiscountApply.getText()
+                    .equals(getResources().getString(R.string.cancel))) {
+                    tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
+                    tvBtnCheckDiscountApply.setBackgroundResource(R.drawable.drawable_round_cancel);
+                }
+            } else {
+                tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
+                tvBtnCheckDiscountApply.setBackgroundResource(R.drawable.drawable_round_black);
+            }
+        });
+
+        tvBtnCheckDiscountApply.setOnClickListener(v -> {
+            if (etCheckoutDiscount.getText().toString().length() > 0) {
+                etCheckoutDiscount.setText("");
+            }
+        });
+
+        RxTextView.textChanges(etCheckoutEgift).subscribe(charSequence -> {
+            if (charSequence.length() > 0) {
+                if (!tvBtnCheckGiftCardApply.getText()
+                    .equals(getResources().getString(R.string.cancel))) {
+                    tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
+                    tvBtnCheckGiftCardApply.setBackgroundResource(R.drawable.drawable_round_cancel);
+                }
+            } else {
+                tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.apply));
+                tvBtnCheckGiftCardApply.setBackgroundResource(R.drawable.drawable_round_black);
+            }
+        });
+
+        tvBtnCheckGiftCardApply.setOnClickListener(v -> {
+            if (etCheckoutEgift.getText().toString().length() > 0) {
+                etCheckoutEgift.setText("");
+            }
+        });
     }
 
     @Override
@@ -182,12 +234,17 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         return ScreenHelper.getString(R.string.checkout_title);
     }
 
-    @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order})
+    @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order, R.id.imageview_left_menu})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_shipping_root:
+                startActivity(new Intent(this, CheckoutSelectAddressActivity.class));
                 break;
             case R.id.btn_checkout_place_my_order:
+                startActivity(new Intent(this, CheckoutPaymentActivity.class));
+                break;
+            case R.id.imageview_left_menu:
+                finish();
                 break;
         }
     }

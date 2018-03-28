@@ -5,6 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
+    android:paddingLeft="@dimen/size_8"
+    android:paddingRight="@dimen/size_8"
     android:paddingBottom="@dimen/size_16"
     tools:ignore="Overdraw">
 
@@ -12,32 +14,34 @@
         android:id="@+id/iv_search_detail"
         android:layout_width="@dimen/size_60"
         android:layout_height="@dimen/size_60"
+        android:scaleType="fitXY"
         android:background="@drawable/ic_bought"
         android:contentDescription="@string/app_name"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:id="@+id/tv_search_detail_title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/iv_search_detail"
         android:textSize="@dimen/size_font_12"
-        android:textColor="@color/color_text_black"
+        android:lineSpacingMultiplier="1.2"
+        android:textColor="@color/color_grayscale_text"
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingLeft="@dimen/size_12"
-        android:paddingTop="@dimen/size_8"
+        android:paddingTop="@dimen/size_10"
         tools:ignore="RtlSymmetry"
         android:layout_toEndOf="@id/iv_search_detail"
         android:paddingStart="@dimen/size_12"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_search_detail_old"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_search_detail_title"
         android:layout_toRightOf="@id/iv_search_detail"
         android:textSize="@dimen/size_font_12"
-        android:textColor="@color/color_text_old_grey"
+        android:textColor="@color/color_text_hint"
         android:ellipsize="end"
         android:maxLines="2"
         android:paddingTop="@dimen/size_4"
@@ -46,17 +50,17 @@
         android:layout_toEndOf="@id/iv_search_detail"
         android:paddingStart="@dimen/size_12"/>
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_search_detail_now"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tv_search_detail_old"
         android:layout_toRightOf="@id/iv_search_detail"
-        android:textSize="@dimen/size_font_12"
-        android:textColor="@color/color_text_bold_black"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_grayscale_text"
         android:ellipsize="end"
         android:maxLines="2"
-        android:paddingTop="@dimen/size_4"
+        android:paddingTop="@dimen/size_1"
         android:paddingLeft="@dimen/size_12"
         tools:ignore="RtlSymmetry"
         android:layout_toEndOf="@id/iv_search_detail"

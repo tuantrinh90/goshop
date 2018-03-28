@@ -3,7 +3,6 @@ package com.goshop.app.presentation.shopping;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 
-import android.content.Context;
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,12 +13,12 @@ import java.util.List;
 
 public class PdpBannerAdapter extends PagerAdapter {
 
-    private Context context;
+    private OnPdpBannerClickListener bannerClickListener;
 
     private List<String> imageUrls;
 
-    public PdpBannerAdapter(Context context, List<String> imageUrls) {
-        this.context = context;
+    public PdpBannerAdapter(List<String> imageUrls, OnPdpBannerClickListener bannerClickListener) {
+        this.bannerClickListener = bannerClickListener;
         this.imageUrls = imageUrls;
     }
 
@@ -30,11 +29,12 @@ public class PdpBannerAdapter extends PagerAdapter {
 
     @Override
     public Object instantiateItem(ViewGroup container, int position) {
-        View imageLayout = LayoutInflater.from(context)
+        View imageLayout = LayoutInflater.from(container.getContext())
             .inflate(R.layout.item_pdp_banner, container, false);
         final ImageView imageView = imageLayout
             .findViewById(R.id.iv_pdp_banner);
-        Glide.with(context).load(imageUrls.get(position)).into(imageView);
+        imageView.setOnClickListener(v -> bannerClickListener.onBannerClick());
+        Glide.with(container.getContext()).load(imageUrls.get(position)).into(imageView);
         container.addView(imageLayout, 0);
         return imageLayout;
     }
@@ -47,5 +47,10 @@ public class PdpBannerAdapter extends PagerAdapter {
     @Override
     public boolean isViewFromObject(View view, Object object) {
         return view.equals(object);
+    }
+
+    public interface OnPdpBannerClickListener {
+
+        void onBannerClick();
     }
 }

@@ -1,23 +1,33 @@
 package com.goshop.app.data;
 
 import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
+import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
-import com.goshop.app.data.model.GetSettingsResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -40,9 +50,33 @@ public interface RestApi {
 
     Observable<WidgetListResponse> trendingNowRequest(Map<String, Object> params);
 
-    Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params);
+    Observable<BrandsResponse> brandsRequest(Map<String, Object> params);
+
+    Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
+
+    Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params);
+
+    Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
+
+    Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params);
+
+    Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params);
+
+    Observable<MyRewardsResponse> pendingRequest(Map<String, Object> params);
+
+    Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params);
+
+    Observable<CardRedeemResponse> cardRedeemRequest(Map<String, Object> params);
+
+    Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params);
+
+    Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
+
+    Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params);
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
+
+    Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params);
 
     io.reactivex.Observable<GetWeatherResponse> getWeather(String id);
 
@@ -56,6 +90,10 @@ public interface RestApi {
 
     io.reactivex.Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params);
 
+    Observable<MyOrderListResponse> myOrdersRequest(Map<String, Object> params);
+
+    Observable<OrderDetailResponse> orderDetailRequest(Map<String, Object> params);
+
     io.reactivex.Observable<MyOrderDetailResponse> myOrderDetailRequest(Map<String, Object> params);
 
     io.reactivex.Observable<NotificationsResponse> notificationRequest(Map<String, Object> params);
@@ -65,7 +103,8 @@ public interface RestApi {
 
     Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params);
 
-    Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(Map<String, Object> params);
+    Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(
+        Map<String, Object> params);
 
     Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
 
@@ -82,6 +121,8 @@ public interface RestApi {
     Observable<ProfileResponse> editProfileRequest(Map<String, Object> params);
 
     Observable<AddressResponse> addAddressRequest(Map<String, Object> params);
+
+    Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
@@ -101,7 +142,7 @@ public interface RestApi {
 
     Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params);
 
-    Observable<GetSettingsResponse> getSettingsDetail();
+    Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params);
 
     Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params);
 
@@ -117,6 +158,12 @@ public interface RestApi {
 
     Observable<TVShowResponse> rightVideoRequest(Map<String, Object> params);
 
-    Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params);
+    Observable<TVShowResponse> tvShowRequest(Map<String, Object> params);
+
+    Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params);
+
+    Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
+
+    Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params);
 
 }

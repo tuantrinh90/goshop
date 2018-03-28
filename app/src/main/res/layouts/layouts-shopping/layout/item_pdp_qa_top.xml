@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/size_16"
     android:paddingRight="@dimen/size_16">
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_btn_pdp_qa_top"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
         android:orientation="horizontal"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@id/tv_btn_pdp_qa_top">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_pdp_qa_top_question_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,16 +40,16 @@
             android:paddingRight="@dimen/size_4"
             tools:ignore="RtlSymmetry"
             android:paddingEnd="@dimen/size_4"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/questions"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_12"
             android:paddingRight="@dimen/size_18"
             tools:ignore="RtlSymmetry"
             android:paddingEnd="@dimen/size_18"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_pdp_qa_top_answers_num"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -59,11 +59,11 @@
             tools:ignore="RtlSymmetry"
             android:paddingStart="@dimen/size_4"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/questions"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="@dimen/size_font_12"/>
     </LinearLayout>
 

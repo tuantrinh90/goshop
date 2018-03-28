@@ -17,7 +17,7 @@
         android:contentDescription="@string/app_name"
         android:layout_marginEnd="@dimen/size_16"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_item_item_percent"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -32,7 +32,7 @@
         android:background="@color/color_main_pink"
         android:layout_alignStart="@id/iv_item_item_frequently"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_item_item_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -40,11 +40,11 @@
         android:layout_alignRight="@id/iv_item_item_frequently"
         android:layout_below="@id/iv_item_item_frequently"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:layout_alignStart="@id/iv_item_item_frequently"
         android:layout_alignEnd="@id/iv_item_item_frequently"/>
 
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_item_item_old_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,12 +52,12 @@
         android:layout_alignRight="@id/iv_item_item_frequently"
         android:layout_below="@id/tv_item_item_title"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_hint_grey"
+        android:textColor="@color/color_text_hint"
         android:paddingTop="@dimen/size_2"
         android:layout_alignStart="@id/iv_item_item_frequently"
         android:layout_alignEnd="@id/iv_item_item_frequently"/>
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_item_item_now_price"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -65,7 +65,7 @@
         android:layout_alignRight="@id/iv_item_item_frequently"
         android:layout_below="@id/tv_item_item_old_price"
         android:textSize="@dimen/size_font_14"
-        android:textColor="@color/color_text_black"
+        android:textColor="@color/color_grayscale_text"
         android:paddingTop="@dimen/size_2"
         android:paddingBottom="@dimen/size_8"
         android:layout_alignStart="@id/iv_item_item_frequently"

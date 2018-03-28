@@ -1,35 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingRight="@dimen/size_16"
+    android:background="@drawable/bg_bottom_line"
     android:paddingLeft="@dimen/size_16"
-    android:orientation="vertical">
+    android:paddingRight="@dimen/size_16"
+    android:paddingBottom="@dimen/size_20">
 
-    <CheckBox
-        android:id="@+id/cb_pdp_overseas"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_8"
-        android:checked="true"
+    <com.goshop.app.common.view.RobotoMediumTextView
+        android:id="@+id/tv_btn_product_detail_check"
+        android:layout_width="@dimen/size_72"
+        android:layout_height="@dimen/size_36"
+        android:background="@drawable/drawable_round_black"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/size_font_14"
-        android:text="@string/delivery_info_tips_overseas"
-        android:textColor="@color/color_text_black"/>
+        android:gravity="center"
+        android:text="@string/check"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"/>
 
-    <CheckBox
-        android:id="@+id/cb_pdp_cash"
+    <com.goshop.app.common.view.RobotoRegularEditText
+        android:id="@+id/et_product_detail_delivery"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_8"
-        android:layout_marginBottom="@dimen/size_8"
-        android:checked="true"
+        android:layout_height="@dimen/size_36"
+        android:layout_marginRight="@dimen/size_8"
+        android:paddingLeft="@dimen/size_10"
+        android:gravity="center_vertical"
+        android:background="@drawable/bg_et_editable"
         android:textSize="@dimen/size_font_14"
-        android:text="@string/delivery_info_tips_cash"
-        android:textColor="@color/color_text_black"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/color_divider_grey"/>
+        android:hint="@string/enter_delivery"
+        android:textColor="@color/color_black_light"
+        android:textColorHint="@color/color_text_hint"
+        android:layout_toLeftOf="@id/tv_btn_product_detail_check"
+        android:layout_marginEnd="@dimen/size_8"
+        android:layout_toStartOf="@id/tv_btn_product_detail_check"/>
 
-</LinearLayout>
+</RelativeLayout>

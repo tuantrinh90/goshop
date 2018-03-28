@@ -1,8 +1,9 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PointsDetailVM;
 import com.goshop.app.presentation.model.PointsModel;
 import com.goshop.app.presentation.model.PointsTotalVM;
@@ -98,7 +99,7 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
     class PointTotalViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_points_totals)
-        CustomBoldTextView tvPointsTotals;
+        RobotoMediumTextView tvPointsTotals;
 
         public PointTotalViewHolder(View itemView) {
             super(itemView);
@@ -117,19 +118,19 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
         private final String INCREASE = "+ ";
 
         @BindView(R.id.tv_points_counts)
-        CustomBoldTextView tvPointsCounts;
+        RobotoRegularTextView tvPointsCounts;
 
         @BindView(R.id.tv_points_date)
-        CustomTextView tvPointsDate;
+        RobotoLightTextView tvPointsDate;
 
         @BindView(R.id.tv_points_description)
-        CustomTextView tvPointsDescription;
+        RobotoLightTextView tvPointsDescription;
 
         @BindView(R.id.tv_points_order_no)
-        CustomTextView tvPointsOrderNo;
+        RobotoLightTextView tvPointsOrderNo;
 
         @BindView(R.id.tv_points_time)
-        CustomTextView tvPointsTime;
+        RobotoLightTextView tvPointsTime;
 
         public PointDetailViewHolder(View itemView) {
             super(itemView);
@@ -145,7 +146,7 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
             } else {
                 tvPointsCounts.setText(DECLINE + detailVM.getPoints());
                 tvPointsCounts.setTextColor(
-                    ContextCompat.getColor(itemView.getContext(), R.color.color_text_black));
+                    ContextCompat.getColor(itemView.getContext(), R.color.color_grayscale_text));
             }
             tvPointsDate.setText(detailVM.getDate());
             tvPointsDescription.setText(detailVM.getDescription());

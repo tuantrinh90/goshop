@@ -3,7 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomBoldTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.webkit.WebView;
+import android.widget.ProgressBar;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -30,10 +31,13 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
     public static final String ECMC = "ECMC";
 
     @BindView(R.id.textview_toolbar_title)
-    CustomBoldTextView textviewToolbarTitle;
+    RobotoMediumTextView textviewToolbarTitle;
 
     @BindView(R.id.wv_content)
     WebView wvContent;
+
+    @BindView(R.id.progressbar_content)
+    ProgressBar progressBarContent;
 
     private String contentTag;
 
@@ -85,9 +89,12 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 if (newProgress == 100) {
-                    hideLoadingBar();
+                    progressBarContent.setVisibility(View.GONE);
                 } else {
-                    showLoadingBar();
+                    if(View.GONE == progressBarContent.getVisibility()) {
+                        progressBarContent.setVisibility(View.VISIBLE);
+                    }
+                    progressBarContent.setProgress(newProgress);
                 }
                 super.onProgressChanged(view, newProgress);
             }

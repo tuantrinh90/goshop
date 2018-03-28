@@ -31,12 +31,44 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".presentation.account.MyWishlistActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.goloyalty.GoLoyaltyActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.goloyalty.AllDealsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.goloyalty.MyRewardsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.goloyalty.RewardsDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.goloyalty.CardRedeemActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.account.MyAccountLandingActivity"
+            android:theme="@style/WhiteBackground"/>
+
         <activity android:name=".presentation.shopping.PDPDetailActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.login.LoginActivity"/>
+        <activity android:name=".presentation.shopping.PDPDetailImagesActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.shopping.RatingActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.shopping.AllReviewsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.login.LoginActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.login.RegisterActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.category.CategoryActivity"
@@ -48,7 +80,8 @@
         <activity android:name=".presentation.shopping.ShoppingCartActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.account.NotificationActivity"/>
+        <activity android:name=".presentation.account.NotificationActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.HelpSupportActivity"
             android:theme="@style/WhiteBackground"/>
@@ -57,14 +90,14 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.ChangePasswordActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.search.SearchActivity"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.search.SearchResultActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.FAQActivity"
@@ -74,25 +107,50 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.ContactUsActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.WebContentActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.checkout.CheckoutActivity"/>
-
-        <activity android:name=".presentation.home.PromotionBannerActivity"/>
-
-        <activity android:name=".presentation.home.PromotionLandingListActivity"/>
-
-        <activity android:name=".presentation.shopping.ProductDetailActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
+        <activity android:name=".presentation.checkout.CheckoutActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.myorder.MyOrderListActivity"/>
+        <activity android:name=".presentation.checkout.CheckoutPaymentActivity"
+            android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.myorder.MyOrderDetailActivity"/>
+        <activity android:name=".presentation.home.PromotionBannerActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.home.PromotionLandingListActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.home.PromotionSkuActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.shopping.ProductDetailActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground">
+
+        </activity>
+
+        <activity android:name=".presentation.myorder.MyOrdersActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.OrderDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.MyOrderListActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.MyOrderDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.CancelOrderActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.ReturnOrderActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.login.LoginComplementEmailActivity"
             android:theme="@style/WhiteBackground"/>
@@ -104,18 +162,20 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.EditProfileActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.AddAddressActivity"
-            android:windowSoftInputMode="adjustPan|stateHidden"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.MyAddressBookActivity"
             android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.account.EditAddressActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
+
         <activity android:name=".presentation.account.MyPointsActivity"
             android:theme="@style/WhiteBackground"/>
 
@@ -129,9 +189,20 @@
 
         <activity android:name=".presentation.checkout.PaymentStatusActivity"
             android:theme="@style/WhiteBackground"/>
+        <activity android:name=".presentation.home.BrandsDetailActivity"
+            android:theme="@style/WhiteBackground"/>
 
+        <activity android:name=".presentation.account.MyEGiftCardsActivity"
+            android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.login.TestMenuActivity"/>
+        <activity android:name=".presentation.shopping.AllQAActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.shopping.QuestionAnswerDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.login.TestMenuActivity"
+            android:theme="@style/WhiteBackground"/>
 
         <!-- FACEBOOK -->
         <activity

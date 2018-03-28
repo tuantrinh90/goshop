@@ -8,7 +8,7 @@
         android:layout_width="match_parent"
         style="@style/windowMargin"
         android:layout_height="55dp">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_id"
             android:text="@string/my_orders_test_id"
             android:layout_centerVertical="true"
@@ -16,7 +16,7 @@
             android:layout_height="wrap_content"
             tools:ignore="RelativeOverlap"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_track"
             android:text="@string/my_orders_track"
             android:layout_width="60dp"
@@ -29,7 +29,7 @@
 
     <RelativeLayout
         android:id="@+id/rl_order_list_product_body"
-        android:background="@color/blackTrans12"
+        android:background="@color/color_bg_disabled_divider"
         android:layout_width="match_parent"
         style="@style/windowMargin"
         android:paddingTop="@dimen/activity_horizontal_margin"
@@ -44,7 +44,7 @@
             android:contentDescription="@string/app_name"
             android:background="@drawable/ic_launcher_background"
             android:layout_marginEnd="@dimen/home_padding"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_price"
             style="@style/homeItemProductPrice"
             android:layout_alignParentRight="true"
@@ -52,7 +52,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentEnd="true"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_title"
             android:layout_toRightOf="@id/iv_order_product_product_icon"
             android:layout_toLeftOf="@id/tv_order_product_price"
@@ -62,7 +62,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/iv_order_product_product_icon"
             android:layout_toStartOf="@id/tv_order_product_price"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_color"
             style="@style/homeItemProductOldPrice"
             android:layout_marginTop="@dimen/size_6"
@@ -74,7 +74,7 @@
             android:text="@string/my_orders_test_color"
             android:layout_toEndOf="@id/iv_order_product_product_icon"
             android:layout_toStartOf="@id/tv_order_product_price"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_size"
             style="@style/homeItemProductOldPrice"
             android:layout_below="@id/tv_order_product_color"
@@ -86,7 +86,7 @@
             android:layout_height="wrap_content"
             android:layout_toEndOf="@id/iv_order_product_product_icon"
             android:layout_toStartOf="@id/tv_order_product_price"/>
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_order_product_amount"
             style="@style/homeItemProductOldPrice"
             android:text="@string/my_orders_test_amount"

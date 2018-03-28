@@ -14,7 +14,7 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
         android:background="@drawable/selector_bg_white_pink">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_search_result_sorting_arrivals"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -44,7 +44,7 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
         android:background="@drawable/selector_bg_white_pink">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_search_result_sorting_price"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -74,7 +74,7 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
         android:background="@drawable/selector_bg_white_pink">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_search_result_sorting_name"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
@@ -104,7 +104,7 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16"
         android:background="@drawable/selector_bg_white_pink">
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_search_result_sorting_promotion"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"

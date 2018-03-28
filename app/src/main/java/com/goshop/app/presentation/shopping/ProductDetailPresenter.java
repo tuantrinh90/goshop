@@ -1,24 +1,23 @@
 package com.goshop.app.presentation.shopping;
 
-import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
-import com.goshop.app.presentation.model.PdpBannerVM;
-import com.goshop.app.presentation.model.PdpDeliveryInfoVM;
-import com.goshop.app.presentation.model.PdpDetailsContentVM;
+import com.goshop.app.presentation.model.PdpAdditionalItemVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
 import com.goshop.app.presentation.model.PdpFrequentlyBoughtTogetherVM;
-import com.goshop.app.presentation.model.PdpFrequentlyDataVM;
-import com.goshop.app.presentation.model.PdpProductSummaryVM;
-import com.goshop.app.presentation.model.PdpQAContentTopVM;
-import com.goshop.app.presentation.model.PdpQAContentVM;
-import com.goshop.app.presentation.model.PdpReviewsContentVM;
-import com.goshop.app.presentation.model.PdpReviewsTopVM;
-import com.goshop.app.presentation.model.PdpTipVM;
-import com.goshop.app.presentation.model.PdpTopContentVM;
+import com.goshop.app.presentation.model.PdpQAVM;
+import com.goshop.app.presentation.model.PdpReviewsVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
+import com.goshop.app.presentation.model.ProductDetailTopVM;
+import com.goshop.app.presentation.model.SizeVM;
+import com.goshop.app.presentation.model.widget.ColorVM;
+import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
+import com.goshop.app.presentation.model.widget.ProductPriceVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.QAVM;
+import com.goshop.app.presentation.model.widget.ReviewsVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -64,25 +63,20 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     private List<ProductDetailModel> getMockData() {
         //todo(helen)wait for complete
         List<ProductDetailModel> detailModels = new ArrayList<>();
-        detailModels.addAll(getBannerDatas());
-        detailModels.addAll(getTopDatas());
-        detailModels.addAll(getSummaryDatas());
-        detailModels.addAll(getDeliveryDatas());
-        detailModels.addAll(getDetailsDatas());
-        detailModels.addAll(getQADatas());
-        detailModels.addAll(getReviewsDatas());
-        detailModels.addAll(getAdditionalInfoDatas());
-        detailModels.addAll(getFrequentlyBoughtDatas());
+        detailModels.add(getProductTopData());
+        detailModels.addAll(getProductSummary());
+        detailModels.addAll(getProductsDetail());
+        detailModels.addAll(getProductsDelivery());
+        detailModels.addAll(getProductReviews());
+        detailModels.addAll(getProductQuestionAnswer());
+        detailModels.addAll(getAdditionalInformation());
+        detailModels.addAll(getFrequentlyBoughtTogether());
         return detailModels;
     }
 
     //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getBannerDatas() {
-        List<ProductDetailModel> detailModels = new ArrayList<>();
+    private ProductDetailTopVM getProductTopData() {
         List<String> images = new ArrayList<>();
-        images.add(
-            "http://a.hiphotos.baidu" +
-                ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
         images.add(
             "http://g.hiphotos.baidu" +
                 ".com/image/pic/item/7aec54e736d12f2ee7ed822044c2d56284356881.jpg");
@@ -93,112 +87,106 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         images.add(
             "http://a.hiphotos.baidu" +
                 ".com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg");
-        detailModels.add(new PdpBannerVM(images));
+
+        List<ColorVM> colorVMS = new ArrayList<>();
+        colorVMS.add(new ColorVM("Yellow", ""));
+        colorVMS.add(new ColorVM("Red", ""));
+        List<SizeVM> sizeVMS = new ArrayList<>();
+        sizeVMS.add(new SizeVM("XL"));
+        sizeVMS.add(new SizeVM("L"));
+        return new ProductDetailTopVM(images,
+            "Kloken Living Box Value Set Kloken Living Box Value Set",
+            "RM 269.00", "RM 199.00", "-30%", colorVMS, sizeVMS, "2");
+    }
+
+    //TODO(helen) this is mock data
+    private List<ProductDetailModel> getProductSummary() {
+        List<ProductDetailModel> detailModels = new ArrayList<>();
+        detailModels.add(new PdpExpandTitleVM(true, true, "Product Summary"));
+        detailModels.add(new ProductDetailModel(ProductDetailModel.DETAIL_SINGLE_TEXT));
         return detailModels;
     }
 
-    //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getTopDatas() {
+    //TODO(helen) this is mock data
+    private List<ProductDetailModel> getProductsDetail() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
-        List<PdpTipVM> tips = new ArrayList<>();
-
-        tips.add(new PdpTipVM("In Stock", R.color.color_text_black, R.color.color_divider_grey));
-        tips.add(new PdpTipVM("With free gift", R.color.color_main_pink, R.color.color_litte_pink));
-        List<Integer> colors = new ArrayList<>();
-        colors.add(0xff23f22d);
-        colors.add(0xff23faad);
-        colors.add(0xfa23faaa);
-        detailModels
-            .add(new PdpTopContentVM("Kloken Living Box Value Set Kloken Living Box Value Set",
-                "RM 199.00", "RM 268.00", "-30%", 4, "(24)", "10", colors, tips));
+        detailModels.add(new PdpExpandTitleVM(true, true, "Details"));
+        detailModels.add(new ProductDetailModel(ProductDetailModel.DETAIL_SINGLE_TEXT));
         return detailModels;
     }
 
-    //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getSummaryDatas() {
+    //TODO(helen) this is mock data
+    private List<ProductDetailModel> getProductsDelivery() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
-        detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.NO_ICON, "PRODUCT SUMMARY"));
-        detailModels.add(new PdpProductSummaryVM());
+        detailModels.add(new PdpExpandTitleVM(false, false, "Delivery Info"));
+        detailModels.add(new ProductDetailModel(ProductDetailModel.DETAIL_DELIVERY_INFO));
         return detailModels;
     }
 
-    //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getDeliveryDatas() {
+    //TODO(helen) this is mock data
+    private List<ProductDetailModel> getProductReviews() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
-        detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.NO_ICON, "DELIVERY INFO"));
-        detailModels.add(new PdpDeliveryInfoVM());
-        return detailModels;
-    }
-
-    //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getDetailsDatas() {
-        List<ProductDetailModel> detailModels = new ArrayList<>();
-        detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.HAS_ICON, "DETAILS", false));
-        detailModels.add(new PdpDetailsContentVM());
-        return detailModels;
-    }
-
-    //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getQADatas() {
-        List<ProductDetailModel> detailModels = new ArrayList<>();
-        detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.HAS_ICON, "Q&A", true));
-        detailModels.add(new PdpQAContentTopVM("10", "10"));
-        detailModels.add(new PdpQAContentVM(
+        detailModels.add(new PdpExpandTitleVM(true, true, "Reviews"));
+        List<ReviewsVM> reviewsVMS = new ArrayList<>();
+        ReviewsVM reviewsVM = new ReviewsVM(4, "Lorem ipsum dolor sit amet",
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
-            "By User Name on 1/2/18",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
-            "By User Name on 1/2/18"));
-        detailModels.add(new ProductDetailModel(ProductDetailModel.DETAIL_VIEW_MORE));
+            "User Name", "1/2/18");
+        reviewsVMS.add(reviewsVM);
+        reviewsVMS.add(reviewsVM);
+        detailModels.add(new PdpReviewsVM(5, "(100)", reviewsVMS));
         return detailModels;
     }
 
-    //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getReviewsDatas() {
+    //TODO(helen) this is mock data
+    private List<ProductDetailModel> getProductQuestionAnswer() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
-        detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.HAS_ICON, "REVIEWS", true));
-        detailModels.add(new PdpReviewsTopVM("100", 5));
-        detailModels.add(new PdpReviewsContentVM(4, "Lorem ipsum dolor sit amet",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
-            "By User Name on 1/2/18"));
-        detailModels.add(new PdpReviewsContentVM(3, "Lorem ipsum dolor sit amet",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
-            "By User Name on 1/2/18"));
-        detailModels.add(new ProductDetailModel(ProductDetailModel.DETAIL_VIEW_MORE));
+        detailModels.add(new PdpExpandTitleVM(true, true, "Q&A"));
+
+        QAVM qavm = new QAVM("3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
+            "1/2/2018");
+        List<QAVM> qavms = new ArrayList<>();
+        qavms.add(qavm);
+        qavms.add(qavm);
+        detailModels.add(new PdpQAVM("10", "10", qavms));
         return detailModels;
     }
 
-    //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getAdditionalInfoDatas() {
+    //TODO(helen) this is mock data
+    private List<ProductDetailModel> getAdditionalInformation() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
-        detailModels.add(new PdpExpandTitleVM(PdpExpandTitleVM.NO_ICON, "ADDITIONAL INFORMATION"));
-        detailModels.add(new PdpAdditionalInformationVM("A/S Processing Standard"));
-        detailModels.add(new PdpAdditionalInformationVM("Quality Guarantee Period"));
-        detailModels.add(new PdpAdditionalInformationVM("Basic Constitution"));
-        detailModels.add(new PdpAdditionalInformationVM("Precaution"));
-        detailModels.add(new PdpAdditionalInformationVM("Return/Cancel Processing Standard"));
-        detailModels.add(new PdpAdditionalInformationVM("Model Name"));
-        detailModels.add(new PdpAdditionalInformationVM("Material"));
-        detailModels.add(new PdpAdditionalInformationVM("Product Features"));
+        detailModels.add(new PdpExpandTitleVM(true, true, "Additional Information"));
+
+        List<PdpAdditionalItemVM> additionalItemVMS = new ArrayList<>();
+
+        additionalItemVMS.add(new PdpAdditionalItemVM("A/S Processing Standard", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Quality Guarantee Period", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Basic Constitution", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Precaution", "N/A"));
+        additionalItemVMS
+            .add(new PdpAdditionalItemVM("Return/Cancel Processing Standard", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Model Name", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Material", "N/A"));
+        additionalItemVMS.add(new PdpAdditionalItemVM("Product Features", "N/A"));
+        detailModels.add(new PdpAdditionalInformationVM(additionalItemVMS));
         return detailModels;
     }
 
-    //todo(helen)this is mock data will delete when get api
-    private List<ProductDetailModel> getFrequentlyBoughtDatas() {
+    //TODO(helen) this is mock data
+    private List<ProductDetailModel> getFrequentlyBoughtTogether() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
-        List<PdpFrequentlyDataVM> frequentlyDataVMS = new ArrayList<>();
-        PdpFrequentlyDataVM frequentlyDataVM = new PdpFrequentlyDataVM(
-            "Bloom By Naelofar Hijab (3pcs set)", "", "RM 119.00", "",
-            R.drawable.ic_bought);
-        PdpFrequentlyDataVM frequentlyDataVM2 = new PdpFrequentlyDataVM(
-            "Bloom By Naelofar Hijab (3pcs set)", "RM 269.00", "RM 119.00", "30% OFF",
-            R.drawable.ic_bought);
-        frequentlyDataVMS.add(frequentlyDataVM);
-        frequentlyDataVMS.add(frequentlyDataVM2);
-        frequentlyDataVMS.add(frequentlyDataVM);
-        frequentlyDataVMS.add(frequentlyDataVM2);
-        detailModels
-            .add(new PdpExpandTitleVM(PdpExpandTitleVM.NO_ICON, "FREQUENTLY BOUGHT TOGETHER"));
-        detailModels.add(new PdpFrequentlyBoughtTogetherVM(frequentlyDataVMS));
+        detailModels.add(new PdpExpandTitleVM(false, false, "Frequently Bought Together"));
+        ProductsVM productsVM = new ProductsVM();
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
+        ProductPriceVM priceVM = new ProductPriceVM(rmvm);
+        productsVM.setImage("");
+        productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
+        productsVM.setPriceVM(priceVM);
+        List<ProductsVM> productsVMS = new ArrayList<>();
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        productsVMS.add(productsVM);
+        detailModels.add(new PdpFrequentlyBoughtTogetherVM(productsVMS));
         return detailModels;
     }
 

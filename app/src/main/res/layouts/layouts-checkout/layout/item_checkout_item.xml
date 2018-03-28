@@ -1,76 +1,65 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:orientation="vertical"
+    android:orientation="horizontal"
+    android:padding="@dimen/size_16"
+    android:background="@drawable/bg_bottom_line"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
+    <ImageView
+        android:id="@+id/iv_checkout_item_icon"
+        android:layout_width="@dimen/size_97"
+        android:layout_height="@dimen/size_97"
+        android:scaleType="fitXY"
+        android:contentDescription="@string/app_name"
+        android:background="@mipmap/ic_launcher"/>
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/home_center_video_item_image_w_and_h"
-        android:orientation="horizontal"
-        android:background="@color/white"
-        android:layout_margin="@dimen/activity_horizontal_margin"
-        android:baselineAligned="false">
-        <RelativeLayout
-            android:layout_width="@dimen/home_center_video_item_image_w_and_h"
-            android:layout_height="@dimen/home_center_video_item_image_w_and_h">
-
-            <ImageView
-                android:id="@+id/iv_checkout_item_icon"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:scaleType="fitXY"
-                android:contentDescription="@string/app_name"
-                android:background="@mipmap/ic_launcher"
-            />
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/tv_home_home_item_sale_symbol"
-                style="@style/homeItemTextSaleSymbol"
-            />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_weight="1"
-            android:layout_width="0dp"
-            android:layout_marginLeft="@dimen/home_padding"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_8"
+        android:orientation="vertical">
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_checkout_product_name"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginStart="@dimen/home_padding">
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/tv_checkout_product_name"
-                android:text="@string/home_item_test_product_name"
-                style="@style/homeItemProductName"/>
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/tv_checkout_color_and_size"
-                android:layout_below="@id/tv_checkout_product_name"
-                android:text="@string/checkout_item_color_and_size"
-                style="@style/homeItemProductName"/>
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/tv_checkout_old_price"
-                android:layout_below="@id/tv_checkout_color_and_size"
-                android:layout_marginTop="@dimen/home_list_item_main_and_sub_title_margin"
-                android:text="@string/home_item_test_product_price"
-                style="@style/homeItemProductOldPrice"/>
-            <com.goshop.app.common.view.CustomTextView
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_text" />
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_checkout_color_and_size"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/color_grayscale_secondary"
+            android:textSize="@dimen/size_font_12"
+            android:paddingTop="@dimen/size_4"/>
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_checkout_old_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_6"
+            android:textSize="@dimen/size_font_12"
+            android:textColor="@color/color_text_hint"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/size_1"
+            android:orientation="horizontal">
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_checkout_price"
-                android:layout_below="@id/tv_checkout_old_price"
-                android:text="@string/home_item_test_product_price"
-                style="@style/homeItemProductPrice"/>
-
-            <com.goshop.app.common.view.CustomTextView
-                android:id="@+id/tv_checkout_amount"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:text="* 3"
                 android:layout_width="wrap_content"
-                style="@style/homeItemProductName"
-                tools:ignore="HardcodedText"/>
-        </RelativeLayout>
+                android:layout_height="wrap_content"
+                android:textColor="@color/color_grayscale_text"
+                android:textSize="@dimen/size_font_14" />
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:id="@+id/tv_checkout_amount"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="right"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_grayscale_text"/>
+        </LinearLayout>
+
     </LinearLayout>
-    <View
-        android:layout_alignParentBottom="true"
-        style="@style/homeWrapWidthLine"/>
-</RelativeLayout>
+
+</LinearLayout>

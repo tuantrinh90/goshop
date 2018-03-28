@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.goshop.app.common.view.RobotoLightTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_48"
+    android:id="@+id/tv_sort_select"
+    android:textColor="@color/color_greyish_brown"
+    android:textSize="@dimen/size_font_14"
+    android:paddingLeft="@dimen/size_16"
+    android:gravity="center_vertical"
+    android:background="@drawable/selector_spinner_item"
+    android:text="@string/new_arrivals"/>

@@ -2,23 +2,33 @@ package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
+import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
-import com.goshop.app.data.model.GetSettingsResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -56,13 +66,73 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params) {
-        return restApi.brandsPageRequest(params);
+    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
+        return restApi.brandsRequest(params);
+    }
+
+    @Override
+    public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
+        return restApi.brandsDetailRequest(params);
+    }
+
+    @Override
+    public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
+        return restApi.eGiftCardsRequest(params);
+    }
+
+    @Override
+    public Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params) {
+        return restApi.goLoyaltyRequest(params);
+    }
+
+    @Override
+    public Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params) {
+        return restApi.allDealsRequest(params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params) {
+        return restApi.expiredRequest(params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> pendingRequest(Map<String, Object> params) {
+        return restApi.pendingRequest(params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params) {
+        return restApi.redeemedRequest(params);
+    }
+
+    @Override
+    public Observable<CardRedeemResponse> cardRedeemRequest(Map<String, Object> params) {
+        return restApi.cardRedeemRequest(params);
+    }
+
+    @Override
+    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
+        return restApi.swipeRedeemRequest(params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
+        return restApi.rewardsDetailRequest(params);
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params) {
+        return restApi.myWishlistRequest(params);
     }
 
     @Override
     public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
         return restApi.pdpDetailRequest(params);
+    }
+
+    @Override
+    public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
+        return restApi.allReviewsRequest(params);
     }
 
     public Observable<UserInfo> getUserInfo(String id) {
@@ -103,6 +173,16 @@ public class AccountCloudDataSource implements AccountDataSource {
         //TODO joyson temp code
 //        return restApi.myOrderListRequest(params);
         return ServiceData.getMyOrderLists();
+    }
+
+    @Override
+    public Observable<MyOrderListResponse> myOrdersRequest(Map<String, Object> params) {
+        return restApi.myOrdersRequest(params);
+    }
+
+    @Override
+    public Observable<OrderDetailResponse> orderDetailRequest(Map<String, Object> params) {
+        return restApi.orderDetailRequest(params);
     }
 
     @Override
@@ -180,6 +260,11 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
+    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
+        return restApi.editAddressRequest(params);
+    }
+
+    @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         return restApi.myAddressRequest(params);
     }
@@ -225,8 +310,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<GetSettingsResponse> getSettingsDetail() {
-        return restApi.getSettingsDetail();
+    public Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params) {
+        return restApi.settingsLogoutRequest(params);
     }
 
     @Override
@@ -264,8 +349,23 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
-        return restApi.leftVideoRequest(params);
+    public Observable<TVShowResponse> tvShowRequest(Map<String, Object> params) {
+        return restApi.tvShowRequest(params);
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params) {
+        return restApi.allQARequest(params);
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
+        return restApi.qaDetailRequest(params);
+    }
+
+    @Override
+    public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
+        return restApi.promotionSkuRequest(params);
     }
 
 }

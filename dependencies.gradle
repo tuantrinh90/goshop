@@ -5,6 +5,7 @@ allprojects {
 }
 
 ext {
+    slidetoactVersion = '0.2.0'
     butterkniftVersion = '8.4.0'
     rxjavaVersion = '2.0.1'
     retrofitVersion = '2.2.0'
@@ -32,6 +33,7 @@ ext {
     facebookVersion = '4.17.0'
 
     appDependencies = [
+            slidetoact                    : "com.ncorti:slidetoact:$slidetoactVersion",
             support_v4                    : "com.android.support:support-v4:$commonVersion",
             appcompat_v7                  : "com.android.support:appcompat-v7:$commonVersion",
             androidDesign                 : "com.android.support:design:$commonVersion",

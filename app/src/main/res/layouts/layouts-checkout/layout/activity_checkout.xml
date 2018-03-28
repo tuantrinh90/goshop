@@ -1,21 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
     android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
->
-    <include
-        android:id="@+id/toolbar"
-        layout="@layout/toolbar_image_title_image"/>
-    <View style="@style/homeWrapWidthLine"/>
-    <android.support.v4.widget.NestedScrollView
-        android:layout_below="@id/toolbar"
+    android:focusableInTouchMode="true"
+    android:focusable="true">
+    <LinearLayout
+        android:id="@+id/ll_checkout_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-    >
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include
+            layout="@layout/toolbar_img_text_img_close"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </LinearLayout>
+
+    <android.support.v4.widget.NestedScrollView
+        android:layout_below="@id/ll_checkout_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:orientation="vertical"
@@ -23,237 +31,34 @@
             android:focusable="true"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <RelativeLayout
-                android:id="@+id/rl_shipping_root"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content">
 
-                <com.goshop.app.common.view.CustomBoldTextView
-                    android:id="@+id/tv_checkout_shipping_title"
-                    style="@style/myOrderDetailTitle"
-                    android:text="@string/checkout_shipping"
-                />
+            <include
+                layout="@layout/layout_checkout_top"/>
 
-                <com.goshop.app.common.view.CustomTextView
-                    android:id="@+id/tv_checkout_username"
-                    android:layout_below="@id/tv_checkout_shipping_title"
-                    style="@style/myOrderDetailInfo"
-                    android:fontFamily="sans-serif-medium"
-                    android:textColor="@color/blackTrans87"
-                    android:text="@string/my_orders_title_number"
-                />
-                <com.goshop.app.common.view.CustomTextView
-                    android:id="@+id/tv_checkout_address_first"
-                    android:layout_below="@id/tv_checkout_username"
-                    android:text="@string/my_orders_title_status"
-                    style="@style/myOrderDetailInfo"/>
-
-                <com.goshop.app.common.view.CustomTextView
-                    android:id="@+id/tv_checkout_address_second"
-                    android:layout_below="@id/tv_checkout_address_first"
-                    android:text="@string/my_orders_placed_at"
-                    style="@style/myOrderDetailInfo"/>
-
-                <com.goshop.app.common.view.CustomTextView
-                    android:id="@+id/tv_checkout_city_state_code"
-                    android:layout_below="@id/tv_checkout_address_second"
-                    android:text="@string/my_orders_placed_at"
-                    style="@style/myOrderDetailInfo"/>
-
-                <com.goshop.app.common.view.CustomTextView
-                    android:id="@+id/tv_checkout_country"
-                    android:layout_below="@id/tv_checkout_city_state_code"
-                    android:text="@string/my_orders_placed_at"
-                    style="@style/myOrderDetailInfo"/>
-
-                <com.goshop.app.common.view.CustomTextView
-                    android:id="@+id/tv_checkout_tel"
-                    android:layout_below="@id/tv_checkout_country"
-                    android:layout_marginBottom="@dimen/activity_horizontal_margin"
-                    android:text="@string/my_orders_placed_at"
-                    style="@style/myOrderDetailInfo"/>
-
-                <ImageView
-                    android:layout_marginRight="@dimen/home_padding"
-                    android:layout_alignParentRight="true"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/ic_icon_back"
-                    android:layout_width="30dp"
-                    android:layout_height="30dp"
-                    android:contentDescription="@string/app_name"
-                    android:layout_marginEnd="@dimen/home_padding"
-                    android:layout_alignParentEnd="true"/>
-
-            </RelativeLayout>
             <View
-                style="@style/pageCardInterval"/>
-
-            <com.goshop.app.common.view.CustomBoldTextView
-                style="@style/myOrderDetailTitle"
-                android:text="@string/checkout_payment"
-            />
-            <RadioGroup
-                android:id="@+id/radio_payment_type"
-                android:layout_marginLeft="@dimen/activity_horizontal_margin"
-                android:layout_marginRight="@dimen/activity_horizontal_margin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:orientation="vertical"
-                tools:ignore="RelativeOverlap"
-            >
-                <RadioButton
-                    android:id="@+id/rb_checkout_payment_banking"
-                    style="@style/checkoutRadioButton"
-                    android:text="@string/checkout_payment_bank"
-                />
-                <RadioButton
-                    android:id="@+id/rb_checkout_payment_credit"
-                    style="@style/checkoutRadioButton"
-                    android:text="@string/checkout_payment_credit"
-                />
-                <RadioButton
-                    android:id="@+id/rb_checkout_payment_cash_on_deliery"
-                    style="@style/checkoutRadioButton"
-                    android:text="@string/checkout_payment_cash_on_deliery"
-                />
-            </RadioGroup>
-
-            <com.goshop.app.common.view.CustomBoldTextView
-                style="@style/myOrderDetailTitle"
-                android:text="@string/my_orders_items"
-            />
-            <View style="@style/homeWrapWidthLine"/>
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/rv_order_list"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-            <LinearLayout
-                android:layout_margin="@dimen/activity_horizontal_margin"
-                android:orientation="vertical"
+                android:layout_height="@dimen/size_8"
+                android:background="@drawable/drawable_biger_divider_with_shadow"/>
+
+            <include
+                layout="@layout/layout_checkout_bottom"/>
+
+            <com.goshop.app.common.view.RobotoMediumTextView
+                android:id="@+id/btn_checkout_place_my_order"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
-                        android:text="@string/my_orders_sub_total"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomTextView
-                        android:id="@+id/tv_checkout_sub_total"
-                        android:text="@string/home_item_test_product_price"
-                        android:layout_alignParentRight="true"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        tools:ignore="RelativeOverlap"
-                        android:layout_alignParentEnd="true"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
-                        android:text="@string/my_orders_rounding_amout"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomTextView
-                        android:id="@+id/tv_checkout_rounding_amout"
-                        android:text="@string/home_item_test_product_price"
-                        android:layout_alignParentRight="true"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        tools:ignore="RelativeOverlap"
-                        android:layout_alignParentEnd="true"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
-                        android:text="@string/shipping_fee"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomTextView
-                        android:id="@+id/tv_checkout_shipping"
-                        android:text="@string/home_item_test_product_price"
-                        android:layout_alignParentRight="true"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        tools:ignore="RelativeOverlap"
-                        android:layout_alignParentEnd="true"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
-                        android:text="@string/my_orders_discount"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomTextView
-                        android:id="@+id/tv_checkout_discount"
-                        android:text="@string/home_item_test_product_price"
-                        android:layout_alignParentRight="true"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        tools:ignore="RelativeOverlap"
-                        android:layout_alignParentEnd="true"/>
-                </RelativeLayout>
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="40dp">
-                    <com.goshop.app.common.view.CustomTextView
-                        android:text="@string/my_orders_total_price"
-                        android:textSize="16sp"
-                        android:textColor="@color/blackTrans87"
-                        android:fontFamily="sans-serif-medium"
-                        style="@style/otherItemProductName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"/>
-                    <com.goshop.app.common.view.CustomBoldTextView
-                        android:id="@+id/tv_checkout_total"
-                        android:text="@string/home_item_test_product_price"
-                        android:layout_alignParentRight="true"
-                        android:paddingLeft="@dimen/size_0"
-                        android:paddingRight="@dimen/size_0"
-                        android:textSize="20sp"
-                        style="@style/otherItemProductName"
-                        android:textColor="@color/colorAccent"
-                        android:fontFamily="sans-serif-medium"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        tools:ignore="RelativeOverlap"
-                        android:layout_alignParentEnd="true"/>
-                </RelativeLayout>
-                <View
-                    android:layout_width="match_parent"
-                    android:layout_height="60dp"/>
-            </LinearLayout>
+                android:layout_height="@dimen/size_54"
+                android:background="@drawable/ic_icon_pink_btn"
+                android:layout_marginLeft="@dimen/size_8"
+                android:layout_marginRight="@dimen/size_8"
+                android:layout_marginBottom="@dimen/size_8"
+                android:gravity="center"
+                android:textColor="@android:color/white"
+                android:textSize="@dimen/size_font_16"
+                android:text="@string/checkout_place_my_order"/>
+
+
         </LinearLayout>
-
-
     </android.support.v4.widget.NestedScrollView>
-    <RelativeLayout
-        android:background="@color/white"
-        android:layout_width="match_parent"
-        android:layout_alignParentBottom="true"
-        android:layout_height="50dp">
-        <View
-            style="@style/homeWrapWidthLine"
-        />
-        <com.goshop.app.common.view.CustomButton
-            android:layout_margin="@dimen/home_padding_half"
-            android:id="@+id/btn_checkout_place_my_order"
-            android:text="@string/checkout_place_my_order"
-            android:background="@drawable/selector_login_login_button"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </RelativeLayout>
+
 
 </RelativeLayout>

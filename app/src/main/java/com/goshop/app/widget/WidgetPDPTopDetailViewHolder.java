@@ -2,9 +2,9 @@ package com.goshop.app.widget;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMinusPlusEditText;
-import com.goshop.app.common.view.CustomBoldItaticTextView;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoMediumItalicTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ColorVM;
 import com.goshop.app.presentation.model.widget.WidgetPDPTopDetailsVM;
 
@@ -39,28 +39,28 @@ public class WidgetPDPTopDetailViewHolder extends RecyclerView.ViewHolder {
     RelativeLayout rlPdpSize;
 
     @BindView(R.id.tv_pdp_color)
-    CustomTextView tvPdpColor;
+    RobotoRegularTextView tvPdpColor;
 
     @BindView(R.id.tv_pdp_size)
-    CustomTextView tvPdpSize;
+    RobotoRegularTextView tvPdpSize;
 
     @BindView(R.id.tv_pdp_top_detail_now)
-    CustomBoldTextView tvPdpTopDetailNow;
+    RobotoMediumTextView tvPdpTopDetailNow;
 
     @BindView(R.id.tv_pdp_top_detail_old_price)
-    CustomTextView tvPdpTopDetailOldPrice;
+    RobotoRegularTextView tvPdpTopDetailOldPrice;
 
     @BindView(R.id.tv_pdp_top_detail_percent)
-    CustomTextView tvPdpTopDetailPercent;
+    RobotoRegularTextView tvPdpTopDetailPercent;
 
     @BindView(R.id.tv_pdp_top_detail_title)
-    CustomBoldTextView tvPdpTopDetailTitle;
+    RobotoMediumTextView tvPdpTopDetailTitle;
 
     @BindView(R.id.tv_pdp_top_star_num)
-    CustomTextView tvPdpTopStarNum;
+    RobotoRegularTextView tvPdpTopStarNum;
 
     @BindView(R.id.tv_pdp_top_tips)
-    CustomBoldItaticTextView tvPdpTopTips;
+    RobotoMediumItalicTextView tvPdpTopTips;
 
     public WidgetPDPTopDetailViewHolder(View itemView) {
         super(itemView);

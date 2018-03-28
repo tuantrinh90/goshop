@@ -33,6 +33,7 @@ public class VideoProductItemAdapter extends RecyclerView.Adapter {
         this.buyClickListener = buyClickListener;
     }
 
+    private View itemView;
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -45,6 +46,7 @@ public class VideoProductItemAdapter extends RecyclerView.Adapter {
         ((VideoProductItemViewHolder) holder)
             .bindingData(displayProductsVMS.get(position), onProductItemClickListener,
                 buyClickListener);
+        itemView =  ((VideoProductItemViewHolder) holder).getItemView();
     }
 
     @Override
@@ -61,5 +63,10 @@ public class VideoProductItemAdapter extends RecyclerView.Adapter {
         }
         notifyDataSetChanged();
     }
+
+    public int getItemMeasuredHeight(){
+        return itemView.getMeasuredHeight();
+    }
+
 
 }

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/white"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="@dimen/size_16"
+        android:paddingTop="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingBottom="@dimen/size_12"
+        android:orientation="horizontal">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_order_product_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/order_number"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_black_light"/>
+
+        <com.goshop.app.common.view.RobotoItaticTextView
+            android:id="@+id/tv_order_product_statu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_main_pink"
+            tools:ignore="RtlHardcoded"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/size_16"
+        android:background="@color/color_litte_grey"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_order_product_thumb"
+            android:layout_width="@dimen/size_97"
+            android:layout_height="@dimen/size_97"
+            android:contentDescription="@string/app_name"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="@dimen/size_8"
+            android:orientation="vertical"
+            tools:ignore="RtlHardcoded,RtlSymmetry">
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:id="@+id/tv_order_product_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_grayscale_text"/>
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:id="@+id/tv_order_product_attr"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size_4"
+                android:textSize="@dimen/size_font_12"
+                android:textColor="@color/color_grayscale_secondary"/>
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:id="@+id/tv_order_product_old"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="@dimen/size_6"
+                android:textSize="@dimen/size_font_12"
+                android:textColor="@color/color_text_hint"/>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_1"
+                android:orientation="horizontal">
+                <com.goshop.app.common.view.RobotoMediumTextView
+                    android:id="@+id/tv_order_product_now"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_font_14"
+                    android:textColor="@color/color_grayscale_text"/>
+                <com.goshop.app.common.view.RobotoLightTextView
+                    android:id="@+id/tv_order_product_count"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="right"
+                    android:textSize="@dimen/size_font_14"
+                    android:textColor="@color/color_grayscale_text"
+                    tools:ignore="RtlHardcoded"/>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_2"
+        android:padding="@dimen/size_16"
+        android:background="@color/color_litte_grey">
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_order_product_track"
+            android:layout_width="@dimen/size_56"
+            android:layout_height="@dimen/size_32"
+            android:background="@drawable/bg_btn_buy_now"
+            android:layout_alignParentRight="true"
+            android:gravity="center"
+            android:text="@string/track"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_text"
+            tools:ignore="RtlHardcoded"/>
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_order_product_write"
+            android:layout_width="@dimen/size_110"
+            android:layout_height="@dimen/size_32"
+            android:gravity="center"
+            android:layout_toLeftOf="@id/tv_order_product_track"
+            android:background="@drawable/bg_btn_buy_now"
+            android:layout_marginRight="@dimen/size_8"
+            android:text="@string/write_a_review"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_grayscale_text"
+            tools:ignore="RtlHardcoded"/>
+    </RelativeLayout>
+</LinearLayout>

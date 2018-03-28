@@ -49,7 +49,7 @@ public class HelpSupportPresenter extends RxPresenter<HelpSupportContract.View> 
     //TODO  this is mock data
     private List<HelpSupportModel> getMockData() {
         List<HelpSupportModel> helpSupportModels = new ArrayList<>();
-        helpSupportModels.add(new HelpSupportTitleVM("Help Centre"));
+        helpSupportModels.add(new HelpSupportTitleVM("Help Center"));
         helpSupportModels.add(new HelpSupportContentVM("FAQ", () -> mView.startFAQ()));
         helpSupportModels.add(new HelpSupportContentVM("Online Support"));
         helpSupportModels.add(new HelpSupportContentVM("Notice"));

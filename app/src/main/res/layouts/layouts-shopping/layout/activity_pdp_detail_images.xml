@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <ImageView
+        android:id="@+id/iv_pdp_images_finish"
+        android:layout_width="@dimen/size_24"
+        android:layout_height="@dimen/size_24"
+        android:layout_margin="@dimen/size_16"
+        android:scaleType="center"
+        android:contentDescription="@string/app_name"
+        android:src="@drawable/ic_icon_search_del"/>
+
+    <LinearLayout
+        android:id="@+id/ll_pdp_images_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingTop="@dimen/size_20"
+        android:paddingBottom="@dimen/size_30"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentBottom="true">
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_btn_pdp_video"
+            android:layout_width="@dimen/size_76"
+            android:layout_height="@dimen/size_38"
+            android:gravity="center"
+            android:background="@drawable/selector_pdp_images"
+            android:textColor="@drawable/selector_text_black_white"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/video"/>
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_btn_pdp_images"
+            android:layout_width="@dimen/size_76"
+            android:layout_height="@dimen/size_38"
+            android:gravity="center"
+            android:background="@drawable/selector_pdp_images"
+            android:layout_marginLeft="@dimen/size_12"
+            android:textColor="@drawable/selector_text_black_white"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/images"
+            android:layout_marginStart="@dimen/size_12"/>
+    </LinearLayout>
+
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_pdp_images"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/iv_pdp_images_finish"
+        android:layout_above="@id/ll_pdp_images_bottom"/>
+
+</RelativeLayout>

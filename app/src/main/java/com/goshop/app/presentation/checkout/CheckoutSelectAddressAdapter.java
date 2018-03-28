@@ -1,15 +1,15 @@
 package com.goshop.app.presentation.checkout;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SelectAddressVM;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.LinearLayout;
 import android.widget.RadioButton;
 
 import java.util.List;
@@ -58,32 +58,32 @@ public class CheckoutSelectAddressAdapter extends RecyclerView.Adapter {
 
     class SelectAddressViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.ll_select_address_edit)
-        LinearLayout llSelectAddressEdit;
-
         @BindView(R.id.rb_select_address_set)
         RadioButton rbSelectAddressSet;
 
         @BindView(R.id.tv_select_address_address)
-        CustomTextView tvSelectAddressAddress;
+        RobotoLightTextView tvSelectAddressAddress;
 
         @BindView(R.id.tv_select_address_city)
-        CustomTextView tvSelectAddressCity;
+        RobotoLightTextView tvSelectAddressCity;
 
         @BindView(R.id.tv_select_address_code)
-        CustomTextView tvSelectAddressCode;
+        RobotoLightTextView tvSelectAddressCode;
 
         @BindView(R.id.tv_select_address_country)
-        CustomTextView tvSelectAddressCountry;
+        RobotoLightTextView tvSelectAddressCountry;
+
+        @BindView(R.id.tv_select_address_edit)
+        RobotoRegularTextView tvSelectAddressEdit;
 
         @BindView(R.id.tv_select_address_name)
-        CustomBoldTextView tvSelectAddressName;
+        RobotoMediumTextView tvSelectAddressName;
 
         @BindView(R.id.tv_select_address_state)
-        CustomTextView tvSelectAddressState;
+        RobotoLightTextView tvSelectAddressState;
 
         @BindView(R.id.tv_select_address_tel)
-        CustomTextView tvSelectAddressTel;
+        RobotoLightTextView tvSelectAddressTel;
 
         public SelectAddressViewHolder(View itemView) {
             super(itemView);
@@ -99,7 +99,7 @@ public class CheckoutSelectAddressAdapter extends RecyclerView.Adapter {
             tvSelectAddressCode.setText(selectAddressVM.getCode());
             tvSelectAddressCountry.setText(selectAddressVM.getCountry());
             tvSelectAddressTel.setText(selectAddressVM.getTel());
-            llSelectAddressEdit.setOnClickListener(v -> onEditClickListener.onEditClick());
+            tvSelectAddressEdit.setOnClickListener(v -> onEditClickListener.onEditClick());
         }
     }
 }

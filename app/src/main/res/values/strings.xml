@@ -3,6 +3,7 @@
 
     <string name="app_network_error">network error</string>
     <!--home-->
+    <string name="payday_treat">Payday Treat</string>
     <string name="home_second_category">Categories</string>
     <string name="home_second_brand">Brands</string>
     <string name="home_second_tv_shows">TV Shows</string>
@@ -43,8 +44,8 @@
     <string name="login_login">LOGIN</string>
     <string name="login_forgot_password">Forgot password?</string>
     <string name="login_or">OR</string>
-    <string name="login_facebook">Login with Facbook</string>
-    <string name="login_bottom_describe">Not have an account yet?&#160;</string>
+    <string name="login_facebook">Login with Facebook</string>
+    <string name="login_bottom_describe">Don\'t have an account yet?&#160;</string>
     <string name="login_register">Register now.</string>
 
     <string name="required_field">This is a required field.</string>
@@ -124,20 +125,21 @@
     <string name="phone">Phone</string>
     <string name="register_tips_email">Email me the latest shopping news</string>
     <string name="register_tips_sms">SMS me the latest shopping news</string>
+    <string name="add_address_box">Set it as default shipping address</string>
     <string name="register_tips">By registering account, I confirm that: I have read and agree to
         the Privacy Policy, Terms and Conditions, Terms of User at Go Shop.
     </string>
-
+    <string name="account">Account</string>
     <string name="register_have_account">Already have an account?</string>
     <string name="login">Login</string>
     <string name="complement_email">Complement Email</string>
-    <string name="complement_email_tips">Your email can\'t be got from your Facebook account. In
-        order to finish Facebook connection process, please complement your email as below:
+    <string name="complement_email_tips">Your email cannot be retrieved from your email address.
+        In order to complete the registration, please provide your email address below:
     </string>
     <string name="submit">Submit</string>
     <string name="send">Send</string>
-    <string name="reset_password_tips">Please enter the email address associated with your account.
-        We will email you a link to reset your password.
+    <string name="reset_password_tips">Please specify your email address used for registration and
+        we will send you a link to reset your password.
     </string>
     <string name="reset_password">Reset Password</string>
     <string name="send_confirmation_link">Send Confirmation Link</string>
@@ -147,6 +149,8 @@
     <string name="buy_now">Buy Now</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="details">Details</string>
+    <string name="details_top_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </string>
+    <string name="by_user_time">By User Name on 1/2/18</string>
     <string name="details_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam
         velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit
         elit tincidunt id. Sed rhoncus, tortor sed eleifend tristique, tortor mauris molestie elit,
@@ -166,6 +170,8 @@
     <string name="delivery_info">Delivery Info</string>
     <string name="delivery_info_tips_overseas">Product deliver from overseas</string>
     <string name="delivery_info_tips_cash">Cash on Delivery is available</string>
+    <string name="seven_return">7 Days Easy Return</string>
+    <string name="six_month">6 Month of Installment</string>
     <string name="q_a">Q&#38;A</string>
     <string name="questions">Questions</string>
     <string name="answers">Answers</string>
@@ -176,6 +182,7 @@
     <string name="reviews">Reviews</string>
     <string name="write_a_review">Write a Review</string>
     <string name="view_more">View More</string>
+    <string name="view_all">View All</string>
     <string name="additional_information">Additional Information</string>
     <string name="frequently_bought_together">Frequently Bought Together</string>
     <string name="in_stock">In Stock</string>
@@ -255,11 +262,18 @@
 
     <string name="shopping_cart">Shopping Cart</string>
     <string name="discount_code">Discount Code</string>
+    <string name="enter_discount_code">Enter Discount Code</string>
+    <string name="enter_egift_card_code">Enter eGift Card Code</string>
     <string name="apply">Apply</string>
     <string name="sub_total">Sub Total:</string>
+    <string name="rounding_amount">Rounding Amount:</string>
     <string name="shipping_fee">Shipping Fee:</string>
-    <string name="disscount">Disscount:</string>
+    <string name="shipping">Shipping:</string>
+    <string name="disscount">Disscount(ABCDE):</string>
+    <string name="egift_card">eGift Card(ASDFG):</string>
+    <string name="go_shop_points_num">Go Shop Points(200)</string>
     <string name="grand_total">Grand Total</string>
+    <string name="total_incl_gst">Total Incl.GST:</string>
     <string name="proceed_to_checkout">Proceed to Checkout</string>
     <string name="demo_cart_price1">RM 12.00</string>
     <string name="demo_cart_price2">- RM 12.00</string>
@@ -271,9 +285,9 @@
     <string name="faq">FAQ</string>
     <string name="terms_conditions">Terms &#38; Conditions</string>
     <string name="office_address_">Office Address:</string>
-    <string name="contact_us_address_content">Astro GS Shop Sdn Bhd (1081077-X) Astro All Asia
-        Broadcast Centre, Technology Park Malaysia, Lebuhraya Puchong-Sungai Besi, Bukit Jalil,
-        57000 Kuala Lumpur, Malaysia.
+    <string name="contact_us_address_content">Astro GS Shop Sdn Bhd (1081077-X) \nAstro All Asia
+        Broadcast Centre, \nTechnology Park Malaysia, \nLebuhraya Puchong-Sungai Besi, \nBukit Jalil,
+        57000 \nKuala Lumpur, Malaysia.
     </string>
 
     <string name="via_email">Via Email:</string>
@@ -286,6 +300,11 @@
     <string name="min">Min</string>
     <string name="max">Max</string>
     <string name="settings">Settings</string>
+    <string name="settings_email">I wish to receive shopping news via email.</string>
+    <string name="settings_sms">I wish to receive shopping news via SMS.</string>
+    <string name="settings_notification">Subscription to Points Expiring Notification.</string>
+    <string name="sms_marketing_consent">SMS Marketing Consent.</string>
+    <string name="logout">Logout</string>
     <string name="you_have">You have</string>
     <string name="pts">pts</string>
     <string name="transation_details">Transaction Details</string>
@@ -308,18 +327,22 @@
     <string name="check_order">Check Order</string>
     <string name="payment_status">Payment Status</string>
     <string name="set_it_as_shipping_address">Set it as shipping address</string>
+    <string name="set_default">Default</string>
     <string name="select_address">Select Address</string>
     <string name="search_hint">Search products or brands</string>
     <string name="category">Category</string>
     <string name="sign_up_login">Sign up / Login</string>
     <string name="hey_user">Hey, User Name</string>
     <string name="home">Home</string>
+    <string name="go_shop_member">Go Shop Member</string>
+    <string name="user_name">User Name</string>
     <string name="categories">Categories</string>
     <string name="go_loyalty">Go+ Loyalty</string>
     <string name="notifications">Notifications</string>
     <string name="my_wishlist">My Wishlist</string>
     <string name="my_orders">My Orders</string>
     <string name="my_rewards">My Rewards</string>
+    <string name="my_product_reviews">My Product Reviews</string>
     <string name="trending_now">Trending Now</string>
     <string name="tv_shows">TV Shows</string>
     <string name="brands">Brands</string>
@@ -338,5 +361,97 @@
     <string name="on">on</string>
     <string name="samsung">Samsung</string>
     <string name="loreal">Loreal</string>
+    <string name="wishlist">Wishlist</string>
+    <string name="add_to_wishlist">Add to Wishlist</string>
+    <string name="delete">Delete</string>
+    <string name="newsletter_subscription">Newsletter Subscription</string>
+    <string name="my_egift_cards">My eGiftCards</string>
+    <string name="egift_cards">eGiftCards</string>
+    <string name="code">Code</string>
+    <string name="balance_rm">Balance(RM)</string>
+    <string name="status">Status</string>
+    <string name="active_egift_code">Active eGiftCard Code</string>
+    <string name="unique_code">Unique Code</string>
+    <string name="active_now">Active Now</string>
+    <string name="user_name_test">User Name test</string>
+    <string name="use">Use</string>
+    <string name="checkout_tip">You have 300 Go Shop Points available</string>
+    <string name="checkout_points">300</string>
+    <string name="total_order_cost">Total order cost</string>
+    <string name="myr">MYR 1413.00</string>
+    <string name="inclusive_of">(Inclusive of GST 6%)</string>
+    <string name="pay_with_credit_or">Pay with Credit or Debit Cards</string>
+    <string name="left_time">07:15Left</string>
+    <string name="name_on_card">Name on Card</string>
+    <string name="card_number">Card Number</string>
+    <string name="cvv">CVV</string>
+    <string name="expiration_date">Expiration Date</string>
+    <string name="checkout_payment_tip">By choosing \"Agree &#38; Pay Now\" you are authorizing us
+        to
+        debit your credit card/debit card/saving account/current account for the above charges in
+        favour of ASTRO GS SHOP SDN BHD and agree to the Terms and Conditions.
+    </string>
+    <string name="agree_pay_now">Agree &#38; Pay Now</string>
+    <string name="payment">Payment</string>
+    <string name="my_account">My Account</string>
+    <string name="deals">Deals</string>
+    <string name="all_deals">All Deals</string>
+    <string name="all_reviews">All Reviews</string>
+    <string name="go_loyalty_id">Go+Loyalty ID</string>
+    <string name="pending">Pending</string>
+    <string name="redeemed">Redeemed</string>
+    <string name="redeem">Redeem</string>
+    <string name="swipe_to_redeem">Swipe to Redeem</string>
+    <string name="expired">Expired</string>
+    <string name="promo_details">Promo Details</string>
+    <string name="promo_terms">Promo Terms and Conditions</string>
+    <string name="promo_title">Promotion Title</string>
+    <string name="download">Download</string>
+    <string name="cancel">Cancel</string>
+    <string name="order_cancellation_form">Order Cancellation Form</string>
+    <string name="order_return">Order Return</string>
+    <string name="cancel_order_tips">Please fill in your details and reason for cancellation. Our
+        customer service will contact you soon.
+    </string>
+    <string name="mobile_phone_no_optional">Mobile Phone No.(Optional)</string>
+    <string name="product_handing_optional">Product Handing(Optional)</string>
+    <string name="cancel_reason_optional">Cancel Reason(Optional)</string>
+    <string name="cancel_detail_reson_optional">Cancel Detail Reason(Optional)</string>
+    <string name="return_reason_optional">Return Reason(Optional)</string>
+    <string name="return_detail_reson_optional">Return Detail Reason(Optional)</string>
+    <string name="return_order_tips">Please fill in your details and reason for return. Our customer
+        service will contact you soon.
+    </string>
+
+    <string name="title">Title</string>
+    <string name="review_content">Review Content</string>
+    <string name="content_count">0/1000</string>
+    <string name="redeem_swipe_tip">Please make sure to swipe only when you are at merchant store.
+    </string>
+    <string name="wishlist_nodata">There is no wishlist items yet.</string>
+    <string name="go_shop_now">Go Shop Now</string>
+    <string name="video">Video</string>
+    <string name="images">Images</string>
+    <string name="choose_title">Choose your Title</string>
+    <string name="choose_language">Choose your Language</string>
+    <string name="choose_race">Choose your Race</string>
+    <string name="country_empty">Please choose a country!</string>
+    <string name="state_empty">Please choose a state!</string>
+    <string name="zip_empty">Please choose a zip/postal code</string>
+    <string name="birth_empty">Please choose a date of birth!</string>
+    <string name="gender_empty">Please choose a gender!</string>
+    <string name="confirm_warning">Password and Password Confirmation should be same!</string>
+    <string name="format_email_warning">Please enter a valid email address</string>
+    <string name="format_mobile_warning">Please enter a valid mobile number</string>
+    <string name="exceed_number">Exceeded number of words!</string>
+    <string name="order_number">Order Number:</string>
+    <string name="order_status">Order Status:</string>
+    <string name="track">Track</string>
+    <string name="placed_at">Placed at:</string>
+    <string name="items">Items</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="cvv_info">The last 3 digits on the back of your card.</string>
+    <string name="enter_question">Enter your question</string>
+    <string name="all_qa">All Q&#38;A</string>
 
 </resources>

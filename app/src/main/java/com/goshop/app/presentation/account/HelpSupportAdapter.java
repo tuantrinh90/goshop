@@ -1,8 +1,8 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.HelpSupportContentVM;
 import com.goshop.app.presentation.model.HelpSupportModel;
 import com.goshop.app.presentation.model.HelpSupportTitleVM;
@@ -74,7 +74,7 @@ public class HelpSupportAdapter extends RecyclerView.Adapter {
     class TitleViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_help_support_title)
-        CustomBoldTextView tvHelpSupportTitle;
+        RobotoMediumTextView tvHelpSupportTitle;
 
         @BindView(R.id.v_help_support_divider)
         View vHelpSupportDivider;
@@ -94,7 +94,7 @@ public class HelpSupportAdapter extends RecyclerView.Adapter {
     class ContentViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_help_support_content)
-        CustomTextView tvHelpSupportContent;
+        RobotoRegularTextView tvHelpSupportContent;
 
         public ContentViewHolder(View itemView) {
             super(itemView);

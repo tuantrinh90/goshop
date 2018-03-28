@@ -10,7 +10,7 @@
     android:background="@drawable/selector_bg_expand_pdp_title"
     tools:ignore="Overdraw">
 
-    <com.goshop.app.common.view.CustomBoldTextView
+    <com.goshop.app.common.view.RobotoMediumTextView
         android:id="@+id/tv_item_pdp_expand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -18,7 +18,7 @@
         android:text="@string/details"
         android:textAllCaps="true"
         android:textSize="@dimen/size_font_16"
-        android:textColor="@color/color_text_black"/>
+        android:textColor="@color/color_grayscale_text"/>
 
     <ImageView
         android:id="@+id/iv_item_pdp_expand"

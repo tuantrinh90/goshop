@@ -1,8 +1,9 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ReviewsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -25,9 +26,15 @@ public class PDPReviewsItemAdapter extends RecyclerView.Adapter {
         this.reviewsVMS = reviewsVMS;
     }
 
+    public void setUpdateDatas(List<ReviewsVM> reviewsVMS) {
+        this.reviewsVMS.clear();
+        this.reviewsVMS = reviewsVMS;
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_reviews, parent,false);
+        View view = LayoutInflater.from(parent.getContext())
+            .inflate(R.layout.item_reviews, parent, false);
         return new ReviewsItemViewHolder(view);
     }
 
@@ -47,16 +54,16 @@ public class PDPReviewsItemAdapter extends RecyclerView.Adapter {
         RatingBar ratingBar;
 
         @BindView(R.id.tv_reviews_date)
-        CustomTextView tvReviewsDate;
+        RobotoLightTextView tvReviewsDate;
 
         @BindView(R.id.tv_reviews_detail)
-        CustomTextView tvReviewsDetail;
+        RobotoLightTextView tvReviewsDetail;
 
         @BindView(R.id.tv_reviews_title)
-        CustomBoldTextView tvReviewsTitle;
+        RobotoMediumTextView tvReviewsTitle;
 
         @BindView(R.id.tv_reviews_user_name)
-        CustomTextView tvReviewsUserName;
+        RobotoLightTextView tvReviewsUserName;
 
         public ReviewsItemViewHolder(View itemView) {
             super(itemView);

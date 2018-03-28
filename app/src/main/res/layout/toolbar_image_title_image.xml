@@ -39,13 +39,13 @@
             tools:ignore="ContentDescription"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingLeft="10dp"
             android:paddingRight="10dp"
-            android:textColor="@color/blackTrans87"
+            android:textColor="@color/color_grayscale_text"
             android:textSize="20sp"
             android:minLines="1"
             android:maxLines="1"

@@ -4,40 +4,56 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="@dimen/size_76">
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/til_anim_edittext"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="top"
         app:errorTextAppearance="@style/errorAppearance"
         app:hintTextAppearance="@style/hintAppearance">
 
-        <com.goshop.app.common.view.CustomEditText
+        <com.goshop.app.common.view.RobotoRegularEditText
             android:id="@+id/et_anim_edittext"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left|center_vertical"
             android:layout_centerVertical="true"
-            android:paddingRight="@dimen/size_20"
-            android:textColor="@color/color_text_black"
+            android:paddingBottom="@dimen/size_8"
+            android:layout_marginBottom="@dimen/size_5"
+            android:layout_marginTop="@dimen/size_10"
+            android:paddingTop="@dimen/size_6"
+            android:background="@drawable/selector_textinput_edittext"
+            android:textColor="@color/color_grayscale_text"
+            android:textColorHint="@color/color_text_hint"
             android:singleLine="true"
             android:textSize="@dimen/size_font_16"
-            android:textCursorDrawable="@null"
-            android:paddingEnd="@dimen/size_20"
+            android:textCursorDrawable="@drawable/drawable_cursor"
             tools:ignore="RtlSymmetry"/>
 
     </android.support.design.widget.TextInputLayout>
 
 
-    <ImageView
-        android:id="@+id/iv_anim_del_edittext"
-        android:layout_width="@dimen/size_18"
-        android:layout_height="@dimen/size_18"
-        android:layout_marginTop="@dimen/size_24"
-        android:layout_alignParentRight="true"
-        android:visibility="gone"
-        android:background="@drawable/ic_del"
-        android:contentDescription="@string/app_name"
-        android:layout_alignParentEnd="true"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_13"
+        android:paddingBottom="@dimen/size_6"
+        android:layout_alignTop="@id/til_anim_edittext"
+        android:layout_alignBottom="@id/til_anim_edittext">
+        <ImageView
+            android:id="@+id/iv_anim_del_edittext"
+            android:layout_width="@dimen/size_20"
+            android:layout_height="@dimen/size_20"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:visibility="gone"
+            android:layout_marginTop="@dimen/size_4"
+            android:background="@drawable/ic_icon_text_delete"
+            android:contentDescription="@string/app_name"
+            android:layout_alignParentEnd="true"/>
+    </RelativeLayout>
+
 
 </RelativeLayout>

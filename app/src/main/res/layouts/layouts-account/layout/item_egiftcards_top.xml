@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingRight="@dimen/size_16"
+    android:paddingLeft="@dimen/size_16"
+    android:background="@drawable/bg_bottom_line"
+    android:orientation="vertical">
+
+    <com.goshop.app.common.view.RobotoRegularTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_14"
+        android:textColor="@color/color_grayscale_text"
+        android:textSize="@dimen/size_font_18"
+        android:text="@string/active_egift_code"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/size_20"
+        android:layout_marginTop="@dimen/size_38">
+        <com.goshop.app.common.view.RobotoRegularTextView
+            android:id="@+id/tv_btn_active_now"
+            android:layout_width="@dimen/size_87"
+            android:layout_height="@dimen/size_36"
+            android:layout_alignParentRight="true"
+            android:layout_marginLeft="@dimen/size_16"
+            android:gravity="center"
+            android:textColor="@color/color_grayscale_secondary"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/active_now"
+            android:background="@drawable/drawable_hint_c_circle"
+            tools:ignore="RtlHardcoded"/>
+
+        <com.goshop.app.common.view.RobotoRegularEditText
+            android:id="@+id/et_egift_cards"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/unique_code"
+            android:textSize="@dimen/size_font_16"
+            android:textColorHint="@color/color_text_hint"
+            android:textColor="@color/color_grayscale_text"
+            android:paddingTop="@dimen/size_8"
+            android:paddingBottom="@dimen/size_8"
+            android:background="@drawable/bg_hint_line"
+            android:layout_toLeftOf="@id/tv_btn_active_now"
+            tools:ignore="RtlHardcoded"/>
+    </RelativeLayout>
+
+</LinearLayout>

@@ -3,7 +3,6 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.AddressVM;
 
 import android.content.Intent;
@@ -24,13 +23,10 @@ import injection.modules.PresenterModule;
 public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Presenter>
     implements MyAddressBookContract.View, MyAddressBookAdapter.OnAddressBookClickListener {
 
-    MyAddressBookAdapter addressBookAdapter;
+    private MyAddressBookAdapter addressBookAdapter;
 
     @BindView(R.id.recyclerview_address_book)
     RecyclerView recyclerviewAddressBook;
-
-    @BindView(R.id.tv_btn_layout_white)
-    CustomTextView tvBtnLayoutWhite;
 
     private List<AddressVM> displayAddressVMs;
 
@@ -57,9 +53,7 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     @Override
     public void inject() {
-        hideRightMenu();
         displayAddressVMs = new ArrayList<>();
-        tvBtnLayoutWhite.setText(getResources().getString(R.string.add_new_address));
         initPresenter();
         initRecyclerView();
     }
@@ -85,13 +79,13 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
         recyclerviewAddressBook.setAdapter(addressBookAdapter);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_layout_white})
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu})
     public void onAddressBookClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
-            case R.id.tv_btn_layout_white:
+            case R.id.imageview_right_menu:
                 startActivity(new Intent(this, AddAddressActivity.class));
                 break;
         }

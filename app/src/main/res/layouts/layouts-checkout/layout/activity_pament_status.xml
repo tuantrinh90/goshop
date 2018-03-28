@@ -7,14 +7,7 @@
     <include
         layout="@layout/toolbar_img_text_img_close"/>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
-        android:background="@color/color_divider_grey"
-        android:layout_below="@+id/toolbar"
-        tools:ignore="UnknownIdInLayout"/>
-
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_btn_payment_status"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -45,21 +38,21 @@
             android:contentDescription="@string/app_name"
             android:background="@drawable/ic_wrong_red"/>
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_34"
             android:gravity="center"
             android:text="@string/something_wrong"
             android:textSize="@dimen/size_font_20"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:layout_marginRight="@dimen/size_64"
             android:layout_marginLeft="@dimen/size_64"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:text="@string/something_wrong_tip"
             android:textSize="@dimen/size_font_14"
             android:gravity="center_horizontal"
@@ -72,22 +65,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_4"
             android:orientation="horizontal">
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:paddingRight="@dimen/size_4"
                 android:text="@string/email_end"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_4"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_status_wrong_email"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/email_format"/>
         </LinearLayout>
 
@@ -96,22 +89,22 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_4"
             android:orientation="horizontal">
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:paddingRight="@dimen/size_4"
                 android:text="@string/tel"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_4"/>
 
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_status_wrong_tel"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/email_format"/>
         </LinearLayout>
 
@@ -135,19 +128,19 @@
             android:contentDescription="@string/app_name"
             android:background="@drawable/ic_right_green"/>
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_34"
             android:gravity="center"
             android:text="@string/status_receieved"
             android:textSize="@dimen/size_font_20"
-            android:textColor="@color/color_text_black"/>
+            android:textColor="@color/color_grayscale_text"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:text="@string/thank_purchase"
             android:textSize="@dimen/size_font_16"
             android:gravity="center_horizontal"
@@ -158,10 +151,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_4"
             android:orientation="horizontal">
-            <com.goshop.app.common.view.CustomTextView
+            <com.goshop.app.common.view.RobotoRegularTextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/your_order"
                 android:paddingRight="@dimen/size_4"
                 android:textSize="@dimen/size_font_16"
@@ -169,16 +162,16 @@
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_4"/>
 
-            <com.goshop.app.common.view.CustomBoldTextView
+            <com.goshop.app.common.view.RobotoMediumTextView
                 android:id="@+id/tv_status_success_order"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_text_black"
+                android:textColor="@color/color_grayscale_text"
                 android:text="@string/email_format"/>
         </LinearLayout>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/size_4"
@@ -186,21 +179,21 @@
             android:layout_marginLeft="@dimen/size_38"
             android:gravity="center_horizontal"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:text="@string/status_success_tip"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_btn_status_success_check"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_white_round_circle"
+            android:background="@drawable/bg_btn_buy_now"
             android:layout_marginTop="@dimen/size_16"
             android:paddingTop="@dimen/size_8"
             android:paddingBottom="@dimen/size_8"
             android:paddingRight="@dimen/size_24"
             android:paddingLeft="@dimen/size_24"
             android:textSize="@dimen/size_font_14"
-            android:textColor="@color/color_text_black"
+            android:textColor="@color/color_grayscale_text"
             android:text="@string/check_order"/>
 
     </LinearLayout>

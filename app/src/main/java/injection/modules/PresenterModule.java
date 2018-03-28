@@ -7,6 +7,8 @@ import com.goshop.app.presentation.account.ChangePasswordContract;
 import com.goshop.app.presentation.account.ChangePasswordPresenter;
 import com.goshop.app.presentation.account.ContactUsContract;
 import com.goshop.app.presentation.account.ContactUsPresenter;
+import com.goshop.app.presentation.account.EditAddressContract;
+import com.goshop.app.presentation.account.EditAddressPresenter;
 import com.goshop.app.presentation.account.EditProfileContract;
 import com.goshop.app.presentation.account.EditProfilePresenter;
 import com.goshop.app.presentation.account.FAQContract;
@@ -15,8 +17,12 @@ import com.goshop.app.presentation.account.HelpSupportContract;
 import com.goshop.app.presentation.account.HelpSupportPresenter;
 import com.goshop.app.presentation.account.MyAddressBookContract;
 import com.goshop.app.presentation.account.MyAddressBookPresenter;
+import com.goshop.app.presentation.account.MyEGiftCardContract;
+import com.goshop.app.presentation.account.MyEGiftCardPresenter;
 import com.goshop.app.presentation.account.MyPointsContract;
 import com.goshop.app.presentation.account.MyPointsPresenter;
+import com.goshop.app.presentation.account.MyWishlistContract;
+import com.goshop.app.presentation.account.MyWishlistPresenter;
 import com.goshop.app.presentation.account.NotificationContract;
 import com.goshop.app.presentation.account.NotificationPresenter;
 import com.goshop.app.presentation.account.TermsConditionsContract;
@@ -33,14 +39,32 @@ import com.goshop.app.presentation.checkout.CheckoutSelectContract;
 import com.goshop.app.presentation.checkout.CheckoutSelectPresenter;
 import com.goshop.app.presentation.checkout.PaymentStatusContract;
 import com.goshop.app.presentation.checkout.PaymentStatusPresenter;
-import com.goshop.app.presentation.home.BrandsPageContract;
-import com.goshop.app.presentation.home.BrandsPagePresenter;
-import com.goshop.app.presentation.home.TrendingNowContract;
-import com.goshop.app.presentation.home.TrendingNowPresenter;
+import com.goshop.app.presentation.goloyalty.AllDealsContract;
+import com.goshop.app.presentation.goloyalty.AllDealsPresenter;
+import com.goshop.app.presentation.goloyalty.CardRedeemContract;
+import com.goshop.app.presentation.goloyalty.CardRedeemPresenter;
+import com.goshop.app.presentation.goloyalty.ExpiredContract;
+import com.goshop.app.presentation.goloyalty.ExpiredPresenter;
+import com.goshop.app.presentation.goloyalty.GoLoyaltyContract;
+import com.goshop.app.presentation.goloyalty.GoLoyaltyPresenter;
+import com.goshop.app.presentation.goloyalty.PendingContract;
+import com.goshop.app.presentation.goloyalty.PendingPresenter;
+import com.goshop.app.presentation.goloyalty.RedeemedContract;
+import com.goshop.app.presentation.goloyalty.RedeemedPresenter;
+import com.goshop.app.presentation.goloyalty.RewardsDetailContract;
+import com.goshop.app.presentation.goloyalty.RewardsDetailPresenter;
+import com.goshop.app.presentation.home.BrandsContract;
+import com.goshop.app.presentation.home.BrandsDetailContract;
+import com.goshop.app.presentation.home.BrandsDetailPresenter;
+import com.goshop.app.presentation.home.BrandsPresenter;
 import com.goshop.app.presentation.home.PromotionContract;
 import com.goshop.app.presentation.home.PromotionPresenter;
+import com.goshop.app.presentation.home.PromotionSkuContract;
+import com.goshop.app.presentation.home.PromotionSkuPresenter;
 import com.goshop.app.presentation.home.TVShowPageContract;
 import com.goshop.app.presentation.home.TVShowPagePresenter;
+import com.goshop.app.presentation.home.TrendingNowContract;
+import com.goshop.app.presentation.home.TrendingNowPresenter;
 import com.goshop.app.presentation.login.LoginComplementEmailContract;
 import com.goshop.app.presentation.login.LoginComplementEmailPresenter;
 import com.goshop.app.presentation.login.LoginContract;
@@ -53,16 +77,26 @@ import com.goshop.app.presentation.login.RegisterContract;
 import com.goshop.app.presentation.login.RegisterPresenter;
 import com.goshop.app.presentation.myorder.MyOrderContract;
 import com.goshop.app.presentation.myorder.MyOrderPresenter;
+import com.goshop.app.presentation.myorder.MyOrdersContract;
+import com.goshop.app.presentation.myorder.MyOrdersPresenter;
+import com.goshop.app.presentation.myorder.OrderDetailContract;
+import com.goshop.app.presentation.myorder.OrderDetailPresenter;
 import com.goshop.app.presentation.search.SearchContract;
 import com.goshop.app.presentation.search.SearchPresenter;
 import com.goshop.app.presentation.search.SearchResultContract;
 import com.goshop.app.presentation.search.SearchResultPresenter;
 import com.goshop.app.presentation.settings.SettingsContract;
 import com.goshop.app.presentation.settings.SettingsPresenter;
+import com.goshop.app.presentation.shopping.AllQAContract;
+import com.goshop.app.presentation.shopping.AllQAPresenter;
+import com.goshop.app.presentation.shopping.AllReviewsContract;
+import com.goshop.app.presentation.shopping.AllReviewsPresenter;
 import com.goshop.app.presentation.shopping.PDPDetailContract;
 import com.goshop.app.presentation.shopping.PDPDetailPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
+import com.goshop.app.presentation.shopping.QADetailContract;
+import com.goshop.app.presentation.shopping.QADetailPresenter;
 import com.goshop.app.presentation.shopping.ShoppingCartContract;
 import com.goshop.app.presentation.shopping.ShoppingCartPresenter;
 
@@ -109,9 +143,84 @@ public class PresenterModule {
 
     @Provides
     @ActivityScope
-    public BrandsPageContract.Presenter provideBrandsPagePresenter(
+    public BrandsContract.Presenter provideBrandsPagePresenter(
         AccountDataRepository dataRepository) {
-        return new BrandsPagePresenter(dataRepository);
+        return new BrandsPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public BrandsDetailContract.Presenter provideBrandsDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new BrandsDetailPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public MyEGiftCardContract.Presenter provideMyEGiftCardPresenter(
+        AccountDataRepository dataRepository) {
+        return new MyEGiftCardPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public GoLoyaltyContract.Presenter provideGoLoyaltyPresenter(
+        AccountDataRepository dataRepository) {
+        return new GoLoyaltyPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public MyWishlistContract.Presenter provideMyWishlistPresenter(
+        AccountDataRepository dataRepository) {
+        return new MyWishlistPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public AllDealsContract.Presenter provideAllDealsPresenter(
+        AccountDataRepository dataRepository) {
+        return new AllDealsPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public PendingContract.Presenter providePendingPresenter(AccountDataRepository dataRepository) {
+        return new PendingPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public RedeemedContract.Presenter provideRedeemedPresenter(
+        AccountDataRepository dataRepository) {
+        return new RedeemedPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public CardRedeemContract.Presenter provideCardRedeemPresenter(
+        AccountDataRepository dataRepository) {
+        return new CardRedeemPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public ExpiredContract.Presenter provideExpiredPresenter(AccountDataRepository dataRepository) {
+        return new ExpiredPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public AllReviewsContract.Presenter provideAllReviewsPresenter(
+        AccountDataRepository dataRepository) {
+        return new AllReviewsPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public RewardsDetailContract.Presenter provideRewardsDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new RewardsDetailPresenter(dataRepository);
     }
 
     @Provides
@@ -132,6 +241,20 @@ public class PresenterModule {
     @ActivityScope
     public MyOrderContract.Presenter provideMyOrderPresenter(AccountDataRepository dataRepository) {
         return new MyOrderPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public MyOrdersContract.Presenter providerMyOrdersPresenter(
+        AccountDataRepository dataRepository) {
+        return new MyOrdersPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public OrderDetailContract.Presenter providerOrderDetailPresenter(
+        AccountDataRepository dataRepository) {
+        return new OrderDetailPresenter(dataRepository);
     }
 
     @Provides
@@ -221,6 +344,13 @@ public class PresenterModule {
     public AddAddressContract.Presenter provideAddAddressPresenter(
         AccountDataRepository dataRepository) {
         return new AddAddressPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public EditAddressContract.Presenter provideEditAddressPresenter(
+        AccountDataRepository dataRepository) {
+        return new EditAddressPresenter(dataRepository);
     }
 
     @Provides
@@ -318,6 +448,24 @@ public class PresenterModule {
     public TVShowPageContract.Presenter provideTVShowPresenter(
         AccountDataRepository dataRepository) {
         return new TVShowPagePresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public AllQAContract.Presenter provideAllQAPresenter(AccountDataRepository dataRepository) {
+        return new AllQAPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public QADetailContract.Presenter provideQADetailPresenter(AccountDataRepository dataRepository) {
+        return new QADetailPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public PromotionSkuContract.Presenter providePromotionSkuPresenter(AccountDataRepository dataRepository){
+        return new PromotionSkuPresenter(dataRepository);
     }
 
 }

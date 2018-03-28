@@ -1,16 +1,17 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AddressVM;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioButton;
 
 import java.util.List;
 
@@ -62,35 +63,38 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
 
     class MyAddressViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.iv_address_book_selector)
+        ImageView ivAddressBookSelector;
+
         @BindView(R.id.ll_address_book_edit)
         LinearLayout llAddressBookEdit;
 
         @BindView(R.id.ll_address_book_remove)
         LinearLayout llAddressBookRemove;
 
-        @BindView(R.id.rb_address_book_default)
-        RadioButton rbAddressBookDefault;
+        @BindView(R.id.ll_address_book_selector)
+        LinearLayout llAddressBookSelector;
 
         @BindView(R.id.tv_address_book_address)
-        CustomTextView tvAddressBookAddress;
+        RobotoLightTextView tvAddressBookAddress;
 
         @BindView(R.id.tv_address_book_city)
-        CustomTextView tvAddressBookCity;
+        RobotoLightTextView tvAddressBookCity;
 
         @BindView(R.id.tv_address_book_code)
-        CustomTextView tvAddressBookCode;
+        RobotoLightTextView tvAddressBookCode;
 
         @BindView(R.id.tv_address_book_country)
-        CustomTextView tvAddressBookCountry;
+        RobotoLightTextView tvAddressBookCountry;
 
         @BindView(R.id.tv_address_book_name)
-        CustomBoldTextView tvAddressBookName;
+        RobotoMediumTextView tvAddressBookName;
 
         @BindView(R.id.tv_address_book_state)
-        CustomTextView tvAddressBookState;
+        RobotoLightTextView tvAddressBookState;
 
         @BindView(R.id.tv_address_book_tel)
-        CustomTextView tvAddressBookTel;
+        RobotoLightTextView tvAddressBookTel;
 
         public MyAddressViewHolder(View itemView) {
             super(itemView);
@@ -105,7 +109,9 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
             tvAddressBookCountry.setText(addressVM.getCountry());
             tvAddressBookState.setText(addressVM.getState());
             tvAddressBookTel.setText(addressVM.getTel());
-            rbAddressBookDefault.setChecked(addressVM.isDefault());
+            ivAddressBookSelector.setSelected(addressVM.isDefault());
+            llAddressBookSelector.setOnClickListener(
+                v -> ivAddressBookSelector.setSelected(!ivAddressBookSelector.isSelected()));
 
             llAddressBookEdit
                 .setOnClickListener(v -> addressBookClickListener.editAddress(addressVM));

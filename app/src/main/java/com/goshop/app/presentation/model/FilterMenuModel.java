@@ -2,13 +2,11 @@ package com.goshop.app.presentation.model;
 
 public class FilterMenuModel {
 
-    public static final int FILTER_BRANDS = 3;
-
-    public static final int FILTER_CATEGORY = 2;
-
     public static final int FILTER_EXPAND = 1;
 
-    public static final int FILTER_PRICE = 4;
+    public static final int FILTER_FLOWBUTTONS = 2;
+
+    public static final int FILTER_PRICE = 3;
 
     private int viewType;
 

@@ -3,7 +3,10 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProfileResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -38,5 +41,35 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
 
                 }
             }));
+    }
+
+    @Override
+    public List<SingleChooseVM> getTitleChooses() {
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("Title " + (i + 1)));
+        }
+        return singleChooseVMS;
+    }
+
+    @Override
+    public List<SingleChooseVM> getLanguageChoose() {
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("Language " + (i + 1)));
+        }
+        return singleChooseVMS;
+    }
+
+    @Override
+    public List<SingleChooseVM> getRaceChoose() {
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("Race " + (i + 1)));
+        }
+        return singleChooseVMS;
     }
 }

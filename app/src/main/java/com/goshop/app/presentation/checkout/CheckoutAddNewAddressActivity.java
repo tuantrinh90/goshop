@@ -3,7 +3,8 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -31,16 +32,16 @@ public class CheckoutAddNewAddressActivity extends BaseActivity {
     CustomAnimEditText etNewAddressZip;
 
     @BindView(R.id.textview_right_menu)
-    CustomTextView textviewRightMenu;
+    RobotoMediumTextView textviewRightMenu;
 
     @BindView(R.id.tv_new_address_city)
-    CustomTextView tvNewAddressCity;
+    RobotoRegularTextView tvNewAddressCity;
 
     @BindView(R.id.tv_new_address_country)
-    CustomTextView tvNewAddressCountry;
+    RobotoRegularTextView tvNewAddressCountry;
 
     @BindView(R.id.tv_new_address_state)
-    CustomTextView tvNewAddressState;
+    RobotoRegularTextView tvNewAddressState;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

@@ -31,7 +31,7 @@
                     android:contentDescription="@string/app_name"
                     android:background="@mipmap/ic_launcher"
                 />
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_sale_symbol"
                     style="@style/homeItemTextSaleSymbol"/>
             </RelativeLayout>
@@ -49,7 +49,7 @@
             style="@style/homeWrapWidthLine"
             android:layout_alignParentEnd="true"/>
     </RelativeLayout>
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_home_bottom_item_name"
         android:layout_below="@id/rl_item_icon_root"
         style="@style/homeItemProductName"
@@ -57,7 +57,7 @@
         android:layout_marginTop="@dimen/home_padding"
         android:text="@string/home_item_test_product_name"
         android:layout_marginStart="@dimen/home_padding"/>
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:layout_below="@id/tv_home_bottom_item_name"
         android:id="@+id/tv_home_bottom_item_old_price"
         android:text="@string/home_item_test_product_price"
@@ -65,7 +65,7 @@
         android:layout_marginTop="6dp"
         style="@style/homeItemProductOldPrice"
         android:layout_marginStart="@dimen/home_padding"/>
-    <com.goshop.app.common.view.CustomTextView
+    <com.goshop.app.common.view.RobotoRegularTextView
         android:layout_below="@id/tv_home_bottom_item_old_price"
         android:id="@+id/tv_home_bottom_item_price"
         android:layout_marginLeft="@dimen/home_padding"

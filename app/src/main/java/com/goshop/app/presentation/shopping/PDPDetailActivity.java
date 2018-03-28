@@ -3,13 +3,14 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import com.goshop.app.widget.WidgetViewAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnReviewsViewMoreClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -29,7 +30,8 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
-    implements PDPDetailContract.View, OnProductItemClickListener, OnBannerItemClickListener {
+    implements PDPDetailContract.View, OnProductItemClickListener, OnBannerItemClickListener,
+    OnReviewsViewMoreClickListener {
 
     @BindView(R.id.iv_pdp_detail_love)
     ImageView ivPdpDetailLove;
@@ -41,10 +43,10 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
     RelativeLayout rlPdpDetailBottom;
 
     @BindView(R.id.tv_btn_pdp_detail_buy)
-    CustomTextView tvBtnPdpDetailBuy;
+    RobotoRegularTextView tvBtnPdpDetailBuy;
 
     @BindView(R.id.tv_btn_pdp_detail_cart)
-    CustomTextView tvBtnPdpDetailCart;
+    RobotoRegularTextView tvBtnPdpDetailCart;
 
     private WidgetViewAdapter widgetViewAdapter;
 
@@ -87,7 +89,7 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
         recyclerviewPdpDetails.setAdapter(widgetViewAdapter);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu, R.id.imageview_right_cart, R
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu,   R
         .id.iv_pdp_detail_love, R.id.tv_btn_pdp_detail_buy, R.id
         .tv_btn_pdp_detail_cart})
     public void onPdpDetailClick(View view) {
@@ -96,8 +98,6 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
                 finish();
                 break;
             case R.id.imageview_right_menu:
-                break;
-            case R.id.imageview_right_cart:
                 startActivity(new Intent(this, ShoppingCartActivity.class));
                 break;
             case R.id.tv_btn_pdp_detail_buy:
@@ -115,6 +115,7 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
         widgetViewAdapter.setOnBannerItemClickListener(this);
         widgetViewAdapter.setOnProductItemClickListener(this);
         widgetViewAdapter.setUpdateDatas(detailDatas);
+        widgetViewAdapter.setOnReviewsViewMoreClickListener(this);
     }
 
     @Override
@@ -125,5 +126,10 @@ public class PDPDetailActivity extends BaseActivity<PDPDetailContract.Presenter>
     @Override
     public void onBannerItemClick(CarouselItemsVM carouselItemsVM) {
         //TODO(helen)wait for design
+    }
+
+    @Override
+    public void onReviewsMoreClick() {
+        startActivity(new Intent(this, AllReviewsActivity.class));
     }
 }

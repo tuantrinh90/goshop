@@ -3,7 +3,6 @@ package com.goshop.app.presentation.checkout;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.CustomTextView;
 import com.goshop.app.presentation.model.SelectAddressVM;
 
 import android.content.Intent;
@@ -12,7 +11,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
-import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,14 +23,8 @@ import injection.modules.PresenterModule;
 public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectContract.Presenter>
     implements CheckoutSelectContract.View, CheckoutSelectAddressAdapter.OnEditClickListener {
 
-    @BindView(R.id.ll_select_address_bottom)
-    LinearLayout llSelectAddressBottom;
-
     @BindView(R.id.recyclerview_select_address)
     RecyclerView recyclerviewSelectAddress;
-
-    @BindView(R.id.tv_btn_layout_white)
-    CustomTextView tvBtnLayoutWhite;
 
     private CheckoutSelectAddressAdapter addressAdapter;
 
@@ -50,8 +42,6 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
 
     @Override
     public void inject() {
-        hideRightMenu();
-        tvBtnLayoutWhite.setText(getResources().getString(R.string.add_new_address));
         initPresenter();
         initRecyclerView();
     }
@@ -77,13 +67,13 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
         recyclerviewSelectAddress.setAdapter(addressAdapter);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_layout_white})
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu})
     public void onSelectClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
-            case R.id.tv_btn_layout_white:
+            case R.id.imageview_right_menu:
                 startActivity(new Intent(this, CheckoutAddNewAddressActivity.class));
                 break;
         }

@@ -107,13 +107,14 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
     //TODO this is mock data
     private List<CategoryLeftMenuVM> getMockLeftMenu() {
         List<CategoryLeftMenuVM> leftMenuVMS = new ArrayList<>();
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Beauty"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Digital Electronics"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Home Appliances"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Mom and Babies"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Sports and Leisure"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "DIY Tools"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_app_logo, "", "Spa and Wellbeing"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_beauty, "", "Beauty"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_digital, "", "Digital Electronics"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_appliances, "", "Home Appliances"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_mom_baby, "", "Mom and Babies"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_sports, "", "Sports and Leisure"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_diy, "", "DIY Tools"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_spa, "", "Spa and Wellbeing"));
+        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_grocery, "", "Grocery"));
         return leftMenuVMS;
     }
 }

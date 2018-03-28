@@ -4,13 +4,17 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomSearchEditText;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
-import com.goshop.app.presentation.model.SearchFilterModel;
-import com.goshop.app.presentation.shopping.PDPDetailActivity;
+import com.goshop.app.presentation.model.SortVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
+import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.adapter.WidgetProductGridVerticalAdapter;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
@@ -18,11 +22,8 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -34,15 +35,8 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class SearchResultActivity extends BaseActivity<SearchResultContract.Presenter> implements
-    SearchResultContract.View, SearchResultAdapter.OnItemClickListener {
-
-    private static final int NAME_A_Z = 2;
-
-    private static final int NEW_ARRIVALS = 0;
-
-    private static final int PRICE_LOW_HIGH = 1;
-
-    private static final int PROMOTION = 3;
+    SearchResultContract.View, SearchResultAdapter.OnItemClickListener,
+    OnProductItemClickListener, PopWindowUtil.OnPopWindowDismissListener {
 
     @BindView(R.id.cset_search)
     CustomSearchEditText csetSearch;
@@ -66,21 +60,19 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     RelativeLayout rlDrawerFilter;
 
     @BindView(R.id.tv_btn_filter_clear)
-    CustomTextView tvBtnSearchFilterClear;
+    RobotoRegularTextView tvBtnSearchFilterClear;
 
     @BindView(R.id.tv_btn_filter_done)
-    CustomTextView tvBtnSearchFilterDone;
+    RobotoRegularTextView tvBtnSearchFilterDone;
 
     @BindView(R.id.tv_btn_sort)
-    CustomTextView tvBtnSearchSort;
+    RobotoLightTextView tvBtnSort;
 
-    private int currentSelectNumber = 0;
-
-    private List<FilterMenuModel> filterMenuModels;
+    private WidgetProductGridVerticalAdapter gridVerticalAdapter;
 
     private FilterMenuAdapter menuAdapter;
 
-    private SearchResultAdapter resultAdapter;
+    private List<SortVM> sortVMS;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -88,6 +80,8 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         //TODO  wait for api
         mPresenter.searchResultRequest(null);
         mPresenter.filterMenuRequest(null);
+        sortVMS = mPresenter.getSortVMS();
+        sortVMS.get(0).setSelect(true);
     }
 
     @Override
@@ -111,6 +105,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     }
 
     private void initSearchView() {
+        csetSearch.setDeleteGone();
         String keywords = getIntent().getStringExtra(SearchActivity.KEYWORDS);
         csetSearch.getEditText().setText(keywords);
         csetSearch.getEditText().setSelection(csetSearch.getEditText().getText().length());
@@ -129,8 +124,9 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         recyclerviewSearchResultDisplay.setLayoutManager(gridLayoutManager);
         //TODO(helen)this divider wait for the design,then decide
 //        recyclerviewSearchResultDisplay.addItemDecoration(new CustomGridDivider(this));
-        resultAdapter = new SearchResultAdapter(new ArrayList<>(), this);
-        recyclerviewSearchResultDisplay.setAdapter(resultAdapter);
+        gridVerticalAdapter = new WidgetProductGridVerticalAdapter(new ArrayList<>());
+        gridVerticalAdapter.setOnProductItemClickListener(this);
+        recyclerviewSearchResultDisplay.setAdapter(gridVerticalAdapter);
     }
 
     private void initFilterMenuRecyclerView() {
@@ -148,177 +144,39 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         });
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_sort, R.id.iv_btn_filter, R.id
-        .tv_btn_filter_clear, R.id.tv_btn_filter_done})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_sort, R.id.iv_sort_arrow, R.id.iv_btn_filter,
+        R.id.tv_btn_filter_clear, R.id.tv_btn_filter_done})
     public void onResultClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
             case R.id.tv_btn_sort:
+            case R.id.iv_sort_arrow:
                 ivSortArrow.setSelected(!ivSortArrow.isSelected());
-                showSortPop(tvBtnSearchSort, currentSelectNumber);
+                tvBtnSort.setSelected(!tvBtnSort.isSelected());
+                if (tvBtnSort.isSelected()) {
+                    PopWindowUtil.showsSortListPop(tvBtnSort, sortVMS, this);
+                }
                 break;
             case R.id.iv_btn_filter:
                 drawerLayout.openDrawer(GravityCompat.END);
                 break;
             case R.id.tv_btn_filter_clear:
                 drawerLayout.closeDrawer(GravityCompat.END);
-                break;
             case R.id.tv_btn_filter_done:
                 drawerLayout.closeDrawer(GravityCompat.END);
                 break;
         }
     }
 
-    public void showSortPop(View parent, int selectNumber) {
-        View popView = LayoutInflater.from(this)
-            .inflate(R.layout.layout_search_result_sorting_list, null);
-
-        RelativeLayout arrivalLayout = popView.findViewById(R.id.rl_search_result_sorting_arrivals);
-        CustomTextView tvArrival = popView.findViewById(R.id.tv_search_result_sorting_arrivals);
-        ImageView ivArrival = popView.findViewById(R.id.iv_search_result_sorting_arrivals);
-
-        RelativeLayout priceLayout = popView.findViewById(R.id.rl_search_result_sorting_price);
-        CustomTextView tvPrice = popView.findViewById(R.id.tv_search_result_sorting_price);
-        ImageView ivPrice = popView.findViewById(R.id.iv_search_result_sorting_price);
-
-        RelativeLayout nameLayout = popView.findViewById(R.id.rl_search_result_sorting_name);
-        CustomTextView tvName = popView.findViewById(R.id.tv_search_result_sorting_name);
-        ImageView ivName = popView.findViewById(R.id.iv_search_result_sorting_name);
-
-        RelativeLayout promotionLayout = popView
-            .findViewById(R.id.rl_search_result_sorting_promotion);
-        CustomTextView tvPromotion = popView.findViewById(R.id.tv_search_result_sorting_promotion);
-        ImageView ivPromotion = popView.findViewById(R.id.iv_search_result_sorting_promotion);
-
-        ivArrival.setVisibility(View.GONE);
-        ivPrice.setVisibility(View.GONE);
-        ivName.setVisibility(View.GONE);
-        ivPromotion.setVisibility(View.GONE);
-
-        switch (selectNumber) {
-            case NEW_ARRIVALS:
-                arrivalLayout.setSelected(true);
-                tvArrival.setTextIsSelectable(true);
-                ivArrival.setVisibility(View.VISIBLE);
-                break;
-            case PRICE_LOW_HIGH:
-                priceLayout.setSelected(true);
-                tvPrice.setTextIsSelectable(true);
-                ivPrice.setVisibility(View.VISIBLE);
-                break;
-            case NAME_A_Z:
-                nameLayout.setSelected(true);
-                tvName.setTextIsSelectable(true);
-                ivName.setVisibility(View.VISIBLE);
-                break;
-            case PROMOTION:
-                promotionLayout.setSelected(true);
-                tvPromotion.setTextIsSelectable(true);
-                ivPromotion.setVisibility(View.VISIBLE);
-                break;
-            default:
-                arrivalLayout.setSelected(true);
-                tvArrival.setTextIsSelectable(true);
-                ivArrival.setVisibility(View.VISIBLE);
-                break;
-        }
-
-        PopupWindow popupWindow = new PopupWindow(popView, ViewGroup.LayoutParams.MATCH_PARENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT);
-        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
-        popupWindow.setFocusable(true);
-        popupWindow.setOutsideTouchable(true);
-        popupWindow.setAnimationStyle(R.style.PopMenuAnimation);
-        popupWindow.showAsDropDown(parent);
-
-        arrivalLayout.setOnClickListener(v -> {
-            currentSelectNumber = NEW_ARRIVALS;
-            tvBtnSearchSort.setText(tvArrival.getText().toString());
-            ivSortArrow.setSelected(!ivSortArrow.isSelected());
-            arrivalLayout.setSelected(true);
-            tvArrival.setTextIsSelectable(true);
-            ivArrival.setVisibility(View.VISIBLE);
-            priceLayout.setSelected(false);
-            tvPrice.setTextIsSelectable(false);
-            ivPrice.setVisibility(View.GONE);
-            nameLayout.setSelected(false);
-            tvName.setTextIsSelectable(false);
-            ivName.setVisibility(View.GONE);
-            promotionLayout.setSelected(false);
-            tvPromotion.setTextIsSelectable(false);
-            ivPromotion.setVisibility(View.GONE);
-            popupWindow.dismiss();
-        });
-        priceLayout.setOnClickListener(v -> {
-            currentSelectNumber = PRICE_LOW_HIGH;
-            tvBtnSearchSort.setText(tvPrice.getText().toString());
-            ivSortArrow.setSelected(!ivSortArrow.isSelected());
-            arrivalLayout.setSelected(false);
-            tvArrival.setTextIsSelectable(false);
-            ivArrival.setVisibility(View.GONE);
-            priceLayout.setSelected(true);
-            tvPrice.setTextIsSelectable(true);
-            ivPrice.setVisibility(View.VISIBLE);
-            nameLayout.setSelected(false);
-            tvName.setTextIsSelectable(false);
-            ivName.setVisibility(View.GONE);
-            promotionLayout.setSelected(false);
-            tvPromotion.setTextIsSelectable(false);
-            ivPromotion.setVisibility(View.GONE);
-            popupWindow.dismiss();
-        });
-        nameLayout.setOnClickListener(v -> {
-            currentSelectNumber = NAME_A_Z;
-            tvBtnSearchSort.setText(tvName.getText().toString());
-            ivSortArrow.setSelected(!ivSortArrow.isSelected());
-            arrivalLayout.setSelected(false);
-            tvArrival.setTextIsSelectable(false);
-            ivArrival.setVisibility(View.GONE);
-            priceLayout.setSelected(false);
-            tvPrice.setTextIsSelectable(false);
-            ivPrice.setVisibility(View.GONE);
-            nameLayout.setSelected(true);
-            tvName.setTextIsSelectable(true);
-            ivName.setVisibility(View.VISIBLE);
-            promotionLayout.setSelected(false);
-            tvPromotion.setTextIsSelectable(false);
-            ivPromotion.setVisibility(View.GONE);
-            popupWindow.dismiss();
-        });
-        promotionLayout.setOnClickListener(v -> {
-            currentSelectNumber = PROMOTION;
-            tvBtnSearchSort.setText(tvPromotion.getText().toString());
-            ivSortArrow.setSelected(!ivSortArrow.isSelected());
-            arrivalLayout.setSelected(false);
-            tvArrival.setTextIsSelectable(false);
-            ivArrival.setVisibility(View.GONE);
-            priceLayout.setSelected(false);
-            tvPrice.setTextIsSelectable(false);
-            ivPrice.setVisibility(View.GONE);
-            nameLayout.setSelected(false);
-            tvName.setTextIsSelectable(false);
-            ivName.setVisibility(View.GONE);
-            promotionLayout.setSelected(true);
-            tvPromotion.setTextIsSelectable(true);
-            ivPromotion.setVisibility(View.VISIBLE);
-            popupWindow.dismiss();
-        });
-
-
-    }
-
     @Override
-    public void showResult(List<SearchFilterModel> datas) {
-        resultAdapter.setDatas(datas);
+    public void showProductsData(List<ProductsVM> productsVMS) {
+        gridVerticalAdapter.setUpdateDatas(productsVMS);
     }
 
     @Override
     public void showFilterMenu(List<FilterMenuModel> filterMenuModels) {
-
-        this.filterMenuModels = new ArrayList<>();
-        this.filterMenuModels = filterMenuModels;
         menuAdapter.updateDatas(filterMenuModels);
     }
 
@@ -333,6 +191,23 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
 
     @Override
     public void onClick() {
-        startActivity(new Intent(this, PDPDetailActivity.class));
+        startActivity(new Intent(this, ProductDetailActivity.class));
+    }
+
+    @Override
+    public void onProductItemClick(ProductsVM productItemVM) {
+        startActivity(new Intent(this, ProductDetailActivity.class));
+    }
+
+    @Override
+    public void onPopItemClick(int position) {
+        sortVMS.get(position).setSelect(true);
+        tvBtnSort.setText(sortVMS.get(position).getTitle());
+    }
+
+    @Override
+    public void onDismiss() {
+        ivSortArrow.setSelected(false);
+        tvBtnSort.setSelected(false);
     }
 }

@@ -19,40 +19,30 @@
 
         <ImageView
             android:id="@+id/imageview_left_menu"
-            android:layout_width="@dimen/size_24"
-            android:layout_height="@dimen/size_24"
+            android:layout_width="@dimen/size_36"
+            android:layout_height="@dimen/size_36"
             android:scaleType="centerInside"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
-            android:background="@drawable/ic_icon_back"
+            android:src="@drawable/ic_icon_back"
+            android:background="@drawable/ic_icon_cart_oval"
             tools:ignore="ContentDescription"
             android:layout_alignParentStart="true"/>
 
         <ImageView
             android:id="@+id/imageview_right_menu"
-            android:layout_width="@dimen/size_20"
-            android:layout_height="@dimen/size_20"
-            android:scaleType="centerInside"
-            android:src="@drawable/ic_share"
+            android:layout_width="@dimen/size_36"
+            android:layout_height="@dimen/size_36"
+            android:src="@drawable/ic_icon_shopping_cart"
+            android:scaleType="center"
+            android:background="@drawable/ic_icon_cart_oval"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
             tools:ignore="ContentDescription"
             android:layout_alignParentEnd="true"/>
 
-        <ImageView
-            android:id="@+id/imageview_right_cart"
-            android:layout_width="@dimen/size_24"
-            android:layout_height="@dimen/size_24"
-            android:layout_marginRight="@dimen/size_28"
-            android:scaleType="centerInside"
-            android:background="@drawable/ic_icon_shopping_cart"
-            android:layout_toLeftOf="@id/imageview_right_menu"
-            android:layout_centerVertical="true"
-            tools:ignore="ContentDescription"
-            android:layout_marginEnd="@dimen/size_28"
-            android:layout_toStartOf="@id/imageview_right_menu"/>
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

@@ -1,7 +1,7 @@
 package com.goshop.app.common;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomEditText;
+import com.goshop.app.common.view.RobotoRegularEditText;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.content.Context;
@@ -20,10 +20,12 @@ public class CustomSearchEditText extends RelativeLayout {
     public static final int FIELD_DELAY = 500;
 
     @BindView(R.id.et_search_search)
-    CustomEditText editText;
+    RobotoRegularEditText editText;
 
     @BindView(R.id.iv_search_del)
     ImageView ivDelete;
+
+    private boolean delState = true;
 
     public CustomSearchEditText(Context context) {
         super(context);
@@ -36,7 +38,7 @@ public class CustomSearchEditText extends RelativeLayout {
         ButterKnife.bind(this, searchView);
         editText.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
         RxTextView.textChanges(editText).subscribe(charSequence -> {
-            if (charSequence.length() > 0) {
+            if (charSequence.length() > 0 && delState) {
                 ivDelete.setVisibility(View.VISIBLE);
                 ivDelete.setOnClickListener(v -> {
                     editText.setText("");
@@ -64,8 +66,13 @@ public class CustomSearchEditText extends RelativeLayout {
         return editText.getText().toString();
     }
 
-    public CustomEditText getEditText() {
+    public RobotoRegularEditText getEditText() {
         return editText;
+    }
+
+    public void setDeleteGone() {
+        ivDelete.setVisibility(GONE);
+        delState = false;
     }
 
 }

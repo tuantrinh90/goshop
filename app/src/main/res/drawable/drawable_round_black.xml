@@ -5,6 +5,6 @@
         android:radius="@dimen/size_2"/>
 
     <solid
-        android:color="@color/color_text_black"/>
+        android:color="@color/color_ad_black"/>
 
 </shape>

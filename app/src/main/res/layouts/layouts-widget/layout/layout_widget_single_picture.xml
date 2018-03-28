@@ -3,15 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="@color/color_divider_grey"
+    android:background="@color/color_whole_bg"
     android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_8"
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
 
     <ImageView
         android:id="@+id/iv_single_picture"
         android:layout_width="match_parent"
         android:layout_height="@dimen/size_170"
-        android:layout_marginTop="@dimen/size_8"
-        android:layout_marginBottom="@dimen/size_8"
+        android:scaleType="fitXY"
         android:background="@drawable/ic_detail_top_demo"
         android:contentDescription="@string/app_name"/>
 

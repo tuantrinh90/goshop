@@ -3,35 +3,29 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#EC458B</color>
-
     <!--Correction color-->
-    <color name="color_hint_grey">#62000000</color>
-    <color name="color_text_grey">#8a000000</color>
+    <color name="color_apply_grey">#61212121</color>
     <color name="color_text_old_grey">#a9a9a9</color>
-    <color name="color_text_light_grey">#8a000000</color>
-    <color name="color_text_black">#de000000</color>
     <color name="color_text_bold_black">#dd000000</color>
-    <color name="color_main_pink">#ec458b</color>
+    <color name="color_dark_black">#88000000</color>
+    <color name="color_main_pink">#ee418b</color>
+    <color name="color_pink_deep">#FF1493</color>
+    <color name="color_filter_grey">#89000000</color>
     <color name="color_litte_pink">#FFF0F5</color>
     <color name="color_litte_grey">#f1f1f1</color>
     <color name="color_back_grey">#42221f1f</color>
     <color name="color_hot_pink">#FF69B4</color>
     <color name="color_dark_pink">#ec1f61</color>
-
+    <color name="color_img_grey">#999999</color>
+    <color name="color_press_grey">#eeeeee</color>
     <color name="color_main_orange">#ff9911</color>
     <color name="color_main_green">#22aa11</color>
     <color name="color_main_grey">#bcbcbc</color>
+    <color name="color_menu_grey">#f6f6f6</color>
     <color name="color_light_black">#333333</color>
     <color name="color_divider_grey">#1e000000</color>
-    <color name="color_line_grey">#1e000000</color>
     <color name="brightSkyBlue">#00b6f1</color>
-    <color name="bluePoor">#00A9AC</color>
-    <color name="blueNormal">#27A9E1</color>
-    <color name="blueDark">#00609D</color>
-
-    <color name="yellowNormal">#FBAF3F</color>
-
-    <color name="pinkishGrey">#bcbcbc</color>
+    <color name="color_ad_black">#ad000000</color><!--68%-->
     <color name="color_shadow_dark">#00999999</color>
     <color name="color_shadow_dark_center">#bbbbbb</color>
     <color name="color_shadow_dark_end">#d5d5d5</color>
@@ -39,48 +33,60 @@
     <color name="color_shadow_two">#10CCCCCC</color>
     <color name="color_shadow_three">#20CCCCCC</color>
     <color name="color_shadow_four">#40CCCCCC</color>
-
-
-
     <color name="appColorPrimary">#ff0000</color>
-
-
     <color name="transparent">#00000000</color>
     <color name="transparent20">#33000000</color>
     <!--black -->
     <color name="black">#000000</color>
-    <color name="blackTrans12">#1f000000</color>
-    <color name="blackTrans38">#62000000</color>
-    <color name="blackTrans54">#8a000000</color>
-    <color name="blackTrans87">#de000000</color>
-    <color name="blackStatusBar">#494949</color>
-
     <!-- white -->
     <color name="white">#ffffff</color>
     <color name="whiteTrans18">#2fffffff</color>
     <color name="whiteTrans41">#69ffffff</color>
     <color name="whiteTrans45">#73ffffff</color>
     <color name="whiteTrans59">#99ffffff</color>
-
     <!-- grey -->
-    <color name="edittext_line">#1F000000</color>
     <color name="parting_line">#1d000000</color>
     <color name="grey_background">#c9c9c9</color>
-    <color name="grey_interval">#F1F1F1</color>
     <color name="grey_slidemenu_selected_bg">#26cccccc</color>
-
-
-
-
-    <!-- green -->
-    <color name="green_common">#8CC63E</color>
-
-    facebookbook -->
+    <color name="color_menu_press_grey">#cccccc</color>
     <color name="facebook">#3A5899</color>
-
+    <color name="color_facebook_blue">#4065b3</color>
     <color name="transparent60Percent">#99000000</color>
     <color name="transparent80Percent">#CC000000</color>
-
-
-
+    <color name="color_redeem_start">#323232</color>
+    <color name="color_redeem_end">#181818</color>
+    <color name="color_swich_pink">#50ee418b</color>
+    <color name="color_white_circle">#30ffffff</color>
+    <color name="color_grey_count">#611a1a1a</color>
+    <!--document color value and zeplin color start-->
+    <color name="color_select_grey">#0a000000</color><!--4%-->
+    <color name="color_orange_red">#ff5722</color>
+    <color name="color_greyish_brown">#494949</color>
+    <color name="color_black_light">#212121</color>
+    <color name="color_black_light_second">#dc212121</color>
+    <color name="color_shadow_top_grey">#dcdcdc</color>
+    <color name="color_branding_pink">#df307a</color>
+    <color name="color_branding_light_pink">#ec008b</color>
+    <color name="color_grayscale_text">#de000000</color><!--87%-->
+    <color name="color_grayscale_secondary">#8a000000</color><!--54%-->
+    <color name="color_grayscale_text_two">#dd212121</color>
+    <color name="color_text_hint">#61000000</color><!--38%-->
+    <color name="color_bg_disabled_divider">#1f000000</color><!--12%-->
+    <color name="color_navigation_shadow">#2e000000</color><!--18%-->
+    <color name="color_account_shadow">#1a000000</color><!--10%-->
+    <color name="color_end_shadow">#0d000000</color>
+    <color name="color_account_press">#e6e6e6</color>
+    <color name="color_whole_bg">#fafafa</color>
+    <color name="color_bar_bg">#ffffff</color>
+    <color name="color_success_message">#23c15e</color>
+    <color name="color_success_bg">#3323c15e</color><!--20%-->
+    <color name="color_grapefruit">#f86060</color>
+    <color name="color_error_bg">#1af86060</color><!--10%-->
+    <color name="color_corporate_green">#8cc63e</color>
+    <color name="color_corporate_dark_green">#00a9ac</color>
+    <color name="color_corporate_blue">#27a9e1</color>
+    <color name="color_corporate_dark_blue">#00609d</color>
+    <color name="color_corporate_orange">#fbaf3f</color>
+    <color name="color_corporate_purple">#bc7bb4</color>
+    <!--document color value and zeplin color end-->
 </resources>

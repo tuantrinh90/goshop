@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/rl_pdp_scroll_image"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_70"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/size_16">
+
+        <RelativeLayout
+            android:id="@+id/rl_left_page"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="match_parent"
+            android:layout_alignParentLeft="true"
+            tools:ignore="RtlHardcoded">
+            <ImageView
+                android:id="@+id/iv_left_page"
+                android:layout_width="@dimen/size_24"
+                android:layout_height="@dimen/size_24"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_icon_left_expand"
+                android:layout_centerInParent="true"/>
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/rl_right_page"
+            android:layout_width="@dimen/size_50"
+            android:layout_height="match_parent"
+            android:layout_alignParentRight="true"
+            tools:ignore="RtlHardcoded">
+            <ImageView
+                android:id="@+id/iv_right_page"
+                android:layout_width="@dimen/size_24"
+                android:layout_height="@dimen/size_24"
+                android:contentDescription="@string/app_name"
+                android:src="@drawable/ic_icon_right_expand"
+                android:layout_centerInParent="true"/>
+        </RelativeLayout>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerview_pdp_images"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_toRightOf="@id/rl_left_page"
+            android:layout_toLeftOf="@id/rl_right_page"
+            tools:ignore="RtlHardcoded"/>
+    </RelativeLayout>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/viewpager_pdp_image_display"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/size_25"
+        android:layout_marginBottom="@dimen/size_25"
+        android:layout_above="@id/rl_pdp_scroll_image"/>
+
+</RelativeLayout>

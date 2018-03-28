@@ -3,7 +3,10 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -38,5 +41,35 @@ public class AddAddressPresenter extends RxPresenter<AddAddressContract.View> im
 
                 }
             }));
+    }
+
+    @Override
+    public List<SingleChooseVM> getCountryChooses() {
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("Country " + (i + 1)));
+        }
+        return singleChooseVMS;
+    }
+
+    @Override
+    public List<SingleChooseVM> getStateChooses() {
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("State " + (i + 1)));
+        }
+        return singleChooseVMS;
+    }
+
+    @Override
+    public List<SingleChooseVM> getCityChooses() {
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("City " + (i + 1)));
+        }
+        return singleChooseVMS;
     }
 }

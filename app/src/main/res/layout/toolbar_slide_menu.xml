@@ -9,11 +9,12 @@
     app:contentInsetEnd="@dimen/size_0"
     app:contentInsetStart="@dimen/size_0"
     app:contentInsetLeft="@dimen/size_0"
+    app:contentInsetStartWithNavigation="@dimen/size_0"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" >
 
         <ImageView
             android:id="@+id/imageview_left_menu"
@@ -28,36 +29,32 @@
 
         <ImageView
             android:id="@+id/imageview_right_menu"
-            android:layout_width="@dimen/size_20"
-            android:layout_height="@dimen/size_20"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
             android:layout_alignParentRight="true"
             android:layout_centerVertical="true"
-            android:layout_marginRight="@dimen/size_26"
-            android:layout_marginLeft="@dimen/size_16"
-            android:src="@drawable/ic_home_checkout"
+            android:layout_margin="@dimen/size_16"
+            android:src="@drawable/ic_icon_home_cart"
+            android:scaleType="center"
             tools:ignore="ContentDescription"
-            android:layout_alignParentEnd="true"
-            android:layout_marginEnd="@dimen/size_26"
-            android:layout_marginStart="@dimen/size_16"/>
+            android:layout_alignParentEnd="true" />
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/tv_toolbar_cart_counter"
-            android:layout_width="@dimen/size_14"
-            android:layout_height="@dimen/size_14"
+            android:layout_width="@dimen/size_13"
+            android:layout_height="@dimen/size_13"
             android:background="@drawable/bg_slide_menu_number"
             android:text="1"
             android:textSize="@dimen/size_font_10"
-            android:layout_marginTop="@dimen/size_12"
-            android:layout_marginRight="@dimen/size_16"
+            android:layout_margin="@dimen/size_12"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:textColor="@color/white"
             android:gravity="center"
             tools:ignore="HardcodedText"
-            android:layout_marginEnd="@dimen/size_16"
             android:layout_alignParentEnd="true"/>
 
-        <com.goshop.app.common.view.CustomBoldTextView
+        <com.goshop.app.common.view.RobotoMediumTextView
             android:id="@+id/textview_toolbar_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,21 +72,26 @@
             android:layout_height="match_parent"
             android:layout_toLeftOf="@id/imageview_right_menu"
             android:layout_marginBottom="@dimen/size_8"
+            android:layout_marginTop="@dimen/size_17"
+            android:paddingBottom="@dimen/size_6"
             android:background="@drawable/bg_white_bottom_divider_line"
             android:layout_toStartOf="@id/imageview_right_menu">
             <ImageView
                 android:id="@+id/iv_search_icon"
-                android:layout_width="@dimen/size_20"
-                android:layout_height="@dimen/size_20"
+                android:layout_width="@dimen/size_24"
+                android:layout_height="@dimen/size_24"
                 android:layout_alignParentLeft="true"
-                android:background="@drawable/ic_icon_search_tool"
-                android:layout_centerVertical="true"
+                android:src="@drawable/ic_icon_search"
+                android:scaleType="center"
+                android:layout_alignParentBottom="true"
                 tools:ignore="ContentDescription"
                 android:layout_alignParentStart="true"/>
             <com.goshop.app.common.CustomSearchEditText
                 android:id="@+id/cset_search"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/size_8"
+                android:layout_alignTop="@id/iv_search_icon"
                 android:layout_toRightOf="@id/iv_search_icon"
                 android:layout_centerVertical="true"
                 android:layout_toEndOf="@id/iv_search_icon"/>

@@ -26,7 +26,7 @@ public class CustomButtomLineRelativeLayout extends RelativeLayout {
         LayoutParams lp = new LayoutParams(context, attrs);
         lp.width = LinearLayout.LayoutParams.MATCH_PARENT;
         lp.height = ScreenHelper.dip2px(context, defaultLine);
-        lineTextView.setBackgroundColor(ScreenHelper.getColor(R.color.edittext_line));
+        lineTextView.setBackgroundColor(ScreenHelper.getColor(R.color.color_bg_disabled_divider));
         lp.addRule(RelativeLayout.ALIGN_PARENT_BOTTOM);
         lineTextView.setLayoutParams(lp);
         this.addView(lineTextView);
@@ -40,7 +40,7 @@ public class CustomButtomLineRelativeLayout extends RelativeLayout {
             lp.height=ScreenHelper.dip2px(this.getContext(),purpleLineHeight);
             lineTextView.requestLayout();
         }else{
-            lineTextView.setBackgroundColor(ScreenHelper.getColor(R.color.edittext_line));
+            lineTextView.setBackgroundColor(ScreenHelper.getColor(R.color.color_bg_disabled_divider));
             lp.height=ScreenHelper.dip2px(this.getContext(),defaultLine);
             lineTextView.requestLayout();
         }
@@ -55,7 +55,7 @@ public class CustomButtomLineRelativeLayout extends RelativeLayout {
             lp.height=ScreenHelper.dip2px(view.getContext(),purpleLineHeight);
             view.requestLayout();
         }else{
-            view.setBackgroundColor(ScreenHelper.getColor(R.color.edittext_line));
+            view.setBackgroundColor(ScreenHelper.getColor(R.color.color_bg_disabled_divider));
             lp.height=ScreenHelper.dip2px(view.getContext(),defaultLine);
             view.requestLayout();
         }
@@ -67,7 +67,7 @@ public class CustomButtomLineRelativeLayout extends RelativeLayout {
             lp.height=ScreenHelper.dip2px(view.getContext(),purpleLineHeight);
             view.requestLayout();
         }else{
-            view.setBackgroundColor(ScreenHelper.getColor(R.color.edittext_line));
+            view.setBackgroundColor(ScreenHelper.getColor(R.color.color_bg_disabled_divider));
             lp.height=ScreenHelper.dip2px(view.getContext(),defaultLine);
             view.requestLayout();
         }

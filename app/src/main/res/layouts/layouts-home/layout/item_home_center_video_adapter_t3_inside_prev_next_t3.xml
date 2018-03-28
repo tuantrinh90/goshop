@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_home_center_prev_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -22,7 +22,7 @@
             android:text="@string/home_video_prev"
             android:textAllCaps="true"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_home_center_prev_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -45,7 +45,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/app_name"
-                android:background="@color/green_common"/>
+                android:background="@color/color_corporate_green"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -53,13 +53,13 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/grey_background">
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_home_center_prev_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/home_item_test_product_name"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_home_center_prev_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -75,7 +75,7 @@
         android:layout_height="wrap_content"
         android:layout_weight="1">
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_home_center_next_title"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -83,7 +83,7 @@
             android:text="@string/home_video_prev"
             android:textAllCaps="true"/>
 
-        <com.goshop.app.common.view.CustomTextView
+        <com.goshop.app.common.view.RobotoRegularTextView
             android:id="@+id/tv_home_center_next_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -106,7 +106,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:contentDescription="@string/app_name"
-                android:background="@color/green_common"/>
+                android:background="@color/color_corporate_green"/>
 
             <RelativeLayout
                 android:layout_width="match_parent"
@@ -114,13 +114,13 @@
                 android:layout_alignParentBottom="true"
                 android:background="@color/grey_background">
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_home_center_next_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/home_item_test_product_name"/>
 
-                <com.goshop.app.common.view.CustomTextView
+                <com.goshop.app.common.view.RobotoRegularTextView
                     android:id="@+id/tv_home_center_next_price"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

@@ -1,8 +1,9 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomBoldTextView;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.QAVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -43,13 +44,13 @@ public class PDPQaItemAdapter extends RecyclerView.Adapter {
     class QaItemViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_pdp_qa_title)
-        CustomBoldTextView tvPdpQaTitle;
+        RobotoMediumTextView tvPdpQaTitle;
 
         @BindView(R.id.tv_qa_item_answer_count)
-        CustomTextView tvQaItemAnswerCount;
+        RobotoLightTextView tvQaItemAnswerCount;
 
         @BindView(R.id.tv_qa_item_update)
-        CustomTextView tvQaItemUpdate;
+        RobotoLightTextView tvQaItemUpdate;
 
         public QaItemViewHolder(View itemView) {
             super(itemView);

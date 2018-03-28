@@ -1,5 +1,9 @@
 package com.goshop.app.presentation.model;
 
+import com.goshop.app.presentation.model.widget.ProductListModel;
+
+import java.util.List;
+
 public class ShoppingCartProductVM extends ShoppingCartModel {
 
     private String color;
@@ -12,7 +16,14 @@ public class ShoppingCartProductVM extends ShoppingCartModel {
 
     private String oldPrice;
 
+    private List<ProductListModel> productListModels;
+
     private String title;
+
+    public ShoppingCartProductVM(List<ProductListModel> productListModels) {
+        super(ShoppingCartModel.CART_PRODUCT);
+        this.productListModels = productListModels;
+    }
 
     public ShoppingCartProductVM(String title, String color, String oldPrice,
         String nowPrice, int icon, int count) {
@@ -23,6 +34,15 @@ public class ShoppingCartProductVM extends ShoppingCartModel {
         this.nowPrice = nowPrice;
         this.icon = icon;
         this.count = count;
+    }
+
+    public List<ProductListModel> getProductListModels() {
+        return productListModels;
+    }
+
+    public void setProductListModels(
+        List<ProductListModel> productListModels) {
+        this.productListModels = productListModels;
     }
 
     public String getTitle() {

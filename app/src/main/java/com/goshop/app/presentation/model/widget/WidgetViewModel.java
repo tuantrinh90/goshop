@@ -10,8 +10,6 @@ public class WidgetViewModel {
 
     public static final int VIEW_TYPE_EXPAND_TITLE = 0x04;
 
-    public static final int VIEW_TYPE_VIDEOPLAYER = 0x05;
-
     public static final int VIEW_TYPE_PDP_QA = 0x06;
 
     public static final int VIEW_TYPE_PDP_REVIEWS = 0x07;
@@ -25,6 +23,8 @@ public class WidgetViewModel {
     public static final int VIEW_TYPE_SINGLE_PICTURE = 0x11;
 
     public static final int VIEW_TYPE_SINGLE_TEXT = 0x12;
+
+    public static final int VIEW_TYPE_VIDEOPLAYER = 0x05;
 
     int viewType;
 

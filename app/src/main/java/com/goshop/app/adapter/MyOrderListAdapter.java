@@ -3,7 +3,7 @@ package com.goshop.app.adapter;
 import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
 import com.goshop.app.R;
-import com.goshop.app.common.view.CustomTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
@@ -109,10 +109,10 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
     static class TitleHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_order_num)
-        CustomTextView tvOrderNum;
+        RobotoRegularTextView tvOrderNum;
 
         @BindView(R.id.tv_order_status)
-        CustomTextView tvOrderStatus;
+        RobotoRegularTextView tvOrderStatus;
 
         @BindString(R.string.my_orders_title_number)
         String orderNumber;
@@ -129,28 +129,28 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
     static class BodyHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_order_product_id)
-        CustomTextView tvOrderProductId;
+        RobotoRegularTextView tvOrderProductId;
 
         @BindView(R.id.tv_order_product_track)
-        CustomTextView tvOrderProductTrack;
+        RobotoRegularTextView tvOrderProductTrack;
 
         @BindView(R.id.iv_order_product_product_icon)
         ImageView ivProductIcon;
 
         @BindView(R.id.tv_order_product_price)
-        CustomTextView tvOrderProductPrice;
+        RobotoRegularTextView tvOrderProductPrice;
 
         @BindView(R.id.tv_order_product_title)
-        CustomTextView tvOrderProductTitle;
+        RobotoRegularTextView tvOrderProductTitle;
 
         @BindView(R.id.tv_order_product_color)
-        CustomTextView tvOrderItemColor;
+        RobotoRegularTextView tvOrderItemColor;
 
         @BindView(R.id.tv_order_product_size)
-        CustomTextView tvOrderItemSize;
+        RobotoRegularTextView tvOrderItemSize;
 
         @BindView(R.id.tv_order_product_amount)
-        CustomTextView tvOrderProductAmount;
+        RobotoRegularTextView tvOrderProductAmount;
 
         @BindView(R.id.rl_order_list_product_body)
         RelativeLayout rlOrderListBody;
@@ -196,6 +196,7 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
                 .into(ivProductIcon);
             tvOrderProductPrice.setText(resultsBean.getPrice());
             tvOrderProductTitle.setText(resultsBean.getName());
+            //todo hard code need decide
             tvOrderProductAmount.setText(resultsBean.getQty() + "");
         }
 
@@ -216,7 +217,7 @@ public class MyOrderListAdapter extends RecyclerView.Adapter {
     static class BottomPriceHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.tv_order_list_total_price)
-        CustomTextView tvOrderListTotalPrice;
+        RobotoRegularTextView tvOrderListTotalPrice;
 
         @BindString(R.string.my_orders_total_price)
         String orderTotalPrice;

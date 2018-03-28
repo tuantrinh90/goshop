@@ -3,19 +3,19 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/size_12"
-    android:paddingRight="@dimen/size_12"
     android:orientation="vertical">
 
     <com.goshop.app.common.FlowLayout
         android:id="@+id/flow_search_filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/size_16"
+        android:layout_marginRight="@dimen/size_16"
     />
 
     <View
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_1"
+        android:layout_height="@dimen/size_divider"
         android:layout_marginTop="@dimen/size_14"
         android:background="@color/color_divider_grey"/>
 </LinearLayout>

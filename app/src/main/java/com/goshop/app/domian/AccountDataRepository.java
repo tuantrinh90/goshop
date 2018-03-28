@@ -7,23 +7,33 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
+import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
-import com.goshop.app.data.model.GetSettingsResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
+import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.MyEGiftResponse;
 import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -112,13 +122,73 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsPageRequest(Map<String, Object> params) {
-        return accountCloudDataSource.brandsPageRequest(params);
+    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
+        return accountCloudDataSource.brandsRequest(params);
+    }
+
+    @Override
+    public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.brandsDetailRequest(params);
+    }
+
+    @Override
+    public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
+        return accountCloudDataSource.eGiftCardsRequest(params);
+    }
+
+    @Override
+    public Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params) {
+        return accountCloudDataSource.goLoyaltyRequest(params);
+    }
+
+    @Override
+    public Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params) {
+        return accountCloudDataSource.allDealsRequest(params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params) {
+        return accountCloudDataSource.expiredRequest(params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> pendingRequest(Map<String, Object> params) {
+        return accountCloudDataSource.pendingRequest(params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> redeemedRequest(Map<String, Object> params) {
+        return accountCloudDataSource.redeemedRequest(params);
+    }
+
+    @Override
+    public Observable<CardRedeemResponse> cardRedeemRequest(Map<String, Object> params) {
+        return accountCloudDataSource.cardRedeemRequest(params);
+    }
+
+    @Override
+    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
+        return accountCloudDataSource.swipeRedeemRequest(params);
+    }
+
+    @Override
+    public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.rewardsDetailRequest(params);
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params) {
+        return accountCloudDataSource.myWishlistRequest(params);
     }
 
     @Override
     public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
         return accountCloudDataSource.pdpDetailRequest(params);
+    }
+
+    @Override
+    public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
+        return accountCloudDataSource.allReviewsRequest(params);
     }
 
     @Override
@@ -171,6 +241,16 @@ public class AccountDataRepository implements AccountRepository {
         return accountCloudDataSource.myOrderListRequest(params)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<MyOrderListResponse> myOrdersRequest(Map<String, Object> params) {
+        return accountCloudDataSource.myOrdersRequest(params);
+    }
+
+    @Override
+    public Observable<OrderDetailResponse> orderDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.orderDetailRequest(params);
     }
 
     @Override
@@ -248,6 +328,11 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
+        return accountCloudDataSource.editAddressRequest(params);
+    }
+
+    @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.addAddressRequest(params);
     }
@@ -293,8 +378,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<GetSettingsResponse> getSettingsDetail() {
-        return accountCloudDataSource.getSettingsDetail();
+    public Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params) {
+        return accountCloudDataSource.settingsLogoutRequest(params);
     }
 
     @Override
@@ -333,7 +418,22 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<TVShowResponse> leftVideoRequest(Map<String, Object> params) {
-        return accountCloudDataSource.leftVideoRequest(params);
+    public Observable<TVShowResponse> tvShowRequest(Map<String, Object> params) {
+        return accountCloudDataSource.tvShowRequest(params);
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params) {
+        return accountCloudDataSource.allQARequest(params);
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
+        return accountCloudDataSource.qaDetailRequest(params);
+    }
+
+    @Override
+    public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
+        return accountCloudDataSource.promotionSkuRequest(params);
     }
 }

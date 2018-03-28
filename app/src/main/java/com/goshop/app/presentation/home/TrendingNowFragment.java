@@ -7,7 +7,7 @@ import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
 import com.goshop.app.presentation.model.widget.WidgetViewModel;
-import com.goshop.app.presentation.shopping.PDPDetailActivity;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import com.goshop.app.widget.WidgetViewAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
@@ -116,7 +116,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onProductItemClick(ProductsVM productItemVM) {
-        startActivity(new Intent(getActivity(), PDPDetailActivity.class));
+        startActivity(new Intent(getActivity(), ProductDetailActivity.class));
     }
 
     @Override
@@ -131,11 +131,11 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         Intent intent = null;
         switch (link) {
             case PRD:
-                intent = new Intent(getActivity(), PDPDetailActivity.class);
+                intent = new Intent(getActivity(), ProductDetailActivity.class);
                 intent.putExtra(PROMOTION_BANNER_URL, image);
                 break;
             case SKU:
-                intent = new Intent(getActivity(), PromotionLandingListActivity.class);
+                intent = new Intent(getActivity(), PromotionSkuActivity.class);
                 intent.putExtra(PROMOTION_BANNER_URL, image);
                 break;
             case BANNER:
@@ -150,7 +150,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onSinglePictureClick(WidgetSinglePictureVM singlePictureVM) {
-        Intent intent = new Intent(getActivity(), PromotionLandingListActivity.class);
+        Intent intent = new Intent(getActivity(), PromotionSkuActivity.class);
         intent.putExtra(PROMOTION_BANNER_URL,
             singlePictureVM.getOfferListItemsVMS().get(0).getImage());
         startActivity(intent);
