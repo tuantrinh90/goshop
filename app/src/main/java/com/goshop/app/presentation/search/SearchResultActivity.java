@@ -11,7 +11,7 @@ import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.widget.adapter.WidgetProductGridVerticalAdapter;
+import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.content.Intent;
@@ -68,7 +68,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     @BindView(R.id.tv_btn_sort)
     RobotoLightTextView tvBtnSort;
 
-    private WidgetProductGridVerticalAdapter gridVerticalAdapter;
+    private ProductGridVerticalAdapter gridVerticalAdapter;
 
     private FilterMenuAdapter menuAdapter;
 
@@ -124,7 +124,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
         recyclerviewSearchResultDisplay.setLayoutManager(gridLayoutManager);
         //TODO(helen)this divider wait for the design,then decide
 //        recyclerviewSearchResultDisplay.addItemDecoration(new CustomGridDivider(this));
-        gridVerticalAdapter = new WidgetProductGridVerticalAdapter(new ArrayList<>());
+        gridVerticalAdapter = new ProductGridVerticalAdapter(new ArrayList<>());
         gridVerticalAdapter.setOnProductItemClickListener(this);
         recyclerviewSearchResultDisplay.setAdapter(gridVerticalAdapter);
     }

@@ -2,7 +2,6 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.common.CustomMPEditText;
-import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -15,10 +14,9 @@ import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.presentation.model.ProductDetailTopVM;
 import com.goshop.app.widget.adapter.PDPQaItemAdapter;
 import com.goshop.app.widget.adapter.PDPReviewsItemAdapter;
-import com.goshop.app.widget.adapter.WidgetProductGridHorizontalAdapter;
+import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 
 import android.graphics.Paint;
-import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -194,8 +192,8 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerViewHorizontal.setLayoutManager(manager);
-            WidgetProductGridHorizontalAdapter detailAdapter = new
-                WidgetProductGridHorizontalAdapter(
+            ProductGridHorizontalAdapter detailAdapter = new
+                ProductGridHorizontalAdapter(
                 productScrollerVM.getProductsVMS());
             recyclerViewHorizontal.setAdapter(detailAdapter);
 

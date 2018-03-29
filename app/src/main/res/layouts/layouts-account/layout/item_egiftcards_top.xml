@@ -12,7 +12,7 @@
     <com.goshop.app.common.view.RobotoRegularTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_14"
+        android:paddingTop="@dimen/size_18"
         android:textColor="@color/color_grayscale_text"
         android:textSize="@dimen/size_font_18"
         android:text="@string/active_egift_code"/>

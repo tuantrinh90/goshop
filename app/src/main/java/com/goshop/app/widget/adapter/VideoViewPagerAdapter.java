@@ -10,7 +10,6 @@ import com.goshop.app.widget.listener.OnProductItemClickListener;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,8 +67,9 @@ public class VideoViewPagerAdapter extends PagerAdapter {
             int itemHeight = listAdapter.getItemMeasuredHeight();
             //todo please dont delete
             llImageViewMore.setSelected(!llImageViewMore.isSelected());
-            onPagerHeightChangeListener.onHeightChange(position, (productsVMS.size() - 1) * itemHeight,
-                llImageViewMore.isSelected());
+            onPagerHeightChangeListener
+                .onHeightChange(position, (productsVMS.size() - 1) * itemHeight,
+                    llImageViewMore.isSelected());
             listAdapter.updateProductList(llImageViewMore.isSelected());
         });
         container.addView(pagerLayout);

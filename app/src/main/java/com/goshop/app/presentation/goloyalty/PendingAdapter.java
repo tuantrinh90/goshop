@@ -4,7 +4,6 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 
 import android.support.v7.widget.RecyclerView;
@@ -75,11 +74,11 @@ public class PendingAdapter extends RecyclerView.Adapter {
 
     class DealViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.ll_pending_cards)
-        LinearLayout llPendingCards;
-
         @BindView(R.id.iv_pending_thumb)
         ImageView ivPendingThumb;
+
+        @BindView(R.id.ll_pending_cards)
+        LinearLayout llPendingCards;
 
         @BindView(R.id.tv_pending_detail)
         RobotoMediumTextView tvPendingDetail;

@@ -44,7 +44,6 @@ import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
-import com.goshop.app.data.model.response.WidgetListResponse;
 
 import java.util.Map;
 
@@ -410,6 +409,6 @@ public class RetrofitRestApiImpl implements RestApi {
     @Override
     public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_SKU);
-        return retrofitRestApi.promotionSkuRequest(url,params);
+        return retrofitRestApi.promotionSkuRequest(url, params);
     }
 }

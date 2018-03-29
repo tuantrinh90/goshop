@@ -3,7 +3,6 @@ package com.goshop.app.widget.adapter;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.QAVM;
 
 import android.support.v7.widget.RecyclerView;

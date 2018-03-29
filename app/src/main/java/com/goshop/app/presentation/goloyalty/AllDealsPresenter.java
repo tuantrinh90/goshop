@@ -83,9 +83,9 @@ public class AllDealsPresenter extends RxPresenter<AllDealsContract.View> implem
     //todo this is mock data, please do not delete
     private List<FilterMenuModel> getFilterMenu() {
         List<FilterMenuModel> filterMenuModels = new ArrayList<>();
-        filterMenuModels.add(new FilterMenuExpandVM("Category", true));
+        filterMenuModels.add(new FilterMenuExpandVM("Category", false));
         filterMenuModels.add(new FilterMenuFlowButtonVM(getCategorys()));
-        filterMenuModels.add(new FilterMenuExpandVM("Status", true));
+        filterMenuModels.add(new FilterMenuExpandVM("Status", false));
         filterMenuModels.add(new FilterMenuFlowButtonVM(getStatus()));
         return filterMenuModels;
     }

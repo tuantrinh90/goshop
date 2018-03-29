@@ -134,17 +134,17 @@ public class WidgetViewAdapter extends RecyclerView.Adapter implements WidgetTit
         switch (viewType) {
             case WidgetViewModel.VIEW_TYPE_BANNER:
                 View bannerView = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.layout_widget_banner, viewGroup, false);
+                    .inflate(R.layout.item_trending_top_banner, viewGroup, false);
                 viewHolder = new WidgetBannerViewHolder(bannerView);
                 break;
             case WidgetViewModel.VIEW_TYPE_VIDEOPLAYER:
                 View onAirView = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.layout_widget_videoplayer, viewGroup, false);
+                    .inflate(R.layout.item_trending_videoplayer, viewGroup, false);
                 viewHolder = new WidgetVideoPlayerViewHolder(onAirView);
                 break;
             case WidgetViewModel.VIEW_TYPE_SINGLE_PICTURE:
                 View singleView = LayoutInflater.from(viewGroup.getContext())
-                    .inflate(R.layout.layout_widget_single_picture, viewGroup, false);
+                    .inflate(R.layout.item_trending_single_banner, viewGroup, false);
                 viewHolder = new WidgetSinglePictureViewHolder(singleView);
                 break;
             case WidgetViewModel.VIEW_TYPE_PRODUCT_SCROLLER:

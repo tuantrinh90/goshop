@@ -143,6 +143,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 int firstItemPosition = leftManager.findFirstVisibleItemPosition();
+                int lastItemPosition = leftManager.findLastVisibleItemPosition();
                 if (move) {
                     move = false;
                     int n = leftIndex - firstItemPosition;
@@ -154,6 +155,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
                 } else {
                     switch (newState) {
                         case RecyclerView.SCROLL_STATE_IDLE:
+
                             View childView = leftManager
                                 .findViewByPosition(firstItemPosition);
                             int childViewHeight = childView.getHeight();
@@ -162,17 +164,32 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
                                 .abs(childViewTop) == recyclerView.getPaddingTop() * 2) {
                             } else if (Math.abs(childViewTop) >= childViewHeight / 2.0f) {
                                 int nextPosition = firstItemPosition + 1;
-                                moveLeftToPosition(nextPosition);
+                                scollRightToPosition(nextPosition);
+                                rightAdapter.updateCurrentVMS(nextPosition);
+                                calendarAdapter
+                                    .updateSelectCalendar(tvShowVMDatas.get(nextPosition).getDay());
                             } else {
-                                moveLeftToPosition(firstItemPosition);
+                                scollRightToPosition(firstItemPosition);
+                                rightAdapter.updateCurrentVMS(firstItemPosition);
+                                calendarAdapter.updateSelectCalendar(
+                                    tvShowVMDatas.get(firstItemPosition).getDay());
                             }
+
                             break;
                     }
                 }
 
                 if (firstItemPosition == 0 && rightAdapter.getCurrentPosition() != 0) {
-                    rightAdapter.updateCurrentVMS(0);
-                    scollRightToPosition(0);
+                    rightAdapter.updateCurrentVMS(firstItemPosition);
+                    scollRightToPosition(firstItemPosition);
+                    calendarAdapter
+                        .updateSelectCalendar(tvShowVMDatas.get(firstItemPosition).getDay());
+                } else if (lastItemPosition == tvShowVMDatas.size() - 1 && rightAdapter
+                    .getCurrentPosition() != 0) {
+                    rightAdapter.updateCurrentVMS(lastItemPosition);
+                    scollRightToPosition(lastItemPosition);
+                    calendarAdapter
+                        .updateSelectCalendar(tvShowVMDatas.get(lastItemPosition).getDay());
                 }
             }
         });
@@ -214,29 +231,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         channelAdapter = new ChannelAdapter(new ArrayList<>());
         recyclerViewTvShowChannel.setAdapter(channelAdapter);
         channelAdapter.setOnChannelItemClickListener(this::onChannelItemClick);
-    }
-
-    private void moveLeftToPosition(int index) {
-        leftIndex = index;
-        int firstItem = leftManager.findFirstVisibleItemPosition();
-        int lastItem = leftManager.findLastVisibleItemPosition();
-        if (index <= firstItem) {
-            recyclerviewLeft.smoothScrollToPosition(index);
-        } else if (index <= lastItem) {
-            int top = recyclerviewLeft.getChildAt(index - firstItem).getTop();
-            recyclerviewLeft.smoothScrollBy(0, top);
-        } else {
-            recyclerviewLeft.smoothScrollToPosition(index);
-            move = true;
-        }
-
-        if (!isSelectScroll) {
-            isSelectScroll = false;
-            rightAdapter.updateCurrentVMS(index);
-            scollRightToPosition(index);
-        } else {
-            isSelectScroll = false;
-        }
     }
 
     private void scollRightToPosition(int position) {
@@ -284,6 +278,30 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         }
     }
 
+    private void moveLeftToPosition(int index) {
+        leftIndex = index;
+        int firstItem = leftManager.findFirstVisibleItemPosition();
+        int lastItem = leftManager.findLastVisibleItemPosition();
+        if (index <= firstItem) {
+            recyclerviewLeft.smoothScrollToPosition(index);
+        } else if (index <= lastItem) {
+            int top = recyclerviewLeft.getChildAt(index - firstItem).getTop();
+            recyclerviewLeft.smoothScrollBy(0, top);
+        } else {
+            recyclerviewLeft.smoothScrollToPosition(index);
+            move = true;
+        }
+
+        if (!isSelectScroll) {
+            isSelectScroll = false;
+            rightAdapter.updateCurrentVMS(index);
+            scollRightToPosition(index);
+            calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(index).getDay());
+        } else {
+            isSelectScroll = false;
+        }
+    }
+
     @Override
     public void onTVShowRightItemClick(int position) {
         isSelectScroll = true;
@@ -292,8 +310,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
     @Override
     public void onCalendarItemClick(int position) {
-        //todo need decide
-//        recyclerviewLeft.smoothScrollToPosition(position);
+        moveLeftToPosition(position);
     }
 
     @Override

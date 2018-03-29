@@ -199,8 +199,8 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerViewHorizontal.setLayoutManager(manager);
-            WidgetProductGridHorizontalAdapter detailAdapter = new
-                WidgetProductGridHorizontalAdapter(
+            ProductGridHorizontalAdapter detailAdapter = new
+                ProductGridHorizontalAdapter(
                 productScrollerVM.getProductsVMS());
             recyclerViewHorizontal.setAdapter(detailAdapter);
 

@@ -13,7 +13,7 @@ import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.widget.adapter.WidgetProductGridVerticalAdapter;
+import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.content.Intent;
@@ -77,7 +77,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     @BindView(R.id.tv_btn_sort)
     RobotoLightTextView tvBtnSort;
 
-    private WidgetProductGridVerticalAdapter gridVerticalAdapter;
+    private ProductGridVerticalAdapter gridVerticalAdapter;
 
     private FilterMenuAdapter menuAdapter;
 
@@ -118,7 +118,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     private void initRecyclerView() {
         GridLayoutManager layoutManager = new GridLayoutManager(this, 2);
         recyclerviewDetails.setLayoutManager(layoutManager);
-        gridVerticalAdapter = new WidgetProductGridVerticalAdapter(new ArrayList<>());
+        gridVerticalAdapter = new ProductGridVerticalAdapter(new ArrayList<>());
         gridVerticalAdapter.setOnProductItemClickListener(this);
         recyclerviewDetails.setAdapter(gridVerticalAdapter);
     }

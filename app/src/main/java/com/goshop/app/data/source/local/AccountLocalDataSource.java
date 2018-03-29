@@ -42,7 +42,6 @@ import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
-import com.goshop.app.data.model.response.WidgetListResponse;
 import com.goshop.app.data.source.AccountDataSource;
 
 import java.util.Map;

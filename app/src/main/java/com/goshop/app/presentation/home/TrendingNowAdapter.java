@@ -18,7 +18,7 @@ import com.goshop.app.widget.BannerAutoPlayHelper;
 import com.goshop.app.widget.adapter.ChannelAdapter;
 import com.goshop.app.widget.adapter.VideoViewPagerAdapter;
 import com.goshop.app.widget.adapter.WidgetBannerAdapter;
-import com.goshop.app.widget.adapter.WidgetProductGridHorizontalAdapter;
+import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnChannelItemClickListener;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
@@ -61,17 +61,17 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
         switch (viewType) {
             case TrendingNowModel.VIEW_TYPE_BANNER:
                 View topBannerView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.layout_widget_banner, parent, false);
+                    .inflate(R.layout.item_trending_top_banner, parent, false);
                 viewHolder = new TrendingBannerViewHolder(topBannerView);
                 break;
             case TrendingNowModel.VIEW_TYPE_VIDEOPLAYER:
                 View videoView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.layout_widget_videoplayer, parent, false);
+                    .inflate(R.layout.item_trending_videoplayer, parent, false);
                 viewHolder = new TrendingVideoViewHolder(videoView);
                 break;
             case TrendingNowModel.VIEW_TYPE_SINGLE_BANNER:
                 View singleBannerView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.layout_widget_single_picture, parent, false);
+                    .inflate(R.layout.item_trending_single_banner, parent, false);
                 viewHolder = new TrendingSingleBannerViewHolder(singleBannerView);
                 break;
             case TrendingNowModel.VIEW_TYPE_HORIZONTAL_PRODUCTS:
@@ -301,8 +301,8 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
             LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerViewHorizontal.setLayoutManager(manager);
-            WidgetProductGridHorizontalAdapter detailAdapter = new
-                WidgetProductGridHorizontalAdapter(
+            ProductGridHorizontalAdapter detailAdapter = new
+                ProductGridHorizontalAdapter(
                 this::onProductItemClick,
                 productsVM.getProductsVMS());
             recyclerViewHorizontal.setAdapter(detailAdapter);

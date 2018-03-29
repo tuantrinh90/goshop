@@ -131,9 +131,7 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
                 }
 
             });
-            tvOrderProductWrite.setOnClickListener(v -> {
-                onOrderDetailItemClickListener.onWriteReviewClick();
-            });
+            tvOrderProductWrite.setOnClickListener(v -> onOrderDetailItemClickListener.onWriteReviewClick());
         }
     }
 }

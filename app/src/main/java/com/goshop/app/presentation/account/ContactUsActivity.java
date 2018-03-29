@@ -5,7 +5,6 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ContactUsVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.NumberFormater;
@@ -17,7 +16,6 @@ import android.text.InputType;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -66,11 +64,6 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
         initInputEdit();
     }
 
-    private void initInputEdit() {
-        etContactUsMobile.initInputType(InputType.TYPE_CLASS_NUMBER);
-        etContactUsMobile.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-    }
-
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.contact_us);
@@ -82,6 +75,11 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+    }
+
+    private void initInputEdit() {
+        etContactUsMobile.initInputType(InputType.TYPE_CLASS_NUMBER);
+        etContactUsMobile.initImeOptions(EditorInfo.IME_ACTION_NEXT);
     }
 
     @Override

@@ -12,30 +12,31 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-public class WidgetProductGridVerticalAdapter extends RecyclerView.Adapter {
+public class ProductGridHorizontalAdapter extends RecyclerView.Adapter {
 
     private OnProductItemClickListener onProductItemClickListener;
 
     private List<ProductsVM> productsVMS;
 
-    public WidgetProductGridVerticalAdapter(List<ProductsVM> detailVMS) {
+    public ProductGridHorizontalAdapter(OnProductItemClickListener onProductItemClickListener,
+        List<ProductsVM> detailVMS) {
+        this.onProductItemClickListener = onProductItemClickListener;
         this.productsVMS = detailVMS;
     }
 
-    public void setOnProductItemClickListener(OnProductItemClickListener onProductItemClickListener) {
-        this.onProductItemClickListener = onProductItemClickListener;
+    public ProductGridHorizontalAdapter(List<ProductsVM> detailVMS) {
+        this.productsVMS = detailVMS;
     }
 
-    public void setUpdateDatas(List<ProductsVM> productsVMS) {
-        this.productsVMS.clear();
-        this.productsVMS = productsVMS;
-        notifyDataSetChanged();
+    public void setOnProductItemClickListener(
+        OnProductItemClickListener onProductItemClickListener) {
+        this.onProductItemClickListener = onProductItemClickListener;
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
-            .inflate(R.layout.item_grid_vertical_detail, parent, false);
+            .inflate(R.layout.item_grid_horizontal_detail, parent, false);
         return new ProductGridViewHolder(view);
     }
 
@@ -49,6 +50,5 @@ public class WidgetProductGridVerticalAdapter extends RecyclerView.Adapter {
     public int getItemCount() {
         return productsVMS.size();
     }
-
 
 }

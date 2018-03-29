@@ -3,14 +3,13 @@ package com.goshop.app.presentation.home;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.PromotionSkuModel;
 import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.widget.adapter.WidgetProductGridVerticalAdapter;
+import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.support.v7.widget.GridLayoutManager;
@@ -137,7 +136,8 @@ public class PromotionSkuAdapter extends RecyclerView.Adapter {
             //todo wait for api
             tvBtnDataSort.setText(sortVMS.get(0).getTitle());
             sortVMS.get(0).setSelect(true);
-            ivBtnDataFilter.setOnClickListener(v -> onPromotionSkuItemClickListener.onFilterDrawerClick());
+            ivBtnDataFilter
+                .setOnClickListener(v -> onPromotionSkuItemClickListener.onFilterDrawerClick());
             ivSortDataArrow.setOnClickListener(v -> {
                 ivSortDataArrow.setSelected(!ivSortDataArrow.isSelected());
                 tvBtnDataSort.setSelected(!tvBtnDataSort.isSelected());
@@ -154,8 +154,8 @@ public class PromotionSkuAdapter extends RecyclerView.Adapter {
             });
             GridLayoutManager gridLayoutManager = new GridLayoutManager(itemView.getContext(), 2);
             recyclerViewFilter.setLayoutManager(gridLayoutManager);
-            WidgetProductGridVerticalAdapter gridVerticalAdapter = new
-                WidgetProductGridVerticalAdapter(
+            ProductGridVerticalAdapter gridVerticalAdapter = new
+                ProductGridVerticalAdapter(
                 filterWithDataVM.getProductsVMS());
             recyclerViewFilter.setAdapter(gridVerticalAdapter);
             gridVerticalAdapter.setOnProductItemClickListener(this::onProductItemClick);

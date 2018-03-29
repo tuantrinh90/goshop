@@ -3,7 +3,6 @@ package com.goshop.app.utils;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.widget.adapter.SingleChooseListAdapter;

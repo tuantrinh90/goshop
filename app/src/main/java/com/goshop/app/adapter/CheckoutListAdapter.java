@@ -5,7 +5,6 @@ import com.goshop.app.R;
 import com.goshop.app.common.listener.IRecyclerItemClick;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.CheckoutResponse;
 
 import android.annotation.SuppressLint;
@@ -27,9 +26,9 @@ import butterknife.ButterKnife;
 
 public class CheckoutListAdapter extends RecyclerView.Adapter {
 
-    List<CheckoutResponse.CheckoutItem> results = new ArrayList<>();
-
     IRecyclerItemClick iRecyclerItemClick;
+
+    List<CheckoutResponse.CheckoutItem> results = new ArrayList<>();
 
     public CheckoutListAdapter(List<CheckoutResponse.CheckoutItem> results) {
         this.results = results;
@@ -56,11 +55,17 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
             .error(R.drawable.ic_right_video_demo)
             .into(holder.ivCheckoutItemIcon);
         holder.tvCheckoutProductName.setText(checkoutItem.getProductName());
-        holder.tvCheckoutColorAndSize.setText(checkoutItem.getColor()+","+checkoutItem.getSize());
+        holder.tvCheckoutColorAndSize
+            .setText(checkoutItem.getColor() + "," + checkoutItem.getSize());
         holder.tvCheckoutOldPrice.setText(checkoutItem.getOldPrice());
         holder.tvCheckoutPrice.setText(checkoutItem.getCurrentPrice());
         holder.tvCheckoutAmount.setText(checkoutItem.getAmount());
 
+    }
+
+    @Override
+    public int getItemCount() {
+        return results.size();
     }
 
     private SpannableString setBoldText(String frontText, String behindText) {
@@ -72,18 +77,13 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
         return spannableString;
     }
 
-    @Override
-    public int getItemCount() {
-        return results.size();
-    }
-
     static class CheckoutHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_checkout_item_icon)
         ImageView ivCheckoutItemIcon;
 
-        @BindView(R.id.tv_checkout_product_name)
-        RobotoLightTextView tvCheckoutProductName;
+        @BindView(R.id.tv_checkout_amount)
+        RobotoLightTextView tvCheckoutAmount;
 
         @BindView(R.id.tv_checkout_color_and_size)
         RobotoLightTextView tvCheckoutColorAndSize;
@@ -94,8 +94,8 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_checkout_price)
         RobotoMediumTextView tvCheckoutPrice;
 
-        @BindView(R.id.tv_checkout_amount)
-        RobotoLightTextView tvCheckoutAmount;
+        @BindView(R.id.tv_checkout_product_name)
+        RobotoLightTextView tvCheckoutProductName;
 
         public CheckoutHolder(View itemView) {
             super(itemView);

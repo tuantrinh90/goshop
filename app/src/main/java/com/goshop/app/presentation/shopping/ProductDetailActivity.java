@@ -94,14 +94,12 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     private void appBarLayoutActionListener() {
         appBarLayoutProductDetail
-            .addOnOffsetChangedListener((AppBarLayout appBarLayout, int verticalOffset) -> {
-                viewPdpDivider.setVisibility(Math.abs(verticalOffset) >= appBarLayout
-                    .getTotalScrollRange() ? View.VISIBLE : View.GONE);
-            });
+            .addOnOffsetChangedListener((AppBarLayout appBarLayout, int verticalOffset) -> viewPdpDivider.setVisibility(Math.abs(verticalOffset) >= appBarLayout
+                .getTotalScrollRange() ? View.VISIBLE : View.GONE));
     }
 
     private void initPageAdapter() {
-        bannerAdapter = new PdpBannerAdapter(new ArrayList<String>(), this::onBannerClick);
+        bannerAdapter = new PdpBannerAdapter(new ArrayList<>(), this::onBannerClick);
         viewPager
             .setAdapter(bannerAdapter);
 

@@ -57,7 +57,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
         switch (viewType) {
             case ShoppingCartModel.CART_BANNER:
                 View bannerView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.layout_widget_banner, parent, false);
+                    .inflate(R.layout.item_trending_top_banner, parent, false);
                 viewHolder = new ShoppingCartBannerViewHolder(bannerView);
                 break;
             case ShoppingCartModel.CART_PRODUCT:
