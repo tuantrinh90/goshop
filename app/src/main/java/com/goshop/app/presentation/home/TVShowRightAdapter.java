@@ -18,11 +18,11 @@ import butterknife.ButterKnife;
 
 public class TVShowRightAdapter extends RecyclerView.Adapter {
 
+    private int currentPosition;
+
     private OnTVShowRightItemClickListener onTVShowRightItemClickListener;
 
     private List<TVShowVM> tvShowVMS;
-
-    private int currentPosition;
 
     public TVShowRightAdapter(List<TVShowVM> tvShowVMS) {
         this.tvShowVMS = tvShowVMS;

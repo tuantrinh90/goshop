@@ -4,7 +4,10 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.ChannelVM;
 import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.widget.adapter.ChannelAdapter;
+import com.goshop.app.widget.listener.OnChannelItemClickListener;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -14,7 +17,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RadioGroup;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -27,12 +29,15 @@ import injection.modules.PresenterModule;
 
 public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presenter> implements
     TVShowPageContract.View, TVShowRightAdapter.OnTVShowRightItemClickListener,
-    TVShowCalendarAdapter.OnCalendarItemClickListener {
+    TVShowCalendarAdapter.OnCalendarItemClickListener, OnChannelItemClickListener {
 
     @BindView(R.id.appbarlayout_tvshow)
     AppBarLayout appBarLayoutTvShow;
 
     boolean isSelectScroll = false;
+
+    @BindView(R.id.recyclerview_tvshow_channel)
+    RecyclerView recyclerViewTvShowChannel;
 
     @BindView(R.id.recyclerview_calendar)
     RecyclerView recyclerviewCalendar;
@@ -43,9 +48,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     @BindView(R.id.recyclerview_right)
     RecyclerView recyclerviewRight;
 
-    @BindView(R.id.rg_channels)
-    RadioGroup rgChannels;
-
     @BindView(R.id.tv_calandar)
     RobotoRegularTextView tvCalandar;
 
@@ -54,6 +56,10 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     private TVShowCalendarAdapter calendarAdapter;
 
     private LinearLayoutManager calendarManager;
+
+    private ChannelAdapter channelAdapter;
+
+    private List<ChannelVM> channelVMS;
 
     //todo this is mock data
     private String currentDay = "15";
@@ -96,10 +102,12 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     @Override
     public void initView() {
         tvShowVMDatas = new ArrayList<>();
+        channelVMS = new ArrayList<>();
         initRecyclerView();
         initPresenter();
         initRecyclerViewListener();
         appBarLayoutListener();
+        initChannelRecyclerView();
     }
 
     private void initRecyclerView() {
@@ -140,7 +148,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
                     int n = leftIndex - firstItemPosition;
                     if (0 <= n && n < recyclerviewLeft.getChildCount()) {
                         int top = recyclerviewLeft.getChildAt(n).getTop();
-                        recyclerviewLeft.scrollBy(0, top);
+                        recyclerviewLeft.smoothScrollBy(0, top);
                     }
 
                 } else {
@@ -178,7 +186,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
                     int n = rightIndex - rightManager.findFirstVisibleItemPosition();
                     if (0 <= n && n < recyclerviewRight.getChildCount()) {
                         int top = recyclerviewRight.getChildAt(n).getTop();
-                        recyclerviewRight.scrollBy(0, top);
+                        recyclerviewRight.smoothScrollBy(0, top);
                     }
                 }
             }
@@ -198,21 +206,32 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             );
     }
 
+    private void initChannelRecyclerView() {
+        LinearLayoutManager channelManager = new LinearLayoutManager(getActivity());
+        channelManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+        recyclerViewTvShowChannel.setLayoutManager(channelManager);
+
+        channelAdapter = new ChannelAdapter(new ArrayList<>());
+        recyclerViewTvShowChannel.setAdapter(channelAdapter);
+        channelAdapter.setOnChannelItemClickListener(this::onChannelItemClick);
+    }
+
     private void moveLeftToPosition(int index) {
         leftIndex = index;
         int firstItem = leftManager.findFirstVisibleItemPosition();
         int lastItem = leftManager.findLastVisibleItemPosition();
         if (index <= firstItem) {
-            recyclerviewLeft.scrollToPosition(index);
+            recyclerviewLeft.smoothScrollToPosition(index);
         } else if (index <= lastItem) {
             int top = recyclerviewLeft.getChildAt(index - firstItem).getTop();
-            recyclerviewLeft.scrollBy(0, top);
+            recyclerviewLeft.smoothScrollBy(0, top);
         } else {
-            recyclerviewLeft.scrollToPosition(index);
+            recyclerviewLeft.smoothScrollToPosition(index);
             move = true;
         }
 
         if (!isSelectScroll) {
+            isSelectScroll = false;
             rightAdapter.updateCurrentVMS(index);
             scollRightToPosition(index);
         } else {
@@ -239,7 +258,8 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     public void setup() {
         //TODO(helen)wait for api
         mPresenter.tvShowRequest(null);
-
+        channelVMS = mPresenter.getChannels();
+        channelAdapter.setUpdateData(channelVMS);
     }
 
     @Override
@@ -276,4 +296,8 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 //        recyclerviewLeft.smoothScrollToPosition(position);
     }
 
+    @Override
+    public void onChannelItemClick(int position) {
+        //todo need decide
+    }
 }
