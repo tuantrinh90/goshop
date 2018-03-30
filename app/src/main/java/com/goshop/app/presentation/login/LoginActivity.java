@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.login;
 
-import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
@@ -12,6 +11,7 @@ import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.widget.adapter.MenuAdapter;
@@ -25,6 +25,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,6 +33,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -79,7 +82,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     private int currentMenu;
 
-    private CallbackManager facebookCallbackManager;
+    //todo need decide
+//    private CallbackManager facebookCallbackManager;
 
     private boolean isLogin = false;
 
@@ -92,8 +96,10 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        facebookCallbackManager = mPresenter.initFaceBook();
-
+        //todo need decide
+//        facebookCallbackManager = mPresenter.initFaceBook();
+        imageViewLeftMenu.setVisibility(View.GONE);
+        hideRightMenu();
         initMenuUtil();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0,
@@ -142,8 +148,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void inject() {
-        imageViewLeftMenu.setVisibility(View.GONE);
-        hideRightMenu();
+
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -180,7 +185,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
+        //todo need decide
+//        facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_login, R.id.tv_login_forgot_password, R.id
@@ -191,6 +197,21 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                 finish();
                 break;
             case R.id.tv_btn_login:
+                if (TextUtils.isEmpty(etLoginEmail.getText()) || !etLoginEmail.isEmail()) {
+                    etLoginEmail
+                        .setErrorMessage(getResources().getString(R.string.format_email_warning));
+                    return;
+                }
+                if (TextUtils.isEmpty(etLoginPassword.getText())) {
+                    etLoginPassword.setErrorMessage(getResources().getString(R.string.empty_error));
+                    return;
+                }
+                Map<String, Object> params = new HashMap<>();
+                params.put("website_id", "");
+                params.put("store_id", "");
+                params.put("email", etLoginEmail.getText());
+                params.put("password", etLoginPassword.getText());
+                mPresenter.loginRequest(params);
                 break;
             case R.id.tv_login_forgot_password:
                 startActivity(new Intent(this, ChangePasswordActivity.class));
@@ -226,5 +247,10 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     public void fbLoginError() {
         Toast.makeText(this, ScreenHelper.getString(R.string.FB_Login_tips_error),
             Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void loginSuccess() {
+        startActivity(new Intent(this, MainPageActivity.class));
     }
 }

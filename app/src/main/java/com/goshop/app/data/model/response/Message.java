@@ -1,6 +1,5 @@
 package com.goshop.app.data.model.response;
 
-
 public class Message {
     /**
      * display_message :

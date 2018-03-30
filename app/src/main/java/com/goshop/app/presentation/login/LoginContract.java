@@ -5,6 +5,8 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.UserInfo;
 
+import java.util.Map;
+
 public interface LoginContract {
 
     interface View extends BaseView {
@@ -17,6 +19,8 @@ public interface LoginContract {
 
         void fbLoginError();
 
+        void loginSuccess();
+
     }
 
     interface Presenter extends BasePresenter<LoginContract.View> {
@@ -26,5 +30,7 @@ public interface LoginContract {
         void thirdLogin(String platform, String accessToken);
 
         CallbackManager initFaceBook();
+
+        void loginRequest(Map<String, Object> params);
     }
 }

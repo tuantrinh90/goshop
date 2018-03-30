@@ -1,11 +1,5 @@
 package com.goshop.app.domian;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import com.goshop.app.Const;
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
@@ -41,14 +35,14 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
-import com.goshop.app.data.model.response.OfferListResponse;
-import com.goshop.app.data.model.response.ProductScrollerResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
@@ -213,8 +207,15 @@ public class AccountDataRepository implements AccountRepository {
             });
     }
 
-    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
-        return accountCloudDataSource.registerRequest(params);
+    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
+        return accountCloudDataSource.registerRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -451,7 +452,19 @@ public class AccountDataRepository implements AccountRepository {
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    @Override
+    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+        return accountCloudDataSource.loginRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     private boolean isSuccess(String status) {
-        return Const.SUCCESS_CODE.equals(status);
+        return Const.SUCCESS_STATUS.equals(status);
     }
 }

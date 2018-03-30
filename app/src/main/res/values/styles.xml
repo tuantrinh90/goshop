@@ -250,8 +250,6 @@
 
     <declare-styleable name="animET">
         <attr name="hint" format="reference"/>
-        <attr name="countable" format="boolean"/>
-        <attr name="count" format="integer"/>
     </declare-styleable>
 
     <declare-styleable name="animSpinner">

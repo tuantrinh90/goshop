@@ -35,12 +35,14 @@ import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 
 import java.util.Map;
@@ -210,7 +212,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<UserInfo> registerRequest(@Url String fullUrl,
+    Observable<RegisterResponse> registerRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -406,4 +408,10 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @GET
     Observable<ProfileResponse> getUserProfile(@Url String fullUrl);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<LoginResponse> loginRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
 }

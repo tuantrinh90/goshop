@@ -37,12 +37,14 @@ import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 
 import java.util.Map;
@@ -166,8 +168,8 @@ public class RetrofitRestApiImpl implements RestApi {
         return retrofitRestApi.getUserInfo(url, getUserRequest);
     }
 
-    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.REGISTER);
+    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.REGISTER_USER);
         return retrofitRestApi.registerRequest(url, params);
     }
 
@@ -416,5 +418,11 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<ProfileResponse> getUserProfile() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_USER_PROFILE);
         return retrofitRestApi.getUserProfile(url);
+    }
+
+    @Override
+    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.LOGIN);
+        return retrofitRestApi.loginRequest(url, params);
     }
 }

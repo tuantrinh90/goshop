@@ -5,9 +5,41 @@ import com.goshop.app.BuildConfig;
 @SuppressWarnings("ALL")
 public class EndpointAddress {
 
+    public static final String LOGIN = "rest/V1/customer/login";
+
+    public static final String LOGIN_WITH_FB = "rest/V1/customer/login-with-fb";
+
+    public static final String RESET_PASSWORD = "rest/V1/customer/reset-password";
+
+    public static final String CHANGE_PASSWORD = "rest/V1/customer/change-password";
+
+    public static final String REGISTER_USER = "rest/V1/customer/register";
+
     public static final String GET_USER_PROFILE = "rest/V1/customer/customer_id";
 
     public static final String EDIT_USER_PROFILE = "rest/V1/customer/customer_id";
+
+    public static final String LIST_CUSTOMER_ADDRESSES =
+        "rest/V1/customer/customer_id/address?website_idstore_id";
+
+    public static final String ADD_CUSTOMER_ADDRESS = "rest/V1/customer/id/address";
+
+    public static final String EDIT_CUSTOMER_ADDRESS = "rest/V1/customer/id/address";
+
+    public static final String GET_GOSHOP_POINTS_DETAIL =
+        "rest/V1/customer/customer_id/goshop-points?website_idstore_id";
+
+    public static final String EGIFTCARD_DETAILS =
+        "rest/V1/customer/customer_id/egiftcard?website_idstore_id";
+
+    public static final String ACTIVATE_EGIFTCARD = "rest/V1/customer/id/egiftcard";
+
+    public static final String GET_WISHLIST_ITEMS =
+        "rest/V1/customer/customer_id/wishlist?website_idstore_id";
+
+    public static final String ADD_WISHLIST = "rest/V1/customer/id/wishlist";
+
+    public static final String REMOVE_WISHLIST = "rest/V1/customer/id/wishlist";
 
     public static final String ADD_ADDRESS = "";
 
@@ -26,9 +58,6 @@ public class EndpointAddress {
     public static final String CATEGORY_LEFT = "";
 
     public static final String CATEGORY_RIGHT = "";
-
-    //todo wait for api
-    public static final String CHANGE_PASSWORD = "";
 
     //todo wait for api
     public static final String CHECKOUT_REQUEST = "";
@@ -99,9 +128,6 @@ public class EndpointAddress {
 
     //todo wait for api
     public static final String REGISTER = "";
-
-    //todo wait for api
-    public static final String RESET_PASSWORD = "";
 
     public static final String REWARDS_DETAIL = "";
 

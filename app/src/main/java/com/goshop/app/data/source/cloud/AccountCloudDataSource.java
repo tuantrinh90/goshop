@@ -21,7 +21,6 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
@@ -36,12 +35,16 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
+import com.goshop.app.data.model.response.RegisterResponse;
+import com.goshop.app.data.model.response.WidgetListResponse;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.utils.ServiceData;
 
@@ -150,7 +153,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
+    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
         return restApi.registerRequest(params);
     }
 
@@ -372,5 +375,11 @@ public class AccountCloudDataSource implements AccountDataSource {
     public Observable<ProfileResponse> getUserProfile() {
         return restApi.getUserProfile();
     }
+
+    @Override
+    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+        return restApi.loginRequest(params);
+    }
+
 
 }

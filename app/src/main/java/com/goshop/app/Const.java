@@ -2,7 +2,7 @@ package com.goshop.app;
 
 public class Const {
 
-    public static final String SUCCESS_CODE = "success";
+    public static final String SUCCESS_STATUS = "success";
 
     public static final String BANNER_IMG1 = "http://d.hiphotos.baidu" +
         ".com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg";

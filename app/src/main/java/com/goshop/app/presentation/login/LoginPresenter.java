@@ -11,23 +11,25 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 
 import android.text.TextUtils;
 
-import javax.inject.Inject;
+import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
 public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract
     .Presenter {
 
+    private final static String TAG_FACEBOOK = "facebook";
+
     AccountRepository accountRepository;
 
     private CallbackManager facebookCallbackManager;
 
-    @Inject
     public LoginPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
@@ -65,7 +67,6 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
     }
 
-    private final static String TAG_FACEBOOK = "facebook";
     //TODO facebook sdk code
     @Override
     public CallbackManager initFaceBook() {
@@ -117,5 +118,28 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
         };
         LoginManager.getInstance().registerCallback(facebookCallbackManager, facebookCallback);
         return facebookCallbackManager;
+    }
+
+    @Override
+    public void loginRequest(Map<String, Object> params) {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.loginRequest(params)
+            .subscribeWith(new DisposableObserver<LoginResponse>() {
+                @Override
+                public void onNext(LoginResponse loginResponse) {
+                    mView.hideLoadingBar();
+                    mView.loginSuccess();
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
 }

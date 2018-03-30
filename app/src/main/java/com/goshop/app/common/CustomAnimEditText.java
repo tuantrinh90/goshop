@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.design.widget.TextInputLayout;
+import android.text.InputType;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
@@ -24,8 +25,6 @@ import butterknife.ButterKnife;
 
 public class CustomAnimEditText extends RelativeLayout {
 
-    private final static int COUNT_DEFAULT = 1000;
-
     private final String INPUT_EMAIL = "Email";
 
     private final String INPUT_MOBILE = "Mobile Number";
@@ -36,12 +35,8 @@ public class CustomAnimEditText extends RelativeLayout {
     @BindView(R.id.iv_anim_del_edittext)
     ImageView ivAnimDelEdittext;
 
-    @BindView(R.id.til_anim_edittext)
-    TextInputLayout tilAnimEdittext;
-
-    private int count;
-
-    private boolean countAble;
+    @BindView(R.id.textinputlayout_anim)
+    TextInputLayout textInputLayoutAnim;
 
     private int hintString;
 
@@ -58,15 +53,20 @@ public class CustomAnimEditText extends RelativeLayout {
         @SuppressLint("CustomViewStyleable") TypedArray typedArray = context
             .obtainStyledAttributes(attrs, R.styleable.animET);
         hintString = typedArray.getResourceId(R.styleable.animET_hint, 0);
-        countAble = typedArray.getBoolean(R.styleable.animET_countable, false);
-        count = typedArray.getInt(R.styleable.animET_count, COUNT_DEFAULT);
         typedArray.recycle();
         hintText = context.getString(hintString);
-        tilAnimEdittext.setHint(hintText);
+        textInputLayoutAnim.setHint(hintText);
         deleteImageShowListener(etAnimEdittext, ivAnimDelEdittext);
-        if (countAble) {
-            tilAnimEdittext.setCounterEnabled(true);
-            tilAnimEdittext.setCounterMaxLength(count);
+        switch (hintText) {
+            case INPUT_EMAIL:
+                etAnimEdittext.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
+                break;
+            case INPUT_MOBILE:
+                etAnimEdittext.setInputType(InputType.TYPE_CLASS_NUMBER);
+                break;
+            default:
+                etAnimEdittext.setInputType(InputType.TYPE_CLASS_TEXT);
+                break;
         }
     }
 
@@ -75,51 +75,34 @@ public class CustomAnimEditText extends RelativeLayout {
             if (hasFocus) {
                 RxTextView.textChanges(targetEditText).subscribe(charSequence -> {
                     if (charSequence.length() > 0) {
-                        tilAnimEdittext.setErrorEnabled(false);
-
-                        if (countAble) {
+                        textInputLayoutAnim.setErrorEnabled(false);
+                        deleteIv.setVisibility(View.VISIBLE);
+                        deleteIv.setOnClickListener(del -> {
+                            targetEditText.setText("");
+                            targetEditText.setFocusable(true);
+                            targetEditText.requestFocus();
                             deleteIv.setVisibility(View.GONE);
-                            if (charSequence.length() > count) {
-                                tilAnimEdittext.setErrorEnabled(true);
-                                tilAnimEdittext.setError(targetEditText.getContext()
-                                    .getString(R.string.exceed_number));
-                                tilAnimEdittext.setHintTextAppearance(R.style.errorAppearance);
-                            } else {
-                                tilAnimEdittext.setErrorEnabled(false);
-                                tilAnimEdittext.setHintTextAppearance(R.style.hintAppearance);
-                            }
-                        } else {
-                            deleteIv.setVisibility(View.VISIBLE);
-                            deleteIv.setOnClickListener(del -> {
-                                targetEditText.setText("");
-                                targetEditText.setFocusable(true);
-                                targetEditText.requestFocus();
-                                deleteIv.setVisibility(View.GONE);
-                            });
-                        }
+                        });
 
                         switch (hintText) {
                             case INPUT_EMAIL:
                                 if (!isEmail(charSequence.toString())) {
-                                    tilAnimEdittext.setErrorEnabled(true);
-                                    tilAnimEdittext.setHintTextAppearance(R.style.errorAppearance);
-                                    tilAnimEdittext.setError(targetEditText.getContext()
+                                    setError(targetEditText.getContext()
                                         .getString(R.string.format_email_warning));
                                 } else {
-                                    tilAnimEdittext.setErrorEnabled(false);
-                                    tilAnimEdittext.setHintTextAppearance(R.style.hintAppearance);
+                                    setNomarl();
                                 }
                                 break;
                             case INPUT_MOBILE:
                                 if (!isMobileNO(charSequence.toString())) {
-                                    tilAnimEdittext.setErrorEnabled(true);
-                                    tilAnimEdittext.setHintTextAppearance(R.style.errorAppearance);
-                                    tilAnimEdittext.setError(targetEditText.getContext()
+                                    setError(targetEditText.getContext()
                                         .getString(R.string.format_mobile_warning));
                                 } else {
-                                    tilAnimEdittext.setErrorEnabled(false);
-                                    tilAnimEdittext.setHintTextAppearance(R.style.hintAppearance);
+                                    setNomarl();
                                 }
+                                break;
+                            default:
+                                setNomarl();
                                 break;
                         }
 
@@ -143,6 +126,17 @@ public class CustomAnimEditText extends RelativeLayout {
         return m.matches();
     }
 
+    public void setError(String errorMessage) {
+        textInputLayoutAnim.setErrorEnabled(true);
+        textInputLayoutAnim.setError(errorMessage);
+        textInputLayoutAnim.setHintTextAppearance(R.style.errorAppearance);
+    }
+
+    public void setNomarl() {
+        textInputLayoutAnim.setErrorEnabled(false);
+        textInputLayoutAnim.setHintTextAppearance(R.style.hintAppearance);
+    }
+
     public static boolean isMobileNO(String mobiles) {
         Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
         Matcher m = p.matcher(mobiles);
@@ -159,6 +153,14 @@ public class CustomAnimEditText extends RelativeLayout {
         initView(context, attrs);
     }
 
+    public boolean isEmail() {
+        return isEmail(etAnimEdittext.getText().toString());
+    }
+
+    public boolean isMobileNo() {
+        return isMobileNO(etAnimEdittext.getText().toString());
+    }
+
     public String getText() {
         return etAnimEdittext.getText().toString();
     }
@@ -168,9 +170,7 @@ public class CustomAnimEditText extends RelativeLayout {
     }
 
     public void setErrorMessage(String errorMessage) {
-        tilAnimEdittext.setErrorEnabled(true);
-        tilAnimEdittext.setError(errorMessage);
-        tilAnimEdittext.setHintTextAppearance(R.style.errorAppearance);
+        setError(errorMessage);
         etAnimEdittext.setFocusable(true);
         etAnimEdittext.requestFocus();
     }
@@ -184,7 +184,7 @@ public class CustomAnimEditText extends RelativeLayout {
     }
 
     public TextInputLayout getTextInputLayout() {
-        return tilAnimEdittext;
+        return textInputLayoutAnim;
     }
 
     public RobotoRegularEditText getEditText() {

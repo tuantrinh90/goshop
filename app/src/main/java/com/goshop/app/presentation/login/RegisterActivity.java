@@ -18,7 +18,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -27,11 +26,12 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -43,22 +43,22 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     PopWindowUtil.OnDatePickerDialogClickListener {
 
     @BindView(R.id.ctd_et_register_confirmation_password)
-    CustomPasswordEditText ctdEtRegisterConfirmationPassword;
+    CustomPasswordEditText etRegisterConfirmationPassword;
 
     @BindView(R.id.ctd_et_register_email)
-    CustomAnimEditText ctdEtRegisterEmail;
+    CustomAnimEditText etRegisterEmail;
 
     @BindView(R.id.ctd_et_register_firstname)
-    CustomAnimEditText ctdEtRegisterFirstname;
+    CustomAnimEditText etRegisterFirstname;
 
     @BindView(R.id.ctd_et_register_lastname)
-    CustomAnimEditText ctdEtRegisterLastname;
+    CustomAnimEditText etRegisterLastname;
 
     @BindView(R.id.ctd_et_register_mobile)
-    CustomAnimEditText ctdEtRegisterMobile;
+    CustomAnimEditText etRegisterMobile;
 
     @BindView(R.id.ctd_et_register_password)
-    CustomPasswordEditText ctdEtRegisterPassword;
+    CustomPasswordEditText etRegisterPassword;
 
     @BindView(R.id.iv_register_email)
     ImageView ivRegisterEmail;
@@ -78,9 +78,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     @BindView(R.id.tv_btn_register_login)
     RobotoRegularTextView tvBtnRegisterLogin;
 
-    @BindView(R.id.tv_gender_warning)
-    RobotoRegularTextView tvGenderWarning;
-
     @BindView(R.id.tv_register_date_of_birth)
     RobotoRegularTextView tvRegisterDateOfBirth;
 
@@ -97,8 +94,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     RobotoRegularTextView tvRegisterTitle;
 
     private String currentPopType = "";
-
-    private String gender = "";
 
     private List<SingleChooseVM> languagesVMS;
 
@@ -124,10 +119,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         ivRegisterSms.setSelected(true);
         ivRegisterEmail.setSelected(true);
         ivSelectFemale.setSelected(true);
-        tvGenderWarning.setVisibility(View.GONE);
         tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
         initPresenter();
-        initEditText();
         toastUtil = new ToastUtil(this, this);
         initRead();
     }
@@ -143,20 +136,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
-    }
-
-    private void initEditText() {
-        ctdEtRegisterFirstname.initInputType(InputType.TYPE_CLASS_TEXT);
-        ctdEtRegisterFirstname.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterLastname.initInputType(InputType.TYPE_CLASS_TEXT);
-        ctdEtRegisterLastname.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterEmail.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        ctdEtRegisterEmail.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterMobile.initInputType(InputType.TYPE_CLASS_NUMBER);
-        ctdEtRegisterMobile.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterPassword.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        ctdEtRegisterConfirmationPassword.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-
     }
 
     //TODO(helen)hard code need decide
@@ -235,18 +214,19 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                 finish();
                 break;
             case R.id.textview_right_menu:
+
                 KeyBoardUtils.hideKeyboard(this);
-                String firstName = ctdEtRegisterFirstname.getText();
-                String lastName = ctdEtRegisterLastname.getText();
-                String email = ctdEtRegisterEmail.getText();
-                String password = ctdEtRegisterPassword.getText();
-                String confirmPassword = ctdEtRegisterConfirmationPassword.getText();
+                String firstName = etRegisterFirstname.getText();
+                String lastName = etRegisterLastname.getText();
+                String email = etRegisterEmail.getText();
+                String password = etRegisterPassword.getText();
+                String confirmPassword = etRegisterConfirmationPassword.getText();
                 String title = tvRegisterTitle.getText().toString();
-                String mobile = ctdEtRegisterMobile.getText();
+                String mobile = etRegisterMobile.getText();
                 String birth = tvRegisterDateOfBirth.getText().toString();
                 String language = tvRegisterLanguage.getText().toString();
                 judgmentRegister(firstName, lastName, email, password, confirmPassword, title,
-                    gender, mobile, birth, language, ivRegisterEmail.isSelected(),
+                    mobile, birth, language, ivRegisterEmail.isSelected(),
                     ivRegisterSms.isSelected());
                 break;
             case R.id.tv_register_title:
@@ -276,7 +256,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             case R.id.ll_select_female:
                 EditTextUtil.eidtLoseFocus(view);
                 ivSelectFemale.setSelected(true);
-                gender = getResources().getString(R.string.female);
                 if (ivSelectMale.isSelected()) {
                     ivSelectMale.setSelected(false);
                 }
@@ -284,7 +263,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             case R.id.ll_select_male:
                 EditTextUtil.eidtLoseFocus(view);
                 ivSelectMale.setSelected(true);
-                gender = getResources().getString(R.string.male);
                 if (ivSelectFemale.isSelected()) {
                     ivSelectFemale.setSelected(false);
                 }
@@ -297,48 +275,43 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     }
 
     private void judgmentRegister(String firstName, String lastName, String email, String password,
-        String confirmPassword, String chooseTitle, String gender, String mobile, String birth,
+        String confirmPassword, String chooseTitle, String mobile, String birth,
         String language, boolean sendEmail, boolean sendSMS) {
         if (TextUtils.isEmpty(firstName)) {
-            ctdEtRegisterFirstname.setErrorMessage(getResources().getString(R.string.empty_error));
+            etRegisterFirstname.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
 
         if (TextUtils.isEmpty(lastName)) {
-            ctdEtRegisterLastname.setErrorMessage(getResources().getString(R.string.empty_error));
+            etRegisterLastname.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
 
-        if (TextUtils.isEmpty(email)) {
-            ctdEtRegisterEmail.setErrorMessage(getResources().getString(R.string.empty_error));
+        if (TextUtils.isEmpty(email) || !etRegisterEmail.isEmail()) {
+            etRegisterEmail
+                .setErrorMessage(getResources().getString(R.string.format_email_warning));
             return;
         }
 
         if (TextUtils.isEmpty(password)) {
-            ctdEtRegisterPassword.setErrorMessage(getResources().getString(R.string.empty_error));
+            etRegisterPassword.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
 
         if (TextUtils.isEmpty(confirmPassword)) {
-            ctdEtRegisterConfirmationPassword
+            etRegisterConfirmationPassword
                 .setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
 
         if (!password.equals(confirmPassword)) {
-            ctdEtRegisterConfirmationPassword
+            etRegisterConfirmationPassword
                 .setErrorMessage(getResources().getString(R.string.confirm_warning));
             return;
         }
-        if (TextUtils.isEmpty(gender)) {
-            tvGenderWarning.setVisibility(View.VISIBLE);
-            return;
-        } else {
-            tvGenderWarning.setVisibility(View.GONE);
-        }
-
-        if (TextUtils.isEmpty(mobile)) {
-            ctdEtRegisterMobile.setErrorMessage(getResources().getString(R.string.empty_error));
+        if (TextUtils.isEmpty(mobile) || !etRegisterMobile.isMobileNo()) {
+            etRegisterMobile
+                .setErrorMessage(getResources().getString(R.string.format_mobile_warning));
             return;
         }
 
@@ -348,8 +321,22 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         } else {
             tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
         }
-        //TODO(helen)wait for api and then put params
-        mPresenter.registerRequest(null);
+        String gender = ivSelectMale.isSelected() ? "1" : "2";
+        Map<String, Object> params = new HashMap<>();
+        params.put("website_id", "");
+        params.put("store_id", "");
+        params.put("name", firstName + lastName);
+        params.put("email", email);
+        params.put("password", password);
+        params.put("title", chooseTitle);
+        params.put("gender", gender);
+        params.put("dob", birth);
+        params.put("mobile_number", mobile);
+        params.put("language", language);
+        params.put("email_subscribe", sendEmail);
+        params.put("sms_subscribe", sendSMS);
+
+        mPresenter.registerRequest(params);
     }
 
     @Override
