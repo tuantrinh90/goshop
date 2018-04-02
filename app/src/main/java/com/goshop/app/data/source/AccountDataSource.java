@@ -22,7 +22,8 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.ResetPasswordResponse;
+import com.goshop.app.data.model.response.ChangePasswordResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -119,7 +120,7 @@ public interface AccountDataSource {
 
     Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
 
-    Observable<PasswordResponse> changePasswordRequest(Map<String, Object> params);
+    Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params);
 
     Observable<ProfileResponse> editProfileRequest(Map<String, Object> params);
 

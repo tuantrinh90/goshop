@@ -4,12 +4,17 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomPasswordEditText;
-import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.utils.KeyBoardUtils;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -28,8 +33,8 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
     @BindView(R.id.cp_et_new)
     CustomPasswordEditText cpEtNew;
 
-    @BindView(R.id.tv_btn_layout_pink)
-    RobotoRegularTextView tvBtnLayout;
+    @BindView(R.id.textview_right_menu)
+    RobotoMediumTextView textviewRightMenu;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -43,6 +48,7 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
 
     @Override
     public void inject() {
+        textviewRightMenu.setText(getResources().getString(R.string.save));
         hideRightMenu();
         initPresenter();
     }
@@ -60,13 +66,13 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
             .inject(this);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_layout_pink})
+    @OnClick({R.id.imageview_left_menu, R.id.textview_right_menu})
     public void onChangeClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
-            case R.id.tv_btn_layout_pink:
+            case R.id.textview_right_menu:
                 judgmentPassword(cpEtCurrent.getText(), cpEtNew.getText(), cpEtConfirm.getText());
                 break;
         }
@@ -88,14 +94,26 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
         }
         if (!newPassword.equals(confirmPassword)) {
             cpEtConfirm.setErrorMessage(getResources().getString(R.string.confirm_error));
-        } else {
-            //todo wait for api
-            mPresenter.changePasswordRequest(null);
+            return;
         }
+        KeyBoardUtils.hideKeyboard(this);
+        Map<String, Object> params = new HashMap<>();
+        params.put("website_id", "");
+        params.put("store_id", "");
+        params.put("customer_id", "");
+        params.put("old_password", currentPassword);
+        params.put("new_password", newPassword);
+        mPresenter.changePasswordRequest(params);
     }
 
     @Override
-    public void changeResult() {
+    public void success() {
         finish();
+    }
+
+    @Override
+    public void failed(String message) {
+        //todo wait for design
+        Log.d("ChangePasswordActivity", message);
     }
 }

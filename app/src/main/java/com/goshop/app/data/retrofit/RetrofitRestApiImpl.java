@@ -24,7 +24,8 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.ResetPasswordResponse;
+import com.goshop.app.data.model.response.ChangePasswordResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -265,7 +266,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<PasswordResponse> changePasswordRequest(Map<String, Object> params) {
+    public Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CHANGE_PASSWORD);
         return retrofitRestApi.changePasswordRequest(url, params);
     }

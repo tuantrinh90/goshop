@@ -9,7 +9,9 @@ public class ChangePasswordContract {
 
     interface View extends BaseView {
 
-        void changeResult();
+        void success();
+
+        void failed(String message);
     }
 
     public interface Presenter extends BasePresenter<View> {

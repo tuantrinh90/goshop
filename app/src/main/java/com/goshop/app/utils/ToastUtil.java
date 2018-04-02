@@ -63,7 +63,7 @@ public class ToastUtil {
         @SuppressLint("InflateParams") View toastView = LayoutInflater.from(context)
             .inflate(R.layout.layout_toast_reset, null);
         toast.setView(toastView);
-        toast.setGravity(Gravity.CENTER, 0, 0);
+        toast.setGravity(Gravity.FILL_HORIZONTAL|Gravity.BOTTOM, 0, 0);
         showToastCustomTime(SHOW_TIME);
     }
 

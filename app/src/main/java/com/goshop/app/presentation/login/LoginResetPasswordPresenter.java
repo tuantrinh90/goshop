@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.login;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.ResetPasswordResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.Map;
@@ -26,15 +26,13 @@ public class LoginResetPasswordPresenter extends RxPresenter<LoginResetPasswordC
                 @Override
                 public void onNext(ResetPasswordResponse resetPasswordResponse) {
                     mView.hideLoadingBar();
-                    //TODO(helen)wait for api
                     mView.resetPwdSuccess();
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen)wait for api
-                    mView.resetPwdSuccess();
+                    mView.resetPwdFailed(throwable.getLocalizedMessage().toString());
                 }
 
                 @Override

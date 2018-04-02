@@ -443,6 +443,7 @@
     <string name="confirm_warning">Password and Password Confirmation should be same!</string>
     <string name="format_email_warning">Please enter a valid email address</string>
     <string name="format_mobile_warning">Please enter a valid mobile number</string>
+    <string name="format_password_warning">Please enter a valid password</string>
     <string name="exceed_number">Exceeded number of words!</string>
     <string name="order_number">Order Number:</string>
     <string name="order_status">Order Status:</string>
