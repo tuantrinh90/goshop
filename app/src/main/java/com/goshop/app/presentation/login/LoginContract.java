@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.login;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
@@ -21,16 +22,20 @@ public interface LoginContract {
 
         void loginSuccess();
 
+        void setFacebookLoginParams(String email, String fbId, String token, String name, String gender);
+
     }
 
     interface Presenter extends BasePresenter<LoginContract.View> {
 
         void getUserLogin(String username, String password);
 
-        void thirdLogin(String platform, String accessToken);
-
         CallbackManager initFaceBook();
 
         void loginRequest(Map<String, Object> params);
+
+        void facebookLoginRequest(Map<String, Object> params);
+
+        void getFacebookAccessToken(AccessToken accessToken);
     }
 }

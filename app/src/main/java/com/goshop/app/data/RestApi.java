@@ -173,4 +173,6 @@ public interface RestApi {
 
     Observable<LoginResponse> loginRequest(Map<String, Object> params);
 
+    Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params);
+
 }

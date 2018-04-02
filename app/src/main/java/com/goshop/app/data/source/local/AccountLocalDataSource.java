@@ -369,4 +369,9 @@ public class AccountLocalDataSource implements AccountDataSource {
     public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
         return null;
     }
+
+    @Override
+    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
+        return null;
+    }
 }

@@ -174,4 +174,6 @@ public interface AccountDataSource {
 
     Observable<LoginResponse> loginRequest(Map<String, Object> params);
 
+    Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params);
+
 }

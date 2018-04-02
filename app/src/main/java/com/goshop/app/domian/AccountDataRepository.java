@@ -478,6 +478,18 @@ public class AccountDataRepository implements AccountRepository {
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    @Override
+    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
+        return accountCloudDataSource.facebookLoginRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     private boolean isSuccess(String status) {
         return Const.SUCCESS_STATUS.equals(status);
     }

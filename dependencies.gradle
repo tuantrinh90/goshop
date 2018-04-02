@@ -30,7 +30,7 @@ ext {
     crashlyticsSdkVersion = '2.7.1'
     systembartintVersion = '1.0.3'
     loggerVersion = '2.1.1'
-    facebookVersion = '4.17.0'
+    facebookVersion = '[4,5)'
 
     appDependencies = [
             slidetoact                    : "com.ncorti:slidetoact:$slidetoactVersion",

@@ -67,7 +67,7 @@ public class LoginResponse extends Response{
 
             private int max_failed_login;
 
-            private int mobile_number;
+            private String mobile_number;
 
             private String name;
 
@@ -109,11 +109,11 @@ public class LoginResponse extends Response{
                 this.email = email;
             }
 
-            public int getMobile_number() {
+            public String getMobile_number() {
                 return mobile_number;
             }
 
-            public void setMobile_number(int mobile_number) {
+            public void setMobile_number(String mobile_number) {
                 this.mobile_number = mobile_number;
             }
 

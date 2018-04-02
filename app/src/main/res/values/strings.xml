@@ -104,6 +104,8 @@
 
 
     <string name="facebook_id">1287318627981888</string>
+    <string name="facebook_app_id">166452604069809</string>
+    <string name="fb_login_protocol_scheme">fb166452604069809</string>
     <!-- Facebook Login -->
     <string name="FB_Login_tips_error">Please check the internet, and try again.</string>
 

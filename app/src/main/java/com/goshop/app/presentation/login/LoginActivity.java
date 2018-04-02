@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.login;
 
+import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
@@ -80,10 +81,10 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @BindView(R.id.tv_register)
     RobotoRegularTextView tvRegister;
 
-    private int currentMenu;
-
     //todo need decide
-//    private CallbackManager facebookCallbackManager;
+    private CallbackManager callbackManager;
+
+    private int currentMenu;
 
     private boolean isLogin = false;
 
@@ -96,8 +97,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //todo need decide
-//        facebookCallbackManager = mPresenter.initFaceBook();
+        callbackManager = mPresenter.initFaceBook();
         imageViewLeftMenu.setVisibility(View.GONE);
         hideRightMenu();
         initMenuUtil();
@@ -122,7 +122,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         }
 
         initMenuRecyclerview();
-        //TODO(helen) wait for api
+
     }
 
     private void initMenuUtil() {
@@ -186,7 +186,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
         //todo need decide
-//        facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_login, R.id.tv_login_forgot_password, R.id
@@ -219,7 +219,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
             case R.id.tv_btn_login_facebook:
                 //facebook sdk code
                 LoginManager.getInstance().logInWithReadPermissions(this, Arrays
-                    .asList("public_profile", "email", "user_friends"));
+                    .asList("public_profile", "user_friends", "email"));
+
                 break;
             case R.id.tv_register:
                 startActivity(new Intent(this, RegisterActivity.class));
@@ -240,7 +241,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void showFaildMessage(String errorMessage) {
-
+        //TODO wait for design
+        Logger.e("LoginActivity:" + errorMessage);
     }
 
     @Override
@@ -252,5 +254,22 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     public void loginSuccess() {
         startActivity(new Intent(this, MainPageActivity.class));
+        finish();
     }
+
+    @Override
+    public void setFacebookLoginParams(String email, String fbId, String token, String name,
+        String gender) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("website_id", "");
+        params.put("store_id", "");
+        params.put("email", email);
+        params.put("fb_id", fbId);
+        params.put("user_access_token", token);
+        params.put("name", name);
+        params.put("gender", gender);
+        mPresenter.facebookLoginRequest(params);
+    }
+
+
 }

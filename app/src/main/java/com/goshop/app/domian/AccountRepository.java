@@ -17,13 +17,10 @@ import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
-import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.response.ChangePasswordResponse;
-import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -33,6 +30,7 @@ import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.response.ChangePasswordResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
@@ -43,6 +41,7 @@ import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.RegisterResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 
 import java.util.Map;
@@ -173,5 +172,8 @@ public interface AccountRepository {
     Observable<ProfileResponse> getUserProfile();
 
     Observable<LoginResponse> loginRequest(Map<String, Object> params);
+
+    Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params);
+
 
 }
