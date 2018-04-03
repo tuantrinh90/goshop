@@ -2,7 +2,9 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.MyWishlistMapper;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
 import com.goshop.app.presentation.model.PdpAdditionalItemVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
@@ -28,7 +30,7 @@ import io.reactivex.observers.DisposableObserver;
 public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.View> implements
     ProductDetailContract.Presenter {
 
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     public ProductDetailPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
@@ -52,6 +54,54 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
                     //todo(helen)wait for api
                     mView.productDetailRequestSuccess(getMockData());
                     mView.productBannerResult(getBanners());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void addWishlistRequest(Map<String, Object> params) {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.addWishlistRequest(params).subscribeWith(
+            new DisposableObserver<MyWishlistResponse>() {
+                @Override
+                public void onNext(MyWishlistResponse myWishlistResponse) {
+                    mView.hideLoadingBar();
+                    mView.addWishlistSuccess();
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.addWishlistFailed(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void removeWishlistRequest(Map<String, Object> params) {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.wishlistDeleteRequest(params).subscribeWith(
+            new DisposableObserver<MyWishlistResponse>() {
+                @Override
+                public void onNext(MyWishlistResponse myWishlistResponse) {
+                    mView.hideLoadingBar();
+                    mView.removeWishlistSuccess();
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.removeWishlistFailed(e.getLocalizedMessage().toString());
                 }
 
                 @Override

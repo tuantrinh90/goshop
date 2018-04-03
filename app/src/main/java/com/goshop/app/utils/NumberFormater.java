@@ -22,6 +22,10 @@ public class NumberFormater {
         return MONEY_SYMBOL + money + MONEY_SUFFIX;
     }
 
+    public static String formaterPrice(String money) {
+        return MONEY_SYMBOL + money;
+    }
+
     public static String formaterMoneyNoRM(String money) {
         return money + MONEY_SUFFIX;
     }

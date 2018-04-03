@@ -16,7 +16,7 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -190,8 +190,39 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params) {
-        return accountCloudDataSource.myWishlistRequest(params);
+    public Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params) {
+        return accountCloudDataSource.wishlistDeleteRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params) {
+        return accountCloudDataSource.addWishlistRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> getWishlistItems() {
+        return accountCloudDataSource.getWishlistItems().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

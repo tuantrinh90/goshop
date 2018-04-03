@@ -17,9 +17,12 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -139,6 +142,28 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     @Override
+    public void addWishlistSuccess() {
+        //todo this is an empty method
+    }
+
+    @Override
+    public void removeWishlistSuccess() {
+        //todo this is an empty method
+    }
+
+    @Override
+    public void addWishlistFailed(String errorMessage) {
+        //todo wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void removeWishlistFailed(String errorMessage) {
+        //todo wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void onBannerClick() {
         startActivity(new Intent(this, PDPDetailImagesActivity.class));
     }
@@ -163,4 +188,16 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         startActivity(new Intent(this, AllQAActivity.class));
     }
 
+    @Override
+    public void onWishlistSelect(boolean isSelect) {
+        Map<String, Object> params = new HashMap<>();
+        params.put("website_id",1);
+        params.put("store_id", 3);
+        params.put("skuid", "ABC");
+        if(isSelect) {
+            mPresenter.addWishlistRequest(params);
+        } else {
+            mPresenter.removeWishlistRequest(params);
+        }
+    }
 }

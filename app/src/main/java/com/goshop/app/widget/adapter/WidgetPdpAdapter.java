@@ -183,6 +183,8 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         void onAskQuestionClick();
 
         void onMoreQuestionClick();
+
+        void onWishlistSelect(boolean isSelect);
     }
 
     class WidgetProductScrollerViewHolder extends RecyclerView.ViewHolder {
@@ -376,7 +378,11 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             ivProductDetailShare.setOnClickListener(v -> {
             });
             ivProductDetailWish.setOnClickListener(
-                v -> ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected()));
+                v -> {
+                    ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected());
+                    onProductDetailItemClickListener
+                        .onWishlistSelect(ivProductDetailWish.isSelected());
+                });
             rlProductDetailColor.setOnClickListener(v -> {
             });
             rlProductDetailSize.setOnClickListener(v -> {

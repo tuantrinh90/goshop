@@ -17,7 +17,7 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -128,7 +128,17 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params) {
+    public Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> getWishlistItems() {
         return null;
     }
 

@@ -16,7 +16,7 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -77,7 +77,11 @@ public interface RestApi {
 
     Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
 
-    Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params);
+    Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params);
+
+    Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params);
+
+    Observable<MyWishlistResponse> getWishlistItems();
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 

@@ -2,6 +2,7 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
+import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 
 import java.util.List;
@@ -13,12 +14,18 @@ public class MyWishlistContract {
 
         void showNodata();
 
-        void showWishlistResult(List<ProductsVM> productsVMS);
+        void showWishlistItems(List<WishlistVM> wishlistVMS);
+
+        void showError(String errorMessage);
+
+        void deleteSuccess(List<WishlistVM> wishlistVMS);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void myWishlistRequest(Map<String, Object> params);
+        void wishlistDeleteRequest(Map<String, Object> params);
+
+        void getWishlistItems();
     }
 
 }

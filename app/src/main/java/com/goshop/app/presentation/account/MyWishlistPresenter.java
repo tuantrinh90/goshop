@@ -1,8 +1,9 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.MyWishlistMapper;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
@@ -23,21 +24,20 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
     }
 
     @Override
-    public void myWishlistRequest(Map<String, Object> params) {
+    public void wishlistDeleteRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.myWishlistRequest(params).subscribeWith(
+        addSubscrebe(accountRepository.wishlistDeleteRequest(params).subscribeWith(
             new DisposableObserver<MyWishlistResponse>() {
                 @Override
                 public void onNext(MyWishlistResponse myWishlistResponse) {
                     mView.hideLoadingBar();
+                    mView.deleteSuccess(MyWishlistMapper.transform(myWishlistResponse));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    //todo wait for api
-//                    mView.showNodata();
-                    mView.showWishlistResult(getMockData());
+                    mView.showError(e.getLocalizedMessage().toString());
                 }
 
                 @Override
@@ -47,23 +47,28 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
             }));
     }
 
-    //todo this is mockdata
-    private List<ProductsVM> getMockData() {
-        ProductsVM productsVM = new ProductsVM();
-        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
-        ProductPriceVM priceVM = new ProductPriceVM(rmvm);
-        productsVM.setImage("");
-        productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
-        productsVM.setPriceVM(priceVM);
-        List<ProductsVM> productsVMS = new ArrayList<>();
-        productsVMS.add(productsVM);
-        productsVMS.add(productsVM);
-        productsVMS.add(productsVM);
-        productsVMS.add(productsVM);
-        productsVMS.add(productsVM);
-        productsVMS.add(productsVM);
-        productsVMS.add(productsVM);
-        productsVMS.add(productsVM);
-        return productsVMS;
+    @Override
+    public void getWishlistItems() {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.getWishlistItems().subscribeWith(
+            new DisposableObserver<MyWishlistResponse>() {
+                @Override
+                public void onNext(MyWishlistResponse myWishlistResponse) {
+                    mView.hideLoadingBar();
+                    mView.showWishlistItems(MyWishlistMapper.transform(myWishlistResponse));
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.showError(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
+
 }
