@@ -5,6 +5,10 @@ import com.goshop.app.BuildConfig;
 @SuppressWarnings("ALL")
 public class EndpointAddress {
 
+    public static final String GET_USER_PROFILE = "rest/V1/customer/customer_id";
+
+    public static final String EDIT_USER_PROFILE = "rest/V1/customer/customer_id";
+
     public static final String ADD_ADDRESS = "";
 
     public static final String EDIT_ADDRESS = "";

@@ -21,7 +21,7 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
@@ -354,6 +354,11 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<ProfileResponse> getUserProfile() {
         return null;
     }
 }

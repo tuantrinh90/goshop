@@ -22,7 +22,6 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
@@ -41,6 +40,7 @@ import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
@@ -270,7 +270,7 @@ public class RetrofitRestApiImpl implements RestApi {
 
     @Override
     public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_PROFILE);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_USER_PROFILE);
         return retrofitRestApi.editProfileRequest(url, params);
     }
 
@@ -410,5 +410,11 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_SKU);
         return retrofitRestApi.promotionSkuRequest(url, params);
+    }
+
+    @Override
+    public Observable<ProfileResponse> getUserProfile() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_USER_PROFILE);
+        return retrofitRestApi.getUserProfile(url);
     }
 }

@@ -1,5 +1,12 @@
 package com.goshop.app.domian;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
+
+import com.goshop.app.Const;
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
@@ -20,7 +27,6 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.ResetPasswordResponse;
@@ -38,6 +44,9 @@ import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.OfferListResponse;
+import com.goshop.app.data.model.response.ProductScrollerResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
@@ -305,7 +314,14 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
-        return accountCloudDataSource.editProfileRequest(params);
+        return accountCloudDataSource.editProfileRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -421,5 +437,21 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
         return accountCloudDataSource.promotionSkuRequest(params);
+    }
+
+    @Override
+    public Observable<ProfileResponse> getUserProfile() {
+        return accountCloudDataSource.getUserProfile().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    private boolean isSuccess(String status) {
+        return Const.SUCCESS_CODE.equals(status);
     }
 }

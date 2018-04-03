@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -15,11 +16,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -74,7 +78,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     private String currentPopType = "";
 
-    private String gender = "";
+    private String gender;
 
     private List<SingleChooseVM> languagesVMS;
 
@@ -86,6 +90,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         languagesVMS = mPresenter.getLanguageChoose();
+        mPresenter.getUserProfile();
         titleVMS = mPresenter.getTitleChooses();
         raceVMS = mPresenter.getRaceChoose();
     }
@@ -139,7 +144,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
                 finish();
                 break;
             case R.id.textview_right_menu:
-                KeyBoardUtils.hideKeyboard(this);
+                EditTextUtil.eidtLoseFocus(textviewRightMenu);
                 String email = etProfileEmail.getText();
                 String firstName = etProfileFirst.getText();
                 String lastName = etProfileLast.getText();
@@ -148,13 +153,13 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
                 String mobile = etProfileMobile.getText();
                 String language = tvProfileLanguage.getText().toString();
                 String race = tvProfileRace.getText().toString();
+                gender = ivSelectMale.isSelected()?"0":"1";
                 judgmentInput(email, firstName, lastName, gender, birth, title, mobile, language,
                     race);
                 break;
             case R.id.ll_select_female:
                 EditTextUtil.eidtLoseFocus(view);
                 ivSelectFemale.setSelected(true);
-                gender = getResources().getString(R.string.female);
                 if (ivSelectMale.isSelected()) {
                     ivSelectMale.setSelected(false);
                 }
@@ -162,7 +167,6 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             case R.id.ll_select_male:
                 EditTextUtil.eidtLoseFocus(view);
                 ivSelectMale.setSelected(true);
-                gender = getResources().getString(R.string.male);
                 if (ivSelectFemale.isSelected()) {
                     ivSelectFemale.setSelected(false);
                 }
@@ -213,7 +217,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             tvGenderWarning.setVisibility(View.VISIBLE);
             return;
         } else {
-            tvGenderWarning.setVisibility(View.VISIBLE);
+            tvGenderWarning.setVisibility(View.GONE);
         }
         if (TextUtils.isEmpty(birth)) {
             tvProfileDateOfBirthWarning.setVisibility(View.VISIBLE);
@@ -225,13 +229,43 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             etProfileMobile.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        //TODO  wait for api
-        mPresenter.editProfileRequest(null);
+        String name = firstName + " " + lastName;
+        Map<String, Object> params = new HashMap<>();
+        params.put("website_id", "");
+        params.put("store_id", "");
+        params.put("name", name);
+        params.put("email", email);
+        params.put("title", title);
+        params.put("gender", gender);
+        params.put("dob", birth);
+        params.put("mobile_number", mobile);
+        params.put("language", language);
+
+        mPresenter.editProfileRequest(params);
     }
 
     @Override
     public void editProfileResult() {
         //TODO  wait for api
+    }
+
+    @Override
+    public void editProfileSuccess() {
+        finish();
+    }
+
+    @Override
+    public void editProfileFailed(String errorMessage) {
+        //todo wait for design
+        Log.d("EditProfileActivity", errorMessage);
+    }
+
+    @Override
+    public void setProfileVM(ProfileVM profileVM) {
+        etProfileEmail.setText(profileVM.getEmail());
+        etProfileFirst.setText(profileVM.getFirstName());
+        tvProfileDateOfBirth.setText(profileVM.getBirth());
+        etProfileMobile.setText(profileVM.getMobile());
     }
 
     @Override
@@ -264,6 +298,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     @Override
     public void onDismiss() {
+        //todo wait for design
     }
 
 }

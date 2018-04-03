@@ -1,8 +1,10 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.ProfileMapper;
+import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
 import java.util.ArrayList;
@@ -28,12 +30,13 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
                 @Override
                 public void onNext(ProfileResponse profileResponse) {
                     mView.hideLoadingBar();
+                    mView.editProfileSuccess();
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.editProfileResult();
+                    mView.editProfileFailed(throwable.getLocalizedMessage().toString());
                 }
 
                 @Override
@@ -71,5 +74,29 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
             singleChooseVMS.add(new SingleChooseVM("Race " + (i + 1)));
         }
         return singleChooseVMS;
+    }
+
+    @Override
+    public void getUserProfile() {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.getUserProfile().subscribeWith(
+            new DisposableObserver<ProfileResponse>() {
+                @Override
+                public void onNext(ProfileResponse profileResponse) {
+                    mView.hideLoadingBar();
+                    mView.setProfileVM(ProfileMapper.transform(profileResponse));
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
 }
