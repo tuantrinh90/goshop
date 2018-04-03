@@ -11,8 +11,8 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
@@ -58,6 +58,8 @@ public interface AccountRepository {
     Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
     Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params);
+
+    Observable<MyEGiftResponse> getEGiftCardDetails();
 
     Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
 
@@ -155,6 +157,8 @@ public interface AccountRepository {
     Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params);
 
     Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params);
+
+    Observable<MyPointsResponse> getGoShopPointsDetails();
 
     Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params);
 

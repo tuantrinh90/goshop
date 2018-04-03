@@ -4,8 +4,6 @@ public class Const {
 
     public static final String SUCCESS_STATUS = "success";
 
-    public static final String SUCCESS_CODE = "success";
-
     public static final String PARAMS_WEBSITE_ID = "website_id";
 
     public static final String PARAMS_STORE_ID = "store_id";

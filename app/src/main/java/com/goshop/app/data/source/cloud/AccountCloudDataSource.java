@@ -14,8 +14,8 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
@@ -82,6 +82,11 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
         return restApi.eGiftCardsRequest(params);
+    }
+
+    @Override
+    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+        return restApi.getEGiftCardDetails();
     }
 
     @Override
@@ -336,6 +341,11 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
         return restApi.myPointsRequest(params);
+    }
+
+    @Override
+    public Observable<MyPointsResponse> getGoShopPointsDetails() {
+        return restApi.getGoShopPointsDetails();
     }
 
     public Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params) {

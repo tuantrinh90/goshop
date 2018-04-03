@@ -11,8 +11,6 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
@@ -36,8 +34,10 @@ import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
@@ -84,6 +84,10 @@ public interface RetrofitRestApi {
     @POST
     Observable<MyEGiftResponse> eGiftCardsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<MyEGiftResponse> getEGiftCardDetails(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -367,6 +371,10 @@ public interface RetrofitRestApi {
     @POST
     Observable<MyPointsResponse> myPointsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<MyPointsResponse> getGoShopPointsDetails(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

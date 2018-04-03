@@ -3,6 +3,7 @@ package com.goshop.app.domian;
 import com.goshop.app.Const;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
+import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -14,8 +15,6 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
@@ -36,8 +35,10 @@ import com.goshop.app.data.model.response.ChangePasswordResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
@@ -123,7 +124,29 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
-        return accountCloudDataSource.eGiftCardsRequest(params);
+        return accountCloudDataSource.eGiftCardsRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .flatMap(response -> {
+                if (response != null && isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                }
+            });
+    }
+
+    @Override
+    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+        return accountCloudDataSource.getEGiftCardDetails().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -440,6 +463,18 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
         return accountCloudDataSource.myPointsRequest(params);
+    }
+
+    @Override
+    public Observable<MyPointsResponse> getGoShopPointsDetails() {
+        return accountCloudDataSource.getGoShopPointsDetails().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

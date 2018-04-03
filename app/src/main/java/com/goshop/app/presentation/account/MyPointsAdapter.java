@@ -113,10 +113,6 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
 
     class PointDetailViewHolder extends RecyclerView.ViewHolder {
 
-        private final String DECLINE = "- ";
-
-        private final String INCREASE = "+ ";
-
         @BindView(R.id.tv_points_counts)
         RobotoRegularTextView tvPointsCounts;
 
@@ -139,15 +135,10 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
 
         @SuppressLint("SetTextI18n")
         void bindingData(PointsDetailVM detailVM) {
-            if (detailVM.isIncrease()) {
-                tvPointsCounts.setText(INCREASE + detailVM.getPoints());
-                tvPointsCounts.setTextColor(
-                    ContextCompat.getColor(itemView.getContext(), R.color.color_main_pink));
-            } else {
-                tvPointsCounts.setText(DECLINE + detailVM.getPoints());
-                tvPointsCounts.setTextColor(
-                    ContextCompat.getColor(itemView.getContext(), R.color.color_grayscale_text));
-            }
+            tvPointsCounts.setText(detailVM.getPoints());
+            tvPointsCounts.setTextColor(
+                ContextCompat.getColor(itemView.getContext(), detailVM
+                    .getType() == 1 ? R.color.color_main_pink : R.color.color_grayscale_text));
             tvPointsDate.setText(detailVM.getDate());
             tvPointsDescription.setText(detailVM.getDescription());
             tvPointsOrderNo.setText(detailVM.getOrderNo());

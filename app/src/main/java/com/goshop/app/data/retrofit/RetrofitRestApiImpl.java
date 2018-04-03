@@ -15,8 +15,8 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
@@ -84,8 +84,14 @@ public class RetrofitRestApiImpl implements RestApi {
 
     @Override
     public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.MY_EGIFT_CARDS);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ACTIVATE_EGIFTCARD);
         return retrofitRestApi.eGiftCardsRequest(url, params);
+    }
+
+    @Override
+    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EGIFTCARD_DETAILS);
+        return retrofitRestApi.getEGiftCardDetails(url);
     }
 
     @Override
@@ -371,6 +377,12 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_POINTS);
         return retrofitRestApi.myPointsRequest(url, params);
+    }
+
+    @Override
+    public Observable<MyPointsResponse> getGoShopPointsDetails() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_GOSHOP_POINTS_DETAIL);
+        return retrofitRestApi.getGoShopPointsDetails(url);
     }
 
     @Override

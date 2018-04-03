@@ -14,6 +14,8 @@ public class PointsDetailVM extends PointsModel {
 
     private String time;
 
+    private int type;
+
     public PointsDetailVM(String points, String date, String description,
         String orderNo, String time, boolean isIncrease) {
         super(PointsModel.VIEW_TYPE_TRANSACTIONS_DETAIL);
@@ -23,7 +25,24 @@ public class PointsDetailVM extends PointsModel {
         this.orderNo = orderNo;
         this.time = time;
         this.isIncrease = isIncrease;
+    }
 
+    public PointsDetailVM(String description, String points, int type, String date,
+        String orderNo) {
+        super(PointsModel.VIEW_TYPE_TRANSACTIONS_DETAIL);
+        this.date = date;
+        this.description = description;
+        this.orderNo = orderNo;
+        this.points = points;
+        this.type = type;
+    }
+
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
     }
 
     public boolean isIncrease() {

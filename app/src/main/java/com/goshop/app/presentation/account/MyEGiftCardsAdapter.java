@@ -7,9 +7,9 @@ import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.MyEGiftCardsDetailsVM;
 import com.goshop.app.presentation.model.MyEGiftModel;
-import com.goshop.app.utils.NumberFormater;
 
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -22,6 +22,8 @@ import butterknife.ButterKnife;
 public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
 
     private List<MyEGiftModel> myEGiftModels;
+
+    private OnActiveCardClickListener onActiveCardClickListener;
 
     public MyEGiftCardsAdapter(
         List<MyEGiftModel> myEGiftModels) {
@@ -79,6 +81,17 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
         return myEGiftModels.size();
     }
 
+    public void setOnActiveCardClickListener(OnActiveCardClickListener onActiveCardClickListener) {
+        this.onActiveCardClickListener = onActiveCardClickListener;
+    }
+
+    interface OnActiveCardClickListener {
+
+        void onActivieClick(String code);
+
+        void onEmptyClick();
+    }
+
     class TopViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.et_egift_cards)
@@ -94,6 +107,12 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
 
         void bindingData() {
             tvBtnActiveNow.setOnClickListener(v -> {
+                String code = etEgiftCards.getText().toString();
+                if (!TextUtils.isEmpty(code)) {
+                    onActiveCardClickListener.onActivieClick(code);
+                } else {
+                    onActiveCardClickListener.onEmptyClick();
+                }
             });
         }
     }
@@ -122,7 +141,7 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
 
         void bindingData(MyEGiftCardsDetailsVM detailsVM) {
             tvEGiftTitle.setText(detailsVM.getTitle());
-            tvEgiftPrice.setText(NumberFormater.formaterMoneyNoRM(detailsVM.getPrice()));
+            tvEgiftPrice.setText(detailsVM.getPrice());
             tvEgiftSender.setText(detailsVM.getSender());
             tvEgiftStatus.setText(detailsVM.getStatus());
             tvEgiftTime.setText(detailsVM.getDate());
