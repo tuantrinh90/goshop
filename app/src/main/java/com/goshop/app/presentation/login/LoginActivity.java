@@ -242,7 +242,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     public void showFaildMessage(String errorMessage) {
         //TODO wait for design
-        Logger.e("LoginActivity:" + errorMessage);
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override

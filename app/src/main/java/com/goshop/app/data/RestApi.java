@@ -1,6 +1,7 @@
 package com.goshop.app.data;
 
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -17,7 +18,6 @@ import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
-import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
@@ -124,6 +124,12 @@ public interface RestApi {
     Observable<ProfileResponse> editProfileRequest(Map<String, Object> params);
 
     Observable<AddressResponse> addAddressRequest(Map<String, Object> params);
+
+    Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest);
+
+    Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest);
+
+    Observable<AddressResponse> getAddressList();
 
     Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
 

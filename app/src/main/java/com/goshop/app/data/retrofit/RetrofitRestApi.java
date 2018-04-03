@@ -1,6 +1,5 @@
 package com.goshop.app.data.retrofit;
 
-import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -29,7 +28,9 @@ import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.request.GetUserRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.ChangePasswordResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
@@ -280,6 +281,20 @@ public interface RetrofitRestApi {
     @POST
     Observable<AddressResponse> addAddressRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<AddressResponse> addAddressRequest(@Url String url,
+        @Body AddressRequest addressRequest);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<AddressResponse> editAddressRequest(@Url String url,
+        @Body AddressRequest addressRequest);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<AddressResponse> getAddressList(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

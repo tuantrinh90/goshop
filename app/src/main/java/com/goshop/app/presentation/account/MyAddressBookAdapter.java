@@ -108,15 +108,16 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
             tvAddressBookCountry.setText(addressVM.getCountry());
             tvAddressBookState.setText(addressVM.getState());
             tvAddressBookTel.setText(addressVM.getTel());
-            ivAddressBookSelector.setSelected(addressVM.isDefault());
+            ivAddressBookSelector.setSelected(addressVM.isShippingDefault());
             llAddressBookSelector.setOnClickListener(
                 v -> ivAddressBookSelector.setSelected(!ivAddressBookSelector.isSelected()));
 
             llAddressBookEdit
                 .setOnClickListener(v -> addressBookClickListener.editAddress(addressVM));
 
-            llAddressBookRemove
-                .setOnClickListener(v -> addressBookClickListener.removeAddress(addressVM));
+            //todo need decide by api
+            /*llAddressBookRemove
+                .setOnClickListener(v -> addressBookClickListener.removeAddress(addressVM));*/
         }
     }
 }

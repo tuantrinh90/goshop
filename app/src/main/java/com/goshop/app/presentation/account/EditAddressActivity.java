@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.PopWindowUtil;
@@ -18,6 +19,7 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -164,7 +166,18 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                 finish();
                 break;
             case R.id.textview_right_menu:
-                //todo wait for api
+                String firstName = etEditAddressFirst.getText();
+                String lastName = etEditAddressLast.getText();
+                String addressOne = etEditAddressOne.getText();
+                String addressTwo = etEditAddressTwo.getText();
+                String country = tvEditAddressCountry.getText().toString();
+                String state = tvEditAddressState.getText().toString();
+                String city = tvEditAddressCity.getText().toString();
+                String zip = etEditAddressZip.getText();
+                String phone = etEditAddressPhone.getText();
+                judgmentInput(firstName, lastName, addressOne, addressTwo, country, state, city,
+                    zip, phone, ivEditAddressEmail.isSelected(), ivEditAddressSms.isSelected());
+
                 break;
             case R.id.ll_edit_address_email:
                 ivEditAddressEmail.setSelected(!ivEditAddressEmail.isSelected());
@@ -190,6 +203,73 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                         this);
                 break;
         }
+    }
+
+    private void judgmentInput(String firstName, String lastName, String addressOne,
+        String addressTwo, String country, String state, String city, String zip, String phone,
+        boolean firstChecked, boolean secondChecked) {
+        if (TextUtils.isEmpty(firstName)) {
+            etEditAddressFirst.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+        if (TextUtils.isEmpty(lastName)) {
+            etEditAddressLast.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+        if (TextUtils.isEmpty(addressOne)) {
+            etEditAddressOne.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+        if (TextUtils.isEmpty(addressTwo)) {
+            etEditAddressTwo.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+        if (TextUtils.isEmpty(country)) {
+            tvEditAddressCountryWarning.setVisibility(View.VISIBLE);
+            return;
+        } else {
+            tvEditAddressCountryWarning.setVisibility(View.GONE);
+        }
+        if (TextUtils.isEmpty(state)) {
+            tvEditAddressStateWarning.setVisibility(View.VISIBLE);
+            return;
+        } else {
+            tvEditAddressCountryWarning.setVisibility(View.GONE);
+        }
+        if (TextUtils.isEmpty(city)) {
+            tvEditAddressCityWarning.setVisibility(View.VISIBLE);
+            return;
+        } else {
+            tvEditAddressCityWarning.setVisibility(View.GONE);
+        }
+        if (TextUtils.isEmpty(zip)) {
+            etEditAddressZip.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+        if (TextUtils.isEmpty(phone)) {
+            etEditAddressPhone.setErrorMessage(getResources().getString(R.string.empty_error));
+            return;
+        }
+
+        AddressRequest request = new AddressRequest();
+        AddressRequest.RequestData requestData = new AddressRequest.RequestData();
+        requestData.setWebsite_id(1);
+        requestData.setStore_id(3);
+        AddressRequest.RequestData.AddressData addressData = new AddressRequest.RequestData
+            .AddressData();
+        addressData.setName(firstName);
+        addressData.setAddress1(addressOne);
+        addressData.setAddress2(addressTwo);
+        addressData.setCountry(country);
+        //todo need decide by api
+        addressData.setState(123);
+        addressData.setCity(123);
+        addressData.setZipcode(Integer.parseInt(zip));
+        addressData.setPhone_number(phone);
+        addressData.setDefault_shipping_address(firstChecked);
+        requestData.setAddress(addressData);
+        request.setRequest(requestData);
+        mPresenter.editAddressRequest(request);
     }
 
     @Override
@@ -221,5 +301,16 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     @Override
     public void showEditAddressResult() {
         //todo wait for api
+    }
+
+    @Override
+    public void editAddressSuccess() {
+        finish();
+    }
+
+    @Override
+    public void editAddressFailed(String errorMessage) {
+        //todo need decide
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 }

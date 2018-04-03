@@ -25,6 +25,7 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -193,7 +194,9 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @Override
     public void showFaildMessage(String errorMessage) {
-        //TODO(helen)when register failed
+        //TODO wait for design
+        Log.d("RegisterActivity", errorMessage);
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @OnClick({R.id.tv_btn_register_login, R.id.imageview_left_menu, R.id

@@ -2,7 +2,8 @@ package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -280,6 +281,24 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<AddressResponse> addAddressRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_ADDRESS);
         return retrofitRestApi.addAddressRequest(url, params);
+    }
+
+    @Override
+    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_CUSTOMER_ADDRESS);
+        return retrofitRestApi.addAddressRequest(url, addressRequest);
+    }
+
+    @Override
+    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_CUSTOMER_ADDRESS);
+        return retrofitRestApi.editAddressRequest(url, addressRequest);
+    }
+
+    @Override
+    public Observable<AddressResponse> getAddressList() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.LIST_CUSTOMER_ADDRESSES);
+        return retrofitRestApi.getAddressList(url);
     }
 
     @Override

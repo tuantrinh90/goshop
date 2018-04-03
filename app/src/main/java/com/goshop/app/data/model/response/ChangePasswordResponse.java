@@ -3,20 +3,16 @@ package com.goshop.app.data.model.response;
 public class ChangePasswordResponse extends Response {
 
     /**
-     * data : {}
+     * data :
      */
 
-    private Datas data;
+    private String data;
 
-    public Datas getData() {
+    public String getData() {
         return data;
     }
 
-    public void setData(Datas data) {
+    public void setData(String data) {
         this.data = data;
-    }
-
-    public static class Datas {
-
     }
 }

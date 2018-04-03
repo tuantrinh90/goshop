@@ -1,7 +1,8 @@
 package com.goshop.app.domian;
 
 import com.goshop.app.Const;
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -209,6 +210,7 @@ public class AccountDataRepository implements AccountRepository {
 
     public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
         return accountCloudDataSource.registerRequest(params).concatMap(response -> {
+
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -345,6 +347,30 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+        return accountCloudDataSource.addAddressRequest(addressRequest).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+        return accountCloudDataSource.editAddressRequest(addressRequest).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
     public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.editAddressRequest(params);
     }
@@ -352,6 +378,18 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.addAddressRequest(params);
+    }
+
+    @Override
+    public Observable<AddressResponse> getAddressList() {
+        return accountCloudDataSource.getAddressList().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
