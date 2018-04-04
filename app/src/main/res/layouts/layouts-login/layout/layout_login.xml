@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:padding="@dimen/size_16"
+        android:paddingTop="@dimen/size_16"
         android:layout_centerHorizontal="true"
         android:layout_alignParentBottom="true">
 
@@ -36,6 +36,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
+            android:paddingBottom="@dimen/size_16"
             android:text="@string/login_bottom_describe"
             android:textColor="@color/color_black_light"
         />
@@ -43,6 +44,7 @@
             android:id="@+id/tv_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/size_16"
             android:text="@string/login_register"
             android:textColor="@color/color_main_pink"
             android:textSize="@dimen/size_font_14"/>
@@ -174,6 +176,21 @@
                     android:textColor="@android:color/white"
                     android:background="@drawable/ic_icon_blue_btn"
                 />
+                //todo do not delete please,this maybe use later
+               <!-- <com.facebook.login.widget.LoginButton
+                    android:id="@+id/login_button"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_54"
+                    android:textSize="@dimen/size_16"
+                    android:paddingTop="@dimen/size_14"
+                    android:paddingBottom="@dimen/size_15"
+                    android:paddingLeft="@dimen/size_16"
+                    android:paddingRight="@dimen/size_16"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginLeft="@dimen/size_16"
+                    android:layout_marginRight="@dimen/size_16"
+                    android:layout_marginBottom="@dimen/size_32"
+                    android:background="@drawable/ic_icon_blue_btn"/>-->
             </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>

@@ -135,7 +135,7 @@
     <string name="register_have_account">Already have an account?</string>
     <string name="login">Login</string>
     <string name="complement_email">Complement Email</string>
-    <string name="complement_email_tips">Your email cannot be retrieved from your email address.
+    <string name="complement_email_tips">Your email cannot be retrieved from your Facebook account.
         In order to complete the registration, please provide your email address below:
     </string>
     <string name="submit">Submit</string>
@@ -151,7 +151,8 @@
     <string name="buy_now">Buy Now</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="details">Details</string>
-    <string name="details_top_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </string>
+    <string name="details_top_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </string>
     <string name="by_user_time">By User Name on 1/2/18</string>
     <string name="details_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam
         velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit
@@ -288,7 +289,8 @@
     <string name="terms_conditions">Terms &#38; Conditions</string>
     <string name="office_address_">Office Address:</string>
     <string name="contact_us_address_content">Astro GS Shop Sdn Bhd (1081077-X) \nAstro All Asia
-        Broadcast Centre, \nTechnology Park Malaysia, \nLebuhraya Puchong-Sungai Besi, \nBukit Jalil,
+        Broadcast Centre, \nTechnology Park Malaysia, \nLebuhraya Puchong-Sungai Besi, \nBukit
+        Jalil,
         57000 \nKuala Lumpur, Malaysia.
     </string>
 

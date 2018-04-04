@@ -2,6 +2,7 @@ package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
+import com.facebook.login.widget.LoginButton;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
@@ -27,6 +28,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -80,8 +82,10 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @BindView(R.id.tv_register)
     RobotoRegularTextView tvRegister;
+    //todo do not delete please,this maybe use later
+   /* @BindView(R.id.login_button)
+    LoginButton loginButton;*/
 
-    //todo need decide
     private CallbackManager callbackManager;
 
     private int currentMenu;
@@ -148,12 +152,13 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void inject() {
-
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        //todo do not delete please,this maybe use later
+        /*loginButton.setReadPermissions(Arrays.asList("public_profile", "email"));*/
     }
 
     @Override
@@ -214,7 +219,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                 mPresenter.loginRequest(params);
                 break;
             case R.id.tv_login_forgot_password:
-                startActivity(new Intent(this, ChangePasswordActivity.class));
+                startActivity(new Intent(this, LoginResetPasswordActivity.class));
                 break;
             case R.id.tv_btn_login_facebook:
                 //facebook sdk code
@@ -268,7 +273,15 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         params.put("user_access_token", token);
         params.put("name", name);
         params.put("gender", gender);
-        mPresenter.facebookLoginRequest(params);
+        Log.d("LoginPresenter", "email" + email);
+        Log.d("LoginPresenter", "fb_id" + fbId);
+        Log.d("LoginPresenter", "user_access_token" + token);
+        Log.d("LoginPresenter", "name" + name);
+        Log.d("LoginPresenter", "gender" + gender);
+        Intent intent = new Intent(this, LoginComplementEmailActivity.class);
+        startActivity(intent);
+        //todo need decide
+//        mPresenter.facebookLoginRequest(params);
     }
 
 

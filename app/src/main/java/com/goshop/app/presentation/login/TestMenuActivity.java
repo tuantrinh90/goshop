@@ -109,14 +109,11 @@ public class TestMenuActivity extends BaseActivity implements MenuAdapter
         menuAdapter.updateLoginState(isLogin);
     }
 
-    @OnClick({R.id.btn_test_complement_email, R.id.btn_test_send_reset_pwd})
+    @OnClick({R.id.btn_test_complement_email})
     public void onMenuClick(View view) {
         switch (view.getId()) {
             case R.id.btn_test_complement_email:
                 startActivity(new Intent(this, LoginComplementEmailActivity.class));
-                break;
-            case R.id.btn_test_send_reset_pwd:
-                startActivity(new Intent(this, LoginResetPasswordActivity.class));
                 break;
         }
     }
