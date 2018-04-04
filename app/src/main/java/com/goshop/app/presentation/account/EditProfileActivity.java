@@ -20,6 +20,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.HashMap;
 import java.util.List;
@@ -105,20 +106,9 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         textviewRightMenu.setText(getResources().getString(R.string.done));
         ivSelectFemale.setSelected(true);
         hideRightMenu();
-        initEditText();
         initPresenter();
     }
 
-    private void initEditText() {
-        etProfileFirst.initInputType(InputType.TYPE_CLASS_TEXT);
-        etProfileFirst.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etProfileLast.initInputType(InputType.TYPE_CLASS_TEXT);
-        etProfileLast.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etProfileEmail.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        etProfileEmail.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etProfileMobile.initInputType(InputType.TYPE_CLASS_NUMBER);
-        etProfileMobile.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-    }
 
     private void initPresenter() {
         DaggerPresenterComponent.builder()
@@ -201,8 +191,8 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     private void judgmentInput(String email, String firstName, String lastName, String gender,
         String birth, String title, String mobile, String language, String race) {
-        if (TextUtils.isEmpty(email)) {
-            etProfileEmail.setErrorMessage(getResources().getString(R.string.empty_error));
+        if (TextUtils.isEmpty(email) || !etProfileEmail.isEmail()) {
+            etProfileEmail.setErrorMessage(getResources().getString(R.string.format_email_warning));
             return;
         }
         if (TextUtils.isEmpty(firstName)) {
@@ -225,8 +215,8 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         } else {
             tvProfileDateOfBirthWarning.setVisibility(View.INVISIBLE);
         }
-        if (TextUtils.isEmpty(mobile)) {
-            etProfileMobile.setErrorMessage(getResources().getString(R.string.empty_error));
+        if (TextUtils.isEmpty(mobile) || !etProfileMobile.isMobileNo()) {
+            etProfileMobile.setErrorMessage(getResources().getString(R.string.format_mobile_warning));
             return;
         }
         String name = firstName + " " + lastName;
@@ -258,6 +248,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     public void editProfileFailed(String errorMessage) {
         //todo wait for design
         Log.d("EditProfileActivity", errorMessage);
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override

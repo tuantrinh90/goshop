@@ -111,24 +111,8 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
         textviewRightMenu.setText(getResources().getString(R.string.done));
         ivEditAddressSms.setSelected(true);
         ivEditAddressEmail.setSelected(true);
-        initEditType();
         setUp();
         initPresenter();
-    }
-
-    private void initEditType() {
-        etEditAddressFirst.initInputType(InputType.TYPE_CLASS_TEXT);
-        etEditAddressFirst.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etEditAddressLast.initInputType(InputType.TYPE_CLASS_TEXT);
-        etEditAddressLast.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etEditAddressOne.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        etEditAddressOne.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etEditAddressTwo.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        etEditAddressTwo.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etEditAddressPhone.initInputType(InputType.TYPE_CLASS_NUMBER);
-        etEditAddressPhone.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etEditAddressZip.initInputType(InputType.TYPE_CLASS_NUMBER);
-        etEditAddressZip.initImeOptions(EditorInfo.IME_ACTION_NEXT);
     }
 
     private void setUp() {

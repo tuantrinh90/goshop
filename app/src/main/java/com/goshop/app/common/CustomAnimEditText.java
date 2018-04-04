@@ -182,10 +182,6 @@ public class CustomAnimEditText extends RelativeLayout {
         etAnimEdittext.requestFocus();
     }
 
-    public void initInputType(int inputType) {
-        etAnimEdittext.setInputType(inputType);
-    }
-
     public void initImeOptions(int imeAction) {
         etAnimEdittext.onEditorAction(imeAction);
     }
