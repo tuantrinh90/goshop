@@ -47,25 +47,4 @@ public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implem
             }));
     }
 
-    //todo  this is mock data
-    private List<PointsModel> getMockData() {
-        List<PointsModel> pointsModels = new ArrayList<>();
-        pointsModels.add(new PointsTotalVM("1000"));
-        pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_TITLE));
-        pointsModels.add(new PointsDetailVM("1000", "17/03/2018", "Comment description",
-            "Order No. 12334455666", "16/01/2018, 06:52 am", true));
-        pointsModels.add(new PointsDetailVM("1000", "17/03/2018", "Comment description",
-            "Order No. 12334455666", "16/01/2018, 06:52 am", true));
-        pointsModels.add(new PointsDetailVM("100", "17/03/2018", "Comment description",
-            "Order No. 12334455666", "16/01/2018, 06:52 am", false));
-        return pointsModels;
-    }
-
-    //todo this is nodata data
-    private List<PointsModel> showNoData() {
-        List<PointsModel> pointsModels = new ArrayList<>();
-        pointsModels.add(new PointsTotalVM("1000"));
-        pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_NODATA));
-        return pointsModels;
-    }
 }

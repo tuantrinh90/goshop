@@ -9,20 +9,48 @@ import java.util.List;
 
 public class MyWishlistMapper {
 
+    private static final String ATTR_BEST = "Best Selling";
+
+    private static final String ATTR_NEW = "New";
+
     public static List<WishlistVM> transform(MyWishlistResponse response) {
         List<WishlistVM> wishlistVMS = new ArrayList<>();
-        List<MyWishlistResponse.Datas.WishlistData> wishlistDatas = response.getData()
-            .getWishlist();
-        WishlistVM wishlistVM;
-        for (MyWishlistResponse.Datas.WishlistData wishlistData : wishlistDatas) {
-            wishlistVM = new WishlistVM();
-            wishlistVM.setTitle(wishlistData.getProduct_name());
-            wishlistVM.setAttr("");
-            wishlistVM.setOldPrice(NumberFormater.formaterPrice(wishlistData.getOriginal_price()));
-            wishlistVM
-                .setNowPrice(NumberFormater.formaterPrice(wishlistData.getDiscounted_price()));
-            wishlistVM.setSku(wishlistData.getSku());
-            wishlistVMS.add(wishlistVM);
+        List<MyWishlistResponse.Datas.ProductData> productDatas = response.getData().getProduct();
+        if (productDatas.size() > 0) {
+            WishlistVM wishlistVM;
+            for (MyWishlistResponse.Datas.ProductData wishlistData : productDatas) {
+                wishlistVM = new WishlistVM();
+                wishlistVM.setTitle(wishlistData.getName());
+                wishlistVM.setAttr("");
+                wishlistVM.setOldPrice(
+                    NumberFormater.formaterMoney(wishlistData.getPrice().getRM().getOriginal()));
+                wishlistVM
+                    .setNowPrice(NumberFormater
+                        .formaterMoney(wishlistData.getPrice().getRM().getDiscounted()));
+                wishlistVM.setPercent(wishlistData.getPrice().getRM().getDiscount_title());
+                wishlistVM.setSku(wishlistData.getSku());
+                wishlistVM.setLink(wishlistData.getLink());
+                wishlistVM.setThumb(wishlistData.getImage());
+                List<String> attributes = wishlistData.getAttributes();
+                if (attributes.size() > 0) {
+                    for (String attr : attributes) {
+                        if (attr.equals(ATTR_NEW)) {
+                            wishlistVM.setNew(true);
+                            break;
+                        }
+                    }
+
+                    for (String attr : attributes) {
+                        if (attr.equals(ATTR_BEST)) {
+                            wishlistVM.setBest(true);
+                            break;
+                        }
+                    }
+                }
+                wishlistVMS.add(wishlistVM);
+            }
+        } else {
+            //todo
         }
         return wishlistVMS;
     }

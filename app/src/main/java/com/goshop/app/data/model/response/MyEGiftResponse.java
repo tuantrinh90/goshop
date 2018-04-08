@@ -5,8 +5,8 @@ import java.util.List;
 public class MyEGiftResponse extends Response {
 
     /**
-     * data : {"eGiftCard":[{"code":"ABCDE","balance":"RM 120.00","status":"Active",
-     * "sentby":"User","expire":"2018-02-01"},{"code":"ABCDE","balance":"RM 120.00",
+     * data : {"egift_card":[{"code":"ABCDE","balance":"120.00","status":"Active",
+     * "sentby":"User","expire":"2018-02-01"},{"code":"ABCDE","balance":"120.00",
      * "status":"Active","sentby":"User","expire":"2018-02-01"}]}
      */
 
@@ -22,23 +22,23 @@ public class MyEGiftResponse extends Response {
 
     public static class Datas {
 
-        private List<EGiftCardData> eGiftCard;
+        private List<EgiftCardData> egift_card;
 
-        public List<EGiftCardData> getEGiftCard() {
-            return eGiftCard;
+        public List<EgiftCardData> getEgift_card() {
+            return egift_card;
         }
 
-        public void setEGiftCard(List<EGiftCardData> eGiftCard) {
-            this.eGiftCard = eGiftCard;
+        public void setEgift_card(List<EgiftCardData> egift_card) {
+            this.egift_card = egift_card;
         }
 
-        public static class EGiftCardData {
+        public static class EgiftCardData {
 
             private String balance;
 
             /**
              * code : ABCDE
-             * balance : RM 120.00
+             * balance : 120.00
              * status : Active
              * sentby : User
              * expire : 2018-02-01

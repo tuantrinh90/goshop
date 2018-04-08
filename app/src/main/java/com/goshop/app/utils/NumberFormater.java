@@ -34,7 +34,7 @@ public class NumberFormater {
         return TEL_HEADER + tel;
     }
 
-    public static String formaterPointOrderNo(int orderNo) {
+    public static String formaterPointOrderNo(String orderNo) {
         return ORDER_NO + orderNo;
     }
 

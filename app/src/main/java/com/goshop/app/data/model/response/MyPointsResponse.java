@@ -5,10 +5,10 @@ import java.util.List;
 public class MyPointsResponse extends Response {
 
     /**
-     * data : {"goShopPoints":[{"detail":"","points":120,"type":1,"validUntil":"12 Jan 2018",
-     * "orderNo":1234},{"detail":"","points":120,"type":1,"validUntil":"12 Jan 2018",
-     * "orderNo":1234}]}
-     * message : {"display_message":"","status":"success"}
+     * data : {"goshop_points":{"total":"1000","transactions":[{"detail":"Earned GoShop Points",
+     * "points":"120","type":1,"valid_until":"2018-01-31","order_number":"1234",
+     * "date":"2018-04-05T00:42:09Z"},{"detail":"Utilized GoShop Points","points":"120","type":0,
+     * "valid_until":"2018-01-15","order_number":"3456","date":"2018-04-05T00:42:09Z"}]}}
      */
 
     private Datas data;
@@ -23,76 +23,125 @@ public class MyPointsResponse extends Response {
 
     public static class Datas {
 
-        private List<GoShopPointsData> goShopPoints;
+        /**
+         * goshop_points : {"total":"1000","transactions":[{"detail":"Earned GoShop Points",
+         * "points":"120","type":1,"valid_until":"2018-01-31","order_number":"1234",
+         * "date":"2018-04-05T00:42:09Z"},{"detail":"Utilized GoShop Points","points":"120",
+         * "type":0,"valid_until":"2018-01-15","order_number":"3456",
+         * "date":"2018-04-05T00:42:09Z"}]}
+         */
 
-        public List<GoShopPointsData> getGoShopPoints() {
-            return goShopPoints;
+        private GoshopPointsData goshop_points;
+
+        public GoshopPointsData getGoshop_points() {
+            return goshop_points;
         }
 
-        public void setGoShopPoints(List<GoShopPointsData> goShopPoints) {
-            this.goShopPoints = goShopPoints;
+        public void setGoshop_points(GoshopPointsData goshop_points) {
+            this.goshop_points = goshop_points;
         }
 
-        public static class GoShopPointsData {
+        public static class GoshopPointsData {
 
             /**
-             * detail :
-             * points : 120
-             * type : 1
-             * validUntil : 12 Jan 2018
-             * orderNo : 1234
+             * total : 1000
+             * transactions : [{"detail":"Earned GoShop Points","points":"120","type":1,
+             * "valid_until":"2018-01-31","order_number":"1234","date":"2018-04-05T00:42:09Z"},
+             * {"detail":"Utilized GoShop Points","points":"120","type":0,
+             * "valid_until":"2018-01-15","order_number":"3456","date":"2018-04-05T00:42:09Z"}]
              */
 
-            private String detail;
+            private String total;
 
-            private int orderNo;
+            private List<TransactionsData> transactions;
 
-            private int points;
-
-            private int type;
-
-            private String validUntil;
-
-            public String getDetail() {
-                return detail;
+            public String getTotal() {
+                return total;
             }
 
-            public void setDetail(String detail) {
-                this.detail = detail;
+            public void setTotal(String total) {
+                this.total = total;
             }
 
-            public int getPoints() {
-                return points;
+            public List<TransactionsData> getTransactions() {
+                return transactions;
             }
 
-            public void setPoints(int points) {
-                this.points = points;
+            public void setTransactions(List<TransactionsData> transactions) {
+                this.transactions = transactions;
             }
 
-            public int getType() {
-                return type;
-            }
+            public static class TransactionsData {
 
-            public void setType(int type) {
-                this.type = type;
-            }
+                private String date;
 
-            public String getValidUntil() {
-                return validUntil;
-            }
+                /**
+                 * detail : Earned GoShop Points
+                 * points : 120
+                 * type : 1
+                 * valid_until : 2018-01-31
+                 * order_number : 1234
+                 * date : 2018-04-05T00:42:09Z
+                 */
 
-            public void setValidUntil(String validUntil) {
-                this.validUntil = validUntil;
-            }
+                private String detail;
 
-            public int getOrderNo() {
-                return orderNo;
-            }
+                private String order_number;
 
-            public void setOrderNo(int orderNo) {
-                this.orderNo = orderNo;
+                private String points;
+
+                private int type;
+
+                private String valid_until;
+
+                public String getDetail() {
+                    return detail;
+                }
+
+                public void setDetail(String detail) {
+                    this.detail = detail;
+                }
+
+                public String getPoints() {
+                    return points;
+                }
+
+                public void setPoints(String points) {
+                    this.points = points;
+                }
+
+                public int getType() {
+                    return type;
+                }
+
+                public void setType(int type) {
+                    this.type = type;
+                }
+
+                public String getValid_until() {
+                    return valid_until;
+                }
+
+                public void setValid_until(String valid_until) {
+                    this.valid_until = valid_until;
+                }
+
+                public String getOrder_number() {
+                    return order_number;
+                }
+
+                public void setOrder_number(String order_number) {
+                    this.order_number = order_number;
+                }
+
+                public String getDate() {
+                    return date;
+                }
+
+                public void setDate(String date) {
+                    this.date = date;
+                }
             }
         }
     }
-
 }

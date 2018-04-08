@@ -12,26 +12,33 @@ import java.util.List;
 public class GoShopPointsMapper {
 
     public static List<PointsModel> transform(MyPointsResponse response) {
+
         List<PointsModel> pointsModels = new ArrayList<>();
-        List<MyPointsResponse.Datas.GoShopPointsData> goShopPointsDatas = response.getData()
-            .getGoShopPoints();
+        pointsModels.add(new PointsTotalVM(response.getData().getGoshop_points().getTotal()));
+
+        List<MyPointsResponse.Datas.GoshopPointsData.TransactionsData> transactions = response
+            .getData().getGoshop_points().getTransactions();
         List<PointsDetailVM> detailVMS = new ArrayList<>();
-        PointsDetailVM detailVM;
-        int total = 0;
-        for (MyPointsResponse.Datas.GoShopPointsData goShopPointsData : goShopPointsDatas) {
-            detailVM = new PointsDetailVM(goShopPointsData.getDetail(),
-                NumberFormater
-                    .formaterPoints(goShopPointsData.getPoints(), goShopPointsData.getType()),
-                goShopPointsData.getType(),
-                goShopPointsData.getValidUntil(),
-                NumberFormater.formaterPointOrderNo(goShopPointsData.getOrderNo()));
-            detailVMS.add(detailVM);
-            total = goShopPointsData.getType() == 1 ? total + goShopPointsData
-                .getPoints() : total - goShopPointsData.getPoints();
+
+        if (transactions.size() > 0) {
+            pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_TITLE));
+            PointsDetailVM detailVM;
+            for (MyPointsResponse.Datas.GoshopPointsData.TransactionsData transactionsData :
+                transactions) {
+                detailVM = new PointsDetailVM(transactionsData.getDetail(),
+                    NumberFormater
+                        .formaterPoints(Integer.parseInt(transactionsData.getPoints()),
+                            transactionsData.getType()),
+                    transactionsData.getType(),
+                    transactionsData.getValid_until(),
+                    NumberFormater.formaterPointOrderNo(transactionsData.getOrder_number()),
+                    transactionsData.getDate());
+                detailVMS.add(detailVM);
+            }
+            pointsModels.addAll(detailVMS);
+        } else {
+            pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_NODATA));
         }
-        pointsModels.add(new PointsTotalVM(String.valueOf(total)));
-        pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_TITLE));
-        pointsModels.addAll(detailVMS);
         return pointsModels;
     }
 

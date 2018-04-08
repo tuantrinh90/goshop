@@ -8,6 +8,8 @@ public class MyEGiftModel {
 
     public static final int VIEW_TYPE_TOP = 0x03;
 
+    public static final int VIEW_TYPE_NO_DATA = 0x04;
+
     private int viewType;
 
     public MyEGiftModel(int viewType) {

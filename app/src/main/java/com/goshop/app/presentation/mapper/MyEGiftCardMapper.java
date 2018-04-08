@@ -16,19 +16,24 @@ public class MyEGiftCardMapper {
     public static List<MyEGiftModel> transform(MyEGiftResponse response) {
         List<MyEGiftModel> myEGiftModels = new ArrayList<>();
         myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_TOP));
-        myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_CENTER));
-        List<MyEGiftResponse.Datas.EGiftCardData> eGiftCardDatas = response.getData()
-            .getEGiftCard();
-        List<MyEGiftCardsDetailsVM> detailsVMS = new ArrayList<>();
-        for (MyEGiftResponse.Datas.EGiftCardData eGiftCardData : eGiftCardDatas) {
-            detailsVMS.add(
-                new MyEGiftCardsDetailsVM(eGiftCardData.getCode(),
-                    SENT_BY + eGiftCardData.getSentby(),
-                    EXPIRE_TILL + eGiftCardData.getExpire(),
-                    eGiftCardData.getBalance(),
-                    eGiftCardData.getStatus()));
+        List<MyEGiftResponse.Datas.EgiftCardData> eGiftCardDatas = response.getData()
+            .getEgift_card();
+        if (eGiftCardDatas.size() > 0) {
+            myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_CENTER));
+
+            List<MyEGiftCardsDetailsVM> detailsVMS = new ArrayList<>();
+            for (MyEGiftResponse.Datas.EgiftCardData eGiftCardData : eGiftCardDatas) {
+                detailsVMS.add(
+                    new MyEGiftCardsDetailsVM(eGiftCardData.getCode(),
+                        SENT_BY + eGiftCardData.getSentby(),
+                        EXPIRE_TILL + eGiftCardData.getExpire(),
+                        eGiftCardData.getBalance(),
+                        eGiftCardData.getStatus()));
+            }
+            myEGiftModels.addAll(detailsVMS);
+        } else {
+            myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_NO_DATA));
         }
-        myEGiftModels.addAll(detailsVMS);
         return myEGiftModels;
     }
 

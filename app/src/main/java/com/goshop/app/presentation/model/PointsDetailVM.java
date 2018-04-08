@@ -28,13 +28,14 @@ public class PointsDetailVM extends PointsModel {
     }
 
     public PointsDetailVM(String description, String points, int type, String date,
-        String orderNo) {
+        String orderNo, String time) {
         super(PointsModel.VIEW_TYPE_TRANSACTIONS_DETAIL);
         this.date = date;
         this.description = description;
         this.orderNo = orderNo;
         this.points = points;
         this.type = type;
+        this.time = time;
     }
 
     public int getType() {

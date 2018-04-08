@@ -105,9 +105,9 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
     @Override
     public void onActivieClick(String code) {
         Map<String, Object> params = new HashMap<>();
-        params.put("websiteId", "");
-        params.put("storeId", "");
-        params.put("egiftCard", code);
+        params.put("website_id", 1);
+        params.put("store_id", 3);
+        params.put("egift_card", code);
         mPresenter.eGiftCardsRequest(params);
     }
 

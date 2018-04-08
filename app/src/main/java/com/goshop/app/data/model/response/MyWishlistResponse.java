@@ -5,9 +5,12 @@ import java.util.List;
 public class MyWishlistResponse extends Response {
 
     /**
-     * data : {"wishlist":[{"sku":1234,"product_name":"Primada Cooker","original_price":"200.00",
-     * "discounted_price":"100.00"},{"sku":4567,"product_name":"Shogun Fan",
-     * "original_price":"200.00","discounted_price":"100.00"}]}
+     * data : {"product":[{"sku":"1234","name":"Primada Cooker","link":"/prd/123",
+     * "image":"http://image.goshop.com.my/prd/1234/60.jpg","price":{"RM":{"original":"200",
+     * "discounted":"149","discount_title":"25% OFF"}},"attributes":["New","Best Selling"],
+     * "product_name":"Shogun Fan"},{"sku":"4567","product_name":"Shogun Fan","link":"/prd/123",
+     * "image":"http://image.goshop.com.my/prd/1234/60.jpg","price":{"RM":{"original":"200",
+     * "discounted":"149","discount_title":"25% OFF"}},"attributes":["New","Best Selling"]}]}
      */
 
     private Datas data;
@@ -22,39 +25,80 @@ public class MyWishlistResponse extends Response {
 
     public static class Datas {
 
-        private List<WishlistData> wishlist;
+        private List<ProductData> product;
 
-        public List<WishlistData> getWishlist() {
-            return wishlist;
+        public List<ProductData> getProduct() {
+            return product;
         }
 
-        public void setWishlist(List<WishlistData> wishlist) {
-            this.wishlist = wishlist;
+        public void setProduct(List<ProductData> product) {
+            this.product = product;
         }
 
-        public static class WishlistData {
+        public static class ProductData {
 
-            private String discounted_price;
+            private List<String> attributes;
 
-            private String original_price;
+            private String image;
+
+            private String link;
+
+            private String name;
+
+            private PriceData price;
 
             private String product_name;
 
             /**
              * sku : 1234
-             * product_name : Primada Cooker
-             * original_price : 200.00
-             * discounted_price : 100.00
+             * name : Primada Cooker
+             * link : /prd/123
+             * image : http://image.goshop.com.my/prd/1234/60.jpg
+             * price : {"RM":{"original":"200","discounted":"149","discount_title":"25% OFF"}}
+             * attributes : ["New","Best Selling"]
+             * product_name : Shogun Fan
              */
 
-            private int sku;
+            private String sku;
 
-            public int getSku() {
+            public String getSku() {
                 return sku;
             }
 
-            public void setSku(int sku) {
+            public void setSku(String sku) {
                 this.sku = sku;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+
+            public String getLink() {
+                return link;
+            }
+
+            public void setLink(String link) {
+                this.link = link;
+            }
+
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
+
+            public PriceData getPrice() {
+                return price;
+            }
+
+            public void setPrice(PriceData price) {
+                this.price = price;
             }
 
             public String getProduct_name() {
@@ -65,20 +109,68 @@ public class MyWishlistResponse extends Response {
                 this.product_name = product_name;
             }
 
-            public String getOriginal_price() {
-                return original_price;
+            public List<String> getAttributes() {
+                return attributes;
             }
 
-            public void setOriginal_price(String original_price) {
-                this.original_price = original_price;
+            public void setAttributes(List<String> attributes) {
+                this.attributes = attributes;
             }
 
-            public String getDiscounted_price() {
-                return discounted_price;
-            }
+            public static class PriceData {
 
-            public void setDiscounted_price(String discounted_price) {
-                this.discounted_price = discounted_price;
+                /**
+                 * RM : {"original":"200","discounted":"149","discount_title":"25% OFF"}
+                 */
+
+                private RMData RM;
+
+                public RMData getRM() {
+                    return RM;
+                }
+
+                public void setRM(RMData RM) {
+                    this.RM = RM;
+                }
+
+                public static class RMData {
+
+                    private String discount_title;
+
+                    private String discounted;
+
+                    /**
+                     * original : 200
+                     * discounted : 149
+                     * discount_title : 25% OFF
+                     */
+
+                    private String original;
+
+                    public String getOriginal() {
+                        return original;
+                    }
+
+                    public void setOriginal(String original) {
+                        this.original = original;
+                    }
+
+                    public String getDiscounted() {
+                        return discounted;
+                    }
+
+                    public void setDiscounted(String discounted) {
+                        this.discounted = discounted;
+                    }
+
+                    public String getDiscount_title() {
+                        return discount_title;
+                    }
+
+                    public void setDiscount_title(String discount_title) {
+                        this.discount_title = discount_title;
+                    }
+                }
             }
         }
     }

@@ -4,11 +4,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <ImageView
-        android:background="@color/color_divider_grey"
-        android:layout_centerInParent="true"
-        android:contentDescription="@string/app_name"
-        android:layout_width="@dimen/size_69"
-        android:layout_height="@dimen/size_80"/>
+    <com.goshop.app.common.view.RobotoRegularTextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="@dimen/size_font_20"
+        android:textColor="@color/color_grayscale_text"
+        android:text="@string/no_data"
+        android:gravity="center"/>
 
 </RelativeLayout>

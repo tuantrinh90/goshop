@@ -220,7 +220,7 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
         Map<String, Object> params = new HashMap<>();
         params.put("website_id", 1);
         params.put("store_id", 3);
-        params.put("skuid", wishlistVM.getSku());
+        params.put("sku", wishlistVM.getSku());
         mPresenter.wishlistDeleteRequest(params);
     }
 }

@@ -57,6 +57,12 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
                 viewHolder = new DetailViewHolder(detailView);
                 break;
 
+            case MyEGiftModel.VIEW_TYPE_NO_DATA:
+                View nodataView = LayoutInflater.from(parent.getContext())
+                    .inflate(R.layout.item_points_transactions_nodata, parent, false);
+                viewHolder = new NodataViewHolder(nodataView);
+                break;
+
         }
         return viewHolder;
     }
@@ -90,6 +96,13 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
         void onActivieClick(String code);
 
         void onEmptyClick();
+    }
+
+    class NodataViewHolder extends RecyclerView.ViewHolder {
+
+        public NodataViewHolder(View itemView) {
+            super(itemView);
+        }
     }
 
     class TopViewHolder extends RecyclerView.ViewHolder {
