@@ -297,8 +297,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             rightAdapter.updateCurrentVMS(index);
             scollRightToPosition(index);
             calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(index).getDay());
-        } else {
-            isSelectScroll = false;
         }
     }
 
