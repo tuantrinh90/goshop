@@ -3,10 +3,8 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.WishlistVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
 
 import java.util.List;
-import java.util.Map;
 
 public class MyWishlistContract {
 
@@ -23,7 +21,7 @@ public class MyWishlistContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void wishlistDeleteRequest(Map<String, Object> params);
+        void wishlistDeleteRequest(int websiteId, int storeId, String sku);
 
         void getWishlistItems();
     }

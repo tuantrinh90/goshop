@@ -20,9 +20,7 @@ import android.view.View;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -190,14 +188,12 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void onWishlistSelect(boolean isSelect) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("website_id",1);
-        params.put("store_id", 3);
-        params.put("skuid", "ABC");
-        if(isSelect) {
-            mPresenter.addWishlistRequest(params);
+
+        //todo hard code is waiting for api data
+        if (isSelect) {
+            mPresenter.addWishlistRequest( "abc");
         } else {
-            mPresenter.removeWishlistRequest(params);
+            mPresenter.removeWishlistRequest("abc");
         }
     }
 }

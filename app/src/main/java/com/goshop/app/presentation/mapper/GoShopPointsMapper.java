@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.data.model.response.MyPointsResponse;
+import com.goshop.app.data.model.response.common.TransactionsData;
 import com.goshop.app.presentation.model.PointsDetailVM;
 import com.goshop.app.presentation.model.PointsModel;
 import com.goshop.app.presentation.model.PointsTotalVM;
@@ -16,14 +17,14 @@ public class GoShopPointsMapper {
         List<PointsModel> pointsModels = new ArrayList<>();
         pointsModels.add(new PointsTotalVM(response.getData().getGoshop_points().getTotal()));
 
-        List<MyPointsResponse.Datas.GoshopPointsData.TransactionsData> transactions = response
+        List<TransactionsData> transactions = response
             .getData().getGoshop_points().getTransactions();
         List<PointsDetailVM> detailVMS = new ArrayList<>();
 
         if (transactions.size() > 0) {
             pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_TITLE));
             PointsDetailVM detailVM;
-            for (MyPointsResponse.Datas.GoshopPointsData.TransactionsData transactionsData :
+            for (TransactionsData transactionsData :
                 transactions) {
                 detailVM = new PointsDetailVM(transactionsData.getDetail(),
                     NumberFormater

@@ -1,15 +1,12 @@
 package com.goshop.app.presentation.account;
 
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.MyWishlistMapper;
-import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
-import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -24,8 +21,12 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
     }
 
     @Override
-    public void wishlistDeleteRequest(Map<String, Object> params) {
+    public void wishlistDeleteRequest(int websiteId, int storeId, String sku) {
         mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, websiteId);
+        params.put(Const.PARAMS_STORE_ID, storeId);
+        params.put(Const.PARAMS_SKU, sku);
         addSubscrebe(accountRepository.wishlistDeleteRequest(params).subscribeWith(
             new DisposableObserver<MyWishlistResponse>() {
                 @Override

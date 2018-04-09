@@ -23,7 +23,7 @@ public class MyEGiftCardContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void eGiftCardsRequest(Map<String, Object> params);
+        void eGiftCardsRequest(String uniqueCode);
 
         void getEGiftCardDetails();
     }

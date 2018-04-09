@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.data.model.response.MyWishlistResponse;
+import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.utils.NumberFormater;
 
@@ -15,10 +16,10 @@ public class MyWishlistMapper {
 
     public static List<WishlistVM> transform(MyWishlistResponse response) {
         List<WishlistVM> wishlistVMS = new ArrayList<>();
-        List<MyWishlistResponse.Datas.ProductData> productDatas = response.getData().getProduct();
+        List<ProductData> productDatas = response.getData().getProduct();
         if (productDatas.size() > 0) {
             WishlistVM wishlistVM;
-            for (MyWishlistResponse.Datas.ProductData wishlistData : productDatas) {
+            for (ProductData wishlistData : productDatas) {
                 wishlistVM = new WishlistVM();
                 wishlistVM.setTitle(wishlistData.getName());
                 wishlistVM.setAttr("");
@@ -27,7 +28,7 @@ public class MyWishlistMapper {
                 wishlistVM
                     .setNowPrice(NumberFormater
                         .formaterMoney(wishlistData.getPrice().getRM().getDiscounted()));
-                wishlistVM.setPercent(wishlistData.getPrice().getRM().getDiscount_title());
+                wishlistVM.setPercent(wishlistData.getPrice().getRM().getDiscountTitle());
                 wishlistVM.setSku(wishlistData.getSku());
                 wishlistVM.setLink(wishlistData.getLink());
                 wishlistVM.setThumb(wishlistData.getImage());

@@ -28,9 +28,9 @@ public class ProductDetailContract {
 
         void productDetailRequest(Map<String, Object> params);
 
-        void addWishlistRequest(Map<String, Object> params);
+        void addWishlistRequest(String skuId);
 
-        void removeWishlistRequest(Map<String, Object> params);
+        void removeWishlistRequest(String skuId);
     }
 
 }

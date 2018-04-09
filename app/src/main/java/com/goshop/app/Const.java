@@ -38,6 +38,23 @@ public class Const {
 
     public static final String PARAMS_NEW_PASSWORD = "new_password";
 
+    public static final String PARAMS_WEBSITE_ID = "website_id";
+
+    public static final String PARAMS_STORE_ID = "store_id";
+
+    public static final String PARAMS_SKU_ID = "sku_id";
+
+    public static final String PARAMS_SKUID = "skuid";
+
+    public static final String PARAMS_EGIFT_CARD = "egift_card";
+
+    public static final String PARAMS_SKU = "sku";
+
+    public static final int WEBSITE_ID = 1;
+
+    public static final int STORE_ID = 3;
+
+
     public static final String BANNER_IMG1 = "http://d.hiphotos.baidu" +
         ".com/image/pic/item/a044ad345982b2b713b5ad7d3aadcbef76099b65.jpg";
 

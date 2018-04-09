@@ -25,9 +25,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -217,10 +215,6 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
 
     @Override
     public void onWishlistDelete(WishlistVM wishlistVM) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("website_id", 1);
-        params.put("store_id", 3);
-        params.put("sku", wishlistVM.getSku());
-        mPresenter.wishlistDeleteRequest(params);
+        mPresenter.wishlistDeleteRequest(1, 3, wishlistVM.getSku());
     }
 }

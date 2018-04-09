@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.data.model.response.MyEGiftResponse;
+import com.goshop.app.data.model.response.common.EgiftCardData;
 import com.goshop.app.presentation.model.MyEGiftCardsDetailsVM;
 import com.goshop.app.presentation.model.MyEGiftModel;
 
@@ -16,13 +17,13 @@ public class MyEGiftCardMapper {
     public static List<MyEGiftModel> transform(MyEGiftResponse response) {
         List<MyEGiftModel> myEGiftModels = new ArrayList<>();
         myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_TOP));
-        List<MyEGiftResponse.Datas.EgiftCardData> eGiftCardDatas = response.getData()
+        List<EgiftCardData> eGiftCardDatas = response.getData()
             .getEgift_card();
         if (eGiftCardDatas.size() > 0) {
             myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_CENTER));
 
             List<MyEGiftCardsDetailsVM> detailsVMS = new ArrayList<>();
-            for (MyEGiftResponse.Datas.EgiftCardData eGiftCardData : eGiftCardDatas) {
+            for (EgiftCardData eGiftCardData : eGiftCardDatas) {
                 detailsVMS.add(
                     new MyEGiftCardsDetailsVM(eGiftCardData.getCode(),
                         SENT_BY + eGiftCardData.getSentby(),
