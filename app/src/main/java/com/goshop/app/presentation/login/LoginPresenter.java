@@ -5,29 +5,35 @@ import com.facebook.CallbackManager;
 import com.facebook.FacebookAuthorizationException;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
+import com.facebook.GraphRequest;
+import com.facebook.GraphResponse;
 import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 
+import org.json.JSONObject;
+
 import android.text.TextUtils;
 
-import javax.inject.Inject;
+import java.util.HashMap;
+import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
 public class LoginPresenter extends RxPresenter<LoginContract.View> implements LoginContract
     .Presenter {
 
-    AccountRepository accountRepository;
+    private AccountRepository accountRepository;
 
     private CallbackManager facebookCallbackManager;
 
-    @Inject
     public LoginPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
     }
@@ -61,16 +67,8 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
     }
 
     @Override
-    public void thirdLogin(String platform, String accessToken) {
-
-    }
-
-    private final static String TAG_FACEBOOK = "facebook";
-    //TODO facebook sdk code
-    @Override
     public CallbackManager initFaceBook() {
         facebookCallbackManager = CallbackManager.Factory.create();
-
         FacebookCallback<LoginResult> facebookCallback = new FacebookCallback<LoginResult>() {
             private ProfileTracker mProfileTracker;
 
@@ -86,14 +84,14 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                                 return;
                             }
                             if (loginResult.getAccessToken() != null) {
-                                thirdLogin(TAG_FACEBOOK, loginResult.getAccessToken().getToken());
+                                getFacebookAccessToken(loginResult.getAccessToken());
                             }
                             mProfileTracker.stopTracking();
                         }
                     };
                     mProfileTracker.startTracking();
                 } else {
-                    thirdLogin(TAG_FACEBOOK, loginResult.getAccessToken().getToken());
+                    getFacebookAccessToken(loginResult.getAccessToken());
                 }
             }
 
@@ -117,5 +115,83 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
         };
         LoginManager.getInstance().registerCallback(facebookCallbackManager, facebookCallback);
         return facebookCallbackManager;
+    }
+
+    @Override
+    public void loginRequest(String email, String password) {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_EMAIL, email);
+        params.put(Const.PARAMS_PASSWORD, password);
+        addSubscrebe(accountRepository.loginRequest(params)
+            .subscribeWith(new DisposableObserver<LoginResponse>() {
+                @Override
+                public void onNext(LoginResponse loginResponse) {
+                    mView.hideLoadingBar();
+                    mView.loginSuccess();
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.showFaildMessage(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void facebookLoginRequest(String email, String fbId, String token, String name,
+        String gender) {
+        mView.showLoadingBar();
+
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_EMAIL, email);
+        params.put(Const.PARAMS_FB_ID, fbId);
+        params.put(Const.PARAMS_USER_ACCESS_TOKEN, token);
+        params.put(Const.PARAMS_NAME, name);
+        params.put(Const.PARAMS_GENDER, gender);
+        addSubscrebe(accountRepository.facebookLoginRequest(params).subscribeWith(
+            new DisposableObserver<LoginResponse>() {
+                @Override
+                public void onNext(LoginResponse loginResponse) {
+                    mView.hideLoadingBar();
+                    mView.loginSuccess();
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.showFaildMessage(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void getFacebookAccessToken(AccessToken accessToken) {
+        GraphRequest request = GraphRequest
+            .newMeRequest(accessToken, (JSONObject object, GraphResponse response) -> {
+                if (object != null) {
+                    String id = object.optString("id");
+                    String name = object.optString("name");
+                    String gender = object.optString("gender");
+                    String emali = object.optString("email");
+                    mView.setFacebookLoginParams(emali, id, accessToken.getToken(), name, gender);
+                }
+            });
+        request.executeAsync();
     }
 }

@@ -1,6 +1,7 @@
 package com.goshop.app.data.source;
 
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -12,18 +13,17 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
-import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.ResetPasswordResponse;
+import com.goshop.app.data.model.response.ChangePasswordResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -35,11 +35,14 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 
 import java.util.Map;
@@ -55,6 +58,8 @@ public interface AccountDataSource {
     Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
     Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params);
+
+    Observable<MyEGiftResponse> getEGiftCardDetails();
 
     Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
 
@@ -72,7 +77,11 @@ public interface AccountDataSource {
 
     Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
 
-    Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params);
+    Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params);
+
+    Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params);
+
+    Observable<MyWishlistResponse> getWishlistItems();
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
@@ -84,7 +93,7 @@ public interface AccountDataSource {
 
     Observable<GetWeatherResponse> getWeather();
 
-    Observable<UserInfo> registerRequest(Map<String, Object> params);
+    Observable<RegisterResponse> registerRequest(Map<String, Object> params);
 
     Observable<HomeResponse> homeRequest(Map<String, Object> params);
 
@@ -117,11 +126,17 @@ public interface AccountDataSource {
 
     Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
 
-    Observable<PasswordResponse> changePasswordRequest(Map<String, Object> params);
+    Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params);
 
     Observable<ProfileResponse> editProfileRequest(Map<String, Object> params);
 
     Observable<AddressResponse> addAddressRequest(Map<String, Object> params);
+
+    Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest);
+
+    Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest);
+
+    Observable<AddressResponse> getAddressList();
 
     Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
 
@@ -147,6 +162,8 @@ public interface AccountDataSource {
 
     Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params);
 
+    Observable<MyPointsResponse> getGoShopPointsDetails();
+
     Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params);
 
     Observable<AddressResponse> selectAddressRequest(Map<String, Object> params);
@@ -166,5 +183,11 @@ public interface AccountDataSource {
     Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
 
     Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params);
+
+    Observable<ProfileResponse> getUserProfile();
+
+    Observable<LoginResponse> loginRequest(Map<String, Object> params);
+
+    Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params);
 
 }

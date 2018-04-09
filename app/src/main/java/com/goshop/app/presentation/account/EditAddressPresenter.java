@@ -1,10 +1,12 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -44,17 +46,56 @@ public class EditAddressPresenter extends RxPresenter<EditAddressContract.View> 
     }
 
     @Override
+    public void editAddressRequest(AddressRequest addressRequest) {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.editAddressRequest(addressRequest).subscribeWith(
+            new DisposableObserver<AddressResponse>() {
+                @Override
+                public void onNext(AddressResponse addressResponse) {
+                    mView.hideLoadingBar();
+                    mView.editAddressSuccess();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    mView.editAddressFailed(throwable.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
     public List<SingleChooseVM> getCountryChooses() {
-        return null;
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("Country " + (i + 1)));
+        }
+        return singleChooseVMS;
     }
 
     @Override
     public List<SingleChooseVM> getStateChooses() {
-        return null;
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("State " + (i + 1)));
+        }
+        return singleChooseVMS;
     }
 
     @Override
     public List<SingleChooseVM> getCityChooses() {
-        return null;
+        //todo this is mock data
+        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        for (int i = 0; i < 5; i++) {
+            singleChooseVMS.add(new SingleChooseVM("City " + (i + 1)));
+        }
+        return singleChooseVMS;
     }
 }

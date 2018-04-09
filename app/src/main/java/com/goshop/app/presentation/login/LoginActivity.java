@@ -2,6 +2,7 @@ package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
+import com.facebook.login.widget.LoginButton;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
@@ -12,6 +13,7 @@ import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.widget.adapter.MenuAdapter;
@@ -25,6 +27,8 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -32,6 +36,8 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -76,10 +82,13 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @BindView(R.id.tv_register)
     RobotoRegularTextView tvRegister;
+    //todo do not delete please,this maybe use later
+   /* @BindView(R.id.login_button)
+    LoginButton loginButton;*/
+
+    private CallbackManager callbackManager;
 
     private int currentMenu;
-
-    private CallbackManager facebookCallbackManager;
 
     private boolean isLogin = false;
 
@@ -92,8 +101,9 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        facebookCallbackManager = mPresenter.initFaceBook();
-
+        callbackManager = mPresenter.initFaceBook();
+        imageViewLeftMenu.setVisibility(View.GONE);
+        hideRightMenu();
         initMenuUtil();
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
             this, drawerLayout, toolbar, 0,
@@ -116,7 +126,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         }
 
         initMenuRecyclerview();
-        //TODO(helen) wait for api
+
     }
 
     private void initMenuUtil() {
@@ -142,13 +152,13 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void inject() {
-        imageViewLeftMenu.setVisibility(View.GONE);
-        hideRightMenu();
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        //todo do not delete please,this maybe use later
+        /*loginButton.setReadPermissions(Arrays.asList("public_profile", "email"));*/
     }
 
     @Override
@@ -180,7 +190,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        facebookCallbackManager.onActivityResult(requestCode, resultCode, data);
+        //todo need decide
+        callbackManager.onActivityResult(requestCode, resultCode, data);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_login, R.id.tv_login_forgot_password, R.id
@@ -191,14 +202,26 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                 finish();
                 break;
             case R.id.tv_btn_login:
+                if (TextUtils.isEmpty(etLoginEmail.getText()) || !etLoginEmail.isEmail()) {
+                    etLoginEmail
+                        .setErrorMessage(getResources().getString(R.string.format_email_warning));
+                    return;
+                }
+                if (TextUtils.isEmpty(etLoginPassword.getText())) {
+                    etLoginPassword.setErrorMessage(getResources().getString(R.string.empty_error));
+                    return;
+                }
+
+                mPresenter.loginRequest(etLoginEmail.getText(), etLoginPassword.getText());
                 break;
             case R.id.tv_login_forgot_password:
-                startActivity(new Intent(this, ChangePasswordActivity.class));
+                startActivity(new Intent(this, LoginResetPasswordActivity.class));
                 break;
             case R.id.tv_btn_login_facebook:
                 //facebook sdk code
                 LoginManager.getInstance().logInWithReadPermissions(this, Arrays
-                    .asList("public_profile", "email", "user_friends"));
+                    .asList("public_profile", "user_friends", "email"));
+
                 break;
             case R.id.tv_register:
                 startActivity(new Intent(this, RegisterActivity.class));
@@ -219,7 +242,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     @Override
     public void showFaildMessage(String errorMessage) {
-
+        //TODO wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -227,4 +251,22 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
         Toast.makeText(this, ScreenHelper.getString(R.string.FB_Login_tips_error),
             Toast.LENGTH_SHORT).show();
     }
+
+    @Override
+    public void loginSuccess() {
+        startActivity(new Intent(this, MainPageActivity.class));
+        finish();
+    }
+
+    @Override
+    public void setFacebookLoginParams(String email, String fbId, String token, String name,
+        String gender) {
+
+        Intent intent = new Intent(this, LoginComplementEmailActivity.class);
+        startActivity(intent);
+        //todo need decide
+//        mPresenter.facebookLoginRequest(email, fbId, token, name, gender);
+    }
+
+
 }

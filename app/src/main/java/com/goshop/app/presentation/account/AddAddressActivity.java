@@ -6,17 +6,19 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.request.common.AddressData;
+import com.goshop.app.data.model.request.common.RequestData;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.Toast;
 
 import java.util.List;
 
@@ -105,23 +107,7 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
         textviewRightMenu.setText(getResources().getString(R.string.done));
         ivAddAddressEmail.setSelected(true);
         ivAddAddressSms.setSelected(true);
-        initEditType();
         initPresenter();
-    }
-
-    private void initEditType() {
-        etAddAddressFirst.initInputType(InputType.TYPE_CLASS_TEXT);
-        etAddAddressFirst.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etAddAddressLast.initInputType(InputType.TYPE_CLASS_TEXT);
-        etAddAddressLast.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etAddAddressOne.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        etAddAddressOne.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etAddAddressTwo.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        etAddAddressTwo.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etAddAddressPhone.initInputType(InputType.TYPE_CLASS_NUMBER);
-        etAddAddressPhone.initImeOptions(EditorInfo.IME_ACTION_NEXT);
-        etAddAddressZip.initInputType(InputType.TYPE_CLASS_NUMBER);
-        etAddAddressZip.initImeOptions(EditorInfo.IME_ACTION_NEXT);
     }
 
     private void initPresenter() {
@@ -229,13 +215,42 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
             etAddAddressPhone.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        //todo  wait for api
-        mPresenter.addAddressRequest(null);
+
+        AddressRequest request = new AddressRequest();
+        RequestData requestData = new RequestData();
+        requestData.setWebsiteId(1);
+        requestData.setStoreId(3);
+        AddressData addressData = new AddressData();
+        addressData.setName(firstName);
+        addressData.setAddress1(addressOne);
+        addressData.setAddress2(addressTwo);
+        addressData.setCountry(country);
+        //todo need decide by api
+        addressData.setState(123);
+        addressData.setCity(123);
+        addressData.setZipcode(Integer.parseInt(zip));
+        addressData.setPhoneNumber(phone);
+        addressData.setDefaultShippingAddress(firstChecked);
+        addressData.setDefaultBillingAddress(secondChecked);
+        requestData.setAddress(addressData);
+        request.setRequest(requestData);
+        mPresenter.addAddressRequest(request);
     }
 
     @Override
     public void addAddressResult() {
 
+    }
+
+    @Override
+    public void addAddressSuccess() {
+        finish();
+    }
+
+    @Override
+    public void addAddressFailed(String errorMessage) {
+        //todo need decide
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override

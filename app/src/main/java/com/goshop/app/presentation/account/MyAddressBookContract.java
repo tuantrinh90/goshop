@@ -12,10 +12,16 @@ public class MyAddressBookContract {
     interface View extends BaseView {
 
         void myAddressResult(List<AddressVM> addressVMS);
+
+        void getAddressListSuccess(List<AddressVM> addressVMS);
+
+        void getAddressListFailed(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
         void myAddressRequest(Map<String, Object> params);
+
+        void getAddressList();
     }
 }

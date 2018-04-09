@@ -4,7 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
@@ -22,6 +22,7 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,7 +35,7 @@ import injection.modules.PresenterModule;
 public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presenter> implements
     MyWishlistContract.View, MenuAdapter
     .OnSlideMenuItemClickListener,
-    OnItemMenuClickListener, PopWindowUtil.OnCartItemMenuClickListener {
+    OnItemMenuClickListener, PopWindowUtil.OnWishlistDeleteListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -95,8 +96,7 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
         }
 
         initMenuRecyclerview();
-        //todo wait for api
-        mPresenter.myWishlistRequest(null);
+        mPresenter.getWishlistItems();
     }
 
     @Override
@@ -188,8 +188,19 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
     }
 
     @Override
-    public void showWishlistResult(List<ProductsVM> productsVMS) {
-        wishlistAdapter.setUpdateDatas(productsVMS);
+    public void showWishlistItems(List<WishlistVM> wishlistVMS) {
+        wishlistAdapter.setUpdateDatas(wishlistVMS);
+    }
+
+    @Override
+    public void showError(String errorMessage) {
+        //todo wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void deleteSuccess(List<WishlistVM> wishlistVMS) {
+        wishlistAdapter.setUpdateDatas(wishlistVMS);
     }
 
     @OnClick(R.id.tv_btn_go_shop_now)
@@ -198,17 +209,12 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
     }
 
     @Override
-    public void onItemMenuClick(View parentView) {
-        PopWindowUtil.showWishlistMenuPop(parentView, this);
+    public void onItemMenuClick(View parentView, Object object) {
+        PopWindowUtil.showWishlistMenuPop(parentView, this, (WishlistVM) object);
     }
 
     @Override
-    public void onCartWishlist() {
-        //todo wait for api
-    }
-
-    @Override
-    public void onCartDeleteClick() {
-        //todo wait for api
+    public void onWishlistDelete(WishlistVM wishlistVM) {
+        mPresenter.wishlistDeleteRequest(1, 3, wishlistVM.getSku());
     }
 }

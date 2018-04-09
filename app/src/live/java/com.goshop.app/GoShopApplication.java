@@ -34,7 +34,7 @@ public class GoShopApplication extends MultiDexApplication {
         context = getApplicationContext();
         setFabric();
         FacebookSdk.sdkInitialize(getApplicationContext());
-        FacebookSdk.setApplicationId(getString(R.string.facebook_id));
+        FacebookSdk.setApplicationId(getString(R.string.facebook_app_id));
         //TODO (ray) If you need to untangle it
 //        setLeakCanary();
         initializeComponents();

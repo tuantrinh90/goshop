@@ -7,7 +7,7 @@
     android:layout_height="@dimen/size_76">
 
     <android.support.design.widget.TextInputLayout
-        android:id="@+id/til_anim_edittext"
+        android:id="@+id/textinputlayout_anim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="top"
@@ -26,7 +26,6 @@
             android:paddingTop="@dimen/size_6"
             android:background="@drawable/selector_textinput_edittext"
             android:textColor="@color/color_grayscale_text"
-            android:textColorHint="@color/color_text_hint"
             android:singleLine="true"
             android:textSize="@dimen/size_font_16"
             android:textCursorDrawable="@drawable/drawable_cursor"
@@ -40,8 +39,8 @@
         android:layout_height="wrap_content"
         android:paddingTop="@dimen/size_13"
         android:paddingBottom="@dimen/size_6"
-        android:layout_alignTop="@id/til_anim_edittext"
-        android:layout_alignBottom="@id/til_anim_edittext">
+        android:layout_alignTop="@id/textinputlayout_anim"
+        android:layout_alignBottom="@id/textinputlayout_anim">
         <ImageView
             android:id="@+id/iv_anim_del_edittext"
             android:layout_width="@dimen/size_20"

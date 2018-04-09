@@ -1,8 +1,9 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.AddressMapper;
 import com.goshop.app.presentation.model.AddressVM;
 
 import java.util.ArrayList;
@@ -33,7 +34,7 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.myAddressResult(getMockDatas());
+//                    mView.myAddressResult(getMockDatas());
 
                 }
 
@@ -44,13 +45,28 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
             }));
     }
 
-    //TODO  this is mock data
-    private List<AddressVM> getMockDatas() {
-        List<AddressVM> addressVMS = new ArrayList<>();
-        addressVMS.add(new AddressVM("Test Name", "Address", "City", "State", "1000", "China",
-            "T: +1234567890", true));
-        addressVMS.add(new AddressVM("Test Name", "Address", "City", "State", "1000", "China",
-            "T: +1234567890", false));
-        return addressVMS;
+    @Override
+    public void getAddressList() {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.getAddressList().subscribeWith(
+            new DisposableObserver<AddressResponse>() {
+                @Override
+                public void onNext(AddressResponse addressResponse) {
+                    mView.hideLoadingBar();
+                    mView.getAddressListSuccess(AddressMapper.transform(addressResponse));
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    mView.getAddressListFailed(throwable.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
+
 }

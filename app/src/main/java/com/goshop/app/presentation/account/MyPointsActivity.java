@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -32,8 +33,7 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //todo wait for api
-        mPresenter.myPointsRequest(null);
+        mPresenter.getGoShopPointsDetails();
     }
 
     @Override
@@ -69,8 +69,15 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
         recyclerviewPoints.setAdapter(pointsAdapter);
     }
 
+
     @Override
-    public void showMyPointsResult(List<PointsModel> pointsModels) {
+    public void getPointDetailsSuccess(List<PointsModel> pointsModels) {
         pointsAdapter.setUpdateDatas(pointsModels);
+    }
+
+    @Override
+    public void getPointDetailsFailed(String errorMessage) {
+        //todo wait for design
+        Log.d("MyPointsActivity", errorMessage);
     }
 }

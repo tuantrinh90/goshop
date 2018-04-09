@@ -197,7 +197,7 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     }
 
     @Override
-    public void onItemMenuClick(View parentView) {
+    public void onItemMenuClick(View parentView, Object object) {
         PopWindowUtil.showShoppingCartMenuPop(parentView, this);
     }
 

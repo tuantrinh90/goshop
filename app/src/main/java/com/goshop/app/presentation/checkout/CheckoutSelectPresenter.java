@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.checkout;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.SelectAddressVM;
 

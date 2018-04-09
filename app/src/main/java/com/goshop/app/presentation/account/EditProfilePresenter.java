@@ -1,11 +1,13 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.ProfileResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.ProfileMapper;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -21,19 +23,32 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
     }
 
     @Override
-    public void editProfileRequest(Map<String, Object> params) {
+    public void editProfileRequest(String name, String email, String title, String gender,
+        String birth, String mobile, String language) {
         mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put("website_id", "");
+        params.put("store_id", "");
+        params.put("name", name);
+        params.put("email", email);
+        params.put("title", title);
+        params.put("gender", gender);
+        params.put("dob", birth);
+        params.put("mobile_number", mobile);
+        params.put("language", language);
+
         addSubscrebe(accountRepository.editProfileRequest(params).subscribeWith(
             new DisposableObserver<ProfileResponse>() {
                 @Override
                 public void onNext(ProfileResponse profileResponse) {
                     mView.hideLoadingBar();
+                    mView.editProfileSuccess();
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.editProfileResult();
+                    mView.editProfileFailed(throwable.getLocalizedMessage().toString());
                 }
 
                 @Override
@@ -71,5 +86,29 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
             singleChooseVMS.add(new SingleChooseVM("Race " + (i + 1)));
         }
         return singleChooseVMS;
+    }
+
+    @Override
+    public void getUserProfile() {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.getUserProfile().subscribeWith(
+            new DisposableObserver<ProfileResponse>() {
+                @Override
+                public void onNext(ProfileResponse profileResponse) {
+                    mView.hideLoadingBar();
+                    mView.setProfileVM(ProfileMapper.transform(profileResponse));
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
 }

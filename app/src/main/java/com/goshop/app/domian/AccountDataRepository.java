@@ -1,6 +1,6 @@
 package com.goshop.app.domian;
 
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.Const;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -12,18 +12,12 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
-import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -33,13 +27,23 @@ import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
+import com.goshop.app.data.model.response.ChangePasswordResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.LoginResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.RegisterResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
@@ -119,7 +123,29 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
-        return accountCloudDataSource.eGiftCardsRequest(params);
+        return accountCloudDataSource.eGiftCardsRequest(params)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .flatMap(response -> {
+                if (response != null && isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            });
+    }
+
+    @Override
+    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+        return accountCloudDataSource.getEGiftCardDetails().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -163,8 +189,39 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params) {
-        return accountCloudDataSource.myWishlistRequest(params);
+    public Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params) {
+        return accountCloudDataSource.wishlistDeleteRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params) {
+        return accountCloudDataSource.addWishlistRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> getWishlistItems() {
+        return accountCloudDataSource.getWishlistItems().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -204,8 +261,16 @@ public class AccountDataRepository implements AccountRepository {
             });
     }
 
-    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
-        return accountCloudDataSource.registerRequest(params);
+    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
+        return accountCloudDataSource.registerRequest(params).concatMap(response -> {
+
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -260,7 +325,14 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params) {
-        return accountCloudDataSource.resetPasswordRequest(params);
+        return accountCloudDataSource.resetPasswordRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -299,18 +371,56 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<PasswordResponse> changePasswordRequest(Map<String, Object> params) {
-        return accountCloudDataSource.changePasswordRequest(params);
+    public Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params) {
+        return accountCloudDataSource.changePasswordRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
-        return accountCloudDataSource.editProfileRequest(params);
+        return accountCloudDataSource.editProfileRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
     public Observable<AddressResponse> addAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.addAddressRequest(params);
+    }
+
+    @Override
+    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+        return accountCloudDataSource.addAddressRequest(addressRequest).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+        return accountCloudDataSource.editAddressRequest(addressRequest).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -321,6 +431,18 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.addAddressRequest(params);
+    }
+
+    @Override
+    public Observable<AddressResponse> getAddressList() {
+        return accountCloudDataSource.getAddressList().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -374,6 +496,18 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<MyPointsResponse> getGoShopPointsDetails() {
+        return accountCloudDataSource.getGoShopPointsDetails().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
     public Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params) {
         return accountCloudDataSource.paymentStatusRequest(params);
     }
@@ -421,5 +555,45 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
         return accountCloudDataSource.promotionSkuRequest(params);
+    }
+
+    @Override
+    public Observable<ProfileResponse> getUserProfile() {
+        return accountCloudDataSource.getUserProfile().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+        return accountCloudDataSource.loginRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
+        return accountCloudDataSource.facebookLoginRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    private boolean isSuccess(String status) {
+        return Const.SUCCESS_STATUS.equals(status);
     }
 }

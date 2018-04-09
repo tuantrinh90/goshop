@@ -1,8 +1,9 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.GoShopPointsMapper;
 import com.goshop.app.presentation.model.PointsDetailVM;
 import com.goshop.app.presentation.model.PointsModel;
 import com.goshop.app.presentation.model.PointsTotalVM;
@@ -23,19 +24,20 @@ public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implem
     }
 
     @Override
-    public void myPointsRequest(Map<String, Object> params) {
+    public void getGoShopPointsDetails() {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.myPointsRequest(params).subscribeWith(
+        addSubscrebe(accountRepository.getGoShopPointsDetails().subscribeWith(
             new DisposableObserver<MyPointsResponse>() {
                 @Override
                 public void onNext(MyPointsResponse myPointsResponse) {
                     mView.hideLoadingBar();
+                    mView.getPointDetailsSuccess(GoShopPointsMapper.transform(myPointsResponse));
                 }
 
                 @Override
-                public void onError(Throwable throwable) {
+                public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showMyPointsResult(getMockData());
+                    mView.getPointDetailsFailed(e.getLocalizedMessage().toString());
                 }
 
                 @Override
@@ -45,25 +47,4 @@ public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implem
             }));
     }
 
-    //todo  this is mock data
-    private List<PointsModel> getMockData() {
-        List<PointsModel> pointsModels = new ArrayList<>();
-        pointsModels.add(new PointsTotalVM("1000"));
-        pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_TITLE));
-        pointsModels.add(new PointsDetailVM("1000", "17/03/2018", "Comment description",
-            "Order No. 12334455666", "16/01/2018, 06:52 am", true));
-        pointsModels.add(new PointsDetailVM("1000", "17/03/2018", "Comment description",
-            "Order No. 12334455666", "16/01/2018, 06:52 am", true));
-        pointsModels.add(new PointsDetailVM("100", "17/03/2018", "Comment description",
-            "Order No. 12334455666", "16/01/2018, 06:52 am", false));
-        return pointsModels;
-    }
-
-    //todo this is nodata data
-    private List<PointsModel> showNoData() {
-        List<PointsModel> pointsModels = new ArrayList<>();
-        pointsModels.add(new PointsTotalVM("1000"));
-        pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_NODATA));
-        return pointsModels;
-    }
 }

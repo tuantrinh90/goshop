@@ -104,6 +104,8 @@
 
 
     <string name="facebook_id">1287318627981888</string>
+    <string name="facebook_app_id">166452604069809</string>
+    <string name="fb_login_protocol_scheme">fb166452604069809</string>
     <!-- Facebook Login -->
     <string name="FB_Login_tips_error">Please check the internet, and try again.</string>
 
@@ -133,7 +135,7 @@
     <string name="register_have_account">Already have an account?</string>
     <string name="login">Login</string>
     <string name="complement_email">Complement Email</string>
-    <string name="complement_email_tips">Your email cannot be retrieved from your email address.
+    <string name="complement_email_tips">Your email cannot be retrieved from your Facebook account.
         In order to complete the registration, please provide your email address below:
     </string>
     <string name="submit">Submit</string>
@@ -149,7 +151,8 @@
     <string name="buy_now">Buy Now</string>
     <string name="add_to_cart">Add to Cart</string>
     <string name="details">Details</string>
-    <string name="details_top_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit. </string>
+    <string name="details_top_title">Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+    </string>
     <string name="by_user_time">By User Name on 1/2/18</string>
     <string name="details_tips">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam
         velit, vulputate eu pharetra nec, mattis ac neque. Duis vulputate commodo lectus, ac blandit
@@ -193,6 +196,7 @@
     <string name="search_products">Search products</string>
     <string name="popular_products">Popular Products</string>
     <string name="search_no_data">Your search returns no results.</string>
+    <string name="no_data">No data</string>
     <string name="search_explore">Why not to explore our best sellers</string>
     <string name="or">or</string>
     <string name="in">in</string>
@@ -286,7 +290,8 @@
     <string name="terms_conditions">Terms &#38; Conditions</string>
     <string name="office_address_">Office Address:</string>
     <string name="contact_us_address_content">Astro GS Shop Sdn Bhd (1081077-X) \nAstro All Asia
-        Broadcast Centre, \nTechnology Park Malaysia, \nLebuhraya Puchong-Sungai Besi, \nBukit Jalil,
+        Broadcast Centre, \nTechnology Park Malaysia, \nLebuhraya Puchong-Sungai Besi, \nBukit
+        Jalil,
         57000 \nKuala Lumpur, Malaysia.
     </string>
 
@@ -443,6 +448,7 @@
     <string name="confirm_warning">Password and Password Confirmation should be same!</string>
     <string name="format_email_warning">Please enter a valid email address</string>
     <string name="format_mobile_warning">Please enter a valid mobile number</string>
+    <string name="format_password_warning">Please enter a valid password</string>
     <string name="exceed_number">Exceeded number of words!</string>
     <string name="order_number">Order Number:</string>
     <string name="order_status">Order Status:</string>

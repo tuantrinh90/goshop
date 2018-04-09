@@ -74,6 +74,36 @@ public class Const {
     //My order list type
     public static final int MYORDER_LIST_TITLE = 0;
 
+    public static final String PARAMS_CUSTOMER_ID = "customer_id";
+
+    public static final String PARAMS_EGIFT_CARD = "egift_card";
+
+    public static final String PARAMS_EMAIL = "email";
+
+    public static final String PARAMS_FB_ID = "fb_id";
+
+    public static final String PARAMS_GENDER = "gender";
+
+    public static final String PARAMS_NAME = "name";
+
+    public static final String PARAMS_NEW_PASSWORD = "new_password";
+
+    public static final String PARAMS_OLD_PASSWORD = "old_password";
+
+    public static final String PARAMS_PASSWORD = "password";
+
+    public static final String PARAMS_SKU = "sku";
+
+    public static final String PARAMS_SKUID = "skuid";
+
+    public static final String PARAMS_SKU_ID = "sku_id";
+
+    public static final String PARAMS_STORE_ID = "store_id";
+
+    public static final String PARAMS_USER_ACCESS_TOKEN = "user_access_token";
+
+    public static final String PARAMS_WEBSITE_ID = "website_id";
+
     public static final int PROMOTION_CONTENT_ITEM = 2;
 
     //type-banner
@@ -89,6 +119,12 @@ public class Const {
     public static final int PROMOTION_TOP_BANNER = 0;
 
     public static final int PROMOTION_TOP_BAR = 1;
+
+    public static final int STORE_ID = 3;
+
+    public static final String SUCCESS_STATUS = "success";
+
+    public static final int WEBSITE_ID = 1;
 
 
 }

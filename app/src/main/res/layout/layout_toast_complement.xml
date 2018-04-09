@@ -3,31 +3,29 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_margin="@dimen/size_38"
-    android:background="@drawable/drawable_translate_round"
+    android:background="@drawable/bg_top_shadow_white"
     android:orientation="vertical">
 
     <com.goshop.app.common.view.RobotoRegularTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/size_font_16"
-        android:textColor="@android:color/white"
-        android:gravity="center"
+        android:textSize="@dimen/size_font_14"
+        android:textColor="@color/color_success_message"
         android:text="@string/thanks_for_registering"
-        android:paddingLeft="@dimen/size_46"
+        android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_46"
-        android:paddingTop="@dimen/size_24"/>
+        android:paddingTop="@dimen/size_16"/>
 
-    <com.goshop.app.common.view.RobotoRegularTextView
+    <com.goshop.app.common.view.RobotoLightTextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/size_font_14"
-        android:textColor="@android:color/white"
-        android:gravity="center"
+        android:lineSpacingMultiplier="1.3"
+        android:textSize="@dimen/size_font_12"
+        android:textColor="@color/color_grayscale_text"
         android:text="@string/thanks_for_registering_content"
-        android:paddingLeft="@dimen/size_20"
-        android:paddingRight="@dimen/size_20"
-        android:paddingBottom="@dimen/size_24"
-        android:paddingTop="@dimen/size_14"/>
+        android:paddingLeft="@dimen/size_16"
+        android:paddingRight="@dimen/size_16"
+        android:paddingBottom="@dimen/size_16"
+        android:paddingTop="@dimen/size_8"/>
 
 </LinearLayout>
