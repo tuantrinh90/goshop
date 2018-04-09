@@ -220,18 +220,8 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             return;
         }
         String name = firstName + " " + lastName;
-        Map<String, Object> params = new HashMap<>();
-        params.put("website_id", "");
-        params.put("store_id", "");
-        params.put("name", name);
-        params.put("email", email);
-        params.put("title", title);
-        params.put("gender", gender);
-        params.put("dob", birth);
-        params.put("mobile_number", mobile);
-        params.put("language", language);
 
-        mPresenter.editProfileRequest(params);
+        mPresenter.editProfileRequest(name, email, title, gender, birth, mobile, language);
     }
 
     @Override

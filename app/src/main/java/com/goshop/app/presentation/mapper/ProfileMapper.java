@@ -14,7 +14,7 @@ public class ProfileMapper {
 //        profileVM.setGender();
         profileVM.setBirth(response.getData().getCustomer().getDob());
 //        profileVM.setTitle();
-        profileVM.setMobile(response.getData().getCustomer().getMobile_number());
+        profileVM.setMobile(response.getData().getCustomer().getMobileNumber());
 //        profileVM.setLanguage();
 //        profileVM.setRace();
         return profileVM;

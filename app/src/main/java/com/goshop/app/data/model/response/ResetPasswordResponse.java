@@ -1,5 +1,7 @@
 package com.goshop.app.data.model.response;
 
+import com.goshop.app.data.model.response.common.UserData;
+
 public class ResetPasswordResponse extends Response {
 
     /**
@@ -22,31 +24,15 @@ public class ResetPasswordResponse extends Response {
          * customer : {"email":"john@gmail.com"}
          */
 
-        private CustomerData customer;
+        private UserData customer;
 
-        public CustomerData getCustomer() {
+        public UserData getCustomer() {
             return customer;
         }
 
-        public void setCustomer(CustomerData customer) {
+        public void setCustomer(UserData customer) {
             this.customer = customer;
         }
 
-        public static class CustomerData {
-
-            /**
-             * email : john@gmail.com
-             */
-
-            private String email;
-
-            public String getEmail() {
-                return email;
-            }
-
-            public void setEmail(String email) {
-                this.email = email;
-            }
-        }
     }
 }

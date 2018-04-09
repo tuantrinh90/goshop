@@ -215,7 +215,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -277,7 +277,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -324,7 +324,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -336,7 +336,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -353,7 +353,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -365,7 +365,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -387,7 +387,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -499,7 +499,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -511,7 +511,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
@@ -523,7 +523,7 @@ public class AccountDataRepository implements AccountRepository {
                 return Observable.just(response);
             } else {
                 return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplay_message()));
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }

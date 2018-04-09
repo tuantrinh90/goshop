@@ -13,9 +13,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
@@ -97,13 +94,8 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
             return;
         }
         KeyBoardUtils.hideKeyboard(this);
-        Map<String, Object> params = new HashMap<>();
-        params.put("website_id", "");
-        params.put("store_id", "");
-        params.put("customer_id", "");
-        params.put("old_password", currentPassword);
-        params.put("new_password", newPassword);
-        mPresenter.changePasswordRequest(params);
+
+        mPresenter.changePasswordRequest("", currentPassword, newPassword);
     }
 
     @Override

@@ -95,11 +95,8 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
                 EditTextUtil.eidtLoseFocus(tvBtnResetPasswordSubmit);
                 String email = ctdEtResetPwd.getText();
                 if (!TextUtils.isEmpty(email) && ctdEtResetPwd.isEmail()) {
-                    Map<String, Object> params = new HashMap<>();
-                    params.put("website_id", "");
-                    params.put("store_id", "");
-                    params.put("email", email);
-                    mPresenter.resetPasswordRequest(params);
+
+                    mPresenter.resetPasswordRequest(email);
                     tvBtnResetPasswordSubmit.setClickable(false);
                 } else {
                     ctdEtResetPwd

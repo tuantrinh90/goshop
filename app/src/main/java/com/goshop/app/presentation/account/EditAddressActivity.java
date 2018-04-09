@@ -7,16 +7,16 @@ import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.request.common.AddressData;
+import com.goshop.app.data.model.request.common.RequestData;
 import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.Toast;
@@ -236,11 +236,10 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
         }
 
         AddressRequest request = new AddressRequest();
-        AddressRequest.RequestData requestData = new AddressRequest.RequestData();
-        requestData.setWebsite_id(1);
-        requestData.setStore_id(3);
-        AddressRequest.RequestData.AddressData addressData = new AddressRequest.RequestData
-            .AddressData();
+        RequestData requestData = new RequestData();
+        requestData.setWebsiteId(1);
+        requestData.setStoreId(3);
+        AddressData addressData = new AddressData();
         addressData.setName(firstName);
         addressData.setAddress1(addressOne);
         addressData.setAddress2(addressTwo);
@@ -249,8 +248,9 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
         addressData.setState(123);
         addressData.setCity(123);
         addressData.setZipcode(Integer.parseInt(zip));
-        addressData.setPhone_number(phone);
-        addressData.setDefault_shipping_address(firstChecked);
+        addressData.setPhoneNumber(phone);
+        addressData.setDefaultShippingAddress(firstChecked);
+        addressData.setDefaultBillingAddress(secondChecked);
         requestData.setAddress(addressData);
         request.setRequest(requestData);
         mPresenter.editAddressRequest(request);

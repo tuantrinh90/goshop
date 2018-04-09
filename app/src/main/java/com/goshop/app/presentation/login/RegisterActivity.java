@@ -30,9 +30,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -325,21 +323,9 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
         }
         String gender = ivSelectMale.isSelected() ? "1" : "2";
-        Map<String, Object> params = new HashMap<>();
-        params.put("website_id", "");
-        params.put("store_id", "");
-        params.put("name", firstName + lastName);
-        params.put("email", email);
-        params.put("password", password);
-        params.put("title", chooseTitle);
-        params.put("gender", gender);
-        params.put("dob", birth);
-        params.put("mobile_number", mobile);
-        params.put("language", language);
-        params.put("email_subscribe", sendEmail);
-        params.put("sms_subscribe", sendSMS);
-
-        mPresenter.registerRequest(params);
+        mPresenter
+            .registerRequest(firstName + lastName, email, password, chooseTitle, gender, birth,
+                mobile, language, sendEmail, sendSMS);
     }
 
     @Override

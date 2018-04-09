@@ -4,10 +4,10 @@ import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.ProfileMapper;
-import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,8 +23,20 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
     }
 
     @Override
-    public void editProfileRequest(Map<String, Object> params) {
+    public void editProfileRequest(String name, String email, String title, String gender,
+        String birth, String mobile, String language) {
         mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put("website_id", "");
+        params.put("store_id", "");
+        params.put("name", name);
+        params.put("email", email);
+        params.put("title", title);
+        params.put("gender", gender);
+        params.put("dob", birth);
+        params.put("mobile_number", mobile);
+        params.put("language", language);
+
         addSubscrebe(accountRepository.editProfileRequest(params).subscribeWith(
             new DisposableObserver<ProfileResponse>() {
                 @Override

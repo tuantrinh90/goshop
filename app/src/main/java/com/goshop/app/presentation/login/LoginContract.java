@@ -32,9 +32,10 @@ public interface LoginContract {
 
         CallbackManager initFaceBook();
 
-        void loginRequest(Map<String, Object> params);
+        void loginRequest(String email, String password);
 
-        void facebookLoginRequest(Map<String, Object> params);
+        void facebookLoginRequest(String email, String fbId, String token, String name,
+            String gender);
 
         void getFacebookAccessToken(AccessToken accessToken);
     }

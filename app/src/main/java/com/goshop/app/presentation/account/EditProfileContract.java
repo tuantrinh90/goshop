@@ -6,7 +6,6 @@ import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
 import java.util.List;
-import java.util.Map;
 
 public class EditProfileContract {
 
@@ -23,7 +22,8 @@ public class EditProfileContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void editProfileRequest(Map<String, Object> params);
+        void editProfileRequest(String name, String email, String title, String gender,
+            String birth, String mobile, String language);
 
         List<SingleChooseVM> getTitleChooses();
 

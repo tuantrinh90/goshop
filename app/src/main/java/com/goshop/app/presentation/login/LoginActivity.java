@@ -211,12 +211,8 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
                     etLoginPassword.setErrorMessage(getResources().getString(R.string.empty_error));
                     return;
                 }
-                Map<String, Object> params = new HashMap<>();
-                params.put("website_id", "");
-                params.put("store_id", "");
-                params.put("email", etLoginEmail.getText());
-                params.put("password", etLoginPassword.getText());
-                mPresenter.loginRequest(params);
+
+                mPresenter.loginRequest(etLoginEmail.getText(), etLoginPassword.getText());
                 break;
             case R.id.tv_login_forgot_password:
                 startActivity(new Intent(this, LoginResetPasswordActivity.class));
@@ -265,23 +261,11 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     public void setFacebookLoginParams(String email, String fbId, String token, String name,
         String gender) {
-        Map<String, Object> params = new HashMap<>();
-        params.put("website_id", "");
-        params.put("store_id", "");
-        params.put("email", email);
-        params.put("fb_id", fbId);
-        params.put("user_access_token", token);
-        params.put("name", name);
-        params.put("gender", gender);
-        Log.d("LoginPresenter", "email" + email);
-        Log.d("LoginPresenter", "fb_id" + fbId);
-        Log.d("LoginPresenter", "user_access_token" + token);
-        Log.d("LoginPresenter", "name" + name);
-        Log.d("LoginPresenter", "gender" + gender);
+
         Intent intent = new Intent(this, LoginComplementEmailActivity.class);
         startActivity(intent);
         //todo need decide
-//        mPresenter.facebookLoginRequest(params);
+//        mPresenter.facebookLoginRequest(email, fbId, token, name, gender);
     }
 
 

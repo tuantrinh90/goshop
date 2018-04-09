@@ -1,21 +1,24 @@
 package com.goshop.app.data.model.response;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Message {
+
     /**
      * display_message :
      * status : success
      */
-
-    private String display_message;
+    @SerializedName("display_message")
+    private String displayMessage;
 
     private String status;
 
-    public String getDisplay_message() {
-        return display_message;
+    public String getDisplayMessage() {
+        return displayMessage;
     }
 
-    public void setDisplay_message(String display_message) {
-        this.display_message = display_message;
+    public void setDisplayMessage(String displayMessage) {
+        this.displayMessage = displayMessage;
     }
 
     public String getStatus() {

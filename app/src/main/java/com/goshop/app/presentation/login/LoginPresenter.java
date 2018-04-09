@@ -11,6 +11,7 @@ import com.facebook.Profile;
 import com.facebook.ProfileTracker;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.LoginResponse;
@@ -21,6 +22,7 @@ import org.json.JSONObject;
 
 import android.text.TextUtils;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -116,8 +118,13 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
     }
 
     @Override
-    public void loginRequest(Map<String, Object> params) {
+    public void loginRequest(String email, String password) {
         mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_EMAIL, email);
+        params.put(Const.PARAMS_PASSWORD, password);
         addSubscrebe(accountRepository.loginRequest(params)
             .subscribeWith(new DisposableObserver<LoginResponse>() {
                 @Override
@@ -140,8 +147,18 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
     }
 
     @Override
-    public void facebookLoginRequest(Map<String, Object> params) {
+    public void facebookLoginRequest(String email, String fbId, String token, String name,
+        String gender) {
         mView.showLoadingBar();
+
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_EMAIL, email);
+        params.put(Const.PARAMS_FB_ID, fbId);
+        params.put(Const.PARAMS_USER_ACCESS_TOKEN, token);
+        params.put(Const.PARAMS_NAME, name);
+        params.put(Const.PARAMS_GENDER, gender);
         addSubscrebe(accountRepository.facebookLoginRequest(params).subscribeWith(
             new DisposableObserver<LoginResponse>() {
                 @Override

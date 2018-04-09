@@ -15,7 +15,7 @@ public class LoginResetPasswordContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void resetPasswordRequest(Map<String, Object> params);
+        void resetPasswordRequest(String email);
     }
 
 }

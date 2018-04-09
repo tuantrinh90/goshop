@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.login;
 
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
@@ -7,6 +8,7 @@ import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,8 +27,23 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
     }
 
     @Override
-    public void registerRequest(Map<String, Object> params) {
+    public void registerRequest(String name, String email, String password, String title,
+        String gender, String birth, String mobile, String language, boolean sendEmail,
+        boolean sendSMS) {
         mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put("website_id", Const.WEBSITE_ID);
+        params.put("store_id", Const.STORE_ID);
+        params.put("name", name);
+        params.put("email", email);
+        params.put("password", password);
+        params.put("title", title);
+        params.put("gender", gender);
+        params.put("dob", birth);
+        params.put("mobile_number", mobile);
+        params.put("language", language);
+        params.put("email_subscribe", sendEmail);
+        params.put("sms_subscribe", sendSMS);
         addSubscrebe(accountRepository.registerRequest(params).subscribeWith(
             new DisposableObserver<RegisterResponse>() {
                 @Override
