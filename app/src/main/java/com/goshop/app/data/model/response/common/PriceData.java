@@ -6,13 +6,13 @@ public class PriceData {
      * RM : {"original":"200","discounted":"149","discount_title":"25% OFF"}
      */
 
-    private RMData RM;
+    private RMData rm;
 
     public RMData getRM() {
-        return RM;
+        return rm;
     }
 
-    public void setRM(RMData RM) {
-        this.RM = RM;
+    public void setRM(RMData rm) {
+        this.rm = rm;
     }
 }

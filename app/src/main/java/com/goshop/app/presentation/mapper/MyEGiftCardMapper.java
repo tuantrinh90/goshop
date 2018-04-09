@@ -18,7 +18,7 @@ public class MyEGiftCardMapper {
         List<MyEGiftModel> myEGiftModels = new ArrayList<>();
         myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_TOP));
         List<EgiftCardData> eGiftCardDatas = response.getData()
-            .getEgift_card();
+            .getEgiftCard();
         if (eGiftCardDatas.size() > 0) {
             myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_CENTER));
 

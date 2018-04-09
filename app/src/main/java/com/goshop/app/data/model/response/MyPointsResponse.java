@@ -1,5 +1,7 @@
 package com.goshop.app.data.model.response;
 
+import com.google.gson.annotations.SerializedName;
+
 import com.goshop.app.data.model.response.common.GoshopPointsData;
 
 public class MyPointsResponse extends Response {
@@ -30,15 +32,15 @@ public class MyPointsResponse extends Response {
          * "type":0,"valid_until":"2018-01-15","order_number":"3456",
          * "date":"2018-04-05T00:42:09Z"}]}
          */
-
-        private GoshopPointsData goshop_points;
+        @SerializedName("goshop_points")
+        private GoshopPointsData goshopPoints;
 
         public GoshopPointsData getGoshop_points() {
-            return goshop_points;
+            return goshopPoints;
         }
 
-        public void setGoshop_points(GoshopPointsData goshop_points) {
-            this.goshop_points = goshop_points;
+        public void setGoshopPoints(GoshopPointsData goshopPoints) {
+            this.goshopPoints = goshopPoints;
         }
 
     }

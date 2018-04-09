@@ -1,5 +1,7 @@
 package com.goshop.app.data.model.response;
 
+import com.google.gson.annotations.SerializedName;
+
 import com.goshop.app.data.model.response.common.EgiftCardData;
 
 import java.util.List;
@@ -23,15 +25,15 @@ public class MyEGiftResponse extends Response {
     }
 
     public static class Datas {
+        @SerializedName("egift_card")
+        private List<EgiftCardData> egiftCard;
 
-        private List<EgiftCardData> egift_card;
-
-        public List<EgiftCardData> getEgift_card() {
-            return egift_card;
+        public List<EgiftCardData> getEgiftCard() {
+            return egiftCard;
         }
 
-        public void setEgift_card(List<EgiftCardData> egift_card) {
-            this.egift_card = egift_card;
+        public void setEgiftCard(List<EgiftCardData> egift_card) {
+            this.egiftCard = egiftCard;
         }
 
     }

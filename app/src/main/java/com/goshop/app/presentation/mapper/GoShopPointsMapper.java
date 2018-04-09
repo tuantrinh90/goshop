@@ -31,8 +31,8 @@ public class GoShopPointsMapper {
                         .formaterPoints(Integer.parseInt(transactionsData.getPoints()),
                             transactionsData.getType()),
                     transactionsData.getType(),
-                    transactionsData.getValid_until(),
-                    NumberFormater.formaterPointOrderNo(transactionsData.getOrder_number()),
+                    transactionsData.getValidUntil(),
+                    NumberFormater.formaterPointOrderNo(transactionsData.getOrderNumber()),
                     transactionsData.getDate());
                 detailVMS.add(detailVM);
             }

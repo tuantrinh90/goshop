@@ -1,5 +1,7 @@
 package com.goshop.app.data.model.response.common;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class ProductData {
@@ -12,8 +14,8 @@ public class ProductData {
     private String name;
 
     private PriceData price;
-
-    private String product_name;
+    @SerializedName("product_name")
+    private String productName;
 
     /**
      * sku : 1234
@@ -67,12 +69,12 @@ public class ProductData {
         this.price = price;
     }
 
-    public String getProduct_name() {
-        return product_name;
+    public String getProductName() {
+        return productName;
     }
 
-    public void setProduct_name(String product_name) {
-        this.product_name = product_name;
+    public void setProductName(String product_name) {
+        this.productName = product_name;
     }
 
     public List<String> getAttributes() {

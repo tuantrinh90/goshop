@@ -1,5 +1,7 @@
 package com.goshop.app.data.model.response.common;
 
+import com.google.gson.annotations.SerializedName;
+
 public class TransactionsData {
 
     private String date;
@@ -14,14 +16,14 @@ public class TransactionsData {
      */
 
     private String detail;
-
-    private String order_number;
+    @SerializedName("order_number")
+    private String orderNumber;
 
     private String points;
 
     private int type;
-
-    private String valid_until;
+    @SerializedName("valid_until")
+    private String validUntil;
 
     public String getDetail() {
         return detail;
@@ -47,20 +49,20 @@ public class TransactionsData {
         this.type = type;
     }
 
-    public String getValid_until() {
-        return valid_until;
+    public String getValidUntil() {
+        return validUntil;
     }
 
-    public void setValid_until(String valid_until) {
-        this.valid_until = valid_until;
+    public void setValidUntil(String valid_until) {
+        this.validUntil = validUntil;
     }
 
-    public String getOrder_number() {
-        return order_number;
+    public String getOrderNumber() {
+        return orderNumber;
     }
 
-    public void setOrder_number(String order_number) {
-        this.order_number = order_number;
+    public void setOrderNumber(String order_number) {
+        this.orderNumber = orderNumber;
     }
 
     public String getDate() {
