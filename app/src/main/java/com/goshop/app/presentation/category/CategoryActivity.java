@@ -8,6 +8,7 @@ import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
+import com.goshop.app.widget.listener.OnCategoryItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,8 +32,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class CategoryActivity extends BaseActivity<CategoryContract.Presenter> implements
-    CategoryContract.View, CategoryLeftAdapter.CategoryLeftClickListener, CategoryRightAdapter
-    .OnChildItemClickListener, MenuAdapter
+    CategoryContract.View, OnCategoryItemClickListener,  MenuAdapter
     .OnSlideMenuItemClickListener {
 
     @BindView(R.id.drawer_layout)

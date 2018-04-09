@@ -10,6 +10,7 @@ import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
+import com.goshop.app.widget.listener.OnScheduleClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainPageActivity extends BaseActivity implements MenuAdapter
-    .OnSlideMenuItemClickListener, TrendingNowFragment.OnScheduleClickListener {
+    .OnSlideMenuItemClickListener, OnScheduleClickListener {
 
     @BindView(R.id.cset_search)
     CustomSearchEditText csetSearch;

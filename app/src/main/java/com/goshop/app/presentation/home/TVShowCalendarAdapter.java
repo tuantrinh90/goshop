@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.widget.listener.OnTVShowItemsClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
 
     private List<TVShowVM> displayDatas;
 
-    private OnCalendarItemClickListener onCalendarItemClickListener;
+    private OnTVShowItemsClickListener onCalendarItemClickListener;
 
     private List<TVShowVM> tvShowVMS;
 
@@ -75,7 +76,7 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
     }
 
     public void setOnCalendarItemClickListener(
-        OnCalendarItemClickListener onCalendarItemClickListener) {
+        OnTVShowItemsClickListener onCalendarItemClickListener) {
         this.onCalendarItemClickListener = onCalendarItemClickListener;
     }
 
@@ -93,10 +94,6 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    interface OnCalendarItemClickListener {
-
-        void onCalendarItemClick(int position);
-    }
 
     class CalenderViewHolder extends RecyclerView.ViewHolder {
 

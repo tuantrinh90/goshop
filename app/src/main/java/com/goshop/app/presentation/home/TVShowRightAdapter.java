@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.widget.listener.OnTVShowItemsClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -20,7 +21,7 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
 
     private int currentPosition;
 
-    private OnTVShowRightItemClickListener onTVShowRightItemClickListener;
+    private OnTVShowItemsClickListener onTVShowItemsClickListener;
 
     private List<TVShowVM> tvShowVMS;
 
@@ -65,13 +66,8 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
     }
 
     public void setOnTVShowRightItemClickListener(
-        OnTVShowRightItemClickListener onTVShowRightItemClickListener) {
-        this.onTVShowRightItemClickListener = onTVShowRightItemClickListener;
-    }
-
-    interface OnTVShowRightItemClickListener {
-
-        void onTVShowRightItemClick(int position);
+        OnTVShowItemsClickListener onTVShowRightItemClickListener) {
+        this.onTVShowItemsClickListener = onTVShowRightItemClickListener;
     }
 
     class TVShowRightViewHolder extends RecyclerView.ViewHolder {
@@ -98,7 +94,7 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
             ivTvshowRightCover.setSelected(tvShowVM.isCurrent());
             ivTvshowRightCover.setOnClickListener(v -> {
                 updateCurrentVMS(position);
-                onTVShowRightItemClickListener.onTVShowRightItemClick(position);
+                onTVShowItemsClickListener.onTVShowRightItemClick(position);
             });
         }
     }

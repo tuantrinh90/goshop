@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.Typefaces;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
+import com.goshop.app.widget.listener.OnCategoryItemClickListener;
 
 import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
@@ -21,12 +22,12 @@ import butterknife.ButterKnife;
 
 public class CategoryLeftAdapter extends RecyclerView.Adapter {
 
-    private CategoryLeftClickListener leftClickListener;
+    private OnCategoryItemClickListener leftClickListener;
 
     private List<CategoryLeftMenuVM> leftMenuVMS;
 
     public CategoryLeftAdapter(
-        List<CategoryLeftMenuVM> leftMenuVMS, CategoryLeftClickListener leftClickListener) {
+        List<CategoryLeftMenuVM> leftMenuVMS, OnCategoryItemClickListener leftClickListener) {
         this.leftMenuVMS = leftMenuVMS;
         this.leftClickListener = leftClickListener;
     }
@@ -65,10 +66,6 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
         }
     }
 
-    public interface CategoryLeftClickListener {
-
-        void onLeftClick(CategoryLeftMenuVM leftMenuVM);
-    }
 
     class CategoryLeftViewHolder extends RecyclerView.ViewHolder {
 

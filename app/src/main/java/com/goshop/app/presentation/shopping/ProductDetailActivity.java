@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.model.ProductDetailModel;
+import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -26,7 +27,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Presenter>
-    implements ProductDetailContract.View, ProductDetailAdapter.OnProductDetailItemClickListener,
+    implements ProductDetailContract.View, OnProductDetailItemClickListener,
     PdpBannerAdapter.OnPdpBannerClickListener {
 
     @BindView(R.id.appbarlayout_product_detail)

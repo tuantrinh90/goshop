@@ -8,6 +8,8 @@ import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
+import com.goshop.app.widget.listener.OnScheduleClickListener;
+import com.goshop.app.widget.listener.OnTrendingNowClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -30,7 +32,7 @@ import injection.modules.PresenterModule;
 import static com.goshop.app.utils.PageIntentUtils.PROMOTION_BANNER_URL;
 
 public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presenter> implements
-    TrendingNowContract.View, TrendingNowAdapter.OnTrendingNowClickListener {
+    TrendingNowContract.View, OnTrendingNowClickListener {
 
     private final String BANNER = "promotionlandBanner";
 
@@ -159,10 +161,5 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         if (intent != null) {
             startActivity(intent);
         }
-    }
-
-    public interface OnScheduleClickListener {
-
-        void onScheduleClick();
     }
 }

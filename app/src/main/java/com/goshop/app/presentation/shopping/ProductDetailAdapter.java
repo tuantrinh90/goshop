@@ -15,6 +15,7 @@ import com.goshop.app.presentation.model.ProductDetailTopVM;
 import com.goshop.app.widget.adapter.PDPQaItemAdapter;
 import com.goshop.app.widget.adapter.PDPReviewsItemAdapter;
 import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
+import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
 
 import android.graphics.Paint;
 import android.support.v7.widget.LinearLayoutManager;
@@ -165,17 +166,6 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             displayDetailModels.remove(position + 1);
         }
         notifyDataSetChanged();
-    }
-
-    public interface OnProductDetailItemClickListener {
-
-        void onWriteAReviewClick();
-
-        void onMoreReviewClick();
-
-        void onAskQuestionClick();
-
-        void onMoreQuestionClick();
     }
 
     class WidgetProductScrollerViewHolder extends RecyclerView.ViewHolder {

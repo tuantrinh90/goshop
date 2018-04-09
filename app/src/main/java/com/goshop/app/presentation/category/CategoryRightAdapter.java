@@ -6,6 +6,7 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
 import com.goshop.app.presentation.model.CategoryRightParentVM;
+import com.goshop.app.widget.listener.OnCategoryItemClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -23,13 +24,13 @@ public class CategoryRightAdapter extends RecyclerView.Adapter {
 
     private List<CategoryRightMenuModel> displayModels;
 
-    private OnChildItemClickListener onChildItemClickListener;
+    private OnCategoryItemClickListener onChildItemClickListener;
 
     private List<CategoryRightMenuModel> rightMenuModels;
 
     public CategoryRightAdapter(
         List<CategoryRightMenuModel> rightMenuModels,
-        OnChildItemClickListener onChildItemClickListener) {
+        OnCategoryItemClickListener onChildItemClickListener) {
         this.rightMenuModels = new ArrayList<>();
         this.displayModels = rightMenuModels;
         this.onChildItemClickListener = onChildItemClickListener;
@@ -105,10 +106,6 @@ public class CategoryRightAdapter extends RecyclerView.Adapter {
         return displayModels.size();
     }
 
-    public interface OnChildItemClickListener {
-
-        void onChildItemClick(CategoryRightChildVM childVM);
-    }
 
     class ParentViewHolder extends RecyclerView.ViewHolder {
 

@@ -16,13 +16,14 @@ import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 import com.goshop.app.widget.BannerAutoPlayHelper;
 import com.goshop.app.widget.adapter.ChannelAdapter;
+import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 import com.goshop.app.widget.adapter.VideoViewPagerAdapter;
 import com.goshop.app.widget.adapter.WidgetBannerAdapter;
-import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnChannelItemClickListener;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnTrendingNowClickListener;
 
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -107,19 +108,6 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return models.size();
-    }
-
-    interface OnTrendingNowClickListener {
-
-        void onTopBannerClick(CarouselItemsVM carouselItemsVM);
-
-        void onTVScheduleClick();
-
-        void onProductItemClick(ProductsVM productsVM);
-
-        void onBuyNowClick();
-
-        void onSingleBannerClick();
     }
 
     class TrendingBannerViewHolder extends RecyclerView.ViewHolder implements

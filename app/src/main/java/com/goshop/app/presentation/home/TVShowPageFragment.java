@@ -7,7 +7,9 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ChannelVM;
 import com.goshop.app.presentation.model.TVShowVM;
 import com.goshop.app.widget.adapter.ChannelAdapter;
+import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnChannelItemClickListener;
+import com.goshop.app.widget.listener.OnTVShowItemsClickListener;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -28,8 +30,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presenter> implements
-    TVShowPageContract.View, TVShowRightAdapter.OnTVShowRightItemClickListener,
-    TVShowCalendarAdapter.OnCalendarItemClickListener, OnChannelItemClickListener {
+    TVShowPageContract.View, OnTVShowItemsClickListener, OnChannelItemClickListener {
 
     @BindView(R.id.appbarlayout_tvshow)
     AppBarLayout appBarLayoutTvShow;
@@ -125,8 +126,8 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         recyclerviewCalendar.setAdapter(calendarAdapter);
         recyclerviewLeft.setAdapter(leftAdapter);
         recyclerviewRight.setAdapter(rightAdapter);
-        rightAdapter.setOnTVShowRightItemClickListener(this::onTVShowRightItemClick);
-        calendarAdapter.setOnCalendarItemClickListener(this::onCalendarItemClick);
+        rightAdapter.setOnTVShowRightItemClickListener(this);
+        calendarAdapter.setOnCalendarItemClickListener(this);
     }
 
     private void initPresenter() {
