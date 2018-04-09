@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class ProductData {
+
     private List<String> attributes;
 
     private String image;
@@ -14,6 +15,7 @@ public class ProductData {
     private String name;
 
     private PriceData price;
+
     @SerializedName("product_name")
     private String productName;
 

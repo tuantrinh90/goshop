@@ -16,12 +16,14 @@ public class TransactionsData {
      */
 
     private String detail;
+
     @SerializedName("order_number")
     private String orderNumber;
 
     private String points;
 
     private int type;
+
     @SerializedName("valid_until")
     private String validUntil;
 
