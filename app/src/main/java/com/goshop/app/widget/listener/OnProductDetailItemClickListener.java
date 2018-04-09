@@ -10,4 +10,6 @@ public interface OnProductDetailItemClickListener {
     void onAskQuestionClick();
 
     void onMoreQuestionClick();
+
+    void onWishlistSelect(boolean isSelect);
 }
