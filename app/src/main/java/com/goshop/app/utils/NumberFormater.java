@@ -6,6 +6,8 @@ public class NumberFormater {
 
     private static final String MONEY_SYMBOL = "RM ";
 
+    private static final String TEL_HEADER = "T: ";
+
     public static String formaterPhoneNumber(String phoneNumber) {
         return phoneNumber.replaceFirst("(\\d{4})(\\d{2})(\\d{4})", "$1 - $2 - $3");
     }
@@ -16,6 +18,10 @@ public class NumberFormater {
 
     public static String formaterMoneyNoRM(String money) {
         return money + MONEY_SUFFIX;
+    }
+
+    public static String formaterTelNo(String tel) {
+        return TEL_HEADER + tel;
     }
 
 }

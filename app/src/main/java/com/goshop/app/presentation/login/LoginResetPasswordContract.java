@@ -10,11 +10,12 @@ public class LoginResetPasswordContract {
     interface View extends BaseView {
 
         void resetPwdSuccess();
+        void resetPwdFailed(String message);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void resetPasswordRequest(Map<String, Object> params);
+        void resetPasswordRequest(String email);
     }
 
 }

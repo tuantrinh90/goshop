@@ -19,38 +19,38 @@ public class AddressVM implements Parcelable {
 
     private String address;
 
+    private String addressSecond;
+
+    private boolean billingDefault;
+
     private String city;
 
     private String code;
 
     private String country;
 
-    private boolean isDefault;
+    private String id;
 
     private String name;
+
+    private boolean shippingDefault;
 
     private String state;
 
     private String tel;
 
-    public AddressVM(String name, String address, String city, String state, String code,
-        String country, String tel, boolean isDefault) {
-        this.name = name;
-        this.address = address;
-        this.city = city;
-        this.state = state;
-        this.code = code;
-        this.country = country;
-        this.tel = tel;
-        this.isDefault = isDefault;
+    public AddressVM() {
     }
 
     protected AddressVM(Parcel in) {
+        id = in.readString();
         address = in.readString();
+        addressSecond = in.readString();
         city = in.readString();
         code = in.readString();
         country = in.readString();
-        isDefault = in.readByte() != 0;
+        shippingDefault = in.readByte() != 0;
+        billingDefault = in.readByte() != 0;
         name = in.readString();
         state = in.readString();
         tel = in.readString();
@@ -62,6 +62,22 @@ public class AddressVM implements Parcelable {
 
     public void setAddress(String address) {
         this.address = address;
+    }
+
+    public String getAddressSecond() {
+        return addressSecond;
+    }
+
+    public void setAddressSecond(String addressSecond) {
+        this.addressSecond = addressSecond;
+    }
+
+    public boolean isBillingDefault() {
+        return billingDefault;
+    }
+
+    public void setBillingDefault(boolean billingDefault) {
+        this.billingDefault = billingDefault;
     }
 
     public String getCity() {
@@ -88,12 +104,12 @@ public class AddressVM implements Parcelable {
         this.country = country;
     }
 
-    public boolean isDefault() {
-        return isDefault;
+    public String getId() {
+        return id;
     }
 
-    public void setDefault(boolean aDefault) {
-        isDefault = aDefault;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getName() {
@@ -102,6 +118,14 @@ public class AddressVM implements Parcelable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public boolean isShippingDefault() {
+        return shippingDefault;
+    }
+
+    public void setShippingDefault(boolean shippingDefault) {
+        this.shippingDefault = shippingDefault;
     }
 
     public String getState() {
@@ -127,11 +151,14 @@ public class AddressVM implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(id);
         dest.writeString(address);
+        dest.writeString(addressSecond);
         dest.writeString(city);
         dest.writeString(code);
         dest.writeString(country);
-        dest.writeByte((byte) (isDefault ? 1 : 0));
+        dest.writeByte((byte) (shippingDefault ? 1 : 0));
+        dest.writeByte((byte) (billingDefault ? 1 : 0));
         dest.writeString(name);
         dest.writeString(state);
         dest.writeString(tel);

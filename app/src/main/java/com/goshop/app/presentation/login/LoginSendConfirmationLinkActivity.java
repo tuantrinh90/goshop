@@ -47,7 +47,6 @@ public class LoginSendConfirmationLinkActivity extends
     public void inject() {
         hideRightMenu();
         initPresenter();
-        initEditText();
         toastUtil = new ToastUtil(this, this);
     }
 
@@ -62,11 +61,6 @@ public class LoginSendConfirmationLinkActivity extends
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
-    }
-
-    private void initEditText() {
-        ctdEtConfirmationLink.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        ctdEtConfirmationLink.initImeOptions(EditorInfo.IME_ACTION_DONE);
     }
 
     @Override

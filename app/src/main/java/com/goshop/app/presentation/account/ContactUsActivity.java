@@ -12,9 +12,7 @@ import com.goshop.app.utils.ToastUtil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 
 import butterknife.BindView;
@@ -61,7 +59,6 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
         hideRightMenu();
         initPresenter();
         toastUtil = new ToastUtil(this, this);
-        initInputEdit();
     }
 
     @Override
@@ -75,11 +72,6 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
-    }
-
-    private void initInputEdit() {
-        etContactUsMobile.initInputType(InputType.TYPE_CLASS_NUMBER);
-        etContactUsMobile.initImeOptions(EditorInfo.IME_ACTION_NEXT);
     }
 
     @Override

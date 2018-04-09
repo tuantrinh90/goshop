@@ -10,7 +10,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -23,10 +25,10 @@ import injection.modules.PresenterModule;
 public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Presenter>
     implements MyAddressBookContract.View, MyAddressBookAdapter.OnAddressBookClickListener {
 
-    private MyAddressBookAdapter addressBookAdapter;
-
     @BindView(R.id.recyclerview_address_book)
     RecyclerView recyclerviewAddressBook;
+
+    private MyAddressBookAdapter addressBookAdapter;
 
     private List<AddressVM> displayAddressVMs;
 
@@ -40,10 +42,21 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     }
 
     @Override
+    public void getAddressListSuccess(List<AddressVM> addressVMS) {
+        addressBookAdapter.setUpdates(addressVMS);
+    }
+
+    @Override
+    public void getAddressListFailed(String errorMessage) {
+        //todo need decide
+        Log.e("MyAddressBook", errorMessage);
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //TODO  wait for api
-        mPresenter.myAddressRequest(null);
+        mPresenter.getAddressList();
     }
 
     @Override
@@ -102,12 +115,13 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     @Override
     public void removeAddress(AddressVM addressVM) {
-        if (displayAddressVMs.contains(addressVM)) {
+        //todo need decide
+        /*if (displayAddressVMs.contains(addressVM)) {
             displayAddressVMs.remove(addressVM);
             if (addressVM.isDefault() && displayAddressVMs.size() > 0) {
                 displayAddressVMs.get(0).setDefault(true);
             }
         }
-        addressBookAdapter.setUpdates(displayAddressVMs);
+        addressBookAdapter.setUpdates(displayAddressVMs);*/
     }
 }

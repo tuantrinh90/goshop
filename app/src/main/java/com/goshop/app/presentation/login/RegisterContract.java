@@ -5,7 +5,6 @@ import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
 import java.util.List;
-import java.util.Map;
 
 public interface RegisterContract {
 
@@ -20,7 +19,9 @@ public interface RegisterContract {
 
     interface Presenter extends BasePresenter<View> {
 
-        void registerRequest(Map<String, Object> params);
+        void registerRequest(String name, String email, String password, String title,
+            String gender, String birth, String mobile, String language, boolean sendEmail,
+            boolean sendEms);
 
         List<SingleChooseVM> getTitleChooses();
 

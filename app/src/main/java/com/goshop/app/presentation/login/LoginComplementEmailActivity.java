@@ -47,7 +47,6 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     public void inject() {
         hideRightMenu();
         initPresenter();
-        initEditText();
         toastUtil = new ToastUtil(this, this);
     }
 
@@ -64,10 +63,6 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
             .inject(this);
     }
 
-    private void initEditText() {
-        ctdEtComplementEmail.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        ctdEtComplementEmail.initImeOptions(EditorInfo.IME_ACTION_DONE);
-    }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_complement_email_submit})
     public void onComplementEmailClick(View view) {

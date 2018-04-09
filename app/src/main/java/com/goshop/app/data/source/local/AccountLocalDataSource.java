@@ -1,7 +1,8 @@
 package com.goshop.app.data.source.local;
 
 import com.goshop.app.data.LocalApi;
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -18,13 +19,12 @@ import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
-import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.ResetPasswordResponse;
+import com.goshop.app.data.model.response.ChangePasswordResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -36,11 +36,14 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.source.AccountDataSource;
 
@@ -150,7 +153,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
+    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -231,7 +234,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<PasswordResponse> changePasswordRequest(Map<String, Object> params) {
+    public Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -242,6 +245,21 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<AddressResponse> addAddressRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+        return null;
+    }
+
+    @Override
+    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+        return null;
+    }
+
+    @Override
+    public Observable<AddressResponse> getAddressList() {
         return null;
     }
 
@@ -354,6 +372,21 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<ProfileResponse> getUserProfile() {
+        return null;
+    }
+
+    @Override
+    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
         return null;
     }
 }

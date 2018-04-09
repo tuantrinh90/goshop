@@ -32,8 +32,8 @@ public class CustomPasswordEditText extends RelativeLayout {
     @BindView(R.id.iv_password_edittext_del)
     ImageView ivPasswordEdittextDel;
 
-    @BindView(R.id.til_password_edittext)
-    TextInputLayout tilPasswordEdittext;
+    @BindView(R.id.textinputlayout_password)
+    TextInputLayout textinputlayoutPassword;
 
     private int hintString;
 
@@ -50,7 +50,7 @@ public class CustomPasswordEditText extends RelativeLayout {
             .obtainStyledAttributes(attrs, R.styleable.pwd);
         hintString = typedArray.getResourceId(R.styleable.pwd_pwd_hint, R.string.password);
         typedArray.recycle();
-        tilPasswordEdittext.setHint(context.getString(hintString));
+        textinputlayoutPassword.setHint(context.getString(hintString));
         deleteImageShowListener(etPasswordEdittext, ivPasswordEdittextDel);
         cbPasswordStatu.setChecked(false);
         cbPasswordStatu
@@ -68,7 +68,7 @@ public class CustomPasswordEditText extends RelativeLayout {
             if (hasFocus) {
                 RxTextView.textChanges(targetEditText).subscribe(charSequence -> {
                     if (charSequence.length() > 0) {
-                        tilPasswordEdittext.setErrorEnabled(false);
+                        textinputlayoutPassword.setErrorEnabled(false);
                         deleteIv.setVisibility(View.VISIBLE);
                         deleteIv.setOnClickListener(del -> {
                             targetEditText.setText("");
@@ -76,6 +76,7 @@ public class CustomPasswordEditText extends RelativeLayout {
                             targetEditText.requestFocus();
                             deleteIv.setVisibility(View.GONE);
                         });
+                        textinputlayoutPassword.setHintTextAppearance(R.style.hintAppearance);
                     } else {
                         deleteIv.setVisibility(View.GONE);
                     }
@@ -102,8 +103,9 @@ public class CustomPasswordEditText extends RelativeLayout {
     }
 
     public void setErrorMessage(String errorMessage) {
-        tilPasswordEdittext.setErrorEnabled(true);
-        tilPasswordEdittext.setError(errorMessage);
+        textinputlayoutPassword.setErrorEnabled(true);
+        textinputlayoutPassword.setError(errorMessage);
+        textinputlayoutPassword.setHintTextAppearance(R.style.errorAppearance);
         etPasswordEdittext.setFocusable(true);
         etPasswordEdittext.requestFocus();
     }

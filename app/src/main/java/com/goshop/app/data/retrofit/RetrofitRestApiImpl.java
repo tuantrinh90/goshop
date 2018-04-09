@@ -2,7 +2,8 @@ package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -19,13 +20,10 @@ import com.goshop.app.data.model.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
-import com.goshop.app.data.model.PasswordResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.ProfileResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -35,14 +33,19 @@ import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
+import com.goshop.app.data.model.response.ChangePasswordResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.RegisterResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 
 import java.util.Map;
@@ -166,8 +169,8 @@ public class RetrofitRestApiImpl implements RestApi {
         return retrofitRestApi.getUserInfo(url, getUserRequest);
     }
 
-    public Observable<UserInfo> registerRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.REGISTER);
+    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.REGISTER_USER);
         return retrofitRestApi.registerRequest(url, params);
     }
 
@@ -263,14 +266,14 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<PasswordResponse> changePasswordRequest(Map<String, Object> params) {
+    public Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CHANGE_PASSWORD);
         return retrofitRestApi.changePasswordRequest(url, params);
     }
 
     @Override
     public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_PROFILE);
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_USER_PROFILE);
         return retrofitRestApi.editProfileRequest(url, params);
     }
 
@@ -278,6 +281,24 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<AddressResponse> addAddressRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_ADDRESS);
         return retrofitRestApi.addAddressRequest(url, params);
+    }
+
+    @Override
+    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_CUSTOMER_ADDRESS);
+        return retrofitRestApi.addAddressRequest(url, addressRequest);
+    }
+
+    @Override
+    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_CUSTOMER_ADDRESS);
+        return retrofitRestApi.editAddressRequest(url, addressRequest);
+    }
+
+    @Override
+    public Observable<AddressResponse> getAddressList() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.LIST_CUSTOMER_ADDRESSES);
+        return retrofitRestApi.getAddressList(url);
     }
 
     @Override
@@ -410,5 +431,23 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PROMOTION_SKU);
         return retrofitRestApi.promotionSkuRequest(url, params);
+    }
+
+    @Override
+    public Observable<ProfileResponse> getUserProfile() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_USER_PROFILE);
+        return retrofitRestApi.getUserProfile(url);
+    }
+
+    @Override
+    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.LOGIN);
+        return retrofitRestApi.loginRequest(url, params);
+    }
+
+    @Override
+    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.LOGIN_WITH_FB);
+        return retrofitRestApi.facebookLoginRequest(url, params);
     }
 }

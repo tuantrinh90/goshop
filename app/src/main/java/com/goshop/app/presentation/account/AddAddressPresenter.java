@@ -1,7 +1,8 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AddressResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
@@ -34,6 +35,30 @@ public class AddAddressPresenter extends RxPresenter<AddAddressContract.View> im
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
                     mView.addAddressResult();
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void addAddressRequest(AddressRequest addressRequest) {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.addAddressRequest(addressRequest).subscribeWith(
+            new DisposableObserver<AddressResponse>() {
+                @Override
+                public void onNext(AddressResponse addressResponse) {
+                    mView.hideLoadingBar();
+                    mView.addAddressSuccess();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    mView.addAddressFailed(throwable.getLocalizedMessage().toString());
                 }
 
                 @Override

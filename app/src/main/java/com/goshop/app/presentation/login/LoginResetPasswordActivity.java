@@ -11,10 +11,12 @@ import com.goshop.app.utils.ToastUtil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -46,7 +48,6 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
     public void inject() {
         hideRightMenu();
         initPresenter();
-        initEditText();
         toastUtil = new ToastUtil(this, this);
     }
 
@@ -63,15 +64,17 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
             .inject(this);
     }
 
-    private void initEditText() {
-        ctdEtResetPwd.initInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
-        ctdEtResetPwd.initImeOptions(EditorInfo.IME_ACTION_DONE);
+    @Override
+    public void resetPwdSuccess() {
+        tvBtnResetPasswordSubmit.setClickable(true);
+        showToast();
     }
 
     @Override
-    public void resetPwdSuccess() {
-        //TODO(helen)wait for api
-        showToast();
+    public void resetPwdFailed(String message) {
+        tvBtnResetPasswordSubmit.setClickable(true);
+        //todo wait for design
+        Log.d("ResetPasswordActivity", message);
     }
 
     private void showToast() {
@@ -89,11 +92,15 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
                 finish();
                 break;
             case R.id.tv_btn_reset_password_submit:
-                //TODO(helen)wait for api
                 EditTextUtil.eidtLoseFocus(tvBtnResetPasswordSubmit);
                 String email = ctdEtResetPwd.getText();
-                if (!TextUtils.isEmpty(email)) {
-                    mPresenter.resetPasswordRequest(null);
+                if (!TextUtils.isEmpty(email) && ctdEtResetPwd.isEmail()) {
+
+                    mPresenter.resetPasswordRequest(email);
+                    tvBtnResetPasswordSubmit.setClickable(false);
+                } else {
+                    ctdEtResetPwd
+                        .setErrorMessage(getResources().getString(R.string.format_email_warning));
                 }
 
                 break;

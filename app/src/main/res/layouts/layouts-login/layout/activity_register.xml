@@ -12,234 +12,238 @@
 
     <include
         layout="@layout/toolbar_right_text"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
 
-    <ScrollView
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:scrollbars="none">
-
-        <LinearLayout
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="@dimen/size_16"
-            android:paddingRight="@dimen/size_16"
-            android:orientation="vertical">
+            android:scrollbars="none">
 
-            <RelativeLayout
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_26">
-                <com.goshop.app.common.CustomAnimEditText
-                    android:id="@+id/ctd_et_register_firstname"
-                    android:layout_width="@dimen/size_156"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_marginRight="@dimen/size_8"
-                    animET:hint="@string/register_firstname"
-                    tools:ignore="RtlHardcoded"/>
+                android:paddingLeft="@dimen/size_16"
+                android:paddingRight="@dimen/size_16"
+                android:orientation="vertical">
 
-                <com.goshop.app.common.CustomAnimEditText
-                    android:id="@+id/ctd_et_register_lastname"
+                <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_toRightOf="@id/ctd_et_register_firstname"
-                    android:layout_alignParentRight="true"
-                    android:layout_marginLeft="@dimen/size_8"
-                    animET:hint="@string/register_lastname"
-                    android:layout_toEndOf="@id/ctd_et_register_firstname"
-                    tools:ignore="RtlHardcoded"/>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/ctd_et_register_firstname"
-                    android:orientation="vertical">
+                    android:paddingTop="@dimen/size_30">
                     <com.goshop.app.common.CustomAnimEditText
-                        android:id="@+id/ctd_et_register_email"
-                        android:layout_width="match_parent"
+                        android:id="@+id/ctd_et_register_firstname"
+                        android:layout_width="@dimen/size_156"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_4"
-                        animET:hint="@string/email"
-                    />
-
-                    <com.goshop.app.common.CustomPasswordEditText
-                        android:id="@+id/ctd_et_register_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_4"
-                        pwd:pwd_hint="@string/password"
-                    />
-
-                    <com.goshop.app.common.CustomPasswordEditText
-                        android:id="@+id/ctd_et_register_confirmation_password"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_4"
-                        pwd:pwd_hint="@string/confirmation_password"
-                    />
-
-                    <com.goshop.app.common.view.RobotoRegularTextView
-                        android:id="@+id/tv_register_title"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_50"
-                        android:paddingRight="@dimen/size_8"
-                        android:drawableRight="@drawable/ic_icon_spinner_down"
-                        android:background="@drawable/selector_textinput_edittext"
-                        android:paddingBottom="@dimen/size_8"
-                        android:paddingTop="@dimen/size_20"
-                        android:textColorHint="@color/color_text_hint"
-                        android:textColor="@color/color_grayscale_text"
-                        android:textSize="@dimen/size_font_16"
-                        android:hint="@string/title_optional"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"
-                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
-
-                    <include
-                        layout="@layout/layout_gender_select"/>
-
+                        android:layout_alignParentLeft="true"
+                        android:layout_marginRight="@dimen/size_8"
+                        animET:hint="@string/register_firstname"
+                        tools:ignore="RtlHardcoded"/>
 
                     <com.goshop.app.common.CustomAnimEditText
-                        android:id="@+id/ctd_et_register_mobile"
+                        android:id="@+id/ctd_et_register_lastname"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_30"
-                        animET:hint="@string/mobile_number"
-                    />
-
-                    <com.goshop.app.common.view.RobotoRegularTextView
-                        android:id="@+id/tv_register_date_of_birth"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_50"
-                        android:paddingRight="@dimen/size_8"
-                        android:drawableRight="@drawable/ic_icon_spinner_down"
-                        android:background="@drawable/selector_textinput_edittext"
-                        android:paddingBottom="@dimen/size_8"
-                        android:paddingTop="@dimen/size_20"
-                        android:textSize="@dimen/size_font_16"
-                        android:textColorHint="@color/color_text_hint"
-                        android:textColor="@color/color_grayscale_text"
-                        android:hint="@string/date_of_birth"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"
-                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
-
-                    <com.goshop.app.common.view.RobotoRegularTextView
-                        android:id="@+id/tv_register_date_of_birth_warning"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/size_4"
-                        android:visibility="invisible"
-                        android:text="@string/birth_empty"
-                        android:textSize="@dimen/size_font_12"
-                        android:textColor="@color/color_orange_red"/>
-
-                    <com.goshop.app.common.view.RobotoRegularTextView
-                        android:id="@+id/tv_register_language"
-                        android:layout_width="match_parent"
-                        android:layout_height="@dimen/size_50"
-                        android:layout_marginTop="@dimen/size_28"
-                        android:paddingRight="@dimen/size_8"
-                        android:drawableRight="@drawable/ic_icon_spinner_down"
-                        android:background="@drawable/selector_textinput_edittext"
-                        android:paddingBottom="@dimen/size_8"
-                        android:paddingTop="@dimen/size_20"
-                        android:textSize="@dimen/size_font_16"
-                        android:textColorHint="@color/color_text_hint"
-                        android:textColor="@color/color_grayscale_text"
-                        android:hint="@string/language_optional"
-                        android:drawableEnd="@drawable/ic_icon_spinner_down"
-                        tools:ignore="RtlHardcoded,RtlSymmetry"/>
+                        android:layout_toRightOf="@id/ctd_et_register_firstname"
+                        android:layout_alignParentRight="true"
+                        android:layout_marginLeft="@dimen/size_8"
+                        animET:hint="@string/register_lastname"
+                        android:layout_toEndOf="@id/ctd_et_register_firstname"
+                        tools:ignore="RtlHardcoded"/>
 
                     <LinearLayout
-                        android:id="@+id/ll_register_email"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_21"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:id="@+id/iv_register_email"
-                            android:layout_width="@dimen/size_24"
-                            android:layout_height="@dimen/size_24"
-                            android:contentDescription="@string/app_name"
-                            android:background="@drawable/selector_box_button"/>
-
-                        <com.goshop.app.common.view.RobotoLightTextView
+                        android:layout_below="@id/ctd_et_register_firstname"
+                        android:orientation="vertical">
+                        <com.goshop.app.common.CustomAnimEditText
+                            android:id="@+id/ctd_et_register_email"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/size_font_12"
-                            android:paddingLeft="@dimen/size_8"
-                            android:text="@string/register_tips_email"
-                            android:textColor="@color/color_greyish_brown"
-                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
-                    </LinearLayout>
+                            android:layout_marginTop="@dimen/size_4"
+                            animET:hint="@string/email"
+                        />
 
-                    <LinearLayout
-                        android:id="@+id/ll_register_sms"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/size_4"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-                        <ImageView
-                            android:id="@+id/iv_register_sms"
-                            android:layout_width="@dimen/size_24"
-                            android:layout_height="@dimen/size_24"
-                            android:contentDescription="@string/app_name"
-                            android:background="@drawable/selector_box_button"/>
-
-                        <com.goshop.app.common.view.RobotoLightTextView
+                        <com.goshop.app.common.CustomPasswordEditText
+                            android:id="@+id/ctd_et_register_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:textSize="@dimen/size_font_12"
-                            android:paddingLeft="@dimen/size_8"
-                            android:text="@string/register_tips_sms"
-                            android:textColor="@color/color_greyish_brown"
-                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
-                    </LinearLayout>
+                            android:layout_marginTop="@dimen/size_4"
+                            pwd:pwd_hint="@string/password"
+                        />
 
-
-                    <com.goshop.app.common.view.RobotoLightTextView
-                        android:id="@+id/tv_register_read"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:paddingTop="@dimen/size_21"
-                        android:lineSpacingMultiplier="1.3"
-                        android:textSize="@dimen/size_font_12"
-                        android:textColor="@color/color_greyish_brown"/>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:paddingTop="@dimen/size_20"
-                        android:paddingBottom="@dimen/size_40"
-                        android:gravity="center">
-                        <com.goshop.app.common.view.RobotoLightTextView
-                            android:layout_width="wrap_content"
+                        <com.goshop.app.common.CustomPasswordEditText
+                            android:id="@+id/ctd_et_register_confirmation_password"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/register_have_account"
-                            android:textSize="@dimen/size_font_14"
-                            android:textColor="@color/color_black_light"/>
+                            android:layout_marginTop="@dimen/size_4"
+                            pwd:pwd_hint="@string/confirmation_password"
+                        />
+
                         <com.goshop.app.common.view.RobotoRegularTextView
-                            android:id="@+id/tv_btn_register_login"
-                            android:layout_width="wrap_content"
+                            android:id="@+id/tv_register_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_50"
+                            android:paddingRight="@dimen/size_8"
+                            android:drawableRight="@drawable/ic_icon_spinner_down"
+                            android:background="@drawable/selector_textinput_edittext"
+                            android:paddingBottom="@dimen/size_8"
+                            android:paddingTop="@dimen/size_20"
+                            android:textColorHint="@color/color_text_hint"
+                            android:textColor="@color/color_grayscale_text"
+                            android:textSize="@dimen/size_font_16"
+                            android:hint="@string/title_optional"
+                            android:drawableEnd="@drawable/ic_icon_spinner_down"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+                        <include
+                            layout="@layout/layout_gender_select"/>
+
+
+                        <com.goshop.app.common.CustomAnimEditText
+                            android:id="@+id/ctd_et_register_mobile"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="@string/login"
-                            android:paddingLeft="@dimen/size_4"
-                            android:textSize="@dimen/size_font_14"
-                            android:textColor="@color/color_main_pink"
-                            tools:ignore="RtlSymmetry"
-                            android:paddingStart="@dimen/size_4"/>
+                            android:layout_marginTop="@dimen/size_30"
+                            animET:hint="@string/mobile_number"
+                        />
+
+                        <com.goshop.app.common.view.RobotoRegularTextView
+                            android:id="@+id/tv_register_date_of_birth"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_50"
+                            android:paddingRight="@dimen/size_8"
+                            android:drawableRight="@drawable/ic_icon_spinner_down"
+                            android:background="@drawable/selector_textinput_edittext"
+                            android:paddingBottom="@dimen/size_8"
+                            android:paddingTop="@dimen/size_20"
+                            android:textSize="@dimen/size_font_16"
+                            android:textColorHint="@color/color_text_hint"
+                            android:textColor="@color/color_grayscale_text"
+                            android:hint="@string/date_of_birth"
+                            android:drawableEnd="@drawable/ic_icon_spinner_down"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+                        <com.goshop.app.common.view.RobotoRegularTextView
+                            android:id="@+id/tv_register_date_of_birth_warning"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/size_4"
+                            android:visibility="invisible"
+                            android:text="@string/birth_empty"
+                            android:textSize="@dimen/size_font_12"
+                            android:textColor="@color/color_orange_red"/>
+
+                        <com.goshop.app.common.view.RobotoRegularTextView
+                            android:id="@+id/tv_register_language"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/size_50"
+                            android:layout_marginTop="@dimen/size_28"
+                            android:paddingRight="@dimen/size_8"
+                            android:drawableRight="@drawable/ic_icon_spinner_down"
+                            android:background="@drawable/selector_textinput_edittext"
+                            android:paddingBottom="@dimen/size_8"
+                            android:paddingTop="@dimen/size_20"
+                            android:textSize="@dimen/size_font_16"
+                            android:textColorHint="@color/color_text_hint"
+                            android:textColor="@color/color_grayscale_text"
+                            android:hint="@string/language_optional"
+                            android:drawableEnd="@drawable/ic_icon_spinner_down"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+                        <LinearLayout
+                            android:id="@+id/ll_register_email"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_21"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/iv_register_email"
+                                android:layout_width="@dimen/size_24"
+                                android:layout_height="@dimen/size_24"
+                                android:contentDescription="@string/app_name"
+                                android:background="@drawable/selector_box_button"/>
+
+                            <com.goshop.app.common.view.RobotoLightTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/size_font_12"
+                                android:paddingLeft="@dimen/size_8"
+                                android:text="@string/register_tips_email"
+                                android:textColor="@color/color_greyish_brown"
+                                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_register_sms"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_4"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+                            <ImageView
+                                android:id="@+id/iv_register_sms"
+                                android:layout_width="@dimen/size_24"
+                                android:layout_height="@dimen/size_24"
+                                android:contentDescription="@string/app_name"
+                                android:background="@drawable/selector_box_button"/>
+
+                            <com.goshop.app.common.view.RobotoLightTextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:textSize="@dimen/size_font_12"
+                                android:paddingLeft="@dimen/size_8"
+                                android:text="@string/register_tips_sms"
+                                android:textColor="@color/color_greyish_brown"
+                                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+                        </LinearLayout>
+
+
+                        <com.goshop.app.common.view.RobotoLightTextView
+                            android:id="@+id/tv_register_read"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:paddingTop="@dimen/size_21"
+                            android:lineSpacingMultiplier="1.3"
+                            android:textSize="@dimen/size_font_12"
+                            android:textColor="@color/color_greyish_brown"/>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingTop="@dimen/size_20"
+                            android:paddingBottom="@dimen/size_40"
+                            android:gravity="center">
+                            <com.goshop.app.common.view.RobotoLightTextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/register_have_account"
+                                android:textSize="@dimen/size_font_14"
+                                android:textColor="@color/color_black_light"/>
+                            <com.goshop.app.common.view.RobotoRegularTextView
+                                android:id="@+id/tv_btn_register_login"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/login"
+                                android:paddingLeft="@dimen/size_4"
+                                android:textSize="@dimen/size_font_14"
+                                android:textColor="@color/color_main_pink"
+                                tools:ignore="RtlSymmetry"
+                                android:paddingStart="@dimen/size_4"/>
+                        </LinearLayout>
                     </LinearLayout>
-                </LinearLayout>
 
-            </RelativeLayout>
+                </RelativeLayout>
 
-        </LinearLayout>
-    </ScrollView>
+            </LinearLayout>
+        </ScrollView>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </FrameLayout>
 
 </LinearLayout>
