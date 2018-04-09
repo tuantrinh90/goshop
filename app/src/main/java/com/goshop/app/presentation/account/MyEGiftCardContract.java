@@ -11,12 +11,21 @@ public class MyEGiftCardContract {
 
     interface View extends BaseView {
 
-        void showGiftCardsResult(List<MyEGiftModel> eGiftModels);
+        void getEGiftCardSuccess(List<MyEGiftModel> eGiftModels);
+
+        void getEGiftCardFailed(String errorMessage);
+
+        void activeSuccess();
+
+        void activeFailed(String errorMessage);
+
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void eGiftCardsRequest(Map<String, Object> params);
+        void eGiftCardsRequest(String uniqueCode);
+
+        void getEGiftCardDetails();
     }
 
 }

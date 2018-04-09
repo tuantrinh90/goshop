@@ -14,11 +14,23 @@ public class ProductDetailContract {
         void productDetailRequestSuccess(List<ProductDetailModel> detailDatas);
 
         void productBannerResult(List<String> imageUrls);
+
+        void addWishlistSuccess();
+
+        void removeWishlistSuccess();
+
+        void addWishlistFailed(String errorMessage);
+
+        void removeWishlistFailed(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
         void productDetailRequest(Map<String, Object> params);
+
+        void addWishlistRequest(String skuId);
+
+        void removeWishlistRequest(String skuId);
     }
 
 }

@@ -1,13 +1,12 @@
 package com.goshop.app.presentation.account;
 
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.MyEGiftResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.MyEGiftCardsDetailsVM;
-import com.goshop.app.presentation.model.MyEGiftModel;
+import com.goshop.app.presentation.mapper.MyEGiftCardMapper;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -22,19 +21,24 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
     }
 
     @Override
-    public void eGiftCardsRequest(Map<String, Object> params) {
+    public void eGiftCardsRequest(String uniqueCode) {
         mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_EGIFT_CARD, uniqueCode);
         addSubscrebe(accountRepository.eGiftCardsRequest(params).subscribeWith(
             new DisposableObserver<MyEGiftResponse>() {
                 @Override
                 public void onNext(MyEGiftResponse myEGiftResponse) {
                     mView.hideLoadingBar();
+                    mView.activeSuccess();
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showGiftCardsResult(getMockData());
+                    mView.activeFailed(e.getLocalizedMessage().toString());
                 }
 
                 @Override
@@ -44,17 +48,28 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
             }));
     }
 
-    //todo this is mock data
-    private List<MyEGiftModel> getMockData() {
-        List<MyEGiftModel> myEGiftModels = new ArrayList<>();
-        myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_TOP));
-        myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_CENTER));
-        MyEGiftCardsDetailsVM detailsVM = new MyEGiftCardsDetailsVM("ABCDE", "Sent by Sender Name",
-            "Expire till 12 Feb 2018", "120", "Active");
-        myEGiftModels.add(detailsVM);
-        myEGiftModels.add(detailsVM);
-        myEGiftModels.add(detailsVM);
-        myEGiftModels.add(detailsVM);
-        return myEGiftModels;
+    @Override
+    public void getEGiftCardDetails() {
+        mView.showLoadingBar();
+        addSubscrebe(accountRepository.getEGiftCardDetails().subscribeWith(
+            new DisposableObserver<MyEGiftResponse>() {
+                @Override
+                public void onNext(MyEGiftResponse myEGiftResponse) {
+                    mView.hideLoadingBar();
+                    mView.getEGiftCardSuccess(MyEGiftCardMapper.transform(myEGiftResponse));
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.getEGiftCardFailed(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
+
 }

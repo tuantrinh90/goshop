@@ -17,6 +17,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -139,6 +140,28 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     @Override
+    public void addWishlistSuccess() {
+        //todo this is an empty method
+    }
+
+    @Override
+    public void removeWishlistSuccess() {
+        //todo this is an empty method
+    }
+
+    @Override
+    public void addWishlistFailed(String errorMessage) {
+        //todo wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void removeWishlistFailed(String errorMessage) {
+        //todo wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void onBannerClick() {
         startActivity(new Intent(this, PDPDetailImagesActivity.class));
     }
@@ -163,4 +186,14 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         startActivity(new Intent(this, AllQAActivity.class));
     }
 
+    @Override
+    public void onWishlistSelect(boolean isSelect) {
+
+        //todo hard code is waiting for api data
+        if (isSelect) {
+            mPresenter.addWishlistRequest( "abc");
+        } else {
+            mPresenter.removeWishlistRequest("abc");
+        }
+    }
 }

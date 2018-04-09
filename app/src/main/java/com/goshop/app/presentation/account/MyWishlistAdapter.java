@@ -4,8 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.presentation.model.widget.ProductsVM;
-import com.goshop.app.utils.NumberFormater;
+import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
 import android.graphics.Paint;
@@ -24,16 +23,17 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
 
     private OnItemMenuClickListener menuClickListener;
 
-    private List<ProductsVM> productsVMS;
+    private List<WishlistVM> productsVMS;
 
     public MyWishlistAdapter(
-        List<ProductsVM> productsVMS) {
+        List<WishlistVM> productsVMS) {
         this.productsVMS = productsVMS;
     }
 
-    public void setUpdateDatas(List<ProductsVM> productsVMS) {
+    public void setUpdateDatas(List<WishlistVM> productsVMS) {
         this.productsVMS.clear();
         this.productsVMS = productsVMS;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -82,22 +82,19 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(ProductsVM productsVM, int position) {
+        void bindingData(WishlistVM wishlistVM, int position) {
             viewWishlistDivider.setVisibility(position == 0 ? View.GONE : View.VISIBLE);
             ivWishlistMenu
-                .setOnClickListener(v -> menuClickListener.onItemMenuClick(ivWishlistMenu));
+                .setOnClickListener(
+                    v -> menuClickListener.onItemMenuClick(ivWishlistMenu, wishlistVM));
 
-            Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
+            Glide.with(itemView.getContext()).load(wishlistVM.getThumb()).asBitmap()
                 .error(R.drawable.ic_bought)
                 .into(ivWishlistThumb);
-            tvWishlistNow
-                .setText(
-                    NumberFormater.formaterMoney(productsVM.getPriceVM().getRm().getDiscounted()));
-            tvWishlistOld
-                .setText(
-                    NumberFormater.formaterMoney(productsVM.getPriceVM().getRm().getOriginal()));
+            tvWishlistNow.setText(wishlistVM.getNowPrice());
+            tvWishlistOld.setText(wishlistVM.getOldPrice());
             tvWishlistOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            tvWishlistTitle.setText(productsVM.getTitle());
+            tvWishlistTitle.setText(wishlistVM.getTitle());
         }
     }
 }

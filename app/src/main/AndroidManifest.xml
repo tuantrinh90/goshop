@@ -128,9 +128,7 @@
 
         <activity android:name=".presentation.shopping.ProductDetailActivity"
             android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
+            android:theme="@style/WhiteBackground"/>
 
         <activity android:name=".presentation.myorder.MyOrdersActivity"
             android:theme="@style/WhiteBackground"/>

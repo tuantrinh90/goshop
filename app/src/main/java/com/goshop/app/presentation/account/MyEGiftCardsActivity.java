@@ -9,10 +9,14 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -20,7 +24,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Presenter> implements
-    MyEGiftCardContract.View {
+    MyEGiftCardContract.View, MyEGiftCardsAdapter.OnActiveCardClickListener {
 
     @BindView(R.id.recyclerview_my_egift)
     RecyclerView recyclerviewMyEgift;
@@ -30,8 +34,7 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //todo wait for api
-        mPresenter.eGiftCardsRequest(null);
+        mPresenter.getEGiftCardDetails();
     }
 
     @Override
@@ -59,6 +62,7 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
         recyclerviewMyEgift.setLayoutManager(layoutManager);
         cardsAdapter = new MyEGiftCardsAdapter(new ArrayList<>());
         recyclerviewMyEgift.setAdapter(cardsAdapter);
+        cardsAdapter.setOnActiveCardClickListener(this);
     }
 
     @Override
@@ -66,17 +70,46 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
         return getResources().getString(R.string.my_egift_cards);
     }
 
+
     @Override
-    public void showGiftCardsResult(List<MyEGiftModel> eGiftModels) {
+    public void getEGiftCardSuccess(List<MyEGiftModel> eGiftModels) {
         cardsAdapter.setUpDatas(eGiftModels);
     }
 
+    @Override
+    public void getEGiftCardFailed(String errorMessage) {
+        //todo wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void activeSuccess() {
+        finish();
+    }
+
+    @Override
+    public void activeFailed(String errorMessage) {
+        //todo wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+    }
+
     @OnClick({R.id.imageview_left_menu})
-    public void OnMyGiftClick(View view){
+    public void OnMyGiftClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void onActivieClick(String code) {
+        mPresenter.eGiftCardsRequest(code);
+    }
+
+    @Override
+    public void onEmptyClick() {
+        //todo hard code wait for design
+        Toast.makeText(this, "Please input Unique Code!", Toast.LENGTH_SHORT).show();
     }
 }

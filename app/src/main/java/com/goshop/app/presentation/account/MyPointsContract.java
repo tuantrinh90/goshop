@@ -11,11 +11,13 @@ public class MyPointsContract {
 
     interface View extends BaseView {
 
-        void showMyPointsResult(List<PointsModel> pointsModels);
+        void getPointDetailsSuccess(List<PointsModel> pointsModels);
+
+        void getPointDetailsFailed(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void myPointsRequest(Map<String, Object> params);
+        void getGoShopPointsDetails();
     }
 }

@@ -14,10 +14,10 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -83,6 +83,11 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
+    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+        return null;
+    }
+
+    @Override
     public Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params) {
         return null;
     }
@@ -123,7 +128,17 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params) {
+    public Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyWishlistResponse> getWishlistItems() {
         return null;
     }
 
@@ -320,6 +335,11 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<MyPointsResponse> getGoShopPointsDetails() {
         return null;
     }
 

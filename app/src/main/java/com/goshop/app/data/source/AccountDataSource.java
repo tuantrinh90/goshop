@@ -13,10 +13,10 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.MyEGiftResponse;
-import com.goshop.app.data.model.MyPointsResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
+import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.MyWishlistResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
@@ -59,6 +59,8 @@ public interface AccountDataSource {
 
     Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params);
 
+    Observable<MyEGiftResponse> getEGiftCardDetails();
+
     Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
 
     Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params);
@@ -75,7 +77,11 @@ public interface AccountDataSource {
 
     Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
 
-    Observable<MyWishlistResponse> myWishlistRequest(Map<String, Object> params);
+    Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params);
+
+    Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params);
+
+    Observable<MyWishlistResponse> getWishlistItems();
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
@@ -155,6 +161,8 @@ public interface AccountDataSource {
     Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params);
 
     Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params);
+
+    Observable<MyPointsResponse> getGoShopPointsDetails();
 
     Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params);
 
