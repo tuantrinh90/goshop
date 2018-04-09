@@ -7,7 +7,6 @@ import com.goshop.app.presentation.model.MenuHearderVM;
 import com.goshop.app.presentation.model.MenuItemVM;
 import com.goshop.app.presentation.model.MenuModel;
 
-import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -125,8 +124,10 @@ public class MenuAdapter extends RecyclerView.Adapter {
         void bindingData(MenuHearderVM menuHearderVM, int position) {
             rlSlideUserInfo.setVisibility(menuHearderVM.isLoginState() ? View.VISIBLE : View.GONE);
             tvSlideSignUp.setVisibility(menuHearderVM.isLoginState() ? View.GONE : View.VISIBLE);
-            rlSlideUserInfo.setOnClickListener(v -> onSlideMenuItemClickListener.onHeaderUserClick(position));
-            tvSlideSignUp.setOnClickListener(v -> onSlideMenuItemClickListener.onHeaderLoginClick(position));
+            rlSlideUserInfo
+                .setOnClickListener(v -> onSlideMenuItemClickListener.onHeaderUserClick(position));
+            tvSlideSignUp
+                .setOnClickListener(v -> onSlideMenuItemClickListener.onHeaderLoginClick(position));
         }
     }
 

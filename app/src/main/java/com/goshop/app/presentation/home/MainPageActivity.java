@@ -10,6 +10,7 @@ import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
+import com.goshop.app.widget.listener.OnScheduleClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -31,7 +32,7 @@ import butterknife.BindView;
 import butterknife.OnClick;
 
 public class MainPageActivity extends BaseActivity implements MenuAdapter
-    .OnSlideMenuItemClickListener {
+    .OnSlideMenuItemClickListener, OnScheduleClickListener {
 
     @BindView(R.id.cset_search)
     CustomSearchEditText csetSearch;
@@ -99,8 +100,10 @@ public class MainPageActivity extends BaseActivity implements MenuAdapter
             R.string.trending_now), getResources().getString(
             R.string.tv_shows), getResources().getString(R.string.brands)};
 
+        TrendingNowFragment trendingNowFragment = TrendingNowFragment.getInstance();
+        trendingNowFragment.setOnScheduleClickListener(this::onScheduleClick);
         List<BaseFragment> fragments = new ArrayList<>();
-        fragments.add(TrendingNowFragment.getInstance());
+        fragments.add(trendingNowFragment);
         fragments.add(TVShowPageFragment.getInstance());
         fragments.add(BrandsFragment.getInstance());
         pagerAdapter = new MainPagerAdapter(getSupportFragmentManager(), fragments,
@@ -187,5 +190,8 @@ public class MainPageActivity extends BaseActivity implements MenuAdapter
         overridePendingTransition(R.anim.slide_from_left, R.anim.slide_to_right);
     }
 
-
+    @Override
+    public void onScheduleClick() {
+        viewpagerMain.setCurrentItem(1);
+    }
 }

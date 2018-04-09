@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.ChannelVM;
 import com.goshop.app.presentation.model.TVShowVM;
 
 import java.util.ArrayList;
@@ -42,6 +43,17 @@ public class TVShowPagePresenter extends RxPresenter<TVShowPageContract.View> im
 
                 }
             }));
+    }
+
+    @Override
+    public List<ChannelVM> getChannels() {
+        //todo this is mock data
+        List<ChannelVM> channelVMS = new ArrayList<>();
+        channelVMS.add(new ChannelVM(true, "CH118"));
+        channelVMS.add(new ChannelVM(false, "CH120"));
+        channelVMS.add(new ChannelVM(false, "CH303"));
+        channelVMS.add(new ChannelVM(false, "FB LIVE"));
+        return channelVMS;
     }
 
     //todo wait for api

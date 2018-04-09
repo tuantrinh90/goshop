@@ -2,7 +2,6 @@ package com.goshop.app.widget;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.AdditionalInformationVM;
 
 import android.support.v7.widget.RecyclerView;

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/size_316"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_8"
+        android:background="@drawable/drawable_biger_divider_with_shadow"/>
+
+    <com.goshop.app.common.view.RobotoMediumTextView
+        android:id="@+id/tv_trending_product_title"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_60"
+        android:text="@string/trending_now"
+        android:textSize="@dimen/size_font_18"
+        android:textColor="@color/color_grayscale_text"
+        android:gravity="bottom"
+        android:paddingBottom="@dimen/size_16"
+        android:paddingLeft="@dimen/size_16"/>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+</LinearLayout>

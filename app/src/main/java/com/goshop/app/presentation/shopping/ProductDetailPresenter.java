@@ -51,6 +51,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
                     mView.hideLoadingBar();
                     //todo(helen)wait for api
                     mView.productDetailRequestSuccess(getMockData());
+                    mView.productBannerResult(getBanners());
                 }
 
                 @Override
@@ -74,8 +75,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         return detailModels;
     }
 
-    //todo(helen)this is mock data will delete when get api
-    private ProductDetailTopVM getProductTopData() {
+    private List<String> getBanners() {
         List<String> images = new ArrayList<>();
         images.add(
             "http://g.hiphotos.baidu" +
@@ -87,14 +87,18 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         images.add(
             "http://a.hiphotos.baidu" +
                 ".com/image/pic/item/503d269759ee3d6d453aab8b48166d224e4adef5.jpg");
+        return images;
+    }
 
+    //todo(helen)this is mock data will delete when get api
+    private ProductDetailTopVM getProductTopData() {
         List<ColorVM> colorVMS = new ArrayList<>();
         colorVMS.add(new ColorVM("Yellow", ""));
         colorVMS.add(new ColorVM("Red", ""));
         List<SizeVM> sizeVMS = new ArrayList<>();
         sizeVMS.add(new SizeVM("XL"));
         sizeVMS.add(new SizeVM("L"));
-        return new ProductDetailTopVM(images,
+        return new ProductDetailTopVM(
             "Kloken Living Box Value Set Kloken Living Box Value Set",
             "RM 269.00", "RM 199.00", "-30%", colorVMS, sizeVMS, "2");
     }

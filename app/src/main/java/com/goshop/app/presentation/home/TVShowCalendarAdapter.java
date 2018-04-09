@@ -3,8 +3,8 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.widget.listener.OnTVShowItemsClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -22,7 +22,7 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
 
     private List<TVShowVM> displayDatas;
 
-    private OnCalendarItemClickListener onCalendarItemClickListener;
+    private OnTVShowItemsClickListener onCalendarItemClickListener;
 
     private List<TVShowVM> tvShowVMS;
 
@@ -45,6 +45,10 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
                 }
             }
         }
+    }
+
+    public int getCurrentPosition(TVShowVM tvShowVM) {
+        return tvShowVMS.indexOf(tvShowVM);
     }
 
     public void setUpdateDatas(List<TVShowVM> tvShowVMS, String currentDay) {
@@ -72,7 +76,7 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
     }
 
     public void setOnCalendarItemClickListener(
-        OnCalendarItemClickListener onCalendarItemClickListener) {
+        OnTVShowItemsClickListener onCalendarItemClickListener) {
         this.onCalendarItemClickListener = onCalendarItemClickListener;
     }
 
@@ -83,10 +87,13 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    interface OnCalendarItemClickListener {
-
-        void onCalendarItemClick(int position);
+    public void updateSelectCalendar(String currentDay) {
+        for (int i = 0; i < displayDatas.size(); i++) {
+            displayDatas.get(i).setCurrent(displayDatas.get(i).getDay().equals(currentDay));
+        }
+        notifyDataSetChanged();
     }
+
 
     class CalenderViewHolder extends RecyclerView.ViewHolder {
 
@@ -111,7 +118,7 @@ public class TVShowCalendarAdapter extends RecyclerView.Adapter {
             tvTvShowWeek.setSelected(tvShowVM.isCurrent());
             llTvShowCalendar.setOnClickListener(v -> {
                 //todo wait for api
-//                onCalendarItemClickListener.onCalendarItemClick(getPositionInTotal(tvShowVM));
+                onCalendarItemClickListener.onCalendarItemClick(getCurrentPosition(tvShowVM));
                 updateSelectCalendar(position);
             });
         }

@@ -3,7 +3,6 @@ package com.goshop.app.utils;
 import com.goshop.app.R;
 import com.goshop.app.common.RobotoRegularTypefaceSpan;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.account.HelpSupportActivity;
 import com.goshop.app.presentation.account.MyAccountLandingActivity;
 import com.goshop.app.presentation.account.MyWishlistActivity;
@@ -13,7 +12,6 @@ import com.goshop.app.presentation.goloyalty.GoLoyaltyActivity;
 import com.goshop.app.presentation.goloyalty.MyRewardsActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.login.LoginActivity;
-import com.goshop.app.presentation.login.TestMenuActivity;
 import com.goshop.app.presentation.myorder.MyOrdersActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
@@ -30,8 +28,6 @@ import android.text.SpannableString;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 
 public class SlideMenuUtil {
 
@@ -108,26 +104,6 @@ public class SlideMenuUtil {
         disableNavigationViewScrollbars();
         initSlideMenuItem(currentMenuId);
         setTypeFonts();
-    }
-
-    private void setTypeFonts() {
-        applyFontToMenuItem(slideMenuHome);
-        applyFontToMenuItem(slideMenuCategories);
-        applyFontToMenuItem(slideMenuLoyalty);
-        applyFontToMenuItem(slideMenuCart);
-        applyFontToMenuItem(slideMenuWishlist);
-        applyFontToMenuItem(slideMenuOrder);
-        applyFontToMenuItem(slideMenuRewards);
-        applyFontToMenuItem(slideMenuNotification);
-        applyFontToMenuItem(slideMenuHelp);
-        applyFontToMenuItem(slideMenuSettings);
-    }
-
-    private void applyFontToMenuItem(MenuItem menuItem) {
-        Typeface font = Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Regular.ttf");
-        SpannableString newTitle = new SpannableString(menuItem.getTitle());
-        newTitle.setSpan(new RobotoRegularTypefaceSpan("" , font), 0 , newTitle.length(),  Spannable.SPAN_INCLUSIVE_INCLUSIVE);
-        menuItem.setTitle(newTitle);
     }
 
     public void drawerLisenter() {
@@ -271,12 +247,33 @@ public class SlideMenuUtil {
         }
     }
 
+    private void setTypeFonts() {
+        applyFontToMenuItem(slideMenuHome);
+        applyFontToMenuItem(slideMenuCategories);
+        applyFontToMenuItem(slideMenuLoyalty);
+        applyFontToMenuItem(slideMenuCart);
+        applyFontToMenuItem(slideMenuWishlist);
+        applyFontToMenuItem(slideMenuOrder);
+        applyFontToMenuItem(slideMenuRewards);
+        applyFontToMenuItem(slideMenuNotification);
+        applyFontToMenuItem(slideMenuHelp);
+        applyFontToMenuItem(slideMenuSettings);
+    }
+
     public void setDrawerHasSelect(boolean hasSelect) {
         this.drawerHasSelect = hasSelect;
     }
 
     public void setSelectMenuId(int menuId) {
         this.selectMenuId = menuId;
+    }
+
+    private void applyFontToMenuItem(MenuItem menuItem) {
+        Typeface font = Typeface.createFromAsset(activity.getAssets(), "fonts/Roboto-Regular.ttf");
+        SpannableString newTitle = new SpannableString(menuItem.getTitle());
+        newTitle.setSpan(new RobotoRegularTypefaceSpan("", font), 0, newTitle.length(),
+            Spannable.SPAN_INCLUSIVE_INCLUSIVE);
+        menuItem.setTitle(newTitle);
     }
 
 //    public void setOnNavigationItemSelectedListener(

@@ -1,25 +1,18 @@
 package com.goshop.app.presentation.home;
 
-import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.response.BaseWidgetResponse;
-import com.goshop.app.data.model.response.WidgetListResponse;
+import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.mapper.WidgetViewMapper;
+import com.goshop.app.presentation.model.TrendingBannerVM;
+import com.goshop.app.presentation.model.TrendingHorizontalProductsVM;
+import com.goshop.app.presentation.model.TrendingNowModel;
+import com.goshop.app.presentation.model.TrendingSingleBannerVM;
+import com.goshop.app.presentation.model.TrendingVideoVM;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-import com.goshop.app.presentation.model.widget.OfferListItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
-import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
-import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
-import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
-import com.goshop.app.presentation.model.widget.WidgetTitleExpandVM;
-import com.goshop.app.presentation.model.widget.WidgetVideoPlayerVM;
-import com.goshop.app.presentation.model.widget.WidgetViewModel;
-
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,13 +33,15 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
     public void trendingNowRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.trendingNowRequest(params).subscribeWith(
-            new DisposableObserver<WidgetListResponse>() {
+            new DisposableObserver<TrendingNowResponse>() {
                 @Override
-                public void onNext(WidgetListResponse widgetListResponse) {
+                public void onNext(TrendingNowResponse response) {
                     mView.hideLoadingBar();
-                    List<BaseWidgetResponse> baseWidgetRepons = widgetListResponse.getWidgetlist();
+                    //todo wait for api
+                    /*List<BaseWidgetResponse> baseWidgetRepons = widgetListResponse
+                    .getWidgetlist();
                     Log.d("TrendingNowPresenter", "size:" + baseWidgetRepons.size());
-                    mView.trendingNowResult(WidgetViewMapper.transform(widgetListResponse));
+                    mView.trendingNowResult(WidgetViewMapper.transform(widgetListResponse));*/
                 }
 
                 @Override
@@ -64,39 +59,35 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
     }
 
     //TODO(helen) this is mock data
-    private List<WidgetViewModel> getMockData() {
-        List<WidgetViewModel> widgetViewModels = new ArrayList<>();
-        widgetViewModels.add(getWidgetBanners());
-        widgetViewModels.add(getWidgetVideoPlayerVMs());
-        widgetViewModels.add(getSinglePicture());
-        widgetViewModels.addAll(getWidgetProductScrollerVM("Trending Now"));
-        widgetViewModels.add(getSinglePicture());
-        widgetViewModels.addAll(getWidgetProductScrollerVM("Best Seller"));
-        widgetViewModels.add(getSinglePicture());
-        widgetViewModels.addAll(getWidgetProductScrollerVM("TV Special"));
-        return widgetViewModels;
+    private List<TrendingNowModel> getMockData() {
+        List<TrendingNowModel> models = new ArrayList<>();
+        models.add(getTopBanners());
+        models.add(getVideoVM());
+        models.add(getSingleBanner());
+        models.add(getHorizontalProductsVM("Trending Now"));
+        models.add(getSingleBanner());
+        models.add(getHorizontalProductsVM("Best Seller"));
+        models.add(getSingleBanner());
+        models.add(getHorizontalProductsVM("TV Special"));
+        return models;
     }
 
     //TODO(helen) this is mock data
-    private WidgetCarouselVM getWidgetBanners() {
+    private TrendingBannerVM getTopBanners() {
         List<CarouselItemsVM> itemsVMS = new ArrayList<>();
-        CarouselItemsVM itemsVM = new CarouselItemsVM("http://a.hiphotos.baidu" +
-            ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
-        CarouselItemsVM itemsVM1 = new CarouselItemsVM("http://g.hiphotos.baidu" +
-            ".com/image/pic/item/7aec54e736d12f2ee7ed822044c2d56284356881.jpg");
-        CarouselItemsVM itemsVM2 = new CarouselItemsVM(
-            "http://img843.ph.126.net/HQO2EzKsZ30Kvp03799Gyg==/883831426873459781.jpg");
-        CarouselItemsVM itemsVM3 = new CarouselItemsVM("http://g.hiphotos.baidu" +
-            ".com/image/pic/item/9a504fc2d56285356bd508329aef76c6a7ef63e8.jpg");
+        CarouselItemsVM itemsVM = new CarouselItemsVM("");
+        CarouselItemsVM itemsVM1 = new CarouselItemsVM("");
+        CarouselItemsVM itemsVM2 = new CarouselItemsVM("");
+        CarouselItemsVM itemsVM3 = new CarouselItemsVM("");
         itemsVMS.add(itemsVM);
         itemsVMS.add(itemsVM1);
         itemsVMS.add(itemsVM2);
         itemsVMS.add(itemsVM3);
-        return new WidgetCarouselVM(true, 1000, itemsVMS);
+        return new TrendingBannerVM(itemsVMS, true, 2000);
     }
 
     //TODO(helen) this is mock data
-    private WidgetVideoPlayerVM getWidgetVideoPlayerVMs() {
+    private TrendingVideoVM getVideoVM() {
         List<VideoPlayerItemsVM> videoPlayerItemsVMS = new ArrayList<>();
         VideoPlayerItemsVM videoPlayerItemsVM = new VideoPlayerItemsVM();
         videoPlayerItemsVM.setName("CH118");
@@ -114,25 +105,20 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
         videoPlayerItemsVMS.add(videoPlayerItemsVM);
         videoPlayerItemsVMS.add(videoPlayerItemsVM);
         videoPlayerItemsVMS.add(videoPlayerItemsVM);
-        return new WidgetVideoPlayerVM("On Air", "TV Schedule", videoPlayerItemsVMS);
+        return new TrendingVideoVM("On Air", "TV Schedule", videoPlayerItemsVMS);
     }
 
     //TODO(helen) this is mock data
-    private WidgetSinglePictureVM getSinglePicture() {
-        OfferListItemsVM offerListItemsVM = new OfferListItemsVM(R.drawable.ic_detail_top_demo, "",
-            "");
-        List<OfferListItemsVM> itemsVMS = new ArrayList<>();
-        itemsVMS.add(offerListItemsVM);
-        return new WidgetSinglePictureVM(itemsVMS);
+    private TrendingSingleBannerVM getSingleBanner() {
+        CarouselItemsVM itemsVM = new CarouselItemsVM("http://a.hiphotos.baidu" +
+            ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
+        return new TrendingSingleBannerVM(itemsVM);
     }
 
     //TODO(helen) this is mock data
-    private List<WidgetViewModel> getWidgetProductScrollerVM(String title) {
-        List<WidgetViewModel> widgetViewModels = new ArrayList<>();
-        widgetViewModels.add(new WidgetTitleExpandVM(title));
-
+    private TrendingHorizontalProductsVM getHorizontalProductsVM(String title) {
         ProductsVM productsVM = new ProductsVM();
-        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
+        ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
@@ -142,8 +128,6 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
-        widgetViewModels.add(new WidgetProductScrollerVM(productsVMS));
-
-        return widgetViewModels;
+        return new TrendingHorizontalProductsVM(title, productsVMS);
     }
 }

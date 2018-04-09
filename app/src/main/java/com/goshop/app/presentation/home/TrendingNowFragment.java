@@ -3,17 +3,13 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
+import com.goshop.app.presentation.model.TrendingNowModel;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
-import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
-import com.goshop.app.presentation.model.widget.WidgetViewModel;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
-import com.goshop.app.widget.WidgetViewAdapter;
-import com.goshop.app.widget.listener.OnBannerItemClickListener;
-import com.goshop.app.widget.listener.OnProductBuyClickListener;
-import com.goshop.app.widget.listener.OnProductItemClickListener;
-import com.goshop.app.widget.listener.OnSinglePicturClickListener;
+import com.goshop.app.widget.listener.OnScheduleClickListener;
+import com.goshop.app.widget.listener.OnTrendingNowClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -36,8 +32,7 @@ import injection.modules.PresenterModule;
 import static com.goshop.app.utils.PageIntentUtils.PROMOTION_BANNER_URL;
 
 public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presenter> implements
-    TrendingNowContract.View, OnProductItemClickListener, OnBannerItemClickListener,
-    OnSinglePicturClickListener, OnProductBuyClickListener {
+    TrendingNowContract.View, OnTrendingNowClickListener {
 
     private final String BANNER = "promotionlandBanner";
 
@@ -50,10 +45,16 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     Unbinder unbinder;
 
-    private WidgetViewAdapter viewAdapter;
+    private OnScheduleClickListener onScheduleClickListener;
+
+    private TrendingNowAdapter trendingNowAdapter;
 
     public static TrendingNowFragment getInstance() {
         return new TrendingNowFragment();
+    }
+
+    public void setOnScheduleClickListener(OnScheduleClickListener onScheduleClickListener) {
+        this.onScheduleClickListener = onScheduleClickListener;
     }
 
     @Nullable
@@ -95,8 +96,8 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     private void initRecyclerview() {
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerviewTrending.setLayoutManager(manager);
-        viewAdapter = new WidgetViewAdapter(new ArrayList<>());
-        recyclerviewTrending.setAdapter(viewAdapter);
+        trendingNowAdapter = new TrendingNowAdapter(this, new ArrayList<>());
+        recyclerviewTrending.setAdapter(trendingNowAdapter);
     }
 
     @Override
@@ -106,12 +107,22 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     @Override
-    public void trendingNowResult(List<WidgetViewModel> widgetViewModels) {
-        viewAdapter.setOnBannerItemClickListener(this);
-        viewAdapter.setOnProductItemClickListener(this);
-        viewAdapter.setOnSinglePicturClickListener(this);
-        viewAdapter.setOnProductBuyClickListener(this);
-        viewAdapter.setUpdateDatas(widgetViewModels);
+    public void trendingNowResult(List<TrendingNowModel> models) {
+        trendingNowAdapter.setDatasUpdate(models);
+    }
+
+    @Override
+    public void onTopBannerClick(CarouselItemsVM carouselItemsVM) {
+        //todo wait for api
+        /*String image = carouselItemsVM.getImage();
+        String link = carouselItemsVM.getLink();
+        String[] linkKinds = link.split("/");*/
+        startBannerLinkScreen(SKU, "");
+    }
+
+    @Override
+    public void onTVScheduleClick() {
+        onScheduleClickListener.onScheduleClick();
     }
 
     @Override
@@ -120,11 +131,15 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     @Override
-    public void onBannerItemClick(CarouselItemsVM carouselItemsVM) {
-        String image = carouselItemsVM.getImage();
-        String link = carouselItemsVM.getLink();
-        String[] linkKinds = link.split("/");
-        startBannerLinkScreen(linkKinds[1], image);
+    public void onBuyNowClick() {
+        Intent intent = new Intent(getActivity(), ShoppingCartActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onSingleBannerClick() {
+        Intent intent = new Intent(getActivity(), PromotionSkuActivity.class);
+        startActivity(intent);
     }
 
     private void startBannerLinkScreen(String link, String image) {
@@ -146,19 +161,5 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         if (intent != null) {
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void onSinglePictureClick(WidgetSinglePictureVM singlePictureVM) {
-        Intent intent = new Intent(getActivity(), PromotionSkuActivity.class);
-        intent.putExtra(PROMOTION_BANNER_URL,
-            singlePictureVM.getOfferListItemsVMS().get(0).getImage());
-        startActivity(intent);
-    }
-
-    @Override
-    public void onBuyNowClick(ProductsVM productItemVM) {
-        Intent intent = new Intent(getActivity(), ShoppingCartActivity.class);
-        startActivity(intent);
     }
 }

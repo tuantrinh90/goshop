@@ -91,8 +91,6 @@ import com.goshop.app.presentation.shopping.AllQAContract;
 import com.goshop.app.presentation.shopping.AllQAPresenter;
 import com.goshop.app.presentation.shopping.AllReviewsContract;
 import com.goshop.app.presentation.shopping.AllReviewsPresenter;
-import com.goshop.app.presentation.shopping.PDPDetailContract;
-import com.goshop.app.presentation.shopping.PDPDetailPresenter;
 import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
 import com.goshop.app.presentation.shopping.QADetailContract;
@@ -223,12 +221,6 @@ public class PresenterModule {
         return new RewardsDetailPresenter(dataRepository);
     }
 
-    @Provides
-    @ActivityScope
-    public PDPDetailContract.Presenter providePDPDetailPresenter(
-        AccountDataRepository dataRepository) {
-        return new PDPDetailPresenter(dataRepository);
-    }
 
     @Provides
     @ActivityScope

@@ -6,7 +6,7 @@ import com.goshop.app.presentation.model.PromotionBannerModel;
 import com.goshop.app.presentation.model.PromotionBannerScrollerVM;
 import com.goshop.app.presentation.model.PromotionBannerTopVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
-import com.goshop.app.widget.adapter.WidgetProductGridHorizontalAdapter;
+import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.support.v7.widget.LinearLayoutManager;
@@ -117,8 +117,8 @@ public class PromotionBannerScrollerAdapter extends RecyclerView.Adapter {
             LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());
             layoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerView.setLayoutManager(layoutManager);
-            WidgetProductGridHorizontalAdapter horizontalAdapter = new
-                WidgetProductGridHorizontalAdapter(
+            ProductGridHorizontalAdapter horizontalAdapter = new
+                ProductGridHorizontalAdapter(
                 scrollerVM.getProductsVMS());
             recyclerView.setAdapter(horizontalAdapter);
             horizontalAdapter.setOnProductItemClickListener(this::onProductItemClick);

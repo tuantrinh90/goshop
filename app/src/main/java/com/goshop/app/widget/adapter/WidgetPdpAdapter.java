@@ -199,8 +199,8 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());
             manager.setOrientation(LinearLayoutManager.HORIZONTAL);
             recyclerViewHorizontal.setLayoutManager(manager);
-            WidgetProductGridHorizontalAdapter detailAdapter = new
-                WidgetProductGridHorizontalAdapter(
+            ProductGridHorizontalAdapter detailAdapter = new
+                ProductGridHorizontalAdapter(
                 productScrollerVM.getProductsVMS());
             recyclerViewHorizontal.setAdapter(detailAdapter);
 
@@ -365,10 +365,6 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(ProductDetailTopVM bannerVM) {
-
-            viewPager
-                .setAdapter(new PdpBannerAdapter(bannerVM.getBannerUrls(), this::onBannerClick));
-            circleIndicator.setViewPager(viewPager);
             etProductMinusPlus.setText(bannerVM.getAmount());
             tvProductDetailNow.setText(bannerVM.getPriceNow());
             tvProductDetailOld.setText(bannerVM.getPriceOld());

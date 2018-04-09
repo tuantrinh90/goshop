@@ -12,7 +12,8 @@
         android:layout_width="@dimen/size_24"
         android:layout_height="@dimen/size_24"
         android:scaleType="center"
-        android:layout_marginLeft="@dimen/size_16" />
+        android:layout_marginLeft="@dimen/size_16"
+        android:contentDescription="@string/app_name"/>
 
     <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_menu_item"

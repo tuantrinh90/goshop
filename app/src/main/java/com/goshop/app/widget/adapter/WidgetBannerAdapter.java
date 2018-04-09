@@ -37,7 +37,8 @@ public class WidgetBannerAdapter extends PagerAdapter {
         CarouselItemsVM itemsVM = itemsVMS.get(position);
         final ImageView imageView = imageLayout
             .findViewById(R.id.iv_widget_banner);
-        Glide.with(container.getContext()).load(itemsVM.getImage()).into(imageView);
+        Glide.with(container.getContext()).load(itemsVM.getImage()).error(R.drawable.ic_banner_demo)
+            .into(imageView);
         container.addView(imageLayout, 0);
         imageView.setOnClickListener(v -> onBannerItemClickListener.onBannerItemClick(itemsVM));
         return imageLayout;

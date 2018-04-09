@@ -1,11 +1,5 @@
 package com.goshop.app.domian;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
-
 import com.goshop.app.data.model.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
@@ -39,25 +33,17 @@ import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.Weather;
-import com.goshop.app.data.model.response.BaseWidgetResponse;
-import com.goshop.app.data.model.response.CarouselResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
-import com.goshop.app.data.model.response.OfferListResponse;
-import com.goshop.app.data.model.response.ProductScrollerResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
-import com.goshop.app.data.model.response.VideoPlayerResponse;
-import com.goshop.app.data.model.response.WidgetListResponse;
+import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
-import com.goshop.app.utils.MockJson;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -82,9 +68,9 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<WidgetListResponse> trendingNowRequest(Map<String, Object> params) {
+    public Observable<TrendingNowResponse> trendingNowRequest(Map<String, Object> params) {
         //TODO this is mock data , will delete later
-        WidgetListResponse widgetListResponse = new WidgetListResponse();
+       /* WidgetListResponse widgetListResponse = new WidgetListResponse();
         List<BaseWidgetResponse> baseWidgets = new ArrayList<>();
         JsonParser parser = new JsonParser();
         JsonElement element = parser.parse(MockJson.JSON_DATA);
@@ -117,8 +103,8 @@ public class AccountDataRepository implements AccountRepository {
             }
         }
         widgetListResponse.setWidgetlist(baseWidgets);
-        return Observable.just(widgetListResponse);
-//        return accountCloudDataSource.trendingNowRequest(params);
+        return Observable.just(widgetListResponse);*/
+        return accountCloudDataSource.trendingNowRequest(params);
     }
 
     @Override
