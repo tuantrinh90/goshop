@@ -1,6 +1,7 @@
 package injection.modules;
 
 import com.goshop.app.domian.AccountDataRepository;
+import com.goshop.app.domian.ProductDataRepository;
 import com.goshop.app.presentation.account.AddAddressContract;
 import com.goshop.app.presentation.account.AddAddressPresenter;
 import com.goshop.app.presentation.account.ChangePasswordContract;
@@ -142,14 +143,14 @@ public class PresenterModule {
     @Provides
     @ActivityScope
     public BrandsContract.Presenter provideBrandsPagePresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new BrandsPresenter(dataRepository);
     }
 
     @Provides
     @ActivityScope
     public BrandsDetailContract.Presenter provideBrandsDetailPresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new BrandsDetailPresenter(dataRepository);
     }
 
@@ -220,7 +221,6 @@ public class PresenterModule {
         AccountDataRepository dataRepository) {
         return new RewardsDetailPresenter(dataRepository);
     }
-
 
     @Provides
     @ActivityScope
@@ -293,27 +293,28 @@ public class PresenterModule {
     @Provides
     @ActivityScope
     public ProductDetailContract.Presenter provideProductDetailPresenter(
-        AccountDataRepository dataRepository) {
-        return new ProductDetailPresenter(dataRepository);
+        AccountDataRepository accountDataRepository,
+        ProductDataRepository productDataRepository) {
+        return new ProductDetailPresenter(accountDataRepository, productDataRepository);
     }
 
     @Provides
     @ActivityScope
-    public SearchContract.Presenter provideSearchPresenter(AccountDataRepository dataRepository) {
+    public SearchContract.Presenter provideSearchPresenter(ProductDataRepository dataRepository) {
         return new SearchPresenter(dataRepository);
     }
 
     @Provides
     @ActivityScope
     public SearchResultContract.Presenter provideSearchResultPresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new SearchResultPresenter(dataRepository);
     }
 
     @Provides
     @ActivityScope
     public PromotionContract.Presenter providePromotionPresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new PromotionPresenter(dataRepository);
     }
 
@@ -410,7 +411,7 @@ public class PresenterModule {
     @Provides
     @ActivityScope
     public MyPointsContract.Presenter provideMyPointsContractPresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new MyPointsPresenter(dataRepository);
     }
 
@@ -424,14 +425,14 @@ public class PresenterModule {
     @Provides
     @ActivityScope
     public CategoryContract.Presenter provideCategoryPresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new CategoryPresenter(dataRepository);
     }
 
     @Provides
     @ActivityScope
     public CategoryTreeDetailContract.Presenter provideCategoryTreeDetailPresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new CategoryTreeDetailPresenter(dataRepository);
     }
 
@@ -450,13 +451,15 @@ public class PresenterModule {
 
     @Provides
     @ActivityScope
-    public QADetailContract.Presenter provideQADetailPresenter(AccountDataRepository dataRepository) {
+    public QADetailContract.Presenter provideQADetailPresenter(
+        AccountDataRepository dataRepository) {
         return new QADetailPresenter(dataRepository);
     }
 
     @Provides
     @ActivityScope
-    public PromotionSkuContract.Presenter providePromotionSkuPresenter(AccountDataRepository dataRepository){
+    public PromotionSkuContract.Presenter providePromotionSkuPresenter(
+        ProductDataRepository dataRepository) {
         return new PromotionSkuPresenter(dataRepository);
     }
 

@@ -7,6 +7,7 @@ import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -25,16 +26,16 @@ import io.reactivex.observers.DisposableObserver;
 public class PromotionSkuPresenter extends RxPresenter<PromotionSkuContract.View> implements
     PromotionSkuContract.Presenter {
 
-    private AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public PromotionSkuPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public PromotionSkuPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void promotionSkuRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.promotionSkuRequest(params).subscribeWith(
+        addSubscrebe(repository.promotionSkuRequest(params).subscribeWith(
             new DisposableObserver<PromotionSkuResponse>() {
                 @Override
                 public void onNext(PromotionSkuResponse promotionSkuResponse) {

@@ -2,7 +2,7 @@ package com.goshop.app.presentation.home;
 
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.BrandsResponse;
-import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.BrandsVM;
 
 import java.util.ArrayList;
@@ -14,16 +14,16 @@ import io.reactivex.observers.DisposableObserver;
 public class BrandsPresenter extends RxPresenter<BrandsContract.View> implements
     BrandsContract.Presenter {
 
-    private AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public BrandsPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public BrandsPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void brandsRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.brandsRequest(params)
+        addSubscrebe(repository.brandsRequest(params)
             .subscribeWith(new DisposableObserver<BrandsResponse>() {
                 @Override
                 public void onNext(BrandsResponse brandsResponse) {

@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
@@ -18,17 +19,17 @@ import io.reactivex.observers.DisposableObserver;
 public class CategoryPresenter extends RxPresenter<CategoryContract.View> implements
     CategoryContract.Presenter {
 
-    private AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public CategoryPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public CategoryPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void getCategoryLeftMenu() {
 
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.getCategoryLeftMenu().subscribeWith(
+        addSubscrebe(repository.getCategoryLeftMenu().subscribeWith(
             new DisposableObserver<CategoryMenuResponse>() {
                 @Override
                 public void onNext(CategoryMenuResponse categoryMenuResponse) {
@@ -52,7 +53,7 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
     @Override
     public void categoryRightMenuRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.categoryRightMenuRequest(params).subscribeWith(
+        addSubscrebe(repository.categoryRightMenuRequest(params).subscribeWith(
             new DisposableObserver<CategoryMenuResponse>() {
                 @Override
                 public void onNext(CategoryMenuResponse categoryMenuResponse) {

@@ -1,52 +1,41 @@
 package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
-import com.goshop.app.data.model.request.AddressRequest;
-import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
-import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.response.MyEGiftResponse;
-import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.SearchFilterResponse;
-import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
-import com.goshop.app.data.model.response.ChangePasswordResponse;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
-import com.goshop.app.data.model.response.PromotionBannerResponse;
-import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
-import com.goshop.app.data.model.response.RegisterResponse;
-import com.goshop.app.data.model.response.ResetPasswordResponse;
-import com.goshop.app.data.model.response.WidgetListResponse;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.utils.ServiceData;
 
@@ -68,16 +57,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<TrendingNowResponse> trendingNowRequest(Map<String, Object> params) {
         return restApi.trendingNowRequest(params);
-    }
-
-    @Override
-    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
-        return restApi.brandsRequest(params);
-    }
-
-    @Override
-    public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
-        return restApi.brandsDetailRequest(params);
     }
 
     @Override
@@ -131,7 +110,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(
+        Map<String, Object> params) {
         return restApi.wishlistDeleteRequest(params);
     }
 
@@ -225,7 +205,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<ResetPasswordResponse>> resetPasswordRequest(Map<String, Object> params) {
+    public Observable<Response<ResetPasswordResponse>> resetPasswordRequest(
+        Map<String, Object> params) {
         return restApi.resetPasswordRequest(params);
     }
 
@@ -238,30 +219,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
         return restApi.productDetailRequest(params);
-    }
-
-    @Override
-    public Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params) {
-        return restApi.searchFilterRequest(params);
-    }
-
-    @Override
-    public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
-        return restApi.searchResultResponse(params);
-    }
-
-    @Override
-    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
-        //TODO joyson temp code
-//        return restApi.promotionListRequest(params);
-        return ServiceData.getPromotionListData();
-    }
-
-    @Override
-    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
-        //TODO joyson temp code
-//        return restApi.promotionBannerRequest(params);
-        return ServiceData.getPromotionBannerLists();
     }
 
     @Override
@@ -349,16 +306,6 @@ public class AccountCloudDataSource implements AccountDataSource {
         return restApi.settingsLogoutRequest(params);
     }
 
-    @Override
-    public Observable<Response<MyPointsResponse>> myPointsRequest(Map<String, Object> params) {
-        return restApi.myPointsRequest(params);
-    }
-
-    @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails() {
-        return restApi.getGoShopPointsDetails();
-    }
-
     public Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params) {
         return restApi.paymentStatusRequest(params);
     }
@@ -366,21 +313,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<AddressResponse> selectAddressRequest(Map<String, Object> params) {
         return restApi.selectAddressRequest(params);
-    }
-
-    @Override
-    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
-        return restApi.getCategoryLeftMenu();
-    }
-
-    @Override
-    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
-        return restApi.categoryRightMenuRequest(params);
-    }
-
-    @Override
-    public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
-        return restApi.categoryDetailRequest(params);
     }
 
     @Override
@@ -401,11 +333,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
         return restApi.qaDetailRequest(params);
-    }
-
-    @Override
-    public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
-        return restApi.promotionSkuRequest(params);
     }
 
     @Override

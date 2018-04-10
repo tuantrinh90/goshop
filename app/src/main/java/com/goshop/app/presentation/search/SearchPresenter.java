@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.SearchCategoryVM;
 import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SearchKeywordsVM;
@@ -18,17 +19,17 @@ import io.reactivex.observers.DisposableObserver;
 public class SearchPresenter extends RxPresenter<SearchContract.View> implements SearchContract
     .Presenter {
 
-    private AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public SearchPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public SearchPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void searchFilter(String keyWords) {
 
         //TODO  the null is just for mock data, waiting for api
-        addSubscrebe(accountRepository.searchFilterRequest(null).subscribeWith(
+        addSubscrebe(repository.searchFilterRequest(null).subscribeWith(
             new DisposableObserver<SearchFilterResponse>() {
                 @Override
                 public void onNext(SearchFilterResponse searchFilterResponse) {

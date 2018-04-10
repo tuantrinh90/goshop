@@ -4,6 +4,8 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductDataRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -23,16 +25,16 @@ import io.reactivex.observers.DisposableObserver;
 public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailContract.View>
     implements CategoryTreeDetailContract.Presenter {
 
-    private AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public CategoryTreeDetailPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public CategoryTreeDetailPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void categoryDetailRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.categoryDetailRequest(params).subscribeWith(
+        addSubscrebe(repository.categoryDetailRequest(params).subscribeWith(
             new DisposableObserver<SearchResultResponse>() {
                 @Override
                 public void onNext(SearchResultResponse searchResultResponse) {

@@ -3,31 +3,24 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.Response;
-import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.mapper.GoShopPointsMapper;
-import com.goshop.app.presentation.model.PointsDetailVM;
-import com.goshop.app.presentation.model.PointsModel;
-import com.goshop.app.presentation.model.PointsTotalVM;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 
 public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implements
     MyPointsContract.Presenter {
 
-    AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public MyPointsPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public MyPointsPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void getGoShopPointsDetails() {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.getGoShopPointsDetails().subscribeWith(
+        addSubscrebe(repository.getGoShopPointsDetails().subscribeWith(
             new DisposableObserver<Response<MyPointsResponse>>() {
                 @Override
                 public void onNext(Response<MyPointsResponse> response) {
