@@ -2,8 +2,10 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.goloyalty.MyRewardsActivity;
+import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.myorder.MyOrdersActivity;
 import com.goshop.app.presentation.shopping.AllReviewsActivity;
 import com.goshop.app.utils.MenuUtil;
@@ -25,8 +27,7 @@ import android.widget.ImageView;
 import butterknife.BindView;
 import butterknife.OnClick;
 
-public class MyAccountLandingActivity extends BaseActivity implements MenuAdapter
-    .OnSlideMenuItemClickListener {
+public class MyAccountLandingActivity extends BaseDrawerActivity {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -46,42 +47,16 @@ public class MyAccountLandingActivity extends BaseActivity implements MenuAdapte
     @BindView(R.id.tv_my_account_username)
     RobotoMediumTextView tvMyAccountUsername;
 
-    private int currentMenu;
-
-    private boolean isLogin = true;
-
-    private MenuAdapter menuAdapter;
-
-    private String menuTag;
-
-    private MenuUtil menuUtil;
-
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getContentView());
+        initToolbar();
+    }
 
-        initMenuUtil();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-        toggle.syncState();
-        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
-        if (menuTag == null) {
-            menuUtil.disabledDrawerLayout();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> finish());
-        } else {
-            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
-                menuUtil.liftedDrawerLayout();
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    drawerLayout.openDrawer(Gravity.LEFT);
-                });
-            }
-        }
-
-        initMenuRecyclerview();
+    private void initToolbar() {
+        hideRightMenu();
+        hideLeftMenu();
     }
 
     @Override
@@ -90,63 +65,8 @@ public class MyAccountLandingActivity extends BaseActivity implements MenuAdapte
     }
 
     @Override
-    public void inject() {
-        imageViewLeftMenu.setVisibility(View.GONE);
-        hideRightMenu();
-    }
-
-    @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.my_account);
-    }
-
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(
-            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = MenuUtil.LOGIN_ACCOUNT;
-        menuAdapter.updateSelection(currentMenu);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
-    }
-
-    @Override
-    public void onHeaderUserClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onHeaderLoginClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @OnClick({R.id.tv_my_account_edit, R.id.rl_account_wishlist, R.id.rl_account_orders, R.id

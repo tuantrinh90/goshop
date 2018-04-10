@@ -3,7 +3,9 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
@@ -32,9 +34,8 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presenter> implements
-    MyWishlistContract.View, MenuAdapter
-    .OnSlideMenuItemClickListener,
+public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Presenter> implements
+    MyWishlistContract.View,
     OnItemMenuClickListener, PopWindowUtil.OnWishlistDeleteListener {
 
     @BindView(R.id.drawer_layout)
@@ -58,45 +59,20 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
     @BindView(R.id.tv_btn_go_shop_now)
     RobotoRegularTextView tvBtnGoShopNow;
 
-    private int currentMenu;
-
-    private boolean isLogin = true;
-
-    private MenuAdapter menuAdapter;
-
-    private String menuTag;
-
-    private MenuUtil menuUtil;
-
     private MyWishlistAdapter wishlistAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initMenuUtil();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-        toggle.syncState();
-        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
-        if (menuTag == null) {
-            menuUtil.disabledDrawerLayout();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> finish());
-        } else {
-            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
-                menuUtil.liftedDrawerLayout();
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    drawerLayout.openDrawer(Gravity.LEFT);
-                });
-            }
-        }
-
-        initMenuRecyclerview();
+        setContentView(getContentView());
+        initRecyclerView();
+        initToolbar();
         mPresenter.getWishlistItems();
+    }
+
+    private void initToolbar() {
+        hideLeftMenu();
+        hideRightMenu();
     }
 
     @Override
@@ -106,13 +82,6 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
 
     @Override
     public void inject() {
-        imageViewLeftMenu.setVisibility(View.GONE);
-        hideRightMenu();
-        initPresenter();
-        initRecyclerView();
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -131,55 +100,6 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.my_wishlist);
-    }
-
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(
-            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = MenuUtil.LOGIN_MENU_MY_WISHLIST;
-        menuAdapter.updateSelection(currentMenu);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
-    }
-
-    @Override
-    public void onHeaderUserClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onHeaderLoginClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override

@@ -50,9 +50,6 @@
         <activity android:name=".presentation.account.MyAccountLandingActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.shopping.PDPDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
         <activity android:name=".presentation.shopping.PDPDetailImagesActivity"
             android:theme="@style/WhiteBackground"/>
 

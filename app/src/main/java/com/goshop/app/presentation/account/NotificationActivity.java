@@ -4,6 +4,8 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.NotificationAdapter;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.base.BaseDrawerActivity;
+import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.NotificationVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.ScreenHelper;
@@ -30,9 +32,8 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class NotificationActivity extends BaseActivity<NotificationContract.Presenter>
-    implements NotificationContract.View, MenuAdapter
-    .OnSlideMenuItemClickListener, NotificationAdapter.OnNotificationItemClickListener {
+public class NotificationActivity extends BaseDrawerActivity<NotificationContract.Presenter>
+    implements NotificationContract.View, NotificationAdapter.OnNotificationItemClickListener {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -49,16 +50,6 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private int currentMenu;
-
-    private boolean isLogin = true;
-
-    private MenuAdapter menuAdapter;
-
-    private String menuTag;
-
-    private MenuUtil menuUtil;
-
     @Override
     public void notificationResult(List<NotificationVM> notificationVMS) {
         recyclerviewNotification.setLayoutManager(new LinearLayoutManager(this));
@@ -70,48 +61,15 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initMenuUtil();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-        toggle.syncState();
-        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
-        if (menuTag == null) {
-            menuUtil.disabledDrawerLayout();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> finish());
-        } else {
-            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
-                menuUtil.liftedDrawerLayout();
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    drawerLayout.openDrawer(Gravity.LEFT);
-                });
-            }
-        }
-
-        initMenuRecyclerview();
+        setContentView(getContentView());
+        initToolbar();
         //todo wait for api
         mPresenter.notificationRequest(new HashMap<>());
     }
 
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(
-            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_NOTIFICATIONS : MenuUtil
-            .UNLOGIN_MENU_NOTIFICATIONS;
-        menuAdapter.updateSelection(currentMenu);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
+    private void initToolbar() {
+        hideLeftMenu();
+        hideRightMenu();
     }
 
     @Override
@@ -121,12 +79,6 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
 
     @Override
     public void inject() {
-        hideRightMenu();
-        imageviewLeftMenu.setVisibility(View.GONE);
-        initPresenter();
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -137,39 +89,6 @@ public class NotificationActivity extends BaseActivity<NotificationContract.Pres
     @Override
     public String getScreenTitle() {
         return ScreenHelper.getString(R.string.home_drawlayout_notifications);
-    }
-
-    @Override
-    public void onHeaderUserClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onHeaderLoginClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @OnClick(R.id.imageview_left_menu)

@@ -3,7 +3,9 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
+import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.utils.MenuUtil;
@@ -33,10 +35,16 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Presenter> implements
-    ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener, MenuAdapter
-    .OnSlideMenuItemClickListener, OnBannerItemClickListener, OnItemMenuClickListener,
+public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContract.Presenter> implements
+    ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener,
+    OnBannerItemClickListener, OnItemMenuClickListener,
     PopWindowUtil.OnCartItemMenuClickListener {
+
+    public static final String EXTRA_ENTRANCE = "extra_entrance";
+
+    public static final String TYPE_ENTRANCE_DRAWER = "drawer";
+
+    public static final String TYPE_ENTRANCE_PDP = "pdp";
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -53,46 +61,21 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private int currentMenu;
-
-    private boolean isLogin = true;
-
-    private MenuAdapter menuAdapter;
-
-    private String menuTag;
-
-    private MenuUtil menuUtil;
-
     private ShoppingCartAdapter shoppingCartAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initMenuUtil();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-        toggle.syncState();
-        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
-        if (menuTag == null) {
-            menuUtil.disabledDrawerLayout();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> finish());
-        } else {
-            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
-                menuUtil.liftedDrawerLayout();
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    drawerLayout.openDrawer(Gravity.LEFT);
-                });
-            }
-        }
-
-        initMenuRecyclerview();
+        setContentView(getContentView());
+        initToolbar();
+        initRecyclerView();
         //TODO(helen) wait for api
         mPresenter.shoppingCartRequest(null);
+    }
+
+    private void initToolbar() {
+        hideLeftMenu();
+        hideRightMenu();
     }
 
     @Override
@@ -102,13 +85,6 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
 
     @Override
     public void inject() {
-        hideRightMenu();
-        imageViewLeftMenu.setVisibility(View.GONE);
-        initPresenter();
-        initRecyclerView();
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -129,56 +105,6 @@ public class ShoppingCartActivity extends BaseActivity<ShoppingCartContract.Pres
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.shopping_cart);
-    }
-
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(
-            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_SHOPPING_CART : MenuUtil
-            .UNLOGIN_MENU_SHOPPING_CART;
-        menuAdapter.updateSelection(currentMenu);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
-    }
-
-    @Override
-    public void onHeaderUserClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onHeaderLoginClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override

@@ -2,7 +2,6 @@ package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
-import com.facebook.login.widget.LoginButton;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
@@ -12,8 +11,8 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.UserInfo;
-import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
+import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.widget.adapter.MenuAdapter;
@@ -28,7 +27,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
@@ -36,8 +34,6 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -45,7 +41,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements LoginContract
-    .View, MenuAdapter.OnSlideMenuItemClickListener {
+    .View {
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -88,61 +84,21 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
 
     private CallbackManager callbackManager;
 
-    private int currentMenu;
-
-    private boolean isLogin = false;
-
-    private MenuAdapter menuAdapter;
-
-    private String menuTag;
-
-    private MenuUtil menuUtil;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(getContentView());
+        initFaceBookManager();
+        initToolbar();
+    }
+
+    private void initFaceBookManager() {
         callbackManager = mPresenter.initFaceBook();
-        imageViewLeftMenu.setVisibility(View.GONE);
+    }
+
+    private void initToolbar() {
+        hideLeftMenu();
         hideRightMenu();
-        initMenuUtil();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-        toggle.syncState();
-        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
-        if (menuTag == null) {
-            menuUtil.disabledDrawerLayout();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> finish());
-        } else {
-            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
-                menuUtil.liftedDrawerLayout();
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    drawerLayout.openDrawer(Gravity.LEFT);
-                });
-            }
-        }
-
-        initMenuRecyclerview();
-
-    }
-
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(
-            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = MenuUtil.UNLOGIN_LOGIN;
-        menuAdapter.updateSelection(currentMenu);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
     }
 
     @Override
@@ -164,27 +120,6 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.login);
-    }
-
-    @Override
-    public void onHeaderUserClick(int position) {
-        //todo this is empty
-    }
-
-    @Override
-    public void onHeaderLoginClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
     }
 
     @Override
