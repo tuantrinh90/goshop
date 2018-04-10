@@ -44,6 +44,7 @@ import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 
 import java.util.Map;
@@ -82,12 +83,12 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<MyEGiftResponse> eGiftCardsRequest(@Url String fullUrl,
+    Observable<Response<MyEGiftResponse>> eGiftCardsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<MyEGiftResponse> getEGiftCardDetails(@Url String fullUrl);
+    Observable<Response<MyEGiftResponse>> getEGiftCardDetails(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -140,18 +141,18 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<MyWishlistResponse> wishilistDeleteRequest(@Url String fullUrl,
+    Observable<Response<MyWishlistResponse>> wishilistDeleteRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<MyWishlistResponse> addWishlistRequest(@Url String fullUrl,
+    Observable<Response<MyWishlistResponse>> addWishlistRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<MyWishlistResponse> getWishlistItems(@Url String fullUrl);
+    Observable<Response<MyWishlistResponse>> getWishlistItems(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -227,7 +228,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<RegisterResponse> registerRequest(@Url String fullUrl,
+    Observable<Response> registerRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -239,7 +240,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<ResetPasswordResponse> resetPasswordRequest(@Url String fullUrl,
+    Observable<Response<ResetPasswordResponse>> resetPasswordRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -275,7 +276,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<ChangePasswordResponse> changePasswordRequest(@Url String fullUrl,
+    Observable<Response> changePasswordRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -287,7 +288,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<ProfileResponse> editProfileRequest(@Url String fullUrl,
+    Observable<Response<ProfileResponse>> editProfileRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -298,17 +299,17 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<AddressResponse> addAddressRequest(@Url String url,
+    Observable<Response<AddressResponse>> addAddressRequest(@Url String url,
         @Body AddressRequest addressRequest);
 
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<AddressResponse> editAddressRequest(@Url String url,
+    Observable<Response<AddressResponse>> editAddressRequest(@Url String url,
         @Body AddressRequest addressRequest);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<AddressResponse> getAddressList(@Url String fullUrl);
+    Observable<Response<AddressResponse>> getAddressList(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -379,12 +380,12 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<MyPointsResponse> myPointsRequest(@Url String fullUrl,
+    Observable<Response<MyPointsResponse>> myPointsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<MyPointsResponse> getGoShopPointsDetails(@Url String fullUrl);
+    Observable<Response<MyPointsResponse>> getGoShopPointsDetails(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -440,17 +441,17 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<ProfileResponse> getUserProfile(@Url String fullUrl);
+    Observable<Response<ProfileResponse>> getUserProfile(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<LoginResponse> loginRequest(@Url String fullUrl,
+    Observable<Response<LoginResponse>> loginRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<LoginResponse> facebookLoginRequest(@Url String fullUrl,
+    Observable<Response<LoginResponse>> facebookLoginRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

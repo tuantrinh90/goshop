@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.data.model.response.MyWishlistResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.utils.NumberFormater;
@@ -14,7 +15,7 @@ public class MyWishlistMapper {
 
     private static final String ATTR_NEW = "New";
 
-    public static List<WishlistVM> transform(MyWishlistResponse response) {
+    public static List<WishlistVM> transform(Response<MyWishlistResponse> response) {
         List<WishlistVM> wishlistVMS = new ArrayList<>();
         List<ProductData> productDatas = response.getData().getProduct();
         if (productDatas.size() > 0) {

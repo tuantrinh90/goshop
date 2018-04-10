@@ -43,6 +43,7 @@ import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.RegisterResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 
 import java.util.Map;
@@ -57,9 +58,9 @@ public interface AccountDataSource {
 
     Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
-    Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params);
+    Observable<Response<MyEGiftResponse>> eGiftCardsRequest(Map<String, Object> params);
 
-    Observable<MyEGiftResponse> getEGiftCardDetails();
+    Observable<Response<MyEGiftResponse>> getEGiftCardDetails();
 
     Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
 
@@ -77,11 +78,11 @@ public interface AccountDataSource {
 
     Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
 
-    Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params);
+    Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params);
 
-    Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params);
+    Observable<Response<MyWishlistResponse>> addWishlistRequest(Map<String, Object> params);
 
-    Observable<MyWishlistResponse> getWishlistItems();
+    Observable<Response<MyWishlistResponse>> getWishlistItems();
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
@@ -93,7 +94,7 @@ public interface AccountDataSource {
 
     Observable<GetWeatherResponse> getWeather();
 
-    Observable<RegisterResponse> registerRequest(Map<String, Object> params);
+    Observable<Response> registerRequest(Map<String, Object> params);
 
     Observable<HomeResponse> homeRequest(Map<String, Object> params);
 
@@ -111,7 +112,7 @@ public interface AccountDataSource {
 
     Observable<ComplementEmailResponse> complementEmailRequest(Map<String, Object> params);
 
-    Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params);
+    Observable<Response<ResetPasswordResponse>> resetPasswordRequest(Map<String, Object> params);
 
     Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(
         Map<String, Object> params);
@@ -126,17 +127,17 @@ public interface AccountDataSource {
 
     Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params);
 
-    Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params);
+    Observable<Response> changePasswordRequest(Map<String, Object> params);
 
-    Observable<ProfileResponse> editProfileRequest(Map<String, Object> params);
+    Observable<Response<ProfileResponse>> editProfileRequest(Map<String, Object> params);
 
     Observable<AddressResponse> addAddressRequest(Map<String, Object> params);
 
-    Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest);
+    Observable<Response<AddressResponse>> addAddressRequest(AddressRequest addressRequest);
 
-    Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest);
+    Observable<Response<AddressResponse>> editAddressRequest(AddressRequest addressRequest);
 
-    Observable<AddressResponse> getAddressList();
+    Observable<Response<AddressResponse>> getAddressList();
 
     Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
 
@@ -160,9 +161,9 @@ public interface AccountDataSource {
 
     Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params);
 
-    Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params);
+    Observable<Response<MyPointsResponse>> myPointsRequest(Map<String, Object> params);
 
-    Observable<MyPointsResponse> getGoShopPointsDetails();
+    Observable<Response<MyPointsResponse>> getGoShopPointsDetails();
 
     Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params);
 
@@ -184,10 +185,10 @@ public interface AccountDataSource {
 
     Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params);
 
-    Observable<ProfileResponse> getUserProfile();
+    Observable<Response<ProfileResponse>> getUserProfile();
 
-    Observable<LoginResponse> loginRequest(Map<String, Object> params);
+    Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params);
 
-    Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params);
+    Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params);
 
 }

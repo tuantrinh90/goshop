@@ -2,7 +2,7 @@ package com.goshop.app.presentation.login;
 
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.response.RegisterResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
@@ -45,9 +45,9 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
         params.put("email_subscribe", sendEmail);
         params.put("sms_subscribe", sendSMS);
         addSubscrebe(accountRepository.registerRequest(params).subscribeWith(
-            new DisposableObserver<RegisterResponse>() {
+            new DisposableObserver<Response>() {
                 @Override
-                public void onNext(RegisterResponse response) {
+                public void onNext(Response response) {
                     mView.hideLoadingBar();
                     mView.registerSuccess();
                 }

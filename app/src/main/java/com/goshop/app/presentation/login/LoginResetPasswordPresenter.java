@@ -3,6 +3,7 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.HashMap;
@@ -28,9 +29,9 @@ public class LoginResetPasswordPresenter extends RxPresenter<LoginResetPasswordC
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
         params.put(Const.PARAMS_EMAIL, email);
         addSubscrebe(accountRepository.resetPasswordRequest(params).subscribeWith(
-            new DisposableObserver<ResetPasswordResponse>() {
+            new DisposableObserver<Response<ResetPasswordResponse>>() {
                 @Override
-                public void onNext(ResetPasswordResponse resetPasswordResponse) {
+                public void onNext(Response<ResetPasswordResponse> response) {
                     mView.hideLoadingBar();
                     mView.resetPwdSuccess();
                 }

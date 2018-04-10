@@ -2,6 +2,7 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.MyPointsResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.GoShopPointsMapper;
 import com.goshop.app.presentation.model.PointsDetailVM;
@@ -27,11 +28,11 @@ public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implem
     public void getGoShopPointsDetails() {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.getGoShopPointsDetails().subscribeWith(
-            new DisposableObserver<MyPointsResponse>() {
+            new DisposableObserver<Response<MyPointsResponse>>() {
                 @Override
-                public void onNext(MyPointsResponse myPointsResponse) {
+                public void onNext(Response<MyPointsResponse> response) {
                     mView.hideLoadingBar();
-                    mView.getPointDetailsSuccess(GoShopPointsMapper.transform(myPointsResponse));
+                    mView.getPointDetailsSuccess(GoShopPointsMapper.transform(response));
                 }
 
                 @Override

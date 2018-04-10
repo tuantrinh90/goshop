@@ -4,6 +4,7 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
 import com.goshop.app.presentation.model.PdpAdditionalItemVM;
@@ -72,9 +73,9 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
         params.put(Const.PARAMS_SKUID, skuId);
         addSubscrebe(accountRepository.addWishlistRequest(params).subscribeWith(
-            new DisposableObserver<MyWishlistResponse>() {
+            new DisposableObserver<Response<MyWishlistResponse>>() {
                 @Override
-                public void onNext(MyWishlistResponse myWishlistResponse) {
+                public void onNext(Response<MyWishlistResponse> response) {
                     mView.hideLoadingBar();
                     mView.addWishlistSuccess();
                 }
@@ -100,9 +101,9 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
         params.put(Const.PARAMS_SKUID, skuId);
         addSubscrebe(accountRepository.wishlistDeleteRequest(params).subscribeWith(
-            new DisposableObserver<MyWishlistResponse>() {
+            new DisposableObserver<Response<MyWishlistResponse>>() {
                 @Override
-                public void onNext(MyWishlistResponse myWishlistResponse) {
+                public void onNext(Response<MyWishlistResponse> response) {
                     mView.hideLoadingBar();
                     mView.removeWishlistSuccess();
                 }

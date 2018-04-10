@@ -2,6 +2,7 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.AddressResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.AddressMapper;
 import com.goshop.app.presentation.model.AddressVM;
@@ -49,11 +50,11 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
     public void getAddressList() {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.getAddressList().subscribeWith(
-            new DisposableObserver<AddressResponse>() {
+            new DisposableObserver<Response<AddressResponse>>() {
                 @Override
-                public void onNext(AddressResponse addressResponse) {
+                public void onNext(Response<AddressResponse> response) {
                     mView.hideLoadingBar();
-                    mView.getAddressListSuccess(AddressMapper.transform(addressResponse));
+                    mView.getAddressListSuccess(AddressMapper.transform(response));
                 }
 
                 @Override

@@ -3,6 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
@@ -49,9 +50,9 @@ public class EditAddressPresenter extends RxPresenter<EditAddressContract.View> 
     public void editAddressRequest(AddressRequest addressRequest) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.editAddressRequest(addressRequest).subscribeWith(
-            new DisposableObserver<AddressResponse>() {
+            new DisposableObserver<Response<AddressResponse>>() {
                 @Override
-                public void onNext(AddressResponse addressResponse) {
+                public void onNext(Response<AddressResponse> response) {
                     mView.hideLoadingBar();
                     mView.editAddressSuccess();
                 }

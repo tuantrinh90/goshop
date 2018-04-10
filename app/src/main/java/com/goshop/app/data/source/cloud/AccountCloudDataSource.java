@@ -42,6 +42,7 @@ import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
@@ -80,12 +81,12 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
+    public Observable<Response<MyEGiftResponse>> eGiftCardsRequest(Map<String, Object> params) {
         return restApi.eGiftCardsRequest(params);
     }
 
     @Override
-    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
         return restApi.getEGiftCardDetails();
     }
 
@@ -130,17 +131,17 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params) {
         return restApi.wishlistDeleteRequest(params);
     }
 
     @Override
-    public Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> addWishlistRequest(Map<String, Object> params) {
         return restApi.addWishlistRequest(params);
     }
 
     @Override
-    public Observable<MyWishlistResponse> getWishlistItems() {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
         return restApi.getWishlistItems();
     }
 
@@ -169,7 +170,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
+    public Observable<Response> registerRequest(Map<String, Object> params) {
         return restApi.registerRequest(params);
     }
 
@@ -224,7 +225,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params) {
+    public Observable<Response<ResetPasswordResponse>> resetPasswordRequest(Map<String, Object> params) {
         return restApi.resetPasswordRequest(params);
     }
 
@@ -264,12 +265,12 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params) {
+    public Observable<Response> changePasswordRequest(Map<String, Object> params) {
         return restApi.changePasswordRequest(params);
     }
 
     @Override
-    public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
+    public Observable<Response<ProfileResponse>> editProfileRequest(Map<String, Object> params) {
         return restApi.editProfileRequest(params);
     }
 
@@ -279,17 +280,17 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+    public Observable<Response<AddressResponse>> addAddressRequest(AddressRequest addressRequest) {
         return restApi.addAddressRequest(addressRequest);
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+    public Observable<Response<AddressResponse>> editAddressRequest(AddressRequest addressRequest) {
         return restApi.editAddressRequest(addressRequest);
     }
 
     @Override
-    public Observable<AddressResponse> getAddressList() {
+    public Observable<Response<AddressResponse>> getAddressList() {
         return restApi.getAddressList();
     }
 
@@ -349,12 +350,12 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
+    public Observable<Response<MyPointsResponse>> myPointsRequest(Map<String, Object> params) {
         return restApi.myPointsRequest(params);
     }
 
     @Override
-    public Observable<MyPointsResponse> getGoShopPointsDetails() {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails() {
         return restApi.getGoShopPointsDetails();
     }
 
@@ -408,17 +409,17 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ProfileResponse> getUserProfile() {
+    public Observable<Response<ProfileResponse>> getUserProfile() {
         return restApi.getUserProfile();
     }
 
     @Override
-    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+    public Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params) {
         return restApi.loginRequest(params);
     }
 
     @Override
-    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
+    public Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params) {
         return restApi.facebookLoginRequest(params);
     }
 

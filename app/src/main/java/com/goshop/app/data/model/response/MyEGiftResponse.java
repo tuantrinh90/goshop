@@ -6,35 +6,16 @@ import com.goshop.app.data.model.response.common.EgiftCardData;
 
 import java.util.List;
 
-public class MyEGiftResponse extends Response {
+public class MyEGiftResponse {
 
-    /**
-     * data : {"egift_card":[{"code":"ABCDE","balance":"120.00","status":"Active",
-     * "sentby":"User","expire":"2018-02-01"},{"code":"ABCDE","balance":"120.00",
-     * "status":"Active","sentby":"User","expire":"2018-02-01"}]}
-     */
+    @SerializedName("egift_card")
+    private List<EgiftCardData> egiftCard;
 
-    private Datas data;
-
-    public Datas getData() {
-        return data;
+    public List<EgiftCardData> getEgiftCard() {
+        return egiftCard;
     }
 
-    public void setData(Datas data) {
-        this.data = data;
-    }
-
-    public static class Datas {
-        @SerializedName("egift_card")
-        private List<EgiftCardData> egiftCard;
-
-        public List<EgiftCardData> getEgiftCard() {
-            return egiftCard;
-        }
-
-        public void setEgiftCard(List<EgiftCardData> egift_card) {
-            this.egiftCard = egiftCard;
-        }
-
+    public void setEgiftCard(List<EgiftCardData> egift_card) {
+        this.egiftCard = egiftCard;
     }
 }

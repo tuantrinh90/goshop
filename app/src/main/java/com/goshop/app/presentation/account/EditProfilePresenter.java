@@ -2,6 +2,7 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.ProfileResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.ProfileMapper;
 import com.goshop.app.presentation.model.widget.SingleChooseVM;
@@ -38,9 +39,9 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
         params.put("language", language);
 
         addSubscrebe(accountRepository.editProfileRequest(params).subscribeWith(
-            new DisposableObserver<ProfileResponse>() {
+            new DisposableObserver<Response<ProfileResponse>>() {
                 @Override
-                public void onNext(ProfileResponse profileResponse) {
+                public void onNext(Response<ProfileResponse> response) {
                     mView.hideLoadingBar();
                     mView.editProfileSuccess();
                 }
@@ -92,11 +93,11 @@ public class EditProfilePresenter extends RxPresenter<EditProfileContract.View> 
     public void getUserProfile() {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.getUserProfile().subscribeWith(
-            new DisposableObserver<ProfileResponse>() {
+            new DisposableObserver<Response<ProfileResponse>>() {
                 @Override
-                public void onNext(ProfileResponse profileResponse) {
+                public void onNext(Response<ProfileResponse> response) {
                     mView.hideLoadingBar();
-                    mView.setProfileVM(ProfileMapper.transform(profileResponse));
+                    mView.setProfileVM(ProfileMapper.transform(response));
                 }
 
                 @Override

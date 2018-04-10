@@ -15,6 +15,7 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.LoginResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 
@@ -126,9 +127,9 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
         params.put(Const.PARAMS_EMAIL, email);
         params.put(Const.PARAMS_PASSWORD, password);
         addSubscrebe(accountRepository.loginRequest(params)
-            .subscribeWith(new DisposableObserver<LoginResponse>() {
+            .subscribeWith(new DisposableObserver<Response<LoginResponse>>() {
                 @Override
-                public void onNext(LoginResponse loginResponse) {
+                public void onNext(Response<LoginResponse> response) {
                     mView.hideLoadingBar();
                     mView.loginSuccess();
                 }
@@ -160,9 +161,9 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
         params.put(Const.PARAMS_NAME, name);
         params.put(Const.PARAMS_GENDER, gender);
         addSubscrebe(accountRepository.facebookLoginRequest(params).subscribeWith(
-            new DisposableObserver<LoginResponse>() {
+            new DisposableObserver<Response<LoginResponse>>() {
                 @Override
-                public void onNext(LoginResponse loginResponse) {
+                public void onNext(Response<LoginResponse> response) {
                     mView.hideLoadingBar();
                     mView.loginSuccess();
                 }

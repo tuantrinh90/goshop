@@ -44,6 +44,7 @@ import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
@@ -122,7 +123,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
+    public Observable<Response<MyEGiftResponse>> eGiftCardsRequest(Map<String, Object> params) {
         return accountCloudDataSource.eGiftCardsRequest(params)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -137,7 +138,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
         return accountCloudDataSource.getEGiftCardDetails().concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -189,7 +190,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params) {
         return accountCloudDataSource.wishlistDeleteRequest(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -201,7 +202,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> addWishlistRequest(Map<String, Object> params) {
         return accountCloudDataSource.addWishlistRequest(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -213,7 +214,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<MyWishlistResponse> getWishlistItems() {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
         return accountCloudDataSource.getWishlistItems().concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -261,7 +262,7 @@ public class AccountDataRepository implements AccountRepository {
             });
     }
 
-    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
+    public Observable<Response> registerRequest(Map<String, Object> params) {
         return accountCloudDataSource.registerRequest(params).concatMap(response -> {
 
             if (isSuccess(response.getMessage().getStatus())) {
@@ -324,7 +325,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params) {
+    public Observable<Response<ResetPasswordResponse>> resetPasswordRequest(Map<String, Object> params) {
         return accountCloudDataSource.resetPasswordRequest(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -371,7 +372,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params) {
+    public Observable<Response> changePasswordRequest(Map<String, Object> params) {
         return accountCloudDataSource.changePasswordRequest(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -383,7 +384,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
+    public Observable<Response<ProfileResponse>> editProfileRequest(Map<String, Object> params) {
         return accountCloudDataSource.editProfileRequest(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -400,7 +401,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+    public Observable<Response<AddressResponse>> addAddressRequest(AddressRequest addressRequest) {
         return accountCloudDataSource.addAddressRequest(addressRequest).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -412,7 +413,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+    public Observable<Response<AddressResponse>> editAddressRequest(AddressRequest addressRequest) {
         return accountCloudDataSource.editAddressRequest(addressRequest).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -434,7 +435,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<AddressResponse> getAddressList() {
+    public Observable<Response<AddressResponse>> getAddressList() {
         return accountCloudDataSource.getAddressList().concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -491,12 +492,12 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
+    public Observable<Response<MyPointsResponse>> myPointsRequest(Map<String, Object> params) {
         return accountCloudDataSource.myPointsRequest(params);
     }
 
     @Override
-    public Observable<MyPointsResponse> getGoShopPointsDetails() {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails() {
         return accountCloudDataSource.getGoShopPointsDetails().concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -558,7 +559,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<ProfileResponse> getUserProfile() {
+    public Observable<Response<ProfileResponse>> getUserProfile() {
         return accountCloudDataSource.getUserProfile().concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -570,7 +571,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+    public Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params) {
         return accountCloudDataSource.loginRequest(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -582,7 +583,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
+    public Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params) {
         return accountCloudDataSource.facebookLoginRequest(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);

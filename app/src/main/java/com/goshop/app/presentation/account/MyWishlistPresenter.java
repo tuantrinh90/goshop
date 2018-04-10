@@ -3,6 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.MyWishlistResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.MyWishlistMapper;
 
@@ -28,11 +29,11 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
         params.put(Const.PARAMS_STORE_ID, storeId);
         params.put(Const.PARAMS_SKU, sku);
         addSubscrebe(accountRepository.wishlistDeleteRequest(params).subscribeWith(
-            new DisposableObserver<MyWishlistResponse>() {
+            new DisposableObserver<Response<MyWishlistResponse>>() {
                 @Override
-                public void onNext(MyWishlistResponse myWishlistResponse) {
+                public void onNext(Response<MyWishlistResponse> response) {
                     mView.hideLoadingBar();
-                    mView.deleteSuccess(MyWishlistMapper.transform(myWishlistResponse));
+                    mView.deleteSuccess(MyWishlistMapper.transform(response));
                 }
 
                 @Override
@@ -52,11 +53,11 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
     public void getWishlistItems() {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.getWishlistItems().subscribeWith(
-            new DisposableObserver<MyWishlistResponse>() {
+            new DisposableObserver<Response<MyWishlistResponse>>() {
                 @Override
-                public void onNext(MyWishlistResponse myWishlistResponse) {
+                public void onNext(Response<MyWishlistResponse> response) {
                     mView.hideLoadingBar();
-                    mView.showWishlistItems(MyWishlistMapper.transform(myWishlistResponse));
+                    mView.showWishlistItems(MyWishlistMapper.transform(response));
                 }
 
                 @Override
