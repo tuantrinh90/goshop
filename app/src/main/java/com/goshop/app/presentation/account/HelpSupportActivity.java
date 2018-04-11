@@ -53,6 +53,7 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_HELP_AND_SUPPORT);
         setContentView(getContentView());
         initToolbar();
         initRecyclerView();

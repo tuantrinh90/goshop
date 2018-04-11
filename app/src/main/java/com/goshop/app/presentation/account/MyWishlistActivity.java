@@ -64,6 +64,7 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_WISHLIST);
         setContentView(getContentView());
         initRecyclerView();
         initToolbar();

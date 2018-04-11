@@ -53,6 +53,7 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_ORDERS);
         setContentView(getContentView());
         initRecyclerView();
         initToolbar();

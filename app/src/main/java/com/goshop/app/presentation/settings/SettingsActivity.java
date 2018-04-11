@@ -69,6 +69,7 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_SETTINGS);
         setContentView(getContentView());
         initToolbar();
         initSwichsListener();

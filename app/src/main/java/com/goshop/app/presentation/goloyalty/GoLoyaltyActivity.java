@@ -53,6 +53,7 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_GO_LOYALTY);
         setContentView(getContentView());
         initToolbar();
         initRecyclerView();

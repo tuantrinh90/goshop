@@ -12,8 +12,10 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.FrameLayout;
+import android.widget.TextView;
 
 import butterknife.ButterKnife;
 
@@ -34,9 +36,19 @@ public class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T>
 
     private MenuUtil menuUtil;
 
+    private String currentMenuType=MenuUtil.MENU_TYPE_HOME;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    public String getCurrentMenuType() {
+        return currentMenuType;
+    }
+
+    public void setCurrentMenuType(String currentMenuType) {
+        this.currentMenuType = currentMenuType;
     }
 
     @Override
@@ -45,9 +57,9 @@ public class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T>
             .inflate(R.layout.activity_base_drawer, null);
         flContentLayout = drawerLayout.findViewById(R.id.fl_content);
         rvDrawerList = drawerLayout.findViewById(R.id.rv_menu);
-        getLayoutInflater().inflate(layoutResId, flContentLayout, true);
         initMenuUtil();
         initDrawerList();
+        getLayoutInflater().inflate(layoutResId, flContentLayout, true);
         super.setContentView(drawerLayout);
         ButterKnife.bind(this);
     }
@@ -75,14 +87,15 @@ public class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T>
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         rvDrawerList.setLayoutManager(layoutManager);
         menuAdapter = new MenuAdapter(menuUtil.getDrawerListModel());
+        if (!TextUtils.isEmpty(currentMenuType)) {
+            menuAdapter.updateSelection(currentMenuType);
+        }
         rvDrawerList.setAdapter(menuAdapter);
         menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
     }
 
     public void updateDrawerModel() {
         menuUtil.updateLoginState(isLogin);
-        menuAdapter.updateLoginState(isLogin);
         menuAdapter.updateDrawerModel(menuUtil.getDrawerListModel());
     }
 
@@ -98,7 +111,7 @@ public class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T>
     @Override
     public void onItemClick(MenuModel itemVM, int position) {
         drawerLayout.closeDrawer(GravityCompat.START);
-        if (!menuUtil.getCurrentMenuType().equals(itemVM.getMenuType())) {
+        if (!currentMenuType.equals(itemVM.getMenuType())) {
             menuUtil.startNextScreen(itemVM.getMenuType());
         }
     }

@@ -5,6 +5,7 @@ import com.facebook.login.LoginManager;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.CustomPasswordEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
@@ -40,7 +41,7 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class LoginActivity extends BaseActivity<LoginContract.Presenter> implements LoginContract
+public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> implements LoginContract
     .View {
 
     @BindView(R.id.drawer_layout)
@@ -87,6 +88,7 @@ public class LoginActivity extends BaseActivity<LoginContract.Presenter> impleme
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_LOGIN);
         setContentView(getContentView());
         initFaceBookManager();
         initToolbar();

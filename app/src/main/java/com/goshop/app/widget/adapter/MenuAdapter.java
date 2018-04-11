@@ -9,6 +9,7 @@ import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.utils.MenuUtil;
 
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,23 +81,16 @@ public class MenuAdapter extends RecyclerView.Adapter {
         this.onSlideMenuItemClickListener = onSlideMenuItemClickListener;
     }
 
-    public void updateSelection(int position) {
+    public void updateSelection(String menuType) {
         for (int i = 0; i < menuModels.size(); i++) {
             MenuModel model = menuModels.get(i);
             if (model instanceof MenuItemVM) {
-                ((MenuItemVM) model).setSelect(position == i);
+                ((MenuItemVM) model).setSelect(menuType.equals(model.getMenuType()));
             }
         }
         notifyDataSetChanged();
     }
 
-    public void updateLoginState(boolean loginState) {
-        MenuModel model = menuModels.get(0);
-        if (model instanceof MenuHeaderVM) {
-            ((MenuHeaderVM) model).setLoginState(loginState);
-        }
-        notifyDataSetChanged();
-    }
 
     public void updateDrawerModel(List<MenuModel> drawerListModel) {
         menuModels.clear();
@@ -123,7 +117,6 @@ public class MenuAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(MenuModel menuModel, int position) {
-            MenuHeaderVM menuHeaderVM;
             if (menuModel != null && menuModel instanceof MenuHeaderVM) {
                 if (MenuUtil.MENU_TYPE_HEAD_ACCOUNT
                     .equals(menuModel.getMenuType())) {
@@ -164,15 +157,19 @@ public class MenuAdapter extends RecyclerView.Adapter {
             MenuItemVM menuItemVM;
             if (itemVM != null && itemVM instanceof MenuItemVM) {
                 menuItemVM = (MenuItemVM) itemVM;
+                llMenuItem.setSelected(menuItemVM.isSelect());
                 if (menuItemVM.getIcon() == 0) {
                     ivMenuItem.setVisibility(View.GONE);
                 } else {
                     ivMenuItem.setVisibility(View.VISIBLE);
                     ivMenuItem.setBackgroundResource(menuItemVM.getIcon());
+                    ivMenuItem.setSelected(menuItemVM.isSelect());
                 }
+                Log.d("jay", "--------------bindingData: "+menuItemVM.isSelect());
+                tvMenuItem.setSelected(menuItemVM.isSelect());
+                llMenuItem.setSelected(menuItemVM.isSelect());
                 tvMenuItem.setText(menuItemVM.getTitle());
                 llMenuItem.setOnClickListener(v -> {
-                    llMenuItem.setSelected(true);
                     onSlideMenuItemClickListener.onItemClick(itemVM, position);
                 });
             }

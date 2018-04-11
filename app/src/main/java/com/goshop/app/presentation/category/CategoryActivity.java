@@ -8,6 +8,7 @@ import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
 import com.goshop.app.presentation.model.MenuModel;
+import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.listener.OnCategoryItemClickListener;
 
 import android.content.Intent;
@@ -57,6 +58,7 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_CATEGORY);
         setContentView(getContentView());
         initToolbar();
         initRecyclerView();

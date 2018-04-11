@@ -66,6 +66,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_SHOPPING_CART);
         setContentView(getContentView());
         initToolbar();
         initRecyclerView();

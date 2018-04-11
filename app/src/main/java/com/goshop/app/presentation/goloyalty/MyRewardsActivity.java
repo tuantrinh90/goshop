@@ -53,6 +53,7 @@ public class MyRewardsActivity extends BaseDrawerActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_REWARDS);
         setContentView(getContentView());
         initToolbar();
         initTabLayoutViewPager();

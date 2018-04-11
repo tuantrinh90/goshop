@@ -8,6 +8,7 @@ import com.goshop.app.common.view.RobotoMediumTabLayout;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
+import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.listener.OnScheduleClickListener;
 
 import android.content.Intent;
@@ -15,6 +16,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -49,6 +51,7 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_HOME);
         setContentView(getContentView());
         initTabLayoutViewPager();
         initSearchBar();

@@ -50,6 +50,7 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_ACCOUNT);
         setContentView(getContentView());
         initToolbar();
     }

@@ -61,6 +61,7 @@ public class NotificationActivity extends BaseDrawerActivity<NotificationContrac
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_NOTIFICATIONS);
         setContentView(getContentView());
         initToolbar();
         //todo wait for api
