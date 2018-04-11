@@ -10,7 +10,7 @@ import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.request.common.AddressData;
 import com.goshop.app.data.model.request.common.RequestData;
 import com.goshop.app.presentation.model.AddressVM;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
@@ -85,13 +85,13 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     @BindView(R.id.tv_edit_address_state_warning)
     RobotoRegularTextView tvEditAddressStateWarning;
 
-    private List<SingleChooseVM> cityVMS;
+    private List<ProfileMetaVM> cityVMS;
 
-    private List<SingleChooseVM> countryVMS;
+    private List<ProfileMetaVM> countryVMS;
 
     private String currentPop = "";
 
-    private List<SingleChooseVM> stateVMS;
+    private List<ProfileMetaVM> stateVMS;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -263,15 +263,15 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                 case PopWindowUtil.COUNTRY_POP:
                     countryVMS = PopWindowUtil.updateSinglePopDatas(position, countryVMS);
                     tvEditAddressCountry
-                        .setText(countryVMS.get(position).getContent());
+                        .setText(countryVMS.get(position).getValue());
                     break;
                 case PopWindowUtil.STATE_POP:
                     stateVMS = PopWindowUtil.updateSinglePopDatas(position, stateVMS);
-                    tvEditAddressState.setText(stateVMS.get(position).getContent());
+                    tvEditAddressState.setText(stateVMS.get(position).getValue());
                     break;
                 case PopWindowUtil.CITY_POP:
                     cityVMS = PopWindowUtil.updateSinglePopDatas(position, cityVMS);
-                    tvEditAddressCity.setText(cityVMS.get(position).getContent());
+                    tvEditAddressCity.setText(cityVMS.get(position).getValue());
                     break;
             }
         }

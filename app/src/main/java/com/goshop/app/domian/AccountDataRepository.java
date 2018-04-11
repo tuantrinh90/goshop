@@ -32,6 +32,7 @@ import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
@@ -477,6 +478,18 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<Response<ProfileResponse>> getUserProfile() {
         return accountCloudDataSource.getUserProfile().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response<ProfileMetadataResponse>> getProfileMetadata() {
+        return  accountCloudDataSource.getProfileMetadata().concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {

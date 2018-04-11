@@ -8,7 +8,7 @@ import com.goshop.app.common.CustomPasswordEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
@@ -94,9 +94,9 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     private String currentPopType = "";
 
-    private List<SingleChooseVM> languagesVMS;
+    private List<ProfileMetaVM> languagesVMS;
 
-    private List<SingleChooseVM> titleVMS;
+    private List<ProfileMetaVM> titleVMS;
 
     private ToastUtil toastUtil;
 
@@ -340,11 +340,11 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                 case PopWindowUtil.LANGUAGE_POP:
                     languagesVMS = PopWindowUtil.updateSinglePopDatas(position, languagesVMS);
                     tvRegisterLanguage
-                        .setText(languagesVMS.get(position).getContent());
+                        .setText(languagesVMS.get(position).getValue());
                     break;
                 case PopWindowUtil.TITLE_POP:
                     titleVMS = PopWindowUtil.updateSinglePopDatas(position, titleVMS);
-                    tvRegisterTitle.setText(titleVMS.get(position).getContent());
+                    tvRegisterTitle.setText(titleVMS.get(position).getValue());
                     break;
             }
         }

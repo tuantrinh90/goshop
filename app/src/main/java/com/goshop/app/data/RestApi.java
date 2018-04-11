@@ -23,6 +23,7 @@ import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.ChangePasswordResponse;
+import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -185,6 +186,8 @@ public interface RestApi {
     Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params);
 
     Observable<Response<ProfileResponse>> getUserProfile();
+
+    Observable<Response<ProfileMetadataResponse>> getProfileMetadata();
 
     Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params);
 

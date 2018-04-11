@@ -41,6 +41,7 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
@@ -462,6 +463,12 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<Response<ProfileResponse>> getUserProfile() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_USER_PROFILE);
         return retrofitRestApi.getUserProfile(url);
+    }
+
+    @Override
+    public Observable<Response<ProfileMetadataResponse>> getProfileMetadata() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_PROFILE_METADATA);
+        return retrofitRestApi.getProfileMetadata(url);
     }
 
     @Override

@@ -32,6 +32,7 @@ import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
@@ -330,6 +331,11 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<Response<ProfileResponse>> getUserProfile() {
+        return null;
+    }
+
+    @Override
+    public Observable<Response<ProfileMetadataResponse>> getProfileMetadata() {
         return null;
     }
 

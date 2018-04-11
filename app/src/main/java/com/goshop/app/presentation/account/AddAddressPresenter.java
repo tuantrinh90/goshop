@@ -5,7 +5,7 @@ import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -70,32 +70,32 @@ public class AddAddressPresenter extends RxPresenter<AddAddressContract.View> im
     }
 
     @Override
-    public List<SingleChooseVM> getCountryChooses() {
+    public List<ProfileMetaVM> getCountryChooses() {
         //todo this is mock data
-        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            singleChooseVMS.add(new SingleChooseVM("Country " + (i + 1)));
+            profileMetaVMS.add(new ProfileMetaVM("Country " + (i + 1)));
         }
-        return singleChooseVMS;
+        return profileMetaVMS;
     }
 
     @Override
-    public List<SingleChooseVM> getStateChooses() {
+    public List<ProfileMetaVM> getStateChooses() {
         //todo this is mock data
-        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            singleChooseVMS.add(new SingleChooseVM("State " + (i + 1)));
+            profileMetaVMS.add(new ProfileMetaVM("State " + (i + 1)));
         }
-        return singleChooseVMS;
+        return profileMetaVMS;
     }
 
     @Override
-    public List<SingleChooseVM> getCityChooses() {
+    public List<ProfileMetaVM> getCityChooses() {
         //todo this is mock data
-        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            singleChooseVMS.add(new SingleChooseVM("City " + (i + 1)));
+            profileMetaVMS.add(new ProfileMetaVM("City " + (i + 1)));
         }
-        return singleChooseVMS;
+        return profileMetaVMS;
     }
 }

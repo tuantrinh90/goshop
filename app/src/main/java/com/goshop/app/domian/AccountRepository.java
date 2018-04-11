@@ -31,6 +31,7 @@ import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
@@ -150,6 +151,8 @@ public interface AccountRepository {
     Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
 
     Observable<Response<ProfileResponse>> getUserProfile();
+
+    Observable<Response<ProfileMetadataResponse>> getProfileMetadata();
 
     Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params);
 

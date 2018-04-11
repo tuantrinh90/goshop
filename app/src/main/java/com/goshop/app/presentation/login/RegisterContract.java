@@ -2,7 +2,7 @@ package com.goshop.app.presentation.login;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 
 import java.util.List;
 
@@ -23,8 +23,8 @@ public interface RegisterContract {
             String gender, String birth, String mobile, String language, boolean sendEmail,
             boolean sendEms);
 
-        List<SingleChooseVM> getTitleChooses();
+        List<ProfileMetaVM> getTitleChooses();
 
-        List<SingleChooseVM> getLanguageChooses();
+        List<ProfileMetaVM> getLanguageChooses();
     }
 }
