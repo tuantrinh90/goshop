@@ -44,9 +44,6 @@ import injection.modules.PresenterModule;
 public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> implements LoginContract
     .View {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.et_login_email)
     CustomAnimEditText etLoginEmail;
 
@@ -61,9 +58,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     @BindView(R.id.ll_login_top)
     LinearLayout llLoginTop;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -99,10 +93,9 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     }
 
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
-
     @Override
     public int getContentView() {
         return R.layout.activity_login;
@@ -136,7 +129,7 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                finish();
+                openDrawerLayout();
                 break;
             case R.id.tv_btn_login:
                 if (TextUtils.isEmpty(etLoginEmail.getText()) || !etLoginEmail.isEmail()) {

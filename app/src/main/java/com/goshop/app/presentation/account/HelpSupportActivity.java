@@ -33,14 +33,8 @@ import injection.modules.PresenterModule;
 public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.Presenter> implements
     HelpSupportContract.View {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.recyclerview_help)
     RecyclerView recyclerviewHelp;
@@ -62,8 +56,8 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
     }
 
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -117,7 +111,7 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
     public void OnHelpClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                finish();
+                openDrawerLayout();
                 break;
         }
     }

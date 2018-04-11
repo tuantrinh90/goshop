@@ -38,14 +38,8 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     MyWishlistContract.View,
     OnItemMenuClickListener, PopWindowUtil.OnWishlistDeleteListener {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.recyclerview_wishlist)
     RecyclerView recyclerviewWishlist;
@@ -72,8 +66,8 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     }
 
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -137,5 +131,13 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     @Override
     public void onWishlistDelete(WishlistVM wishlistVM) {
         mPresenter.wishlistDeleteRequest(1, 3, wishlistVM.getSku());
+    }
+    @OnClick({R.id.imageview_left_menu})
+    public void onCategoryClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                openDrawerLayout();
+                break;
+        }
     }
 }

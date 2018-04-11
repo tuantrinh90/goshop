@@ -30,14 +30,8 @@ import butterknife.OnClick;
 
 public class MyRewardsActivity extends BaseDrawerActivity {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.tablayout_my_rewards)
     RobotoMediumTabLayout tablayoutMyRewards;
@@ -60,13 +54,18 @@ public class MyRewardsActivity extends BaseDrawerActivity {
     }
 
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
     public int getContentView() {
         return R.layout.activity_my_rewards;
+    }
+
+    @Override
+    public void inject() {
+        //don't need to override this method now.
     }
 
     private void initTabLayoutViewPager() {
@@ -93,7 +92,7 @@ public class MyRewardsActivity extends BaseDrawerActivity {
     public void onMyRewardsClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                finish();
+                openDrawerLayout();
                 break;
         }
     }

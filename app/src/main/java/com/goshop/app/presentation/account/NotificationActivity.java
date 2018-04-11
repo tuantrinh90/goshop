@@ -35,14 +35,8 @@ import injection.modules.PresenterModule;
 public class NotificationActivity extends BaseDrawerActivity<NotificationContract.Presenter>
     implements NotificationContract.View, NotificationAdapter.OnNotificationItemClickListener {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.imageview_left_menu)
-    ImageView imageviewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
+    ImageView imageViewLeftMenu;
 
     @BindView(R.id.recyclerview_notification)
     RecyclerView recyclerviewNotification;
@@ -69,8 +63,8 @@ public class NotificationActivity extends BaseDrawerActivity<NotificationContrac
     }
 
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -92,9 +86,13 @@ public class NotificationActivity extends BaseDrawerActivity<NotificationContrac
         return ScreenHelper.getString(R.string.home_drawlayout_notifications);
     }
 
-    @OnClick(R.id.imageview_left_menu)
-    public void onViewClicked() {
-        finish();
+    @OnClick({R.id.imageview_left_menu})
+    public void onCategoryClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                openDrawerLayout();
+                break;
+        }
     }
 
     @Override

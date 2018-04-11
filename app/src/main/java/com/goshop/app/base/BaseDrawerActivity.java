@@ -1,6 +1,7 @@
 package com.goshop.app.base;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
@@ -15,11 +16,13 @@ import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T> implements
+public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T> implements
     MenuAdapter.OnSlideMenuItemClickListener {
 
     private static final String TAG = "BaseDrawerActivity";
@@ -36,7 +39,7 @@ public class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T>
 
     private MenuUtil menuUtil;
 
-    private String currentMenuType=MenuUtil.MENU_TYPE_HOME;
+    private String currentMenuType = MenuUtil.MENU_TYPE_HOME;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,22 +65,13 @@ public class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T>
         getLayoutInflater().inflate(layoutResId, flContentLayout, true);
         super.setContentView(drawerLayout);
         ButterKnife.bind(this);
+        RobotoMediumTextView titleToolbar = drawerLayout.findViewById(R.id.textview_toolbar_title);
+        if (titleToolbar != null) {
+            titleToolbar.setText(getScreenTitle());
+        }
     }
 
-    @Override
-    public int getContentView() {
-        return 0;
-    }
-
-    @Override
-    public void inject() {
-        //There is no need to implement it now.
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return "";
-    }
+    public abstract String getScreenTitle();
 
     private void initMenuUtil() {
         menuUtil = new MenuUtil(this, isLogin, drawerLayout);
@@ -117,10 +111,14 @@ public class BaseDrawerActivity<T extends BasePresenter> extends BaseActivity<T>
     }
 
     public void closeDrawerLayout() {
-        drawerLayout.closeDrawer(GravityCompat.START);
+        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.closeDrawer(GravityCompat.START);
+        }
     }
 
     public void openDrawerLayout() {
-        drawerLayout.openDrawer(GravityCompat.START);
+        if (!drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            drawerLayout.openDrawer(GravityCompat.START);
+        }
     }
 }

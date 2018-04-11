@@ -33,14 +33,8 @@ import injection.modules.PresenterModule;
 public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presenter> implements
     SettingsContract.View {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.imageview_left_menu)
-    ImageView imageviewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
+    ImageView imageViewLeftMenu;
 
     @BindView(R.id.switch_setting_email)
     Switch switchSettingEmail;
@@ -76,8 +70,8 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     }
 
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -118,9 +112,12 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
             });
     }
 
-    @OnClick({R.id.tv_setting_change_password, R.id.tv_setting_logout})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_setting_change_password, R.id.tv_setting_logout})
     public void onClickSettings(View view) {
         switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                openDrawerLayout();
+                break;
             case R.id.tv_setting_change_password:
                 startActivity(new Intent(this, ChangePasswordActivity.class));
                 break;

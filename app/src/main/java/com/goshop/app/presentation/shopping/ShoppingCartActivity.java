@@ -2,28 +2,22 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
-import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
-import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.widget.adapter.MenuAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -35,7 +29,8 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContract.Presenter> implements
+public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContract.Presenter>
+    implements
     ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener,
     OnBannerItemClickListener, OnItemMenuClickListener,
     PopWindowUtil.OnCartItemMenuClickListener {
@@ -44,16 +39,10 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     public static final String TYPE_ENTRANCE_DRAWER = "drawer";
 
-    public static final String TYPE_ENTRANCE_PDP = "pdp";
-
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+    public static final String TYPE_ENTRANCE_HOME = "pdp";
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.rv_shoppint_cart)
     RecyclerView rvShoppintCart;
@@ -63,20 +52,31 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     private ShoppingCartAdapter shoppingCartAdapter;
 
+    private String entranceType;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setCurrentMenuType(MenuUtil.MENU_TYPE_SHOPPING_CART);
         setContentView(getContentView());
+        initIntent();
         initToolbar();
         initRecyclerView();
         //TODO(helen) wait for api
         mPresenter.shoppingCartRequest(null);
     }
 
+    private void initIntent() {
+        entranceType = getIntent().getStringExtra(EXTRA_ENTRANCE);
+    }
+
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        if (TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+            imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
+        } else {
+            imageViewLeftMenu.setImageResource(R.drawable.ic_icon_back);
+        }
     }
 
     @Override
@@ -138,8 +138,21 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         //todo wait for api
     }
 
-    @OnClick(R.id.tv_btn_cart_checkout)
+    @OnClick({R.id.tv_btn_cart_checkout, R.id.imageview_left_menu})
     public void onCartClick(View view) {
-        startActivity(new Intent(this, CheckoutActivity.class));
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                if (TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
+
+                break;
+            case R.id.tv_btn_cart_checkout:
+                startActivity(new Intent(this, CheckoutActivity.class));
+                break;
+        }
     }
+
 }

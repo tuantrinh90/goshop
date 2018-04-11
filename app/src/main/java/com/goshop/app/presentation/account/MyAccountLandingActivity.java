@@ -29,17 +29,11 @@ import butterknife.OnClick;
 
 public class MyAccountLandingActivity extends BaseDrawerActivity {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
 
     @BindView(R.id.iv_my_account_thumb)
     ImageView ivMyAccountThumb;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -57,7 +51,7 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
 
     private void initToolbar() {
         hideRightMenu();
-        hideLeftMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -66,16 +60,25 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
     }
 
     @Override
+    public void inject() {
+        //don't need to override this method now.
+    }
+
+    @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.my_account);
     }
 
-    @OnClick({R.id.tv_my_account_edit, R.id.rl_account_wishlist, R.id.rl_account_orders, R.id
+    @OnClick({R.id.imageview_left_menu, R.id.tv_my_account_edit, R.id.rl_account_wishlist, R.id
+        .rl_account_orders, R.id
         .rl_account_reviews, R.id.rl_account_address, R.id.rl_account_rewards, R.id
         .rl_account_points, R.id.rl_account_egift})
     public void onAccountLandingClick(View view) {
         Intent intent = null;
         switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                openDrawerLayout();
+                break;
             case R.id.tv_my_account_edit:
                 intent = new Intent(this, EditProfileActivity.class);
                 break;

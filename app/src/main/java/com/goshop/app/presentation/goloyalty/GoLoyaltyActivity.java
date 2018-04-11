@@ -27,20 +27,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Presenter> implements
     GoLoyaltyContract.View, GoLoyaltyAdapter.OnGoLoyaltyItemsClickListener {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.recyclerview_go_loyalty)
     RecyclerView recyclerviewGoLoyalty;
@@ -62,8 +57,8 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
     }
 
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -88,18 +83,18 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
         goLoyaltyAdapter.setOnGoLoyaltyItemsClickListener(this);
     }
 
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.go_loyalty);
+    @OnClick({R.id.imageview_left_menu})
+    public void onCategoryClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                openDrawerLayout();
+                break;
+        }
     }
 
     @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
+    public String getScreenTitle() {
+        return getResources().getString(R.string.go_loyalty);
     }
 
     @Override

@@ -19,6 +19,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -33,14 +34,8 @@ import injection.modules.PresenterModule;
 public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presenter> implements
     CategoryContract.View, OnCategoryItemClickListener {
 
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
-
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.recycleview_category_left)
     RecyclerView recycleviewCategoryLeft;
@@ -66,8 +61,8 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
     }
 
     private void initToolbar() {
-        hideLeftMenu();
         hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -128,7 +123,7 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
     public void onCategoryClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                finish();
+                openDrawerLayout();
                 break;
         }
     }
@@ -140,12 +135,4 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
         startActivity(intent);
     }
 
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
 }

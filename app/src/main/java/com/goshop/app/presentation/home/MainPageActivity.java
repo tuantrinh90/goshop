@@ -15,8 +15,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -62,6 +60,16 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
         return R.layout.activity_main_page;
     }
 
+    @Override
+    public void inject() {
+        // don't need to override this method now.
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.home);
+    }
+
     private void initTabLayoutViewPager() {
         String[] tabLayoutArrays = {getResources().getString(
             R.string.trending_now), getResources().getString(
@@ -85,7 +93,6 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
                 startActivity(new Intent(MainPageActivity.this, SearchActivity.class));
             }
         });
-        ivleftMenu.setVisibility(View.VISIBLE);
         ivleftMenu.setImageResource(R.drawable.ic_menu);
     }
 
@@ -95,7 +102,7 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
             case R.id.imageview_right_menu:
                 Intent intent = new Intent(this, ShoppingCartActivity.class);
                 intent.putExtra(ShoppingCartActivity.EXTRA_ENTRANCE,
-                    ShoppingCartActivity.TYPE_ENTRANCE_PDP);
+                    ShoppingCartActivity.TYPE_ENTRANCE_HOME);
                 startActivity(new Intent(this, ShoppingCartActivity.class));
                 break;
 
