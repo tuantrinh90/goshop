@@ -459,5 +459,13 @@
     <string name="cvv_info">The last 3 digits on the back of your card.</string>
     <string name="enter_question">Enter your question</string>
     <string name="all_qa">All Q&#38;A</string>
+    <string name="there_is_no_address_yes">There is no address yet.</string>
+    <string name="add_now">Add Now</string>
+    <string name="connection_is_lost_now">Oops, connection is lost now.</string>
+    <string name="refresh">Refresh</string>
+    <string name="there_is_no_items_in_your_cart">There is no items in your cart.</string>
+    <string name="shop_now">Shop Now</string>
+    <string name="there_is_no_wishlist_items_yet">There is no wishlist items yet.</string>
+
 
 </resources>

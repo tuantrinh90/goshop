@@ -72,7 +72,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
             actionBar.setTitle("");
             actionBar.setDisplayShowTitleEnabled(false);
         }
-
         if (titleToolbar != null) {
             titleToolbar.setText(getScreenTitle());
         }
@@ -103,18 +102,15 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         }
     }
 
-    public void setToolbarTextImageTitleOnly() {
-        if (ivRightMenu != null) {
-            ivRightMenu.setVisibility(View.GONE);
-        }
-        if (ivLeftMenu != null) {
-            ivLeftMenu.setVisibility(View.GONE);
-        }
-    }
-
     public void hideRightMenu() {
         if (ivRightMenu != null) {
             ivRightMenu.setVisibility(View.GONE);
+        }
+    }
+
+    public void hideLeftMenu() {
+        if (ivLeftMenu != null) {
+            ivLeftMenu.setVisibility(View.GONE);
         }
     }
 
@@ -122,4 +118,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         return toolbar;
     }
 
+    public void updateLayoutStatus(View layout, boolean isShow) {
+        layout.setVisibility(isShow ? View.VISIBLE : View.GONE);
+    }
 }

@@ -3,6 +3,9 @@ package com.goshop.app.presentation.myorder;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.base.BaseDrawerActivity;
+import com.goshop.app.presentation.home.MainPageActivity;
+import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.MyOrdersVM;
 import com.goshop.app.presentation.shopping.RatingActivity;
 import com.goshop.app.utils.MenuUtil;
@@ -19,28 +22,22 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class MyOrdersActivity extends BaseActivity<MyOrdersContract.Presenter> implements
-    MyOrdersContract.View, MenuAdapter
-    .OnSlideMenuItemClickListener, MyOrdersAdapter
-    .OnOrdersItemClickListener {
-
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presenter> implements
+    MyOrdersContract.View, MyOrdersAdapter.OnOrdersItemClickListener {
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.recyclerview_my_orders)
     RecyclerView recyclerviewMyOrders;
@@ -48,46 +45,28 @@ public class MyOrdersActivity extends BaseActivity<MyOrdersContract.Presenter> i
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private int currentMenu;
+    @BindView(R.id.fl_no_data)
+    FrameLayout flNoData;
 
-    private boolean isLogin = true;
-
-    private MenuAdapter menuAdapter;
-
-    private String menuTag;
-
-    private MenuUtil menuUtil;
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
 
     private MyOrdersAdapter myOrdersAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initMenuUtil();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-        toggle.syncState();
-        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
-        if (menuTag == null) {
-            menuUtil.disabledDrawerLayout();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> finish());
-        } else {
-            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
-                menuUtil.liftedDrawerLayout();
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    drawerLayout.openDrawer(Gravity.LEFT);
-                });
-            }
-        }
-
-        initMenuRecyclerview();
+        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_ORDERS);
+        setContentView(getContentView());
+        initRecyclerView();
+        initToolbar();
         //todo wait for api
         mPresenter.myOrdersRequest(null);
+    }
+
+    private void initToolbar() {
+        hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -97,10 +76,11 @@ public class MyOrdersActivity extends BaseActivity<MyOrdersContract.Presenter> i
 
     @Override
     public void inject() {
-        imageViewLeftMenu.setVisibility(View.GONE);
-        hideRightMenu();
-        initRecyclerView();
-        initPresenter();
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
     }
 
     @Override
@@ -116,66 +96,27 @@ public class MyOrdersActivity extends BaseActivity<MyOrdersContract.Presenter> i
         myOrdersAdapter.setOnOrdersItemClickListener(this);
     }
 
-    private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
-    }
-
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(
-            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = MenuUtil.LOGIN_MENU_MY_ORDERS;
-        menuAdapter.updateSelection(currentMenu);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
-    }
-
-    @Override
-    public void onHeaderUserClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onHeaderLoginClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
+    @OnClick({R.id.imageview_left_menu})
+    public void onCategoryClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                openDrawerLayout();
+                break;
+            case R.id.tv_shop_now:
+                updateLayoutStatus(flNoData,false);
+                startActivity(new Intent(this, MainPageActivity.class));
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak,false);
+                // TODO: 2018/4/11 need real api
+                mPresenter.myOrdersRequest(null);
+                break;
         }
     }
 
     @Override
     public void showMyOrdersResult(List<MyOrdersVM> myOrdersVMS) {
         myOrdersAdapter.setUpdateDatas(myOrdersVMS);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
     }
 
     @Override

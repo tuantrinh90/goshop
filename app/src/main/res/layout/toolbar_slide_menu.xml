@@ -9,6 +9,7 @@
     app:contentInsetEnd="@dimen/size_0"
     app:contentInsetStart="@dimen/size_0"
     app:contentInsetLeft="@dimen/size_0"
+    app:contentInsetRight="@dimen/size_0"
     app:contentInsetStartWithNavigation="@dimen/size_0"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light">
 
@@ -18,10 +19,11 @@
 
         <ImageView
             android:id="@+id/imageview_left_menu"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:scaleType="centerInside"
-            android:visibility="gone"
+            android:layout_width="@dimen/size_24"
+            android:layout_height="@dimen/size_24"
+            android:src="@drawable/ic_menu"
+            android:scaleType="centerCrop"
+            android:layout_margin="@dimen/size_16"
             android:layout_alignParentLeft="true"
             android:layout_centerVertical="true"
             tools:ignore="ContentDescription"
@@ -71,11 +73,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_toLeftOf="@id/imageview_right_menu"
+            android:layout_toStartOf="@id/imageview_right_menu"
+            android:layout_toEndOf="@id/imageview_left_menu"
+            android:layout_toRightOf="@id/imageview_left_menu"
             android:layout_marginBottom="@dimen/size_8"
             android:layout_marginTop="@dimen/size_17"
             android:paddingBottom="@dimen/size_6"
-            android:background="@drawable/bg_white_bottom_divider_line"
-            android:layout_toStartOf="@id/imageview_right_menu">
+            android:background="@drawable/bg_white_bottom_divider_line">
             <ImageView
                 android:id="@+id/iv_search_icon"
                 android:layout_width="@dimen/size_24"

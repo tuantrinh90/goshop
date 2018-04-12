@@ -14,6 +14,12 @@ public class MenuItemVM extends MenuModel{
         this.title = title;
     }
 
+    public MenuItemVM(int icon, String title,String type) {
+        super(MenuModel.MENU_ITEM,type);
+        this.icon = icon;
+        this.title = title;
+    }
+
     public int getIcon() {
         return icon;
     }

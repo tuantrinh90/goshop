@@ -10,8 +10,6 @@ public class MyWishlistContract {
 
     interface View extends BaseView {
 
-        void showNodata();
-
         void showWishlistItems(List<WishlistVM> wishlistVMS);
 
         void showError(String errorMessage);

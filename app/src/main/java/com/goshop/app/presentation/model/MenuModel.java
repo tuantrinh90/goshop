@@ -10,8 +10,23 @@ public class MenuModel {
 
     private int viewType;
 
+    private String menuType;
+
     public MenuModel(int viewType) {
         this.viewType = viewType;
+    }
+
+    public MenuModel(int viewType, String menuType) {
+        this.viewType = viewType;
+        this.menuType = menuType;
+    }
+
+    public String getMenuType() {
+        return menuType;
+    }
+
+    public void setMenuType(String menuType) {
+        this.menuType = menuType;
     }
 
     public int getViewType() {

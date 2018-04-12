@@ -3,8 +3,10 @@ package com.goshop.app.presentation.goloyalty;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.model.GoLoyaltyModel;
+import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
 
@@ -25,22 +27,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter> implements
-    MenuAdapter
-        .OnSlideMenuItemClickListener, GoLoyaltyContract.View, GoLoyaltyAdapter
-    .OnGoLoyaltyItemsClickListener {
-
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
+public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Presenter> implements
+    GoLoyaltyContract.View, GoLoyaltyAdapter.OnGoLoyaltyItemsClickListener {
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
-
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
 
     @BindView(R.id.recyclerview_go_loyalty)
     RecyclerView recyclerviewGoLoyalty;
@@ -48,63 +43,22 @@ public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter>
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    private int currentMenu;
-
     private GoLoyaltyAdapter goLoyaltyAdapter;
-
-    private boolean isLogin = true;
-
-    private MenuAdapter menuAdapter;
-
-    private String menuTag;
-
-    private MenuUtil menuUtil;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initMenuUtil();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-        toggle.syncState();
-        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
-        if (menuTag == null) {
-            menuUtil.disabledDrawerLayout();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> finish());
-        } else {
-            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
-                menuUtil.liftedDrawerLayout();
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    drawerLayout.openDrawer(Gravity.LEFT);
-                });
-            }
-        }
-
-        initMenuRecyclerview();
-
+        setCurrentMenuType(MenuUtil.MENU_TYPE_GO_LOYALTY);
+        setContentView(getContentView());
+        initToolbar();
+        initRecyclerView();
         //todo wait for api
         mPresenter.goLoyaltyRequest(null);
     }
 
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(
-            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = isLogin ? MenuUtil.LOGIN_MENU_GO_LOYALTY : MenuUtil.UNLOGIN_MENU_GO_LOYALTY;
-        menuAdapter.updateSelection(currentMenu);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
+    private void initToolbar() {
+        hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -114,13 +68,6 @@ public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter>
 
     @Override
     public void inject() {
-        imageViewLeftMenu.setVisibility(View.GONE);
-        hideRightMenu();
-        initPresenter();
-        initRecyclerView();
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -136,42 +83,18 @@ public class GoLoyaltyActivity extends BaseActivity<GoLoyaltyContract.Presenter>
         goLoyaltyAdapter.setOnGoLoyaltyItemsClickListener(this);
     }
 
+    @OnClick({R.id.imageview_left_menu})
+    public void onCategoryClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                openDrawerLayout();
+                break;
+        }
+    }
+
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.go_loyalty);
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public void onHeaderUserClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onHeaderLoginClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
     }
 
     @Override

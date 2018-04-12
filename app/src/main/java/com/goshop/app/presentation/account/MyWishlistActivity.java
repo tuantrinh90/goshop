@@ -3,13 +3,17 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.home.MainPageActivity;
+import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
@@ -20,6 +24,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -32,71 +37,40 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presenter> implements
-    MyWishlistContract.View, MenuAdapter
-    .OnSlideMenuItemClickListener,
+public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Presenter> implements
+    MyWishlistContract.View,
     OnItemMenuClickListener, PopWindowUtil.OnWishlistDeleteListener {
-
-    @BindView(R.id.drawer_layout)
-    DrawerLayout drawerLayout;
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
 
-    @BindView(R.id.recyclerview_menu)
-    RecyclerView recyclerViewMenu;
-
     @BindView(R.id.recyclerview_wishlist)
     RecyclerView recyclerviewWishlist;
-
-    @BindView(R.id.rl_wishlist_nodata)
-    RelativeLayout rlWishlistNodata;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.tv_btn_go_shop_now)
-    RobotoRegularTextView tvBtnGoShopNow;
+    @BindView(R.id.fl_no_data)
+    FrameLayout flNoData;
 
-    private int currentMenu;
-
-    private boolean isLogin = true;
-
-    private MenuAdapter menuAdapter;
-
-    private String menuTag;
-
-    private MenuUtil menuUtil;
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
 
     private MyWishlistAdapter wishlistAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        initMenuUtil();
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-            this, drawerLayout, toolbar, 0,
-            0);
-        toggle.syncState();
-        menuTag = getIntent().getStringExtra(MenuUtil.MENU_KEY);
-        if (menuTag == null) {
-            menuUtil.disabledDrawerLayout();
-            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            toolbar.setNavigationOnClickListener(v -> finish());
-        } else {
-            if (menuTag.equals(MenuUtil.MENU_VALUE)) {
-                menuUtil.liftedDrawerLayout();
-                getSupportActionBar().setDisplayShowHomeEnabled(true);
-                toolbar.setNavigationOnClickListener(v -> {
-                    drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
-                    drawerLayout.openDrawer(Gravity.LEFT);
-                });
-            }
-        }
-
-        initMenuRecyclerview();
+        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_WISHLIST);
+        setContentView(getContentView());
+        initRecyclerView();
+        initToolbar();
         mPresenter.getWishlistItems();
+    }
+
+    private void initToolbar() {
+        hideRightMenu();
+        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -106,13 +80,6 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
 
     @Override
     public void inject() {
-        imageViewLeftMenu.setVisibility(View.GONE);
-        hideRightMenu();
-        initPresenter();
-        initRecyclerView();
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -133,69 +100,20 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
         return getResources().getString(R.string.my_wishlist);
     }
 
-    private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
-    }
-
-    private void initMenuRecyclerview() {
-        LinearLayoutManager layoutManager = new LinearLayoutManager(this);
-        recyclerViewMenu.setLayoutManager(layoutManager);
-        menuAdapter = new MenuAdapter(
-            isLogin ? menuUtil.getLoginMenuModel() : menuUtil.getUnLoginMenuModel());
-        recyclerViewMenu.setAdapter(menuAdapter);
-        currentMenu = MenuUtil.LOGIN_MENU_MY_WISHLIST;
-        menuAdapter.updateSelection(currentMenu);
-        menuAdapter.setOnSlideMenuItemClickListener(this);
-        menuAdapter.updateLoginState(isLogin);
-    }
-
-    @Override
-    public void onHeaderUserClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onHeaderLoginClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onItemClick(int position) {
-        drawerLayout.closeDrawer(GravityCompat.START);
-        if (currentMenu != position) {
-            menuUtil.startNewScreen(position);
-        }
-    }
-
-    @Override
-    public void onBackPressed() {
-        if (drawerLayout.isDrawerOpen(GravityCompat.START)) {
-            drawerLayout.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
-    public void showNodata() {
-        rlWishlistNodata.setVisibility(View.VISIBLE);
-    }
-
     @Override
     public void showWishlistItems(List<WishlistVM> wishlistVMS) {
-        wishlistAdapter.setUpdateDatas(wishlistVMS);
+        if (wishlistVMS.size() > 0) {
+            wishlistAdapter.setUpdateDatas(wishlistVMS);
+        } else {
+            updateLayoutStatus(flNoData, true);
+        }
     }
 
     @Override
     public void showError(String errorMessage) {
         //todo wait for design
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+        updateLayoutStatus(flConnectionBreak,true);
     }
 
     @Override
@@ -203,10 +121,6 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
         wishlistAdapter.setUpdateDatas(wishlistVMS);
     }
 
-    @OnClick(R.id.tv_btn_go_shop_now)
-    public void onMyWishlistClick(View view) {
-        //todo wait for api
-    }
 
     @Override
     public void onItemMenuClick(View parentView, Object object) {
@@ -216,5 +130,22 @@ public class MyWishlistActivity extends BaseActivity<MyWishlistContract.Presente
     @Override
     public void onWishlistDelete(WishlistVM wishlistVM) {
         mPresenter.wishlistDeleteRequest(1, 3, wishlistVM.getSku());
+    }
+
+    @OnClick({R.id.imageview_left_menu})
+    public void onCategoryClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                openDrawerLayout();
+                break;
+            case R.id.tv_add_now:
+                updateLayoutStatus(flNoData, false);
+                startActivity(new Intent(this, MainPageActivity.class));
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak, false);
+                mPresenter.getWishlistItems();
+                break;
+        }
     }
 }

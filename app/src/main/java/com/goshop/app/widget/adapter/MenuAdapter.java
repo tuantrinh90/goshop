@@ -3,9 +3,10 @@ package com.goshop.app.widget.adapter;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.model.MenuHearderVM;
+import com.goshop.app.presentation.model.MenuHeaderVM;
 import com.goshop.app.presentation.model.MenuItemVM;
 import com.goshop.app.presentation.model.MenuModel;
+import com.goshop.app.utils.MenuUtil;
 
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -58,10 +59,10 @@ public class MenuAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof ItemViewHolder) {
-            ((ItemViewHolder) holder).bindingData((MenuItemVM) menuModels.get(position), position);
+            ((ItemViewHolder) holder).bindingData(menuModels.get(position), position);
         } else if (holder instanceof HeaderViewHolder) {
             ((HeaderViewHolder) holder)
-                .bindingData((MenuHearderVM) menuModels.get(position), position);
+                .bindingData(menuModels.get(position), position);
         }
     }
 
@@ -80,32 +81,26 @@ public class MenuAdapter extends RecyclerView.Adapter {
         this.onSlideMenuItemClickListener = onSlideMenuItemClickListener;
     }
 
-    public void updateSelection(int position) {
+    public void updateSelection(String menuType) {
         for (int i = 0; i < menuModels.size(); i++) {
             MenuModel model = menuModels.get(i);
             if (model instanceof MenuItemVM) {
-                ((MenuItemVM) model).setSelect(position == i);
+                ((MenuItemVM) model).setSelect(menuType.equals(model.getMenuType()));
             }
         }
         notifyDataSetChanged();
     }
 
-    public void updateLoginState(boolean loginState) {
-        MenuModel model = menuModels.get(0);
-        if (model instanceof MenuHearderVM) {
-            Log.d("updateSelection", "boolen" + (loginState));
-            ((MenuHearderVM) model).setLoginState(loginState);
-        }
+
+    public void updateDrawerModel(List<MenuModel> drawerListModel) {
+        menuModels.clear();
+        menuModels.addAll(drawerListModel);
         notifyDataSetChanged();
     }
 
     public interface OnSlideMenuItemClickListener {
 
-        void onHeaderUserClick(int position);
-
-        void onHeaderLoginClick(int position);
-
-        void onItemClick(int position);
+        void onItemClick(MenuModel itemVM, int position);
     }
 
     class HeaderViewHolder extends RecyclerView.ViewHolder {
@@ -121,13 +116,24 @@ public class MenuAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MenuHearderVM menuHearderVM, int position) {
-            rlSlideUserInfo.setVisibility(menuHearderVM.isLoginState() ? View.VISIBLE : View.GONE);
-            tvSlideSignUp.setVisibility(menuHearderVM.isLoginState() ? View.GONE : View.VISIBLE);
-            rlSlideUserInfo
-                .setOnClickListener(v -> onSlideMenuItemClickListener.onHeaderUserClick(position));
-            tvSlideSignUp
-                .setOnClickListener(v -> onSlideMenuItemClickListener.onHeaderLoginClick(position));
+        void bindingData(MenuModel menuModel, int position) {
+            if (menuModel != null && menuModel instanceof MenuHeaderVM) {
+                if (MenuUtil.MENU_TYPE_HEAD_ACCOUNT
+                    .equals(menuModel.getMenuType())) {
+                    rlSlideUserInfo.setVisibility(View.VISIBLE);
+                    tvSlideSignUp.setVisibility(View.GONE);
+                    rlSlideUserInfo
+                        .setOnClickListener(
+                            v -> onSlideMenuItemClickListener.onItemClick(menuModel, position));
+                } else {
+                    rlSlideUserInfo.setVisibility(View.GONE);
+                    tvSlideSignUp.setVisibility(View.VISIBLE);
+                    tvSlideSignUp
+                        .setOnClickListener(
+                            v -> onSlideMenuItemClickListener
+                                .onItemClick(menuModel, position));
+                }
+            }
         }
     }
 
@@ -147,22 +153,25 @@ public class MenuAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(MenuItemVM itemVM, int position) {
-            if (itemVM.getIcon() == 0) {
-                ivMenuItem.setVisibility(View.GONE);
-            } else {
-                ivMenuItem.setVisibility(View.VISIBLE);
-                ivMenuItem.setBackgroundResource(itemVM.getIcon());
-                ivMenuItem.setSelected(itemVM.isSelect());
+        void bindingData(MenuModel itemVM, int position) {
+            MenuItemVM menuItemVM;
+            if (itemVM != null && itemVM instanceof MenuItemVM) {
+                menuItemVM = (MenuItemVM) itemVM;
+                llMenuItem.setSelected(menuItemVM.isSelect());
+                if (menuItemVM.getIcon() == 0) {
+                    ivMenuItem.setVisibility(View.GONE);
+                } else {
+                    ivMenuItem.setVisibility(View.VISIBLE);
+                    ivMenuItem.setBackgroundResource(menuItemVM.getIcon());
+                    ivMenuItem.setSelected(menuItemVM.isSelect());
+                }
+                tvMenuItem.setSelected(menuItemVM.isSelect());
+                llMenuItem.setSelected(menuItemVM.isSelect());
+                tvMenuItem.setText(menuItemVM.getTitle());
+                llMenuItem.setOnClickListener(v -> {
+                    onSlideMenuItemClickListener.onItemClick(itemVM, position);
+                });
             }
-            tvMenuItem.setText(itemVM.getTitle());
-            tvMenuItem.setSelected(itemVM.isSelect());
-            llMenuItem.setSelected(itemVM.isSelect());
-            llMenuItem.setOnClickListener(v -> {
-                //todo need decide
-//                updateSelection(position);
-                onSlideMenuItemClickListener.onItemClick(position);
-            });
         }
     }
 

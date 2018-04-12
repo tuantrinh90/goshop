@@ -1,11 +1,15 @@
 package com.goshop.app.presentation.model;
 
-public class MenuHearderVM extends MenuModel {
+public class MenuHeaderVM extends MenuModel {
 
     private boolean loginState = true;
 
-    public MenuHearderVM() {
+    public MenuHeaderVM() {
         super(MenuModel.MENU_HEADER);
+    }
+
+    public MenuHeaderVM(String menuType) {
+        super(MenuModel.MENU_HEADER, menuType);
     }
 
     public boolean isLoginState() {
