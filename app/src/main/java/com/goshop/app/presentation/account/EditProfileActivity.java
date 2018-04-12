@@ -256,7 +256,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     @Override
     public void setGender(List<ProfileMetaVM> genderVMs) {
-
+        //todo need decide
     }
 
     @Override
