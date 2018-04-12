@@ -14,190 +14,14 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!-- FABRIC-->
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="d102a451221c09c217bb4743b3e7c95cf8f8fe69"/>
 
-        <activity android:name=".presentation.home.MainPageActivity"
-            android:theme="@style/WhiteBackground">
-
-        </activity>
-
-        <activity android:name=".presentation.home.SplashActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.MyWishlistActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.goloyalty.GoLoyaltyActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.goloyalty.AllDealsActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.goloyalty.MyRewardsActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.goloyalty.RewardsDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.goloyalty.CardRedeemActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.MyAccountLandingActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.shopping.PDPDetailImagesActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.shopping.RatingActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.shopping.AllReviewsActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.login.LoginActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.login.RegisterActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.category.CategoryActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.category.CategoryTreeDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.shopping.ShoppingCartActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.NotificationActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.HelpSupportActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.settings.SettingsActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.ChangePasswordActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.search.SearchActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.search.SearchResultActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.FAQActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.TermsConditionsActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.ContactUsActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.WebContentActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.checkout.CheckoutActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.checkout.CheckoutPaymentActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.home.PromotionBannerActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.home.PromotionLandingListActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.home.PromotionSkuActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.shopping.ProductDetailActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.myorder.MyOrdersActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.myorder.OrderDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.myorder.MyOrderListActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.myorder.MyOrderDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.myorder.CancelOrderActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.myorder.ReturnOrderActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.login.LoginComplementEmailActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.login.LoginResetPasswordActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.login.LoginSendConfirmationLinkActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.EditProfileActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
-        </activity>
-
-        <activity android:name=".presentation.account.AddAddressActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.MyAddressBookActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.EditAddressActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.MyPointsActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.checkout.CheckoutSelectAddressActivity"
-            android:theme="@style/WhiteBackground"/>
-        <activity android:name=".presentation.checkout.CheckoutAddNewAddressActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.checkout.CheckoutEditAddressActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.checkout.PaymentStatusActivity"
-            android:theme="@style/WhiteBackground"/>
-        <activity android:name=".presentation.home.BrandsDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.account.MyEGiftCardsActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.shopping.AllQAActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity android:name=".presentation.shopping.QuestionAnswerDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
         <!-- FACEBOOK -->
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
 
         <activity
@@ -205,6 +29,7 @@
             android:configChanges=
                 "keyboard|keyboardHidden|screenLayout|screenSize|orientation"
             android:label="@string/app_name"/>
+
         <activity
             android:name="com.facebook.CustomTabActivity"
             android:exported="true">
@@ -216,7 +41,238 @@
             </intent-filter>
         </activity>
 
+        <!--ACTIVITY-->
+        <activity
+            android:name=".presentation.home.MainPageActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.home.SplashActivity"
+            android:theme="@style/WhiteBackground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".presentation.account.MyWishlistActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.goloyalty.GoLoyaltyActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.goloyalty.AllDealsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.goloyalty.MyRewardsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.goloyalty.RewardsDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.goloyalty.CardRedeemActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.MyAccountLandingActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.shopping.PDPDetailImagesActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.shopping.RatingActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.shopping.AllReviewsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.login.LoginActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.login.RegisterActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.category.CategoryActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.category.CategoryTreeDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.shopping.ShoppingCartActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.NotificationActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.HelpSupportActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.settings.SettingsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.ChangePasswordActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.search.SearchActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.search.SearchResultActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.FAQActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.TermsConditionsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.ContactUsActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.WebContentActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.checkout.CheckoutActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.checkout.CheckoutPaymentActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.home.PromotionBannerActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.home.PromotionLandingListActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.home.PromotionSkuActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.shopping.ProductDetailActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.myorder.MyOrdersActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.myorder.OrderDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.myorder.MyOrderListActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.myorder.MyOrderDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity android:name=".presentation.myorder.CancelOrderActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.myorder.ReturnOrderActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.login.LoginComplementEmailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.login.LoginResetPasswordActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.login.LoginSendConfirmationLinkActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.EditProfileActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.AddAddressActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.MyAddressBookActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.EditAddressActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.MyPointsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.checkout.CheckoutSelectAddressActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.checkout.CheckoutAddNewAddressActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.checkout.CheckoutEditAddressActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.checkout.PaymentStatusActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.home.BrandsDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.account.MyEGiftCardsActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.shopping.AllQAActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.shopping.QuestionAnswerDetailActivity"
+            android:theme="@style/WhiteBackground"/>
+
     </application>
-
-
 </manifest>

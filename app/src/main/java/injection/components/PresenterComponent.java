@@ -31,6 +31,7 @@ import com.goshop.app.presentation.home.BrandsFragment;
 import com.goshop.app.presentation.home.PromotionBannerActivity;
 import com.goshop.app.presentation.home.PromotionLandingListActivity;
 import com.goshop.app.presentation.home.PromotionSkuActivity;
+import com.goshop.app.presentation.home.SplashActivity;
 import com.goshop.app.presentation.home.TVShowPageFragment;
 import com.goshop.app.presentation.home.TrendingNowFragment;
 import com.goshop.app.presentation.login.LoginActivity;
@@ -62,6 +63,8 @@ import injection.modules.PresenterModule;
 public interface PresenterComponent {
 
     Activity getActivity();
+
+    void inject(SplashActivity splashActivity);
 
     void inject(TrendingNowFragment trendingNowFragment);
 
