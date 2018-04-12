@@ -194,9 +194,6 @@
         <activity android:name=".presentation.shopping.QuestionAnswerDetailActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity android:name=".presentation.login.TestMenuActivity"
-            android:theme="@style/WhiteBackground"/>
-
         <!-- FACEBOOK -->
         <meta-data android:name="com.facebook.sdk.ApplicationId"
             android:value="@string/facebook_app_id"/>
