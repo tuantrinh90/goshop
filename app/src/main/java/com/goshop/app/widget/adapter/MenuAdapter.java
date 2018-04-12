@@ -165,7 +165,6 @@ public class MenuAdapter extends RecyclerView.Adapter {
                     ivMenuItem.setBackgroundResource(menuItemVM.getIcon());
                     ivMenuItem.setSelected(menuItemVM.isSelect());
                 }
-                Log.d("jay", "--------------bindingData: "+menuItemVM.isSelect());
                 tvMenuItem.setSelected(menuItemVM.isSelect());
                 llMenuItem.setSelected(menuItemVM.isSelect());
                 tvMenuItem.setText(menuItemVM.getTitle());
