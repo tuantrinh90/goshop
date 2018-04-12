@@ -77,7 +77,6 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
         for (int i = 0; i < 5; i++) {
             profileMetaVMS.add(new ProfileMetaVM("Title " + (i + 1)));
         }
-
         return profileMetaVMS;
     }
 

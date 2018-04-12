@@ -103,8 +103,23 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initData();
+        initView();
+    }
+
+    private void initView() {
+        textviewRightMenu.setText(getResources().getString(R.string.done));
+        ivRegisterSms.setSelected(true);
+        ivRegisterEmail.setSelected(true);
+        ivSelectFemale.setSelected(true);
+        tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
+    }
+
+    private void initData() {
+        toastUtil = new ToastUtil(this, this);
         languagesVMS = mPresenter.getLanguageChooses();
         titleVMS = mPresenter.getTitleChooses();
+        initPrivacyPolicyAndTerms();
     }
 
     @Override
@@ -114,22 +129,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @Override
     public void inject() {
-        textviewRightMenu.setText(getResources().getString(R.string.done));
-        ivRegisterSms.setSelected(true);
-        ivRegisterEmail.setSelected(true);
-        ivSelectFemale.setSelected(true);
-        tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
-        initPresenter();
-        toastUtil = new ToastUtil(this, this);
-        initRead();
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.register);
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -137,8 +136,13 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             .inject(this);
     }
 
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.register);
+    }
+
     //TODO(helen)hard code need decide
-    private void initRead() {
+    private void initPrivacyPolicyAndTerms() {
         SpannableString spannableString = new SpannableString(
             getResources().getString(R.string.register_tips));
         spannableString.setSpan(new UnderlineSpan(), 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -215,7 +219,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                 finish();
                 break;
             case R.id.textview_right_menu:
-
                 KeyBoardUtils.hideKeyboard(this);
                 String firstName = etRegisterFirstname.getText();
                 String lastName = etRegisterLastname.getText();

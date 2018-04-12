@@ -10,8 +10,7 @@
     android:focusableInTouchMode="true"
     android:focusable="true">
 
-    <include
-        layout="@layout/toolbar_right_text"/>
+    <include layout="@layout/toolbar_right_text"/>
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -62,24 +61,21 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/size_4"
-                            animET:hint="@string/email"
-                        />
+                            animET:hint="@string/email"/>
 
                         <com.goshop.app.common.CustomPasswordEditText
                             android:id="@+id/ctd_et_register_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/size_4"
-                            pwd:pwd_hint="@string/password"
-                        />
+                            pwd:pwd_hint="@string/password"/>
 
                         <com.goshop.app.common.CustomPasswordEditText
                             android:id="@+id/ctd_et_register_confirmation_password"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/size_4"
-                            pwd:pwd_hint="@string/confirmation_password"
-                        />
+                            pwd:pwd_hint="@string/confirmation_password"/>
 
                         <com.goshop.app.common.view.RobotoRegularTextView
                             android:id="@+id/tv_register_title"
@@ -106,8 +102,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="@dimen/size_30"
-                            animET:hint="@string/mobile_number"
-                        />
+                            animET:hint="@string/mobile_number"/>
 
                         <com.goshop.app.common.view.RobotoRegularTextView
                             android:id="@+id/tv_register_date_of_birth"
@@ -245,5 +240,4 @@
             android:layout_height="@dimen/size_4"
             android:background="@drawable/bg_navigation_bar_shadow"/>
     </FrameLayout>
-
 </LinearLayout>

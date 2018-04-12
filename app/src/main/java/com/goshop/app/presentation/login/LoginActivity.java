@@ -14,6 +14,7 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.MenuModel;
+import com.goshop.app.utils.JToolUtils;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.widget.adapter.MenuAdapter;
@@ -41,8 +42,8 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> implements LoginContract
-    .View {
+public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> implements
+    LoginContract.View {
 
     @BindView(R.id.et_login_email)
     CustomAnimEditText etLoginEmail;
@@ -96,6 +97,7 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
         hideRightMenu();
         imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
+
     @Override
     public int getContentView() {
         return R.layout.activity_login;
@@ -152,6 +154,8 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
                 LoginManager.getInstance().logInWithReadPermissions(this, Arrays
                     .asList("public_profile", "user_friends", "email"));
 
+                // TODO: jay 2018/4/12  you can use this method generate HashKey for facebook
+//                JToolUtils.generateHashKey(this);
                 break;
             case R.id.tv_register:
                 startActivity(new Intent(this, RegisterActivity.class));
