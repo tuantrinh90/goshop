@@ -5,7 +5,7 @@ import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
-import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.PromotionBannerCenterVM;
 import com.goshop.app.presentation.model.PromotionBannerModel;
 import com.goshop.app.presentation.model.PromotionBannerScrollerVM;
@@ -27,17 +27,17 @@ import io.reactivex.observers.DisposableObserver;
 public class PromotionPresenter extends RxPresenter<PromotionContract.View> implements
     PromotionContract.Presenter {
 
-    AccountRepository accountRepository;
+    private ProductRepository repository;
 
     @Inject
-    public PromotionPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public PromotionPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void getPromotionList(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.promotionListRequest(params).subscribeWith(
+        addSubscrebe(repository.promotionListRequest(params).subscribeWith(
             new DisposableObserver<PromotionListResponse>() {
                 @Override
                 public void onNext(PromotionListResponse response) {
@@ -66,7 +66,7 @@ public class PromotionPresenter extends RxPresenter<PromotionContract.View> impl
     @Override
     public void getPromotionBanner(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.promotionBannerRequest(params).subscribeWith(
+        addSubscrebe(repository.promotionBannerRequest(params).subscribeWith(
             new DisposableObserver<PromotionBannerResponse>() {
                 @Override
                 public void onNext(PromotionBannerResponse response) {

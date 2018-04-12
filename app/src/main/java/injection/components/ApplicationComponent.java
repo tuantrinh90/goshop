@@ -2,6 +2,7 @@ package injection.components;
 
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.data.source.ProductDataSource;
 
 import android.app.Application;
 
@@ -21,6 +22,12 @@ public interface ApplicationComponent {
 
     @Named("cloudAccountDataSource")
     AccountDataSource getCloudAccountDataSource();
+
+    @Named("localProductDataSource")
+    ProductDataSource getLocalProductDataSource();
+
+    @Named("cloudProductDataSource")
+    ProductDataSource getCloudProductDataSource();
 
     Application appliation();
 

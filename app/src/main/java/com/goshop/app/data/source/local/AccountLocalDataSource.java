@@ -1,49 +1,41 @@
 package com.goshop.app.data.source.local;
 
 import com.goshop.app.data.LocalApi;
-import com.goshop.app.data.model.request.AddressRequest;
-import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.AllReviewsResponse;
-import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
-import com.goshop.app.data.model.response.MyEGiftResponse;
-import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.response.ChangePasswordResponse;
-import com.goshop.app.data.model.response.ResetPasswordResponse;
-import com.goshop.app.data.model.SearchFilterResponse;
-import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.request.AddressRequest;
+import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
+import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
-import com.goshop.app.data.model.response.PromotionBannerResponse;
-import com.goshop.app.data.model.response.PromotionListResponse;
-import com.goshop.app.data.model.response.RegisterResponse;
+import com.goshop.app.data.model.response.ResetPasswordResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.source.AccountDataSource;
 
@@ -68,22 +60,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
+    public Observable<Response<MyEGiftResponse>> eGiftCardsRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
         return null;
     }
 
@@ -128,17 +110,18 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(
+        Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> addWishlistRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<MyWishlistResponse> getWishlistItems() {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
         return null;
     }
 
@@ -168,7 +151,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
+    public Observable<Response> registerRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -213,7 +196,8 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params) {
+    public Observable<Response<ResetPasswordResponse>> resetPasswordRequest(
+        Map<String, Object> params) {
         return null;
     }
 
@@ -229,32 +213,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params) {
+    public Observable<Response> changePasswordRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<PromotionBannerResponse> promotionBannerRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
+    public Observable<Response<ProfileResponse>> editProfileRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -264,17 +228,17 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+    public Observable<Response<AddressResponse>> addAddressRequest(AddressRequest addressRequest) {
         return null;
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+    public Observable<Response<AddressResponse>> editAddressRequest(AddressRequest addressRequest) {
         return null;
     }
 
     @Override
-    public Observable<AddressResponse> getAddressList() {
+    public Observable<Response<AddressResponse>> getAddressList() {
         return null;
     }
 
@@ -334,16 +298,6 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<MyPointsResponse> getGoShopPointsDetails() {
-        return null;
-    }
-
-    @Override
     public Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params) {
 
         return null;
@@ -352,21 +306,6 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Override
     public Observable<AddressResponse> selectAddressRequest(Map<String, Object> params) {
 
-        return null;
-    }
-
-    @Override
-    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
-        return null;
-    }
-
-    @Override
-    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -391,22 +330,22 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params) {
+    public Observable<Response<ProfileResponse>> getUserProfile() {
         return null;
     }
 
     @Override
-    public Observable<ProfileResponse> getUserProfile() {
+    public Observable<Response<ProfileMetadataResponse>> getProfileMetadata() {
         return null;
     }
 
     @Override
-    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+    public Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
+    public Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params) {
         return null;
     }
 }

@@ -41,6 +41,14 @@ public class EndpointAddress {
 
     public static final String REMOVE_WISHLIST = "rest/all/V1/rest-api/customer/id/wishlist";
 
+    public static final String GET_PROFILE_METADATA = "rest/all/V1/rest-api/customer/metadata?website_idstore_id";
+
+    public static final String GET_STATES = "rest/all/V1/rest-api/address/getstates";
+
+    public static final String GET_CITY = "rest/all/V1/rest-api/address/getcity";
+
+    public static final String GET_ZIPCODE = "rest/all/V1/rest-api/address/getzipcode";
+
     public static final String ADD_ADDRESS = "";
 
     public static final String EDIT_ADDRESS = "";

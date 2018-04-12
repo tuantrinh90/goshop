@@ -3,6 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.ChangePasswordResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.HashMap;
@@ -30,9 +31,9 @@ public class ChangePasswordPresenter extends RxPresenter<ChangePasswordContract.
         params.put(Const.PARAMS_OLD_PASSWORD, currentPassword);
         params.put(Const.PARAMS_NEW_PASSWORD, newPassword);
         addSubscrebe(accountRepository.changePasswordRequest(params).subscribeWith(
-            new DisposableObserver<ChangePasswordResponse>() {
+            new DisposableObserver<Response>() {
                 @Override
-                public void onNext(ChangePasswordResponse passwordResponse) {
+                public void onNext(Response passwordResponse) {
                     mView.hideLoadingBar();
                     mView.success();
                 }

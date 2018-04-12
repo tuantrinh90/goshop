@@ -5,7 +5,7 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.WishlistVM;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.widget.adapter.SingleChooseListAdapter;
 import com.goshop.app.widget.adapter.SortListAdapter;
 
@@ -113,7 +113,7 @@ public class PopWindowUtil {
     }
 
     public static void showSingleChoosePop(View parentView, String title,
-        List<SingleChooseVM> singleChooseVMS,
+        List<ProfileMetaVM> profileMetaVMS,
         OnPopWindowDismissListener onPopWindowDismissListener) {
         View view = LayoutInflater.from(parentView.getContext())
             .inflate(R.layout.layout_pop_single_choose, null);
@@ -122,7 +122,7 @@ public class PopWindowUtil {
         RecyclerView recyclerView = view.findViewById(R.id.recyclerview_single_dialog);
         LinearLayoutManager layoutManager = new LinearLayoutManager(parentView.getContext());
         recyclerView.setLayoutManager(layoutManager);
-        SingleChooseListAdapter chooseListAdapter = new SingleChooseListAdapter(singleChooseVMS);
+        SingleChooseListAdapter chooseListAdapter = new SingleChooseListAdapter(profileMetaVMS);
         recyclerView.setAdapter(chooseListAdapter);
 
         PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,
@@ -160,12 +160,12 @@ public class PopWindowUtil {
             location[1] - popupHeight - parentView.getMeasuredHeight() * 3 / 2);
     }
 
-    public static List<SingleChooseVM> updateSinglePopDatas(int position,
-        List<SingleChooseVM> singleChooseVMS) {
-        for (int i = 0; i < singleChooseVMS.size(); i++) {
-            singleChooseVMS.get(i).setChoose(i == position);
+    public static List<ProfileMetaVM> updateSinglePopDatas(int position,
+        List<ProfileMetaVM> profileMetaVMS) {
+        for (int i = 0; i < profileMetaVMS.size(); i++) {
+            profileMetaVMS.get(i).setSelect(i == position);
         }
-        return singleChooseVMS;
+        return profileMetaVMS;
     }
 
     public static void showDatePickerDialog(View parentView,

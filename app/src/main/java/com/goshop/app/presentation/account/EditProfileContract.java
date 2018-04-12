@@ -2,8 +2,8 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.presentation.model.ProfileVM;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
 
 import java.util.List;
 
@@ -18,6 +18,12 @@ public class EditProfileContract {
         void editProfileFailed(String errorMessage);
 
         void setProfileVM(ProfileVM profileVM);
+
+        void setLanguage(List<ProfileMetaVM> languageVMs);
+
+        void setRace(List<ProfileMetaVM> raceVMs);
+
+        void setGender(List<ProfileMetaVM> genderVMs);
     }
 
     public interface Presenter extends BasePresenter<View> {
@@ -25,13 +31,15 @@ public class EditProfileContract {
         void editProfileRequest(String name, String email, String title, String gender,
             String birth, String mobile, String language);
 
-        List<SingleChooseVM> getTitleChooses();
+        List<ProfileMetaVM> getTitleChooses();
 
-        List<SingleChooseVM> getLanguageChoose();
+        List<ProfileMetaVM> getLanguageChoose();
 
-        List<SingleChooseVM> getRaceChoose();
+        List<ProfileMetaVM> getRaceChoose();
 
         void getUserProfile();
+
+        void getProfileMetadata();
 
     }
 }

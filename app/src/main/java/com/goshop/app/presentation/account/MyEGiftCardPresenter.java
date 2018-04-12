@@ -3,6 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.MyEGiftResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.MyEGiftCardMapper;
 
@@ -28,9 +29,9 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
         params.put(Const.PARAMS_EGIFT_CARD, uniqueCode);
         addSubscrebe(accountRepository.eGiftCardsRequest(params).subscribeWith(
-            new DisposableObserver<MyEGiftResponse>() {
+            new DisposableObserver<Response<MyEGiftResponse>>() {
                 @Override
-                public void onNext(MyEGiftResponse myEGiftResponse) {
+                public void onNext(Response<MyEGiftResponse> response) {
                     mView.hideLoadingBar();
                     mView.activeSuccess();
                 }
@@ -52,11 +53,11 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
     public void getEGiftCardDetails() {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.getEGiftCardDetails().subscribeWith(
-            new DisposableObserver<MyEGiftResponse>() {
+            new DisposableObserver<Response<MyEGiftResponse>>() {
                 @Override
-                public void onNext(MyEGiftResponse myEGiftResponse) {
+                public void onNext(Response<MyEGiftResponse> response) {
                     mView.hideLoadingBar();
-                    mView.getEGiftCardSuccess(MyEGiftCardMapper.transform(myEGiftResponse));
+                    mView.getEGiftCardSuccess(MyEGiftCardMapper.transform(response));
                 }
 
                 @Override

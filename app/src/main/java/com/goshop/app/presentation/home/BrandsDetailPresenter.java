@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.BrandsDetailVM;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
@@ -25,16 +26,16 @@ import io.reactivex.observers.DisposableObserver;
 public class BrandsDetailPresenter extends RxPresenter<BrandsDetailContract.View> implements
     BrandsDetailContract.Presenter {
 
-    private AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public BrandsDetailPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public BrandsDetailPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void brandsDetailRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.brandsDetailRequest(params).subscribeWith(
+        addSubscrebe(repository.brandsDetailRequest(params).subscribeWith(
             new DisposableObserver<BrandsResponse>() {
 
                 @Override

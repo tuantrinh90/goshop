@@ -41,11 +41,13 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 
 import java.util.Map;
@@ -83,13 +85,13 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<MyEGiftResponse> eGiftCardsRequest(Map<String, Object> params) {
+    public Observable<Response<MyEGiftResponse>> eGiftCardsRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.ACTIVATE_EGIFTCARD);
         return retrofitRestApi.eGiftCardsRequest(url, params);
     }
 
     @Override
-    public Observable<MyEGiftResponse> getEGiftCardDetails() {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.EGIFTCARD_DETAILS);
         return retrofitRestApi.getEGiftCardDetails(url);
     }
@@ -143,19 +145,19 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<MyWishlistResponse> wishlistDeleteRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.REMOVE_WISHLIST);
         return retrofitRestApi.wishilistDeleteRequest(url, params);
     }
 
     @Override
-    public Observable<MyWishlistResponse> addWishlistRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> addWishlistRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_WISHLIST);
         return retrofitRestApi.addWishlistRequest(url, params);
     }
 
     @Override
-    public Observable<MyWishlistResponse> getWishlistItems() {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_WISHLIST_ITEMS);
         return retrofitRestApi.getWishlistItems(url);
     }
@@ -187,7 +189,7 @@ public class RetrofitRestApiImpl implements RestApi {
         return retrofitRestApi.getUserInfo(url, getUserRequest);
     }
 
-    public Observable<RegisterResponse> registerRequest(Map<String, Object> params) {
+    public Observable<Response> registerRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.REGISTER_USER);
         return retrofitRestApi.registerRequest(url, params);
     }
@@ -241,7 +243,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<ResetPasswordResponse> resetPasswordRequest(Map<String, Object> params) {
+    public Observable<Response<ResetPasswordResponse>> resetPasswordRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.RESET_PASSWORD);
         return retrofitRestApi.resetPasswordRequest(url, params);
     }
@@ -284,13 +286,13 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<ChangePasswordResponse> changePasswordRequest(Map<String, Object> params) {
+    public Observable<Response> changePasswordRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CHANGE_PASSWORD);
         return retrofitRestApi.changePasswordRequest(url, params);
     }
 
     @Override
-    public Observable<ProfileResponse> editProfileRequest(Map<String, Object> params) {
+    public Observable<Response<ProfileResponse>> editProfileRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_USER_PROFILE);
         return retrofitRestApi.editProfileRequest(url, params);
     }
@@ -302,19 +304,19 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<AddressResponse> addAddressRequest(AddressRequest addressRequest) {
+    public Observable<Response<AddressResponse>> addAddressRequest(AddressRequest addressRequest) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_CUSTOMER_ADDRESS);
         return retrofitRestApi.addAddressRequest(url, addressRequest);
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(AddressRequest addressRequest) {
+    public Observable<Response<AddressResponse>> editAddressRequest(AddressRequest addressRequest) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_CUSTOMER_ADDRESS);
         return retrofitRestApi.editAddressRequest(url, addressRequest);
     }
 
     @Override
-    public Observable<AddressResponse> getAddressList() {
+    public Observable<Response<AddressResponse>> getAddressList() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.LIST_CUSTOMER_ADDRESSES);
         return retrofitRestApi.getAddressList(url);
     }
@@ -386,13 +388,13 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<MyPointsResponse> myPointsRequest(Map<String, Object> params) {
+    public Observable<Response<MyPointsResponse>> myPointsRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_POINTS);
         return retrofitRestApi.myPointsRequest(url, params);
     }
 
     @Override
-    public Observable<MyPointsResponse> getGoShopPointsDetails() {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_GOSHOP_POINTS_DETAIL);
         return retrofitRestApi.getGoShopPointsDetails(url);
     }
@@ -458,19 +460,25 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<ProfileResponse> getUserProfile() {
+    public Observable<Response<ProfileResponse>> getUserProfile() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_USER_PROFILE);
         return retrofitRestApi.getUserProfile(url);
     }
 
     @Override
-    public Observable<LoginResponse> loginRequest(Map<String, Object> params) {
+    public Observable<Response<ProfileMetadataResponse>> getProfileMetadata() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_PROFILE_METADATA);
+        return retrofitRestApi.getProfileMetadata(url);
+    }
+
+    @Override
+    public Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.LOGIN);
         return retrofitRestApi.loginRequest(url, params);
     }
 
     @Override
-    public Observable<LoginResponse> facebookLoginRequest(Map<String, Object> params) {
+    public Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.LOGIN_WITH_FB);
         return retrofitRestApi.facebookLoginRequest(url, params);
     }

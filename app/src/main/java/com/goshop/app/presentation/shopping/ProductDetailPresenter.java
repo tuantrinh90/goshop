@@ -4,7 +4,9 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
 import com.goshop.app.presentation.model.PdpAdditionalItemVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
@@ -33,14 +35,18 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
 
     private AccountRepository accountRepository;
 
-    public ProductDetailPresenter(AccountRepository accountRepository) {
+    private ProductRepository productRepository;
+
+    public ProductDetailPresenter(AccountRepository accountRepository,
+        ProductRepository productRepository) {
+        this.productRepository = productRepository;
         this.accountRepository = accountRepository;
     }
 
     @Override
     public void productDetailRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.productDetailRequest(params).subscribeWith(
+        addSubscrebe(productRepository.productDetailRequest(params).subscribeWith(
             new DisposableObserver<ProductDetailResponse>() {
                 @Override
                 public void onNext(ProductDetailResponse productDetailResponse) {
@@ -72,9 +78,9 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
         params.put(Const.PARAMS_SKUID, skuId);
         addSubscrebe(accountRepository.addWishlistRequest(params).subscribeWith(
-            new DisposableObserver<MyWishlistResponse>() {
+            new DisposableObserver<Response<MyWishlistResponse>>() {
                 @Override
-                public void onNext(MyWishlistResponse myWishlistResponse) {
+                public void onNext(Response<MyWishlistResponse> response) {
                     mView.hideLoadingBar();
                     mView.addWishlistSuccess();
                 }
@@ -100,9 +106,9 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
         params.put(Const.PARAMS_SKUID, skuId);
         addSubscrebe(accountRepository.wishlistDeleteRequest(params).subscribeWith(
-            new DisposableObserver<MyWishlistResponse>() {
+            new DisposableObserver<Response<MyWishlistResponse>>() {
                 @Override
-                public void onNext(MyWishlistResponse myWishlistResponse) {
+                public void onNext(Response<MyWishlistResponse> response) {
                     mView.hideLoadingBar();
                     mView.removeWishlistSuccess();
                 }

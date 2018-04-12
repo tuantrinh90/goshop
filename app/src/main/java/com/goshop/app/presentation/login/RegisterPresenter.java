@@ -2,10 +2,10 @@ package com.goshop.app.presentation.login;
 
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.response.RegisterResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -45,9 +45,9 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
         params.put("email_subscribe", sendEmail);
         params.put("sms_subscribe", sendSMS);
         addSubscrebe(accountRepository.registerRequest(params).subscribeWith(
-            new DisposableObserver<RegisterResponse>() {
+            new DisposableObserver<Response>() {
                 @Override
-                public void onNext(RegisterResponse response) {
+                public void onNext(Response response) {
                     mView.hideLoadingBar();
                     mView.registerSuccess();
                 }
@@ -71,24 +71,24 @@ public class RegisterPresenter extends RxPresenter<RegisterContract.View> implem
     }
 
     @Override
-    public List<SingleChooseVM> getTitleChooses() {
+    public List<ProfileMetaVM> getTitleChooses() {
         //todo this is mock data
-        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            singleChooseVMS.add(new SingleChooseVM("Title " + (i + 1)));
+            profileMetaVMS.add(new ProfileMetaVM("Title " + (i + 1)));
         }
 
-        return singleChooseVMS;
+        return profileMetaVMS;
     }
 
     @Override
-    public List<SingleChooseVM> getLanguageChooses() {
+    public List<ProfileMetaVM> getLanguageChooses() {
         //todo this is mock data
-        List<SingleChooseVM> singleChooseVMS = new ArrayList<>();
+        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
         for (int i = 0; i < 5; i++) {
-            singleChooseVMS.add(new SingleChooseVM("Languages " + (i + 1)));
+            profileMetaVMS.add(new ProfileMetaVM("Languages " + (i + 1)));
         }
-        return singleChooseVMS;
+        return profileMetaVMS;
     }
 
 }

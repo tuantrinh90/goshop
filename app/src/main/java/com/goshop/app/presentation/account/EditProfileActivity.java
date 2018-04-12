@@ -7,24 +7,20 @@ import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ProfileVM;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -81,19 +77,18 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     private String gender;
 
-    private List<SingleChooseVM> languagesVMS;
+    private List<ProfileMetaVM> languagesVMS;
 
-    private List<SingleChooseVM> raceVMS;
+    private List<ProfileMetaVM> raceVMS;
 
-    private List<SingleChooseVM> titleVMS;
+    private List<ProfileMetaVM> titleVMS;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        languagesVMS = mPresenter.getLanguageChoose();
         mPresenter.getUserProfile();
         titleVMS = mPresenter.getTitleChooses();
-        raceVMS = mPresenter.getRaceChoose();
+        mPresenter.getProfileMetadata();
     }
 
     @Override
@@ -250,6 +245,21 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     }
 
     @Override
+    public void setLanguage(List<ProfileMetaVM> languageVMs) {
+        this.languagesVMS = languageVMs;
+    }
+
+    @Override
+    public void setRace(List<ProfileMetaVM> raceVMs) {
+        this.raceVMS = raceVMs;
+    }
+
+    @Override
+    public void setGender(List<ProfileMetaVM> genderVMs) {
+        //todo need decide
+    }
+
+    @Override
     public void onDatePicker(String time) {
         tvProfileDateOfBirth.setText(time);
         tvDateBirthHint.setVisibility(View.VISIBLE);
@@ -263,15 +273,15 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
                 case PopWindowUtil.LANGUAGE_POP:
                     languagesVMS = PopWindowUtil.updateSinglePopDatas(position, languagesVMS);
                     tvProfileLanguage
-                        .setText(languagesVMS.get(position).getContent());
+                        .setText(languagesVMS.get(position).getValue());
                     break;
                 case PopWindowUtil.TITLE_POP:
                     titleVMS = PopWindowUtil.updateSinglePopDatas(position, titleVMS);
-                    tvProfileTitle.setText(titleVMS.get(position).getContent());
+                    tvProfileTitle.setText(titleVMS.get(position).getValue());
                     break;
                 case PopWindowUtil.RACE_POP:
                     raceVMS = PopWindowUtil.updateSinglePopDatas(position, raceVMS);
-                    tvProfileRace.setText(raceVMS.get(position).getContent());
+                    tvProfileRace.setText(raceVMS.get(position).getValue());
                     break;
             }
         }

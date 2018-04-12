@@ -3,7 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.request.AddressRequest;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 
 import java.util.List;
 import java.util.Map;
@@ -25,10 +25,10 @@ public class AddAddressContract {
 
         void addAddressRequest(AddressRequest addressRequest);
 
-        List<SingleChooseVM> getCountryChooses();
+        List<ProfileMetaVM> getCountryChooses();
 
-        List<SingleChooseVM> getStateChooses();
+        List<ProfileMetaVM> getStateChooses();
 
-        List<SingleChooseVM> getCityChooses();
+        List<ProfileMetaVM> getCityChooses();
     }
 }

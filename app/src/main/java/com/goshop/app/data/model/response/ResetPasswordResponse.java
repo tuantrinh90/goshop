@@ -2,37 +2,19 @@ package com.goshop.app.data.model.response;
 
 import com.goshop.app.data.model.response.common.UserData;
 
-public class ResetPasswordResponse extends Response {
+public class ResetPasswordResponse  {
 
     /**
-     * data : {"customer":{"email":"john@gmail.com"}}
+     * customer : {"email":"john@gmail.com"}
      */
 
-    private Datas data;
+    private UserData customer;
 
-    public Datas getData() {
-        return data;
+    public UserData getCustomer() {
+        return customer;
     }
 
-    public void setData(Datas data) {
-        this.data = data;
-    }
-
-    public static class Datas {
-
-        /**
-         * customer : {"email":"john@gmail.com"}
-         */
-
-        private UserData customer;
-
-        public UserData getCustomer() {
-            return customer;
-        }
-
-        public void setCustomer(UserData customer) {
-            this.customer = customer;
-        }
-
+    public void setCustomer(UserData customer) {
+        this.customer = customer;
     }
 }

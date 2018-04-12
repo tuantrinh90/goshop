@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.data.model.response.AddressResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.common.AddressesData;
 import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.utils.NumberFormater;
@@ -10,7 +11,7 @@ import java.util.List;
 
 public class AddressMapper {
 
-    public static List<AddressVM> transform(AddressResponse response) {
+    public static List<AddressVM> transform(Response<AddressResponse> response) {
         List<AddressVM> addressVMS = new ArrayList<>();
         List<AddressesData> addressesDatas = response.getData()
             .getCustomer().getAddresses();

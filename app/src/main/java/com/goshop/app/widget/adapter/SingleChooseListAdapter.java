@@ -2,7 +2,7 @@ package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -19,11 +19,11 @@ public class SingleChooseListAdapter extends RecyclerView.Adapter {
 
     private OnSingleChooseItemClickListener onSingleChooseItemClickListener;
 
-    private List<SingleChooseVM> singleChooseVMS;
+    private List<ProfileMetaVM> profileMetaVMS;
 
     public SingleChooseListAdapter(
-        List<SingleChooseVM> singleChooseVMS) {
-        this.singleChooseVMS = singleChooseVMS;
+        List<ProfileMetaVM> profileMetaVMS) {
+        this.profileMetaVMS = profileMetaVMS;
     }
 
     @Override
@@ -36,12 +36,12 @@ public class SingleChooseListAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((SingleChooseListViewHolder) holder).bindingData(singleChooseVMS.get(position), position);
+        ((SingleChooseListViewHolder) holder).bindingData(profileMetaVMS.get(position), position);
     }
 
     @Override
     public int getItemCount() {
-        return singleChooseVMS.size();
+        return profileMetaVMS.size();
     }
 
     public void setOnSingleChooseItemClickListener(
@@ -50,8 +50,8 @@ public class SingleChooseListAdapter extends RecyclerView.Adapter {
     }
 
     private void updateDatas(int position) {
-        for (int i = 0; i < singleChooseVMS.size(); i++) {
-            singleChooseVMS.get(i).setChoose(i == position);
+        for (int i = 0; i < profileMetaVMS.size(); i++) {
+            profileMetaVMS.get(i).setSelect(i == position);
         }
         notifyDataSetChanged();
     }
@@ -74,9 +74,9 @@ public class SingleChooseListAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(SingleChooseVM singleChooseVM, int position) {
-            ivSingleSelect.setSelected(singleChooseVM.isChoose());
-            tvSingleSelect.setText(singleChooseVM.getContent());
+        void bindingData(ProfileMetaVM profileMetaVM, int position) {
+            ivSingleSelect.setSelected(profileMetaVM.isSelect());
+            tvSingleSelect.setText(profileMetaVM.getValue());
             itemView.setOnClickListener(
                 v -> {
                     updateDatas(position);

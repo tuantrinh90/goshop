@@ -8,8 +8,11 @@ import com.goshop.app.data.RestApi;
 import com.goshop.app.data.realm.RealmDataSource;
 import com.goshop.app.data.retrofit.RetrofitRestApiImpl;
 import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.data.source.ProductDataSource;
 import com.goshop.app.data.source.cloud.AccountCloudDataSource;
+import com.goshop.app.data.source.cloud.ProductCloudDataSource;
 import com.goshop.app.data.source.local.AccountLocalDataSource;
+import com.goshop.app.data.source.local.ProductLocalDataSource;
 
 import java.util.concurrent.TimeUnit;
 
@@ -101,6 +104,18 @@ public class NetModule {
     @Named("cloudAccountDataSource")
     public AccountDataSource provideCloudAccountDataSource(RestApi restApi) {
         return new AccountCloudDataSource(restApi);
+    }
+
+    @Provides
+    @Named("localProductDataSource")
+    public ProductDataSource provideLocalProductDataSource(LocalApi localApi) {
+        return new ProductLocalDataSource(localApi);
+    }
+
+    @Provides
+    @Named("cloudProductDataSource")
+    public ProductDataSource provideCloudProductDataSource(RestApi restApi) {
+        return new ProductCloudDataSource(restApi);
     }
 
 

@@ -1,7 +1,5 @@
 package com.goshop.app.presentation.model;
 
-import com.goshop.app.presentation.model.widget.SingleChooseVM;
-
 import java.util.List;
 
 public class ProfileVM {
@@ -14,15 +12,15 @@ public class ProfileVM {
 
     private String gender;
 
-    private List<SingleChooseVM> language;
+    private List<ProfileMetaVM> language;
 
     private String lastName;
 
     private String mobile;
 
-    private List<SingleChooseVM> race;
+    private List<ProfileMetaVM> race;
 
-    private List<SingleChooseVM> title;
+    private List<ProfileMetaVM> title;
 
     public String getEmail() {
         return email;
@@ -64,11 +62,11 @@ public class ProfileVM {
         this.birth = birth;
     }
 
-    public List<SingleChooseVM> getTitle() {
+    public List<ProfileMetaVM> getTitle() {
         return title;
     }
 
-    public void setTitle(List<SingleChooseVM> title) {
+    public void setTitle(List<ProfileMetaVM> title) {
         this.title = title;
     }
 
@@ -80,19 +78,19 @@ public class ProfileVM {
         this.mobile = mobile;
     }
 
-    public List<SingleChooseVM> getLanguage() {
+    public List<ProfileMetaVM> getLanguage() {
         return language;
     }
 
-    public void setLanguage(List<SingleChooseVM> language) {
+    public void setLanguage(List<ProfileMetaVM> language) {
         this.language = language;
     }
 
-    public List<SingleChooseVM> getRace() {
+    public List<ProfileMetaVM> getRace() {
         return race;
     }
 
-    public void setRace(List<SingleChooseVM> race) {
+    public void setRace(List<ProfileMetaVM> race) {
         this.race = race;
     }
 }
