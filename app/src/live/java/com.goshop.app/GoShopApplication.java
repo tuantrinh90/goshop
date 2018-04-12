@@ -22,6 +22,7 @@ public class GoShopApplication extends MultiDexApplication {
 
     @SuppressLint("StaticFieldLeak")
     private static Context context;
+
     private static ApplicationComponent mApplicationComponent;
 
     public static Context getAppContext() {
@@ -66,6 +67,7 @@ public class GoShopApplication extends MultiDexApplication {
     private void initializeComponents() {
         mApplicationComponent = DaggerApplicationComponent.Initializer.init(this);
     }
+
     public static ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
     }

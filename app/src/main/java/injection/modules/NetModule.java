@@ -3,6 +3,7 @@ package injection.modules;
 import com.google.gson.Gson;
 
 import com.goshop.app.BuildConfig;
+import com.goshop.app.GoShopApplication;
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.realm.RealmDataSource;
@@ -13,6 +14,7 @@ import com.goshop.app.data.source.cloud.AccountCloudDataSource;
 import com.goshop.app.data.source.cloud.ProductCloudDataSource;
 import com.goshop.app.data.source.local.AccountLocalDataSource;
 import com.goshop.app.data.source.local.ProductLocalDataSource;
+import com.readystatesoftware.chuck.ChuckInterceptor;
 
 import java.util.concurrent.TimeUnit;
 
@@ -48,6 +50,7 @@ public class NetModule {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         builder.addInterceptor(loggingInterceptor);
+        builder.addInterceptor(new ChuckInterceptor(GoShopApplication.getAppContext()));
         builder.addInterceptor(chain -> {
             Request original = chain.request();
             Request request = original.newBuilder()
