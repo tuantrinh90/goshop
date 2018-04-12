@@ -3,6 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AddressVM;
 
 import android.content.Intent;
@@ -12,6 +13,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -28,6 +30,12 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     @BindView(R.id.recyclerview_address_book)
     RecyclerView recyclerviewAddressBook;
 
+    @BindView(R.id.fl_no_data)
+    FrameLayout flNoData;
+
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
+
     private MyAddressBookAdapter addressBookAdapter;
 
     private List<AddressVM> displayAddressVMs;
@@ -43,7 +51,11 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     @Override
     public void getAddressListSuccess(List<AddressVM> addressVMS) {
-        addressBookAdapter.setUpdates(addressVMS);
+        if (addressVMS.size() > 0) {
+            addressBookAdapter.setUpdates(addressVMS);
+        } else {
+            updateLayoutStatus(flNoData, true);
+        }
     }
 
     @Override
@@ -51,12 +63,15 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
         //todo need decide
         Log.e("MyAddressBook", errorMessage);
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mPresenter.getAddressList();
+        displayAddressVMs = new ArrayList<>();
+        initRecyclerView();
     }
 
     @Override
@@ -66,22 +81,16 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     @Override
     public void inject() {
-        displayAddressVMs = new ArrayList<>();
-        initPresenter();
-        initRecyclerView();
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.my_address_book);
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.my_address_book);
     }
 
     private void initRecyclerView() {
@@ -92,7 +101,7 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
         recyclerviewAddressBook.setAdapter(addressBookAdapter);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu})
+    @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu, R.id.tv_add_now, R.id.tv_net_refresh})
     public void onAddressBookClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -100,6 +109,14 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
                 break;
             case R.id.imageview_right_menu:
                 startActivity(new Intent(this, AddAddressActivity.class));
+                break;
+            case R.id.tv_add_now:
+                updateLayoutStatus(flNoData, false);
+                startActivity(new Intent(this, AddAddressActivity.class));
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak, false);
+                mPresenter.getAddressList();
                 break;
         }
     }

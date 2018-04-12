@@ -107,6 +107,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
             ivRightMenu.setVisibility(View.GONE);
         }
     }
+
     public void hideLeftMenu() {
         if (ivLeftMenu != null) {
             ivLeftMenu.setVisibility(View.GONE);
@@ -117,4 +118,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         return toolbar;
     }
 
+    public void updateLayoutStatus(View layout, boolean isShow) {
+        layout.setVisibility(isShow ? View.VISIBLE : View.GONE);
+    }
 }

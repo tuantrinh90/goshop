@@ -5,13 +5,6 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <include
-        layout="@layout/toolbar_img_text_img_close"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
-
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -28,6 +21,5 @@
                 layout="@layout/layout_btn_checkout"/>
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
-
 
 </LinearLayout>

@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
+import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.utils.MenuUtil;
@@ -19,6 +20,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -49,6 +51,12 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.fl_no_data)
+    FrameLayout flNoData;
+
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
 
     private ShoppingCartAdapter shoppingCartAdapter;
 
@@ -151,6 +159,15 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 break;
             case R.id.tv_btn_cart_checkout:
                 startActivity(new Intent(this, CheckoutActivity.class));
+                break;
+            case R.id.tv_shop_now:
+                updateLayoutStatus(flNoData,false);
+                startActivity(new Intent(this, MainPageActivity.class));
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak,false);
+                // TODO: jay: 2018/4/11  need real api
+                mPresenter.shoppingCartRequest(null);
                 break;
         }
     }

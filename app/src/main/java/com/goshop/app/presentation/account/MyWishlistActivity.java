@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.utils.MenuUtil;
@@ -12,6 +13,7 @@ import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
@@ -22,6 +24,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
@@ -44,14 +47,14 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     @BindView(R.id.recyclerview_wishlist)
     RecyclerView recyclerviewWishlist;
 
-    @BindView(R.id.rl_wishlist_nodata)
-    RelativeLayout rlWishlistNodata;
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
-    @BindView(R.id.tv_btn_go_shop_now)
-    RobotoRegularTextView tvBtnGoShopNow;
+    @BindView(R.id.fl_no_data)
+    FrameLayout flNoData;
+
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
 
     private MyWishlistAdapter wishlistAdapter;
 
@@ -98,19 +101,19 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     }
 
     @Override
-    public void showNodata() {
-        rlWishlistNodata.setVisibility(View.VISIBLE);
-    }
-
-    @Override
     public void showWishlistItems(List<WishlistVM> wishlistVMS) {
-        wishlistAdapter.setUpdateDatas(wishlistVMS);
+        if (wishlistVMS.size() > 0) {
+            wishlistAdapter.setUpdateDatas(wishlistVMS);
+        } else {
+            updateLayoutStatus(flNoData, true);
+        }
     }
 
     @Override
     public void showError(String errorMessage) {
         //todo wait for design
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+        updateLayoutStatus(flConnectionBreak,true);
     }
 
     @Override
@@ -118,10 +121,6 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
         wishlistAdapter.setUpdateDatas(wishlistVMS);
     }
 
-    @OnClick(R.id.tv_btn_go_shop_now)
-    public void onMyWishlistClick(View view) {
-        //todo wait for api
-    }
 
     @Override
     public void onItemMenuClick(View parentView, Object object) {
@@ -132,11 +131,20 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     public void onWishlistDelete(WishlistVM wishlistVM) {
         mPresenter.wishlistDeleteRequest(1, 3, wishlistVM.getSku());
     }
+
     @OnClick({R.id.imageview_left_menu})
     public void onCategoryClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 openDrawerLayout();
+                break;
+            case R.id.tv_add_now:
+                updateLayoutStatus(flNoData, false);
+                startActivity(new Intent(this, MainPageActivity.class));
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak, false);
+                mPresenter.getWishlistItems();
                 break;
         }
     }

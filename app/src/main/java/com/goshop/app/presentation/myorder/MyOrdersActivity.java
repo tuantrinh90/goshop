@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseDrawerActivity;
+import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.MyOrdersVM;
 import com.goshop.app.presentation.shopping.RatingActivity;
@@ -21,6 +22,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Gravity;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 
 import java.util.ArrayList;
@@ -42,6 +44,12 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
+
+    @BindView(R.id.fl_no_data)
+    FrameLayout flNoData;
+
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
 
     private MyOrdersAdapter myOrdersAdapter;
 
@@ -93,6 +101,15 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 openDrawerLayout();
+                break;
+            case R.id.tv_shop_now:
+                updateLayoutStatus(flNoData,false);
+                startActivity(new Intent(this, MainPageActivity.class));
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak,false);
+                // TODO: 2018/4/11 need real api
+                mPresenter.myOrdersRequest(null);
                 break;
         }
     }
