@@ -36,9 +36,11 @@ import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
+import com.goshop.app.data.model.response.common.UserData;
 
 import java.util.Map;
 
+import io.reactivex.Completable;
 import io.reactivex.Observable;
 
 public interface AccountRepository {
@@ -74,12 +76,6 @@ public interface AccountRepository {
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
     Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params);
-
-    Observable<UserInfo> getUserInfo(String userId);
-
-    Observable<UserInfo> getUserInfo(String username, String password);
-
-    Observable<Weather> getWeather();
 
     Observable<Response> registerRequest(Map<String, Object> params);
 
@@ -158,5 +154,9 @@ public interface AccountRepository {
 
     Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params);
 
+    Observable<Object> saveUserInfo(UserData customer);
 
+    Observable<UserData> getUserInfo();
+
+    Observable<Boolean>  clearUserInfo();
 }

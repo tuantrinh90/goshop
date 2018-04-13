@@ -1,7 +1,10 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.base.RxPresenter;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.domian.AccountDataRepository;
+
+import android.util.Log;
 
 import java.util.concurrent.TimeUnit;
 
@@ -10,16 +13,17 @@ import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.observers.DisposableObserver;
 
 public class SplashPresenter extends RxPresenter<SplashContract.View> implements
     SplashContract.Presenter {
 
-    private static final int SPLASH_SCREEN_PERIOD = 2;
+    private static final int SPLASH_SCREEN_PERIOD = 1;
 
-    private AccountDataRepository repository;
+    private AccountDataRepository accountDataRepository;
 
     public SplashPresenter(AccountDataRepository repository) {
-        this.repository = repository;
+        this.accountDataRepository = repository;
     }
 
     @Override
@@ -34,7 +38,7 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
 
                 @Override
                 public void onNext(@NonNull Long number) {
-                    mView.onDelaySuccess();
+                    mView.onDelayFinished();
                 }
 
                 @Override
@@ -45,5 +49,25 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                 public void onComplete() {
                 }
             });
+    }
+
+    @Override
+    public void getUserInfo() {
+        addSubscrebe(accountDataRepository.getUserInfo()
+            .subscribeWith(new DisposableObserver<UserData>() {
+                @Override
+                public void onNext(UserData response) {
+                    mView.checkLoginSuccess(response);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
 }

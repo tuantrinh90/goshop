@@ -20,8 +20,6 @@ import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.UserInfo;
-import com.goshop.app.data.model.Weather;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
@@ -37,14 +35,12 @@ import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
-
 import java.util.Map;
-
 import javax.inject.Inject;
 import javax.inject.Named;
-
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -217,36 +213,8 @@ public class AccountDataRepository implements AccountRepository {
         return accountCloudDataSource.allReviewsRequest(params);
     }
 
-    @Override
-    public Observable<UserInfo> getUserInfo(String id) {
-        return accountCloudDataSource.getUserInfo(id)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    @Override
-    public Observable<UserInfo> getUserInfo(String username, String password) {
-        return accountCloudDataSource.getUserInfo(username, password);
-    }
-
-    @Override
-    public Observable<Weather> getWeather() {
-        return accountCloudDataSource.getWeather()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .flatMap(getWeatherResponse -> {
-                if (getWeatherResponse != null && getWeatherResponse.getWeatherinfo()
-                    .getCity() != null) {
-                    return Observable.just(getWeatherResponse.getWeatherinfo());
-                } else {
-                    return Observable.error(new ServiceApiFail("error"));
-                }
-            });
-    }
-
     public Observable<Response> registerRequest(Map<String, Object> params) {
         return accountCloudDataSource.registerRequest(params).concatMap(response -> {
-
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -489,7 +457,7 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<Response<ProfileMetadataResponse>> getProfileMetadata() {
-        return  accountCloudDataSource.getProfileMetadata().concatMap(response -> {
+        return accountCloudDataSource.getProfileMetadata().concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -521,6 +489,21 @@ public class AccountDataRepository implements AccountRepository {
                     .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Object> saveUserInfo(UserData customer) {
+        return accountLocalDataSource.saveUserInfo(customer);
+    }
+
+    @Override
+    public Observable<UserData> getUserInfo() {
+        return accountLocalDataSource.getUserInfo();
+    }
+
+    @Override
+    public Observable<Boolean> clearUserInfo() {
+        return accountLocalDataSource.clearUserInfo();
     }
 
     private boolean isSuccess(String status) {

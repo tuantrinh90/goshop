@@ -20,11 +20,9 @@ import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
-import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
@@ -37,12 +35,10 @@ import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.source.AccountDataSource;
-
 import java.util.Map;
-
 import javax.inject.Inject;
-
 import io.reactivex.Observable;
 
 public class AccountLocalDataSource implements AccountDataSource {
@@ -132,21 +128,6 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<UserInfo> getUserInfo(String userId) {
-        return null;
-    }
-
-    @Override
-    public Observable<UserInfo> getUserInfo(String username, String password) {
-        return null;
-    }
-
-    @Override
-    public Observable<GetWeatherResponse> getWeather() {
         return null;
     }
 
@@ -347,5 +328,20 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Override
     public Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params) {
         return null;
+    }
+
+    @Override
+    public Observable<Object> saveUserInfo(UserData customer) {
+        return localApi.saveUserInfo(customer);
+    }
+
+    @Override
+    public Observable<UserData> getUserInfo() {
+        return localApi.getUserInfo();
+    }
+
+    @Override
+    public Observable<Boolean> clearUserInfo() {
+        return localApi.clearUserInfo();
     }
 }

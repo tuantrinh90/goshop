@@ -2,6 +2,8 @@ package com.goshop.app.data.model.response.common;
 
 import com.google.gson.annotations.SerializedName;
 
+import com.goshop.app.data.realm.model.UserInfoRealm;
+
 public class UserData {
 
     @SerializedName("available_goshop_points")
@@ -40,6 +42,35 @@ public class UserData {
 
     @SerializedName("wishlist_tems_count")
     private int wishlistTemsCount;
+
+    public UserData() {
+    }
+
+    public UserData(UserInfoRealm userInfoRealm) {
+        this.id = userInfoRealm.getId();
+        this.title = userInfoRealm.getTitle();
+        this.name = userInfoRealm.getName();
+        this.email = userInfoRealm.getEmail();
+        this.mobileNumber = userInfoRealm.getMobileNumber();
+        LanguageData languageData = new LanguageData();
+        languageData.setId(userInfoRealm.getLanguageId());
+        languageData.setName(userInfoRealm.getLanguageName());
+        this.language = languageData;
+        this.dob = userInfoRealm.getDob();
+        RaceData raceData = new RaceData();
+        raceData.setId(userInfoRealm.getRaceId());
+        raceData.setName(userInfoRealm.getRaceName());
+        this.race = raceData;
+        this.maxFailedLogin = userInfoRealm.getMaxFailedLogin();
+        this.emailSubscribe = userInfoRealm.isEmailSubscribe();
+        this.smsSubscribe = userInfoRealm.isSmsSubscribe();
+        TokenData tokenData = new TokenData();
+        tokenData.setToken(userInfoRealm.getToken());
+        tokenData.setExpiration(userInfoRealm.getTokenExpiration());
+        this.token = tokenData;
+        this.wishlistTemsCount = userInfoRealm.getWishListItemsCount();
+        this.cartItemsCount = userInfoRealm.getCartItemsCount();
+    }
 
     public int getWishlistTemsCount() {
         return wishlistTemsCount;
@@ -160,6 +191,5 @@ public class UserData {
     public void setToken(TokenData token) {
         this.token = token;
     }
-
 
 }

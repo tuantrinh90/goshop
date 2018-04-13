@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
+import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
@@ -124,6 +125,7 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
             case R.id.tv_setting_logout:
                 //todo wait for api
                 mPresenter.settingsLogoutRequest(null);
+                mPresenter.clearUserInfo();
                 break;
         }
     }
@@ -131,5 +133,17 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     @Override
     public void logoutResult() {
         //todo wait for api
+    }
+
+    @Override
+    public void userInfoClearedSucceed(Boolean response) {
+        GoShopApplication.setLogin(!response);
+        goToHomePage();
+    }
+
+    private void goToHomePage() {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.presentation.model.FacebookLoginVm;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
@@ -25,6 +26,8 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     .Presenter> implements
     LoginComplementEmailContract.View, ToastUtil.OnToastListener {
 
+    public static final String EXTRA_FACEBOOK_INFO = "facebookInfo";
+
     @BindView(R.id.ctd_et_complement_email)
     CustomAnimEditText ctdEtComplementEmail;
 
@@ -33,9 +36,24 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     private ToastUtil toastUtil;
 
+    private FacebookLoginVm facebookLoginVm;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        if (getIntent() != null && getIntent().getParcelableExtra(EXTRA_FACEBOOK_INFO) != null) {
+            facebookLoginVm = getIntent().getParcelableExtra(EXTRA_FACEBOOK_INFO);
+        }
+    }
+
+    private void initView() {
+        hideRightMenu();
+        toastUtil = new ToastUtil(this, this);
     }
 
     @Override
@@ -45,17 +63,6 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     @Override
     public void inject() {
-        hideRightMenu();
-        initPresenter();
-        toastUtil = new ToastUtil(this, this);
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.whoops_email);
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -63,6 +70,10 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
             .inject(this);
     }
 
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.whoops_email);
+    }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_complement_email_submit})
     public void onComplementEmailClick(View view) {
@@ -81,7 +92,6 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
                     //TODO(helen)wait for api
                     mPresenter.complementEmailRequest(null);
                 }
-
                 break;
         }
     }

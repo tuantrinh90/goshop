@@ -39,4 +39,24 @@ public class SettingsPresenter extends RxPresenter<SettingsContract.View> implem
                 }
             }));
     }
+
+    @Override
+    public void clearUserInfo() {
+        addSubscrebe(accountRepository.clearUserInfo()
+            .subscribeWith(new DisposableObserver<Boolean>() {
+                @Override
+                public void onNext(Boolean response) {
+                    mView.userInfoClearedSucceed(response);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
 }

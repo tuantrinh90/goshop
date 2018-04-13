@@ -22,6 +22,8 @@ public class GoShopApplication extends MultiDexApplication {
 
     private static ApplicationComponent mApplicationComponent;
 
+    private static boolean isLogin;
+
     public static Context getAppContext() {
         return GoShopApplication.context;
     }
@@ -35,9 +37,11 @@ public class GoShopApplication extends MultiDexApplication {
         setLeakCanary();
         initRealm();
     }
+
     public static ApplicationComponent getApplicationComponent() {
         return mApplicationComponent;
     }
+
     private void initializeComponents() {
         mApplicationComponent = DaggerApplicationComponent.Initializer.init(this);
     }
@@ -63,5 +67,12 @@ public class GoShopApplication extends MultiDexApplication {
         Realm.setDefaultConfiguration(realmConfiguration);
     }
 
+    public static boolean isLogin() {
+        return isLogin;
+    }
+
+    public static void setLogin(boolean login) {
+        isLogin = login;
+    }
 
 }
