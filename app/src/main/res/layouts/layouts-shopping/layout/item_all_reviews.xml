@@ -72,7 +72,6 @@
             android:id="@+id/tv_reviews_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingTop="@dimen/size_2"
             android:textSize="@dimen/size_font_14"
             android:textColor="@color/color_text_hint"/>
     </LinearLayout>

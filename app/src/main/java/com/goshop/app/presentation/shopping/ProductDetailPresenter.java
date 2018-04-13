@@ -3,6 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
@@ -117,6 +118,33 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
                     mView.removeWishlistFailed(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void deliveryCheckRequest() {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        addSubscrebe(productRepository.deliveryCheckRequest(params).subscribeWith(
+            new DisposableObserver<Response<DeliveryCheckResponse>>() {
+                @Override
+                public void onNext(Response<DeliveryCheckResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.deliveryCheckRequestSuccess();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    mView.deliveryCheckRequestFailed(throwable.getMessage().toString());
                 }
 
                 @Override

@@ -50,6 +50,7 @@ import com.goshop.app.presentation.shopping.AllQAActivity;
 import com.goshop.app.presentation.shopping.AllReviewsActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.QuestionAnswerDetailActivity;
+import com.goshop.app.presentation.shopping.RatingActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
 import android.app.Activity;
@@ -165,5 +166,7 @@ public interface PresenterComponent {
     void inject(QuestionAnswerDetailActivity detailActivity);
 
     void inject(PromotionSkuActivity skuActivity);
+
+    void inject(RatingActivity ratingActivity);
 
 }

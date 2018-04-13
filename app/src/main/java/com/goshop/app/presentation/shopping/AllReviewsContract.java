@@ -11,6 +11,14 @@ public class AllReviewsContract {
     interface View extends BaseView {
 
         void showAllReviewsResult(AllReviewsVM allReviewsVM);
+
+        void hideDataLayout();
+
+        void showRequestFailed(String errorMessage);
+
+        void showNetWorkError(String errorMessage);
+
+        void showDataLayout();
     }
 
     public interface Presenter extends BasePresenter<View> {

@@ -14,6 +14,8 @@ public class NumberFormater {
 
     private static final String TEL_HEADER = "T: ";
 
+    private static final String ANSWER_COUNTS_FORMAT = "All %s Answers";
+
     public static String formaterPhoneNumber(String phoneNumber) {
         return phoneNumber.replaceFirst("(\\d{4})(\\d{2})(\\d{4})", "$1 - $2 - $3");
     }
@@ -40,6 +42,10 @@ public class NumberFormater {
 
     public static String formaterPoints(int points, int type) {
         return type == 1 ? SYMBOL_PLUS + points : SYMBOL_MINUS + points;
+    }
+
+    public static String formaterAnswersCounts(String count) {
+        return String.format(ANSWER_COUNTS_FORMAT, count);
     }
 
 }

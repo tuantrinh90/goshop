@@ -6,9 +6,11 @@ import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
+import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.Response;
 
 import java.util.Map;
@@ -40,4 +42,14 @@ public interface ProductDataSource {
     Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params);
 
     Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params);
+
+    Observable<Response> writeReviewRequest(Map<String, Object> params);
+
+    Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params);
+
+    Observable<Response> submitQuestions(Map<String, Object> params);
+
+    Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
+
+    Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(Map<String, Object> params);
 }

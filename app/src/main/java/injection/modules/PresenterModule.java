@@ -98,6 +98,8 @@ import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
 import com.goshop.app.presentation.shopping.QADetailContract;
 import com.goshop.app.presentation.shopping.QADetailPresenter;
+import com.goshop.app.presentation.shopping.RatingContract;
+import com.goshop.app.presentation.shopping.RatingPresenter;
 import com.goshop.app.presentation.shopping.ShoppingCartContract;
 import com.goshop.app.presentation.shopping.ShoppingCartPresenter;
 
@@ -454,14 +456,14 @@ public class PresenterModule {
 
     @Provides
     @ActivityScope
-    public AllQAContract.Presenter provideAllQAPresenter(AccountDataRepository dataRepository) {
+    public AllQAContract.Presenter provideAllQAPresenter(ProductDataRepository dataRepository) {
         return new AllQAPresenter(dataRepository);
     }
 
     @Provides
     @ActivityScope
     public QADetailContract.Presenter provideQADetailPresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new QADetailPresenter(dataRepository);
     }
 
@@ -470,6 +472,12 @@ public class PresenterModule {
     public PromotionSkuContract.Presenter providePromotionSkuPresenter(
         ProductDataRepository dataRepository) {
         return new PromotionSkuPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public RatingContract.Presenter provideRatingPresenter(ProductDataRepository repository) {
+        return new RatingPresenter(repository);
     }
 
 }

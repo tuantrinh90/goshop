@@ -104,6 +104,12 @@ public class Const {
 
     public static final String PARAMS_WEBSITE_ID = "website_id";
 
+    public static final String PARAMS_TITLE = "title";
+
+    public static final String PARAMS_CONTENT = "content";
+
+    public static final String PARAMS_RATING = "rating";
+
     public static final int PROMOTION_CONTENT_ITEM = 2;
 
     //type-banner
@@ -125,6 +131,7 @@ public class Const {
     public static final String SUCCESS_STATUS = "success";
 
     public static final int WEBSITE_ID = 1;
+
 
     //request param
     public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";
@@ -150,6 +157,11 @@ public class Const {
     public static final String REQUEST_PARAM_EMAIL_SUBSCRIBE = "email_subscribe";
 
     public static final String REQUEST_PARAM_SMS_SUBSCRIBE = "sms_subscribe";
+
+    public static final String CUSTOMER_ID = "123";
+
+    public static final String QUESTION = "question";
+
 
 
 }

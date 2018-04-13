@@ -132,7 +132,7 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
         mPresenter.wishlistDeleteRequest(1, 3, wishlistVM.getSku());
     }
 
-    @OnClick({R.id.imageview_left_menu})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_add_now, R.id.tv_net_refresh})
     public void onCategoryClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:

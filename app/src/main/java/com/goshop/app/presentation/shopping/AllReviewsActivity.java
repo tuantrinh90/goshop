@@ -9,11 +9,14 @@ import com.goshop.app.presentation.model.AllReviewsVM;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,9 @@ import injection.modules.PresenterModule;
 
 public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presenter> implements
     AllReviewsContract.View {
+
+    @BindView(R.id.scrollview_all_reviews)
+    NestedScrollView scrollviewAllReviews;
 
     @BindView(R.id.iv_all_reviews_thumb)
     ImageView ivAllReviewsThumb;
@@ -37,11 +43,15 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
     @BindView(R.id.tv_reviews_amount)
     RobotoRegularTextView tvReviewsAmount;
 
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
+
     private AllReviewsItemAdapter reviewsItemAdapter;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        scrollviewAllReviews.setVisibility(View.INVISIBLE);
         //todo wait for api
         mPresenter.allReviewsRequest(null);
     }
@@ -88,11 +98,37 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
         reviewsItemAdapter.setUpdateDatas(allReviewsVM.getReviewsVMS());
     }
 
-    @OnClick({R.id.imageview_left_menu})
+    @Override
+    public void hideDataLayout() {
+        scrollviewAllReviews.setVisibility(View.INVISIBLE);
+    }
+
+    @Override
+    public void showRequestFailed(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        updateLayoutStatus(flConnectionBreak,true);
+    }
+
+    @Override
+    public void showNetWorkError(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        updateLayoutStatus(flConnectionBreak,true);
+    }
+
+    @Override
+    public void showDataLayout() {
+        scrollviewAllReviews.setVisibility(View.VISIBLE);
+    }
+
+    @OnClick({R.id.imageview_left_menu, R.id.tv_net_refresh})
     public void onAllReviewsClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak, false);
+                mPresenter.allReviewsRequest(null);
                 break;
         }
     }

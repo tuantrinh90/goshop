@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.CustomMPEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
 import com.goshop.app.presentation.model.PdpExpandTitleVM;
@@ -134,7 +135,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             ((WidgetProductScrollerViewHolder) holder).bindingData(
                 (PdpFrequentlyBoughtTogetherVM) displayDetailModels.get(position));
         } else if (holder instanceof DeliveryInfoViewHolder) {
-            //todo wait for api
+            ((DeliveryInfoViewHolder) holder).bindData();
         }
     }
 
@@ -288,8 +289,22 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     class DeliveryInfoViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.et_product_detail_delivery)
+        RobotoRegularEditText etProductDetailDelivery;
+
+        @BindView(R.id.tv_btn_product_detail_check)
+        RobotoMediumTextView tvBtnProductDetailCheck;
+
         public DeliveryInfoViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        void bindData() {
+            tvBtnProductDetailCheck.setOnClickListener(v -> {
+                String zipcode = etProductDetailDelivery.getText().toString();
+                onProductDetailItemClickListener.onDeliveryCheckClick(zipcode);
+            });
         }
     }
 

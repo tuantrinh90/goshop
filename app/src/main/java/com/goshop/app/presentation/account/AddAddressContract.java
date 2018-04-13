@@ -30,5 +30,11 @@ public class AddAddressContract {
         List<ProfileMetaVM> getStateChooses();
 
         List<ProfileMetaVM> getCityChooses();
+
+        void getState();
+
+        void getCity();
+
+        void getZipCode();
     }
 }

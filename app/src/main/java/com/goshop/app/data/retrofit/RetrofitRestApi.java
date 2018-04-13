@@ -1,7 +1,7 @@
 package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.model.AllDealsResponse;
-import com.goshop.app.data.model.AllReviewsResponse;
+import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
@@ -16,7 +16,8 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
-import com.goshop.app.data.model.QuestionAnswerResponse;
+import com.goshop.app.data.model.response.DeliveryCheckResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -28,8 +29,8 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.AddressResponse;
-import com.goshop.app.data.model.response.ChangePasswordResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.CityResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
@@ -43,10 +44,11 @@ import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
-import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
+import com.goshop.app.data.model.response.ZipCodeResponse;
 
 import java.util.Map;
 
@@ -161,11 +163,9 @@ public interface RetrofitRestApi {
     Observable<ProductDetailResponse> pdpDetailRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<AllReviewsResponse> allReviewsRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<AllReviewsResponse>> allReviewsRequest(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -405,11 +405,9 @@ public interface RetrofitRestApi {
     Observable<TVShowResponse> tvShowRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<QuestionAnswerResponse> allQARequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<QuestionAnswerResponse>> allQARequest(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -441,5 +439,35 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<Response<LoginResponse>> facebookLoginRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<StatesResponse>> getStates(@Url String fullUrl);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<CityResponse>> getCity(@Url String fullUrl);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<ZipCodeResponse>> getZipCode(@Url String fullUrl);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response> writeReviewRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response> submitQuestions(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

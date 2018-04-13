@@ -7,9 +7,11 @@ import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
+import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.source.ProductDataSource;
 import com.goshop.app.utils.ServiceData;
@@ -91,5 +93,32 @@ public class ProductCloudDataSource implements ProductDataSource {
     @Override
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         return restApi.categoryDetailRequest(params);
+    }
+
+    @Override
+    public Observable<Response> writeReviewRequest(Map<String, Object> params) {
+        return restApi.writeReviewRequest(params);
+    }
+
+
+    @Override
+    public Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params) {
+        return restApi.allQARequest(params);
+    }
+
+    @Override
+    public Observable<Response> submitQuestions(Map<String, Object> params) {
+        return restApi.submitQuestions(params);
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
+        return restApi.qaDetailRequest(params);
+    }
+
+    @Override
+    public Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(
+        Map<String, Object> params) {
+        return restApi.deliveryCheckRequest(params);
     }
 }

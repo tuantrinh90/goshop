@@ -329,6 +329,7 @@
     <string name="status_success_tip">You will receive an order confirmation email with details of
         your order and a link to track its progress.
     </string>
+    <string name="success">Success!</string>
     <string name="check_order">Check Order</string>
     <string name="payment_status">Payment Status</string>
     <string name="set_it_as_shipping_address">Set it as shipping address</string>

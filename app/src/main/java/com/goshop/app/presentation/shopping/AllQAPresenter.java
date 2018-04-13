@@ -1,13 +1,14 @@
 package com.goshop.app.presentation.shopping;
 
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.QuestionAnswerDataVM;
-import com.goshop.app.presentation.model.QuestionAnswerVM;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
+import com.goshop.app.domian.ProductRepository;
+import com.goshop.app.presentation.mapper.QuestionAnswerMapper;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -15,26 +16,33 @@ import io.reactivex.observers.DisposableObserver;
 public class AllQAPresenter extends RxPresenter<AllQAContract.View> implements AllQAContract
     .Presenter {
 
-    private AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public AllQAPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public AllQAPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void allQARequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.allQARequest(params).subscribeWith(
-            new DisposableObserver<QuestionAnswerResponse>() {
+        mView.hideDataLayout();
+        addSubscrebe(repository.allQARequest(params).subscribeWith(
+            new DisposableObserver<Response<QuestionAnswerResponse>>() {
                 @Override
-                public void onNext(QuestionAnswerResponse questionAnswerResponse) {
+                public void onNext(Response<QuestionAnswerResponse> response) {
                     mView.hideLoadingBar();
+                    mView.showRequestSuccess(QuestionAnswerMapper.transform(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showAllQAResult(getMockData());
+                    mView.hideDataLayout();
+                    if(e instanceof ServiceApiFail) {
+                        mView.showRequestFailed( ((ServiceApiFail) e).getErrorMessage());
+                    } else {
+                        mView.showNetError(e.getMessage().toString());
+                    }
                 }
 
                 @Override
@@ -44,17 +52,33 @@ public class AllQAPresenter extends RxPresenter<AllQAContract.View> implements A
             }));
     }
 
-    //todo this is mock data
-    private QuestionAnswerVM getMockData() {
-        QuestionAnswerDataVM dataVM = new QuestionAnswerDataVM(
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit ",
-            "All 12 Answers", "Updated at 1/2/2018");
-        List<QuestionAnswerDataVM> dataVMS = new ArrayList<>();
-        dataVMS.add(dataVM);
-        dataVMS.add(dataVM);
-        dataVMS.add(dataVM);
-        return new QuestionAnswerVM("10", "10", dataVMS);
-    }
+    @Override
+    public void submitQuestions(String question) {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.CUSTOMER_ID, Const.CUSTOMER_ID);
+        params.put(Const.QUESTION, question);
 
+        addSubscrebe(repository.submitQuestions(params).subscribeWith(
+            new DisposableObserver<Response>() {
+                @Override
+                public void onNext(Response response) {
+                    mView.hideLoadingBar();
+                    mView.showSubmitSuccess(response.getMessage().getDisplayMessage());
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.showRequestFailed( e.getMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
 }

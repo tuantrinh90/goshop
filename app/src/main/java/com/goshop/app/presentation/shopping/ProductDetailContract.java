@@ -22,6 +22,10 @@ public class ProductDetailContract {
         void addWishlistFailed(String errorMessage);
 
         void removeWishlistFailed(String errorMessage);
+
+        void deliveryCheckRequestSuccess();
+
+        void deliveryCheckRequestFailed(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
@@ -31,6 +35,8 @@ public class ProductDetailContract {
         void addWishlistRequest(String skuId);
 
         void removeWishlistRequest(String skuId);
+
+        void deliveryCheckRequest();
     }
 
 }

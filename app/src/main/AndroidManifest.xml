@@ -87,9 +87,6 @@
             android:name=".presentation.shopping.PDPDetailImagesActivity"
             android:theme="@style/WhiteBackground"/>
 
-        <activity
-            android:name=".presentation.shopping.RatingActivity"
-            android:theme="@style/WhiteBackground"/>
 
         <activity
             android:name=".presentation.shopping.AllReviewsActivity"
@@ -97,6 +94,11 @@
 
         <activity
             android:name=".presentation.login.LoginActivity"
+            android:theme="@style/WhiteBackground"/>
+
+        <activity
+            android:name=".presentation.shopping.RatingActivity"
+            android:windowSoftInputMode="adjustResize|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity
@@ -179,9 +181,10 @@
             android:name=".presentation.home.PromotionSkuActivity"
             android:theme="@style/WhiteBackground"/>
 
+
         <activity
             android:name=".presentation.shopping.ProductDetailActivity"
-            android:windowSoftInputMode="adjustResize|stateHidden"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity
