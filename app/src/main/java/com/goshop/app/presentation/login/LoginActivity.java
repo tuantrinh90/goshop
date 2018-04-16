@@ -215,7 +215,8 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     @Override
     public void showNetworkErrorMessage(String errorMessage) {
-
+        //TODO wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -249,7 +250,7 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     @Override
     public void setFacebookLoginParams(FacebookLoginVm facebookVm) {
         Intent intent = new Intent(this, LoginComplementEmailActivity.class);
-        intent.putExtra(LoginComplementEmailActivity.EXTRA_FACEBOOK_INFO,facebookVm);
+        intent.putExtra(LoginComplementEmailActivity.EXTRA_FACEBOOK_INFO, facebookVm);
         startActivity(intent);
 //        mPresenter.facebookLoginRequest(email, fbId, token, name, gender);
     }

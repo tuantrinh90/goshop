@@ -75,7 +75,6 @@ public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEm
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    Log.d("jay", "onError: "+throwable.getMessage());
                     if (throwable instanceof ServiceApiFail) {
                         ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
                         mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
