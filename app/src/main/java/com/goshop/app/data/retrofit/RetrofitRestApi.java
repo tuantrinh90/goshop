@@ -17,6 +17,7 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
+import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -469,5 +470,17 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response<OrderResponse>> cancelOrderRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response<OrderResponse>> returnOrderRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

@@ -14,7 +14,6 @@ import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
@@ -33,6 +32,7 @@ import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
@@ -364,6 +364,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<Response<ZipCodeResponse>> getZipCode() {
         return restApi.getZipCode();
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params) {
+        return restApi.cancelOrderRequest(params);
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
+        return restApi.returnOrderRequest(params);
     }
 
 }

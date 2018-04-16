@@ -23,6 +23,7 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
@@ -202,5 +203,9 @@ public interface RestApi {
     Observable<Response> submitQuestions(Map<String, Object> params);
 
     Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(Map<String, Object> params);
+
+    Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params);
+
+    Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params);
 
 }

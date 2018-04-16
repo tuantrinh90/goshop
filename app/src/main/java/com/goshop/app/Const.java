@@ -110,6 +110,20 @@ public class Const {
 
     public static final String PARAMS_RATING = "rating";
 
+    public static final String PARAMS_MOBILE_NUMBER = "mobile_number";
+
+    public static final String PARAMS_PRODUCT_HANDLING = "product_handling";
+
+    public static final String PARAMS_CANCEL_REASON_CODE = "cancel_reason_code";
+
+    public static final String PARAMS_CANCEL_DETAIL_REASON = "cancel_detail_reason";
+
+    public static final String PARAMS_RETURN_REASON_CODE = "return_reason_code";
+
+    public static final String PARAMS_RETURN_DETAIL_REASON = "return_detail_reason";
+
+    public static final String PARAMS_QTY = "qty";
+
     public static final int PROMOTION_CONTENT_ITEM = 2;
 
     //type-banner

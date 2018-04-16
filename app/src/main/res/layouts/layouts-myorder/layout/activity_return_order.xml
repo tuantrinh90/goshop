@@ -1,25 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:animET="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-    <include
-        layout="@layout/toolbar_img_text_img_close"/>
-    <View
+    <LinearLayout
+        android:id="@+id/ll_return_order_top"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/size_4"
-        android:background="@drawable/bg_navigation_bar_shadow"/>
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+        <include
+            layout="@layout/toolbar_img_text_img_close"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
+    </LinearLayout>
 
+    <com.goshop.app.common.view.RobotoMediumTextView
+        android:id="@+id/tv_btn_return_order"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_54"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/size_8"
+        android:layout_marginRight="@dimen/size_8"
+        android:layout_marginBottom="@dimen/size_6"
+        android:layout_alignParentBottom="true"
+        android:text="@string/submit"
+        android:textSize="@dimen/size_font_16"
+        android:textColor="@android:color/white"
+        android:background="@drawable/ic_icon_pink_btn"/>
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/ll_return_order_top"
+        android:layout_above="@id/tv_btn_return_order"
         android:layout_marginTop="@dimen/size_4_negative">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/size_35"
             android:orientation="vertical">
 
             <com.goshop.app.common.view.RobotoLightTextView
@@ -105,20 +127,8 @@
                 android:drawableEnd="@drawable/ic_icon_spinner_down"
                 tools:ignore="RtlSymmetry"
                 android:paddingEnd="@dimen/size_8"/>
-            <com.goshop.app.common.view.RobotoMediumTextView
-                android:id="@+id/tv_btn_return_order"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_54"
-                android:gravity="center"
-                android:layout_marginLeft="@dimen/size_8"
-                android:layout_marginTop="@dimen/size_35"
-                android:layout_marginRight="@dimen/size_8"
-                android:layout_marginBottom="@dimen/size_6"
-                android:text="@string/submit"
-                android:textSize="@dimen/size_font_16"
-                android:textColor="@android:color/white"
-                android:background="@drawable/ic_icon_pink_btn"/>
+
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 
-</LinearLayout>
+</RelativeLayout>

@@ -21,6 +21,7 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
+import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -505,5 +506,17 @@ public class RetrofitRestApiImpl implements RestApi {
         Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.DELIVERY_CHECK);
         return retrofitRestApi.deliveryCheckRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.CANCEL_ORDER);
+        return retrofitRestApi.cancelOrderRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.RETURN_ORDER);
+        return retrofitRestApi.returnOrderRequest(url, params);
     }
 }
