@@ -23,7 +23,7 @@ public class AllQAContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void allQARequest(Map<String, Object> params);
+        void allQARequest();
 
         void submitQuestions(String question);
 

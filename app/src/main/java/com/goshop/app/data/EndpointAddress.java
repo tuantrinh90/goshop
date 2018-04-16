@@ -41,7 +41,8 @@ public class EndpointAddress {
 
     public static final String REMOVE_WISHLIST = "rest/all/V1/rest-api/customer/id/wishlist";
 
-    public static final String GET_PROFILE_METADATA = "rest/all/V1/rest-api/customer/metadata?website_idstore_id";
+    public static final String GET_PROFILE_METADATA =
+        "rest/all/V1/rest-api/customer/metadata?website_idstore_id";
 
     public static final String GET_STATES = "rest/all/V1/rest-api/address/getstates";
 
@@ -49,15 +50,20 @@ public class EndpointAddress {
 
     public static final String GET_ZIPCODE = "rest/all/V1/rest-api/address/getzipcode";
 
-    public static final String GET_PRODUCT_RATING_REVIEWS = "rest/all/V1/rest-api/catalog/product/sku/reviews";
+    public static final String GET_PRODUCT_RATING_REVIEWS =
+        "rest/all/V1/rest-api/catalog/product/sku/reviews";
 
-    public static final String ADD_PRODUCT_REVIEW = "rest/all/V1/rest-api/catalog/product/sku/review";
+    public static final String ADD_PRODUCT_REVIEW =
+        "rest/all/V1/rest-api/catalog/product/sku/review";
 
-    public static final String LIST_PRODUCT_QUESTION_ANSWER = "rest/all/V1/rest-api/catalog/product/sku_id/question-answer?website_id=1&store_id&3&page=1&limit=10";
+    public static final String LIST_PRODUCT_QUESTION_ANSWER =
+        "rest/all/V1/rest-api/catalog/product/sku_id/question-answer";
 
-    public static final String SUBMIT_QUESTIONS = "rest/all/V1/rest-api/catalog/product/sku/ask-questions";
+    public static final String SUBMIT_QUESTIONS =
+        "rest/all/V1/rest-api/catalog/product/sku/ask-questions";
 
-    public static final String DELIVERY_CHECK = "rest/all/V1/rest-api/catalog/product/sku/delivery-check";
+    public static final String DELIVERY_CHECK =
+        "rest/all/V1/rest-api/catalog/product/sku/delivery-check";
 
     public static final String GET_PRODUCT_DETAILS = "rest/all/V1/rest-api/catalog/product/sku_id";
 

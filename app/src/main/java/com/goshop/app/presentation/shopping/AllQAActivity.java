@@ -62,7 +62,7 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //todo wait for api
-        mPresenter.allQARequest(null);
+        mPresenter.allQARequest();
     }
 
     @Override
@@ -151,7 +151,7 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak, false);
-                mPresenter.allQARequest(null);
+                mPresenter.allQARequest();
                 break;
         }
     }

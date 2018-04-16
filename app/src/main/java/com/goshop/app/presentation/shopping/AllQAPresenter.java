@@ -23,9 +23,14 @@ public class AllQAPresenter extends RxPresenter<AllQAContract.View> implements A
     }
 
     @Override
-    public void allQARequest(Map<String, Object> params) {
+    public void allQARequest() {
         mView.showLoadingBar();
         mView.hideDataLayout();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_PAGE, Const.PAGE);
+        params.put(Const.PARAMS_LIMIT, Const.LIMIT);
         addSubscrebe(repository.allQARequest(params).subscribeWith(
             new DisposableObserver<Response<QuestionAnswerResponse>>() {
                 @Override
@@ -38,8 +43,8 @@ public class AllQAPresenter extends RxPresenter<AllQAContract.View> implements A
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
                     mView.hideDataLayout();
-                    if(e instanceof ServiceApiFail) {
-                        mView.showRequestFailed( ((ServiceApiFail) e).getErrorMessage());
+                    if (e instanceof ServiceApiFail) {
+                        mView.showRequestFailed(((ServiceApiFail) e).getErrorMessage());
                     } else {
                         mView.showNetError(e.getMessage().toString());
                     }
@@ -72,7 +77,7 @@ public class AllQAPresenter extends RxPresenter<AllQAContract.View> implements A
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showRequestFailed( e.getMessage().toString());
+                    mView.showRequestFailed(e.getMessage().toString());
                 }
 
                 @Override

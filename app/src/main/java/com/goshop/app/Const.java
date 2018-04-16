@@ -146,6 +146,14 @@ public class Const {
 
     public static final int WEBSITE_ID = 1;
 
+    public static final int PAGE = 1;
+
+    public static final int LIMIT = 10;
+
+    public static final String PARAMS_PAGE = "page";
+
+    public static final String PARAMS_LIMIT = "limit";
+
 
     //request param
     public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";

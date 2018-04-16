@@ -432,7 +432,7 @@ public class RetrofitRestApiImpl implements RestApi {
     @Override
     public Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.LIST_PRODUCT_QUESTION_ANSWER);
-        return retrofitRestApi.allQARequest(url);
+        return retrofitRestApi.allQARequest(url, params);
     }
 
     @Override

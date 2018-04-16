@@ -60,6 +60,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 
 public interface RetrofitRestApi {
@@ -408,7 +409,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<QuestionAnswerResponse>> allQARequest(@Url String fullUrl);
+    Observable<Response<QuestionAnswerResponse>> allQARequest(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
