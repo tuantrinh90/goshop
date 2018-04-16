@@ -16,6 +16,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -89,8 +90,8 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
                 EditTextUtil.eidtLoseFocus(tvBtnComplementEmailSubmit);
                 String email = ctdEtComplementEmail.getText();
                 if (!TextUtils.isEmpty(email)) {
-                    //TODO(helen)wait for api
-                    mPresenter.complementEmailRequest(null);
+                    facebookLoginVm.setEmali(email);
+                    mPresenter.facebookLoginRequest(facebookLoginVm);
                 }
                 break;
         }
@@ -111,12 +112,14 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     }
 
     @Override
-    public void showErrorMessage() {
-
+    public void showServiceErrorMessage(String message) {
+        // TODO: 2018/4/16 need ui
+        Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
     }
-
     @Override
-    public void hideErrorMessage() {
-
+    public void showNetworkErrorMessage(String message) {
+        // TODO: 2018/4/16 need ui
+        Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
     }
+
 }

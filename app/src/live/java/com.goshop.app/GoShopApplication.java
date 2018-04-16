@@ -27,6 +27,8 @@ public class GoShopApplication extends MultiDexApplication {
 
     private static boolean isLogin;
 
+    private static UserData userInfo;
+
     public static Context getAppContext() {
         return GoShopApplication.context;
     }
@@ -81,4 +83,13 @@ public class GoShopApplication extends MultiDexApplication {
     public static void setLogin(boolean login) {
         isLogin = login;
     }
+
+    public static void cacheUserInfo(UserData userInfo) {
+        GoShopApplication.userInfo = userInfo;
+    }
+
+    public static UserData getCacheUserInfo() {
+        return userInfo;
+    }
+
 }

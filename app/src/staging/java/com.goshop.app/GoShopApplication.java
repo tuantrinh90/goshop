@@ -1,14 +1,13 @@
 package com.goshop.app;
 
 import com.crashlytics.android.Crashlytics;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.realm.EncryptionKey;
 import com.goshop.app.data.realm.SchemaMigration;
 import com.squareup.leakcanary.LeakCanary;
-
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.support.multidex.MultiDexApplication;
-
 import injection.components.ApplicationComponent;
 import injection.components.DaggerApplicationComponent;
 import io.fabric.sdk.android.Fabric;
@@ -23,6 +22,8 @@ public class GoShopApplication extends MultiDexApplication {
     private static ApplicationComponent mApplicationComponent;
 
     private static boolean isLogin;
+
+    private static UserData userInfo;
 
     public static Context getAppContext() {
         return GoShopApplication.context;
@@ -75,4 +76,11 @@ public class GoShopApplication extends MultiDexApplication {
         isLogin = login;
     }
 
+    public static void cacheUserInfo(UserData userInfo) {
+        GoShopApplication.userInfo = userInfo;
+    }
+
+    public static UserData getCacheUserInfo() {
+        return userInfo;
+    }
 }

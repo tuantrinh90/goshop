@@ -82,6 +82,7 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
             .isEmpty(userData.getToken().getToken())) {
             nextPageType = NEXT_PAGE_TYPE_HOME;
             GoShopApplication.setLogin(true);
+            GoShopApplication.cacheUserInfo(userData);
         } else {
             nextPageType = NEXT_PAGE_TYPE_HOME_UN_LOGIN;
         }

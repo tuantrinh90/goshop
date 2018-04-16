@@ -4,6 +4,26 @@ public class MenuHeaderVM extends MenuModel {
 
     private boolean loginState = true;
 
+    private String userName;
+
+    private String userHeadUrl;
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public String getUserHeadUrl() {
+        return userHeadUrl;
+    }
+
+    public void setUserHeadUrl(String userHeadUrl) {
+        this.userHeadUrl = userHeadUrl;
+    }
+
     public MenuHeaderVM() {
         super(MenuModel.MENU_HEADER);
     }

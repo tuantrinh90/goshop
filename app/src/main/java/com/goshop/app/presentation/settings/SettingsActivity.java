@@ -138,6 +138,7 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     @Override
     public void userInfoClearedSucceed(Boolean response) {
         GoShopApplication.setLogin(!response);
+        GoShopApplication.cacheUserInfo(null);
         goToHomePage();
     }
 
