@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.model.ProductDetailModel;
+import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
 
 import android.content.Intent;
@@ -16,6 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
@@ -162,6 +164,16 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     @Override
+    public void deliveryCheckRequestSuccess() {
+        Toast.makeText(this, getResources().getString(R.string.success), Toast.LENGTH_LONG).show();
+    }
+
+    @Override
+    public void deliveryCheckRequestFailed(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    }
+
+    @Override
     public void onBannerClick() {
         startActivity(new Intent(this, PDPDetailImagesActivity.class));
     }
@@ -195,5 +207,16 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         } else {
             mPresenter.removeWishlistRequest("abc");
         }
+    }
+
+    @Override
+    public void onDeliveryCheckClick(String zipcode) {
+        KeyBoardUtils.hideKeyboard(this);
+        if(TextUtils.isEmpty(zipcode)) {
+            Toast.makeText(this, getResources().getString(R.string.empty_error), Toast.LENGTH_LONG).show();
+            return;
+        }
+        mPresenter.deliveryCheckRequest();
+
     }
 }

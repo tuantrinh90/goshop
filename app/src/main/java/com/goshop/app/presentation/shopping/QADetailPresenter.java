@@ -1,8 +1,9 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.QuestionAnswerResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
 
 import java.util.ArrayList;
@@ -14,16 +15,16 @@ import io.reactivex.observers.DisposableObserver;
 public class QADetailPresenter extends RxPresenter<QADetailContract.View> implements
     QADetailContract.Presenter {
 
-    private AccountRepository accountRepository;
+    private ProductRepository repository;
 
-    public QADetailPresenter(AccountRepository accountRepository) {
-        this.accountRepository = accountRepository;
+    public QADetailPresenter(ProductRepository repository) {
+        this.repository = repository;
     }
 
     @Override
     public void qaDetailRequest(Map<String, Object> params) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.qaDetailRequest(params).subscribeWith(
+        addSubscrebe(repository.qaDetailRequest(params).subscribeWith(
             new DisposableObserver<QuestionAnswerResponse>() {
                 @Override
                 public void onNext(QuestionAnswerResponse questionAnswerResponse) {

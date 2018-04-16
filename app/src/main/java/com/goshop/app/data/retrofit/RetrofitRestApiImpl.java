@@ -5,7 +5,7 @@ import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
-import com.goshop.app.data.model.AllReviewsResponse;
+import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
@@ -20,7 +20,9 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
-import com.goshop.app.data.model.QuestionAnswerResponse;
+import com.goshop.app.data.model.response.DeliveryCheckResponse;
+import com.goshop.app.data.model.response.OrderResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -30,8 +32,8 @@ import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.GetUserRequest;
-import com.goshop.app.data.model.response.ChangePasswordResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.CityResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
@@ -45,10 +47,11 @@ import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
-import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
+import com.goshop.app.data.model.response.ZipCodeResponse;
 
 import java.util.Map;
 
@@ -169,9 +172,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.ALL_REVIEWS);
-        return retrofitRestApi.allReviewsRequest(url, params);
+    public Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_PRODUCT_RATING_REVIEWS);
+        return retrofitRestApi.allReviewsRequest(url);
     }
 
     public Observable<Response> registerRequest(Map<String, Object> params) {
@@ -427,8 +430,8 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.QUESTION_ANSWER);
+    public Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.LIST_PRODUCT_QUESTION_ANSWER);
         return retrofitRestApi.allQARequest(url, params);
     }
 
@@ -466,5 +469,54 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.LOGIN_WITH_FB);
         return retrofitRestApi.facebookLoginRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response<StatesResponse>> getStates() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_STATES);
+        return retrofitRestApi.getStates(url);
+    }
+
+    @Override
+    public Observable<Response<CityResponse>> getCity() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_CITY);
+        return retrofitRestApi.getCity(url);
+    }
+
+    @Override
+    public Observable<Response<ZipCodeResponse>> getZipCode() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_ZIPCODE);
+        return retrofitRestApi.getZipCode(url);
+    }
+
+    @Override
+    public Observable<Response> writeReviewRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_PRODUCT_REVIEW);
+        return retrofitRestApi.writeReviewRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response> submitQuestions(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.SUBMIT_QUESTIONS);
+        return retrofitRestApi.submitQuestions(url, params);
+    }
+
+    @Override
+    public Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(
+        Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.DELIVERY_CHECK);
+        return retrofitRestApi.deliveryCheckRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.CANCEL_ORDER);
+        return retrofitRestApi.cancelOrderRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.RETURN_ORDER);
+        return retrofitRestApi.returnOrderRequest(url, params);
     }
 }

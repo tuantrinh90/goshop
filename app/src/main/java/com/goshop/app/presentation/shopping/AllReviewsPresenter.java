@@ -2,8 +2,11 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AllReviewsResponse;
+import com.goshop.app.data.model.response.AllReviewsResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.AllReviewsMapper;
 import com.goshop.app.presentation.model.AllReviewsVM;
 import com.goshop.app.presentation.model.widget.ReviewsVM;
 
@@ -25,17 +28,25 @@ public class AllReviewsPresenter extends RxPresenter<AllReviewsContract.View> im
     @Override
     public void allReviewsRequest(Map<String, Object> params) {
         mView.showLoadingBar();
+        mView.hideDataLayout();
         addSubscrebe(accountRepository.allReviewsRequest(params).subscribeWith(
-            new DisposableObserver<AllReviewsResponse>() {
+            new DisposableObserver<Response<AllReviewsResponse>>() {
                 @Override
-                public void onNext(AllReviewsResponse allReviewsResponse) {
+                public void onNext(Response<AllReviewsResponse> response) {
                     mView.hideLoadingBar();
+                    mView.showDataLayout();
+                    mView.showAllReviewsResult(AllReviewsMapper.transform(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showAllReviewsResult(getMockDatas());
+                    mView.hideDataLayout();
+                    if (e instanceof ServiceApiFail) {
+                        mView.showRequestFailed(((ServiceApiFail) e).getErrorMessage());
+                    } else {
+                        mView.showNetWorkError(e.getMessage().toString());
+                    }
                 }
 
                 @Override

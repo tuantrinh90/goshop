@@ -78,12 +78,16 @@ import com.goshop.app.presentation.login.LoginSendConfirmationLinkContract;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkPresenter;
 import com.goshop.app.presentation.login.RegisterContract;
 import com.goshop.app.presentation.login.RegisterPresenter;
+import com.goshop.app.presentation.myorder.CancelOrderContract;
+import com.goshop.app.presentation.myorder.CancelOrderPresenter;
 import com.goshop.app.presentation.myorder.MyOrderContract;
 import com.goshop.app.presentation.myorder.MyOrderPresenter;
 import com.goshop.app.presentation.myorder.MyOrdersContract;
 import com.goshop.app.presentation.myorder.MyOrdersPresenter;
 import com.goshop.app.presentation.myorder.OrderDetailContract;
 import com.goshop.app.presentation.myorder.OrderDetailPresenter;
+import com.goshop.app.presentation.myorder.ReturnOrderContract;
+import com.goshop.app.presentation.myorder.ReturnOrderPresenter;
 import com.goshop.app.presentation.search.SearchContract;
 import com.goshop.app.presentation.search.SearchPresenter;
 import com.goshop.app.presentation.search.SearchResultContract;
@@ -98,6 +102,8 @@ import com.goshop.app.presentation.shopping.ProductDetailContract;
 import com.goshop.app.presentation.shopping.ProductDetailPresenter;
 import com.goshop.app.presentation.shopping.QADetailContract;
 import com.goshop.app.presentation.shopping.QADetailPresenter;
+import com.goshop.app.presentation.shopping.RatingContract;
+import com.goshop.app.presentation.shopping.RatingPresenter;
 import com.goshop.app.presentation.shopping.ShoppingCartContract;
 import com.goshop.app.presentation.shopping.ShoppingCartPresenter;
 
@@ -454,14 +460,14 @@ public class PresenterModule {
 
     @Provides
     @ActivityScope
-    public AllQAContract.Presenter provideAllQAPresenter(AccountDataRepository dataRepository) {
+    public AllQAContract.Presenter provideAllQAPresenter(ProductDataRepository dataRepository) {
         return new AllQAPresenter(dataRepository);
     }
 
     @Provides
     @ActivityScope
     public QADetailContract.Presenter provideQADetailPresenter(
-        AccountDataRepository dataRepository) {
+        ProductDataRepository dataRepository) {
         return new QADetailPresenter(dataRepository);
     }
 
@@ -470,6 +476,24 @@ public class PresenterModule {
     public PromotionSkuContract.Presenter providePromotionSkuPresenter(
         ProductDataRepository dataRepository) {
         return new PromotionSkuPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public RatingContract.Presenter provideRatingPresenter(ProductDataRepository repository) {
+        return new RatingPresenter(repository);
+    }
+
+    @Provides
+    @ActivityScope
+    public CancelOrderContract.Presenter provideCancelOrderPresenter(AccountDataRepository repository) {
+        return new CancelOrderPresenter(repository);
+    }
+
+    @Provides
+    @ActivityScope
+    public ReturnOrderContract.Presenter provideReturnOrderPresenter(AccountDataRepository dataRepository){
+        return new ReturnOrderPresenter(dataRepository);
     }
 
 }

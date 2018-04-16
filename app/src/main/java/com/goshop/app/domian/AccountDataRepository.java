@@ -2,7 +2,7 @@ package com.goshop.app.domian;
 
 import com.goshop.app.Const;
 import com.goshop.app.data.model.AllDealsResponse;
-import com.goshop.app.data.model.AllReviewsResponse;
+import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
@@ -14,7 +14,6 @@ import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
@@ -23,6 +22,7 @@ import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.CityResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
@@ -30,17 +30,23 @@ import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
+import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
+
 import java.util.Map;
+
 import javax.inject.Inject;
 import javax.inject.Named;
+
 import io.reactivex.Observable;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
@@ -209,8 +215,15 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
-        return accountCloudDataSource.allReviewsRequest(params);
+    public Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params) {
+        return accountCloudDataSource.allReviewsRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     public Observable<Response> registerRequest(Map<String, Object> params) {
@@ -434,16 +447,6 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params) {
-        return accountCloudDataSource.allQARequest(params);
-    }
-
-    @Override
-    public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
-        return accountCloudDataSource.qaDetailRequest(params);
-    }
-
-    @Override
     public Observable<Response<ProfileResponse>> getUserProfile() {
         return accountCloudDataSource.getUserProfile().concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
@@ -504,6 +507,66 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<Boolean> clearUserInfo() {
         return accountLocalDataSource.clearUserInfo();
+    }
+
+    @Override
+    public Observable<Response<StatesResponse>> getStates() {
+        return accountCloudDataSource.getStates().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response<CityResponse>> getCity() {
+        return accountCloudDataSource.getCity().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response<ZipCodeResponse>> getZipCode() {
+        return accountCloudDataSource.getZipCode().concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params) {
+        return accountCloudDataSource.cancelOrderRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
+        return accountCloudDataSource.returnOrderRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     private boolean isSuccess(String status) {

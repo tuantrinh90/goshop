@@ -1,6 +1,5 @@
 package com.goshop.app.widget.listener;
 
-
 public interface OnProductDetailItemClickListener {
 
     void onWriteAReviewClick();
@@ -12,4 +11,6 @@ public interface OnProductDetailItemClickListener {
     void onMoreQuestionClick();
 
     void onWishlistSelect(boolean isSelect);
+
+    void onDeliveryCheckClick(String zipcode);
 }

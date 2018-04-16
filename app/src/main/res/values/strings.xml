@@ -329,6 +329,7 @@
     <string name="status_success_tip">You will receive an order confirmation email with details of
         your order and a link to track its progress.
     </string>
+    <string name="success">Success!</string>
     <string name="check_order">Check Order</string>
     <string name="payment_status">Payment Status</string>
     <string name="set_it_as_shipping_address">Set it as shipping address</string>
@@ -440,6 +441,8 @@
     <string name="choose_title">Choose your Title</string>
     <string name="choose_language">Choose your Language</string>
     <string name="choose_race">Choose your Race</string>
+    <string name="choose_reason_code">Choose your Product Handing</string>
+    <string name="choose_reason_detail">Choose your Cancel Reason</string>
     <string name="country_empty">Please choose a country!</string>
     <string name="state_empty">Please choose a state!</string>
     <string name="zip_empty">Please choose a zip/postal code</string>

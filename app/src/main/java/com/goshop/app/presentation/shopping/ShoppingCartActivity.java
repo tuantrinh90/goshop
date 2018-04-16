@@ -146,7 +146,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         //todo wait for api
     }
 
-    @OnClick({R.id.tv_btn_cart_checkout, R.id.imageview_left_menu})
+    @OnClick({R.id.tv_btn_cart_checkout, R.id.imageview_left_menu, R.id.tv_net_refresh})
     public void onCartClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:

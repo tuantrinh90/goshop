@@ -1,22 +1,30 @@
 package com.goshop.app.presentation.shopping;
 
+import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
+import com.goshop.app.utils.KeyBoardUtils;
+import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.TextInputLayout;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
+import injection.components.DaggerPresenterComponent;
+import injection.modules.PresenterModule;
 
-public class RatingActivity extends BaseActivity {
+public class RatingActivity extends BaseActivity<RatingContract.Presenter> implements
+    RatingContract.View {
 
     @BindView(R.id.et_rating_detail)
     RobotoRegularEditText etRatingDetail;
@@ -48,8 +56,21 @@ public class RatingActivity extends BaseActivity {
 
     @Override
     public void inject() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
         textviewRightMenu.setText(getResources().getString(R.string.done));
+        contentEditListener();
+    }
 
+    private void contentEditListener() {
+        RxTextView.textChanges(etRatingDetail).subscribe(charSequence -> {
+            if (charSequence.length() > 0) {
+                textinputlayoutRating.setErrorEnabled(false);
+            }
+        });
     }
 
     @Override
@@ -64,7 +85,35 @@ public class RatingActivity extends BaseActivity {
                 finish();
                 break;
             case R.id.textview_right_menu:
+                KeyBoardUtils.hideKeyboard(this);
+                float rating = ratingbarRating.getRating();
+                String title = etRatingTitle.getText();
+                String content = etRatingDetail.getText().toString();
+                if (TextUtils.isEmpty(title)) {
+                    etRatingTitle.setErrorMessage(getResources().getString(R.string.empty_error));
+                    return;
+                }
+                if (TextUtils.isEmpty(content)) {
+                    textinputlayoutRating.setErrorEnabled(true);
+                    textinputlayoutRating.setError(getResources().getString(R.string.empty_error));
+                    textinputlayoutRating.setHintTextAppearance(R.style.errorAppearance);
+                    etRatingDetail.setFocusable(true);
+                    etRatingDetail.requestFocus();
+                    return;
+                }
+
+                mPresenter.writeReviewRequest(title, content, rating);
                 break;
         }
+    }
+
+    @Override
+    public void writeReviewSuccess() {
+        finish();
+    }
+
+    @Override
+    public void writeReviewFailed(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
     }
 }

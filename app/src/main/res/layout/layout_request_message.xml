@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.goshop.app.common.view.RobotoRegularTextView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_request_message"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingRight="@dimen/size_28"
+    android:paddingLeft="@dimen/size_28"
+    android:paddingTop="@dimen/size_24"
+    android:paddingBottom="@dimen/size_24"
+    android:lineSpacingMultiplier="1.3"
+    android:background="@drawable/bg_top_shadow_white"
+    android:textColor="@color/color_grayscale_text"
+    android:textSize="@dimen/size_font_12"
+    android:text="@string/reset_content"/>
+

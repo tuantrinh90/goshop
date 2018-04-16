@@ -3,7 +3,7 @@ package com.goshop.app.data;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
-import com.goshop.app.data.model.AllReviewsResponse;
+import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
@@ -13,6 +13,8 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.CityResponse;
+import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
@@ -21,8 +23,8 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
-import com.goshop.app.data.model.QuestionAnswerResponse;
-import com.goshop.app.data.model.response.ChangePasswordResponse;
+import com.goshop.app.data.model.response.OrderResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
@@ -43,9 +45,10 @@ import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
-import com.goshop.app.data.model.response.RegisterResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
+import com.goshop.app.data.model.response.ZipCodeResponse;
 
 import java.util.Map;
 
@@ -87,7 +90,7 @@ public interface RestApi {
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
-    Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params);
+    Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params);
 
     io.reactivex.Observable<Response> registerRequest(Map<String, Object> params);
 
@@ -175,7 +178,7 @@ public interface RestApi {
 
     Observable<TVShowResponse> tvShowRequest(Map<String, Object> params);
 
-    Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params);
+    Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params);
 
     Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
 
@@ -188,5 +191,21 @@ public interface RestApi {
     Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params);
 
     Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params);
+
+    Observable<Response<StatesResponse>> getStates();
+
+    Observable<Response<CityResponse>> getCity();
+
+    Observable<Response<ZipCodeResponse>> getZipCode();
+
+    Observable<Response> writeReviewRequest(Map<String, Object> params);
+
+    Observable<Response> submitQuestions(Map<String, Object> params);
+
+    Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(Map<String, Object> params);
+
+    Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params);
+
+    Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params);
 
 }

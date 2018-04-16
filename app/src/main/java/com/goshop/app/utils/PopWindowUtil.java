@@ -3,6 +3,7 @@ package com.goshop.app.utils;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
@@ -37,6 +38,10 @@ public class PopWindowUtil {
     public static final String STATE_POP = "state";
 
     public static final String TITLE_POP = "title";
+
+    public static final String REASON_CODE = "reason code";
+
+    public static final String REASON_DETAIL = "reason detail";
 
     public static void showsSortListPop(View parentView, List<SortVM> sortVMS,
         OnPopWindowDismissListener sortPopDismissListener) {
@@ -206,5 +211,18 @@ public class PopWindowUtil {
 
     public interface OnWishlistDeleteListener{
         void onWishlistDelete(WishlistVM wishlistVM);
+    }
+
+    public static void showRequestMessagePop(View parentView, String message) {
+        View view = LayoutInflater.from(parentView.getContext())
+            .inflate(R.layout.layout_request_message, null);
+        RobotoRegularTextView tvTitle = view.findViewById(R.id.tv_request_message);
+        tvTitle.setText(message);
+        PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
     }
 }

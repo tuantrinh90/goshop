@@ -31,6 +31,8 @@ public class CustomAnimEditText extends RelativeLayout {
 
     private final String INPUT_PHONE = "Phone Number";
 
+    private final String INPUT_MOBILE_OPTIONAL = "Mobile Phone No.(Optional)";
+
     private final String ZIP_CODE = "Zip/Postal Code";
 
     @BindView(R.id.et_anim_edittext)
@@ -68,6 +70,7 @@ public class CustomAnimEditText extends RelativeLayout {
             case ZIP_CODE:
             case INPUT_PHONE:
             case INPUT_MOBILE:
+            case INPUT_MOBILE_OPTIONAL:
                 etAnimEdittext.setInputType(InputType.TYPE_CLASS_NUMBER);
                 break;
             default:
@@ -101,6 +104,7 @@ public class CustomAnimEditText extends RelativeLayout {
                                 break;
                             case INPUT_PHONE:
                             case INPUT_MOBILE:
+                            case INPUT_MOBILE_OPTIONAL:
                                 if (!isMobileNO(charSequence.toString())) {
                                     setError(targetEditText.getContext()
                                         .getString(R.string.format_mobile_warning));

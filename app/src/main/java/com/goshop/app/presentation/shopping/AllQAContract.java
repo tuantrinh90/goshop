@@ -10,12 +10,23 @@ public class AllQAContract {
 
     interface View extends BaseView {
 
-        void showAllQAResult(QuestionAnswerVM questionAnswerVM);
+        void showRequestSuccess(QuestionAnswerVM questionAnswerVM);
+
+        void showRequestFailed(String errorMessage);
+
+        void showNetError(String errorMessage);
+
+        void hideDataLayout();
+
+        void showSubmitSuccess(String successMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void allQARequest(Map<String, Object> params);
+        void allQARequest();
+
+        void submitQuestions(String question);
+
     }
 
 }

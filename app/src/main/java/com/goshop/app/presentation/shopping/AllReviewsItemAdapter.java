@@ -28,6 +28,7 @@ public class AllReviewsItemAdapter extends RecyclerView.Adapter {
     public void setUpdateDatas(List<ReviewsVM> reviewsVMS) {
         this.reviewsVMS.clear();
         this.reviewsVMS = reviewsVMS;
+        notifyDataSetChanged();
     }
 
     @Override

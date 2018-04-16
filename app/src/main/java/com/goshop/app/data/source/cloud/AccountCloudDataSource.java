@@ -2,7 +2,7 @@ package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.AllDealsResponse;
-import com.goshop.app.data.model.AllReviewsResponse;
+import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
@@ -14,7 +14,6 @@ import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.QuestionAnswerResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
@@ -24,6 +23,7 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.CityResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
@@ -32,12 +32,15 @@ import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
+import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
+import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.utils.ServiceData;
 
@@ -133,7 +136,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
+    public Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params) {
         return restApi.allReviewsRequest(params);
     }
 
@@ -314,16 +317,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params) {
-        return restApi.allQARequest(params);
-    }
-
-    @Override
-    public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
-        return restApi.qaDetailRequest(params);
-    }
-
-    @Override
     public Observable<Response<ProfileResponse>> getUserProfile() {
         return restApi.getUserProfile();
     }
@@ -356,6 +349,31 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<Boolean> clearUserInfo() {
         return null;
+    }
+
+    @Override
+    public Observable<Response<StatesResponse>> getStates() {
+        return restApi.getStates();
+    }
+
+    @Override
+    public Observable<Response<CityResponse>> getCity() {
+        return restApi.getCity();
+    }
+
+    @Override
+    public Observable<Response<ZipCodeResponse>> getZipCode() {
+        return restApi.getZipCode();
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params) {
+        return restApi.cancelOrderRequest(params);
+    }
+
+    @Override
+    public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
+        return restApi.returnOrderRequest(params);
     }
 
 }

@@ -39,10 +39,12 @@ import com.goshop.app.presentation.login.LoginComplementEmailActivity;
 import com.goshop.app.presentation.login.LoginResetPasswordActivity;
 import com.goshop.app.presentation.login.LoginSendConfirmationLinkActivity;
 import com.goshop.app.presentation.login.RegisterActivity;
+import com.goshop.app.presentation.myorder.CancelOrderActivity;
 import com.goshop.app.presentation.myorder.MyOrderDetailActivity;
 import com.goshop.app.presentation.myorder.MyOrderListActivity;
 import com.goshop.app.presentation.myorder.MyOrdersActivity;
 import com.goshop.app.presentation.myorder.OrderDetailActivity;
+import com.goshop.app.presentation.myorder.ReturnOrderActivity;
 import com.goshop.app.presentation.search.SearchActivity;
 import com.goshop.app.presentation.search.SearchResultActivity;
 import com.goshop.app.presentation.settings.SettingsActivity;
@@ -50,6 +52,7 @@ import com.goshop.app.presentation.shopping.AllQAActivity;
 import com.goshop.app.presentation.shopping.AllReviewsActivity;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.QuestionAnswerDetailActivity;
+import com.goshop.app.presentation.shopping.RatingActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 
 import android.app.Activity;
@@ -165,5 +168,11 @@ public interface PresenterComponent {
     void inject(QuestionAnswerDetailActivity detailActivity);
 
     void inject(PromotionSkuActivity skuActivity);
+
+    void inject(RatingActivity ratingActivity);
+
+    void inject(CancelOrderActivity cancelOrderActivity);
+
+    void inject(ReturnOrderActivity returnOrderActivity);
 
 }

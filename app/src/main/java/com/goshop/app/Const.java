@@ -104,6 +104,26 @@ public class Const {
 
     public static final String PARAMS_WEBSITE_ID = "website_id";
 
+    public static final String PARAMS_TITLE = "title";
+
+    public static final String PARAMS_CONTENT = "content";
+
+    public static final String PARAMS_RATING = "rating";
+
+    public static final String PARAMS_MOBILE_NUMBER = "mobile_number";
+
+    public static final String PARAMS_PRODUCT_HANDLING = "product_handling";
+
+    public static final String PARAMS_CANCEL_REASON_CODE = "cancel_reason_code";
+
+    public static final String PARAMS_CANCEL_DETAIL_REASON = "cancel_detail_reason";
+
+    public static final String PARAMS_RETURN_REASON_CODE = "return_reason_code";
+
+    public static final String PARAMS_RETURN_DETAIL_REASON = "return_detail_reason";
+
+    public static final String PARAMS_QTY = "qty";
+
     public static final int PROMOTION_CONTENT_ITEM = 2;
 
     //type-banner
@@ -125,6 +145,15 @@ public class Const {
     public static final String SUCCESS_STATUS = "success";
 
     public static final int WEBSITE_ID = 1;
+
+    public static final int PAGE = 1;
+
+    public static final int LIMIT = 10;
+
+    public static final String PARAMS_PAGE = "page";
+
+    public static final String PARAMS_LIMIT = "limit";
+
 
     //request param
     public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";
@@ -150,6 +179,11 @@ public class Const {
     public static final String REQUEST_PARAM_EMAIL_SUBSCRIBE = "email_subscribe";
 
     public static final String REQUEST_PARAM_SMS_SUBSCRIBE = "sms_subscribe";
+
+    public static final String CUSTOMER_ID = "123";
+
+    public static final String QUESTION = "question";
+
 
 
 }

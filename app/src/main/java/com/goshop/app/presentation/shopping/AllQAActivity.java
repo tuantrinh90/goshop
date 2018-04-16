@@ -6,14 +6,18 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.presentation.model.QuestionAnswerVM;
+import com.goshop.app.utils.KeyBoardUtils;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,13 +50,19 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     @BindView(R.id.tv_all_qa_submit)
     RobotoMediumTextView tvAllQaSubmit;
 
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
+
+    @BindView(R.id.rl_all_qa_data)
+    RelativeLayout rlAllQaData;
+
     private QuestionAnswerDataAdapter dataAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //todo wait for api
-        mPresenter.allQARequest(null);
+        mPresenter.allQARequest();
     }
 
     @Override
@@ -88,7 +98,8 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     }
 
     @Override
-    public void showAllQAResult(QuestionAnswerVM questionAnswerVM) {
+    public void showRequestSuccess(QuestionAnswerVM questionAnswerVM) {
+        rlAllQaData.setVisibility(View.VISIBLE);
         tvAllQaQuestion.setText(questionAnswerVM.getQuestionTotal());
         tvAllQaAnswers.setText(questionAnswerVM.getAnswerTotal());
         dataAdapter.setUpdataDates(questionAnswerVM.getDataVMS());
@@ -96,17 +107,51 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     }
 
     @Override
+    public void showRequestFailed(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        updateLayoutStatus(flConnectionBreak,true);
+    }
+
+    @Override
+    public void showNetError(String errorMessage) {
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        updateLayoutStatus(flConnectionBreak,true);
+    }
+
+    @Override
+    public void hideDataLayout() {
+        rlAllQaData.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showSubmitSuccess(String successMessage) {
+        Toast.makeText(this, successMessage, Toast.LENGTH_LONG).show();
+        etAllQaEnter.setText("");
+    }
+
+    @Override
     public void onQAItemClick() {
         startActivity(new Intent(this, QuestionAnswerDetailActivity.class));
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_all_qa_submit})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_all_qa_submit, R.id.tv_net_refresh})
     public void onAllQAClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
                 break;
             case R.id.tv_all_qa_submit:
+                KeyBoardUtils.hideKeyboard(this);
+                String question = etAllQaEnter.getText().toString();
+                if(TextUtils.isEmpty(question)) {
+                    Toast.makeText(this, getResources().getText(R.string.empty_error), Toast.LENGTH_LONG).show();
+                    return;
+                }
+                mPresenter.submitQuestions(question);
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak, false);
+                mPresenter.allQARequest();
                 break;
         }
     }

@@ -7,9 +7,11 @@ import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
+import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.ProductDataSource;
@@ -106,6 +108,61 @@ public class ProductDataRepository implements ProductRepository {
     @Override
     public Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params) {
         return productCloudDataSource.categoryDetailRequest(params);
+    }
+
+    @Override
+    public Observable<Response> writeReviewRequest(Map<String, Object> params) {
+        return productCloudDataSource.writeReviewRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params) {
+        return productCloudDataSource.allQARequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response> submitQuestions(Map<String, Object> params) {
+        return productCloudDataSource.submitQuestions(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params) {
+        return productCloudDataSource.qaDetailRequest(params);
+    }
+
+    @Override
+    public Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(
+        Map<String, Object> params) {
+        return productCloudDataSource.deliveryCheckRequest(params)
+            .concatMap(response -> {
+                if (isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     private boolean isSuccess(String status) {

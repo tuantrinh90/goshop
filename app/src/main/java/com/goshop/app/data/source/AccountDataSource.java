@@ -1,7 +1,7 @@
 package com.goshop.app.data.source;
 
 import com.goshop.app.data.model.AllDealsResponse;
-import com.goshop.app.data.model.AllReviewsResponse;
+import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
@@ -13,7 +13,8 @@ import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
-import com.goshop.app.data.model.QuestionAnswerResponse;
+import com.goshop.app.data.model.response.OrderResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
@@ -23,6 +24,7 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.CityResponse;
 import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
@@ -35,8 +37,10 @@ import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
+import com.goshop.app.data.model.response.ZipCodeResponse;
 
 import java.util.Map;
 
@@ -74,7 +78,7 @@ public interface AccountDataSource {
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
-    Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params);
+    Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params);
 
     Observable<Response> registerRequest(Map<String, Object> params);
 
@@ -143,10 +147,6 @@ public interface AccountDataSource {
 
     Observable<TVShowResponse> tvShowRequest(Map<String, Object> params);
 
-    Observable<QuestionAnswerResponse> allQARequest(Map<String, Object> params);
-
-    Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
-
     Observable<Response<ProfileResponse>> getUserProfile();
 
     Observable<Response<ProfileMetadataResponse>> getProfileMetadata();
@@ -160,4 +160,14 @@ public interface AccountDataSource {
     Observable<UserData> getUserInfo();
 
     Observable<Boolean> clearUserInfo();
+
+    Observable<Response<StatesResponse>> getStates();
+
+    Observable<Response<CityResponse>> getCity();
+
+    Observable<Response<ZipCodeResponse>> getZipCode();
+
+    Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params);
+
+    Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params);
 }
