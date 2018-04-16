@@ -5,6 +5,9 @@ import com.facebook.CallbackManager;
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.UserInfo;
+import com.goshop.app.data.model.response.LoginResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.presentation.model.FacebookLoginVm;
 
 import java.util.Map;
 
@@ -14,21 +17,18 @@ public interface LoginContract {
 
         void showLogin(UserInfo userInfo);
 
-        void showNetwordErrorMessage();
+        void showNetworkErrorMessage(String errorMessage);
 
-        void showFaildMessage(String errorMessage);
+        void showServiceErrorMessage(String errorMessage);
 
         void fbLoginError();
 
-        void loginSuccess();
+        void loginSuccess(Response<LoginResponse> response);
 
-        void setFacebookLoginParams(String email, String fbId, String token, String name, String gender);
-
+        void setFacebookLoginParams(FacebookLoginVm facebookLoginVm);
     }
 
     interface Presenter extends BasePresenter<LoginContract.View> {
-
-        void getUserLogin(String username, String password);
 
         CallbackManager initFaceBook();
 

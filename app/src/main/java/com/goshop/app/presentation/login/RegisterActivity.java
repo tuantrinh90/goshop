@@ -11,12 +11,15 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PasswordEncoderUtil;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ToastUtil;
 
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -30,6 +33,7 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.lang.ref.WeakReference;
 import java.util.List;
 
 import butterknife.BindView;
@@ -40,6 +44,8 @@ import injection.modules.PresenterModule;
 public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> implements
     RegisterContract.View, ToastUtil.OnToastListener, PopWindowUtil.OnPopWindowDismissListener,
     PopWindowUtil.OnDatePickerDialogClickListener {
+
+    public static final int MESSAGE_WHAT_ENCRYPTION = 0;
 
     @BindView(R.id.ctd_et_register_confirmation_password)
     CustomPasswordEditText etRegisterConfirmationPassword;
@@ -100,11 +106,47 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     private ToastUtil toastUtil;
 
+    private EncryptPasswordHandler encryptPasswordHandler;
+
+    private String firstName;
+
+    private String lastName;
+
+    private String email;
+
+    private String password;
+
+    private String confirmPassword;
+
+    private String title;
+
+    private String mobile;
+
+    private String birth;
+
+    private String language;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initData();
+        initView();
+    }
+
+    private void initView() {
+        textviewRightMenu.setText(getResources().getString(R.string.done));
+        ivRegisterSms.setSelected(true);
+        ivRegisterEmail.setSelected(true);
+        ivSelectFemale.setSelected(true);
+        tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
+    }
+
+    private void initData() {
+        encryptPasswordHandler = new EncryptPasswordHandler(this);
+        toastUtil = new ToastUtil(this, this);
         languagesVMS = mPresenter.getLanguageChooses();
         titleVMS = mPresenter.getTitleChooses();
+        initPrivacyPolicyAndTerms();
     }
 
     @Override
@@ -114,22 +156,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @Override
     public void inject() {
-        textviewRightMenu.setText(getResources().getString(R.string.done));
-        ivRegisterSms.setSelected(true);
-        ivRegisterEmail.setSelected(true);
-        ivSelectFemale.setSelected(true);
-        tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
-        initPresenter();
-        toastUtil = new ToastUtil(this, this);
-        initRead();
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.register);
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -137,8 +163,13 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
             .inject(this);
     }
 
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.register);
+    }
+
     //TODO(helen)hard code need decide
-    private void initRead() {
+    private void initPrivacyPolicyAndTerms() {
         SpannableString spannableString = new SpannableString(
             getResources().getString(R.string.register_tips));
         spannableString.setSpan(new UnderlineSpan(), 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -178,22 +209,18 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     @Override
     public void registerSuccess() {
         //TODO(helen)when register success
-        showToast();
-    }
-
-    private void showToast() {
         toastUtil.showThanksToast();
     }
 
     @Override
-    public void showNetwordErrorMessage() {
-        //TODO(helen)when net error
+    public void showNetworkErrorMessage(String errorMessage) {
+        //TODO wait for design
+        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
     @Override
-    public void showFaildMessage(String errorMessage) {
+    public void showServiceErrorMessage(String errorMessage) {
         //TODO wait for design
-        Log.d("RegisterActivity", errorMessage);
         Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
     }
 
@@ -215,20 +242,18 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                 finish();
                 break;
             case R.id.textview_right_menu:
-
                 KeyBoardUtils.hideKeyboard(this);
-                String firstName = etRegisterFirstname.getText();
-                String lastName = etRegisterLastname.getText();
-                String email = etRegisterEmail.getText();
-                String password = etRegisterPassword.getText();
-                String confirmPassword = etRegisterConfirmationPassword.getText();
-                String title = tvRegisterTitle.getText().toString();
-                String mobile = etRegisterMobile.getText();
-                String birth = tvRegisterDateOfBirth.getText().toString();
-                String language = tvRegisterLanguage.getText().toString();
-                judgmentRegister(firstName, lastName, email, password, confirmPassword, title,
-                    mobile, birth, language, ivRegisterEmail.isSelected(),
-                    ivRegisterSms.isSelected());
+                showLoadingBar();
+                firstName = etRegisterFirstname.getText();
+                lastName = etRegisterLastname.getText();
+                email = etRegisterEmail.getText();
+                password = etRegisterPassword.getText();
+                confirmPassword = etRegisterConfirmationPassword.getText();
+                title = tvRegisterTitle.getText().toString();
+                mobile = etRegisterMobile.getText();
+                birth = tvRegisterDateOfBirth.getText().toString();
+                language = tvRegisterLanguage.getText().toString();
+                judgmentRegister();
                 break;
             case R.id.tv_register_title:
                 EditTextUtil.eidtLoseFocus(view);
@@ -273,11 +298,10 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     private void startLoginScreen() {
         startActivity(new Intent(this, LoginActivity.class));
+        finish();
     }
 
-    private void judgmentRegister(String firstName, String lastName, String email, String password,
-        String confirmPassword, String chooseTitle, String mobile, String birth,
-        String language, boolean sendEmail, boolean sendSMS) {
+    private void judgmentRegister() {
         if (TextUtils.isEmpty(firstName)) {
             etRegisterFirstname.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
@@ -322,10 +346,43 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         } else {
             tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
         }
+        new Thread(() -> {
+            String result = PasswordEncoderUtil.encryptPasswordWithSHA256Salt(password);
+            Message msg = new Message();
+            msg.obj = result;
+            msg.what = MESSAGE_WHAT_ENCRYPTION;
+            encryptPasswordHandler.sendMessage(msg);
+        }).start();
+    }
+
+    private void registerRequest() {
         String gender = ivSelectMale.isSelected() ? "1" : "2";
+        boolean isRegisterEmail = ivRegisterEmail.isSelected();
+        boolean isRegisterSms = ivRegisterSms.isSelected();
         mPresenter
-            .registerRequest(firstName + lastName, email, password, chooseTitle, gender, birth,
-                mobile, language, sendEmail, sendSMS);
+            .registerRequest(firstName + lastName, email, password, title, gender, birth,
+                mobile, language, isRegisterEmail, isRegisterSms);
+    }
+
+    private static class EncryptPasswordHandler extends Handler {
+
+        private WeakReference<RegisterActivity> activity;
+
+        private EncryptPasswordHandler(RegisterActivity startActivity) {
+            activity = new WeakReference<RegisterActivity>(startActivity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            if (activity.get() == null) {
+                return;
+            }
+            if (MESSAGE_WHAT_ENCRYPTION == msg.what) {
+                activity.get().password = (String) msg.obj;
+                activity.get().registerRequest();
+            }
+        }
     }
 
     @Override

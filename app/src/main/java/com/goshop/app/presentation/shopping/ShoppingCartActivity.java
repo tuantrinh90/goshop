@@ -166,7 +166,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak,false);
-                // TODO: jay: 2018/4/11  need real api
+                // TODO: 2018/4/11  need real api
                 mPresenter.shoppingCartRequest(null);
                 break;
         }

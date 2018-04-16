@@ -51,6 +51,10 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
         super.onCreate(savedInstanceState);
         setCurrentMenuType(MenuUtil.MENU_TYPE_HOME);
         setContentView(getContentView());
+        initView();
+    }
+
+    private void initView() {
         initTabLayoutViewPager();
         initSearchBar();
     }

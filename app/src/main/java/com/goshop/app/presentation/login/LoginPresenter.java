@@ -13,11 +13,11 @@ import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.FacebookLoginVm;
 
 import org.json.JSONObject;
 
@@ -37,34 +37,6 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
     public LoginPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
-    }
-
-    @Override
-    public void getUserLogin(String username, String password) {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.getUserInfo(username, password).subscribeWith(
-            new DisposableObserver<UserInfo>() {
-                @Override
-                public void onNext(UserInfo userInfo) {
-                    mView.hideLoadingBar();
-                    mView.showLogin(userInfo);
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                    if (throwable instanceof ServiceApiFail) {
-                        mView.showFaildMessage(((ServiceApiFail) throwable).getErrorMessage());
-                    } else {
-                        mView.showNetwordErrorMessage();
-                    }
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
     }
 
     @Override
@@ -120,7 +92,6 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
 
     @Override
     public void loginRequest(String email, String password) {
-        mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
@@ -131,13 +102,37 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                 @Override
                 public void onNext(Response<LoginResponse> response) {
                     mView.hideLoadingBar();
-                    mView.loginSuccess();
+                    mView.loginSuccess(response);
+                    saveUserInfo(response);
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getLocalizedMessage().toString());
+                    }
+                }
+
+                @Override
+                public void onComplete() {
+                    mView.hideLoadingBar();
+                }
+            }));
+    }
+
+    private void saveUserInfo(Response<LoginResponse> response) {
+        addSubscrebe(accountRepository.saveUserInfo(response.getData().getCustomer())
+            .subscribeWith(new DisposableObserver<Object>() {
+                @Override
+                public void onNext(Object response) {
                 }
 
                 @Override
                 public void onError(Throwable e) {
-                    mView.hideLoadingBar();
-                    mView.showFaildMessage(e.getLocalizedMessage().toString());
                 }
 
                 @Override
@@ -151,7 +146,6 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
     public void facebookLoginRequest(String email, String fbId, String token, String name,
         String gender) {
         mView.showLoadingBar();
-
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
@@ -165,13 +159,13 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                 @Override
                 public void onNext(Response<LoginResponse> response) {
                     mView.hideLoadingBar();
-                    mView.loginSuccess();
+                    mView.loginSuccess(response);
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showFaildMessage(e.getLocalizedMessage().toString());
+                    mView.showServiceErrorMessage(e.getLocalizedMessage().toString());
                 }
 
                 @Override
@@ -186,11 +180,13 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
         GraphRequest request = GraphRequest
             .newMeRequest(accessToken, (JSONObject object, GraphResponse response) -> {
                 if (object != null) {
-                    String id = object.optString("id");
-                    String name = object.optString("name");
-                    String gender = object.optString("gender");
-                    String emali = object.optString("email");
-                    mView.setFacebookLoginParams(emali, id, accessToken.getToken(), name, gender);
+                    FacebookLoginVm facebookLoginVm = new FacebookLoginVm();
+                    facebookLoginVm.setId(object.optString("id"));
+                    facebookLoginVm.setName(object.optString("name"));
+                    facebookLoginVm.setEmali(object.optString("email"));
+                    facebookLoginVm.setGender(object.optString("gender"));
+                    facebookLoginVm.setToken(accessToken.getToken());
+                    mView.setFacebookLoginParams(facebookLoginVm);
                 }
             });
         request.executeAsync();

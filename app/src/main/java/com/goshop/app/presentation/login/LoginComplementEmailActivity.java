@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.presentation.model.FacebookLoginVm;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.ToastUtil;
@@ -15,6 +16,7 @@ import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -25,6 +27,8 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     .Presenter> implements
     LoginComplementEmailContract.View, ToastUtil.OnToastListener {
 
+    public static final String EXTRA_FACEBOOK_INFO = "facebookInfo";
+
     @BindView(R.id.ctd_et_complement_email)
     CustomAnimEditText ctdEtComplementEmail;
 
@@ -33,9 +37,24 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     private ToastUtil toastUtil;
 
+    private FacebookLoginVm facebookLoginVm;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        if (getIntent() != null && getIntent().getParcelableExtra(EXTRA_FACEBOOK_INFO) != null) {
+            facebookLoginVm = getIntent().getParcelableExtra(EXTRA_FACEBOOK_INFO);
+        }
+    }
+
+    private void initView() {
+        hideRightMenu();
+        toastUtil = new ToastUtil(this, this);
     }
 
     @Override
@@ -45,17 +64,6 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     @Override
     public void inject() {
-        hideRightMenu();
-        initPresenter();
-        toastUtil = new ToastUtil(this, this);
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.whoops_email);
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -63,6 +71,10 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
             .inject(this);
     }
 
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.whoops_email);
+    }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_complement_email_submit})
     public void onComplementEmailClick(View view) {
@@ -78,10 +90,9 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
                 EditTextUtil.eidtLoseFocus(tvBtnComplementEmailSubmit);
                 String email = ctdEtComplementEmail.getText();
                 if (!TextUtils.isEmpty(email)) {
-                    //TODO(helen)wait for api
-                    mPresenter.complementEmailRequest(null);
+                    facebookLoginVm.setEmali(email);
+                    mPresenter.facebookLoginRequest(facebookLoginVm);
                 }
-
                 break;
         }
     }
@@ -101,12 +112,14 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     }
 
     @Override
-    public void showErrorMessage() {
-
+    public void showServiceErrorMessage(String message) {
+        // TODO: 2018/4/16 need ui
+        Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
     }
-
     @Override
-    public void hideErrorMessage() {
-
+    public void showNetworkErrorMessage(String message) {
+        // TODO: 2018/4/16 need ui
+        Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
     }
+
 }

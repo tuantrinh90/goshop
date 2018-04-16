@@ -62,6 +62,8 @@ import com.goshop.app.presentation.home.PromotionContract;
 import com.goshop.app.presentation.home.PromotionPresenter;
 import com.goshop.app.presentation.home.PromotionSkuContract;
 import com.goshop.app.presentation.home.PromotionSkuPresenter;
+import com.goshop.app.presentation.home.SplashContract;
+import com.goshop.app.presentation.home.SplashPresenter;
 import com.goshop.app.presentation.home.TVShowPageContract;
 import com.goshop.app.presentation.home.TVShowPagePresenter;
 import com.goshop.app.presentation.home.TrendingNowContract;
@@ -138,6 +140,13 @@ public class PresenterModule {
     public TrendingNowContract.Presenter provideHomePagePresenter(
         AccountDataRepository dataRepository) {
         return new TrendingNowPresenter(dataRepository);
+    }
+
+    @Provides
+    @ActivityScope
+    public SplashContract.Presenter provideSplashPresenter(
+        AccountDataRepository dataRepository) {
+        return new SplashPresenter(dataRepository);
     }
 
     @Provides

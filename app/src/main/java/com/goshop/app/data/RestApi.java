@@ -89,10 +89,6 @@ public interface RestApi {
 
     Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params);
 
-    io.reactivex.Observable<GetWeatherResponse> getWeather(String id);
-
-    io.reactivex.Observable<UserInfo> getUser(String username, String password);
-
     io.reactivex.Observable<Response> registerRequest(Map<String, Object> params);
 
     io.reactivex.Observable<HomeResponse> homeRequest(Map<String, Object> params);

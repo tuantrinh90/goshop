@@ -1,5 +1,14 @@
 package com.goshop.app.data;
-//TODO this class may be used later, so keep it
+
+import com.goshop.app.data.model.response.common.UserData;
+
+import io.reactivex.Observable;
+
 public interface LocalApi {
 
+    Observable<Object> saveUserInfo(UserData customer);
+
+    Observable<UserData> getUserInfo();
+
+    Observable<Boolean> clearUserInfo();
 }

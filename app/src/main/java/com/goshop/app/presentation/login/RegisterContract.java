@@ -12,9 +12,9 @@ public interface RegisterContract {
 
         void registerSuccess();
 
-        void showNetwordErrorMessage();
+        void showNetworkErrorMessage(String errorMessage);
 
-        void showFaildMessage(String errorMessage);
+        void showServiceErrorMessage(String errorMessage);
     }
 
     interface Presenter extends BasePresenter<View> {

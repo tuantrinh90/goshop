@@ -126,5 +126,30 @@ public class Const {
 
     public static final int WEBSITE_ID = 1;
 
+    //request param
+    public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";
+
+    public static final String REQUEST_PARAM_STORE_ID = "store_id";
+
+    public static final String REQUEST_PARAM_NAME = "name";
+
+    public static final String REQUEST_PARAM_EMAIL = "email";
+
+    public static final String REQUEST_PARAM_PASSWORD = "password";
+
+    public static final String REQUEST_PARAM_TITLE = "title";
+
+    public static final String REQUEST_PARAM_GENDER = "gender";
+
+    public static final String REQUEST_PARAM_DOB = "dob";
+
+    public static final String REQUEST_PARAM_MOBILE_NUMBER = "mobile_number";
+
+    public static final String REQUEST_PARAM_LANGUAGE = "language";
+
+    public static final String REQUEST_PARAM_EMAIL_SUBSCRIBE = "email_subscribe";
+
+    public static final String REQUEST_PARAM_SMS_SUBSCRIBE = "sms_subscribe";
+
 
 }

@@ -167,16 +167,6 @@ public interface RetrofitRestApi {
     Observable<AllReviewsResponse> allReviewsRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @Headers({CONTENT_TYPE_JSON})
-    @GET
-    Observable<GetWeatherResponse> getWeather(@Url String url);
-
-    //TODO  this is an example
-    @Headers({CONTENT_TYPE_JSON})
-    @GET
-    Observable<UserInfo> getUserInfo(@Url String url,
-        @Body GetUserRequest getUserRequest);
-
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
@@ -217,13 +207,6 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<NotificationsResponse> notificationRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
-
-    //TODO  this is an example
-    @FormUrlEncoded
-    @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<Error> loginCreatePinRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

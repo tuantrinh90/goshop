@@ -1,8 +1,10 @@
 package com.goshop.app.widget.adapter;
 
+import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.goloyalty.GoLoyaltyActivity;
 import com.goshop.app.presentation.model.MenuHeaderVM;
 import com.goshop.app.presentation.model.MenuItemVM;
 import com.goshop.app.presentation.model.MenuModel;
@@ -91,7 +93,6 @@ public class MenuAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-
     public void updateDrawerModel(List<MenuModel> drawerListModel) {
         menuModels.clear();
         menuModels.addAll(drawerListModel);
@@ -111,6 +112,12 @@ public class MenuAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_slide_sign_up)
         RobotoMediumTextView tvSlideSignUp;
 
+        @BindView(R.id.tv_slide_user_name)
+        RobotoMediumTextView tvUserName;
+
+        @BindView(R.id.iv_slide_user)
+        ImageView ivUserPortrait;
+
         public HeaderViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -122,6 +129,9 @@ public class MenuAdapter extends RecyclerView.Adapter {
                     .equals(menuModel.getMenuType())) {
                     rlSlideUserInfo.setVisibility(View.VISIBLE);
                     tvSlideSignUp.setVisibility(View.GONE);
+                    if (GoShopApplication.getCacheUserInfo() != null) {
+                        tvUserName.setText(GoShopApplication.getCacheUserInfo().getName());
+                    }
                     rlSlideUserInfo
                         .setOnClickListener(
                             v -> onSlideMenuItemClickListener.onItemClick(menuModel, position));

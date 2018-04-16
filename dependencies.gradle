@@ -31,6 +31,7 @@ ext {
     systembartintVersion = '1.0.3'
     loggerVersion = '2.1.1'
     facebookVersion = '[4,5)'
+    chuckVersion = '1.1.0'
 
     appDependencies = [
             slidetoact                    : "com.ncorti:slidetoact:$slidetoactVersion",
@@ -70,13 +71,15 @@ ext {
             constraintlayout              : "com.android.support.constraint:constraint-layout:$constraintlayoutVersion",
             crashlyticsSdk                : "com.crashlytics.sdk.android:crashlytics:$crashlyticsSdkVersion@aar",
             logger                        : "com.orhanobut:logger:$loggerVersion",
-            facebook                        : "com.facebook.android:facebook-android-sdk:$facebookVersion"
+            facebook                      : "com.facebook.android:facebook-android-sdk:$facebookVersion"
     ]
     developmentDependencies = [
             leakCanaryDebug  : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",
             leakCanaryRelease: "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
             leakCanaryTest   : "com.squareup.leakcanary:leakcanary-android-no-op:${leakCanaryVersion}",
             crashlytic       : "com.crashlytics.sdk.android:crashlytics:${crashlyticVersion}@aar",
+            chuckDebug       : "com.readystatesoftware.chuck:library:${chuckVersion}",
+            chuckRelease     : "com.readystatesoftware.chuck:library-no-op:${chuckVersion}",
     ]
 
     testDependencies = [

@@ -10,11 +10,15 @@ public class SettingsContract {
     interface View extends BaseView {
 
         void logoutResult();
+
+        void userInfoClearedSucceed(Boolean response);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
         void settingsLogoutRequest(Map<String, Object> params);
+
+        void clearUserInfo();
     }
 
 }

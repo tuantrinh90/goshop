@@ -37,6 +37,7 @@ import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.utils.ServiceData;
 
@@ -134,20 +135,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<AllReviewsResponse> allReviewsRequest(Map<String, Object> params) {
         return restApi.allReviewsRequest(params);
-    }
-
-    public Observable<UserInfo> getUserInfo(String id) {
-        return null;
-    }
-
-    @Override
-    public Observable<UserInfo> getUserInfo(String username, String password) {
-        return restApi.getUser(username, password);
-    }
-
-    @Override
-    public Observable<GetWeatherResponse> getWeather() {
-        return restApi.getWeather("");
     }
 
     @Override
@@ -354,6 +341,21 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params) {
         return restApi.facebookLoginRequest(params);
+    }
+
+    @Override
+    public Observable<Object> saveUserInfo(UserData customer) {
+        return null;
+    }
+
+    @Override
+    public Observable<UserData> getUserInfo() {
+        return null;
+    }
+
+    @Override
+    public Observable<Boolean> clearUserInfo() {
+        return null;
     }
 
 }

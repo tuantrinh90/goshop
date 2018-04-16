@@ -1,8 +1,10 @@
 package com.goshop.app.base;
 
+import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MenuModel;
+import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.widget.adapter.MenuAdapter;
 
@@ -33,7 +35,7 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
 
     private RecyclerView rvDrawerList;
 
-    private boolean isLogin = true;
+    public static boolean isLogin = false;
 
     private MenuAdapter menuAdapter;
 
@@ -74,7 +76,7 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
     public abstract String getScreenTitle();
 
     private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, isLogin, drawerLayout);
+        menuUtil = new MenuUtil(this, GoShopApplication.isLogin(), drawerLayout);
     }
 
     private void initDrawerList() {
@@ -118,6 +120,7 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
 
     public void openDrawerLayout() {
         if (!drawerLayout.isDrawerOpen(GravityCompat.START)) {
+            KeyBoardUtils.hideKeyboard(this);
             drawerLayout.openDrawer(GravityCompat.START);
         }
     }

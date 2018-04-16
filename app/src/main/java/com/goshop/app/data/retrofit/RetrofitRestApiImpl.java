@@ -174,21 +174,6 @@ public class RetrofitRestApiImpl implements RestApi {
         return retrofitRestApi.allReviewsRequest(url, params);
     }
 
-    @Override
-    public Observable<GetWeatherResponse> getWeather(String id) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.USER_INFO);
-        return retrofitRestApi.getWeather(url);
-    }
-
-    @Override
-    public Observable<UserInfo> getUser(String username, String password) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.USER_INFO);
-        GetUserRequest getUserRequest = new GetUserRequest();
-        getUserRequest.setUserName(username);
-        getUserRequest.setPassword(password);
-        return retrofitRestApi.getUserInfo(url, getUserRequest);
-    }
-
     public Observable<Response> registerRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.REGISTER_USER);
         return retrofitRestApi.registerRequest(url, params);

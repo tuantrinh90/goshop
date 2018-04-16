@@ -130,7 +130,6 @@ dependencies {
     compile appDependencies.systembartint
     compile appDependencies.logger
     compile appDependencies.facebook
-
     compile appDependencies.dagger2
     annotationProcessor appDependencies.daggerComiler
     compile(appDependencies.permissionsdispatcher) {
@@ -140,12 +139,9 @@ dependencies {
         transitive = true
     }
     annotationProcessor appDependencies.permissionsdispatcherprocessor
-
     debugCompile developmentDependencies.leakCanaryDebug
     releaseCompile developmentDependencies.leakCanaryRelease
     testCompile developmentDependencies.leakCanaryTest
-
-
     testCompile testDependencies.junit
     androidTestCompile(testDependencies.espresso, {
         exclude group: 'com.android.support', module: 'support-annotations'
@@ -153,6 +149,8 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.8.0@aar') {
         transitive = true
     }
+    debugCompile developmentDependencies.chuckDebug
+    releaseCompile developmentDependencies.chuckRelease
 }
 
 def ksFile = rootProject.file('keystore.properties')
