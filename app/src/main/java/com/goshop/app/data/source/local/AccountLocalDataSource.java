@@ -304,7 +304,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<ProfileResponse>> getUserProfile() {
+    public Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params) {
         return null;
     }
 

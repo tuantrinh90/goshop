@@ -448,9 +448,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<ProfileResponse>> getUserProfile() {
+    public Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_USER_PROFILE);
-        return retrofitRestApi.getUserProfile(url);
+        return retrofitRestApi.getUserProfile(url, params);
     }
 
     @Override

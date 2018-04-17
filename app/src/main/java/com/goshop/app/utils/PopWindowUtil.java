@@ -183,9 +183,8 @@ public class PopWindowUtil {
         DatePickerDialog datePickerDialog = new DatePickerDialog(parentView.getContext(),
             (DatePicker view, int pickYear, int monthOfYear,
                 int dayOfMonth) -> {
-                time.append(monthOfYear + 1).append("/").append(dayOfMonth).append("/")
-                    .append(pickYear);
-                onDatePickerDialogClickListener.onDatePicker(time.toString());
+                onDatePickerDialogClickListener.onDatePicker(
+                    DateFormater.getAbbreviationDate(pickYear, monthOfYear + 1, dayOfMonth));
             }, year, month, day);
         datePickerDialog.show();
     }
@@ -209,7 +208,8 @@ public class PopWindowUtil {
         void onCartDeleteClick();
     }
 
-    public interface OnWishlistDeleteListener{
+    public interface OnWishlistDeleteListener {
+
         void onWishlistDelete(WishlistVM wishlistVM);
     }
 

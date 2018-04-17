@@ -142,7 +142,7 @@ public interface AccountRepository {
 
     Observable<TVShowResponse> tvShowRequest(Map<String, Object> params);
 
-    Observable<Response<ProfileResponse>> getUserProfile();
+    Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params);
 
     Observable<Response<ProfileMetadataResponse>> getProfileMetadata();
 

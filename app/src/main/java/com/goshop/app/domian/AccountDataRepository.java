@@ -447,8 +447,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<ProfileResponse>> getUserProfile() {
-        return accountCloudDataSource.getUserProfile().concatMap(response -> {
+    public Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params) {
+        return accountCloudDataSource.getUserProfile(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {

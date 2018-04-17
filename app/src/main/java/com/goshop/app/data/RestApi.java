@@ -184,7 +184,7 @@ public interface RestApi {
 
     Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params);
 
-    Observable<Response<ProfileResponse>> getUserProfile();
+    Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params);
 
     Observable<Response<ProfileMetadataResponse>> getProfileMetadata();
 

@@ -60,6 +60,7 @@ import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Url;
 
@@ -273,7 +274,7 @@ public interface RetrofitRestApi {
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
+    @PUT
     Observable<Response<ProfileResponse>> editProfileRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
@@ -426,7 +427,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<ProfileResponse>> getUserProfile(@Url String fullUrl);
+    Observable<Response<ProfileResponse>> getUserProfile(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET

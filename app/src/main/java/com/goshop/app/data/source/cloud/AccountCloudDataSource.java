@@ -317,8 +317,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<ProfileResponse>> getUserProfile() {
-        return restApi.getUserProfile();
+    public Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params) {
+        return restApi.getUserProfile(params);
     }
 
     @Override
