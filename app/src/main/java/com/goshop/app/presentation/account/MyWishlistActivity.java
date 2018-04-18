@@ -63,9 +63,17 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
         super.onCreate(savedInstanceState);
         setCurrentMenuType(MenuUtil.MENU_TYPE_MY_WISHLIST);
         setContentView(getContentView());
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        mPresenter.getWishlistItems();
+    }
+
+    private void initView() {
         initRecyclerView();
         initToolbar();
-        mPresenter.getWishlistItems();
     }
 
     private void initToolbar() {
@@ -113,14 +121,13 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     public void showError(String errorMessage) {
         //todo wait for design
         Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
-        updateLayoutStatus(flConnectionBreak,true);
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
     public void deleteSuccess(List<WishlistVM> wishlistVMS) {
         wishlistAdapter.setUpdateDatas(wishlistVMS);
     }
-
 
     @Override
     public void onItemMenuClick(View parentView, Object object) {
@@ -129,7 +136,7 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
 
     @Override
     public void onWishlistDelete(WishlistVM wishlistVM) {
-        mPresenter.wishlistDeleteRequest(1, 3, wishlistVM.getSku());
+        mPresenter.wishlistDeleteRequest(wishlistVM.getSku());
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_add_now, R.id.tv_net_refresh})

@@ -32,9 +32,6 @@ public interface LoginContract {
 
         void loginRequest(String email, String password);
 
-        void facebookLoginRequest(String email, String fbId, String token, String name,
-            String gender);
-
         void getFacebookAccessToken(AccessToken accessToken);
     }
 }

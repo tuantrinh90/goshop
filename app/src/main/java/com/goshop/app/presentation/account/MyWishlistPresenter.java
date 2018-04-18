@@ -22,11 +22,11 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
     }
 
     @Override
-    public void wishlistDeleteRequest(int websiteId, int storeId, String sku) {
+    public void wishlistDeleteRequest(String sku) {
         mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
-        params.put(Const.PARAMS_WEBSITE_ID, websiteId);
-        params.put(Const.PARAMS_STORE_ID, storeId);
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
         params.put(Const.PARAMS_SKU, sku);
         addSubscrebe(accountRepository.wishlistDeleteRequest(params).subscribeWith(
             new DisposableObserver<Response<MyWishlistResponse>>() {
@@ -44,7 +44,7 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }
@@ -68,7 +68,7 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }

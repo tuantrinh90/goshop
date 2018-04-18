@@ -55,6 +55,7 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -143,11 +144,10 @@ public interface RetrofitRestApi {
     Observable<MyRewardsResponse> rewardsDetailRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
+    @DELETE
     Observable<Response<MyWishlistResponse>> wishilistDeleteRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

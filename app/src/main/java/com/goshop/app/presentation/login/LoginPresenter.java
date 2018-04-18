@@ -143,40 +143,6 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
     }
 
     @Override
-    public void facebookLoginRequest(String email, String fbId, String token, String name,
-        String gender) {
-        mView.showLoadingBar();
-        Map<String, Object> params = new HashMap<>();
-        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
-        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
-        params.put(Const.PARAMS_EMAIL, email);
-        params.put(Const.PARAMS_FB_ID, fbId);
-        params.put(Const.PARAMS_USER_ACCESS_TOKEN, token);
-        params.put(Const.PARAMS_NAME, name);
-        params.put(Const.PARAMS_GENDER, gender);
-        addSubscrebe(accountRepository.facebookLoginRequest(params).subscribeWith(
-            new DisposableObserver<Response<LoginResponse>>() {
-                @Override
-                public void onNext(Response<LoginResponse> response) {
-                    mView.hideLoadingBar();
-                    mView.loginSuccess(response);
-                    saveUserInfo(response);
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    mView.hideLoadingBar();
-                    mView.showServiceErrorMessage(e.getLocalizedMessage().toString());
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
-    }
-
-    @Override
     public void getFacebookAccessToken(AccessToken accessToken) {
         GraphRequest request = GraphRequest
             .newMeRequest(accessToken, (JSONObject object, GraphResponse response) -> {
@@ -187,9 +153,47 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                     facebookLoginVm.setEmali(object.optString("email"));
                     facebookLoginVm.setGender(object.optString("gender"));
                     facebookLoginVm.setToken(accessToken.getToken());
-                    mView.setFacebookLoginParams(facebookLoginVm);
+                    facebookLoginRequest(facebookLoginVm);
                 }
             });
         request.executeAsync();
+    }
+
+    private void facebookLoginRequest(FacebookLoginVm facebookLoginVm) {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_EMAIL, facebookLoginVm.getEmali());
+        params.put(Const.PARAMS_FB_ID, facebookLoginVm.getId());
+        params.put(Const.PARAMS_USER_ACCESS_TOKEN, facebookLoginVm.getToken());
+        params.put(Const.PARAMS_NAME, facebookLoginVm.getName());
+        params.put(Const.PARAMS_GENDER, facebookLoginVm.getGender());
+        addSubscrebe(accountRepository.facebookLoginRequest(params).subscribeWith(
+            new DisposableObserver<Response<LoginResponse>>() {
+                @Override
+                public void onNext(Response<LoginResponse> response) {
+                    mView.hideLoadingBar();
+                    if (response != null && response.getData() != null && response.getData()
+                        .getCustomer() != null && TextUtils
+                        .isEmpty(response.getData().getCustomer().getEmail())) {
+                        mView.loginSuccess(response);
+                        saveUserInfo(response);
+                    } else {
+                        mView.setFacebookLoginParams(facebookLoginVm);
+                    }
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.showServiceErrorMessage(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+                    mView.hideLoadingBar();
+                }
+            }));
     }
 }

@@ -13,11 +13,11 @@ public class MyEGiftCardContract {
 
         void getEGiftCardSuccess(List<MyEGiftModel> eGiftModels);
 
-        void getEGiftCardFailed(String errorMessage);
-
         void activeSuccess();
 
-        void activeFailed(String errorMessage);
+        void showServiceErrorMessage(String errorMessage);
+
+        void showNetworkErrorMessage(String errorMessage);
 
     }
 

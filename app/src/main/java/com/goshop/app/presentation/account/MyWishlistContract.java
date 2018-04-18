@@ -19,7 +19,7 @@ public class MyWishlistContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void wishlistDeleteRequest(int websiteId, int storeId, String sku);
+        void wishlistDeleteRequest(String sku);
 
         void getWishlistItems();
     }

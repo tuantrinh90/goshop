@@ -367,7 +367,12 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             ivProductDetailShare.setOnClickListener(v -> {
             });
             ivProductDetailWish.setOnClickListener(
-                v -> ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected()));
+                v -> {
+                    onProductDetailItemClickListener
+                        .onWishlistSelect(!ivProductDetailWish.isSelected());
+                    ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected());
+
+                });
             rlProductDetailColor.setOnClickListener(v -> {
             });
             rlProductDetailSize.setOnClickListener(v -> {

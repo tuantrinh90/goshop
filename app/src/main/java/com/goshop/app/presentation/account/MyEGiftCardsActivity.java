@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.MyEGiftModel;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -34,7 +35,17 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    private void initData() {
         mPresenter.getEGiftCardDetails();
+    }
+
+    private void initView() {
+        hideRightMenu();
+        initRecyclerView();
     }
 
     @Override
@@ -44,12 +55,6 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
 
     @Override
     public void inject() {
-        hideRightMenu();
-        initPresenter();
-        initRecyclerView();
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -70,27 +75,25 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
         return getResources().getString(R.string.my_egift_cards);
     }
 
-
     @Override
     public void getEGiftCardSuccess(List<MyEGiftModel> eGiftModels) {
         cardsAdapter.setUpDatas(eGiftModels);
     }
 
     @Override
-    public void getEGiftCardFailed(String errorMessage) {
-        //todo wait for design
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
-    }
-
-    @Override
     public void activeSuccess() {
+        // TODO: 2018/4/18 update list
         finish();
     }
 
     @Override
-    public void activeFailed(String errorMessage) {
-        //todo wait for design
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+    public void showServiceErrorMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(recyclerviewMyEgift, errorMessage);
+    }
+
+    @Override
+    public void showNetworkErrorMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(recyclerviewMyEgift, errorMessage);
     }
 
     @OnClick({R.id.imageview_left_menu})

@@ -4,6 +4,7 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.MyEGiftCardMapper;
 
@@ -37,14 +38,19 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
                 }
 
                 @Override
-                public void onError(Throwable e) {
+                public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.activeFailed(e.getLocalizedMessage().toString());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }
@@ -61,14 +67,19 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
                 }
 
                 @Override
-                public void onError(Throwable e) {
+                public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.getEGiftCardFailed(e.getLocalizedMessage().toString());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }
