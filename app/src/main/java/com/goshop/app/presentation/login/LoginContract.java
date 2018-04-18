@@ -15,8 +15,6 @@ public interface LoginContract {
 
     interface View extends BaseView {
 
-        void showLogin(UserInfo userInfo);
-
         void showNetworkErrorMessage(String errorMessage);
 
         void showServiceErrorMessage(String errorMessage);

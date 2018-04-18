@@ -117,7 +117,6 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
 
     @Override
     public void requestResult(String url) {
-        Log.d("WebContentActivity", "url:" + url);
         wvContent.loadUrl(url);
     }
 

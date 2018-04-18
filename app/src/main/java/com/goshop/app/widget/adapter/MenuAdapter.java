@@ -115,9 +115,6 @@ public class MenuAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_slide_user_name)
         RobotoMediumTextView tvUserName;
 
-        @BindView(R.id.iv_slide_user)
-        ImageView ivUserPortrait;
-
         public HeaderViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);

@@ -32,8 +32,6 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
 
-    @BindView(R.id.iv_my_account_thumb)
-    ImageView ivMyAccountThumb;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;

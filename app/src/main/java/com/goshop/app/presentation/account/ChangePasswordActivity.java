@@ -5,13 +5,18 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomPasswordEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.utils.EncryptPasswordHandler;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PasswordEncoderUtil;
+import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.utils.UserHelper;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -19,10 +24,13 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.Presenter>
-    implements ChangePasswordContract.View {
+    implements ChangePasswordContract.View, EncryptPasswordHandler.OnPasswordEncryptListener {
 
     @BindView(R.id.cp_et_confirm)
     CustomPasswordEditText cpEtConfirm;
+
+    @BindView(R.id.ll_container)
+    LinearLayout llContainer;
 
     @BindView(R.id.cp_et_current)
     CustomPasswordEditText cpEtCurrent;
@@ -33,9 +41,21 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
     @BindView(R.id.textview_right_menu)
     RobotoMediumTextView textviewRightMenu;
 
+    private String oldPassword;
+
+    private String newPassword;
+
+    private String newConfirmPassword;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView();
+    }
+
+    private void initView() {
+        textviewRightMenu.setText(getResources().getString(R.string.save));
+        hideRightMenu();
     }
 
     @Override
@@ -45,22 +65,16 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
 
     @Override
     public void inject() {
-        textviewRightMenu.setText(getResources().getString(R.string.save));
-        hideRightMenu();
-        initPresenter();
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.change_password);
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.change_password);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.textview_right_menu})
@@ -70,14 +84,16 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
                 finish();
                 break;
             case R.id.textview_right_menu:
-                judgmentPassword(cpEtCurrent.getText(), cpEtNew.getText(), cpEtConfirm.getText());
+                oldPassword = cpEtCurrent.getText();
+                newPassword = cpEtNew.getText();
+                newConfirmPassword = cpEtConfirm.getText();
+                judgmentPassword();
                 break;
         }
     }
 
-    private void judgmentPassword(String currentPassword, String newPassword,
-        String confirmPassword) {
-        if (TextUtils.isEmpty(currentPassword)) {
+    private void judgmentPassword() {
+        if (TextUtils.isEmpty(oldPassword)) {
             cpEtCurrent.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
@@ -85,27 +101,39 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
             cpEtNew.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        if (TextUtils.isEmpty(confirmPassword)) {
+        if (TextUtils.isEmpty(newConfirmPassword)) {
             cpEtConfirm.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        if (!newPassword.equals(confirmPassword)) {
+        if (!newPassword.equals(newConfirmPassword)) {
             cpEtConfirm.setErrorMessage(getResources().getString(R.string.confirm_error));
             return;
         }
         KeyBoardUtils.hideKeyboard(this);
-
-        mPresenter.changePasswordRequest("", currentPassword, newPassword);
+        showLoadingBar();
+        PasswordEncoderUtil
+            .getEncryptPasswords(new EncryptPasswordHandler(this), oldPassword, newPassword);
     }
 
     @Override
-    public void success() {
+    public void onPasswordEncrypted(String password) {
+        String old = password.substring(0, password.indexOf("/"));
+        String news = password.substring(password.indexOf("/") + 1);
+        mPresenter.changePasswordRequest(UserHelper.getUserId(), old, news);
+    }
+
+    @Override
+    public void onChangePasswordSuccess() {
         finish();
     }
 
     @Override
-    public void failed(String message) {
-        //todo wait for design
-        Log.d("ChangePasswordActivity", message);
+    public void showServiceErrorMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(llContainer, errorMessage);
+    }
+
+    @Override
+    public void showNetworkErrorMessage(String message) {
+        PopWindowUtil.showRequestMessagePop(llContainer, message);
     }
 }

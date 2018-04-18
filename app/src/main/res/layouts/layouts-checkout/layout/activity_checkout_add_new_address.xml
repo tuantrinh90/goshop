@@ -27,7 +27,7 @@
                 android:layout_marginTop="@dimen/size_20"
                 android:layout_marginLeft="@dimen/size_16"
                 android:layout_marginRight="@dimen/size_16"
-                animET:hint="@string/register_firstname"/>
+                animET:hint="@string/register_name"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_new_address_last"

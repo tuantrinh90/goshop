@@ -12,7 +12,7 @@ public class LoginComplementEmailContract {
 
     interface View extends BaseView {
 
-        void complementEmailSuccess();
+        void complementEmailSuccess(Response<LoginResponse> response);
 
         void showServiceErrorMessage(String message);
 
@@ -21,8 +21,6 @@ public class LoginComplementEmailContract {
     }
 
     public interface Presenter extends BasePresenter<View> {
-
-        void complementEmailRequest(Map<String, Object> params);
 
         void facebookLoginRequest(FacebookLoginVm facebookLoginVm);
     }

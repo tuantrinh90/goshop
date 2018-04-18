@@ -160,6 +160,7 @@ public class LoginPresenter extends RxPresenter<LoginContract.View> implements L
                 public void onNext(Response<LoginResponse> response) {
                     mView.hideLoadingBar();
                     mView.loginSuccess(response);
+                    saveUserInfo(response);
                 }
 
                 @Override

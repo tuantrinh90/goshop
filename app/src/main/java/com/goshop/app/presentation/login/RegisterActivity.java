@@ -8,19 +8,19 @@ import com.goshop.app.common.CustomPasswordEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.account.WebContentActivity;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.EditTextUtil;
+import com.goshop.app.utils.EncryptPasswordHandler;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PasswordEncoderUtil;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ToastUtil;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.text.SpannableString;
 import android.text.Spanned;
 import android.text.TextUtils;
@@ -28,12 +28,10 @@ import android.text.method.LinkMovementMethod;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.UnderlineSpan;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.LinearLayout;
 
-import java.lang.ref.WeakReference;
 import java.util.List;
 
 import butterknife.BindView;
@@ -43,9 +41,19 @@ import injection.modules.PresenterModule;
 
 public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> implements
     RegisterContract.View, ToastUtil.OnToastListener, PopWindowUtil.OnPopWindowDismissListener,
-    PopWindowUtil.OnDatePickerDialogClickListener {
+    PopWindowUtil.OnDatePickerDialogClickListener, EncryptPasswordHandler
+    .OnPasswordEncryptListener {
 
     public static final int MESSAGE_WHAT_ENCRYPTION = 0;
+
+    public static final String TIP_TYPE_PRIVACY_POLICY = "tip_type_privacy_policy";
+
+    public static final String TIP_TYPE_TERMS_AND_CONDITIONS = "tip_type_terms_and_conditions";
+
+    public static final String TIP_TYPE_TERMS_OF_USER = "tip_type_terms_of_user";
+
+    @BindView(R.id.ll_container)
+    LinearLayout llContainer;
 
     @BindView(R.id.ctd_et_register_confirmation_password)
     CustomPasswordEditText etRegisterConfirmationPassword;
@@ -53,11 +61,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     @BindView(R.id.ctd_et_register_email)
     CustomAnimEditText etRegisterEmail;
 
-    @BindView(R.id.ctd_et_register_firstname)
-    CustomAnimEditText etRegisterFirstname;
-
-    @BindView(R.id.ctd_et_register_lastname)
-    CustomAnimEditText etRegisterLastname;
+    @BindView(R.id.ctd_et_register_name)
+    CustomAnimEditText etRegisterName;
 
     @BindView(R.id.ctd_et_register_mobile)
     CustomAnimEditText etRegisterMobile;
@@ -106,11 +111,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     private ToastUtil toastUtil;
 
-    private EncryptPasswordHandler encryptPasswordHandler;
-
-    private String firstName;
-
-    private String lastName;
+    private String name;
 
     private String email;
 
@@ -142,7 +143,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     }
 
     private void initData() {
-        encryptPasswordHandler = new EncryptPasswordHandler(this);
         toastUtil = new ToastUtil(this, this);
         languagesVMS = mPresenter.getLanguageChooses();
         titleVMS = mPresenter.getTitleChooses();
@@ -168,60 +168,69 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         return getResources().getString(R.string.register);
     }
 
-    //TODO(helen)hard code need decide
     private void initPrivacyPolicyAndTerms() {
-        SpannableString spannableString = new SpannableString(
-            getResources().getString(R.string.register_tips));
-        spannableString.setSpan(new UnderlineSpan(), 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString
-            .setSpan(new ForegroundColorSpan(getResources().getColor(R.color.color_main_pink)), 69,
-                83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new UnderlineSpan(), 85, 105, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ForegroundColorSpan(Color.MAGENTA), 85, 105,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new UnderlineSpan(), 107, 120, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ForegroundColorSpan(Color.MAGENTA), 107, 120,
-            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
-        spannableString.setSpan(new ClickableSpan() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(RegisterActivity.this, "1", Toast.LENGTH_SHORT).show();
-            }
-        }, 69, 83, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                Toast.makeText(RegisterActivity.this, "2", Toast.LENGTH_SHORT).show();
-            }
-        }, 85, 105, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-        spannableString.setSpan(new ClickableSpan() {
-            @Override
-            public void onClick(View widget) {
-                Toast.makeText(RegisterActivity.this, "3", Toast.LENGTH_SHORT).show();
-            }
-        }, 107, 120, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-
+        String registerTips = getResources().getString(R.string.register_tips);
+        String registerTips01 = getResources().getString(R.string.register_tips_privacy_policy);
+        String registerTips02 = getResources()
+            .getString(R.string.register_tips_terms_and_conditions);
+        String registerTips03 = getResources().getString(R.string.register_tips_terms_of_user);
+        int index01 = registerTips.indexOf(registerTips01);
+        int index02 = registerTips.indexOf(registerTips02);
+        int index03 = registerTips.indexOf(registerTips03);
+        SpannableString spannableString = new SpannableString(registerTips);
+        spannableStringFormat(spannableString, index01, registerTips01, TIP_TYPE_PRIVACY_POLICY);
+        spannableStringFormat(spannableString, index02, registerTips02,
+            TIP_TYPE_TERMS_AND_CONDITIONS);
+        spannableStringFormat(spannableString, index03, registerTips03, TIP_TYPE_TERMS_OF_USER);
         tvRegisterRead.setText(spannableString);
         tvRegisterRead.setMovementMethod(LinkMovementMethod.getInstance());
     }
 
+    private void spannableStringFormat(SpannableString spannableString, int startIndex,
+        String text, String type) {
+        spannableString.setSpan(new UnderlineSpan(), startIndex, startIndex + text.length(),
+            Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString
+            .setSpan(new ForegroundColorSpan(ContextCompat.getColor(this, R.color.color_main_pink)),
+                startIndex, startIndex + text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        spannableString.setSpan(new ClickableSpan() {
+            @Override
+            public void onClick(View view) {
+                switch (type) {
+                    case TIP_TYPE_PRIVACY_POLICY:
+                        gotoInfoDetails(type);
+                        break;
+                    case TIP_TYPE_TERMS_AND_CONDITIONS:
+                        gotoInfoDetails(type);
+                        break;
+                    case TIP_TYPE_TERMS_OF_USER:
+                        gotoInfoDetails(type);
+                        break;
+                }
+            }
+        }, startIndex, startIndex + text.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+    }
+
+    //TODO  need decide
+    private void gotoInfoDetails(String type) {
+        Intent intent = new Intent(this, WebContentActivity.class);
+        intent.putExtra(WebContentActivity.CONTENT_TAG, type);
+        startActivity(intent);
+    }
+
     @Override
     public void registerSuccess() {
-        //TODO(helen)when register success
         toastUtil.showThanksToast();
     }
 
     @Override
     public void showNetworkErrorMessage(String errorMessage) {
-        //TODO wait for design
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(llContainer, errorMessage);
     }
 
     @Override
     public void showServiceErrorMessage(String errorMessage) {
-        //TODO wait for design
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(llContainer, errorMessage);
     }
 
     @OnClick({R.id.tv_btn_register_login, R.id.imageview_left_menu, R.id
@@ -243,9 +252,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                 break;
             case R.id.textview_right_menu:
                 KeyBoardUtils.hideKeyboard(this);
-                showLoadingBar();
-                firstName = etRegisterFirstname.getText();
-                lastName = etRegisterLastname.getText();
+                name = etRegisterName.getText();
                 email = etRegisterEmail.getText();
                 password = etRegisterPassword.getText();
                 confirmPassword = etRegisterConfirmationPassword.getText();
@@ -302,13 +309,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     }
 
     private void judgmentRegister() {
-        if (TextUtils.isEmpty(firstName)) {
-            etRegisterFirstname.setErrorMessage(getResources().getString(R.string.empty_error));
-            return;
-        }
-
-        if (TextUtils.isEmpty(lastName)) {
-            etRegisterLastname.setErrorMessage(getResources().getString(R.string.empty_error));
+        if (TextUtils.isEmpty(name)) {
+            etRegisterName.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
 
@@ -339,20 +341,20 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                 .setErrorMessage(getResources().getString(R.string.format_mobile_warning));
             return;
         }
-
         if (TextUtils.isEmpty(birth)) {
             tvRegisterDateOfBirthWarning.setVisibility(View.VISIBLE);
             return;
         } else {
             tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
         }
-        new Thread(() -> {
-            String result = PasswordEncoderUtil.encryptPasswordWithSHA256Salt(password);
-            Message msg = new Message();
-            msg.obj = result;
-            msg.what = MESSAGE_WHAT_ENCRYPTION;
-            encryptPasswordHandler.sendMessage(msg);
-        }).start();
+        showLoadingBar();
+        PasswordEncoderUtil.getEncryptPassword(new EncryptPasswordHandler(this), password);
+    }
+
+    @Override
+    public void onPasswordEncrypted(String password) {
+        this.password = password;
+        registerRequest();
     }
 
     private void registerRequest() {
@@ -360,29 +362,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
         boolean isRegisterEmail = ivRegisterEmail.isSelected();
         boolean isRegisterSms = ivRegisterSms.isSelected();
         mPresenter
-            .registerRequest(firstName + lastName, email, password, title, gender, birth,
+            .registerRequest(name, email, password, title, gender, birth,
                 mobile, language, isRegisterEmail, isRegisterSms);
-    }
-
-    private static class EncryptPasswordHandler extends Handler {
-
-        private WeakReference<RegisterActivity> activity;
-
-        private EncryptPasswordHandler(RegisterActivity startActivity) {
-            activity = new WeakReference<RegisterActivity>(startActivity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (activity.get() == null) {
-                return;
-            }
-            if (MESSAGE_WHAT_ENCRYPTION == msg.what) {
-                activity.get().password = (String) msg.obj;
-                activity.get().registerRequest();
-            }
-        }
     }
 
     @Override
@@ -409,7 +390,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @Override
     public void onDismiss() {
-
+        //don't need to implement it yet.
     }
 
     @Override

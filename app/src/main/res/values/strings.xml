@@ -110,7 +110,7 @@
     <string name="FB_Login_tips_error">Please check the internet, and try again.</string>
 
     <string name="register">Register</string>
-    <string name="register_firstname">First Name</string>
+    <string name="register_name">Name</string>
     <string name="register_lastname">Last Name</string>
     <string name="email">Email</string>
     <string name="email_end">Email:</string>
@@ -131,6 +131,9 @@
     <string name="register_tips">By registering account, I confirm that: I have read and agree to
         the Privacy Policy, Terms and Conditions, Terms of User at Go Shop.
     </string>
+    <string name="register_tips_privacy_policy">Privacy Policy</string>
+    <string name="register_tips_terms_and_conditions">Terms and Conditions</string>
+    <string name="register_tips_terms_of_user">Terms of User</string>
     <string name="account">Account</string>
     <string name="register_have_account">Already have an account?</string>
     <string name="login">Login</string>
@@ -338,10 +341,10 @@
     <string name="search_hint">Search products or brands</string>
     <string name="category">Category</string>
     <string name="sign_up_login">Sign up / Login</string>
-    <string name="hey_user">Hey, User Name</string>
+    <string name="hey_user">Hey, Name</string>
     <string name="home">Home</string>
     <string name="go_shop_member">Go Shop Member</string>
-    <string name="user_name">User Name</string>
+    <string name="user_name">Name</string>
     <string name="categories">Categories</string>
     <string name="go_loyalty">Go+ Loyalty</string>
     <string name="notifications">Notifications</string>

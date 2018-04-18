@@ -10,29 +10,26 @@ import com.goshop.app.common.CustomPasswordEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.FacebookLoginVm;
+import com.goshop.app.utils.EncryptPasswordHandler;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PasswordEncoderUtil;
+import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ScreenHelper;
-import com.orhanobut.logger.Logger;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import java.lang.ref.WeakReference;
 import java.util.Arrays;
 
 import butterknife.BindView;
@@ -41,9 +38,10 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> implements
-    LoginContract.View {
+    LoginContract.View, EncryptPasswordHandler.OnPasswordEncryptListener {
 
-    public static final int MESSAGE_WHAT_ENCRYPTION = 0;
+    @BindView(R.id.rl_container)
+    RelativeLayout rlContainer;
 
     @BindView(R.id.et_login_email)
     CustomAnimEditText etLoginEmail;
@@ -80,8 +78,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     private CallbackManager callbackManager;
 
-    private EncryptPasswordHandler encryptPasswordHandler;
-
     private String email;
 
     private String password;
@@ -97,7 +93,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     private void initData() {
         callbackManager = mPresenter.initFaceBook();
-        encryptPasswordHandler = new EncryptPasswordHandler(this);
     }
 
     private void initToolbar() {
@@ -141,7 +136,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
                 openDrawerLayout();
                 break;
             case R.id.tv_btn_login:
-                showLoadingBar();
                 emailLogin();
                 break;
             case R.id.tv_login_forgot_password:
@@ -151,7 +145,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
                 //facebook sdk code
                 LoginManager.getInstance().logInWithReadPermissions(this, Arrays
                     .asList("public_profile", "user_friends", "email"));
-
                 // TODO: 2018/4/12  you can use this method generate HashKey for facebook
 //                JToolUtils.generateHashKey(this);
                 break;
@@ -173,56 +166,28 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
         }
         email = etLoginEmail.getText();
         password = etLoginPassword.getText();
-        new Thread(() -> {
-            String result = PasswordEncoderUtil.encryptPasswordWithSHA256Salt(password);
-            Message msg = new Message();
-            msg.obj = result;
-            msg.what = MESSAGE_WHAT_ENCRYPTION;
-            encryptPasswordHandler.sendMessage(msg);
-        }).start();
-    }
-
-    private void registerLogin() {
-        mPresenter.loginRequest(email, password);
-    }
-
-    private static class EncryptPasswordHandler extends Handler {
-
-        private WeakReference<LoginActivity> activity;
-
-        private EncryptPasswordHandler(LoginActivity startActivity) {
-            activity = new WeakReference<LoginActivity>(startActivity);
-        }
-
-        @Override
-        public void handleMessage(Message msg) {
-            super.handleMessage(msg);
-            if (activity.get() == null) {
-                return;
-            }
-            if (MESSAGE_WHAT_ENCRYPTION == msg.what) {
-                activity.get().password = (String) msg.obj;
-                activity.get().registerLogin();
-            }
-        }
+        showLoadingBar();
+        PasswordEncoderUtil.getEncryptPassword(new EncryptPasswordHandler(this), password);
     }
 
     @Override
-    public void showLogin(UserInfo userInfo) {
-        //TODO joyson temp code
-        Logger.e("resposne:" + userInfo.getUsername());
+    public void onPasswordEncrypted(String password) {
+        this.password = password;
+        loginRequest();
+    }
+
+    private void loginRequest() {
+        mPresenter.loginRequest(email, password);
     }
 
     @Override
     public void showNetworkErrorMessage(String errorMessage) {
-        //TODO wait for design
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(rlContainer, errorMessage);
     }
 
     @Override
     public void showServiceErrorMessage(String errorMessage) {
-        //TODO wait for design
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(rlContainer, errorMessage);
     }
 
     @Override
@@ -252,8 +217,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
         Intent intent = new Intent(this, LoginComplementEmailActivity.class);
         intent.putExtra(LoginComplementEmailActivity.EXTRA_FACEBOOK_INFO, facebookVm);
         startActivity(intent);
-//        mPresenter.facebookLoginRequest(email, fbId, token, name, gender);
     }
-
 
 }

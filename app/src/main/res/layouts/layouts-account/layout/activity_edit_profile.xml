@@ -40,7 +40,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/size_6"
-                animET:hint="@string/register_firstname"/>
+                animET:hint="@string/register_name"/>
 
             <com.goshop.app.common.CustomAnimEditText
                 android:id="@+id/et_profile_last"
