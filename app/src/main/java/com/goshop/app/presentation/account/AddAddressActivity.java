@@ -1,13 +1,14 @@
 package com.goshop.app.presentation.account;
 
+import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.RobotoLightCheckBox;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.request.AddressRequest;
-import com.goshop.app.data.model.request.common.AddressData;
 import com.goshop.app.data.model.request.common.RequestData;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.PopWindowUtil;
@@ -16,10 +17,9 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -30,11 +30,14 @@ import injection.modules.PresenterModule;
 public class AddAddressActivity extends BaseActivity<AddAddressContract.Presenter> implements
     AddAddressContract.View, PopWindowUtil.OnPopWindowDismissListener {
 
-    @BindView(R.id.et_add_address_first)
-    CustomAnimEditText etAddAddressFirst;
+    @BindView(R.id.checkbox_default_billing)
+    RobotoLightCheckBox checkboxDefaultBilling;
 
-    @BindView(R.id.et_add_address_last)
-    CustomAnimEditText etAddAddressLast;
+    @BindView(R.id.checkbox_default_shipping)
+    RobotoLightCheckBox checkboxDefaultShipping;
+
+    @BindView(R.id.et_add_address_name)
+    CustomAnimEditText etAddAddressName;
 
     @BindView(R.id.et_add_address_one)
     CustomAnimEditText etAddAddressOne;
@@ -47,18 +50,6 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
 
     @BindView(R.id.et_add_address_zip)
     CustomAnimEditText etAddAddressZip;
-
-    @BindView(R.id.iv_add_address_email)
-    ImageView ivAddAddressEmail;
-
-    @BindView(R.id.iv_add_address_sms)
-    ImageView ivAddAddressSms;
-
-    @BindView(R.id.ll_add_address_email)
-    LinearLayout llAddAddressEmail;
-
-    @BindView(R.id.ll_add_address_sms)
-    LinearLayout llAddAddressSms;
 
     @BindView(R.id.textview_right_menu)
     RobotoMediumTextView textviewRightMenu;
@@ -105,8 +96,9 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
     @Override
     public void inject() {
         textviewRightMenu.setText(getResources().getString(R.string.done));
-        ivAddAddressEmail.setSelected(true);
-        ivAddAddressSms.setSelected(true);
+        tvAddAddressCountry.setText(getResources().getString(R.string.malaysia));
+        checkboxDefaultBilling.setChecked(true);
+        checkboxDefaultShipping.setChecked(true);
         initPresenter();
     }
 
@@ -123,8 +115,8 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
         return getResources().getString(R.string.add_address);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.textview_right_menu, R.id.ll_add_address_email, R.id
-        .ll_add_address_sms, R.id.tv_add_address_city, R.id.tv_add_address_country, R.id
+    @OnClick({R.id.imageview_left_menu, R.id.textview_right_menu,
+        R.id.tv_add_address_city, R.id.tv_add_address_country, R.id
         .tv_add_address_state})
     public void onAddAddressClick(View view) {
         switch (view.getId()) {
@@ -132,23 +124,14 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
                 finish();
                 break;
             case R.id.textview_right_menu:
-                String firstName = etAddAddressFirst.getText();
-                String lastName = etAddAddressLast.getText();
+                String firstName = etAddAddressName.getText();
                 String addressOne = etAddAddressOne.getText();
                 String addressTwo = etAddAddressTwo.getText();
-                String country = tvAddAddressCountry.getText().toString();
                 String state = tvAddAddressState.getText().toString();
                 String city = tvAddAddressCity.getText().toString();
                 String zip = etAddAddressZip.getText();
                 String phone = etAddAddressPhone.getText();
-                judgmentInput(firstName, lastName, addressOne, addressTwo, country, state, city,
-                    zip, phone, ivAddAddressEmail.isSelected(), ivAddAddressSms.isSelected());
-                break;
-            case R.id.ll_add_address_email:
-                ivAddAddressEmail.setSelected(!ivAddAddressEmail.isSelected());
-                break;
-            case R.id.ll_add_address_sms:
-                ivAddAddressSms.setSelected(!ivAddAddressSms.isSelected());
+                judgmentInput(firstName, addressOne, addressTwo, state, city, zip, phone);
                 break;
             case R.id.tv_add_address_city:
                 currentPop = PopWindowUtil.CITY_POP;
@@ -157,9 +140,11 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
                         this);
                 break;
             case R.id.tv_add_address_country:
-                currentPop = PopWindowUtil.COUNTRY_POP;
+                //todo now api have no data about country
+                // todo this will do nothing, please dont delete
+                /*currentPop = PopWindowUtil.COUNTRY_POP;
                 PopWindowUtil.showSingleChoosePop(view, getResources().getString(R.string.country),
-                    countryVMS, this);
+                    countryVMS, this);*/
                 break;
             case R.id.tv_add_address_state:
                 currentPop = PopWindowUtil.STATE_POP;
@@ -170,15 +155,10 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
         }
     }
 
-    private void judgmentInput(String firstName, String lastName, String addressOne,
-        String addressTwo, String country, String state, String city, String zip, String phone,
-        boolean firstChecked, boolean secondChecked) {
-        if (TextUtils.isEmpty(firstName)) {
-            etAddAddressFirst.setErrorMessage(getResources().getString(R.string.empty_error));
-            return;
-        }
-        if (TextUtils.isEmpty(lastName)) {
-            etAddAddressLast.setErrorMessage(getResources().getString(R.string.empty_error));
+    private void judgmentInput(String name, String addressOne,
+        String addressTwo, String state, String city, String zip, String phone) {
+        if (TextUtils.isEmpty(name)) {
+            etAddAddressName.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
         if (TextUtils.isEmpty(addressOne)) {
@@ -188,12 +168,6 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
         if (TextUtils.isEmpty(addressTwo)) {
             etAddAddressTwo.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
-        }
-        if (TextUtils.isEmpty(country)) {
-            tvAddAddressCountryWarning.setVisibility(View.VISIBLE);
-            return;
-        } else {
-            tvAddAddressCountryWarning.setVisibility(View.GONE);
         }
         if (TextUtils.isEmpty(state)) {
             tvAddAddressStateWarning.setVisibility(View.VISIBLE);
@@ -218,21 +192,22 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
 
         AddressRequest request = new AddressRequest();
         RequestData requestData = new RequestData();
-        requestData.setWebsiteId(1);
-        requestData.setStoreId(3);
-        AddressData addressData = new AddressData();
-        addressData.setName(firstName);
-        addressData.setAddress1(addressOne);
-        addressData.setAddress2(addressTwo);
-        addressData.setCountry(country);
-        //todo need decide by api
-        addressData.setState(123);
-        addressData.setCity(123);
-        addressData.setZipcode(Integer.parseInt(zip));
-        addressData.setPhoneNumber(phone);
-        addressData.setDefaultShippingAddress(firstChecked);
-        addressData.setDefaultBillingAddress(secondChecked);
-        requestData.setAddress(addressData);
+        requestData.setWebsiteId("1");
+        requestData.setStoreId("3");
+        requestData.setFirstName(name);
+        HashMap<String, Object> street = new HashMap<>();
+        //todo this hard code need wait for api decide
+        street.put("0", "Bukit Jalil");
+        street.put("1", "Astro");
+        requestData.setStreet(street);
+        requestData.setCountryId("");
+        requestData.setRegionId(1);
+        requestData.setCountryId(Const.COUNTRY_ID);
+        requestData.setCity(city);
+        requestData.setPostcode(1);
+        requestData.setTelephone(phone);
+        requestData.setDefaultBilling(checkboxDefaultBilling.isChecked());
+        requestData.setDefaultShipping(checkboxDefaultShipping.isChecked());
         request.setRequest(requestData);
         mPresenter.addAddressRequest(request);
     }

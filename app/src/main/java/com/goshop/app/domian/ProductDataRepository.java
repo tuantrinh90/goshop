@@ -123,8 +123,8 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params) {
-        return productCloudDataSource.allQARequest(params).concatMap(response -> {
+    public Observable<Response<QuestionAnswerResponse>> listProductQA(Map<String, Object> params) {
+        return productCloudDataSource.listProductQA(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {

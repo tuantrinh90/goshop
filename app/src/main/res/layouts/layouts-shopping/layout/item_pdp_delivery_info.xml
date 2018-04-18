@@ -28,6 +28,7 @@
         android:paddingLeft="@dimen/size_10"
         android:gravity="center_vertical"
         android:background="@drawable/bg_et_editable"
+        android:textCursorDrawable="@null"
         android:textSize="@dimen/size_font_14"
         android:hint="@string/enter_delivery"
         android:textColor="@color/color_black_light"

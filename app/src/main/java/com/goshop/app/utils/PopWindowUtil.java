@@ -182,10 +182,8 @@ public class PopWindowUtil {
         int day = calendar.get(Calendar.DAY_OF_MONTH);
         DatePickerDialog datePickerDialog = new DatePickerDialog(parentView.getContext(),
             (DatePicker view, int pickYear, int monthOfYear,
-                int dayOfMonth) -> {
-                onDatePickerDialogClickListener.onDatePicker(
-                    DateFormater.getAbbreviationDate(pickYear, monthOfYear + 1, dayOfMonth));
-            }, year, month, day);
+                int dayOfMonth) -> onDatePickerDialogClickListener.onDatePicker(
+                    DateFormater.getAbbreviationDate(pickYear, monthOfYear + 1, dayOfMonth)), year, month, day);
         datePickerDialog.show();
     }
 

@@ -23,19 +23,22 @@ public class AllQAPresenter extends RxPresenter<AllQAContract.View> implements A
     }
 
     @Override
-    public void allQARequest() {
-        mView.showLoadingBar();
-        mView.hideDataLayout();
+    public void listProductQA(int page, boolean isRefresh) {
+        if(!isRefresh) {
+            mView.showLoadingBar();
+            mView.hideDataLayout();
+        }
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
-        params.put(Const.PARAMS_PAGE, Const.PAGE);
+        params.put(Const.PARAMS_PAGE, page);
         params.put(Const.PARAMS_LIMIT, Const.LIMIT);
-        addSubscrebe(repository.allQARequest(params).subscribeWith(
+        addSubscrebe(repository.listProductQA(params).subscribeWith(
             new DisposableObserver<Response<QuestionAnswerResponse>>() {
                 @Override
                 public void onNext(Response<QuestionAnswerResponse> response) {
                     mView.hideLoadingBar();
+                    mView.stopRefresh();
                     mView.showRequestSuccess(QuestionAnswerMapper.transform(response.getData()));
                 }
 
@@ -43,6 +46,7 @@ public class AllQAPresenter extends RxPresenter<AllQAContract.View> implements A
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
                     mView.hideDataLayout();
+                    mView.stopRefresh();
                     if (e instanceof ServiceApiFail) {
                         mView.showRequestFailed(((ServiceApiFail) e).getErrorMessage());
                     } else {

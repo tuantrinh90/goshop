@@ -19,12 +19,10 @@ import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
@@ -136,8 +134,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params) {
-        return restApi.allReviewsRequest(params);
+    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
+        return restApi.getProductRatingReviews(params);
     }
 
     @Override
@@ -238,8 +236,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<AddressResponse>> getAddressList() {
-        return restApi.getAddressList();
+    public Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params) {
+        return restApi.getAddressList(params);
     }
 
     @Override
@@ -374,6 +372,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
         return restApi.returnOrderRequest(params);
+    }
+
+    @Override
+    public Observable<Response> selectDefaultShippingRequest(Map<String, Object> params) {
+        return restApi.selectDefaultShippingRequest(params);
+    }
+
+    @Override
+    public Observable<Response> selectDefaultBillingRequest(Map<String, Object> params) {
+        return restApi.selectDefaultBillingRequest(params);
     }
 
 }

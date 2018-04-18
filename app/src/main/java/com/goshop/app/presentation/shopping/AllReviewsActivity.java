@@ -1,22 +1,24 @@
 package com.goshop.app.presentation.shopping;
 
 import com.bumptech.glide.Glide;
+import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AllReviewsVM;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RatingBar;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 
@@ -46,14 +48,19 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
     @BindView(R.id.fl_connection_break)
     FrameLayout flConnectionBreak;
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     private AllReviewsItemAdapter reviewsItemAdapter;
+
+    private int page = 1;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         scrollviewAllReviews.setVisibility(View.INVISIBLE);
         //todo wait for api
-        mPresenter.allReviewsRequest(null);
+        mPresenter.getProductRatingReviews(Const.PAGE, false);
     }
 
     @Override
@@ -66,6 +73,14 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
         hideRightMenu();
         initPresenter();
         initRecyclerView();
+        initSwipRefreshLayout();
+    }
+
+    private void initSwipRefreshLayout() {
+        swipeRefreshLayout.setColorSchemeResources(R.color.color_main_pink);
+        swipeRefreshLayout.setOnRefreshListener(()->{
+            page = 1;
+            mPresenter.getProductRatingReviews(page, true);});
     }
 
     private void initPresenter() {
@@ -105,19 +120,26 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
 
     @Override
     public void showRequestFailed(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(recyclerviewAllReviews, errorMessage);
         updateLayoutStatus(flConnectionBreak,true);
     }
 
     @Override
     public void showNetWorkError(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(recyclerviewAllReviews, errorMessage);
         updateLayoutStatus(flConnectionBreak,true);
     }
 
     @Override
     public void showDataLayout() {
         scrollviewAllReviews.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void stopRefresh() {
+        if(swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_net_refresh})
@@ -128,7 +150,8 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak, false);
-                mPresenter.allReviewsRequest(null);
+                page = 1;
+                mPresenter.getProductRatingReviews(page, false);
                 break;
         }
     }

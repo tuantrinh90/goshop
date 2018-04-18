@@ -45,7 +45,7 @@ public interface ProductRepository {
 
     Observable<Response> writeReviewRequest(Map<String, Object> params);
 
-    Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params);
+    Observable<Response<QuestionAnswerResponse>> listProductQA(Map<String, Object> params);
 
     Observable<Response> submitQuestions(Map<String, Object> params);
 

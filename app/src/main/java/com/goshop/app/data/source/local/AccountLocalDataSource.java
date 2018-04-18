@@ -130,7 +130,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params) {
+    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
         return null;
     }
 
@@ -222,7 +222,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<AddressResponse>> getAddressList() {
+    public Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params) {
         return null;
     }
 
@@ -360,6 +360,16 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<Response> selectDefaultShippingRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<Response> selectDefaultBillingRequest(Map<String, Object> params) {
         return null;
     }
 }

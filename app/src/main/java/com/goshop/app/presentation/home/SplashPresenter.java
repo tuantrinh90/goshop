@@ -4,8 +4,6 @@ import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.domian.AccountDataRepository;
 
-import android.util.Log;
-
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;

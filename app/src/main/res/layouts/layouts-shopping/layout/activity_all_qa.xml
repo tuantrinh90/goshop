@@ -1,133 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:focusableInTouchMode="true"
     android:focusable="true"
+    android:id="@+id/ll_qa_top_toolbar"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_alignParentTop="true">
+    <include
+        layout="@layout/toolbar_img_text_img_close"/>
 
-    <LinearLayout
-        android:id="@+id/ll_qa_top_toolbar"
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_alignParentTop="true">
-        <include
-            layout="@layout/toolbar_img_text_img_close"/>
+        android:layout_height="match_parent">
+
+        <RelativeLayout
+            android:id="@+id/rl_all_qa_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <RelativeLayout
+                android:id="@+id/rl_all_qa_bottom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:padding="@dimen/size_8"
+                android:background="@drawable/bg_top_shadow_white">
+                <com.goshop.app.common.view.RobotoMediumTextView
+                    android:id="@+id/tv_all_qa_submit"
+                    android:layout_width="@dimen/size_84"
+                    android:layout_height="@dimen/size_48"
+                    android:text="@string/submit"
+                    android:gravity="center"
+                    android:textSize="@dimen/size_font_14"
+                    android:layout_alignParentRight="true"
+                    android:textColor="@android:color/white"
+                    android:background="@drawable/drawable_round_black"
+                    tools:ignore="RtlHardcoded"/>
+
+                <com.goshop.app.common.view.RobotoRegularEditText
+                    android:id="@+id/et_all_qa_enter"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_48"
+                    android:background="@drawable/drawable_round_gray"
+                    android:layout_toLeftOf="@id/tv_all_qa_submit"
+                    android:layout_marginRight="@dimen/size_8"
+                    android:paddingLeft="@dimen/size_12"
+                    android:paddingRight="@dimen/size_12"
+                    android:gravity="center_vertical"
+                    android:textCursorDrawable="@null"
+                    android:textSize="@dimen/size_font_16"
+                    android:textColor="@color/color_black_light"
+                    android:textColorHint="@color/color_text_hint"
+                    android:hint="@string/enter_question"
+                    tools:ignore="RtlHardcoded"/>
+            </RelativeLayout>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@id/rl_all_qa_bottom">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:paddingTop="@dimen/size_20"
+                        android:paddingLeft="@dimen/size_16"
+                        android:paddingRight="@dimen/size_16"
+                        android:paddingBottom="@dimen/size_8"
+                        android:orientation="horizontal">
+
+                        <com.goshop.app.common.view.RobotoMediumTextView
+                            android:id="@+id/tv_all_qa_question"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color_black_light"
+                            android:textSize="@dimen/size_font_20"/>
+                        <com.goshop.app.common.view.RobotoLightTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/size_4"
+                            android:paddingRight="@dimen/size_8"
+                            android:background="@drawable/bg_right_line"
+                            android:text="@string/questions"
+                            android:textColor="@color/color_grayscale_text"
+                            android:textSize="@dimen/size_font_16"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+                        <com.goshop.app.common.view.RobotoMediumTextView
+                            android:id="@+id/tv_all_qa_answers"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/size_8"
+                            android:textColor="@color/color_black_light"
+                            android:textSize="@dimen/size_font_20"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+
+                        <com.goshop.app.common.view.RobotoLightTextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:paddingLeft="@dimen/size_4"
+                            android:text="@string/answers"
+                            android:textColor="@color/color_grayscale_text"
+                            android:textSize="@dimen/size_font_16"
+                            tools:ignore="RtlHardcoded,RtlSymmetry"/>
+                    </LinearLayout>
+                    <android.support.v7.widget.RecyclerView
+                        android:id="@+id/recyclerview_all_qa"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+                </LinearLayout>
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+        </RelativeLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_connection_break"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/layout_connection_break"/>
+
+        </FrameLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_4"
             android:background="@drawable/bg_navigation_bar_shadow"/>
-    </LinearLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_all_qa_data"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/ll_qa_top_toolbar">
-        <RelativeLayout
-            android:id="@+id/rl_all_qa_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:padding="@dimen/size_8"
-            android:background="@drawable/bg_top_shadow_white">
-            <com.goshop.app.common.view.RobotoMediumTextView
-                android:id="@+id/tv_all_qa_submit"
-                android:layout_width="@dimen/size_84"
-                android:layout_height="@dimen/size_48"
-                android:text="@string/submit"
-                android:gravity="center"
-                android:textSize="@dimen/size_font_14"
-                android:layout_alignParentRight="true"
-                android:textColor="@android:color/white"
-                android:background="@drawable/drawable_round_black"
-                tools:ignore="RtlHardcoded"/>
-
-            <com.goshop.app.common.view.RobotoRegularEditText
-                android:id="@+id/et_all_qa_enter"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_48"
-                android:background="@drawable/drawable_round_gray"
-                android:layout_toLeftOf="@id/tv_all_qa_submit"
-                android:layout_marginRight="@dimen/size_8"
-                android:paddingLeft="@dimen/size_12"
-                android:paddingRight="@dimen/size_12"
-                android:gravity="center_vertical"
-                android:textCursorDrawable="@null"
-                android:textSize="@dimen/size_font_16"
-                android:textColor="@color/color_black_light"
-                android:textColorHint="@color/color_text_hint"
-                android:hint="@string/enter_question"
-                tools:ignore="RtlHardcoded"/>
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_above="@id/rl_all_qa_bottom"
-            android:orientation="vertical">
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:paddingTop="@dimen/size_16"
-                android:paddingLeft="@dimen/size_16"
-                android:paddingRight="@dimen/size_16"
-                android:paddingBottom="@dimen/size_8"
-                android:orientation="horizontal">
-
-                <com.goshop.app.common.view.RobotoMediumTextView
-                    android:id="@+id/tv_all_qa_question"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_font_20"/>
-                <com.goshop.app.common.view.RobotoLightTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/size_4"
-                    android:paddingRight="@dimen/size_8"
-                    android:background="@drawable/bg_right_line"
-                    android:text="@string/questions"
-                    android:textColor="@color/color_grayscale_text"
-                    android:textSize="@dimen/size_font_16"
-                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
-
-                <com.goshop.app.common.view.RobotoMediumTextView
-                    android:id="@+id/tv_all_qa_answers"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/size_8"
-                    android:textColor="@color/color_black_light"
-                    android:textSize="@dimen/size_font_20"
-                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
-
-                <com.goshop.app.common.view.RobotoLightTextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:paddingLeft="@dimen/size_4"
-                    android:text="@string/answers"
-                    android:textColor="@color/color_grayscale_text"
-                    android:textSize="@dimen/size_font_16"
-                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
-            </LinearLayout>
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview_all_qa"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
-        </LinearLayout>
-    </RelativeLayout>
-
-
-    <FrameLayout
-        android:id="@+id/fl_connection_break"
-        android:layout_below="@+id/ll_qa_top_toolbar"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include layout="@layout/layout_connection_break"/>
-
     </FrameLayout>
-</RelativeLayout>
+</LinearLayout>

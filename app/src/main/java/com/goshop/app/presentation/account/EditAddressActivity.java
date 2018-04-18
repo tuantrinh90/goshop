@@ -4,10 +4,10 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
+import com.goshop.app.common.view.RobotoLightCheckBox;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.request.AddressRequest;
-import com.goshop.app.data.model.request.common.AddressData;
 import com.goshop.app.data.model.request.common.RequestData;
 import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
@@ -17,10 +17,8 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Toast;
 
+import java.util.HashMap;
 import java.util.List;
 
 import butterknife.BindView;
@@ -34,11 +32,14 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
 
     public static final String EDIT_ADDRESS = "edit_address";
 
-    @BindView(R.id.et_edit_address_first)
-    CustomAnimEditText etEditAddressFirst;
+    @BindView(R.id.checkbox_default_billing)
+    RobotoLightCheckBox checkboxDefaultBilling;
 
-    @BindView(R.id.et_edit_address_last)
-    CustomAnimEditText etEditAddressLast;
+    @BindView(R.id.checkbox_default_shipping)
+    RobotoLightCheckBox checkboxDefaultShipping;
+
+    @BindView(R.id.et_edit_name)
+    CustomAnimEditText etEditName;
 
     @BindView(R.id.et_edit_address_one)
     CustomAnimEditText etEditAddressOne;
@@ -51,18 +52,6 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
 
     @BindView(R.id.et_edit_address_zip)
     CustomAnimEditText etEditAddressZip;
-
-    @BindView(R.id.iv_edit_address_email)
-    ImageView ivEditAddressEmail;
-
-    @BindView(R.id.iv_edit_address_sms)
-    ImageView ivEditAddressSms;
-
-    @BindView(R.id.ll_edit_address_email)
-    LinearLayout llEditAddressEmail;
-
-    @BindView(R.id.ll_edit_address_sms)
-    LinearLayout llEditAddressSms;
 
     @BindView(R.id.textview_right_menu)
     RobotoMediumTextView textviewRightMenu;
@@ -109,8 +98,8 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     @Override
     public void inject() {
         textviewRightMenu.setText(getResources().getString(R.string.done));
-        ivEditAddressSms.setSelected(true);
-        ivEditAddressEmail.setSelected(true);
+        checkboxDefaultBilling.setChecked(true);
+        checkboxDefaultShipping.setChecked(true);
         setUp();
         initPresenter();
     }
@@ -118,14 +107,13 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     private void setUp() {
         AddressVM addressVM = getIntent().getParcelableExtra(EDIT_ADDRESS);
         //TODO  wait for real data
-        etEditAddressFirst.setText("Test");
-        etEditAddressLast.setText("Test");
+        etEditName.setText("Test");
         etEditAddressOne.setText("Test Address 1");
         etEditAddressTwo.setText("Test Address 2");
         etEditAddressZip.setText("02600");
         etEditAddressPhone.setText("111111");
-        ivEditAddressEmail.setSelected(true);
-        ivEditAddressSms.setSelected(true);
+        checkboxDefaultBilling.setChecked(true);
+        checkboxDefaultShipping.setChecked(true);
     }
 
     private void initPresenter() {
@@ -141,7 +129,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
         return getResources().getString(R.string.edit_address);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.ll_edit_address_email, R.id.ll_edit_address_sms, R
+    @OnClick({R.id.imageview_left_menu, R
         .id.textview_right_menu, R.id.tv_edit_address_city, R.id.tv_edit_address_country, R.id
         .tv_edit_address_state})
     public void onEditAddressClick(View view) {
@@ -150,8 +138,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                 finish();
                 break;
             case R.id.textview_right_menu:
-                String firstName = etEditAddressFirst.getText();
-                String lastName = etEditAddressLast.getText();
+                String name = etEditName.getText();
                 String addressOne = etEditAddressOne.getText();
                 String addressTwo = etEditAddressTwo.getText();
                 String country = tvEditAddressCountry.getText().toString();
@@ -159,15 +146,9 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                 String city = tvEditAddressCity.getText().toString();
                 String zip = etEditAddressZip.getText();
                 String phone = etEditAddressPhone.getText();
-                judgmentInput(firstName, lastName, addressOne, addressTwo, country, state, city,
-                    zip, phone, ivEditAddressEmail.isSelected(), ivEditAddressSms.isSelected());
+                judgmentInput(name, addressOne, addressTwo, country, state, city,
+                    zip, phone);
 
-                break;
-            case R.id.ll_edit_address_email:
-                ivEditAddressEmail.setSelected(!ivEditAddressEmail.isSelected());
-                break;
-            case R.id.ll_edit_address_sms:
-                ivEditAddressSms.setSelected(!ivEditAddressSms.isSelected());
                 break;
             case R.id.tv_edit_address_city:
                 currentPop = PopWindowUtil.CITY_POP;
@@ -189,15 +170,10 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
         }
     }
 
-    private void judgmentInput(String firstName, String lastName, String addressOne,
-        String addressTwo, String country, String state, String city, String zip, String phone,
-        boolean firstChecked, boolean secondChecked) {
-        if (TextUtils.isEmpty(firstName)) {
-            etEditAddressFirst.setErrorMessage(getResources().getString(R.string.empty_error));
-            return;
-        }
-        if (TextUtils.isEmpty(lastName)) {
-            etEditAddressLast.setErrorMessage(getResources().getString(R.string.empty_error));
+    private void judgmentInput(String name, String addressOne,
+        String addressTwo, String country, String state, String city, String zip, String phone) {
+        if (TextUtils.isEmpty(name)) {
+            etEditName.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
         if (TextUtils.isEmpty(addressOne)) {
@@ -237,21 +213,21 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
 
         AddressRequest request = new AddressRequest();
         RequestData requestData = new RequestData();
-        requestData.setWebsiteId(1);
-        requestData.setStoreId(3);
-        AddressData addressData = new AddressData();
-        addressData.setName(firstName);
-        addressData.setAddress1(addressOne);
-        addressData.setAddress2(addressTwo);
-        addressData.setCountry(country);
-        //todo need decide by api
-        addressData.setState(123);
-        addressData.setCity(123);
-        addressData.setZipcode(Integer.parseInt(zip));
-        addressData.setPhoneNumber(phone);
-        addressData.setDefaultShippingAddress(firstChecked);
-        addressData.setDefaultBillingAddress(secondChecked);
-        requestData.setAddress(addressData);
+        requestData.setWebsiteId("1");
+        requestData.setStoreId("3");
+        requestData.setFirstName(name);
+        HashMap<String, Object> street = new HashMap<>();
+        //todo this hard code need wait for api decide
+        street.put("0", "Bukit Jalil");
+        street.put("1", "Astro");
+        requestData.setStreet(street);
+        requestData.setCountryId("");
+        requestData.setRegionId(1);
+        requestData.setCity(city);
+        requestData.setPostcode(1);
+        requestData.setTelephone(phone);
+        requestData.setDefaultBilling(checkboxDefaultBilling.isChecked());
+        requestData.setDefaultShipping(checkboxDefaultShipping.isChecked());
         request.setRequest(requestData);
         mPresenter.editAddressRequest(request);
     }
@@ -294,7 +270,6 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
 
     @Override
     public void editAddressFailed(String errorMessage) {
-        //todo need decide
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(textviewRightMenu, errorMessage);
     }
 }

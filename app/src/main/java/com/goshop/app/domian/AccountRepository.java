@@ -75,7 +75,7 @@ public interface AccountRepository {
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
-    Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params);
+    Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params);
 
     Observable<Response> registerRequest(Map<String, Object> params);
 
@@ -114,7 +114,7 @@ public interface AccountRepository {
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
-    Observable<Response<AddressResponse>> getAddressList();
+    Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params);
 
     Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);
 
@@ -165,4 +165,8 @@ public interface AccountRepository {
     Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params);
 
     Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params);
+
+    Observable<Response> selectDefaultShippingRequest(Map<String, Object> params);
+
+    Observable<Response> selectDefaultBillingRequest(Map<String, Object> params);
 }

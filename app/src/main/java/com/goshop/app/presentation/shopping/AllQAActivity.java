@@ -7,9 +7,11 @@ import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.presentation.model.QuestionAnswerVM;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
@@ -56,13 +58,18 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     @BindView(R.id.rl_all_qa_data)
     RelativeLayout rlAllQaData;
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     private QuestionAnswerDataAdapter dataAdapter;
+
+    private int page = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //todo wait for api
-        mPresenter.allQARequest();
+        mPresenter.listProductQA(page, false);
     }
 
     @Override
@@ -75,8 +82,15 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
         hideRightMenu();
         initPresenter();
         initRecyclerView();
+        initSwipRefreshLayout();
     }
 
+    private void initSwipRefreshLayout() {
+        swipeRefreshLayout.setColorSchemeResources(R.color.color_main_pink);
+        swipeRefreshLayout.setOnRefreshListener(()->{
+            page = 1;
+            mPresenter.listProductQA(page, true);});
+    }
     private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
@@ -108,13 +122,12 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
 
     @Override
     public void showRequestFailed(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(tvAllQaSubmit, errorMessage);
         updateLayoutStatus(flConnectionBreak,true);
     }
 
     @Override
     public void showNetError(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
         updateLayoutStatus(flConnectionBreak,true);
     }
 
@@ -127,6 +140,13 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     public void showSubmitSuccess(String successMessage) {
         Toast.makeText(this, successMessage, Toast.LENGTH_LONG).show();
         etAllQaEnter.setText("");
+    }
+
+    @Override
+    public void stopRefresh() {
+        if(swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     @Override
@@ -151,7 +171,7 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak, false);
-                mPresenter.allQARequest();
+                mPresenter.listProductQA(page, false);
                 break;
         }
     }

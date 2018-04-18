@@ -10,6 +10,7 @@
         android:layout_width="@dimen/size_80"
         android:layout_height="@dimen/size_80"
         android:src="@drawable/ic_icon_startlogo_coloured"
-        android:layout_gravity="center"/>
+        android:layout_gravity="center"
+        android:contentDescription="@string/app_name"/>
 
 </LinearLayout>

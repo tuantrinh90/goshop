@@ -6,7 +6,6 @@ import com.goshop.app.data.model.PromotionSkuModel;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
-import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;

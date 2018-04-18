@@ -2,7 +2,6 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.response.ChangePasswordResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 

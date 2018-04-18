@@ -5,12 +5,13 @@ import com.goshop.app.data.model.response.common.CustomerData;
 public class AddressResponse {
 
     /**
-     * customer : {"id":2345,"addresses":[{"id":1234,"name":"Abc Def","address1":"Bukit
-     * Jalil","address2":"Astro","country":"MY","state":123,"city":123,"zipcode":50470,
-     * "phone_number":"601213123123","default_shipping_address":true,
-     * "default_billing_address":true},{"id":1234,"name":"Abc Def","address1":"Bukit Jalil",
-     * "address2":"Astro","country":"MY","state":123,"city":123,"zipcode":50470,
-     * "phone_number":"601213123123","default_shipping_address":1,"default_billing_address":1}]}
+     * customer : {"id":40,"addresses":[{"id":"29","firstname":"Pankaj","lastname":"Kavani",
+     * "street":{"0":"Bukit Jalil","1":"Astro"},"country_id":"MY","region_id":512,"city":"Alor
+     * Setar","postcode":12345,"telephone":"9999999999","default_billing":true,
+     * "default_shipping":true},{"id":"30","firstname":"Pankaj","lastname":"Kavani",
+     * "street":{"0":"Bukit Jalil","1":"Astro"},"country_id":"MY","region_id":512,"city":"Kuala
+     * Lumpur","postcode":12345,"telephone":"999999999","default_billing":false,
+     * "default_shipping":false}]}
      */
 
     private CustomerData customer;

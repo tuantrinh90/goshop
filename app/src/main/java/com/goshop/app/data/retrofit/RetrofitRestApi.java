@@ -26,13 +26,10 @@ import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.AddressRequest;
-import com.goshop.app.data.model.request.GetUserRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
@@ -168,7 +165,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<AllReviewsResponse>> allReviewsRequest(@Url String fullUrl);
+    Observable<Response<AllReviewsResponse>> getProductRatingReviews(@Url String fullUrl,
+        @QueryMap Map<String,Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -290,13 +288,14 @@ public interface RetrofitRestApi {
         @Body AddressRequest addressRequest);
 
     @Headers({CONTENT_TYPE_JSON})
-    @POST
+    @PUT
     Observable<Response<AddressResponse>> editAddressRequest(@Url String url,
         @Body AddressRequest addressRequest);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<AddressResponse>> getAddressList(@Url String fullUrl);
+    Observable<Response<AddressResponse>> getAddressList(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -410,7 +409,7 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<QuestionAnswerResponse>> allQARequest(@Url String fullUrl,
+    Observable<Response<QuestionAnswerResponse>> listProductQA(@Url String fullUrl,
         @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -486,5 +485,17 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<Response<OrderResponse>> returnOrderRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response> selectDefaultShippingRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response> selectDefaultBillingRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 }

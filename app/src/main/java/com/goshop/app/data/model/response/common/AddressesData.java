@@ -2,131 +2,138 @@ package com.goshop.app.data.model.response.common;
 
 import com.google.gson.annotations.SerializedName;
 
+import java.util.Map;
+
 public class AddressesData {
 
-    private String address1;
+    private String city;
 
-    private String address2;
+    @SerializedName("country_id")
+    private String countryId;
 
-    private int city;
+    @SerializedName("default_billing")
+    private boolean defaultBilling;
 
-    private String country;
+    @SerializedName("default_shipping")
+    private boolean defaultShipping;
 
-    @SerializedName("default_billing_address")
-    private boolean defaultBillingAddress;
-
-    @SerializedName("default_shipping_address")
-    private boolean defaultShippingAddress;
+    @SerializedName("firstname")
+    private String firstName;
 
     /**
-     * id : 1234
-     * name : Abc Def
-     * address1 : Bukit Jalil
-     * address2 : Astro
-     * country : MY
-     * state : 123
-     * city : 123
-     * zipcode : 50470
-     * phone_number : 601213123123
-     * default_shipping_address : true
-     * default_billing_address : true
+     * id : 29
+     * firstname : Pankaj
+     * lastname : Kavani
+     * street : {"0":"Bukit Jalil","1":"Astro"}
+     * country_id : MY
+     * region_id : 512
+     * city : Alor Setar
+     * postcode : 12345
+     * telephone : 9999999999
+     * default_billing : true
+     * default_shipping : true
      */
 
-    private int id;
+    private String id;
 
-    private String name;
-    @SerializedName("phone_number")
-    private String phoneNumber;
+    @SerializedName("lastname")
+    private String lastName;
 
-    private int state;
+    @SerializedName("postcode")
+    private String postCode;
 
-    private int zipcode;
+    @SerializedName("region_id")
+    private String regionId;
 
-    public int getId() {
+    private Map<String, Object> street;
+
+    private String telephone;
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getAddress1() {
-        return address1;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setAddress1(String address1) {
-        this.address1 = address1;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getAddress2() {
-        return address2;
+    public Map<String, Object> getStreet() {
+        return street;
     }
 
-    public void setAddress2(String address2) {
-        this.address2 = address2;
+    public void setStreet(Map<String, Object> street) {
+        this.street = street;
     }
 
-    public String getCountry() {
-        return country;
+    public String getCountryId() {
+        return countryId;
     }
 
-    public void setCountry(String country) {
-        this.country = country;
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
     }
 
-    public int getState() {
-        return state;
+    public String getRegionId() {
+        return regionId;
     }
 
-    public void setState(int state) {
-        this.state = state;
+    public void setRegionId(String regionId) {
+        this.regionId = regionId;
     }
 
-    public int getCity() {
+    public String getCity() {
         return city;
     }
 
-    public void setCity(int city) {
+    public void setCity(String city) {
         this.city = city;
     }
 
-    public int getZipcode() {
-        return zipcode;
+    public String getPostCode() {
+        return postCode;
     }
 
-    public void setZipcode(int zipcode) {
-        this.zipcode = zipcode;
+    public void setPostCode(String postCode) {
+        this.postCode = postCode;
     }
 
-    public String getPhoneNumber() {
-        return phoneNumber;
+    public String getTelephone() {
+        return telephone;
     }
 
-    public void setPhoneNumber(String phone_number) {
-        this.phoneNumber = phone_number;
+    public void setTelephone(String telephone) {
+        this.telephone = telephone;
     }
 
-    public boolean isDefaultShippingAddress() {
-        return defaultShippingAddress;
+    public boolean isDefaultBilling() {
+        return defaultBilling;
     }
 
-    public void setDefaultShippingAddress(boolean defaultShippingAddress) {
-        this.defaultShippingAddress = defaultShippingAddress;
+    public void setDefaultBilling(boolean defaultBilling) {
+        this.defaultBilling = defaultBilling;
     }
 
-    public boolean isDefaultBillingAddress() {
-        return defaultBillingAddress;
+    public boolean isDefaultShipping() {
+        return defaultShipping;
     }
 
-    public void setDefaultBillingAddress(boolean defaultBillingAddress) {
-        this.defaultBillingAddress = defaultBillingAddress;
+    public void setDefaultShipping(boolean defaultShipping) {
+        this.defaultShipping = defaultShipping;
     }
 }

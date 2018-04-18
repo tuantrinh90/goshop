@@ -36,6 +36,20 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public void setSelectShippingUpdate(int position) {
+        for(int i = 0; i < addressVMS.size(); i++) {
+            addressVMS.get(i).setShippingDefault(i == position);
+        }
+        notifyDataSetChanged();
+    }
+
+    public void setSelectBillingUpdate(int position) {
+        for(int i = 0; i < addressVMS.size(); i++) {
+            addressVMS.get(i).setBillingDefault(i == position);
+        }
+        notifyDataSetChanged();
+    }
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
@@ -45,7 +59,7 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((MyAddressViewHolder) holder).bindingData(addressVMS.get(position));
+        ((MyAddressViewHolder) holder).bindingData(addressVMS.get(position), position);
     }
 
     @Override
@@ -57,22 +71,27 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
 
         void editAddress(AddressVM addressVM);
 
-        void removeAddress(AddressVM addressVM);
+        void selectDefaultShippingAddress(AddressVM addressVM, int position);
+
+        void selectDefaultBillingAddress(AddressVM addressVM, int position);
     }
 
     class MyAddressViewHolder extends RecyclerView.ViewHolder {
 
-        @BindView(R.id.iv_address_book_selector)
-        ImageView ivAddressBookSelector;
+        @BindView(R.id.iv_book_billing_selector)
+        ImageView ivBookBillingSelector;
+
+        @BindView(R.id.iv_book_shipping_selector)
+        ImageView ivBookShippingSelector;
 
         @BindView(R.id.ll_address_book_edit)
         LinearLayout llAddressBookEdit;
 
-        @BindView(R.id.ll_address_book_remove)
-        LinearLayout llAddressBookRemove;
+        @BindView(R.id.ll_book_shipping_selector)
+        LinearLayout llBookShippingSelector;
 
-        @BindView(R.id.ll_address_book_selector)
-        LinearLayout llAddressBookSelector;
+        @BindView(R.id.ll_book_billing_selector)
+        LinearLayout llBookBillingSelector;
 
         @BindView(R.id.tv_address_book_address)
         RobotoLightTextView tvAddressBookAddress;
@@ -100,7 +119,7 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(AddressVM addressVM) {
+        void bindingData(AddressVM addressVM, int position) {
             tvAddressBookName.setText(addressVM.getName());
             tvAddressBookAddress.setText(addressVM.getAddress());
             tvAddressBookCity.setText(addressVM.getCity());
@@ -108,16 +127,23 @@ public class MyAddressBookAdapter extends RecyclerView.Adapter {
             tvAddressBookCountry.setText(addressVM.getCountry());
             tvAddressBookState.setText(addressVM.getState());
             tvAddressBookTel.setText(addressVM.getTel());
-            ivAddressBookSelector.setSelected(addressVM.isShippingDefault());
-            llAddressBookSelector.setOnClickListener(
-                v -> ivAddressBookSelector.setSelected(!ivAddressBookSelector.isSelected()));
+            ivBookShippingSelector.setSelected(addressVM.isShippingDefault());
+            llBookShippingSelector.setOnClickListener(v -> {
+                    if (!ivBookShippingSelector.isSelected()) {
+                        addressBookClickListener.selectDefaultShippingAddress(addressVM, position);
+                    }
+                }
+            );
+            ivBookBillingSelector.setSelected(addressVM.isBillingDefault());
+            llBookBillingSelector.setOnClickListener(
+                v -> {
+                    if (!ivBookBillingSelector.isSelected()) {
+                        addressBookClickListener.selectDefaultBillingAddress(addressVM, position);
+                    }
+                });
 
             llAddressBookEdit
                 .setOnClickListener(v -> addressBookClickListener.editAddress(addressVM));
-
-            //todo need decide by api
-            /*llAddressBookRemove
-                .setOnClickListener(v -> addressBookClickListener.removeAddress(addressVM));*/
         }
     }
 }
