@@ -52,8 +52,8 @@ public class ProductCloudDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails() {
-        return restApi.getGoShopPointsDetails();
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
+        return restApi.getGoShopPointsDetails(params);
     }
 
     @Override
@@ -99,7 +99,6 @@ public class ProductCloudDataSource implements ProductDataSource {
     public Observable<Response> writeReviewRequest(Map<String, Object> params) {
         return restApi.writeReviewRequest(params);
     }
-
 
     @Override
     public Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params) {

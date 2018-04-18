@@ -200,7 +200,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     public void loginSuccess(Response<LoginResponse> response) {
         if (response != null && response.getData() != null && response.getData()
             .getCustomer() != null && response.getData().getCustomer().getToken() != null) {
-            GoShopApplication.setLogin(true);
             GoShopApplication.cacheUserInfo(response.getData().getCustomer());
             goToHomePage();
         }

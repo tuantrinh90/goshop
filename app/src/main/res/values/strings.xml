@@ -472,6 +472,7 @@
     <string name="there_is_no_items_in_your_cart">There is no items in your cart.</string>
     <string name="shop_now">Shop Now</string>
     <string name="there_is_no_wishlist_items_yet">There is no wishlist items yet.</string>
-
-
+    <string name="irecyclerview_pull_up_to_load_more">Pull up to load more</string>
+    <string name="irecyclerview_network_error_try_again">Network error, try again</string>
+    <string name="irecyclerview_no_more">No more</string>
 </resources>

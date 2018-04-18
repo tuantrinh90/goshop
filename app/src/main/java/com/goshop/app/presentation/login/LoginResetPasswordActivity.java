@@ -7,6 +7,7 @@ import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ToastUtil;
 
 import android.os.Bundle;
@@ -37,6 +38,12 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initView();
+    }
+
+    private void initView() {
+        hideRightMenu();
+        toastUtil = new ToastUtil(this, this);
     }
 
     @Override
@@ -46,22 +53,16 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
 
     @Override
     public void inject() {
-        hideRightMenu();
-        initPresenter();
-        toastUtil = new ToastUtil(this, this);
-    }
-
-    @Override
-    public String getScreenTitle() {
-        return getResources().getString(R.string.reset_password);
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+    }
+
+    @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.reset_password);
     }
 
     @Override
@@ -71,10 +72,15 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
     }
 
     @Override
-    public void resetPwdFailed(String message) {
+    public void showServiceErrorMessage(String errorMessage) {
         tvBtnResetPasswordSubmit.setClickable(true);
-        //todo wait for design
-        Log.d("ResetPasswordActivity", message);
+        PopWindowUtil.showRequestMessagePop(tvBtnResetPasswordSubmit, errorMessage);
+    }
+
+    @Override
+    public void showNetworkErrorMessage(String errorMessage) {
+        tvBtnResetPasswordSubmit.setClickable(true);
+        PopWindowUtil.showRequestMessagePop(tvBtnResetPasswordSubmit, errorMessage);
     }
 
     private void showToast() {
@@ -95,7 +101,6 @@ public class LoginResetPasswordActivity extends BaseActivity<LoginResetPasswordC
                 EditTextUtil.eidtLoseFocus(tvBtnResetPasswordSubmit);
                 String email = ctdEtResetPwd.getText();
                 if (!TextUtils.isEmpty(email) && ctdEtResetPwd.isEmail()) {
-
                     mPresenter.resetPasswordRequest(email);
                     tvBtnResetPasswordSubmit.setClickable(false);
                 } else {

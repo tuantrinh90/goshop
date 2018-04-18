@@ -162,7 +162,7 @@ public interface RestApi {
 
     Observable<Response<MyPointsResponse>> myPointsRequest(Map<String, Object> params);
 
-    Observable<Response<MyPointsResponse>> getGoShopPointsDetails();
+    Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params);
 
     Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params);
 

@@ -65,7 +65,7 @@ import retrofit2.http.Url;
 
 public interface RetrofitRestApi {
 
-    String CONTENT_TYPE_JSON = "Content-Type: application/vnd.api+json";
+    String CONTENT_TYPE_JSON = "Content-Type: application/json";
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -371,7 +371,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<MyPointsResponse>> getGoShopPointsDetails(@Url String fullUrl);
+    Observable<Response<MyPointsResponse>> getGoShopPointsDetails(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

@@ -51,7 +51,7 @@ public class ProductLocalDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails() {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
         return null;
     }
 

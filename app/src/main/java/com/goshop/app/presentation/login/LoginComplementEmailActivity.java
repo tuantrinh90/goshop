@@ -121,7 +121,6 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
     public void complementEmailSuccess(Response<LoginResponse> response) {
         if (response != null && response.getData() != null && response.getData()
             .getCustomer() != null && response.getData().getCustomer().getToken() != null) {
-            GoShopApplication.setLogin(true);
             GoShopApplication.cacheUserInfo(response.getData().getCustomer());
             toastUtil.showThanksToast();
 

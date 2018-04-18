@@ -154,7 +154,6 @@ public class Const {
 
     public static final String PARAMS_LIMIT = "limit";
 
-
     //request param
     public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";
 
@@ -184,6 +183,7 @@ public class Const {
 
     public static final String QUESTION = "question";
 
+    public static final String REQUEST_PARAM_PAGE = "page";
 
-
+    public static final String REQUEST_PARAM_LIMIT = "limit";
 }

@@ -6,6 +6,7 @@ import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.UserHelper;
 import com.goshop.app.widget.adapter.MenuAdapter;
 
 import android.support.annotation.LayoutRes;
@@ -76,7 +77,7 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
     public abstract String getScreenTitle();
 
     private void initMenuUtil() {
-        menuUtil = new MenuUtil(this, GoShopApplication.isLogin(), drawerLayout);
+        menuUtil = new MenuUtil(this, UserHelper.isLogin(), drawerLayout);
     }
 
     private void initDrawerList() {

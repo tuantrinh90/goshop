@@ -3,6 +3,7 @@ package com.goshop.app.data.model.response;
 import com.google.gson.annotations.SerializedName;
 
 import com.goshop.app.data.model.response.common.GoshopPointsData;
+import com.goshop.app.data.model.response.common.PaginationData;
 
 public class MyPointsResponse {
 
@@ -16,11 +17,21 @@ public class MyPointsResponse {
     @SerializedName("goshop_points")
     private GoshopPointsData goshopPoints;
 
-    public GoshopPointsData getGoshop_points() {
+    private PaginationData pagination;
+
+    public GoshopPointsData getGoshopPoints() {
         return goshopPoints;
     }
 
     public void setGoshopPoints(GoshopPointsData goshopPoints) {
         this.goshopPoints = goshopPoints;
+    }
+
+    public PaginationData getPagination() {
+        return pagination;
+    }
+
+    public void setPagination(PaginationData pagination) {
+        this.pagination = pagination;
     }
 }

@@ -10,7 +10,10 @@ public class LoginResetPasswordContract {
     interface View extends BaseView {
 
         void resetPwdSuccess();
-        void resetPwdFailed(String message);
+
+        void showServiceErrorMessage(String errorMessage);
+
+        void showNetworkErrorMessage(String message);
     }
 
     public interface Presenter extends BasePresenter<View> {

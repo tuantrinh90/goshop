@@ -60,8 +60,8 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails() {
-        return productCloudDataSource.getGoShopPointsDetails().concatMap(response -> {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
+        return productCloudDataSource.getGoShopPointsDetails(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
