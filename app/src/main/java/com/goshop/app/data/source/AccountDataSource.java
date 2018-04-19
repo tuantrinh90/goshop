@@ -14,18 +14,15 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.response.OrderResponse;
-import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
@@ -78,7 +75,7 @@ public interface AccountDataSource {
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
-    Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params);
+    Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params);
 
     Observable<Response> registerRequest(Map<String, Object> params);
 
@@ -115,7 +112,7 @@ public interface AccountDataSource {
 
     Observable<Response<AddressResponse>> editAddressRequest(AddressRequest addressRequest);
 
-    Observable<Response<AddressResponse>> getAddressList();
+    Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params);
 
     Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
 
@@ -147,7 +144,7 @@ public interface AccountDataSource {
 
     Observable<TVShowResponse> tvShowRequest(Map<String, Object> params);
 
-    Observable<Response<ProfileResponse>> getUserProfile();
+    Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params);
 
     Observable<Response<ProfileMetadataResponse>> getProfileMetadata();
 
@@ -170,4 +167,8 @@ public interface AccountDataSource {
     Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params);
 
     Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params);
+
+    Observable<Response> selectDefaultShippingRequest(Map<String, Object> params);
+
+    Observable<Response> selectDefaultBillingRequest(Map<String, Object> params);
 }

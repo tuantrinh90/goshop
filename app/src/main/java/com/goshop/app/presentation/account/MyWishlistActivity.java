@@ -2,31 +2,22 @@ package com.goshop.app.presentation.account;
 
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
-import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseDrawerActivity;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.home.MainPageActivity;
-import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.widget.adapter.MenuAdapter;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;

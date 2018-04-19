@@ -15,7 +15,11 @@ public class MyAddressBookContract {
 
         void getAddressListSuccess(List<AddressVM> addressVMS);
 
-        void getAddressListFailed(String errorMessage);
+        void showErrorMessage(String errorMessage);
+
+        void selectDefaultShippingSuccess(int position);
+
+        void selectDefaultBillingSuccess(int position);
     }
 
     public interface Presenter extends BasePresenter<View> {
@@ -23,5 +27,9 @@ public class MyAddressBookContract {
         void myAddressRequest(Map<String, Object> params);
 
         void getAddressList();
+
+        void selectDefaultShippingRequest(int position);
+
+        void selectDefaultBillingRequest(int position);
     }
 }

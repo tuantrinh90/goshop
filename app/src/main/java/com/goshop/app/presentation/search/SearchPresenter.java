@@ -3,7 +3,6 @@ package com.goshop.app.presentation.search;
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.SearchFilterResponse;
-import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.SearchCategoryVM;
 import com.goshop.app.presentation.model.SearchFilterModel;

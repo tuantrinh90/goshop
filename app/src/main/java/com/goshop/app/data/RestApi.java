@@ -34,9 +34,7 @@ import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.CheckoutResponse;
-import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyOrderDetailResponse;
@@ -90,7 +88,7 @@ public interface RestApi {
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
-    Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params);
+    Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params);
 
     io.reactivex.Observable<Response> registerRequest(Map<String, Object> params);
 
@@ -136,7 +134,7 @@ public interface RestApi {
 
     Observable<Response<AddressResponse>> editAddressRequest(AddressRequest addressRequest);
 
-    Observable<Response<AddressResponse>> getAddressList();
+    Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params);
 
     Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
 
@@ -178,13 +176,13 @@ public interface RestApi {
 
     Observable<TVShowResponse> tvShowRequest(Map<String, Object> params);
 
-    Observable<Response<QuestionAnswerResponse>> allQARequest(Map<String, Object> params);
+    Observable<Response<QuestionAnswerResponse>> listProductQA(Map<String, Object> params);
 
     Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
 
     Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params);
 
-    Observable<Response<ProfileResponse>> getUserProfile();
+    Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params);
 
     Observable<Response<ProfileMetadataResponse>> getProfileMetadata();
 
@@ -207,5 +205,9 @@ public interface RestApi {
     Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params);
 
     Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params);
+
+    Observable<Response> selectDefaultShippingRequest(Map<String, Object> params);
+
+    Observable<Response> selectDefaultBillingRequest(Map<String, Object> params);
 
 }

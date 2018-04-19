@@ -4,8 +4,6 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.QuestionAnswerVM;
 
-import java.util.Map;
-
 public class AllQAContract {
 
     interface View extends BaseView {
@@ -19,11 +17,13 @@ public class AllQAContract {
         void hideDataLayout();
 
         void showSubmitSuccess(String successMessage);
+
+        void stopRefresh();
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void allQARequest();
+        void listProductQA(int page, boolean isRefresh);
 
         void submitQuestions(String question);
 

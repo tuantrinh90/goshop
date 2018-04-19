@@ -1,24 +1,15 @@
 package com.goshop.app.presentation.goloyalty;
 
 import com.goshop.app.R;
-import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.RobotoMediumTabLayout;
-import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.utils.MenuUtil;
-import com.goshop.app.widget.adapter.MenuAdapter;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.ImageView;
 

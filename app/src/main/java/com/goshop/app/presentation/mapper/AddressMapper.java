@@ -8,6 +8,7 @@ import com.goshop.app.utils.NumberFormater;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 public class AddressMapper {
 
@@ -19,18 +20,19 @@ public class AddressMapper {
         AddressVM addressVM;
         for (AddressesData addressesData : addressesDatas) {
             addressVM = new AddressVM();
-            addressVM.setName(addressesData.getName());
-            addressVM.setAddress(addressesData.getAddress1());
-            addressVM.setAddressSecond(addressesData.getAddress2());
-            addressVM.setCountry(addressesData.getCountry());
+            addressVM.setName(addressesData.getFirstName());
+            Map<String, Object> street = addressesData.getStreet();
+            for (Map.Entry<String, Object> entry : street.entrySet()) {
+                addressVM.setAddress((String) entry.getValue());
+            }
+            addressVM.setCountry(addressesData.getCountryId());
             //todo all "" need decide when api ensure
             addressVM.setId("" + addressesData.getId());
-            addressVM.setState("" + addressesData.getState());
             addressVM.setCity("" + addressesData.getCity());
-            addressVM.setCode("" + addressesData.getZipcode());
-            addressVM.setTel(NumberFormater.formaterTelNo(addressesData.getPhoneNumber()));
-            addressVM.setShippingDefault(addressesData.isDefaultShippingAddress());
-            addressVM.setBillingDefault(addressesData.isDefaultBillingAddress());
+            addressVM.setCode("" + addressesData.getPostCode());
+            addressVM.setTel(NumberFormater.formaterTelNo(addressesData.getTelephone()));
+            addressVM.setShippingDefault(addressesData.isDefaultShipping());
+            addressVM.setBillingDefault(addressesData.isDefaultBilling());
             addressVMS.add(addressVM);
         }
 

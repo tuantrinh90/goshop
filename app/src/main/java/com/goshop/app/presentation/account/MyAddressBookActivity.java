@@ -3,18 +3,16 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AddressVM;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,12 +57,21 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     }
 
     @Override
-    public void getAddressListFailed(String errorMessage) {
-        //todo need decide
-        Log.e("MyAddressBook", errorMessage);
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+    public void showErrorMessage(String errorMessage) {
         updateLayoutStatus(flConnectionBreak, true);
+        PopWindowUtil.showRequestMessagePop(flConnectionBreak,errorMessage);
     }
+
+    @Override
+    public void selectDefaultShippingSuccess(int position) {
+        addressBookAdapter.setSelectShippingUpdate(position);
+    }
+
+    @Override
+    public void selectDefaultBillingSuccess(int position) {
+        addressBookAdapter.setSelectBillingUpdate(position);
+    }
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -131,14 +138,12 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     }
 
     @Override
-    public void removeAddress(AddressVM addressVM) {
-        //todo need decide
-        /*if (displayAddressVMs.contains(addressVM)) {
-            displayAddressVMs.remove(addressVM);
-            if (addressVM.isDefault() && displayAddressVMs.size() > 0) {
-                displayAddressVMs.get(0).setDefault(true);
-            }
-        }
-        addressBookAdapter.setUpdates(displayAddressVMs);*/
+    public void selectDefaultShippingAddress(AddressVM addressVM, int position) {
+        mPresenter.selectDefaultShippingRequest(position);
+    }
+
+    @Override
+    public void selectDefaultBillingAddress(AddressVM addressVM, int position) {
+        mPresenter.selectDefaultBillingRequest(position);
     }
 }

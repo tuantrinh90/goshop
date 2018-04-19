@@ -215,8 +215,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params) {
-        return accountCloudDataSource.allReviewsRequest(params).concatMap(response -> {
+    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
+        return accountCloudDataSource.getProductRatingReviews(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -370,8 +370,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<AddressResponse>> getAddressList() {
-        return accountCloudDataSource.getAddressList().concatMap(response -> {
+    public Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params) {
+        return accountCloudDataSource.getAddressList(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -447,8 +447,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<ProfileResponse>> getUserProfile() {
-        return accountCloudDataSource.getUserProfile().concatMap(response -> {
+    public Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params) {
+        return accountCloudDataSource.getUserProfile(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -560,6 +560,30 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
         return accountCloudDataSource.returnOrderRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response> selectDefaultShippingRequest(Map<String, Object> params) {
+        return accountCloudDataSource.selectDefaultShippingRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response> selectDefaultBillingRequest(Map<String, Object> params) {
+        return accountCloudDataSource.selectDefaultBillingRequest(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {

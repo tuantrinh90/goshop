@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/bg_bottom_line"
     android:orientation="vertical">
 
     <com.goshop.app.common.view.RobotoMediumTextView
@@ -112,24 +113,82 @@
         android:layout_marginRight="@dimen/size_16"
         android:background="@color/color_bg_disabled_divider"/>
 
-    <RelativeLayout
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="vertical"
         android:paddingRight="@dimen/size_16"
         android:paddingLeft="@dimen/size_16">
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <LinearLayout
+                android:id="@+id/ll_book_shipping_selector"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentLeft="true"
+                android:paddingTop="@dimen/size_14"
+                android:paddingBottom="@dimen/size_8"
+                android:orientation="horizontal"
+                tools:ignore="RtlHardcoded">
+                <ImageView
+                    android:id="@+id/iv_book_shipping_selector"
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:background="@drawable/selector_radio_button"
+                    android:contentDescription="@string/app_name"/>
+                <com.goshop.app.common.view.RobotoRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/size_8"
+                    android:textColor="@color/color_grayscale_text"
+                    android:text="@string/default_shipping_address"
+                    android:textSize="@dimen/size_font_14"
+                    tools:ignore="RtlHardcoded,RtlSymmetry"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_address_book_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:paddingTop="@dimen/size_14"
+                android:layout_alignParentRight="true"
+                android:paddingRight="@dimen/size_16"
+                android:orientation="horizontal"
+                android:paddingEnd="@dimen/size_16"
+                tools:ignore="RelativeOverlap,RtlSymmetry">
+
+                <ImageView
+                    android:layout_width="@dimen/size_20"
+                    android:layout_height="@dimen/size_20"
+                    android:layout_margin="@dimen/size_4"
+                    android:scaleType="center"
+                    android:src="@drawable/ic_icon_edit"
+                    android:contentDescription="@string/app_name"/>
+
+                <com.goshop.app.common.view.RobotoRegularTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/size_font_14"
+                    android:textColor="@color/color_grayscale_text"
+                    android:text="@string/edit"/>
+
+            </LinearLayout>
+        </RelativeLayout>
+
         <LinearLayout
-            android:id="@+id/ll_address_book_selector"
+            android:id="@+id/ll_book_billing_selector"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_alignParentLeft="true"
-            android:paddingTop="@dimen/size_14"
+            android:paddingTop="@dimen/size_8"
             android:paddingBottom="@dimen/size_14"
             android:orientation="horizontal"
             tools:ignore="RtlHardcoded">
             <ImageView
-                android:id="@+id/iv_address_book_selector"
+                android:id="@+id/iv_book_billing_selector"
                 android:layout_width="@dimen/size_20"
                 android:layout_height="@dimen/size_20"
                 android:background="@drawable/selector_radio_button"
@@ -139,72 +198,11 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="@dimen/size_8"
                 android:textColor="@color/color_grayscale_text"
-                android:text="@string/default_text"
+                android:text="@string/default_billing_address"
                 android:textSize="@dimen/size_font_14"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
         </LinearLayout>
 
-
-        <LinearLayout
-            android:id="@+id/ll_address_book_remove"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:gravity="center_vertical"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:orientation="horizontal"
-            android:layout_alignParentEnd="true">
-
-            <ImageView
-                android:layout_width="@dimen/size_20"
-                android:layout_height="@dimen/size_20"
-                android:layout_margin="@dimen/size_3"
-                android:scaleType="center"
-                android:src="@drawable/ic_icon_remove"
-                android:contentDescription="@string/app_name"/>
-
-            <com.goshop.app.common.view.RobotoRegularTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_grayscale_text"
-                android:text="@string/remove"/>
-        </LinearLayout>
-
-        <LinearLayout
-            android:id="@+id/ll_address_book_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:gravity="center_vertical"
-            android:paddingRight="@dimen/size_22"
-            android:layout_toLeftOf="@id/ll_address_book_remove"
-            android:orientation="horizontal"
-            android:paddingEnd="@dimen/size_22"
-            android:layout_toStartOf="@id/ll_address_book_remove"
-            tools:ignore="RelativeOverlap,RtlSymmetry">
-
-            <ImageView
-                android:layout_width="@dimen/size_20"
-                android:layout_height="@dimen/size_20"
-                android:layout_margin="@dimen/size_4"
-                android:scaleType="center"
-                android:src="@drawable/ic_icon_edit"
-                android:contentDescription="@string/app_name"/>
-
-            <com.goshop.app.common.view.RobotoRegularTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_grayscale_text"
-                android:text="@string/edit"/>
-
-        </LinearLayout>
-    </RelativeLayout>
-
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_divider"
-        android:background="@color/color_bg_disabled_divider"/>
+    </LinearLayout>
 
 </LinearLayout>

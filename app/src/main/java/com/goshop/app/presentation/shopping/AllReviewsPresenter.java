@@ -1,17 +1,13 @@
 package com.goshop.app.presentation.shopping;
 
-import com.goshop.app.R;
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.AllReviewsMapper;
-import com.goshop.app.presentation.model.AllReviewsVM;
-import com.goshop.app.presentation.model.widget.ReviewsVM;
-
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -26,15 +22,24 @@ public class AllReviewsPresenter extends RxPresenter<AllReviewsContract.View> im
     }
 
     @Override
-    public void allReviewsRequest(Map<String, Object> params) {
-        mView.showLoadingBar();
-        mView.hideDataLayout();
-        addSubscrebe(accountRepository.allReviewsRequest(params).subscribeWith(
+    public void getProductRatingReviews(int page, boolean isRefresh) {
+        if(!isRefresh) {
+            mView.showLoadingBar();
+            mView.hideDataLayout();
+        }
+
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_PAGE, page);
+        params.put(Const.PARAMS_LIMIT, Const.LIMIT);
+        addSubscrebe(accountRepository.getProductRatingReviews(params).subscribeWith(
             new DisposableObserver<Response<AllReviewsResponse>>() {
                 @Override
                 public void onNext(Response<AllReviewsResponse> response) {
                     mView.hideLoadingBar();
                     mView.showDataLayout();
+                    mView.stopRefresh();
                     mView.showAllReviewsResult(AllReviewsMapper.transform(response.getData()));
                 }
 
@@ -42,6 +47,7 @@ public class AllReviewsPresenter extends RxPresenter<AllReviewsContract.View> im
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
                     mView.hideDataLayout();
+                    mView.stopRefresh();
                     if (e instanceof ServiceApiFail) {
                         mView.showRequestFailed(((ServiceApiFail) e).getErrorMessage());
                     } else {
@@ -54,18 +60,5 @@ public class AllReviewsPresenter extends RxPresenter<AllReviewsContract.View> im
 
                 }
             }));
-    }
-
-    //todo this is mock data
-    private AllReviewsVM getMockDatas() {
-        List<ReviewsVM> reviewsVMS = new ArrayList<>();
-        ReviewsVM reviewsVM = new ReviewsVM(4, "Lorem ipsum dolor sit amet",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
-            "User Name", "1/2/18");
-        reviewsVMS.add(reviewsVM);
-        reviewsVMS.add(reviewsVM);
-        reviewsVMS.add(reviewsVM);
-        reviewsVMS.add(reviewsVM);
-        return new AllReviewsVM("", R.drawable.ic_bought, 5, "100 Reviews", reviewsVMS);
     }
 }

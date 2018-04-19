@@ -154,6 +154,8 @@ public class Const {
 
     public static final String PARAMS_LIMIT = "limit";
 
+    public static final String PARAMS_POSTCODE = "postcode";
+
 
     //request param
     public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";
@@ -185,5 +187,58 @@ public class Const {
     public static final String QUESTION = "question";
 
 
+    public static final int VALUE_JANUARY = 1;
+
+    public static final int VALUE_FEBRUARY = 2;
+
+    public static final int VALUE_MARCH = 3;
+
+    public static final int VALUE_APRIL = 4;
+
+    public static final int VALUE_MAY = 5;
+
+    public static final int VALUE_JUNE = 6;
+
+    public static final int VALUE_JULY = 7;
+
+    public static final int VALUE_AUGUST = 8;
+
+    public static final int VALUE_SEPTEMBER = 9;
+
+    public static final int VALUE_OCTOBER = 10;
+
+    public static final int VALUE_NOVEMBER = 11;
+
+    public static final int VALUE_DECEMBER = 12;
+
+    public static final String JAN = "Jan";
+
+    public static final String FEB = "Feb";
+
+    public static final String MAR = "Mar";
+
+    public static final String APR = "Apr";
+
+    public static final String MAY = "May";
+
+    public static final String JUN = "Jun";
+
+    public static final String JUL = "Jul";
+
+    public static final String AUG = "Aug";
+
+    public static final String SEP = "Sep";
+
+    public static final String OCT = "Oct";
+
+    public static final String NOV = "Nov";
+
+    public static final String DEC = "Dec";
+
+    public static final String COUNTRY_ID = "MY";
+
+    public static final String PARAMS_COUNTRY_ID = "country_id";
+
+    public static final String PARAMS_COUNTRY_CODE = "country_code";
 
 }

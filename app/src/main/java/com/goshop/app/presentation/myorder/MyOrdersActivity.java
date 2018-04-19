@@ -2,25 +2,18 @@ package com.goshop.app.presentation.myorder;
 
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
-import com.goshop.app.base.BaseActivity;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
-import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.presentation.model.MyOrdersVM;
 import com.goshop.app.presentation.shopping.RatingActivity;
 import com.goshop.app.utils.MenuUtil;
-import com.goshop.app.widget.adapter.MenuAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;

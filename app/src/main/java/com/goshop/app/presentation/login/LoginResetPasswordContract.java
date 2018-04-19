@@ -3,8 +3,6 @@ package com.goshop.app.presentation.login;
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 
-import java.util.Map;
-
 public class LoginResetPasswordContract {
 
     interface View extends BaseView {

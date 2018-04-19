@@ -7,6 +7,7 @@ import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PopWindowUtil;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.os.Bundle;
@@ -109,11 +110,13 @@ public class RatingActivity extends BaseActivity<RatingContract.Presenter> imple
 
     @Override
     public void writeReviewSuccess() {
+        Toast.makeText(this,
+            getResources().getString(R.string.success), Toast.LENGTH_SHORT).show();
         finish();
     }
 
     @Override
     public void writeReviewFailed(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show();
+        PopWindowUtil.showRequestMessagePop(textviewRightMenu, errorMessage);
     }
 }

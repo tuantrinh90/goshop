@@ -20,11 +20,11 @@ public class EndpointAddress {
     public static final String EDIT_USER_PROFILE = "rest/all/V1/rest-api/customer/customer_id";
 
     public static final String LIST_CUSTOMER_ADDRESSES =
-        "rest/all/V1/rest-api/customer/customer_id/addresses?website_idstore_id";
+        "rest/all/V1/rest-api/customer/customer_id/address";
 
-    public static final String ADD_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/id/address";
+    public static final String ADD_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/customer_id/address";
 
-    public static final String EDIT_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/id/address";
+    public static final String EDIT_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/customer_id/address";
 
     public static final String GET_GOSHOP_POINTS_DETAIL =
         "rest/all/V1/rest-api/customer/customer_id/goshop-points?website_idstore_id";
@@ -183,6 +183,10 @@ public class EndpointAddress {
     public static final String QUESTION_ANSWER = "";
 
     public static final String PROMOTION_SKU = "";
+
+    public static final String DEFAULT_SHIPPING_ADDRESS = "";
+
+    public static final String DEFAULT_BILLING_ADDRESS = "";
 
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
