@@ -64,7 +64,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails(Map<String, Object> params) {
         return null;
     }
 

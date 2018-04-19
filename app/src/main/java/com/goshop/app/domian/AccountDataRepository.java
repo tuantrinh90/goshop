@@ -121,8 +121,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
-        return accountCloudDataSource.getEGiftCardDetails().concatMap(response -> {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails(Map<String, Object> params) {
+        return accountCloudDataSource.getEGiftCardDetails(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {

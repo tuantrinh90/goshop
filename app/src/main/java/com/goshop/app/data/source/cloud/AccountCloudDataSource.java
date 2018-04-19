@@ -19,12 +19,10 @@ import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.GetWeatherResponse;
 import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
@@ -70,8 +68,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
-        return restApi.getEGiftCardDetails();
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails(Map<String, Object> params) {
+        return restApi.getEGiftCardDetails(params);
     }
 
     @Override

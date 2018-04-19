@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.account;
 
+import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
@@ -28,9 +29,6 @@ import injection.modules.PresenterModule;
 public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> implements
     MyPointsContract.View, OnLoadMoreListener, SwipeRefreshLayout.OnRefreshListener {
 
-    @BindView(R.id.imageview_left_menu)
-    ImageView imageviewLeftMenu;
-
     @BindView(R.id.recyclerview_points)
     IRecyclerView recyclerviewPoints;
 
@@ -44,6 +42,8 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
     private PaginationData pagination;
 
     private List<PointsModel> pointsModels;
+
+    private boolean isCanLoadMore;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -68,7 +68,6 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
 
     @Override
     public void inject() {
-        imageviewLeftMenu.setOnClickListener(v -> finish());
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -97,8 +96,9 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
     @Override
     public void getPointDetailsSuccess(List<PointsModel> pointsModels, PaginationData pagination) {
         this.pagination = pagination;
+        isCanLoadMore = pointsModels.size() >= Const.LIMIT;
         if (pagination.getCurrentPage() == 1) {
-            pointsModels.clear();
+            this.pointsModels.clear();
         }
         this.pointsModels.addAll(pointsModels);
         swipeRefresh.setRefreshing(false);
@@ -112,7 +112,7 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
 
     @Override
     public void onLoadMore() {
-        if (loadMoreFooterView.canLoadMore() && pointsModels.size() >= pagination.getLimit()) {
+        if (loadMoreFooterView.canLoadMore() && isCanLoadMore) {
             loadMoreFooterView.setStatus(LoadMoreFooterView.Status.LOADING);
             mPresenter.getGoShopPointsDetails(pagination.getCurrentPage() + 1, false);
         }

@@ -32,7 +32,7 @@ public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implem
         if (isShowLoading) mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
         params.put(Const.REQUEST_PARAM_PAGE, page);
-        params.put(Const.REQUEST_PARAM_LIMIT, LIMIT);
+        params.put(Const.REQUEST_PARAM_LIMIT, Const.LIMIT);
         addSubscrebe(repository.getGoShopPointsDetails(params).subscribeWith(
             new DisposableObserver<Response<MyPointsResponse>>() {
                 @Override

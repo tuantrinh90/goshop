@@ -1,6 +1,7 @@
 package com.goshop.app.common.view.irecyclerview.widget.footer;
 
 import com.goshop.app.R;
+import com.goshop.app.utils.ScreenHelper;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -11,6 +12,8 @@ import android.widget.TextView;
 
 @SuppressWarnings("ALL")
 public class LoadMoreFooterView extends FrameLayout {
+
+    public static final int FOOTER_HEIGHT = 48;
 
     private Status mStatus;
 
@@ -49,7 +52,6 @@ public class LoadMoreFooterView extends FrameLayout {
                 mOnRetryListener.onRetry(LoadMoreFooterView.this);
             }
         });
-
         setStatus(Status.GONE);
     }
 
@@ -79,24 +81,31 @@ public class LoadMoreFooterView extends FrameLayout {
     private void change() {
         switch (mStatus) {
             case GONE:
+                if (getLayoutParams() != null) getLayoutParams().height = 0;
                 mLoadingView.setVisibility(GONE);
                 mErrorView.setVisibility(GONE);
                 mTheEndView.setVisibility(GONE);
                 break;
 
             case LOADING:
+                if (getLayoutParams() != null)
+                    getLayoutParams().height = ScreenHelper.dip2px(getContext(), FOOTER_HEIGHT);
                 mLoadingView.setVisibility(VISIBLE);
                 mErrorView.setVisibility(GONE);
                 mTheEndView.setVisibility(GONE);
                 break;
 
             case ERROR:
+                if (getLayoutParams() != null)
+                    getLayoutParams().height = ScreenHelper.dip2px(getContext(), FOOTER_HEIGHT);
                 mLoadingView.setVisibility(GONE);
                 mErrorView.setVisibility(VISIBLE);
                 mTheEndView.setVisibility(GONE);
                 break;
 
             case THE_END:
+                if (getLayoutParams() != null)
+                    getLayoutParams().height = ScreenHelper.dip2px(getContext(), FOOTER_HEIGHT);
                 mLoadingView.setVisibility(GONE);
                 mErrorView.setVisibility(GONE);
                 if (theEndShowView) {

@@ -94,7 +94,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<MyEGiftResponse>> getEGiftCardDetails(@Url String fullUrl);
+    Observable<Response<MyEGiftResponse>> getEGiftCardDetails(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

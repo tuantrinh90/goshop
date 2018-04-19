@@ -23,7 +23,7 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
     }
 
     @Override
-    public void eGiftCardsRequest(String uniqueCode) {
+    public void eGiftCardsRequest(String uniqueCode,int page) {
         mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
@@ -34,7 +34,7 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
                 @Override
                 public void onNext(Response<MyEGiftResponse> response) {
                     mView.hideLoadingBar();
-                    mView.activeSuccess();
+                    mView.activeSuccess(MyEGiftCardMapper.transform(response, page),response.getData().getPagination());
                 }
 
                 @Override
@@ -56,14 +56,19 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
     }
 
     @Override
-    public void getEGiftCardDetails() {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.getEGiftCardDetails().subscribeWith(
+    public void getEGiftCardDetails(int page, boolean isShowLoading) {
+        if (isShowLoading) {
+            mView.showLoadingBar();
+        }
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.REQUEST_PARAM_PAGE, page);
+        params.put(Const.REQUEST_PARAM_LIMIT, Const.LIMIT);
+        addSubscrebe(accountRepository.getEGiftCardDetails(params).subscribeWith(
             new DisposableObserver<Response<MyEGiftResponse>>() {
                 @Override
                 public void onNext(Response<MyEGiftResponse> response) {
                     mView.hideLoadingBar();
-                    mView.getEGiftCardSuccess(MyEGiftCardMapper.transform(response));
+                    mView.getEGiftCardSuccess(MyEGiftCardMapper.transform(response,page),response.getData().getPagination());
                 }
 
                 @Override

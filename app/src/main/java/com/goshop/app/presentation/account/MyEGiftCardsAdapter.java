@@ -30,12 +30,6 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
         this.myEGiftModels = myEGiftModels;
     }
 
-    public void setUpDatas(List<MyEGiftModel> myEGiftModels) {
-        this.myEGiftModels.clear();
-        this.myEGiftModels = myEGiftModels;
-        notifyDataSetChanged();
-    }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;

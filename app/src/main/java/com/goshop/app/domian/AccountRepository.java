@@ -49,7 +49,7 @@ public interface AccountRepository {
 
     Observable<Response<MyEGiftResponse>> eGiftCardsRequest(Map<String, Object> params);
 
-    Observable<Response<MyEGiftResponse>> getEGiftCardDetails();
+    Observable<Response<MyEGiftResponse>> getEGiftCardDetails(Map<String, Object> params);
 
     Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
 

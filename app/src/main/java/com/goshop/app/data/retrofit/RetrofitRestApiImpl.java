@@ -91,9 +91,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.EGIFTCARD_DETAILS);
-        return retrofitRestApi.getEGiftCardDetails(url);
+        return retrofitRestApi.getEGiftCardDetails(url,params);
     }
 
     @Override
