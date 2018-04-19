@@ -30,7 +30,7 @@ public class ProductDetailContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void productDetailRequest(Map<String, Object> params);
+        void getProductDetails();
 
         void addWishlistRequest(String skuId);
 

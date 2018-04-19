@@ -142,9 +142,6 @@ public class EndpointAddress {
     public static final String PENDING = "";
 
     //todo wait for api
-    public static final String PRODUCT_DETAIL = "";
-
-    //todo wait for api
     public static final String PROMOTION_BANNER = "";
 
     //todo wait for api

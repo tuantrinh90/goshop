@@ -72,8 +72,8 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
-        return productCloudDataSource.productDetailRequest(params);
+    public Observable<ProductDetailResponse> getProductDetails(Map<String, Object> params) {
+        return productCloudDataSource.getProductDetails(params);
     }
 
     @Override

@@ -29,7 +29,7 @@ public interface ProductRepository {
 
     Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params);
 
-    Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
+    Observable<ProductDetailResponse> getProductDetails(Map<String, Object> params);
 
     Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params);
 

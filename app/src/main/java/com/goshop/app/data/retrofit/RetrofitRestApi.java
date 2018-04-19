@@ -239,7 +239,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<ProductDetailResponse> productDetailRequest(@Url String fullUrl,
+    Observable<ProductDetailResponse> getProductDetails(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

@@ -45,9 +45,12 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     }
 
     @Override
-    public void productDetailRequest(Map<String, Object> params) {
+    public void getProductDetails() {
         mView.showLoadingBar();
-        addSubscrebe(productRepository.productDetailRequest(params).subscribeWith(
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        addSubscrebe(productRepository.getProductDetails(params).subscribeWith(
             new DisposableObserver<ProductDetailResponse>() {
                 @Override
                 public void onNext(ProductDetailResponse productDetailResponse) {

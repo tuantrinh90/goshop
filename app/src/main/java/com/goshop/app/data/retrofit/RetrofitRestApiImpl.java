@@ -241,9 +241,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.PRODUCT_DETAIL);
-        return retrofitRestApi.productDetailRequest(url, params);
+    public Observable<ProductDetailResponse> getProductDetails(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_PRODUCT_DETAILS);
+        return retrofitRestApi.getProductDetails(url, params);
     }
 
     @Override

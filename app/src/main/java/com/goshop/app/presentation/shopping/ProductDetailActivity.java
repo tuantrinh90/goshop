@@ -62,7 +62,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //todo(helen) wait for api
-        mPresenter.productDetailRequest(null);
+        mPresenter.getProductDetails();
     }
 
     @Override

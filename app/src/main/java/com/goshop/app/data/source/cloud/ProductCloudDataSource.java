@@ -57,8 +57,8 @@ public class ProductCloudDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
-        return restApi.productDetailRequest(params);
+    public Observable<ProductDetailResponse> getProductDetails(Map<String, Object> params) {
+        return restApi.getProductDetails(params);
     }
 
     @Override

@@ -114,7 +114,7 @@ public interface RestApi {
     Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(
         Map<String, Object> params);
 
-    Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
+    Observable<ProductDetailResponse> getProductDetails(Map<String, Object> params);
 
     Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params);
 
