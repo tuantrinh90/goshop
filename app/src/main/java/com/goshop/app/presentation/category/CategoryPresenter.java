@@ -3,7 +3,6 @@ package com.goshop.app.presentation.category;
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightChildVM;

@@ -6,8 +6,8 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
+import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
@@ -15,10 +15,8 @@ import com.goshop.app.utils.PopWindowUtil;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -34,14 +32,14 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     @BindView(R.id.et_profile_email)
     CustomAnimEditText etProfileEmail;
 
-    @BindView(R.id.et_profile_first)
-    CustomAnimEditText etProfileFirst;
-
-    @BindView(R.id.et_profile_last)
-    CustomAnimEditText etProfileLast;
+    @BindView(R.id.et_profile_name)
+    CustomAnimEditText etProfileName;
 
     @BindView(R.id.et_profile_mobile)
     CustomAnimEditText etProfileMobile;
+
+    @BindView(R.id.textview_right_menu)
+    RobotoMediumTextView textviewRightMenu;
 
     @BindView(R.id.tv_date_birth_hint)
     RobotoRegularTextView tvDateBirthHint;
@@ -51,9 +49,6 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
 
     @BindView(R.id.iv_select_male)
     ImageView ivSelectMale;
-
-    @BindView(R.id.textview_right_menu)
-    RobotoMediumTextView textviewRightMenu;
 
     @BindView(R.id.tv_gender_warning)
     RobotoRegularTextView tvGenderWarning;
@@ -104,7 +99,6 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         initPresenter();
     }
 
-
     private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
@@ -131,15 +125,14 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             case R.id.textview_right_menu:
                 EditTextUtil.eidtLoseFocus(textviewRightMenu);
                 String email = etProfileEmail.getText();
-                String firstName = etProfileFirst.getText();
-                String lastName = etProfileLast.getText();
+                String name = etProfileName.getText();
                 String birth = tvProfileDateOfBirth.getText().toString();
                 String title = tvProfileTitle.getText().toString();
                 String mobile = etProfileMobile.getText();
                 String language = tvProfileLanguage.getText().toString();
                 String race = tvProfileRace.getText().toString();
-                gender = ivSelectMale.isSelected()?"0":"1";
-                judgmentInput(email, firstName, lastName, gender, birth, title, mobile, language,
+                gender = ivSelectMale.isSelected() ? "0" : "1";
+                judgmentInput(email, name, gender, birth, title, mobile, language,
                     race);
                 break;
             case R.id.ll_select_female:
@@ -184,20 +177,17 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         }
     }
 
-    private void judgmentInput(String email, String firstName, String lastName, String gender,
+    private void judgmentInput(String email, String name, String gender,
         String birth, String title, String mobile, String language, String race) {
         if (TextUtils.isEmpty(email) || !etProfileEmail.isEmail()) {
             etProfileEmail.setErrorMessage(getResources().getString(R.string.format_email_warning));
             return;
         }
-        if (TextUtils.isEmpty(firstName)) {
-            etProfileFirst.setErrorMessage(getResources().getString(R.string.empty_error));
+        if (TextUtils.isEmpty(name)) {
+            etProfileName.setErrorMessage(getResources().getString(R.string.empty_error));
             return;
         }
-        if (TextUtils.isEmpty(lastName)) {
-            etProfileLast.setErrorMessage(getResources().getString(R.string.empty_error));
-            return;
-        }
+
         if (TextUtils.isEmpty(gender)) {
             tvGenderWarning.setVisibility(View.VISIBLE);
             return;
@@ -211,10 +201,10 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
             tvProfileDateOfBirthWarning.setVisibility(View.INVISIBLE);
         }
         if (TextUtils.isEmpty(mobile) || !etProfileMobile.isMobileNo()) {
-            etProfileMobile.setErrorMessage(getResources().getString(R.string.format_mobile_warning));
+            etProfileMobile
+                .setErrorMessage(getResources().getString(R.string.format_mobile_warning));
             return;
         }
-        String name = firstName + " " + lastName;
 
         mPresenter.editProfileRequest(name, email, title, gender, birth, mobile, language);
     }
@@ -230,16 +220,9 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     }
 
     @Override
-    public void editProfileFailed(String errorMessage) {
-        //todo wait for design
-        Log.d("EditProfileActivity", errorMessage);
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
-    }
-
-    @Override
-    public void setProfileVM(ProfileVM profileVM) {
+    public void getUserProfileSuccess(ProfileVM profileVM) {
         etProfileEmail.setText(profileVM.getEmail());
-        etProfileFirst.setText(profileVM.getFirstName());
+        etProfileName.setText(profileVM.getName());
         tvProfileDateOfBirth.setText(profileVM.getBirth());
         etProfileMobile.setText(profileVM.getMobile());
     }
@@ -257,6 +240,11 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     @Override
     public void setGender(List<ProfileMetaVM> genderVMs) {
         //todo need decide
+    }
+
+    @Override
+    public void showErrorMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(textviewRightMenu, errorMessage);
     }
 
     @Override

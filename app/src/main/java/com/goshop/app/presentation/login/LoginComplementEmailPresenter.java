@@ -9,8 +9,6 @@ import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.FacebookLoginVm;
 
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.Map;
 

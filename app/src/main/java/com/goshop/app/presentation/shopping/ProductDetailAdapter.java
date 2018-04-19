@@ -18,6 +18,7 @@ import com.goshop.app.widget.adapter.PDPReviewsItemAdapter;
 import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
 
+import android.content.Context;
 import android.graphics.Paint;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -42,11 +43,14 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     private OnProductDetailItemClickListener onProductDetailItemClickListener;
 
-    public ProductDetailAdapter(OnProductDetailItemClickListener onProductDetailItemClickListener,
+    private Context context;
+
+    public ProductDetailAdapter(Context context, OnProductDetailItemClickListener onProductDetailItemClickListener,
         List<ProductDetailModel> detailModels) {
         this.onProductDetailItemClickListener = onProductDetailItemClickListener;
         this.allDetailModels = new ArrayList<>();
         this.displayDetailModels = detailModels;
+        this.context = context;
     }
 
     public void setUpdateDatas(List<ProductDetailModel> detailModels) {
@@ -287,7 +291,8 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         }
     }
 
-    class DeliveryInfoViewHolder extends RecyclerView.ViewHolder {
+    class DeliveryInfoViewHolder extends RecyclerView.ViewHolder
+        implements ProductDetailActivity.OnDeliveryCheckSuccessListener{
 
         @BindView(R.id.et_product_detail_delivery)
         RobotoRegularEditText etProductDetailDelivery;
@@ -298,6 +303,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         public DeliveryInfoViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            ((ProductDetailActivity)context).setOnDeliveryCheckSuccessListener(this);
         }
 
         void bindData() {
@@ -305,6 +311,11 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
                 String zipcode = etProductDetailDelivery.getText().toString();
                 onProductDetailItemClickListener.onDeliveryCheckClick(zipcode);
             });
+        }
+
+        @Override
+        public void success() {
+            etProductDetailDelivery.setText("");
         }
     }
 

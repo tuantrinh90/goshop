@@ -9,7 +9,8 @@
         android:scaleType="centerInside"
         android:layout_above="@+id/tv_net"
         android:layout_width="@dimen/size_100"
-        android:layout_height="@dimen/size_100"/>
+        android:layout_height="@dimen/size_100"
+        android:contentDescription="@string/app_name"/>
 
     <com.goshop.app.common.view.RobotoRegularTextView
         android:id="@+id/tv_net"

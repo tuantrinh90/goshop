@@ -2,7 +2,6 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
-import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.QuestionAnswerDataVM;
 

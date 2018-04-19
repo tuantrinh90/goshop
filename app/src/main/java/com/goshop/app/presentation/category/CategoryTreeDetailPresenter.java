@@ -3,8 +3,6 @@ package com.goshop.app.presentation.category;
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.SearchResultResponse;
-import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.domian.ProductDataRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;

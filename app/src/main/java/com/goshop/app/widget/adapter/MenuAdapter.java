@@ -4,14 +4,12 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.goloyalty.GoLoyaltyActivity;
 import com.goshop.app.presentation.model.MenuHeaderVM;
 import com.goshop.app.presentation.model.MenuItemVM;
 import com.goshop.app.presentation.model.MenuModel;
 import com.goshop.app.utils.MenuUtil;
 
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -175,9 +173,7 @@ public class MenuAdapter extends RecyclerView.Adapter {
                 tvMenuItem.setSelected(menuItemVM.isSelect());
                 llMenuItem.setSelected(menuItemVM.isSelect());
                 tvMenuItem.setText(menuItemVM.getTitle());
-                llMenuItem.setOnClickListener(v -> {
-                    onSlideMenuItemClickListener.onItemClick(itemVM, position);
-                });
+                llMenuItem.setOnClickListener(v -> onSlideMenuItemClickListener.onItemClick(itemVM, position));
             }
         }
     }

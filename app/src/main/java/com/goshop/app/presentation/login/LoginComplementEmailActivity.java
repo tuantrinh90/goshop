@@ -17,13 +17,9 @@ import com.goshop.app.utils.ToastUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.InputType;
 import android.text.TextUtils;
 import android.view.View;
-import android.view.inputmethod.EditorInfo;
 import android.widget.LinearLayout;
-import android.widget.Toast;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;

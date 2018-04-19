@@ -7,6 +7,7 @@ import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
 
 import android.content.Intent;
@@ -55,6 +56,8 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     private ProductDetailAdapter pdpAdapter;
 
+    private OnDeliveryCheckSuccessListener onDeliveryCheckSuccessListener;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -92,7 +95,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcvPdpDetails.setLayoutManager(layoutManager);
-        pdpAdapter = new ProductDetailAdapter(this, new ArrayList<>());
+        pdpAdapter = new ProductDetailAdapter(this,this, new ArrayList<>());
         rcvPdpDetails.setAdapter(pdpAdapter);
     }
 
@@ -153,24 +156,23 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void addWishlistFailed(String errorMessage) {
-        //todo wait for design
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(rcvPdpDetails, errorMessage);
     }
 
     @Override
     public void removeWishlistFailed(String errorMessage) {
-        //todo wait for design
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(rcvPdpDetails, errorMessage);
     }
 
     @Override
     public void deliveryCheckRequestSuccess() {
         Toast.makeText(this, getResources().getString(R.string.success), Toast.LENGTH_LONG).show();
+        onDeliveryCheckSuccessListener.success();
     }
 
     @Override
     public void deliveryCheckRequestFailed(String errorMessage) {
-        Toast.makeText(this, errorMessage, Toast.LENGTH_LONG).show();
+        PopWindowUtil.showRequestMessagePop(rcvPdpDetails, errorMessage);
     }
 
     @Override
@@ -214,7 +216,14 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
             Toast.makeText(this, getResources().getString(R.string.empty_error), Toast.LENGTH_LONG).show();
             return;
         }
-        mPresenter.deliveryCheckRequest();
+        mPresenter.deliveryCheckRequest(zipcode);
+    }
 
+    public interface OnDeliveryCheckSuccessListener{
+        void success();
+    }
+
+    public void setOnDeliveryCheckSuccessListener(OnDeliveryCheckSuccessListener listener) {
+        this.onDeliveryCheckSuccessListener = listener;
     }
 }

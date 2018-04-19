@@ -16,9 +16,6 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;

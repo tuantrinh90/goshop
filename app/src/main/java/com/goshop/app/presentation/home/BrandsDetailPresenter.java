@@ -3,7 +3,6 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.BrandsResponse;
-import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.BrandsDetailVM;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;

@@ -2,6 +2,7 @@ package com.goshop.app;
 
 import com.crashlytics.android.Crashlytics;
 import com.facebook.FacebookSdk;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.realm.EncryptionKey;
 import com.goshop.app.data.realm.SchemaMigration;
 import com.orhanobut.logger.AndroidLogAdapter;

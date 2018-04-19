@@ -15,15 +15,15 @@ public class EditProfileContract {
 
         void editProfileSuccess();
 
-        void editProfileFailed(String errorMessage);
-
-        void setProfileVM(ProfileVM profileVM);
+        void getUserProfileSuccess(ProfileVM profileVM);
 
         void setLanguage(List<ProfileMetaVM> languageVMs);
 
         void setRace(List<ProfileMetaVM> raceVMs);
 
         void setGender(List<ProfileMetaVM> genderVMs);
+
+        void showErrorMessage(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {

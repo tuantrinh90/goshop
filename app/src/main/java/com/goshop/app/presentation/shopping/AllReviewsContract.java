@@ -4,8 +4,6 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.AllReviewsVM;
 
-import java.util.Map;
-
 public class AllReviewsContract {
 
     interface View extends BaseView {
@@ -19,11 +17,13 @@ public class AllReviewsContract {
         void showNetWorkError(String errorMessage);
 
         void showDataLayout();
+
+        void stopRefresh();
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void allReviewsRequest(Map<String, Object> params);
+        void getProductRatingReviews(int page, boolean isRefresh);
     }
 
 }

@@ -10,17 +10,14 @@ import com.goshop.app.common.view.irecyclerview.widget.footer.LoadMoreFooterView
 import com.goshop.app.data.model.response.common.PaginationData;
 import com.goshop.app.presentation.model.MyEGiftModel;
 import com.goshop.app.utils.PopWindowUtil;
-
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;

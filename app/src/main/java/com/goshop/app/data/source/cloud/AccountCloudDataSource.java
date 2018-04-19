@@ -134,8 +134,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<AllReviewsResponse>> allReviewsRequest(Map<String, Object> params) {
-        return restApi.allReviewsRequest(params);
+    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
+        return restApi.getProductRatingReviews(params);
     }
 
     @Override
@@ -236,8 +236,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<AddressResponse>> getAddressList() {
-        return restApi.getAddressList();
+    public Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params) {
+        return restApi.getAddressList(params);
     }
 
     @Override
@@ -315,8 +315,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<ProfileResponse>> getUserProfile() {
-        return restApi.getUserProfile();
+    public Observable<Response<ProfileResponse>> getUserProfile(Map<String, Object> params) {
+        return restApi.getUserProfile(params);
     }
 
     @Override
@@ -372,6 +372,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
         return restApi.returnOrderRequest(params);
+    }
+
+    @Override
+    public Observable<Response> selectDefaultShippingRequest(Map<String, Object> params) {
+        return restApi.selectDefaultShippingRequest(params);
+    }
+
+    @Override
+    public Observable<Response> selectDefaultBillingRequest(Map<String, Object> params) {
+        return restApi.selectDefaultBillingRequest(params);
     }
 
 }
