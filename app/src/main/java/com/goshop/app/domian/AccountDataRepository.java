@@ -198,8 +198,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
-        return accountCloudDataSource.getWishlistItems().concatMap(response -> {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params) {
+        return accountCloudDataSource.getWishlistItems(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {

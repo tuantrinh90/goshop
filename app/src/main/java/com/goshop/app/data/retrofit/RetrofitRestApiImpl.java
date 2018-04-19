@@ -157,9 +157,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_WISHLIST_ITEMS);
-        return retrofitRestApi.getWishlistItems(url);
+        return retrofitRestApi.getWishlistItems(url,params);
     }
 
     @Override

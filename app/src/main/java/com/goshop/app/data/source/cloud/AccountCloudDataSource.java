@@ -124,8 +124,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
-        return restApi.getWishlistItems();
+    public Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params) {
+        return restApi.getWishlistItems(params);
     }
 
     @Override

@@ -2,6 +2,7 @@ package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
 import com.facebook.login.LoginManager;
+import com.facebook.login.widget.LoginButton;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
@@ -72,9 +73,9 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     @BindView(R.id.tv_register)
     RobotoRegularTextView tvRegister;
-    //todo do not delete please,this maybe use later
-   /* @BindView(R.id.login_button)
-    LoginButton loginButton;*/
+
+    @BindView(R.id.login_button)
+    LoginButton loginButton;
 
     private CallbackManager callbackManager;
 
@@ -93,6 +94,7 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     private void initData() {
         callbackManager = mPresenter.initFaceBook();
+        loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
     }
 
     private void initToolbar() {
@@ -112,8 +114,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
-        //todo do not delete please,this maybe use later
-        /*loginButton.setReadPermissions(Arrays.asList("public_profile", "email"));*/
     }
 
     @Override
@@ -142,9 +142,10 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
                 startActivity(new Intent(this, LoginResetPasswordActivity.class));
                 break;
             case R.id.tv_btn_login_facebook:
+                //todo do not delete please,this maybe use later
                 //facebook sdk code
-                LoginManager.getInstance().logInWithReadPermissions(this, Arrays
-                    .asList("public_profile", "user_friends", "email"));
+//                LoginManager.getInstance().logInWithReadPermissions(this, Arrays
+//                    .asList("public_profile", "user_friends", "email"));
                 // TODO: 2018/4/12  you can use this method generate HashKey for facebook
 //                JToolUtils.generateHashKey(this);
                 break;

@@ -170,15 +170,15 @@
                     android:layout_marginBottom="@dimen/size_32"
                     android:paddingLeft="@dimen/size_12"
                     android:paddingRight="@dimen/size_12"
+                    android:visibility="gone"
                     android:drawableLeft="@drawable/ic_icon_facebook_login"
                     android:gravity="center"
                     android:text="@string/login_facebook"
                     android:textSize="@dimen/size_font_16"
                     android:textColor="@android:color/white"
-                    android:background="@drawable/ic_icon_blue_btn"
-                />
-                //todo do not delete please,this maybe use later
-               <!-- <com.facebook.login.widget.LoginButton
+                    android:background="@drawable/ic_icon_blue_btn"/>
+
+                <com.facebook.login.widget.LoginButton
                     android:id="@+id/login_button"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/size_54"
@@ -191,7 +191,7 @@
                     android:layout_marginLeft="@dimen/size_16"
                     android:layout_marginRight="@dimen/size_16"
                     android:layout_marginBottom="@dimen/size_32"
-                    android:background="@drawable/ic_icon_blue_btn"/>-->
+                    android:background="@drawable/ic_icon_blue_btn"/>
             </LinearLayout>
 
         </android.support.v4.widget.NestedScrollView>

@@ -120,7 +120,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params) {
         return null;
     }
 

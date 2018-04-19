@@ -156,7 +156,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<MyWishlistResponse>> getWishlistItems(@Url String fullUrl);
+    Observable<Response<MyWishlistResponse>> getWishlistItems(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -167,7 +168,7 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @GET
     Observable<Response<AllReviewsResponse>> getProductRatingReviews(@Url String fullUrl,
-        @QueryMap Map<String,Object> params);
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

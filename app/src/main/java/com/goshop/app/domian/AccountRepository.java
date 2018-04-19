@@ -71,7 +71,7 @@ public interface AccountRepository {
 
     Observable<Response<MyWishlistResponse>> addWishlistRequest(Map<String, Object> params);
 
-    Observable<Response<MyWishlistResponse>> getWishlistItems();
+    Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params);
 
     Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 

@@ -4,6 +4,7 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.MyWishlistMapper;
 
@@ -37,9 +38,14 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
                 }
 
                 @Override
-                public void onError(Throwable e) {
+                public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.showError(e.getLocalizedMessage().toString());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override
@@ -50,20 +56,28 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
     }
 
     @Override
-    public void getWishlistItems() {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.getWishlistItems().subscribeWith(
+    public void getWishlistItems(int page, boolean isShowLoading) {
+        if (isShowLoading) mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.REQUEST_PARAM_PAGE, page);
+        params.put(Const.REQUEST_PARAM_LIMIT, Const.LIMIT);
+        addSubscrebe(accountRepository.getWishlistItems(params).subscribeWith(
             new DisposableObserver<Response<MyWishlistResponse>>() {
                 @Override
                 public void onNext(Response<MyWishlistResponse> response) {
                     mView.hideLoadingBar();
-                    mView.showWishlistItems(MyWishlistMapper.transform(response));
+                    mView.showWishlistItems(MyWishlistMapper.transform(response),response.getData().getPagination());
                 }
 
                 @Override
-                public void onError(Throwable e) {
+                public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.showError(e.getLocalizedMessage().toString());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override
