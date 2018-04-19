@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.account;
 
+import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
@@ -213,8 +214,8 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
 
         AddressRequest request = new AddressRequest();
         RequestData requestData = new RequestData();
-        requestData.setWebsiteId("1");
-        requestData.setStoreId("3");
+        requestData.setWebsiteId(Const.WEBSITE_ID + "");
+        requestData.setStoreId(Const.STORE_ID + "");
         requestData.setFirstName(name);
         HashMap<String, Object> street = new HashMap<>();
         //todo this hard code need wait for api decide

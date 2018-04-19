@@ -154,6 +154,8 @@ public class Const {
 
     public static final String PARAMS_LIMIT = "limit";
 
+    public static final String PARAMS_POSTCODE = "postcode";
+
 
     //request param
     public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";

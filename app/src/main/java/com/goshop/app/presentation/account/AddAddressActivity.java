@@ -192,8 +192,8 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
 
         AddressRequest request = new AddressRequest();
         RequestData requestData = new RequestData();
-        requestData.setWebsiteId("1");
-        requestData.setStoreId("3");
+        requestData.setWebsiteId(Const.WEBSITE_ID + "");
+        requestData.setStoreId(Const.STORE_ID + "");
         requestData.setFirstName(name);
         HashMap<String, Object> street = new HashMap<>();
         //todo this hard code need wait for api decide

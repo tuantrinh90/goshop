@@ -36,7 +36,7 @@ public class ProductDetailContract {
 
         void removeWishlistRequest(String skuId);
 
-        void deliveryCheckRequest();
+        void deliveryCheckRequest(String zipCode);
     }
 
 }

@@ -218,7 +218,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
             Toast.makeText(this, getResources().getString(R.string.empty_error), Toast.LENGTH_LONG).show();
             return;
         }
-        mPresenter.deliveryCheckRequest();
+        mPresenter.deliveryCheckRequest(zipcode);
     }
 
     public interface OnDeliveryCheckSuccessListener{
