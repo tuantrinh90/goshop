@@ -40,6 +40,7 @@ import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.presentation.model.FlagsVM;
 import com.goshop.app.utils.ServiceData;
 
 import java.util.Map;
@@ -382,6 +383,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<Response> selectDefaultBillingRequest(Map<String, Object> params) {
         return restApi.selectDefaultBillingRequest(params);
+    }
+
+    @Override
+    public Observable<FlagsVM> getFlags() {
+        return null;
+    }
+
+    @Override
+    public Observable<Object> saveFlags(FlagsVM flagsVM) {
+        return null;
     }
 
 }

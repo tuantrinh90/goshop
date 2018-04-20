@@ -1,17 +1,17 @@
 package com.goshop.app.presentation.home;
 
+import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.presentation.login.LoginActivity;
+import com.goshop.app.presentation.model.FlagsVM;
 import com.goshop.app.utils.UserHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import android.util.Log;
 
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
@@ -30,7 +30,7 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.getUserInfo();
+        mPresenter.getFlags();
     }
 
     @Override
@@ -87,6 +87,11 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
             nextPageType = NEXT_PAGE_TYPE_HOME_UN_LOGIN;
         }
         mPresenter.delayToJump();
+    }
+
+    @Override
+    public void getFlagsSuccess(FlagsVM response) {
+        mPresenter.getUserInfo();
     }
 
 }

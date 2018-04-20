@@ -40,6 +40,8 @@ import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.presentation.model.FlagsVM;
+
 import java.util.Map;
 import javax.inject.Inject;
 import io.reactivex.Observable;
@@ -371,5 +373,15 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Override
     public Observable<Response> selectDefaultBillingRequest(Map<String, Object> params) {
         return null;
+    }
+
+    @Override
+    public Observable<FlagsVM> getFlags() {
+        return localApi.getFlags();
+    }
+
+    @Override
+    public Observable<Object> saveFlags(FlagsVM flagsVM) {
+        return localApi.saveFlags(flagsVM);
     }
 }

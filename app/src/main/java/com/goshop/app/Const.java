@@ -243,4 +243,13 @@ public class Const {
 
     public static final String PARAMS_COUNTRY_CODE = "country_code";
 
+    public class FlagType {
+
+        public static final String FLAG_TYPE_LOAD_LOCAL_DATA = "loadLocalDataFlag";
+
+        public static final String FLAG_TYPE_FIRST_APP_LOAD = "firstAppLoad";
+
+    }
+
+
 }

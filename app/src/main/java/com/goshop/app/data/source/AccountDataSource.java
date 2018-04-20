@@ -38,6 +38,7 @@ import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
+import com.goshop.app.presentation.model.FlagsVM;
 
 import java.util.Map;
 
@@ -171,4 +172,8 @@ public interface AccountDataSource {
     Observable<Response> selectDefaultShippingRequest(Map<String, Object> params);
 
     Observable<Response> selectDefaultBillingRequest(Map<String, Object> params);
+
+    Observable<FlagsVM> getFlags();
+
+    Observable<Object> saveFlags(FlagsVM flagsVM);
 }
