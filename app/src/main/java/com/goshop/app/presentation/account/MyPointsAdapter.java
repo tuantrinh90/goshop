@@ -22,16 +22,10 @@ import butterknife.ButterKnife;
 
 public class MyPointsAdapter extends RecyclerView.Adapter {
 
-    List<PointsModel> pointsModels;
+    private List<PointsModel> pointsModels;
 
     public MyPointsAdapter(List<PointsModel> pointsModels) {
         this.pointsModels = pointsModels;
-    }
-
-    public void setUpdateDatas(List<PointsModel> pointsModels) {
-        this.pointsModels.clear();
-        this.pointsModels = pointsModels;
-        notifyDataSetChanged();
     }
 
     @Override

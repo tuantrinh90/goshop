@@ -91,9 +91,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.EGIFTCARD_DETAILS);
-        return retrofitRestApi.getEGiftCardDetails(url);
+        return retrofitRestApi.getEGiftCardDetails(url,params);
     }
 
     @Override
@@ -157,9 +157,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_WISHLIST_ITEMS);
-        return retrofitRestApi.getWishlistItems(url);
+        return retrofitRestApi.getWishlistItems(url,params);
     }
 
     @Override
@@ -379,9 +379,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails() {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_GOSHOP_POINTS_DETAIL);
-        return retrofitRestApi.getGoShopPointsDetails(url);
+        return retrofitRestApi.getGoShopPointsDetails(url,params);
     }
 
     @Override

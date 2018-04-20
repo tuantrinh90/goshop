@@ -100,8 +100,6 @@ public class MenuUtil {
             menuModels.add(new MenuItemVM(R.drawable.selector_slide_rewards,
                 activity.getResources().getString(R.string.my_rewards), MENU_TYPE_MY_REWARDS));
         }
-        menuModels.add(new MenuItemVM(R.drawable.selector_slide_notification,
-            activity.getResources().getString(R.string.notifications), MENU_TYPE_NOTIFICATIONS));
         menuModels.add(new MenuModel(MenuModel.MENU_DIVIDER));
         menuModels.add(new MenuItemVM(0, activity.getResources().getString(R.string.help_support),
             MENU_TYPE_HELP_AND_SUPPORT));

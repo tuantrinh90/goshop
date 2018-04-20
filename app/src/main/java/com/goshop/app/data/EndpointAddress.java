@@ -32,14 +32,16 @@ public class EndpointAddress {
     public static final String EGIFTCARD_DETAILS =
         "rest/all/V1/rest-api/customer/customer_id/egiftcard?website_idstore_id";
 
-    public static final String ACTIVATE_EGIFTCARD = "rest/all/V1/rest-api/customer/id/egiftcard";
+    public static final String ACTIVATE_EGIFTCARD =
+        "rest/all/V1/rest-api/customer/customer_id/egiftcard";
 
     public static final String GET_WISHLIST_ITEMS =
         "rest/all/V1/rest-api/customer/customer_id/wishlist?website_idstore_id";
 
-    public static final String ADD_WISHLIST = "rest/all/V1/rest-api/customer/id/wishlist";
+    public static final String ADD_WISHLIST = "rest/all/V1/rest-api/customer/customer_id/wishlist";
 
-    public static final String REMOVE_WISHLIST = "rest/all/V1/rest-api/customer/id/wishlist";
+    public static final String REMOVE_WISHLIST =
+        "rest/all/V1/rest-api/customer/customer_id/wishlist";
 
     public static final String GET_PROFILE_METADATA =
         "rest/all/V1/rest-api/customer/metadata?website_idstore_id";

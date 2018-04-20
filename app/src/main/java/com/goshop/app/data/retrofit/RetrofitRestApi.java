@@ -52,6 +52,7 @@ import java.util.Map;
 
 import io.reactivex.Observable;
 import retrofit2.http.Body;
+import retrofit2.http.DELETE;
 import retrofit2.http.FieldMap;
 import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
@@ -63,7 +64,7 @@ import retrofit2.http.Url;
 
 public interface RetrofitRestApi {
 
-    String CONTENT_TYPE_JSON = "Content-Type: application/vnd.api+json";
+    String CONTENT_TYPE_JSON = "Content-Type: application/json";
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -91,7 +92,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<MyEGiftResponse>> getEGiftCardDetails(@Url String fullUrl);
+    Observable<Response<MyEGiftResponse>> getEGiftCardDetails(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -141,11 +143,10 @@ public interface RetrofitRestApi {
     Observable<MyRewardsResponse> rewardsDetailRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
+    @DELETE
     Observable<Response<MyWishlistResponse>> wishilistDeleteRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -155,7 +156,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<MyWishlistResponse>> getWishlistItems(@Url String fullUrl);
+    Observable<Response<MyWishlistResponse>> getWishlistItems(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -166,7 +168,7 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @GET
     Observable<Response<AllReviewsResponse>> getProductRatingReviews(@Url String fullUrl,
-        @QueryMap Map<String,Object> params);
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -371,7 +373,8 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<MyPointsResponse>> getGoShopPointsDetails(@Url String fullUrl);
+    Observable<Response<MyPointsResponse>> getGoShopPointsDetails(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

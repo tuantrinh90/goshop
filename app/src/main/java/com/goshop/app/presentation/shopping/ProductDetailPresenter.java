@@ -94,7 +94,7 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }

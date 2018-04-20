@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:animET="http://schemas.android.com/apk/res-auto"
     xmlns:pwd="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/ll_container"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -32,29 +33,17 @@
                     android:layout_height="wrap_content"
                     android:paddingTop="@dimen/size_30">
                     <com.goshop.app.common.CustomAnimEditText
-                        android:id="@+id/ctd_et_register_firstname"
-                        android:layout_width="@dimen/size_156"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_marginRight="@dimen/size_8"
-                        animET:hint="@string/register_firstname"
-                        tools:ignore="RtlHardcoded"/>
-
-                    <com.goshop.app.common.CustomAnimEditText
-                        android:id="@+id/ctd_et_register_lastname"
+                        android:id="@+id/ctd_et_register_name"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toRightOf="@id/ctd_et_register_firstname"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginLeft="@dimen/size_8"
-                        animET:hint="@string/register_lastname"
-                        android:layout_toEndOf="@id/ctd_et_register_firstname"
+                        android:layout_alignParentLeft="true"
+                        animET:hint="@string/register_name"
                         tools:ignore="RtlHardcoded"/>
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_below="@id/ctd_et_register_firstname"
+                        android:layout_below="@id/ctd_et_register_name"
                         android:orientation="vertical">
                         <com.goshop.app.common.CustomAnimEditText
                             android:id="@+id/ctd_et_register_email"

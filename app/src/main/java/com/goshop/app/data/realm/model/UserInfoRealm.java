@@ -8,6 +8,8 @@ import io.realm.annotations.PrimaryKey;
 public class UserInfoRealm extends RealmObject {
 
     @PrimaryKey
+    String realmId;
+
     int id;
 
     String title;
@@ -46,6 +48,7 @@ public class UserInfoRealm extends RealmObject {
     }
 
     public UserInfoRealm(UserData userData) {
+        this.realmId="1";
         this.id = userData.getId();
         this.title = userData.getTitle();
         this.name = userData.getName();

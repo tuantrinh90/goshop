@@ -27,7 +27,7 @@ public interface ProductDataSource {
 
     Observable<SearchResultResponse> searchResultResponse(Map<String, Object> params);
 
-    Observable<Response<MyPointsResponse>> getGoShopPointsDetails();
+    Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params);
 
     Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
 

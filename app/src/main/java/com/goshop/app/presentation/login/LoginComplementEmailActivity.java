@@ -5,17 +5,21 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.data.model.response.LoginResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.FacebookLoginVm;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ToastUtil;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
-import android.widget.Toast;
-
+import android.widget.LinearLayout;
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
@@ -29,6 +33,9 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     @BindView(R.id.ctd_et_complement_email)
     CustomAnimEditText ctdEtComplementEmail;
+
+    @BindView(R.id.ll_container)
+    LinearLayout llContainer;
 
     @BindView(R.id.tv_btn_complement_email_submit)
     RobotoMediumTextView tvBtnComplementEmailSubmit;
@@ -97,27 +104,33 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     @Override
     public void onToastCancel() {
+        goToHomePage();
+    }
+
+    private void goToHomePage() {
+        Intent intent = new Intent(this, MainPageActivity.class);
+        startActivity(intent);
         finish();
     }
 
     @Override
-    public void complementEmailSuccess() {
-        showToast();
-    }
+    public void complementEmailSuccess(Response<LoginResponse> response) {
+        if (response != null && response.getData() != null && response.getData()
+            .getCustomer() != null && response.getData().getCustomer().getToken() != null) {
+            GoShopApplication.cacheUserInfo(response.getData().getCustomer());
+            toastUtil.showThanksToast();
 
-    private void showToast() {
-        toastUtil.showThanksToast();
+        }
     }
 
     @Override
     public void showServiceErrorMessage(String message) {
-        // TODO: 2018/4/16 need ui
-        Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
+        PopWindowUtil.showRequestMessagePop(llContainer, message);
     }
+
     @Override
     public void showNetworkErrorMessage(String message) {
-        // TODO: 2018/4/16 need ui
-        Toast.makeText(this, ""+message, Toast.LENGTH_SHORT).show();
+        PopWindowUtil.showRequestMessagePop(llContainer, message);
     }
 
 }

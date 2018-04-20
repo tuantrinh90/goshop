@@ -15,13 +15,13 @@ public class MyEGiftCardMapper {
 
     private static final String SENT_BY = "Sent by ";
 
-    public static List<MyEGiftModel> transform(Response<MyEGiftResponse> response) {
+    public static List<MyEGiftModel> transform(Response<MyEGiftResponse> response, int page) {
         List<MyEGiftModel> myEGiftModels = new ArrayList<>();
-        myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_TOP));
+        if (page == 1) myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_TOP));
         List<EgiftCardData> eGiftCardDatas = response.getData()
             .getEgiftCard();
         if (eGiftCardDatas.size() > 0) {
-            myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_CENTER));
+            if (page == 1) myEGiftModels.add(new MyEGiftModel(MyEGiftModel.VIEW_TYPE_CENTER));
 
             List<MyEGiftCardsDetailsVM> detailsVMS = new ArrayList<>();
             for (EgiftCardData eGiftCardData : eGiftCardDatas) {

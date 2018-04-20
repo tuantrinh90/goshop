@@ -3,7 +3,9 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.domian.AccountDataRepository;
+import com.goshop.app.presentation.model.FlagsVM;
 
+import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;
@@ -56,6 +58,47 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                 @Override
                 public void onNext(UserData response) {
                     mView.checkLoginSuccess(response);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void getFlags() {
+        addSubscrebe(accountDataRepository.getFlags()
+            .subscribeWith(new DisposableObserver<FlagsVM>() {
+                @Override
+                public void onNext(FlagsVM response) {
+                    mView.getFlagsSuccess(response);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void saveFlags(boolean isLoadLocalData, String type) {
+        FlagsVM flagsVM = new FlagsVM();
+        flagsVM.setLoadLocalDataFlag(true);
+        addSubscrebe(accountDataRepository.saveFlags(flagsVM)
+            .subscribeWith(new DisposableObserver<Object>() {
+                @Override
+                public void onNext(Object response) {
                 }
 
                 @Override

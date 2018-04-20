@@ -7,13 +7,15 @@ public class ChangePasswordContract {
 
     interface View extends BaseView {
 
-        void success();
+        void onChangePasswordSuccess();
 
-        void failed(String message);
+        void showServiceErrorMessage(String errorMessage);
+
+        void showNetworkErrorMessage(String message);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void changePasswordRequest(String customerId, String currentPassword, String newPassword);
+        void changePasswordRequest(int customerId, String currentPassword, String newPassword);
     }
 }

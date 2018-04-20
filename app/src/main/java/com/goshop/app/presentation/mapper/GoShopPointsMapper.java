@@ -13,23 +13,25 @@ import java.util.List;
 
 public class GoShopPointsMapper {
 
-    public static List<PointsModel> transform(Response<MyPointsResponse> response) {
+    public static List<PointsModel> transform(Response<MyPointsResponse> response, int page) {
 
         List<PointsModel> pointsModels = new ArrayList<>();
-        pointsModels.add(new PointsTotalVM(response.getData().getGoshop_points().getTotal()));
+
+        if (page == 1)
+            pointsModels.add(new PointsTotalVM(response.getData().getGoshopPoints().getTotal()));
 
         List<TransactionsData> transactions = response
-            .getData().getGoshop_points().getTransactions();
+            .getData().getGoshopPoints().getTransactions();
         List<PointsDetailVM> detailVMS = new ArrayList<>();
-
         if (transactions.size() > 0) {
-            pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_TITLE));
+            if (page == 1)
+                pointsModels.add(new PointsModel(PointsModel.VIEW_TYPE_TRANSACTIONS_TITLE));
             PointsDetailVM detailVM;
             for (TransactionsData transactionsData :
                 transactions) {
                 detailVM = new PointsDetailVM(transactionsData.getDetail(),
                     NumberFormater
-                        .formaterPoints(Integer.parseInt(transactionsData.getPoints()),
+                        .formaterPoints(transactionsData.getPoints(),
                             transactionsData.getType()),
                     transactionsData.getType(),
                     transactionsData.getValidUntil(),

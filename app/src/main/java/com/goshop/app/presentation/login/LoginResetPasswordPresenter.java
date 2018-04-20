@@ -4,6 +4,7 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 
 import java.util.HashMap;
@@ -22,7 +23,6 @@ public class LoginResetPasswordPresenter extends RxPresenter<LoginResetPasswordC
 
     @Override
     public void resetPasswordRequest(String email) {
-
         mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
@@ -39,7 +39,12 @@ public class LoginResetPasswordPresenter extends RxPresenter<LoginResetPasswordC
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.resetPwdFailed(throwable.getLocalizedMessage().toString());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override

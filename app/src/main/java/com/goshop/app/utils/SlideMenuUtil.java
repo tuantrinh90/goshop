@@ -92,7 +92,6 @@ public class SlideMenuUtil {
         tvSlideSignUp = headerView.findViewById(R.id.tv_slide_sign_up);
         //todo need decide
 //        llSlideUserInfo = headerView.findViewById(R.id.ll_slide_user_info);
-        ivSlideUser = headerView.findViewById(R.id.iv_slide_user);
         tvSlideUserName = headerView.findViewById(R.id.tv_slide_user_name);
 
         slideMenuWishlist.setVisible(isLogin);

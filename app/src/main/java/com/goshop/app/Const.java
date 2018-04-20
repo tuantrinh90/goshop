@@ -156,7 +156,6 @@ public class Const {
 
     public static final String PARAMS_POSTCODE = "postcode";
 
-
     //request param
     public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";
 
@@ -186,6 +185,9 @@ public class Const {
 
     public static final String QUESTION = "question";
 
+    public static final String REQUEST_PARAM_PAGE = "page";
+
+    public static final String REQUEST_PARAM_LIMIT = "limit";
 
     public static final int VALUE_JANUARY = 1;
 
@@ -240,5 +242,14 @@ public class Const {
     public static final String PARAMS_COUNTRY_ID = "country_id";
 
     public static final String PARAMS_COUNTRY_CODE = "country_code";
+
+    public class FlagType {
+
+        public static final String FLAG_TYPE_LOAD_LOCAL_DATA = "loadLocalDataFlag";
+
+        public static final String FLAG_TYPE_FIRST_APP_LOAD = "firstAppLoad";
+
+    }
+
 
 }
