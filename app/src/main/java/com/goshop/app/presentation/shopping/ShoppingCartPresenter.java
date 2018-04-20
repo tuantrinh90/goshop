@@ -1,8 +1,16 @@
 package com.goshop.app.presentation.shopping;
 
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
+import com.goshop.app.data.model.request.common.CartRequestData;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.MyWishlistResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.model.ShoppingCartApplyVM;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
@@ -14,6 +22,7 @@ import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -24,8 +33,12 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
 
     private AccountRepository accountRepository;
 
-    public ShoppingCartPresenter(AccountRepository accountRepository) {
+    private ProductRepository productRepository;
+
+    public ShoppingCartPresenter(AccountRepository accountRepository,
+        ProductRepository productRepository) {
         this.accountRepository = accountRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -54,16 +67,74 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
             }));
     }
 
+    @Override
+    public void removeFromCartRequest(String sku, String qty) {
+        mView.showLoadingBar();
+        AddRemoveCartRequest request = new AddRemoveCartRequest();
+        CartRequestData cartRequestData = new CartRequestData();
+        cartRequestData.setSku(sku);
+        cartRequestData.setQty(qty);
+        cartRequestData.setStoreId(Const.STORE_ID);
+        cartRequestData.setWebsiteId(Const.WEBSITE_ID);
+        request.setRequest(cartRequestData);
+        addSubscrebe(productRepository.removeFromCartRequest(request).subscribeWith(
+            new DisposableObserver<Response<CartDataResponse>>() {
+                @Override
+                public void onNext(Response<CartDataResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.removeSuccess();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    String errorMessage;
+                    if(throwable instanceof ServiceApiFail) {
+                        errorMessage = ((ServiceApiFail) throwable).getErrorMessage();
+                    } else {
+                        errorMessage = throwable.getMessage().toString();
+                    }
+                    mView.removeFailed(errorMessage);
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+
+    @Override
+    public void addWishlistRequest(String skuId) {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_SKU, skuId);
+        addSubscrebe(accountRepository.addWishlistRequest(params).subscribeWith(
+            new DisposableObserver<Response<MyWishlistResponse>>() {
+                @Override
+                public void onNext(Response<MyWishlistResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.addWishlistSuccess();
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.addWishlistFailed(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
     //TODO(helen)this is mockdata
     private List<ShoppingCartModel> getMockDatas() {
-
-        List<CarouselItemsVM> itemsVMS = new ArrayList<>();
-        CarouselItemsVM itemsVM = new CarouselItemsVM("http://a.hiphotos.baidu" +
-            ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
-        CarouselItemsVM itemsVM1 = new CarouselItemsVM("http://g.hiphotos.baidu" +
-            ".com/image/pic/item/7aec54e736d12f2ee7ed822044c2d56284356881.jpg");
-        itemsVMS.add(itemsVM);
-        itemsVMS.add(itemsVM1);
         List<ShoppingCartModel> cartModels = new ArrayList<>();
         ProductsVM productsVM = new ProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");

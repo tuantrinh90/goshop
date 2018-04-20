@@ -2,16 +2,18 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.presentation.model.ProductDetailModel;
+import com.goshop.app.presentation.model.SizeVM;
+import com.goshop.app.presentation.model.ColorVM;
 
 import java.util.List;
-import java.util.Map;
 
 public class ProductDetailContract {
 
     interface View extends BaseView {
 
-        void productDetailRequestSuccess(List<ProductDetailModel> detailDatas);
+        void getProductDetailSuccess(List<ProductDetailModel> detailDatas);
 
         void productBannerResult(List<String> imageUrls);
 
@@ -26,6 +28,18 @@ public class ProductDetailContract {
         void deliveryCheckRequestSuccess();
 
         void deliveryCheckRequestFailed(String errorMessage);
+
+        void showNetError();
+
+        void showFailedMessage(String errorMessage);
+
+        void hideDataLayout();
+
+        void setColorDatas(List<ColorVM> colorVMS);
+
+        void setSizeDatas(List<SizeVM> sizeVMS);
+
+        void addToCartResult(boolean isSuccess, String message);
     }
 
     public interface Presenter extends BasePresenter<View> {
@@ -37,6 +51,8 @@ public class ProductDetailContract {
         void removeWishlistRequest(String skuId);
 
         void deliveryCheckRequest(String zipCode);
+
+        void addToCartRequest(String sku, String qty);
     }
 
 }

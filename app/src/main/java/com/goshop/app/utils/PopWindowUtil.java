@@ -4,9 +4,14 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.ColorVM;
+import com.goshop.app.presentation.model.PdpAttributeModel;
+import com.goshop.app.presentation.model.SizeVM;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
+import com.goshop.app.presentation.shopping.ColorSelectAdapter;
+import com.goshop.app.presentation.shopping.SizeSelectAdapter;
 import com.goshop.app.widget.adapter.SingleChooseListAdapter;
 import com.goshop.app.widget.adapter.SortListAdapter;
 
@@ -42,6 +47,10 @@ public class PopWindowUtil {
     public static final String REASON_CODE = "reason code";
 
     public static final String REASON_DETAIL = "reason detail";
+
+    public static final String COLOR = "color";
+
+    public static final String SIZE = "size";
 
     public static void showsSortListPop(View parentView, List<SortVM> sortVMS,
         OnPopWindowDismissListener sortPopDismissListener) {
@@ -144,6 +153,66 @@ public class PopWindowUtil {
 
     }
 
+    public static void showColorPop(View parentView, String name,
+        List<ColorVM> colorVMS,
+        OnAttributeItemClickListener itemClickListener) {
+        View view = LayoutInflater.from(parentView.getContext())
+            .inflate(R.layout.layout_pop_single_choose, null);
+        RobotoMediumTextView tvTitle = view.findViewById(R.id.tv_single_dialog_title);
+        String title = String.format(parentView.getContext()
+            .getResources().getString(R.string.attribute_title), COLOR);
+        tvTitle.setText(title);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerview_single_dialog);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(parentView.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        ColorSelectAdapter colorSelectAdapter = new ColorSelectAdapter(colorVMS);
+        recyclerView.setAdapter(colorSelectAdapter);
+        colorSelectAdapter.updateDatas(name);
+
+        PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAtLocation(parentView, Gravity.CENTER, 0, 0);
+
+        colorSelectAdapter.setOnColorItemClickListener((position -> {
+            itemClickListener.onAttributeItemClick(position, COLOR);
+            popupWindow.dismiss();
+        }));
+
+    }
+
+    public static void showSizePop(View parentView, String name,
+        List<SizeVM> sizeVMS,
+        OnAttributeItemClickListener itemClickListener) {
+        View view = LayoutInflater.from(parentView.getContext())
+            .inflate(R.layout.layout_pop_single_choose, null);
+        RobotoMediumTextView tvTitle = view.findViewById(R.id.tv_single_dialog_title);
+        String title = String.format(parentView.getContext()
+            .getResources().getString(R.string.attribute_title), SIZE);
+        tvTitle.setText(title);
+        RecyclerView recyclerView = view.findViewById(R.id.recyclerview_single_dialog);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(parentView.getContext());
+        recyclerView.setLayoutManager(layoutManager);
+        SizeSelectAdapter sizeSelectAdapter = new SizeSelectAdapter(sizeVMS);
+        recyclerView.setAdapter(sizeSelectAdapter);
+        sizeSelectAdapter.updateDatas(name);
+
+        PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setFocusable(true);
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAtLocation(parentView, Gravity.CENTER, 0, 0);
+
+        sizeSelectAdapter.setOnSizeItemClickListener((position -> {
+            itemClickListener.onAttributeItemClick(position, SIZE);
+            popupWindow.dismiss();
+        }));
+
+    }
+
     public static void showInfoDisplayPop(View parentView, String info) {
         View view = LayoutInflater.from(parentView.getContext())
             .inflate(R.layout.layout_pop_info_display, null);
@@ -183,13 +252,19 @@ public class PopWindowUtil {
         DatePickerDialog datePickerDialog = new DatePickerDialog(parentView.getContext(),
             (DatePicker view, int pickYear, int monthOfYear,
                 int dayOfMonth) -> onDatePickerDialogClickListener.onDatePicker(
-                    DateFormater.getAbbreviationDate(pickYear, monthOfYear + 1, dayOfMonth)), year, month, day);
+                DateFormater.getAbbreviationDate(pickYear, monthOfYear + 1, dayOfMonth)), year,
+            month, day);
         datePickerDialog.show();
     }
 
     public interface OnDatePickerDialogClickListener {
 
         void onDatePicker(String time);
+    }
+
+    public interface OnAttributeItemClickListener {
+
+        void onAttributeItemClick(int position, String type);
     }
 
     public interface OnPopWindowDismissListener {

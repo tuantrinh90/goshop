@@ -2,6 +2,7 @@ package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.EndpointAddress;
 import com.goshop.app.data.RestApi;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
@@ -18,7 +19,8 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.OrderResponse;
@@ -241,7 +243,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<ProductDetailResponse> getProductDetails(Map<String, Object> params) {
+    public Observable<Response<ProductDetailResponse>> getProductDetails(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_PRODUCT_DETAILS);
         return retrofitRestApi.getProductDetails(url, params);
     }
@@ -527,5 +529,18 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<Response> selectDefaultBillingRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.DEFAULT_BILLING_ADDRESS);
         return retrofitRestApi.selectDefaultBillingRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_REMOVE_CART);
+        return retrofitRestApi.addToCartRequest(url, request);
+    }
+
+    @Override
+    public Observable<Response<CartDataResponse>> removeFromCartRequest(
+        AddRemoveCartRequest request) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_REMOVE_CART);
+        return retrofitRestApi.removeFromCartRequest(url, request);
     }
 }

@@ -2,7 +2,9 @@ package com.goshop.app.data.source;
 
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -29,7 +31,7 @@ public interface ProductDataSource {
 
     Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params);
 
-    Observable<ProductDetailResponse> getProductDetails(Map<String, Object> params);
+    Observable<Response<ProductDetailResponse>> getProductDetails(Map<String, Object> params);
 
     Observable<PromotionSkuResponse> promotionSkuRequest(Map<String, Object> params);
 
@@ -52,4 +54,8 @@ public interface ProductDataSource {
     Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
 
     Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(Map<String, Object> params);
+
+    Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request);
+
+    Observable<Response<CartDataResponse>> removeFromCartRequest(AddRemoveCartRequest request);
 }

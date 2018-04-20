@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">goshop</string>
+    <string name="app_name">GoShop</string>
 
     <string name="app_network_error">network error</string>
     <!--home-->
@@ -480,4 +480,5 @@
     <string name="irecyclerview_no_more">No more</string>
     <string name="malaysia">Malaysia</string>
     <string name="loading">Loading...</string>
+    <string name="attribute_title">Please choose the %s</string>
 </resources>

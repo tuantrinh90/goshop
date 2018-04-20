@@ -371,8 +371,8 @@ public class PresenterModule {
     @Provides
     @ActivityScope
     public ShoppingCartContract.Presenter provideShoppingCartPresenter(
-        AccountDataRepository dataRepository) {
-        return new ShoppingCartPresenter(dataRepository);
+        AccountDataRepository dataRepository, ProductDataRepository productDataRepository) {
+        return new ShoppingCartPresenter(dataRepository, productDataRepository);
     }
 
     @Provides

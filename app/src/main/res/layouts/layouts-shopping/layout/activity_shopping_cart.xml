@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
     android:focusable="true">
+
     <LinearLayout
         android:id="@+id/ll_toolbar"
         android:layout_width="match_parent"
@@ -15,39 +15,41 @@
         android:orientation="vertical">
         <include
             layout="@layout/toolbar_img_text_img_close"/>
-
     </LinearLayout>
 
     <FrameLayout
-        android:id="@+id/fl_content"
-        android:layout_below="@+id/ll_toolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
-        <include
-            layout="@layout/layout_shopping_cart"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ll_toolbar">
+        <FrameLayout
+            android:id="@+id/fl_content"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"/>
-    </FrameLayout>
-    <FrameLayout
-        android:id="@+id/fl_no_data"
-        android:layout_below="@+id/ll_toolbar"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+            android:layout_height="match_parent">
+            <include
+                layout="@layout/layout_shopping_cart"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"/>
+        </FrameLayout>
+        <FrameLayout
+            android:id="@+id/fl_no_data"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/layout_shopping_no_data"/>
+        </FrameLayout>
 
-        <include layout="@layout/layout_shopping_no_data"/>
+        <FrameLayout
+            android:id="@+id/fl_connection_break"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/layout_connection_break"/>
+        </FrameLayout>
 
-    </FrameLayout>
-
-    <FrameLayout
-        android:id="@+id/fl_connection_break"
-        android:layout_below="@+id/ll_toolbar"
-        android:visibility="gone"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <include layout="@layout/layout_connection_break"/>
-
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
     </FrameLayout>
 
 </RelativeLayout>

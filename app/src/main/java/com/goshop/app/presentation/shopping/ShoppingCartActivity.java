@@ -7,6 +7,8 @@ import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
+import com.goshop.app.presentation.model.widget.ProductCartListVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
@@ -21,6 +23,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,9 +34,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContract.Presenter>
-    implements
-    ShoppingCartContract.View, ShoppingCartAdapter.OnCheckoutClickListener,
-    OnBannerItemClickListener, OnItemMenuClickListener,
+    implements ShoppingCartContract.View, OnItemMenuClickListener,
     PopWindowUtil.OnCartItemMenuClickListener {
 
     public static final String EXTRA_ENTRANCE = "extra_entrance";
@@ -60,6 +61,8 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     private ShoppingCartAdapter shoppingCartAdapter;
 
     private String entranceType;
+
+    private ProductsVM productsVM;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -104,9 +107,8 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvShoppintCart.setLayoutManager(layoutManager);
-        shoppingCartAdapter = new ShoppingCartAdapter(new ArrayList<>(), this);
+        shoppingCartAdapter = new ShoppingCartAdapter(new ArrayList<>());
         rvShoppintCart.setAdapter(shoppingCartAdapter);
-        shoppingCartAdapter.setOnBannerItemClickListener(this);
         shoppingCartAdapter.setOnItemMenuClickListener(this);
     }
 
@@ -121,28 +123,40 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     }
 
     @Override
-    public void onCheckoutClick() {
-        startActivity(new Intent(ShoppingCartActivity.this, CheckoutActivity.class));
+    public void removeSuccess() {
+        PopWindowUtil.showRequestMessagePop(rvShoppintCart, getResources().getString(R.string.success));
     }
 
     @Override
-    public void onBannerItemClick(CarouselItemsVM carouselItemsVM) {
-        //todo wait for api
+    public void removeFailed(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(rvShoppintCart, errorMessage);
     }
+
+    @Override
+    public void addWishlistSuccess() {
+        Toast.makeText(this, getResources().getString(R.string.success), Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void addWishlistFailed(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(rvShoppintCart, errorMessage);
+    }
+
 
     @Override
     public void onItemMenuClick(View parentView, Object object) {
+        productsVM = ((ProductCartListVM) object).getProductsVM();
         PopWindowUtil.showShoppingCartMenuPop(parentView, this);
     }
 
     @Override
     public void onCartWishlist() {
-        //todo wait for api
+        mPresenter.addWishlistRequest(productsVM.getId());
     }
 
     @Override
     public void onCartDeleteClick() {
-        //todo wait for api
+        mPresenter.removeFromCartRequest(productsVM.getId(), productsVM.getAmount());
     }
 
     @OnClick({R.id.tv_btn_cart_checkout, R.id.imageview_left_menu, R.id.tv_net_refresh})
@@ -154,7 +168,6 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 } else {
                     finish();
                 }
-
                 break;
             case R.id.tv_btn_cart_checkout:
                 startActivity(new Intent(this, CheckoutActivity.class));

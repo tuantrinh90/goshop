@@ -3,7 +3,9 @@ package com.goshop.app.data.source.cloud;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -57,7 +59,7 @@ public class ProductCloudDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<ProductDetailResponse> getProductDetails(Map<String, Object> params) {
+    public Observable<Response<ProductDetailResponse>> getProductDetails(Map<String, Object> params) {
         return restApi.getProductDetails(params);
     }
 
@@ -119,5 +121,16 @@ public class ProductCloudDataSource implements ProductDataSource {
     public Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(
         Map<String, Object> params) {
         return restApi.deliveryCheckRequest(params);
+    }
+
+    @Override
+    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request) {
+        return restApi.addToCartRequest(request);
+    }
+
+    @Override
+    public Observable<Response<CartDataResponse>> removeFromCartRequest(
+        AddRemoveCartRequest request) {
+        return restApi.removeFromCartRequest(request);
     }
 }

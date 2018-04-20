@@ -12,6 +12,10 @@ public class NumberFormater {
 
     private static final String SYMBOL_PLUS = "+ ";
 
+    private static final String LEFT_BRACKETS = "(\t";
+
+    private static final String RIGHT_BRACKETS = "\t)";
+
     private static final String TEL_HEADER = "T: ";
 
     private static final String ANSWER_COUNTS_FORMAT = "All %s Answers";
@@ -25,7 +29,15 @@ public class NumberFormater {
     }
 
     public static String formaterPrice(String money) {
-        return MONEY_SYMBOL + money;
+        StringBuilder price = new StringBuilder(MONEY_SYMBOL);
+        price.append(money);
+        return price.toString();
+    }
+
+    public static String formaterBrackets(String discount) {
+        StringBuilder result = new StringBuilder(LEFT_BRACKETS);
+        result.append(discount).append(RIGHT_BRACKETS);
+        return result.toString();
     }
 
     public static String formaterMoneyNoRM(String money) {

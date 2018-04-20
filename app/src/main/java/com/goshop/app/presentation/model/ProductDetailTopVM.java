@@ -1,7 +1,5 @@
 package com.goshop.app.presentation.model;
 
-import com.goshop.app.presentation.model.widget.ColorVM;
-
 import java.util.List;
 
 public class ProductDetailTopVM extends ProductDetailModel {
@@ -20,10 +18,13 @@ public class ProductDetailTopVM extends ProductDetailModel {
 
     private String title;
 
-    public ProductDetailTopVM(String title,
+    private String sku;
+
+    public ProductDetailTopVM(String sku, String title,
         String priceOld, String priceNow, String percent,
         List<ColorVM> colorVMS, List<SizeVM> sizeVMS, String amount) {
         super(ProductDetailModel.DETAIL_TOP_VIEW);
+        this.sku = sku;
         this.title = title;
         this.priceOld = priceOld;
         this.priceNow = priceNow;
@@ -31,6 +32,14 @@ public class ProductDetailTopVM extends ProductDetailModel {
         this.colorVMS = colorVMS;
         this.sizeVMS = sizeVMS;
         this.amount = amount;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public String getTitle() {

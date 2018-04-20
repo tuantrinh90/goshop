@@ -388,8 +388,8 @@ public class WidgetPdpAdapter extends RecyclerView.Adapter {
             rlProductDetailSize.setOnClickListener(v -> {
             });
             //todo this is mock data
-            tvProductDetailColor.setText(bannerVM.getColorVMS().get(0).getColorName());
-            tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSize());
+            tvProductDetailColor.setText(bannerVM.getColorVMS().get(0).getColorId());
+            tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSizeName());
         }
 
         @Override

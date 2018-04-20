@@ -1,14 +1,14 @@
 package com.goshop.app.presentation.model;
 
-public class ShoppingCartModel {
-
-    public static final int CART_APPLY = 1;
-
-    public static final int CART_PRODUCT = 2;
+public class PdpAttributeModel {
 
     private int viewType;
 
-    public ShoppingCartModel(int viewType) {
+    public static final int TYPE_SIZE = 1;
+
+    public static final int TYPE_COLOR = 2;
+
+    public PdpAttributeModel(int viewType) {
         this.viewType = viewType;
     }
 

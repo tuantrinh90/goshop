@@ -13,7 +13,7 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
@@ -130,11 +130,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
-        return restApi.pdpDetailRequest(params);
-    }
-
-    @Override
     public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
         return restApi.getProductRatingReviews(params);
     }
@@ -204,11 +199,6 @@ public class AccountCloudDataSource implements AccountDataSource {
     public Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(
         Map<String, Object> params) {
         return restApi.sendConfirmationLinkRequest(params);
-    }
-
-    @Override
-    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
-        return restApi.getProductDetails(params);
     }
 
     @Override

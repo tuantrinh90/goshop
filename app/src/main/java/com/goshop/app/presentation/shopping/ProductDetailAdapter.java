@@ -11,6 +11,7 @@ import com.goshop.app.presentation.model.PdpExpandTitleVM;
 import com.goshop.app.presentation.model.PdpFrequentlyBoughtTogetherVM;
 import com.goshop.app.presentation.model.PdpQAVM;
 import com.goshop.app.presentation.model.PdpReviewsVM;
+import com.goshop.app.presentation.model.PdpSingleTextVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.presentation.model.ProductDetailTopVM;
 import com.goshop.app.widget.adapter.PDPQaItemAdapter;
@@ -22,6 +23,7 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -140,6 +142,9 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
                 (PdpFrequentlyBoughtTogetherVM) displayDetailModels.get(position));
         } else if (holder instanceof DeliveryInfoViewHolder) {
             ((DeliveryInfoViewHolder) holder).bindData();
+        } else if(holder instanceof SingleTextViewHolder) {
+            ((SingleTextViewHolder) holder).bindData(
+                (PdpSingleTextVM) displayDetailModels.get(position));
         }
     }
 
@@ -321,12 +326,25 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     class SingleTextViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.tv_pdp_product_summary_content)
+        RobotoLightTextView tvPdpProductSummaryContent;
+
         public SingleTextViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
+        }
+
+        void bindData(PdpSingleTextVM singleTextVM) {
+            if (!TextUtils.isEmpty(singleTextVM.getContent())) {
+                tvPdpProductSummaryContent.setText(singleTextVM.getContent());
+            }
+
         }
     }
 
-    class ProductDetailTopViewHolder extends RecyclerView.ViewHolder {
+    class ProductDetailTopViewHolder extends RecyclerView.ViewHolder
+        implements ProductDetailActivity.OnAttributeSelectListener,
+        ProductDetailActivity.OnAddCartClickListener{
 
         @BindView(R.id.et_product_minus_plus)
         CustomMPEditText etProductMinusPlus;
@@ -364,16 +382,17 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         public ProductDetailTopViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
+            ((ProductDetailActivity)context).setOnAttributeSelectListener(this);
+            ((ProductDetailActivity)context).setOnAddCartClickListener(this::onAddClick);
         }
 
         void bindingData(ProductDetailTopVM bannerVM) {
+            tvProductDetailTitle.setText(bannerVM.getTitle());
             etProductMinusPlus.setText(bannerVM.getAmount());
             tvProductDetailNow.setText(bannerVM.getPriceNow());
             tvProductDetailOld.setText(bannerVM.getPriceOld());
             tvProductDetailOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            //todo hard code wait for decide
-            tvProductDetailPercent.setText("(" + bannerVM.getPercent() + ")");
-
+            tvProductDetailPercent.setText(bannerVM.getPercent());
             ivProductDetailWish.setSelected(false);
             ivProductDetailShare.setOnClickListener(v -> {
             });
@@ -385,14 +404,31 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
                 });
             rlProductDetailColor.setOnClickListener(v -> {
+                onProductDetailItemClickListener.
+                    onProductColorClick(itemView,tvProductDetailColor.getText().toString());
             });
             rlProductDetailSize.setOnClickListener(v -> {
+                onProductDetailItemClickListener.
+                    onProductSizeClick(itemView,tvProductDetailSize.getText().toString());
             });
-            //todo this is mock data
             tvProductDetailColor.setText(bannerVM.getColorVMS().get(0).getColorName());
-            tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSize());
+            tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSizeName());
         }
 
+        @Override
+        public void onColorSelect(String color) {
+            tvProductDetailColor.setText(color);
+        }
+
+        @Override
+        public void onSizeSelect(String size) {
+            tvProductDetailSize.setText(size);
+        }
+
+        @Override
+        public void onAddClick() {
+            onProductDetailItemClickListener.setAddCartQty(etProductMinusPlus.getText());
+        }
     }
 
     class WidgetExpandTitleViewHolder extends RecyclerView.ViewHolder {

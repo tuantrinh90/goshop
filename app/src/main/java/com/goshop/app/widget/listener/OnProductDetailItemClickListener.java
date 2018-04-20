@@ -1,5 +1,7 @@
 package com.goshop.app.widget.listener;
 
+import android.view.View;
+
 public interface OnProductDetailItemClickListener {
 
     void onWriteAReviewClick();
@@ -13,4 +15,10 @@ public interface OnProductDetailItemClickListener {
     void onWishlistSelect(boolean isSelect);
 
     void onDeliveryCheckClick(String zipcode);
+
+    void onProductColorClick(View parentView, String name);
+
+    void onProductSizeClick(View parentView, String name);
+
+    void setAddCartQty(String qty);
 }

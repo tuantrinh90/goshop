@@ -12,7 +12,6 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
@@ -73,8 +72,6 @@ public interface AccountRepository {
     Observable<Response<MyWishlistResponse>> addWishlistRequest(Map<String, Object> params);
 
     Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params);
-
-    Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
 
     Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params);
 

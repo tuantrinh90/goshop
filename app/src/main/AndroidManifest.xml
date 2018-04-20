@@ -49,10 +49,7 @@
         <activity
             android:name=".presentation.home.SplashActivity"
             android:theme="@style/WhiteBackground">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
-                <category android:name="android.intent.category.LAUNCHER"/>
-            </intent-filter>
+
         </activity>
 
         <activity
@@ -115,7 +112,12 @@
 
         <activity
             android:name=".presentation.shopping.ShoppingCartActivity"
-            android:theme="@style/WhiteBackground"/>
+            android:theme="@style/WhiteBackground">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
 
         <activity
             android:name=".presentation.account.NotificationActivity"
