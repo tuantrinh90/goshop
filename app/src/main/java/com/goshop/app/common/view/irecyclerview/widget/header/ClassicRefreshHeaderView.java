@@ -15,6 +15,14 @@ import android.widget.TextView;
 @SuppressWarnings("ALL")
 public class ClassicRefreshHeaderView extends RelativeLayout implements RefreshTrigger {
 
+    public static final String SWIPE_TO_REFRESH = "SWIPE TO REFRESH";
+
+    public static final String RELEASE_TO_REFRESH = "RELEASE TO REFRESH";
+
+    public static final String REFRESHING = "REFRESHING";
+
+    public static final String COMPLETE = "COMPLETE";
+
     private ImageView ivArrow;
 
     private ImageView ivSuccess;
@@ -75,9 +83,9 @@ public class ClassicRefreshHeaderView extends RelativeLayout implements RefreshT
                     ivArrow.startAnimation(rotateDown);
                     rotated = false;
                 }
-                tvRefresh.setText("SWIPE TO REFRESH");
+                tvRefresh.setText(SWIPE_TO_REFRESH);
             } else {
-                tvRefresh.setText("RELEASE TO REFRESH");
+                tvRefresh.setText(RELEASE_TO_REFRESH);
                 if (!rotated) {
                     ivArrow.clearAnimation();
                     ivArrow.startAnimation(rotateUp);
@@ -93,7 +101,7 @@ public class ClassicRefreshHeaderView extends RelativeLayout implements RefreshT
         ivArrow.clearAnimation();
         ivArrow.setVisibility(GONE);
         progressBar.setVisibility(VISIBLE);
-        tvRefresh.setText("REFRESHING");
+        tvRefresh.setText(REFRESHING);
     }
 
     @Override
@@ -108,7 +116,7 @@ public class ClassicRefreshHeaderView extends RelativeLayout implements RefreshT
         ivArrow.clearAnimation();
         ivArrow.setVisibility(GONE);
         progressBar.setVisibility(GONE);
-        tvRefresh.setText("COMPLETE");
+        tvRefresh.setText(COMPLETE);
     }
 
     @Override

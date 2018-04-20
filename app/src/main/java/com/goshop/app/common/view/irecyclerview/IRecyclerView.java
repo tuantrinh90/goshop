@@ -39,6 +39,14 @@ public class IRecyclerView extends RecyclerView {
 
     private static final boolean DEBUG = false;
 
+    public static final String STATUS_DEFAULT1 = "status_default";
+
+    public static final String STATUS_SWIPING_TO_REFRESH1 = "status_swiping_to_refresh";
+
+    public static final String STATUS_REFRESHING1 = "status_refreshing";
+
+    public static final String STATUS_ILLEGAL = "status_illegal!";
+
     private int mStatus;
 
     private boolean mIsAutoRefreshing;
@@ -64,6 +72,10 @@ public class IRecyclerView extends RecyclerView {
     private View mRefreshHeaderView;
 
     private View mLoadMoreFooterView;
+
+    private String status_release_to_refresh;
+
+    private String status_release_to_refresh1;
 
     public IRecyclerView(Context context) {
         this(context, null);
@@ -723,22 +735,22 @@ public class IRecyclerView extends RecyclerView {
         final String statusLog;
         switch (status) {
             case STATUS_DEFAULT:
-                statusLog = "status_default";
+                statusLog = STATUS_DEFAULT1;
                 break;
 
             case STATUS_SWIPING_TO_REFRESH:
-                statusLog = "status_swiping_to_refresh";
+                statusLog = STATUS_SWIPING_TO_REFRESH1;
                 break;
 
             case STATUS_RELEASE_TO_REFRESH:
-                statusLog = "status_release_to_refresh";
+                statusLog = STATUS_SWIPING_TO_REFRESH1;
                 break;
 
             case STATUS_REFRESHING:
-                statusLog = "status_refreshing";
+                statusLog = STATUS_REFRESHING1;
                 break;
             default:
-                statusLog = "status_illegal!";
+                statusLog = STATUS_ILLEGAL;
                 break;
         }
         return statusLog;
