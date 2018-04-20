@@ -49,22 +49,24 @@ public class BrandsFragment extends BaseFragment<BrandsContract.Presenter> imple
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        //todo wait for api
+        mPresenter.brandsRequest(null);
+    }
+
+    @Override
     public int getContentView() {
         return R.layout.fragment_brands;
     }
 
-    @Override
     public void initView() {
-        initPresenter();
         initRecyclerview();
-    }
-
-    private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
     }
 
     private void initRecyclerview() {
@@ -75,9 +77,12 @@ public class BrandsFragment extends BaseFragment<BrandsContract.Presenter> imple
     }
 
     @Override
-    public void setup() {
-        //todo wait for api
-        mPresenter.brandsRequest(null);
+    public void inject() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
     }
 
     @Override

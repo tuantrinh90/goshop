@@ -1,5 +1,7 @@
 package com.goshop.app.presentation.settings;
 
+import com.facebook.AccessToken;
+import com.facebook.login.LoginManager;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
@@ -7,6 +9,7 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -15,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 
 import butterknife.BindView;
@@ -24,6 +28,9 @@ import injection.modules.PresenterModule;
 
 public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presenter> implements
     SettingsContract.View {
+
+    @BindView(R.id.rl_container)
+    RelativeLayout rlContainer;
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
@@ -114,16 +121,22 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
                 startActivity(new Intent(this, ChangePasswordActivity.class));
                 break;
             case R.id.tv_setting_logout:
-                //todo wait for api
-                mPresenter.settingsLogoutRequest(null);
-                mPresenter.clearUserInfo();
+                mPresenter.settingsLogoutRequest();
                 break;
         }
     }
 
     @Override
-    public void logoutResult() {
-        //todo wait for api
+    public void logoutSuccess() {
+        mPresenter.clearUserInfo();
+        // TODO: 2018/4/20 fb logout
+        try {
+            if (AccessToken.getCurrentAccessToken() != null) {
+                LoginManager.getInstance().logOut();
+            }
+        } catch (Exception ex) {
+            ex.getStackTrace();
+        }
     }
 
     @Override
@@ -131,6 +144,16 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
         GoShopApplication.setLogin(!response);
         GoShopApplication.cacheUserInfo(null);
         goToHomePage();
+    }
+
+    @Override
+    public void showServiceErrorMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(rlContainer, errorMessage);
+    }
+
+    @Override
+    public void showNetworkErrorMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(rlContainer, errorMessage);
     }
 
     private void goToHomePage() {

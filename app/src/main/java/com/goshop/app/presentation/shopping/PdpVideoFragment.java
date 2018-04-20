@@ -44,13 +44,8 @@ public class PdpVideoFragment extends BaseFragment {
     }
 
     @Override
-    public void initView() {
-
-    }
-
-    @Override
-    public void setup() {
-
+    public void inject() {
+        // now no need implement it
     }
 
     @Override

@@ -156,7 +156,7 @@ public interface RestApi {
 
     Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params);
 
-    Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params);
+    Observable<Response> settingsLogoutRequest(Map<String, Object> params);
 
     Observable<Response<MyPointsResponse>> myPointsRequest(Map<String, Object> params);
 

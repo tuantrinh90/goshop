@@ -95,16 +95,28 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        //TODO wait for api
+        mPresenter.tvShowRequest(null);
+        channelVMS = mPresenter.getChannels();
+        channelAdapter.setUpdateData(channelVMS);
+    }
+
+    @Override
     public int getContentView() {
         return R.layout.fragment_tv_page;
     }
 
-    @Override
     public void initView() {
         tvShowVMDatas = new ArrayList<>();
         channelVMS = new ArrayList<>();
         initRecyclerView();
-        initPresenter();
         initRecyclerViewListener();
         appBarLayoutListener();
         initChannelRecyclerView();
@@ -127,14 +139,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         recyclerviewRight.setAdapter(rightAdapter);
         rightAdapter.setOnTVShowRightItemClickListener(this);
         calendarAdapter.setOnCalendarItemClickListener(this);
-    }
-
-    private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
     }
 
     private void initRecyclerViewListener() {
@@ -249,11 +253,12 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     }
 
     @Override
-    public void setup() {
-        //TODO(helen)wait for api
-        mPresenter.tvShowRequest(null);
-        channelVMS = mPresenter.getChannels();
-        channelAdapter.setUpdateData(channelVMS);
+    public void inject() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
     }
 
     @Override

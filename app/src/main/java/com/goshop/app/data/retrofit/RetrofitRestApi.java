@@ -166,7 +166,7 @@ public interface RetrofitRestApi {
     @Headers({CONTENT_TYPE_JSON})
     @GET
     Observable<Response<AllReviewsResponse>> getProductRatingReviews(@Url String fullUrl,
-        @QueryMap Map<String,Object> params);
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -354,7 +354,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<SettingsLogoutResponse> settingsLogoutRequest(@Url String fullUrl,
+    Observable<Response> settingsLogoutRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

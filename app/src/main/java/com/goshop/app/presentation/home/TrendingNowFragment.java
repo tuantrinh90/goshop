@@ -68,29 +68,34 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        //TODO  wait for api
+        mPresenter.trendingNowRequest(null);
+    }
+
+    @Override
     public int getContentView() {
         return R.layout.fragment_trending_now;
     }
 
-    @Override
     public void initView() {
-        initPresenter();
         initRecyclerview();
     }
 
     @Override
-    public void setup() {
-        //TODO  wait for api
-        mPresenter.trendingNowRequest(null);
-
-    }
-
-    private void initPresenter() {
+    public void inject() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+
     }
 
     private void initRecyclerview() {

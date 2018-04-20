@@ -22,9 +22,11 @@ public class EndpointAddress {
     public static final String LIST_CUSTOMER_ADDRESSES =
         "rest/all/V1/rest-api/customer/customer_id/address";
 
-    public static final String ADD_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/customer_id/address";
+    public static final String ADD_CUSTOMER_ADDRESS =
+        "rest/all/V1/rest-api/customer/customer_id/address";
 
-    public static final String EDIT_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/customer_id/address";
+    public static final String EDIT_CUSTOMER_ADDRESS =
+        "rest/all/V1/rest-api/customer/customer_id/address";
 
     public static final String GET_GOSHOP_POINTS_DETAIL =
         "rest/all/V1/rest-api/customer/customer_id/goshop-points?website_idstore_id";
@@ -70,6 +72,8 @@ public class EndpointAddress {
     public static final String CANCEL_ORDER = "rest/all/V1/rest-api//order/order_id/cancel";
 
     public static final String RETURN_ORDER = "rest/all/V1/rest-api/order/order_id/return";
+
+    public static final String SETTING_LOGOUT = "rest/all/V1/rest-api/customer/logout";
 
     public static final String ADD_ADDRESS = "";
 

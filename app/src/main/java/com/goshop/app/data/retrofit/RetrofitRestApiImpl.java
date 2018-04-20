@@ -367,8 +367,8 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.SETTING_DETAILS);
+    public Observable<Response> settingsLogoutRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.SETTING_LOGOUT);
         return retrofitRestApi.settingsLogoutRequest(url, params);
     }
 
