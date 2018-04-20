@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.home;
 
+import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.base.BaseFragment;
@@ -15,6 +16,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 

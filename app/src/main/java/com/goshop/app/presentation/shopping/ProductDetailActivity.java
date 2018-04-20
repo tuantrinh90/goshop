@@ -146,12 +146,12 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void addWishlistSuccess() {
-        //todo this is an empty method
+        Toast.makeText(this, "add success", Toast.LENGTH_LONG).show();
     }
 
     @Override
     public void removeWishlistSuccess() {
-        //todo this is an empty method
+        Toast.makeText(this, "add success", Toast.LENGTH_LONG).show();
     }
 
     @Override
@@ -202,8 +202,6 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void onWishlistSelect(boolean isSelect) {
-
-        //todo hard code is waiting for api data
         if (isSelect) {
             mPresenter.addWishlistRequest( "abc");
         } else {

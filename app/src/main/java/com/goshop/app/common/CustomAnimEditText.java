@@ -149,8 +149,10 @@ public class CustomAnimEditText extends RelativeLayout {
     }
 
     public static boolean isMobileNO(String mobiles) {
+        // TODO: 2018/4/17 hard code need decide
         Pattern p = Pattern.compile("^((13[0-9])|(15[^4,\\D])|(18[0,5-9]))\\d{8}$");
-        Matcher m = p.matcher(mobiles);
+        Pattern p11 = Pattern.compile("^\\d{11}$");
+        Matcher m = p11.matcher(mobiles);
         return m.matches();
     }
 

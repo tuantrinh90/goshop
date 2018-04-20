@@ -13,8 +13,6 @@ public interface LoginContract {
 
     interface View extends BaseView {
 
-        void showLogin(UserInfo userInfo);
-
         void showNetworkErrorMessage(String errorMessage);
 
         void showServiceErrorMessage(String errorMessage);
@@ -31,9 +29,6 @@ public interface LoginContract {
         CallbackManager initFaceBook();
 
         void loginRequest(String email, String password);
-
-        void facebookLoginRequest(String email, String fbId, String token, String name,
-            String gender);
 
         void getFacebookAccessToken(AccessToken accessToken);
     }

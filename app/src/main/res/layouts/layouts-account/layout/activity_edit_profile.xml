@@ -18,7 +18,11 @@
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:scrollbars="none">
+            android:paddingLeft="@dimen/size_16"
+            android:paddingRight="@dimen/size_16"
+            android:paddingBottom="@dimen/size_36"
+            android:orientation="vertical">
+
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

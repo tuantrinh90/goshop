@@ -24,34 +24,6 @@ public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEm
     }
 
     @Override
-    public void complementEmailRequest(Map<String, Object> params) {
-
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.complementEmailRequest(params).subscribeWith(
-            new DisposableObserver<ComplementEmailResponse>() {
-                @Override
-                public void onNext(ComplementEmailResponse complementEmailResponse) {
-                    mView.hideLoadingBar();
-                    //TODO(helen)wait for api
-                    mView.complementEmailSuccess();
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                    //TODO(helen)wait for api
-                    mView.complementEmailSuccess();
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
-
-    }
-
-    @Override
     public void facebookLoginRequest(FacebookLoginVm facebookLoginVm) {
         mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
@@ -67,7 +39,8 @@ public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEm
                 @Override
                 public void onNext(Response<LoginResponse> response) {
                     mView.hideLoadingBar();
-                    mView.complementEmailSuccess();
+                    mView.complementEmailSuccess(response);
+                    saveUserInfo(response);
                 }
 
                 @Override
@@ -88,4 +61,21 @@ public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEm
             }));
     }
 
+    private void saveUserInfo(Response<LoginResponse> response) {
+        addSubscrebe(accountRepository.saveUserInfo(response.getData().getCustomer())
+            .subscribeWith(new DisposableObserver<Object>() {
+                @Override
+                public void onNext(Object response) {
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
 }

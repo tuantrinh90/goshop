@@ -192,4 +192,24 @@ public class UserData {
         this.token = token;
     }
 
+    @Override
+    public String toString() {
+        return "UserData{" +
+            "availableGoshopPoints='" + availableGoshopPoints + '\'' +
+            ", cartItemsCount=" + cartItemsCount +
+            ", dob='" + dob + '\'' +
+            ", email='" + email + '\'' +
+            ", emailSubscribe=" + emailSubscribe +
+            ", id=" + id +
+            ", language=" + language +
+            ", maxFailedLogin=" + maxFailedLogin +
+            ", mobileNumber='" + mobileNumber + '\'' +
+            ", name='" + name + '\'' +
+            ", race=" + race +
+            ", smsSubscribe=" + smsSubscribe +
+            ", title='" + title + '\'' +
+            ", token=" + token +
+            ", wishlistTemsCount=" + wishlistTemsCount +
+            '}';
+    }
 }

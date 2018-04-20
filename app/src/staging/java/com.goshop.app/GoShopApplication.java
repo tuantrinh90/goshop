@@ -21,8 +21,6 @@ public class GoShopApplication extends MultiDexApplication {
 
     private static ApplicationComponent mApplicationComponent;
 
-    private static boolean isLogin;
-
     private static UserData userInfo;
 
     public static Context getAppContext() {
@@ -66,14 +64,6 @@ public class GoShopApplication extends MultiDexApplication {
             .migration(new SchemaMigration())
             .build();
         Realm.setDefaultConfiguration(realmConfiguration);
-    }
-
-    public static boolean isLogin() {
-        return isLogin;
-    }
-
-    public static void setLogin(boolean login) {
-        isLogin = login;
     }
 
     public static void cacheUserInfo(UserData userInfo) {

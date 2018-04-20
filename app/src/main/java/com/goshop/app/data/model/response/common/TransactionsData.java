@@ -20,7 +20,7 @@ public class TransactionsData {
     @SerializedName("order_number")
     private String orderNumber;
 
-    private String points;
+    private int points;
 
     private int type;
 
@@ -35,11 +35,11 @@ public class TransactionsData {
         this.detail = detail;
     }
 
-    public String getPoints() {
+    public int getPoints() {
         return points;
     }
 
-    public void setPoints(String points) {
+    public void setPoints(int points) {
         this.points = points;
     }
 

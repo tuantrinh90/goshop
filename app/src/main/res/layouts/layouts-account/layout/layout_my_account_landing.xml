@@ -27,20 +27,10 @@
                     android:paddingRight="@dimen/size_16"
                     android:background="@drawable/ic_icon_account_top">
 
-                    <ImageView
-                        android:id="@+id/iv_my_account_thumb"
-                        android:layout_width="@dimen/size_62"
-                        android:layout_height="@dimen/size_64"
-                        android:layout_alignParentRight="true"
-                        android:scaleType="center"
-                        android:contentDescription="@string/app_name"
-                        android:background="@drawable/ic_icon_user_default"
-                        tools:ignore="RtlHardcoded"/>
                     <com.goshop.app.common.view.RobotoMediumTextView
                         android:id="@+id/tv_my_account_username"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_toLeftOf="@+id/iv_my_account_thumb"
                         android:text="@string/user_name"
                         android:textSize="@dimen/size_font_32"
                         android:textColor="@color/color_grayscale_text"
@@ -51,7 +41,6 @@
                         android:layout_height="wrap_content"
                         android:paddingTop="@dimen/size_6"
                         android:layout_below="@id/tv_my_account_username"
-                        android:layout_toLeftOf="@+id/iv_my_account_thumb"
                         android:text="@string/edit_profile"
                         android:textSize="@dimen/size_font_14"
                         android:textColor="@color/color_grayscale_secondary"

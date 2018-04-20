@@ -4,6 +4,7 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.MyEGiftCardMapper;
 
@@ -22,7 +23,7 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
     }
 
     @Override
-    public void eGiftCardsRequest(String uniqueCode) {
+    public void eGiftCardsRequest(String uniqueCode,int page) {
         mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
@@ -33,42 +34,57 @@ public class MyEGiftCardPresenter extends RxPresenter<MyEGiftCardContract.View> 
                 @Override
                 public void onNext(Response<MyEGiftResponse> response) {
                     mView.hideLoadingBar();
-                    mView.activeSuccess();
+                    mView.activeSuccess(MyEGiftCardMapper.transform(response, page),response.getData().getPagination());
                 }
 
                 @Override
-                public void onError(Throwable e) {
+                public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.activeFailed(e.getLocalizedMessage().toString());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }
 
     @Override
-    public void getEGiftCardDetails() {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.getEGiftCardDetails().subscribeWith(
+    public void getEGiftCardDetails(int page, boolean isShowLoading) {
+        if (isShowLoading) {
+            mView.showLoadingBar();
+        }
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.REQUEST_PARAM_PAGE, page);
+        params.put(Const.REQUEST_PARAM_LIMIT, Const.LIMIT);
+        addSubscrebe(accountRepository.getEGiftCardDetails(params).subscribeWith(
             new DisposableObserver<Response<MyEGiftResponse>>() {
                 @Override
                 public void onNext(Response<MyEGiftResponse> response) {
                     mView.hideLoadingBar();
-                    mView.getEGiftCardSuccess(MyEGiftCardMapper.transform(response));
+                    mView.getEGiftCardSuccess(MyEGiftCardMapper.transform(response,page),response.getData().getPagination());
                 }
 
                 @Override
-                public void onError(Throwable e) {
+                public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.getEGiftCardFailed(e.getLocalizedMessage().toString());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }

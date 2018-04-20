@@ -41,6 +41,7 @@ import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
+import com.goshop.app.presentation.model.FlagsVM;
 
 import java.util.Map;
 
@@ -121,8 +122,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails() {
-        return accountCloudDataSource.getEGiftCardDetails().concatMap(response -> {
+    public Observable<Response<MyEGiftResponse>> getEGiftCardDetails(Map<String, Object> params) {
+        return accountCloudDataSource.getEGiftCardDetails(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -198,8 +199,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<MyWishlistResponse>> getWishlistItems() {
-        return accountCloudDataSource.getWishlistItems().concatMap(response -> {
+    public Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params) {
+        return accountCloudDataSource.getWishlistItems(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -215,7 +216,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
+    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(
+        Map<String, Object> params) {
         return accountCloudDataSource.getProductRatingReviews(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -600,7 +602,19 @@ public class AccountDataRepository implements AccountRepository {
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    @Override
+    public Observable<FlagsVM> getFlags() {
+        return accountLocalDataSource.getFlags();
+    }
+
+    @Override
+    public Observable<Object> saveFlags(FlagsVM flagsVM) {
+        return accountLocalDataSource.saveFlags(flagsVM);
+    }
+
     private boolean isSuccess(String status) {
         return Const.SUCCESS_STATUS.equals(status);
     }
+
+
 }

@@ -15,14 +15,14 @@
         android:layout_marginBottom="@dimen/size_58"
         android:layout_alignParentBottom="true"
         android:textColor="@android:color/white"
-        android:textSize="@dimen/size_font_18"  />
+        android:textSize="@dimen/size_font_18"/>
 
     <RelativeLayout
         android:id="@+id/rl_slide_user_info"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingBottom="@dimen/size_24" >
+        android:layout_marginBottom="@dimen/size_58"
+        android:paddingLeft="@dimen/size_16">
 
 
         <com.goshop.app.common.view.RobotoMediumTextView
@@ -30,18 +30,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/size_8"
-            android:textSize="@dimen/size_font_14"
+            android:textSize="@dimen/size_font_18"
             android:textColor="@android:color/white"
             android:layout_alignParentBottom="true"
             android:text="@string/hey_user"/>
-        <ImageView
-            android:id="@+id/iv_slide_user"
-            android:layout_width="@dimen/size_56"
-            android:layout_height="@dimen/size_58"
-            android:layout_above="@id/tv_slide_user_name"
-            android:contentDescription="@string/app_name"
-            android:background="@drawable/ic_icon_user_default"/>
-
 
     </RelativeLayout>
 

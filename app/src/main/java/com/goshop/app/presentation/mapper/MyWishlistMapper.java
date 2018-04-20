@@ -51,8 +51,6 @@ public class MyWishlistMapper {
                 }
                 wishlistVMS.add(wishlistVM);
             }
-        } else {
-            //todo
         }
         return wishlistVMS;
     }

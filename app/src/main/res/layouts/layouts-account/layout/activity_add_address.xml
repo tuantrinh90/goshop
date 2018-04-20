@@ -31,7 +31,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/size_28"
-                    animET:hint="@string/name"/>
+                    animET:hint="@string/register_name"/>
+
 
                 <com.goshop.app.common.CustomAnimEditText
                     android:id="@+id/et_add_address_one"
