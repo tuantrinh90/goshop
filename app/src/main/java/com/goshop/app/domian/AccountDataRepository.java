@@ -13,10 +13,9 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
-import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -31,6 +30,7 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.OrderResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
@@ -211,11 +211,6 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
-        return accountCloudDataSource.pdpDetailRequest(params);
-    }
-
-    @Override
     public Observable<Response<AllReviewsResponse>> getProductRatingReviews(
         Map<String, Object> params) {
         return accountCloudDataSource.getProductRatingReviews(params).concatMap(response -> {
@@ -384,8 +379,15 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
-        return accountCloudDataSource.shoppingCartRequest(params);
+    public Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params) {
+        return accountCloudDataSource.viewCartDetails(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

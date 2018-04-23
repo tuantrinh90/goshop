@@ -4,8 +4,12 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
+import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.model.ProductDetailModel;
+import com.goshop.app.presentation.model.ProductDetailTopVM;
+import com.goshop.app.presentation.model.SizeVM;
+import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
@@ -20,6 +24,8 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
+import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -32,7 +38,7 @@ import injection.modules.PresenterModule;
 
 public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Presenter>
     implements ProductDetailContract.View, OnProductDetailItemClickListener,
-    PdpBannerAdapter.OnPdpBannerClickListener {
+    PdpBannerAdapter.OnPdpBannerClickListener, PopWindowUtil.OnAttributeItemClickListener {
 
     @BindView(R.id.appbarlayout_product_detail)
     AppBarLayout appBarLayoutProductDetail;
@@ -52,17 +58,36 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     @BindView(R.id.view_pdp_divider)
     View viewPdpDivider;
 
+    @BindView(R.id.rl_product_detail_data)
+    RelativeLayout rlProductDetailData;
+
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
+
+    @BindView(R.id.tv_btn_add_to_cart)
+    RobotoMediumTextView tvBtnAddToCart;
+
     private PdpBannerAdapter bannerAdapter;
 
     private ProductDetailAdapter pdpAdapter;
 
     private OnDeliveryCheckSuccessListener onDeliveryCheckSuccessListener;
 
+    private OnAttributeSelectListener onAttributeSelectListener;
+
+    private List<ColorVM> colorVMS;
+
+    private List<SizeVM> sizeVMS;
+
+    private String sku;
+
+    private OnAddCartClickListener onAddCartClickListener;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         //todo(helen) wait for api
-        mPresenter.productDetailRequest(null);
+        mPresenter.getProductDetails();
     }
 
     @Override
@@ -95,25 +120,25 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rcvPdpDetails.setLayoutManager(layoutManager);
-        pdpAdapter = new ProductDetailAdapter(this,this, new ArrayList<>());
+        pdpAdapter = new ProductDetailAdapter(this, this, new ArrayList<>());
         rcvPdpDetails.setAdapter(pdpAdapter);
     }
 
     private void appBarLayoutActionListener() {
         appBarLayoutProductDetail
-            .addOnOffsetChangedListener((AppBarLayout appBarLayout, int verticalOffset) -> viewPdpDivider.setVisibility(Math.abs(verticalOffset) >= appBarLayout
-                .getTotalScrollRange() ? View.VISIBLE : View.GONE));
+            .addOnOffsetChangedListener((AppBarLayout appBarLayout, int verticalOffset) ->
+                viewPdpDivider.setVisibility(Math.abs(verticalOffset) >= appBarLayout
+                    .getTotalScrollRange() ? View.VISIBLE : View.GONE));
     }
 
     private void initPageAdapter() {
         bannerAdapter = new PdpBannerAdapter(new ArrayList<>(), this::onBannerClick);
         viewPager
             .setAdapter(bannerAdapter);
-
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.imageview_right_menu, R
-        .id.tv_btn_add_to_cart, R.id.tv_btn_buy_now})
+        .id.tv_btn_add_to_cart, R.id.tv_btn_buy_now, R.id.tv_net_refresh})
     public void onProductDetailClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -127,19 +152,31 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
                 startActivity(new Intent(this, PaymentStatusActivity.class));
                 break;
             case R.id.tv_btn_add_to_cart:
+                onAddCartClickListener.onAddClick();
+                break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak, false);
+                mPresenter.getProductDetails();
                 break;
         }
     }
 
     @Override
-    public void productDetailRequestSuccess(List<ProductDetailModel> detailDatas) {
-        //todo(helen)wait for complete
+    public void getProductDetailSuccess(List<ProductDetailModel> detailDatas) {
+        rlProductDetailData.setVisibility(View.VISIBLE);
+        for (ProductDetailModel detailModel: detailDatas) {
+            if(detailModel instanceof ProductDetailTopVM) {
+                sku = ((ProductDetailTopVM) detailModel).getSku();
+                break;
+            }
+        }
         pdpAdapter.setUpdateDatas(detailDatas);
 
     }
 
     @Override
     public void productBannerResult(List<String> imageUrls) {
+        rlProductDetailData.setVisibility(View.VISIBLE);
         bannerAdapter.setImageUrls(imageUrls);
         circleIndicator.setViewPager(viewPager);
     }
@@ -176,6 +213,40 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     @Override
+    public void showNetError() {
+        updateLayoutStatus(flConnectionBreak, true);
+    }
+
+    @Override
+    public void showFailedMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(rcvPdpDetails, errorMessage);
+    }
+
+    @Override
+    public void hideDataLayout() {
+        rlProductDetailData.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void setColorDatas(List<ColorVM> colorVMS) {
+        this.colorVMS = colorVMS;
+    }
+
+    @Override
+    public void setSizeDatas(List<SizeVM> sizeVMS) {
+        this.sizeVMS = sizeVMS;
+    }
+
+    @Override
+    public void addToCartResult(boolean isSuccess, String message) {
+        if(isSuccess) {
+            PopWindowUtil.showRequestMessagePop(tvBtnAddToCart, message);
+        } else {
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
     public void onBannerClick() {
         startActivity(new Intent(this, PDPDetailImagesActivity.class));
     }
@@ -203,7 +274,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     @Override
     public void onWishlistSelect(boolean isSelect) {
         if (isSelect) {
-            mPresenter.addWishlistRequest( "abc");
+            mPresenter.addWishlistRequest("abc");
         } else {
             mPresenter.removeWishlistRequest("abc");
         }
@@ -212,18 +283,65 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     @Override
     public void onDeliveryCheckClick(String zipcode) {
         KeyBoardUtils.hideKeyboard(this);
-        if(TextUtils.isEmpty(zipcode)) {
-            Toast.makeText(this, getResources().getString(R.string.empty_error), Toast.LENGTH_LONG).show();
+        if (TextUtils.isEmpty(zipcode)) {
+            Toast.makeText(this, getResources().getString(R.string.empty_error), Toast.LENGTH_LONG)
+                .show();
             return;
         }
         mPresenter.deliveryCheckRequest(zipcode);
     }
 
-    public interface OnDeliveryCheckSuccessListener{
+    @Override
+    public void onProductColorClick(View parentView, String name) {
+        PopWindowUtil.showColorPop(parentView, name, colorVMS, this::onAttributeItemClick);
+    }
+
+    @Override
+    public void onProductSizeClick(View parentView, String name) {
+        PopWindowUtil.showSizePop(parentView, name, sizeVMS, this::onAttributeItemClick);
+    }
+
+    @Override
+    public void setAddCartQty(String qty) {
+        mPresenter.addToCartRequest(sku, qty);
+    }
+
+    @Override
+    public void onAttributeItemClick(int position, String type) {
+        if (type.equals(PopWindowUtil.COLOR)) {
+            String colorName = colorVMS.get(position).getColorName();
+            onAttributeSelectListener.onColorSelect(colorName);
+        } else if(type.equals(PopWindowUtil.SIZE)) {
+            String sizeName = sizeVMS.get(position).getSizeName();
+            onAttributeSelectListener.onSizeSelect(sizeName);
+        }
+    }
+
+    public interface OnAttributeSelectListener {
+
+        void onColorSelect(String color);
+
+        void onSizeSelect(String size);
+    }
+
+    public interface OnDeliveryCheckSuccessListener {
+
         void success();
     }
 
     public void setOnDeliveryCheckSuccessListener(OnDeliveryCheckSuccessListener listener) {
         this.onDeliveryCheckSuccessListener = listener;
+    }
+
+    public void setOnAttributeSelectListener(OnAttributeSelectListener listener) {
+        this.onAttributeSelectListener = listener;
+    }
+
+    public interface OnAddCartClickListener{
+        void onAddClick();
+    }
+
+    public void setOnAddCartClickListener(OnAddCartClickListener addCartClickListener) {
+        this.onAddCartClickListener = addCartClickListener;
     }
 }

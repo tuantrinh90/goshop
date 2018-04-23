@@ -13,10 +13,9 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
-import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -127,11 +126,6 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
     public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
         return null;
     }
@@ -194,11 +188,6 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
     public Observable<Response> changePasswordRequest(Map<String, Object> params) {
         return null;
     }
@@ -239,7 +228,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
+    public Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params) {
         return null;
     }
 

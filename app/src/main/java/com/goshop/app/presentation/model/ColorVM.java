@@ -1,10 +1,10 @@
 package com.goshop.app.presentation.model;
 
-public class SizeVM {
+public class ColorVM {
 
-    private String sizeId;
+    private String colorId;
 
-    private String sizeName;
+    private String colorName;
 
     private String parentId;
 
@@ -12,9 +12,10 @@ public class SizeVM {
 
     private boolean isSelect = false;
 
-    public SizeVM(String parentId, String parentName, String sizeId, String sizeName) {
-        this.sizeId = sizeId;
-        this.sizeName = sizeName;
+    public ColorVM(String parentId, String parentName, String colorId, String colorName) {
+
+        this.colorId = colorId;
+        this.colorName = colorName;
         this.parentId = parentId;
         this.parentName = parentName;
     }
@@ -27,20 +28,20 @@ public class SizeVM {
         isSelect = select;
     }
 
-    public String getSizeId() {
-        return sizeId;
+    public String getColorId() {
+        return colorId;
     }
 
-    public void setSizeId(String sizeId) {
-        this.sizeId = sizeId;
+    public void setColorId(String colorId) {
+        this.colorId = colorId;
     }
 
-    public String getSizeName() {
-        return sizeName;
+    public String getColorName() {
+        return colorName;
     }
 
-    public void setSizeName(String sizeName) {
-        this.sizeName = sizeName;
+    public void setColorName(String colorName) {
+        this.colorName = colorName;
     }
 
     public String getParentId() {

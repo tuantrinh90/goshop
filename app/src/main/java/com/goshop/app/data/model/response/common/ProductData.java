@@ -19,6 +19,8 @@ public class ProductData {
     @SerializedName("product_name")
     private String productName;
 
+    private String qty;
+
     /**
      * sku : 1234
      * name : Primada Cooker
@@ -30,6 +32,12 @@ public class ProductData {
      */
 
     private String sku;
+
+    @SerializedName("in_stock")
+    private boolean inStock;
+
+    @SerializedName("super_attributes")
+    private List<SuperAttributeData> superAttributes;
 
     public String getSku() {
         return sku;
@@ -87,4 +95,27 @@ public class ProductData {
         this.attributes = attributes;
     }
 
+    public List<SuperAttributeData> getSuperAttributes() {
+        return superAttributes;
+    }
+
+    public void setSuperAttributes(List<SuperAttributeData> superAttributes) {
+        this.superAttributes = superAttributes;
+    }
+
+    public boolean isInStock() {
+        return inStock;
+    }
+
+    public void setInStock(boolean inStock) {
+        this.inStock = inStock;
+    }
+
+    public String getQty() {
+        return qty;
+    }
+
+    public void setQty(String qty) {
+        this.qty = qty;
+    }
 }

@@ -56,7 +56,7 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
     public void setContentView(@LayoutRes int layoutResId) {
         drawerLayout = (DrawerLayout) getLayoutInflater()
             .inflate(R.layout.activity_base_drawer, null);
-        flContentLayout = drawerLayout.findViewById(R.id.fl_content);
+        flContentLayout = drawerLayout.findViewById(R.id.fl_main_content);
         rvDrawerList = drawerLayout.findViewById(R.id.rv_menu);
         initMenuUtil();
         initDrawerList();

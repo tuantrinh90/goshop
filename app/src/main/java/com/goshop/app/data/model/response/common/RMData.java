@@ -17,6 +17,54 @@ public class RMData {
 
     private String original;
 
+    private String discount;
+
+    private String shipping;
+
+    /**
+     * sub_total : 100.00
+     * discount : 20.00
+     * shipping : 15.00
+     * total : 95.00
+     */
+
+    @SerializedName("sub_total")
+    private String subTotal;
+
+    private String total;
+
+    public String getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(String subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public String getShipping() {
+        return shipping;
+    }
+
+    public void setShipping(String shipping) {
+        this.shipping = shipping;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
+    }
+
     public String getOriginal() {
         return original;
     }

@@ -1,6 +1,6 @@
 package com.goshop.app.data.model.request;
 
-import com.goshop.app.data.model.request.common.RequestData;
+import com.goshop.app.data.model.request.common.AddressRequestData;
 
 public class AddressRequest {
 
@@ -11,13 +11,13 @@ public class AddressRequest {
      * "default_billing_address":false}}
      */
 
-    private RequestData request;
+    private AddressRequestData request;
 
-    public RequestData getRequest() {
+    public AddressRequestData getRequest() {
         return request;
     }
 
-    public void setRequest(RequestData request) {
+    public void setRequest(AddressRequestData request) {
         this.request = request;
     }
 

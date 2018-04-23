@@ -5,7 +5,7 @@ import com.goshop.app.common.CustomMinusPlusEditText;
 import com.goshop.app.common.view.RobotoMediumItalicTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.model.widget.ColorVM;
+import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.presentation.model.widget.WidgetPDPTopDetailsVM;
 
 import android.graphics.Color;
@@ -85,8 +85,8 @@ public class WidgetPDPTopDetailViewHolder extends RecyclerView.ViewHolder {
         }
         tvPdpTopTips.setText(tip.toString());
         ColorVM colorVM = topDetailsVM.getPdpColors().get(0);
-        tvPdpColor.setText(colorVM.getColorName());
-        ivPdpColor.setBackgroundColor(Color.parseColor(colorVM.getColorValue()));
+        tvPdpColor.setText(colorVM.getColorId());
+        ivPdpColor.setBackgroundColor(Color.parseColor(colorVM.getColorName()));
         tvPdpSize.setText(topDetailsVM.getPdpSizes().get(0));
         mpetPdpQuantily.setText(topDetailsVM.getAmount());
     }

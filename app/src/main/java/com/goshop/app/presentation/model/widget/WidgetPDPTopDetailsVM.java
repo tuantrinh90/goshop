@@ -1,5 +1,7 @@
 package com.goshop.app.presentation.model.widget;
 
+import com.goshop.app.presentation.model.ColorVM;
+
 import java.util.List;
 
 public class WidgetPDPTopDetailsVM extends WidgetViewModel {
