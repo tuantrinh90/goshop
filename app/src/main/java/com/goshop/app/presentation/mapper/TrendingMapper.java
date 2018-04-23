@@ -7,10 +7,7 @@ import com.goshop.app.data.model.response.common.BannerData;
 import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.model.BannerVm;
-import com.goshop.app.presentation.model.TrendingVideoVM;
-import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
-import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 
 import java.util.ArrayList;
@@ -46,10 +43,10 @@ public class TrendingMapper {
                 videoPlayerItemsVM.setPlaybackUrl(videoItemsResponse.getPlaybackUrl());
                 if (videoItemsResponse.getProducts() != null && videoItemsResponse.getProducts()
                     .size() > 0) {
-                    List<VideoProductsVM> videoProductsVMs = new ArrayList<>();
+                    List<ProductsVM> videoProductsVMs = new ArrayList<>();
                     for (VideoProductsResponse videoProductsResponse : videoItemsResponse
                         .getProducts()) {
-                        VideoProductsVM videoProductsVM = new VideoProductsVM();
+                        ProductsVM videoProductsVM = new ProductsVM();
                         videoProductsVM.setImage(videoProductsResponse.getImage());
                         videoProductsVM.setLabels(videoProductsResponse.getLabels());
                         videoProductsVM.setLink(videoProductsResponse.getLink());

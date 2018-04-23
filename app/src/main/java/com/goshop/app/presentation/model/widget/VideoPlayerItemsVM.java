@@ -15,7 +15,7 @@ public class VideoPlayerItemsVM {
     @SerializedName("playback_url")
     private String playbackUrl;
 
-    private List<VideoProductsVM> productsVMS;
+    private List<ProductsVM> productsVMS;
 
     public String getPlaybackUrl() {
         return playbackUrl;
@@ -49,12 +49,12 @@ public class VideoPlayerItemsVM {
         this.link = link;
     }
 
-    public List<VideoProductsVM> getProductsVMS() {
+    public List<ProductsVM> getProductsVMS() {
         return productsVMS;
     }
 
     public void setProductsVMS(
-        List<VideoProductsVM> productsVMS) {
+        List<ProductsVM> productsVMS) {
         this.productsVMS = productsVMS;
     }
 }

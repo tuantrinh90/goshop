@@ -18,7 +18,7 @@ import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.OfferListItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
@@ -81,9 +81,9 @@ public class WidgetViewMapper {
         for (VideoItemsResponse itemsReponse : itemsReponses) {
             VideoPlayerItemsVM videoPlayerItemsVM = new VideoPlayerItemsVM();
             List<VideoProductsResponse> productsReponses = itemsReponse.getProducts();
-            List<VideoProductsVM> productsVMS = new ArrayList<>();
+            List<ProductsVM> productsVMS = new ArrayList<>();
             for (VideoProductsResponse productsReponse : productsReponses) {
-                VideoProductsVM productsVM = new VideoProductsVM();
+                ProductsVM productsVM = new ProductsVM();
                 productsVM.setTitle(productsReponse.getTitle());
                 productsVM.setImage(productsReponse.getImage());
                 productsVM.setLink(productsReponse.getLink());
@@ -124,9 +124,9 @@ public class WidgetViewMapper {
 
         List<ProductScrollerItemsResponse> itemsReponses = productScrollerReponse.getData()
             .getItems();
-        List<VideoProductsVM> productsVMS = new ArrayList<>();
+        List<ProductsVM> productsVMS = new ArrayList<>();
         for (ProductScrollerItemsResponse itemsReponse : itemsReponses) {
-            VideoProductsVM productsVM = new VideoProductsVM();
+            ProductsVM productsVM = new ProductsVM();
             ProductScrollerPriceResponse priceReponse = itemsReponse.getPrice();
             ProductPriceRMVM priceRMVM = new ProductPriceRMVM(
                 priceReponse.getRM().getDiscountTitle(),

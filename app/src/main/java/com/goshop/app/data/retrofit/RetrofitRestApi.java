@@ -1,6 +1,7 @@
 package com.goshop.app.data.retrofit;
 
 import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
@@ -14,7 +15,8 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
@@ -24,7 +26,7 @@ import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -48,10 +50,8 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.ZipCodeResponse;
-
 import java.util.HashMap;
 import java.util.Map;
-
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -237,11 +237,10 @@ public interface RetrofitRestApi {
     Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<ProductDetailResponse> productDetailRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<ProductDetailResponse>> getProductDetails(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -312,11 +311,10 @@ public interface RetrofitRestApi {
     Observable<AddressResponse> myAddressRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<ShoppingCartResponse> shoppingCartRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<ShoppingCartResponse>> viewCartDetails(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
@@ -513,4 +511,13 @@ public interface RetrofitRestApi {
     Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(@Url String url,
         @QueryMap HashMap<String, Object> params);
 
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response<CartDataResponse>> addToCartRequest(@Url String fullUrl,
+        @Body AddRemoveCartRequest request);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @PUT
+    Observable<Response<CartDataResponse>> removeFromCartRequest(@Url String fullUrl,
+        @Body AddRemoveCartRequest request);
 }

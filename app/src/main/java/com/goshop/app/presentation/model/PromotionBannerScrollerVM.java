@@ -1,24 +1,24 @@
 package com.goshop.app.presentation.model;
 
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 
 import java.util.List;
 
 public class PromotionBannerScrollerVM extends PromotionBannerModel {
 
-    private List<VideoProductsVM> productsVMS;
+    private List<ProductsVM> productsVMS;
 
-    public PromotionBannerScrollerVM(List<VideoProductsVM> productsVMS) {
+    public PromotionBannerScrollerVM(List<ProductsVM> productsVMS) {
         super(PromotionBannerModel.VIEW_SCROLLER);
         this.productsVMS = productsVMS;
     }
 
-    public List<VideoProductsVM> getProductsVMS() {
+    public List<ProductsVM> getProductsVMS() {
         return productsVMS;
     }
 
     public void setProductsVMS(
-        List<VideoProductsVM> productsVMS) {
+        List<ProductsVM> productsVMS) {
         this.productsVMS = productsVMS;
     }
 }

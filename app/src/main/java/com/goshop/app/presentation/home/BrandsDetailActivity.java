@@ -9,7 +9,7 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.BrandsDetailVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
@@ -185,7 +185,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     }
 
     @Override
-    public void onProductItemClick(VideoProductsVM productItemVM) {
+    public void onProductItemClick(ProductsVM productItemVM) {
         startActivity(new Intent(this, ProductDetailActivity.class));
     }
 

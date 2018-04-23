@@ -12,7 +12,7 @@ import com.goshop.app.presentation.model.SearchResultVM;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 
 import android.os.Handler;
 
@@ -58,14 +58,14 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
     }
 
     //todo this is mock data, please do not delete
-    private List<VideoProductsVM> getProductsVMS() {
-        VideoProductsVM productsVM = new VideoProductsVM();
+    private List<ProductsVM> getProductsVMS() {
+        ProductsVM productsVM = new ProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
         productsVM.setPriceVM(priceVM);
-        List<VideoProductsVM> productsVMS = new ArrayList<>();
+        List<ProductsVM> productsVMS = new ArrayList<>();
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);

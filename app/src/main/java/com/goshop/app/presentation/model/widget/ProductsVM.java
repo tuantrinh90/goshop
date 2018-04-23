@@ -2,13 +2,13 @@ package com.goshop.app.presentation.model.widget;
 
 import java.util.List;
 
-public class VideoProductsVM {
+public class ProductsVM {
 
     private List<String> attributes;
 
     private List<String> labels;
 
-    private String id;
+    private String id = "";
 
     private String image;
 
@@ -21,6 +21,8 @@ public class VideoProductsVM {
     private ProductPriceVM priceVM;
 
     private String title;
+
+    private String amount;
 
     public String getSku() {
         return sku;
@@ -44,6 +46,14 @@ public class VideoProductsVM {
 
     public void setLabels(List<String> labels) {
         this.labels = labels;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
     }
 
     public String getId() {

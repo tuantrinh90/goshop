@@ -2,7 +2,7 @@ package com.goshop.app.widget.adapter;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
@@ -54,7 +54,7 @@ public class VideoViewPagerAdapter extends PagerAdapter {
         Glide.with(container.getContext()).load("").asBitmap()
             .error(R.drawable.ic_video)
             .into(ivOnAirVideo);
-        List<VideoProductsVM> productsVMS = videoPlayerItemsVMS.get(position).getProductsVMS();
+        List<ProductsVM> productsVMS = videoPlayerItemsVMS.get(position).getProductsVMS();
         VideoProductItemAdapter listAdapter = new VideoProductItemAdapter(productsVMS,
             onProductItemClickListener, buyClickListener);
         LinearLayoutManager productLayoutManager = new LinearLayoutManager(container.getContext());

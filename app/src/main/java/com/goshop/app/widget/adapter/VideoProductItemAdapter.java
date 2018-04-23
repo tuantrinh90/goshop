@@ -1,7 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.goshop.app.widget.viewholder.VideoProductItemViewHolder;
@@ -16,16 +16,16 @@ import java.util.List;
 
 public class VideoProductItemAdapter extends RecyclerView.Adapter {
 
-    private List<VideoProductsVM> allProductsVMS;
+    private List<ProductsVM> allProductsVMS;
 
     private OnProductBuyClickListener buyClickListener;
 
-    private List<VideoProductsVM> displayProductsVMS;
+    private List<ProductsVM> displayProductsVMS;
 
     private OnProductItemClickListener onProductItemClickListener;
 
     public VideoProductItemAdapter(
-        List<VideoProductsVM> productsVMS, OnProductItemClickListener onProductItemClickListener,
+        List<ProductsVM> productsVMS, OnProductItemClickListener onProductItemClickListener,
         OnProductBuyClickListener buyClickListener) {
         this.allProductsVMS = productsVMS;
         displayProductsVMS = new ArrayList<>();

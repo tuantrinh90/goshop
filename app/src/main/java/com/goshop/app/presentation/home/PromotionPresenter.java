@@ -13,7 +13,7 @@ import com.goshop.app.presentation.model.PromotionBannerTopVM;
 import com.goshop.app.presentation.model.widget.OfferListItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.JToolUtils;
 
 import java.util.ArrayList;
@@ -119,14 +119,14 @@ public class PromotionPresenter extends RxPresenter<PromotionContract.View> impl
     }
 
     //TODO(helen) this is mock data
-    private List<VideoProductsVM> getWidgetProductScrollerVM() {
-        VideoProductsVM productsVM = new VideoProductsVM();
+    private List<ProductsVM> getWidgetProductScrollerVM() {
+        ProductsVM productsVM = new ProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
         productsVM.setPriceVM(priceVM);
-        List<VideoProductsVM> productsVMS = new ArrayList<>();
+        List<ProductsVM> productsVMS = new ArrayList<>();
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);

@@ -12,7 +12,7 @@ import com.goshop.app.presentation.model.TrendingNowModel;
 import com.goshop.app.presentation.model.TrendingSingleBannerVM;
 import com.goshop.app.presentation.model.TrendingVideoVM;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 import com.goshop.app.widget.BannerAutoPlayHelper;
 import com.goshop.app.widget.adapter.ChannelAdapter;
@@ -239,12 +239,12 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
         }
 
         @Override
-        public void onProductItemClick(VideoProductsVM productItemVM) {
+        public void onProductItemClick(ProductsVM productItemVM) {
             onTrendingNowClickListener.onProductItemClick(productItemVM);
         }
 
         @Override
-        public void onBuyNowClick(VideoProductsVM productItemVM) {
+        public void onBuyNowClick(ProductsVM productItemVM) {
             onTrendingNowClickListener.onBuyNowClick();
         }
     }
@@ -297,7 +297,7 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
         }
 
         @Override
-        public void onProductItemClick(VideoProductsVM productItemVM) {
+        public void onProductItemClick(ProductsVM productItemVM) {
             onTrendingNowClickListener.onProductItemClick(productItemVM);
         }
     }

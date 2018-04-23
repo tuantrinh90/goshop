@@ -1,7 +1,7 @@
 package com.goshop.app.widget.listener;
 
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 
 public interface OnTrendingNowClickListener {
 
@@ -9,7 +9,7 @@ public interface OnTrendingNowClickListener {
 
     void onTVScheduleClick();
 
-    void onProductItemClick(VideoProductsVM productsVM);
+    void onProductItemClick(ProductsVM productsVM);
 
     void onBuyNowClick();
 

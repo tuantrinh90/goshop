@@ -9,7 +9,7 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SortVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
@@ -205,7 +205,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     }
 
     @Override
-    public void onProductItemClick(VideoProductsVM productItemVM) {
+    public void onProductItemClick(ProductsVM productItemVM) {
         //todo wait for api
     }
 

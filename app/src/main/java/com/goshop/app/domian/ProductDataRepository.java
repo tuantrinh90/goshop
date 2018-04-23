@@ -3,7 +3,9 @@ package com.goshop.app.domian;
 import com.goshop.app.Const;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -85,8 +87,17 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
-        return productCloudDataSource.productDetailRequest(params);
+    public Observable<Response<ProductDetailResponse>> getProductDetails(
+        Map<String, Object> params) {
+        return productCloudDataSource.getProductDetails(params)
+            .concatMap(response -> {
+                if (isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -179,7 +190,8 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<Response<BannerResponse>> getHomeBanner(HashMap<String, Object> params) {
+    public Observable<Response<BannerResponse>> getHomeBanner(
+        HashMap<String, Object> params) {
         return productCloudDataSource.getHomeBanner(params)
             .concatMap(response -> {
                 if (isSuccess(response.getMessage().getStatus())) {
@@ -196,7 +208,7 @@ public class ProductDataRepository implements ProductRepository {
         HashMap<String, Object> params) {
         return productCloudDataSource.getOnAirSchedule(params)
             .concatMap(response -> {
-                // TODO: 2018/4/23 this api message object need adjudt
+                // TODO: 2018/4/23 need api
 //                if (isSuccess(response.getMessage().getStatus())) {
                 if (true) {
                     return Observable.just(response);
@@ -207,7 +219,34 @@ public class ProductDataRepository implements ProductRepository {
             }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request)
+
+    {
+        return productCloudDataSource.addToCartRequest(request)
+            .concatMap(response -> {
+                if (isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Response<CartDataResponse>> removeFromCartRequest(
+        AddRemoveCartRequest request) {
+        return productCloudDataSource.removeFromCartRequest(request)
+            .concatMap(response -> {
+                if (isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     private boolean isSuccess(String status) {
-        return Const.SUCCESS_STATUS.equals(status);
+        return Const.SUCCESS_STATUS.equals(status.toLowerCase());
     }
 }

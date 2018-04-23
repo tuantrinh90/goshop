@@ -1,7 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.goshop.app.widget.viewholder.ProductGridViewHolder;
 
@@ -16,9 +16,9 @@ public class ProductGridVerticalAdapter extends RecyclerView.Adapter {
 
     private OnProductItemClickListener onProductItemClickListener;
 
-    private List<VideoProductsVM> productsVMS;
+    private List<ProductsVM> productsVMS;
 
-    public ProductGridVerticalAdapter(List<VideoProductsVM> detailVMS) {
+    public ProductGridVerticalAdapter(List<ProductsVM> detailVMS) {
         this.productsVMS = detailVMS;
     }
 
@@ -26,7 +26,7 @@ public class ProductGridVerticalAdapter extends RecyclerView.Adapter {
         this.onProductItemClickListener = onProductItemClickListener;
     }
 
-    public void setUpdateDatas(List<VideoProductsVM> productsVMS) {
+    public void setUpdateDatas(List<ProductsVM> productsVMS) {
         this.productsVMS.clear();
         this.productsVMS = productsVMS;
         notifyDataSetChanged();

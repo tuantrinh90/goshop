@@ -17,11 +17,10 @@ import com.goshop.app.presentation.model.TrendingVideoVM;
 import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 
 import android.content.Context;
-import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -145,13 +144,13 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
         List<VideoPlayerItemsVM> videoPlayerItemsVMS = new ArrayList<>();
         VideoPlayerItemsVM videoPlayerItemsVM = new VideoPlayerItemsVM();
         videoPlayerItemsVM.setName("CH118");
-        VideoProductsVM productsVM = new VideoProductsVM();
+        ProductsVM productsVM = new ProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
         productsVM.setPriceVM(priceVM);
-        List<VideoProductsVM> productsVMS = new ArrayList<>();
+        List<ProductsVM> productsVMS = new ArrayList<>();
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
         videoPlayerItemsVM.setProductsVMS(productsVMS);
@@ -171,13 +170,13 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
 
     //TODO(helen) this is mock data
     private TrendingHorizontalProductsVM getHorizontalProductsVM(String title) {
-        VideoProductsVM productsVM = new VideoProductsVM();
+        ProductsVM productsVM = new ProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
         productsVM.setPriceVM(priceVM);
-        List<VideoProductsVM> productsVMS = new ArrayList<>();
+        List<ProductsVM> productsVMS = new ArrayList<>();
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);

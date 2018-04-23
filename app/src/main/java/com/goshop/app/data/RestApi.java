@@ -1,5 +1,6 @@
 package com.goshop.app.data;
 
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.AllDealsResponse;
@@ -14,6 +15,7 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.response.BannerResponse;
+import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.CityResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
@@ -22,7 +24,7 @@ import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.OnAirScheduleResponse;
 import com.goshop.app.data.model.response.OrderResponse;
@@ -32,7 +34,7 @@ import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
@@ -58,7 +60,7 @@ public interface RestApi {
 
     Observable<TrendingNowResponse> trendingNowRequest(Map<String, Object> params);
 
-    Observable<Response<BrandsResponse> > brandsRequest(Map<String, Object> params);
+    Observable<Response<BrandsResponse>> brandsRequest(Map<String, Object> params);
 
     Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
@@ -116,7 +118,7 @@ public interface RestApi {
     Observable<SendConfirmationLinkResponse> sendConfirmationLinkRequest(
         Map<String, Object> params);
 
-    Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params);
+    Observable<Response<ProductDetailResponse>> getProductDetails(Map<String, Object> params);
 
     Observable<SearchFilterResponse> searchFilterRequest(Map<String, Object> params);
 
@@ -142,7 +144,7 @@ public interface RestApi {
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
-    Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);
+    Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params);
 
     Observable<GetWebContentResponse> getEcmcContent();
 
@@ -215,4 +217,9 @@ public interface RestApi {
     Observable<Response<BannerResponse>> getHomeBanner(HashMap<String, Object> params);
 
     Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(HashMap<String, Object> params);
+
+    Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request);
+
+    Observable<Response<CartDataResponse>> removeFromCartRequest(AddRemoveCartRequest request);
+
 }

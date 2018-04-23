@@ -4,9 +4,7 @@ public class ShoppingCartModel {
 
     public static final int CART_APPLY = 1;
 
-    public static final int CART_BANNER = 2;
-
-    public static final int CART_PRODUCT = 3;
+    public static final int CART_PRODUCT = 2;
 
     private int viewType;
 

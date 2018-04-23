@@ -6,11 +6,11 @@ import java.util.List;
 
 public class ProductSortFilterListVM {
 
-    private List<VideoProductsVM> productsVMS;
+    private List<ProductsVM> productsVMS;
 
     private List<SortVM> sortVMS;
 
-    public ProductSortFilterListVM(List<SortVM> sortVMS, List<VideoProductsVM> productsVMS) {
+    public ProductSortFilterListVM(List<SortVM> sortVMS, List<ProductsVM> productsVMS) {
         this.productsVMS = productsVMS;
         this.sortVMS = sortVMS;
 
@@ -24,12 +24,12 @@ public class ProductSortFilterListVM {
         this.sortVMS = sortVMS;
     }
 
-    public List<VideoProductsVM> getProductsVMS() {
+    public List<ProductsVM> getProductsVMS() {
         return productsVMS;
     }
 
     public void setProductsVMS(
-        List<VideoProductsVM> productsVMS) {
+        List<ProductsVM> productsVMS) {
         this.productsVMS = productsVMS;
     }
 }

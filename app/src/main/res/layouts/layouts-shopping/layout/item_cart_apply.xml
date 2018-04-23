@@ -29,6 +29,7 @@
             android:layout_alignParentEnd="true"/>
 
         <com.goshop.app.common.view.RobotoRegularEditText
+            android:id="@+id/et_cart_apply"
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_36"
             android:layout_marginRight="@dimen/size_8"
@@ -63,33 +64,7 @@
             android:layout_alignParentStart="true"/>
 
         <com.goshop.app.common.view.RobotoLightTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/demo_cart_price1"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="end"
-            android:layout_alignParentEnd="true"
-            tools:ignore="RelativeOverlap"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_8">
-
-        <com.goshop.app.common.view.RobotoLightTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/rounding_amount"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="start"
-            android:layout_alignParentStart="true"/>
-
-        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_cart_billing_subtotal"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
@@ -117,6 +92,7 @@
             android:layout_alignParentStart="true"/>
 
         <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_cart_billing_shipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
@@ -144,6 +120,7 @@
             android:layout_alignParentStart="true"/>
 
         <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_cart_billing_disscount"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
@@ -171,6 +148,7 @@
             android:layout_alignParentStart="true"/>
 
         <com.goshop.app.common.view.RobotoMediumTextView
+            android:id="@+id/tv_cart_billing_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_18"

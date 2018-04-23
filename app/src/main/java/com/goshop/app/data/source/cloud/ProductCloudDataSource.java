@@ -3,7 +3,9 @@ package com.goshop.app.data.source.cloud;
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -35,7 +37,7 @@ public class ProductCloudDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<Response<BrandsResponse> > brandsRequest(Map<String, Object> params) {
+    public Observable<Response<BrandsResponse>> brandsRequest(Map<String, Object> params) {
         return restApi.brandsRequest(params);
     }
 
@@ -55,13 +57,15 @@ public class ProductCloudDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(
+        Map<String, Object> params) {
         return restApi.getGoShopPointsDetails(params);
     }
 
     @Override
-    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
-        return restApi.productDetailRequest(params);
+    public Observable<Response<ProductDetailResponse>> getProductDetails(
+        Map<String, Object> params) {
+        return restApi.getProductDetails(params);
     }
 
     @Override
@@ -133,5 +137,15 @@ public class ProductCloudDataSource implements ProductDataSource {
     public Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(
         HashMap<String, Object> params) {
         return restApi.getOnAirSchedule(params);
+    }
+
+    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request) {
+        return restApi.addToCartRequest(request);
+    }
+
+    @Override
+    public Observable<Response<CartDataResponse>> removeFromCartRequest(
+        AddRemoveCartRequest request) {
+        return restApi.removeFromCartRequest(request);
     }
 }

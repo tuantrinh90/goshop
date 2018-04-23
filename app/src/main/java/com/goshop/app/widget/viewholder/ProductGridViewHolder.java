@@ -4,7 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.graphics.Paint;
@@ -37,7 +37,7 @@ public class ProductGridViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void bindingData(VideoProductsVM productsVM,
+    public void bindingData(ProductsVM productsVM,
         OnProductItemClickListener onProductItemClickListener) {
         Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
             .error(R.drawable.ic_bought)

@@ -3,7 +3,9 @@ package com.goshop.app.data.source.local;
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CategoryMenuResponse;
-import com.goshop.app.data.model.ProductDetailResponse;
+import com.goshop.app.data.model.request.AddRemoveCartRequest;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
@@ -34,7 +36,7 @@ public class ProductLocalDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<Response<BrandsResponse> > brandsRequest(Map<String, Object> params) {
+    public Observable<Response<BrandsResponse>> brandsRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -54,12 +56,14 @@ public class ProductLocalDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(
+        Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<ProductDetailResponse> productDetailRequest(Map<String, Object> params) {
+    public Observable<Response<ProductDetailResponse>> getProductDetails(
+        Map<String, Object> params) {
         return null;
     }
 
@@ -124,9 +128,18 @@ public class ProductLocalDataSource implements ProductDataSource {
         return null;
     }
 
+    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request) {
+        return null;
+    }
+
     @Override
     public Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(
         HashMap<String, Object> params) {
+        return null;
+    }
+
+    public Observable<Response<CartDataResponse>> removeFromCartRequest(
+        AddRemoveCartRequest request) {
         return null;
     }
 }

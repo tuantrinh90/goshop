@@ -1,6 +1,6 @@
 package com.goshop.app.presentation.model;
 
-import com.goshop.app.presentation.model.widget.VideoProductsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 
 import java.util.List;
 
@@ -8,10 +8,10 @@ public class TrendingHorizontalProductsVM extends TrendingNowModel {
 
     private String detailTitle;
 
-    private List<VideoProductsVM> productsVMS;
+    private List<ProductsVM> productsVMS;
 
     public TrendingHorizontalProductsVM(String detailTitle,
-        List<VideoProductsVM> productsVMS) {
+        List<ProductsVM> productsVMS) {
         super(TrendingNowModel.VIEW_TYPE_HORIZONTAL_PRODUCTS);
         this.detailTitle = detailTitle;
         this.productsVMS = productsVMS;
@@ -25,12 +25,12 @@ public class TrendingHorizontalProductsVM extends TrendingNowModel {
         this.detailTitle = detailTitle;
     }
 
-    public List<VideoProductsVM> getProductsVMS() {
+    public List<ProductsVM> getProductsVMS() {
         return productsVMS;
     }
 
     public void setProductsVMS(
-        List<VideoProductsVM> productsVMS) {
+        List<ProductsVM> productsVMS) {
         this.productsVMS = productsVMS;
     }
 }

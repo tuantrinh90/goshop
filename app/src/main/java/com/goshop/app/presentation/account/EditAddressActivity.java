@@ -9,7 +9,7 @@ import com.goshop.app.common.view.RobotoLightCheckBox;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.request.AddressRequest;
-import com.goshop.app.data.model.request.common.RequestData;
+import com.goshop.app.data.model.request.common.AddressRequestData;
 import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.PopWindowUtil;
@@ -213,7 +213,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
         }
 
         AddressRequest request = new AddressRequest();
-        RequestData requestData = new RequestData();
+        AddressRequestData requestData = new AddressRequestData();
         requestData.setWebsiteId(Const.WEBSITE_ID + "");
         requestData.setStoreId(Const.STORE_ID + "");
         requestData.setFirstName(name);

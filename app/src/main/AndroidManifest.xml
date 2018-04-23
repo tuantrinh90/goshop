@@ -115,6 +115,7 @@
 
         <activity
             android:name=".presentation.shopping.ShoppingCartActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>
 
         <activity
