@@ -55,7 +55,6 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //todo(helen)wait for api
                     if (throwable instanceof ServiceApiFail) {
                         mView.showFailedMessage(((ServiceApiFail) throwable).getErrorMessage());
                     } else {

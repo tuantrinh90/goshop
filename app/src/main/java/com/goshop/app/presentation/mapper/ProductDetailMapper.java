@@ -113,7 +113,7 @@ public class ProductDetailMapper {
         return detailModels;
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private static List<ProductDetailModel> getProductsDelivery() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(false, false, "Delivery Info"));
@@ -121,7 +121,7 @@ public class ProductDetailMapper {
         return detailModels;
     }
 
-    //TODO(helen) this is mock data
+    //TODO this is mock data
     private static List<ProductDetailModel> getProductReviews() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(true, true, "Reviews"));
@@ -135,7 +135,7 @@ public class ProductDetailMapper {
         return detailModels;
     }
 
-    //TODO(helen) this is mock data
+    //TODO this is mock data
     private static List<ProductDetailModel> getProductQuestionAnswer() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(true, true, "Q&A"));
@@ -149,7 +149,7 @@ public class ProductDetailMapper {
         return detailModels;
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private static List<ProductDetailModel> getAdditionalInformation() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(true, true, "Additional Information"));
@@ -169,7 +169,7 @@ public class ProductDetailMapper {
         return detailModels;
     }
 
-    //TODO(helen) this is mock data
+    //TODO  this is mock data
     private static List<ProductDetailModel> getFrequentlyBoughtTogether() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(false, false, "Frequently Bought Together"));
