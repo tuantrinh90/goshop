@@ -6,12 +6,10 @@ import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.ShoppingCartModel;
-import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
 import android.content.Intent;
@@ -55,6 +53,9 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     @BindView(R.id.fl_no_data)
     FrameLayout flNoData;
 
+    @BindView(R.id.fl_content)
+    FrameLayout flContent;
+
     @BindView(R.id.fl_connection_break)
     FrameLayout flConnectionBreak;
 
@@ -73,7 +74,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         initToolbar();
         initRecyclerView();
         //TODO(helen) wait for api
-        mPresenter.shoppingCartRequest(null);
+        mPresenter.viewCartDetails();
     }
 
     private void initIntent() {
@@ -119,7 +120,17 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @Override
     public void showCartDetail(List<ShoppingCartModel> cartModels) {
-        shoppingCartAdapter.setDatas(cartModels);
+        if(cartModels.size() > 0) {
+            updateLayoutStatus(flContent,true);
+            shoppingCartAdapter.setDatas(cartModels);
+        } else {
+            updateLayoutStatus(flNoData,true);
+        }
+    }
+
+    @Override
+    public void showNetError() {
+        updateLayoutStatus(flConnectionBreak,true);
     }
 
     @Override
@@ -138,7 +149,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     }
 
     @Override
-    public void addWishlistFailed(String errorMessage) {
+    public void showErrorMessage(String errorMessage) {
         PopWindowUtil.showRequestMessagePop(rvShoppintCart, errorMessage);
     }
 
@@ -179,7 +190,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak,false);
                 // TODO: 2018/4/11  need real api
-                mPresenter.shoppingCartRequest(null);
+                mPresenter.viewCartDetails();
                 break;
         }
     }

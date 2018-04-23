@@ -15,7 +15,7 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
-import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -114,7 +114,7 @@ public interface AccountRepository {
 
     Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params);
 
-    Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);
+    Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params);
 
     Observable<GetWebContentResponse> getEcmcContent();
 

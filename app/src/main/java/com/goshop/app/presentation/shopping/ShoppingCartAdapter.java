@@ -1,9 +1,13 @@
 package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoLightTextView;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.presentation.model.ShoppingCartApplyVM;
 import com.goshop.app.presentation.model.ShoppingCartModel;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
+import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.widget.adapter.WidgetProductListAdapter;
 import com.goshop.app.widget.listener.OnBannerItemClickListener;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
@@ -101,12 +105,38 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
     class ApplyViewHolder extends RecyclerView.ViewHolder {
 
+        @BindView(R.id.tv_btn_cart_apply)
+        RobotoMediumTextView tvBtnCartApply;
+
+        @BindView(R.id.et_cart_apply)
+        RobotoRegularEditText etCartApply;
+
+        @BindView(R.id.tv_cart_billing_subtotal)
+        RobotoLightTextView tvCartBillingSubtotal;
+
+        @BindView(R.id.tv_cart_billing_shipping)
+        RobotoLightTextView tvCartBillingShipping;
+
+        @BindView(R.id.tv_cart_billing_disscount)
+        RobotoLightTextView tvCartBillingDisscount;
+
+        @BindView(R.id.tv_cart_billing_total)
+        RobotoMediumTextView tvCartBillingTotal;
+
         public ApplyViewHolder(View itemView) {
             super(itemView);
+            ButterKnife.bind(this, itemView);
         }
 
         void bindingData(ShoppingCartApplyVM applyVM) {
+            tvBtnCartApply.setOnClickListener(v->{
+                String code = etCartApply.getText().toString();
 
+            });
+            tvCartBillingSubtotal.setText(applyVM.getSubTotal());
+            tvCartBillingShipping.setText(applyVM.getShipping());
+            tvCartBillingDisscount.setText(applyVM.getDiscount());
+            tvCartBillingTotal.setText(applyVM.getTotal());
         }
     }
 }

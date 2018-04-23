@@ -25,7 +25,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
-import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -312,11 +312,10 @@ public interface RetrofitRestApi {
     Observable<AddressResponse> myAddressRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<ShoppingCartResponse> shoppingCartRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<ShoppingCartResponse>> viewCartDetails(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET

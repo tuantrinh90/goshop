@@ -12,11 +12,10 @@ import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
-import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
-import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -115,7 +114,7 @@ public interface AccountDataSource {
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
-    Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params);
+    Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params);
 
     Observable<GetWebContentResponse> getEcmcContent();
 

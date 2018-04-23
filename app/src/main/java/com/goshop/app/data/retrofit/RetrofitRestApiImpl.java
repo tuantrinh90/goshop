@@ -29,7 +29,7 @@ import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
-import com.goshop.app.data.model.ShoppingCartResponse;
+import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
@@ -321,9 +321,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<ShoppingCartResponse> shoppingCartRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.SHOPPINT_CART);
-        return retrofitRestApi.shoppingCartRequest(url, params);
+    public Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.VIEW_CART_DETAIL);
+        return retrofitRestApi.viewCartDetails(url, params);
     }
 
     @Override

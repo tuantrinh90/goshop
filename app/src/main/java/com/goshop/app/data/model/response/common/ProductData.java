@@ -19,7 +19,7 @@ public class ProductData {
     @SerializedName("product_name")
     private String productName;
 
-    private int qty;
+    private String qty;
 
     /**
      * sku : 1234
@@ -111,11 +111,11 @@ public class ProductData {
         this.inStock = inStock;
     }
 
-    public int getQty() {
+    public String getQty() {
         return qty;
     }
 
-    public void setQty(int qty) {
+    public void setQty(String qty) {
         this.qty = qty;
     }
 }

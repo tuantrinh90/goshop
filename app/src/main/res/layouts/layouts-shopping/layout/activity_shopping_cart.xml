@@ -4,6 +4,7 @@
     android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:fitsSystemWindows="true"
     android:focusableInTouchMode="true"
     android:focusable="true">
@@ -14,21 +15,26 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <include
-            layout="@layout/toolbar_img_text_img_close"/>
+            layout="@layout/toolbar_img_text_img_close"
+        />
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
     </LinearLayout>
 
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ll_toolbar">
+        android:layout_below="@id/ll_toolbar">
         <FrameLayout
             android:id="@+id/fl_content"
+            android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <include
-                layout="@layout/layout_shopping_cart"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                layout="@layout/layout_shopping_cart"/>
+
         </FrameLayout>
         <FrameLayout
             android:id="@+id/fl_no_data"
@@ -45,11 +51,10 @@
             android:layout_height="match_parent">
             <include layout="@layout/layout_connection_break"/>
         </FrameLayout>
-
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_4"
-            android:background="@drawable/bg_navigation_bar_shadow"/>
     </FrameLayout>
+
+
+
+
 
 </RelativeLayout>
