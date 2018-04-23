@@ -18,7 +18,7 @@ import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.OfferListItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 import com.goshop.app.presentation.model.widget.WidgetCarouselVM;
 import com.goshop.app.presentation.model.widget.WidgetProductScrollerVM;
@@ -81,9 +81,9 @@ public class WidgetViewMapper {
         for (VideoItemsResponse itemsReponse : itemsReponses) {
             VideoPlayerItemsVM videoPlayerItemsVM = new VideoPlayerItemsVM();
             List<VideoProductsResponse> productsReponses = itemsReponse.getProducts();
-            List<ProductsVM> productsVMS = new ArrayList<>();
+            List<VideoProductsVM> productsVMS = new ArrayList<>();
             for (VideoProductsResponse productsReponse : productsReponses) {
-                ProductsVM productsVM = new ProductsVM();
+                VideoProductsVM productsVM = new VideoProductsVM();
                 productsVM.setTitle(productsReponse.getTitle());
                 productsVM.setImage(productsReponse.getImage());
                 productsVM.setLink(productsReponse.getLink());
@@ -94,12 +94,12 @@ public class WidgetViewMapper {
                     NumberFormater.formaterMoney(rmReponse.getOriginal()));
                 ProductPriceVM priceVM = new ProductPriceVM(rmvm);
                 productsVM.setPriceVM(priceVM);
-                productsVM.setId(productsReponse.getIdX());
+                productsVM.setId(productsReponse.getId());
                 productsVM.setAttributes(productsReponse.getAttributes());
                 productsVMS.add(productsVM);
             }
             videoPlayerItemsVM.setProductsVMS(productsVMS);
-            videoPlayerItemsVM.setName(itemsReponse.getNameX());
+            videoPlayerItemsVM.setName(itemsReponse.getName());
             videoPlayerItemsVMS.add(videoPlayerItemsVM);
         }
         return new WidgetVideoPlayerVM(title, detailTitle, videoPlayerItemsVMS);
@@ -124,9 +124,9 @@ public class WidgetViewMapper {
 
         List<ProductScrollerItemsResponse> itemsReponses = productScrollerReponse.getData()
             .getItems();
-        List<ProductsVM> productsVMS = new ArrayList<>();
+        List<VideoProductsVM> productsVMS = new ArrayList<>();
         for (ProductScrollerItemsResponse itemsReponse : itemsReponses) {
-            ProductsVM productsVM = new ProductsVM();
+            VideoProductsVM productsVM = new VideoProductsVM();
             ProductScrollerPriceResponse priceReponse = itemsReponse.getPrice();
             ProductPriceRMVM priceRMVM = new ProductPriceRMVM(
                 priceReponse.getRM().getDiscountTitle(),

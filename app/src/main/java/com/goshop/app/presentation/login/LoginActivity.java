@@ -41,6 +41,8 @@ import injection.modules.PresenterModule;
 public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> implements
     LoginContract.View, EncryptPasswordHandler.OnPasswordEncryptListener {
 
+    public static final String EXTRA_REDIRECT_TYPE = "redirect_type";
+
     @BindView(R.id.rl_container)
     RelativeLayout rlContainer;
 

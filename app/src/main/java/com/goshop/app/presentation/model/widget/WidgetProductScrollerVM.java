@@ -14,19 +14,19 @@ public class WidgetProductScrollerVM extends WidgetViewModel {
 
     private String pageNext;
 
-    private List<ProductsVM> productsVMS;
+    private List<VideoProductsVM> productsVMS;
 
-    public WidgetProductScrollerVM(List<ProductsVM> productsVMS) {
+    public WidgetProductScrollerVM(List<VideoProductsVM> productsVMS) {
         super(WidgetViewModel.VIEW_TYPE_PRODUCT_SCROLLER);
         this.productsVMS = productsVMS;
     }
 
-    public List<ProductsVM> getProductsVMS() {
+    public List<VideoProductsVM> getProductsVMS() {
         return productsVMS;
     }
 
     public void setProductsVMS(
-        List<ProductsVM> productsVMS) {
+        List<VideoProductsVM> productsVMS) {
         this.productsVMS = productsVMS;
     }
 

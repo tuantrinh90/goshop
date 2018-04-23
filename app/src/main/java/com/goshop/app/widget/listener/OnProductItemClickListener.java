@@ -1,8 +1,8 @@
 package com.goshop.app.widget.listener;
 
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 
 public interface OnProductItemClickListener {
 
-    void onProductItemClick(ProductsVM productItemVM);
+    void onProductItemClick(VideoProductsVM productItemVM);
 }

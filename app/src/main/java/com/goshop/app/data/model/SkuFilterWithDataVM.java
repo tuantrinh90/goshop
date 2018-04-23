@@ -2,7 +2,7 @@ package com.goshop.app.data.model;
 
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 
 import java.util.List;
 
@@ -10,11 +10,11 @@ public class SkuFilterWithDataVM extends PromotionSkuModel {
 
     private List<FilterMenuModel> filterMenuModels;
 
-    private List<ProductsVM> productsVMS;
+    private List<VideoProductsVM> productsVMS;
 
     private List<SortVM> sortVMS;
 
-    public SkuFilterWithDataVM(List<ProductsVM> productsVMS, List<SortVM> sortVMS,
+    public SkuFilterWithDataVM(List<VideoProductsVM> productsVMS, List<SortVM> sortVMS,
         List<FilterMenuModel> filterMenuModels) {
         super(PromotionSkuModel.TYPE_FILTER_WITH_DATA);
         this.productsVMS = productsVMS;
@@ -31,12 +31,12 @@ public class SkuFilterWithDataVM extends PromotionSkuModel {
         this.filterMenuModels = filterMenuModels;
     }
 
-    public List<ProductsVM> getProductsVMS() {
+    public List<VideoProductsVM> getProductsVMS() {
         return productsVMS;
     }
 
     public void setProductsVMS(
-        List<ProductsVM> productsVMS) {
+        List<VideoProductsVM> productsVMS) {
         this.productsVMS = productsVMS;
     }
 

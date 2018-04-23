@@ -5,7 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.presentation.model.PromotionBannerModel;
 import com.goshop.app.presentation.model.PromotionBannerScrollerVM;
 import com.goshop.app.presentation.model.PromotionBannerTopVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
@@ -125,7 +125,7 @@ public class PromotionBannerScrollerAdapter extends RecyclerView.Adapter {
         }
 
         @Override
-        public void onProductItemClick(ProductsVM productItemVM) {
+        public void onProductItemClick(VideoProductsVM productItemVM) {
 
         }
     }

@@ -20,13 +20,14 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
+import com.goshop.app.data.model.response.OnAirScheduleResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -50,6 +51,7 @@ import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -73,8 +75,8 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_PAGE);
+    public Observable<Response<BrandsResponse> > brandsRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_BRAND_LIST);
         return retrofitRestApi.brandsRequest(url, params);
     }
 
@@ -527,5 +529,18 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<Response> selectDefaultBillingRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.DEFAULT_BILLING_ADDRESS);
         return retrofitRestApi.selectDefaultBillingRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response<BannerResponse>> getHomeBanner(HashMap<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_BANNER);
+        return retrofitRestApi.getHomeBanner(url, params);
+    }
+
+    @Override
+    public Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(
+        HashMap<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_ON_AIR_SCHEDULE);
+        return retrofitRestApi.getOnAirSchedule(url, params);
     }
 }

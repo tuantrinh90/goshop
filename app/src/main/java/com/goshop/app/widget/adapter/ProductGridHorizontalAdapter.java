@@ -1,7 +1,7 @@
 package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.goshop.app.widget.viewholder.ProductGridViewHolder;
 
@@ -16,15 +16,15 @@ public class ProductGridHorizontalAdapter extends RecyclerView.Adapter {
 
     private OnProductItemClickListener onProductItemClickListener;
 
-    private List<ProductsVM> productsVMS;
+    private List<VideoProductsVM> productsVMS;
 
     public ProductGridHorizontalAdapter(OnProductItemClickListener onProductItemClickListener,
-        List<ProductsVM> detailVMS) {
+        List<VideoProductsVM> detailVMS) {
         this.onProductItemClickListener = onProductItemClickListener;
         this.productsVMS = detailVMS;
     }
 
-    public ProductGridHorizontalAdapter(List<ProductsVM> detailVMS) {
+    public ProductGridHorizontalAdapter(List<VideoProductsVM> detailVMS) {
         this.productsVMS = detailVMS;
     }
 

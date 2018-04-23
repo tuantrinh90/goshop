@@ -9,7 +9,7 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.BrandsDetailVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
@@ -40,6 +40,8 @@ import injection.modules.PresenterModule;
 public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Presenter> implements
     BrandsDetailContract.View, OnProductItemClickListener, PopWindowUtil
     .OnPopWindowDismissListener {
+
+    public static final String EXTRA_BRAND_ID = "brand_id";
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -183,7 +185,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     }
 
     @Override
-    public void onProductItemClick(ProductsVM productItemVM) {
+    public void onProductItemClick(VideoProductsVM productItemVM) {
         startActivity(new Intent(this, ProductDetailActivity.class));
     }
 

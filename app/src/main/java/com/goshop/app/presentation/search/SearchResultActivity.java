@@ -8,7 +8,7 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
@@ -171,7 +171,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     }
 
     @Override
-    public void showProductsData(List<ProductsVM> productsVMS) {
+    public void showProductsData(List<VideoProductsVM> productsVMS) {
         gridVerticalAdapter.setUpdateDatas(productsVMS);
     }
 
@@ -195,7 +195,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     }
 
     @Override
-    public void onProductItemClick(ProductsVM productItemVM) {
+    public void onProductItemClick(VideoProductsVM productItemVM) {
         startActivity(new Intent(this, ProductDetailActivity.class));
     }
 

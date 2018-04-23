@@ -1,7 +1,10 @@
 package com.goshop.app.data.model.response;
 
+import com.google.gson.annotations.SerializedName;
+
 public class VideoRMResponse {
 
+    @SerializedName("discount_title")
     private String discountTitle;
 
     private String discounted;

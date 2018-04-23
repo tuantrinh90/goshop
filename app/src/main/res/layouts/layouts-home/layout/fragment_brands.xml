@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.RecyclerView
+<android.support.v4.widget.SwipeRefreshLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/recyclerview_brands"
+    xmlns:goshop="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/swipe_refresh"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"/>
+    android:layout_height="match_parent">
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.goshop.app.common.view.irecyclerview.IRecyclerView
+            android:id="@+id/recyclerview_brands"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/size_4_negative"
+            goshop:loadMoreEnabled="true"
+            goshop:loadMoreFooterLayout="@layout/layout_irecyclerview_load_more_footer"
+            goshop:refreshEnabled="false"
+            goshop:refreshHeaderLayout="@layout/layout_irecyclerview_refresh_header"/>
+    </FrameLayout>
+
+</android.support.v4.widget.SwipeRefreshLayout>

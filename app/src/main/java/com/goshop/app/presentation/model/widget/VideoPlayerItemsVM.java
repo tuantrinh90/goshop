@@ -1,5 +1,7 @@
 package com.goshop.app.presentation.model.widget;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class VideoPlayerItemsVM {
@@ -10,7 +12,18 @@ public class VideoPlayerItemsVM {
 
     private String name;
 
-    private List<ProductsVM> productsVMS;
+    @SerializedName("playback_url")
+    private String playbackUrl;
+
+    private List<VideoProductsVM> productsVMS;
+
+    public String getPlaybackUrl() {
+        return playbackUrl;
+    }
+
+    public void setPlaybackUrl(String playbackUrl) {
+        this.playbackUrl = playbackUrl;
+    }
 
     public String getId() {
         return id;
@@ -36,12 +49,12 @@ public class VideoPlayerItemsVM {
         this.link = link;
     }
 
-    public List<ProductsVM> getProductsVMS() {
+    public List<VideoProductsVM> getProductsVMS() {
         return productsVMS;
     }
 
     public void setProductsVMS(
-        List<ProductsVM> productsVMS) {
+        List<VideoProductsVM> productsVMS) {
         this.productsVMS = productsVMS;
     }
 }

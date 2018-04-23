@@ -20,7 +20,7 @@ import com.goshop.app.presentation.model.SizeVM;
 import com.goshop.app.presentation.model.widget.ColorVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 import com.goshop.app.presentation.model.widget.QAVM;
 import com.goshop.app.presentation.model.widget.ReviewsVM;
 
@@ -273,13 +273,13 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
     private List<ProductDetailModel> getFrequentlyBoughtTogether() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(false, false, "Frequently Bought Together"));
-        ProductsVM productsVM = new ProductsVM();
+        VideoProductsVM productsVM = new VideoProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
         productsVM.setPriceVM(priceVM);
-        List<ProductsVM> productsVMS = new ArrayList<>();
+        List<VideoProductsVM> productsVMS = new ArrayList<>();
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);

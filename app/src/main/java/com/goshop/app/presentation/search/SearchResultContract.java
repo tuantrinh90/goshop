@@ -4,7 +4,7 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 
 import java.util.List;
 import java.util.Map;
@@ -13,7 +13,7 @@ public class SearchResultContract {
 
     interface View extends BaseView {
 
-        void showProductsData(List<ProductsVM> productsVMS);
+        void showProductsData(List<VideoProductsVM> productsVMS);
 
         void showFilterMenu(List<FilterMenuModel> filterMenuModels);
 

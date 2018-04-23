@@ -6,20 +6,23 @@ import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
+import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
+import com.goshop.app.data.model.response.OnAirScheduleResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.Response;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
 
 public interface ProductDataSource {
 
-    Observable<BrandsResponse> brandsRequest(Map<String, Object> params);
+    Observable<Response<BrandsResponse> > brandsRequest(Map<String, Object> params);
 
     Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
@@ -52,4 +55,8 @@ public interface ProductDataSource {
     Observable<QuestionAnswerResponse> qaDetailRequest(Map<String, Object> params);
 
     Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(Map<String, Object> params);
+
+    Observable<Response<BannerResponse>> getHomeBanner(HashMap<String, Object> params);
+
+    Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(HashMap<String, Object> params);
 }

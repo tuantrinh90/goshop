@@ -77,6 +77,10 @@ public class EndpointAddress {
 
     public static final String SETTING_LOGOUT = "rest/all/V1/rest-api/customer/logout";
 
+    public static final String HOME_BRAND_LIST = "rest/all/V1/rest-api/brands";
+
+    public static final String HOME_BANNER = "rest/all/V1/rest-api/banners";
+
     public static final String ADD_ADDRESS = "";
 
     public static final String EDIT_ADDRESS = "";
@@ -196,6 +200,9 @@ public class EndpointAddress {
 
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
+
+    public static final String HOME_ON_AIR_SCHEDULE =
+        "rest/all/V1/rest-api/channel/on-air-schedule";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

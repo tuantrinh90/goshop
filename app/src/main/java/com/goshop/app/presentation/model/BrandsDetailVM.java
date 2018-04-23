@@ -1,12 +1,12 @@
 package com.goshop.app.presentation.model;
 
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 
 import java.util.List;
 
 public class BrandsDetailVM {
 
-    private List<ProductsVM> filterProductsVMS;
+    private List<VideoProductsVM> filterProductsVMS;
 
     private int logoDefaut;
 
@@ -17,7 +17,7 @@ public class BrandsDetailVM {
     private List<SortVM> sortVMS;
 
     public BrandsDetailVM(String logoUrl, int logoDefaut, String logoSummary,
-        List<ProductsVM> filterProductsVMS,
+        List<VideoProductsVM> filterProductsVMS,
         List<SortVM> sortVMS) {
         this.logoUrl = logoUrl;
         this.logoDefaut = logoDefaut;
@@ -50,12 +50,12 @@ public class BrandsDetailVM {
         this.logoDefaut = logoDefaut;
     }
 
-    public List<ProductsVM> getFilterProductsVMS() {
+    public List<VideoProductsVM> getFilterProductsVMS() {
         return filterProductsVMS;
     }
 
     public void setFilterProductsVMS(
-        List<ProductsVM> filterProductsVMS) {
+        List<VideoProductsVM> filterProductsVMS) {
         this.filterProductsVMS = filterProductsVMS;
     }
 

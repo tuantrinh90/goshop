@@ -5,7 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
@@ -42,7 +42,7 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
         ButterKnife.bind(this, itemView);
     }
 
-    public void bindingData(ProductsVM productsVM,
+    public void bindingData(VideoProductsVM productsVM,
         OnProductItemClickListener onProductItemClickListener,
         OnProductBuyClickListener buyClickListener) {
         tvVideoProductTitle.setText(productsVM.getTitle());

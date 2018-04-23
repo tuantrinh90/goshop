@@ -11,7 +11,7 @@ import com.goshop.app.presentation.model.widget.ProductCartListVM;
 import com.goshop.app.presentation.model.widget.ProductListModel;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +65,7 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
         itemsVMS.add(itemsVM);
         itemsVMS.add(itemsVM1);
         List<ShoppingCartModel> cartModels = new ArrayList<>();
-        ProductsVM productsVM = new ProductsVM();
+        VideoProductsVM productsVM = new VideoProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "149", "200");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");

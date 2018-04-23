@@ -12,7 +12,7 @@ import com.goshop.app.presentation.model.FilterMenuPriceVM;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 
 import android.os.Handler;
 
@@ -89,13 +89,13 @@ public class BrandsDetailPresenter extends RxPresenter<BrandsDetailContract.View
 
     //todo this is mock data
     private BrandsDetailVM getMockData() {
-        ProductsVM productsVM = new ProductsVM();
+        VideoProductsVM productsVM = new VideoProductsVM();
         ProductPriceRMVM rmvm = new ProductPriceRMVM("25% OFF", "RM 149.00", "RM 200.00");
         ProductPriceVM priceVM = new ProductPriceVM(rmvm);
         productsVM.setImage("");
         productsVM.setTitle("Manjung Korean Crispy Seaweed 2");
         productsVM.setPriceVM(priceVM);
-        List<ProductsVM> productsVMS = new ArrayList<>();
+        List<VideoProductsVM> productsVMS = new ArrayList<>();
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);
         productsVMS.add(productsVM);

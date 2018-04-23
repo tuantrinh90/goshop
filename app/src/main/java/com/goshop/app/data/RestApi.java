@@ -13,6 +13,7 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.CityResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
@@ -23,6 +24,7 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.response.OnAirScheduleResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
@@ -30,7 +32,6 @@ import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -48,6 +49,7 @@ import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.Observable;
@@ -56,7 +58,7 @@ public interface RestApi {
 
     Observable<TrendingNowResponse> trendingNowRequest(Map<String, Object> params);
 
-    Observable<BrandsResponse> brandsRequest(Map<String, Object> params);
+    Observable<Response<BrandsResponse> > brandsRequest(Map<String, Object> params);
 
     Observable<BrandsResponse> brandsDetailRequest(Map<String, Object> params);
 
@@ -210,4 +212,7 @@ public interface RestApi {
 
     Observable<Response> selectDefaultBillingRequest(Map<String, Object> params);
 
+    Observable<Response<BannerResponse>> getHomeBanner(HashMap<String, Object> params);
+
+    Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(HashMap<String, Object> params);
 }

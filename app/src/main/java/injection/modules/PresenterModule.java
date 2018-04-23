@@ -144,8 +144,8 @@ public class PresenterModule {
     @Provides
     @ActivityScope
     public TrendingNowContract.Presenter provideHomePagePresenter(
-        AccountDataRepository dataRepository) {
-        return new TrendingNowPresenter(dataRepository);
+        AccountDataRepository dataRepository,ProductDataRepository productDataRepository) {
+        return new TrendingNowPresenter(dataRepository,productDataRepository);
     }
 
     @Provides

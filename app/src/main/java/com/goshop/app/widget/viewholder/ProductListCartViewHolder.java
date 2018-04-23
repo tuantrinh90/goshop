@@ -6,7 +6,7 @@ import com.goshop.app.common.CustomMPCartEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.widget.VideoProductsVM;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
@@ -49,7 +49,7 @@ public class ProductListCartViewHolder extends RecyclerView.ViewHolder {
 
     public void bindingData(ProductCartListVM cartListVM,
         OnItemMenuClickListener menuClickListener) {
-        ProductsVM productsVM = cartListVM.getProductsVM();
+        VideoProductsVM productsVM = cartListVM.getProductsVM();
 
         Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
             .error(R.drawable.ic_bought)

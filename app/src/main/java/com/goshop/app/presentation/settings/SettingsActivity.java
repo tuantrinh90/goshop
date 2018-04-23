@@ -8,8 +8,10 @@ import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
+import com.goshop.app.presentation.login.LoginActivity;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.utils.UserHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,6 +30,8 @@ import injection.modules.PresenterModule;
 
 public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presenter> implements
     SettingsContract.View {
+
+    public static final String REDIRECT_TYPE_SETTING_PAGE = "SettingPage";
 
     @BindView(R.id.rl_container)
     RelativeLayout rlContainer;
@@ -64,8 +68,12 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
         super.onCreate(savedInstanceState);
         setCurrentMenuType(MenuUtil.MENU_TYPE_SETTINGS);
         setContentView(getContentView());
-        initToolbar();
         initSwichsListener();
+        initView();
+    }
+
+    private void initView() {
+        initToolbar();
     }
 
     private void initToolbar() {
@@ -118,18 +126,33 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
                 openDrawerLayout();
                 break;
             case R.id.tv_setting_change_password:
-                startActivity(new Intent(this, ChangePasswordActivity.class));
+                if (UserHelper.isLogin()) {
+                    startActivity(new Intent(this, ChangePasswordActivity.class));
+                } else {
+                    goToLoginPage();
+                }
                 break;
             case R.id.tv_setting_logout:
-                mPresenter.settingsLogoutRequest();
+                if (UserHelper.isLogin()) {
+                    mPresenter.settingsLogoutRequest();
+                } else {
+                    goToLoginPage();
+                }
                 break;
         }
+    }
+
+    private void goToLoginPage() {
+        Intent intent = new Intent();
+        intent.putExtra(LoginActivity.EXTRA_REDIRECT_TYPE, REDIRECT_TYPE_SETTING_PAGE);
+        startActivity(new Intent(this, ChangePasswordActivity.class));
+
     }
 
     @Override
     public void logoutSuccess() {
         mPresenter.clearUserInfo();
-        // TODO: 2018/4/20 fb logout
+        // TODO: 2018/4/20 fb logout need decide
         try {
             if (AccessToken.getCurrentAccessToken() != null) {
                 LoginManager.getInstance().logOut();
