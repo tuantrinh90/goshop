@@ -15,10 +15,6 @@ public class CategoryContract {
 
     interface View extends BaseView {
 
-        void showLeftMenu(List<CategoryLeftMenuVM> leftMenuVMS);
-
-        void showRightMenu(List<CategoryRightMenuModel> rightMenuModels);
-
         void onCategoryRequestSuccess(List<CategoriesParentVM> categoryMenuResponse);
 
         void showServiceErrorMessage(String errorMessage);
@@ -29,8 +25,6 @@ public class CategoryContract {
     public interface Presenter extends BasePresenter<View> {
 
         void getCategory();
-
-        void categoryRightMenuRequest(Map<String, Object> params);
     }
 
 }

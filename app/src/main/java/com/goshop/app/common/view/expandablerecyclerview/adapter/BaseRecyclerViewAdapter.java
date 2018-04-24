@@ -110,8 +110,7 @@ public abstract class BaseRecyclerViewAdapter<T, S, VH extends BaseViewHolder> e
             onBindChildHolder(holder, gp, cp, position, (S) item);
             holder.childView.setOnClickListener(v -> {
                 if (null != itemClickListener) {
-                    itemClickListener.onChildItemClick(position, gp, cp, holder.childView
-                    );
+                    itemClickListener.onChildItemClick(position, gp, cp, holder.childView,item);
                 }
             });
         }
