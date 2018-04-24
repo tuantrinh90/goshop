@@ -185,7 +185,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onAirScheduleRequestFailure(String message) {
-
+        PopWindowUtil.showRequestMessagePop(recyclerviewTrending, message);
     }
 
     @Override

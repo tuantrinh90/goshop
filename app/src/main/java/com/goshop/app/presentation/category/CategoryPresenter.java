@@ -26,7 +26,6 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
 
     @Override
     public void getCategoryLeftMenu() {
-
         mView.showLoadingBar();
         addSubscrebe(repository.getCategoryLeftMenu().subscribeWith(
             new DisposableObserver<CategoryMenuResponse>() {
@@ -108,10 +107,13 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
     private List<CategoryLeftMenuVM> getMockLeftMenu() {
         List<CategoryLeftMenuVM> leftMenuVMS = new ArrayList<>();
         leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_beauty, "", "Beauty"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_digital, "", "Digital Electronics"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_appliances, "", "Home Appliances"));
+        leftMenuVMS
+            .add(new CategoryLeftMenuVM(R.drawable.ic_icon_digital, "", "Digital Electronics"));
+        leftMenuVMS
+            .add(new CategoryLeftMenuVM(R.drawable.ic_icon_appliances, "", "Home Appliances"));
         leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_mom_baby, "", "Mom and Babies"));
-        leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_sports, "", "Sports and Leisure"));
+        leftMenuVMS
+            .add(new CategoryLeftMenuVM(R.drawable.ic_icon_sports, "", "Sports and Leisure"));
         leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_diy, "", "DIY Tools"));
         leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_spa, "", "Spa and Wellbeing"));
         leftMenuVMS.add(new CategoryLeftMenuVM(R.drawable.ic_icon_grocery, "", "Grocery"));
