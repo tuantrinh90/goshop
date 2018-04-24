@@ -12,8 +12,7 @@ public class BrandMapper {
 
     public static List<BrandsListVM> transform(Response<BrandsResponse> response, int page) {
         List<BrandsListVM> brandsVMList = new ArrayList<>();
-        if (response != null && response.getData() != null && response.getData().getBrands()
-            .size() > 0) {
+        if (response != null && response.getData() != null && !response.getData().getBrands().isEmpty()) {
             for (BrandListData brandList : response.getData().getBrands()) {
                 BrandsListVM brandsListVM = new BrandsListVM();
                 brandsListVM.setId(brandList.getId());

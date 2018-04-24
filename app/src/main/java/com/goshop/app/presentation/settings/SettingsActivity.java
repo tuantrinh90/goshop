@@ -150,12 +150,8 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     public void logoutSuccess() {
         mPresenter.clearUserInfo();
         // TODO: 2018/4/20 fb logout need decide
-        try {
-            if (AccessToken.getCurrentAccessToken() != null) {
-                LoginManager.getInstance().logOut();
-            }
-        } catch (Exception ex) {
-            ex.getStackTrace();
+        if (AccessToken.getCurrentAccessToken() != null) {
+            LoginManager.getInstance().logOut();
         }
     }
 

@@ -19,8 +19,8 @@ public class TrendingMapper {
 
     public static List<BannerVm> transformBanner(Response<BannerResponse> response) {
         List<BannerVm> bannerVmList = new ArrayList<>();
-        if (response != null && response.getData() != null && response.getData().getBanners()
-            .size() > 0) {
+        if (response != null && response.getData() != null && !response.getData().getBanners()
+            .isEmpty()) {
             for (BannerData banner : response.getData().getBanners()) {
                 BannerVm bannerVm = new BannerVm();
                 bannerVm.setId(banner.getId());
@@ -37,14 +37,14 @@ public class TrendingMapper {
         Response<OnAirScheduleResponse> response) {
         List<VideoPlayerItemsVM> videoPlayerItemsVMS = new ArrayList<>();
         if (response != null && response.getData() != null && response.getData()
-            .getChannel() != null && response.getData().getChannel().size() > 0) {
+            .getChannel() != null && !response.getData().getChannel().isEmpty()) {
             for (VideoItemsResponse videoItemsResponse : response.getData().getChannel()) {
                 VideoPlayerItemsVM videoPlayerItemsVM = new VideoPlayerItemsVM();
                 videoPlayerItemsVM.setId(videoItemsResponse.getId());
                 videoPlayerItemsVM.setName(videoItemsResponse.getName());
                 videoPlayerItemsVM.setPlaybackUrl(videoItemsResponse.getPlaybackUrl());
-                if (videoItemsResponse.getProducts() != null && videoItemsResponse.getProducts()
-                    .size() > 0) {
+                if (videoItemsResponse.getProducts() != null && !videoItemsResponse.getProducts()
+                    .isEmpty()) {
                     List<ProductsVM> videoProductsVMs = new ArrayList<>();
                     for (VideoProductsResponse videoProductsResponse : videoItemsResponse
                         .getProducts()) {
