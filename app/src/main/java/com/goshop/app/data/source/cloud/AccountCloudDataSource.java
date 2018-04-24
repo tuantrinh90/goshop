@@ -9,7 +9,7 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
-import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
@@ -256,7 +256,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<HelpSupportResponse> helpSupportRequest(Map<String, Object> params) {
+    public Observable<Response<HelpSupportResponse>> helpSupportRequest(Map<String, Object> params) {
         return restApi.helpSupportRequest(params);
     }
 

@@ -46,11 +46,11 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     public static final int MESSAGE_WHAT_ENCRYPTION = 0;
 
-    public static final String TIP_TYPE_PRIVACY_POLICY = "tip_type_privacy_policy";
+    public static final String TIP_TYPE_PRIVACY_POLICY = "Privacy Policy";
 
-    public static final String TIP_TYPE_TERMS_AND_CONDITIONS = "tip_type_terms_and_conditions";
+    public static final String TIP_TYPE_TERMS_AND_CONDITIONS = "Terms & Conditions";
 
-    public static final String TIP_TYPE_TERMS_OF_USER = "tip_type_terms_of_user";
+    public static final String TIP_TYPE_TERMS_OF_USER = "Terms Of User";
 
     @BindView(R.id.ll_container)
     LinearLayout llContainer;
@@ -214,7 +214,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
     //TODO  need decide
     private void gotoInfoDetails(String type) {
         Intent intent = new Intent(this, WebContentActivity.class);
-        intent.putExtra(WebContentActivity.CONTENT_TAG, type);
+        intent.putExtra(WebContentActivity.EXTRA_TYPE, type);
+        intent.putExtra(WebContentActivity.EXTRA__TITLE, type);
         startActivity(intent);
     }
 

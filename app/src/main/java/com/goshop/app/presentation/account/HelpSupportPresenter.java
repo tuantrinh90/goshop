@@ -1,13 +1,22 @@
 package com.goshop.app.presentation.account;
 
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.HelpSupportResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.HelpSupportMapper;
+import com.goshop.app.presentation.model.HelpSupportActionVM;
 import com.goshop.app.presentation.model.HelpSupportContentVM;
 import com.goshop.app.presentation.model.HelpSupportModel;
+import com.goshop.app.presentation.model.HelpSupportSectionVM;
 import com.goshop.app.presentation.model.HelpSupportTitleVM;
 
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -23,51 +32,48 @@ public class HelpSupportPresenter extends RxPresenter<HelpSupportContract.View> 
     }
 
     @Override
-    public void helpSupportRequest(Map<String, Object> params) {
+    public void helpSupportRequest() {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.helpSupportRequest(params).subscribeWith(
-            new DisposableObserver<HelpSupportResponse>() {
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.REQUEST_PARAM_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.REQUEST_PARAM_STORE_ID, Const.STORE_ID);
+        addSubscrebe(accountRepository.helpSupportRequest(params)
+            .subscribeWith(new DisposableObserver<Response<HelpSupportResponse>>() {
                 @Override
-                public void onNext(HelpSupportResponse helpSupportResponse) {
+                public void onNext(Response<HelpSupportResponse> helpSupportResponse) {
                     mView.hideLoadingBar();
+                    mView.onHelpSupportRequestSuccess(
+                        maskData(HelpSupportMapper.transform(helpSupportResponse)));
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO  wait for api
-                    mView.showResult(getMockData());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }
 
-    //TODO  this is mock data
-    private List<HelpSupportModel> getMockData() {
-        List<HelpSupportModel> helpSupportModels = new ArrayList<>();
-        helpSupportModels.add(new HelpSupportTitleVM("Help Center"));
-        helpSupportModels.add(new HelpSupportContentVM("FAQ", () -> mView.startFAQ()));
-        helpSupportModels.add(new HelpSupportContentVM("Online Support"));
-        helpSupportModels.add(new HelpSupportContentVM("Notice"));
-        helpSupportModels.add(new HelpSupportContentVM("Terms and Conditions",
-            () -> mView.startTermsAndConditions()));
-        helpSupportModels.add(new HelpSupportContentVM("Privacy Policy"));
-
-        helpSupportModels.add(new HelpSupportTitleVM("Services"));
-        helpSupportModels.add(new HelpSupportContentVM("Customer Service"));
-        helpSupportModels.add(new HelpSupportContentVM("Shipping & Returns"));
-        helpSupportModels.add(new HelpSupportContentVM("Delivery Information"));
-
-        helpSupportModels.add(new HelpSupportTitleVM("Company"));
-        helpSupportModels.add(new HelpSupportContentVM("Overview & Vision"));
-        helpSupportModels.add(new HelpSupportContentVM("Careers"));
-        helpSupportModels.add(new HelpSupportContentVM("Contact Us", () -> mView.startContactUs()));
-        helpSupportModels.add(new HelpSupportContentVM("Sell on Go Shop"));
-
+    private ArrayList<HelpSupportModel> maskData(
+        ArrayList<HelpSupportSectionVM> transformResponse) {
+        ArrayList<HelpSupportModel> helpSupportModels = new ArrayList<>();
+        for (HelpSupportSectionVM helpSupportSectionVM : transformResponse) {
+            helpSupportModels.add(new HelpSupportTitleVM(helpSupportSectionVM.getSectionTitle()));
+            for (HelpSupportActionVM helpSupportActionVM : helpSupportSectionVM.getActions()) {
+                helpSupportModels.add(new HelpSupportContentVM(helpSupportActionVM.getTitle(),
+                    helpSupportActionVM.getLink()));
+            }
+        }
         return helpSupportModels;
     }
 }

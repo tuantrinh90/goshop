@@ -9,7 +9,7 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
-import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
@@ -30,7 +30,6 @@ import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.OrderResponse;
-import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
@@ -401,8 +400,16 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<HelpSupportResponse> helpSupportRequest(Map<String, Object> params) {
-        return accountCloudDataSource.helpSupportRequest(params);
+    public Observable<Response<HelpSupportResponse>> helpSupportRequest(
+        Map<String, Object> params) {
+        return accountCloudDataSource.helpSupportRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

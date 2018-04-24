@@ -11,7 +11,7 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
-import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
@@ -325,11 +325,10 @@ public interface RetrofitRestApi {
     @GET
     Observable<GetWebContentResponse> getContactContent(@Url String fullUrl);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<HelpSupportResponse> helpSupportRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<HelpSupportResponse>> helpSupportRequest(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

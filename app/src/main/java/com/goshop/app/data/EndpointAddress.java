@@ -125,7 +125,7 @@ public class EndpointAddress {
 
     public static final String GO_LOYALTY = "";
 
-    public static final String HELP_SUPPORT = "";
+    public static final String HELP_SUPPORT = "rest/all/V1/rest-api/help-support";
 
     public static final String HOME_PAGE = "";
 

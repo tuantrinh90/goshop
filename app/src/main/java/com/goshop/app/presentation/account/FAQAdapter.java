@@ -3,6 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FAQVM;
+import com.goshop.app.presentation.model.HelpSupportContentVM;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +19,8 @@ public class FAQAdapter extends RecyclerView.Adapter {
 
     private List<FAQVM> faqvms;
 
+    private OnFAQItemClickListener onFAQItemClickListener;
+
     public FAQAdapter(List<FAQVM> faqvms) {
         this.faqvms = faqvms;
     }
@@ -26,6 +29,10 @@ public class FAQAdapter extends RecyclerView.Adapter {
         this.faqvms.clear();
         this.faqvms = faqvms;
         notifyDataSetChanged();
+    }
+
+    public void setOnFAQItemClickListener(OnFAQItemClickListener onFAQItemClickListener) {
+        this.onFAQItemClickListener = onFAQItemClickListener;
     }
 
     @Override
@@ -57,6 +64,14 @@ public class FAQAdapter extends RecyclerView.Adapter {
 
         void bindingDatas(FAQVM faqvm) {
             tvHelpSupportContent.setText(faqvm.getLabel());
+            if (onFAQItemClickListener != null) {
+                itemView.setOnClickListener(v -> onFAQItemClickListener.onItemClick(faqvm));
+            }
         }
+    }
+
+    public interface OnFAQItemClickListener {
+
+        void onItemClick(FAQVM faqvm);
     }
 }
