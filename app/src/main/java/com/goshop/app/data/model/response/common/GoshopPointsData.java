@@ -16,6 +16,31 @@ public class GoshopPointsData {
 
     private List<TransactionsData> transactions;
 
+    private String amount;
+
+    /**
+     * applied : 100
+     * amount : 10.00
+     */
+
+    private String applied;
+
+    public String getApplied() {
+        return applied;
+    }
+
+    public void setApplied(String applied) {
+        this.applied = applied;
+    }
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
     public String getTotal() {
         return total;
     }

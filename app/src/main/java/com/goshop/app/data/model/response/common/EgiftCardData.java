@@ -20,6 +20,16 @@ public class EgiftCardData {
 
     private String status;
 
+    private String amount;
+
+    public String getAmount() {
+        return amount;
+    }
+
+    public void setAmount(String amount) {
+        this.amount = amount;
+    }
+
     public String getCode() {
         return code;
     }

@@ -4,7 +4,9 @@ import com.goshop.app.R;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.response.common.BillingData;
 import com.goshop.app.data.model.response.common.InformationData;
+import com.goshop.app.data.model.response.common.OrderBillingData;
 import com.goshop.app.data.model.response.common.OrderDetailData;
+import com.goshop.app.data.model.response.common.OrderRMData;
 import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.data.model.response.common.RMData;
 import com.goshop.app.data.model.response.common.ShippingAddressData;
@@ -27,10 +29,10 @@ public class OrderDetailMapper {
         ShippingAddressData shippingAddressData = orderDetailData.getShippingAddress();
         String paymentMethod = orderDetailData.getPaymentMethod();
         List<ProductData> productDatas = orderDetailData.getProduct();
-        BillingData billingData = response.getOrder().getBilling();
+        OrderBillingData billingData = response.getOrder().getBilling();
 
         List<MyOrdersProductVM> myOrdersProductVMS = new ArrayList<>();
-        for(ProductData productData:productDatas) {
+        for (ProductData productData : productDatas) {
             String sku = NumberFormater.formaterOrderNumber(productData.getSku());
             String thumb = productData.getImage();
             String title = productData.getName();
@@ -55,14 +57,25 @@ public class OrderDetailMapper {
         for (Map.Entry<String, Object> entry : street.entrySet()) {
             shipAddress = shipAddress + entry.getValue();
         }
-        String shipCity = shippingAddressData.getCity() + ",\t"+shippingAddressData.getPostcode();
+        String shipCity = shippingAddressData.getCity() + ",\t" + shippingAddressData.getPostcode();
         String placeAt = DateFormater.formaterISODate(informationData.getDateTime());
-        OrderDetailVM orderDetailVM = new OrderDetailVM(informationData.getNumber(), informationData.getStatus(), placeAt, shippingAddressData.getFirstName(),
-            shipAddress,  shipCity, shippingAddressData.getCountry(), shippingAddressData.getTelephone(), paymentMethod, myOrdersProductVMS);
-        orderDetailVM.setSubTotal(NumberFormater.formaterPrice(billingData.getRm().getSubTotal()));
-        orderDetailVM.setShipping(NumberFormater.formaterPrice(billingData.getRm().getShipping()));
-        orderDetailVM.setDisscount(NumberFormater.formaterDiscountPrice(billingData.getRm().getDiscount()));
-        orderDetailVM.setTotal(NumberFormater.formaterPrice(billingData.getRm().getTotal()));
+        OrderDetailVM orderDetailVM = new OrderDetailVM(informationData.getNumber(),
+            informationData.getStatus(), placeAt, shippingAddressData.getFirstName(),
+            shipAddress, shipCity, shippingAddressData.getCountry(),
+            shippingAddressData.getTelephone(), paymentMethod, myOrdersProductVMS);
+
+        OrderRMData rm = billingData.getRm();
+        orderDetailVM.setSubTotal(NumberFormater.formaterPrice(rm.getSubTotal()));
+        orderDetailVM.setShipping(NumberFormater.formaterPrice(rm.getShipping()));
+        orderDetailVM
+            .setDisscount(NumberFormater.formaterDiscountPrice(rm.getDiscount().getAmount()));
+        orderDetailVM.setTotal(NumberFormater.formaterPrice(rm.getTotal()));
+        orderDetailVM.setEgift(NumberFormater.formaterDiscountPrice(rm.getEgiftCard().getAmount()));
+        orderDetailVM
+            .setPoints(NumberFormater.formaterDiscountPrice(rm.getGoshopPoints().getAmount()));
+        orderDetailVM.setDiscountDes(rm.getDiscount().getCode());
+        orderDetailVM.setEgiftDes(rm.getEgiftCard().getCode());
+        orderDetailVM.setPointsDes(rm.getGoshopPoints().getApplied());
         return orderDetailVM;
     }
 

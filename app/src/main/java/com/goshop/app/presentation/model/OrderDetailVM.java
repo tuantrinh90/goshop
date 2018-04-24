@@ -32,6 +32,16 @@ public class OrderDetailVM {
 
     private String total;
 
+    private String discountDes;
+
+    private String pointsDes;
+
+    private String egiftDes;
+
+    private String egift;
+
+    private String points;
+
     public OrderDetailVM(String orderNumber, String orderStatus, String placeAt,
         String shipName, String shipAddress, String shipCity, String shipCountry,
         String shipTel, String method,
@@ -46,6 +56,46 @@ public class OrderDetailVM {
         this.shipTel = shipTel;
         this.method = method;
         this.myOrdersProductVMS = myOrdersProductVMS;
+    }
+
+    public String getEgift() {
+        return egift;
+    }
+
+    public void setEgift(String egift) {
+        this.egift = egift;
+    }
+
+    public String getPoints() {
+        return points;
+    }
+
+    public void setPoints(String points) {
+        this.points = points;
+    }
+
+    public String getDiscountDes() {
+        return discountDes;
+    }
+
+    public void setDiscountDes(String discountDes) {
+        this.discountDes = discountDes;
+    }
+
+    public String getPointsDes() {
+        return pointsDes;
+    }
+
+    public void setPointsDes(String pointsDes) {
+        this.pointsDes = pointsDes;
+    }
+
+    public String getEgiftDes() {
+        return egiftDes;
+    }
+
+    public void setEgiftDes(String egiftDes) {
+        this.egiftDes = egiftDes;
     }
 
     public String getSubTotal() {

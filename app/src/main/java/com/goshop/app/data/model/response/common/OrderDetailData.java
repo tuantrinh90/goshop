@@ -9,7 +9,7 @@ public class OrderDetailData {
     @SerializedName("allow_cancel")
     private boolean allowCancel;
 
-    private BillingData billing;
+    private OrderBillingData billing;
 
     /**
      * information : {"number":"123","status":"Shipped","date_time":"2018-01-30T13:05:45Z"}
@@ -68,11 +68,11 @@ public class OrderDetailData {
         this.allowCancel = allowCancel;
     }
 
-    public BillingData getBilling() {
+    public OrderBillingData getBilling() {
         return billing;
     }
 
-    public void setBilling(BillingData billing) {
+    public void setBilling(OrderBillingData billing) {
         this.billing = billing;
     }
 

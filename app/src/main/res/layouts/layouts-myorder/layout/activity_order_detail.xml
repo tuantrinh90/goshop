@@ -302,7 +302,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_14"
-                            android:text="@string/disscount"
+                            android:text="@string/disscount_only"
+                            android:textColor="@color/color_black_light"
+                            android:gravity="start"/>
+
+                        <com.goshop.app.common.view.RobotoLightTextView
+                            android:id="@+id/tv_order_disscount_des"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/size_font_14"
                             android:textColor="@color/color_black_light"
                             android:gravity="start"/>
 
@@ -328,7 +336,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_14"
-                            android:text="@string/egift_card"
+                            android:text="@string/egift_card_only"
+                            android:textColor="@color/color_black_light"
+                            android:gravity="start"/>
+
+                        <com.goshop.app.common.view.RobotoLightTextView
+                            android:id="@+id/tv_order_egift_des"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/size_font_14"
                             android:textColor="@color/color_black_light"
                             android:gravity="start"/>
 
@@ -354,7 +370,15 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:textSize="@dimen/size_font_14"
-                            android:text="@string/go_shop_points_num"
+                            android:text="@string/go_shop_points_only"
+                            android:textColor="@color/color_black_light"
+                            android:gravity="start"/>
+
+                        <com.goshop.app.common.view.RobotoLightTextView
+                            android:id="@+id/tv_order_points_des"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/size_font_14"
                             android:textColor="@color/color_black_light"
                             android:gravity="start"/>
 

@@ -76,6 +76,21 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
     @BindView(R.id.tv_order_disscount)
     RobotoLightTextView tvOrderDisscount;
 
+    @BindView(R.id.tv_order_disscount_des)
+    RobotoLightTextView tvOrderDisscountDes;
+
+    @BindView(R.id.tv_order_egift_card)
+    RobotoLightTextView tvOrderEgiftCard;
+
+    @BindView(R.id.tv_order_egift_des)
+    RobotoLightTextView tvOrderEgiftDes;
+
+    @BindView(R.id.tv_order_go_shop_points)
+    RobotoLightTextView tvOrderGoShopPoints;
+
+    @BindView(R.id.tv_order_points_des)
+    RobotoLightTextView tvOrderPointsDes;
+
     @BindView(R.id.tv_order_shipping)
     RobotoLightTextView tvOrderShipping;
 
@@ -86,6 +101,8 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
     RobotoMediumTextView tvOrderTotal;
 
     private MyOrderProductAdapter myOrderProductAdapter;
+
+    private String description = "(%s):";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -144,6 +161,11 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
         tvOrderShipping.setText(orderDetailVM.getShipping());
         tvOrderDisscount.setText(orderDetailVM.getDisscount());
         tvOrderTotal.setText(orderDetailVM.getTotal());
+        tvOrderDisscountDes.setText(String.format(description, orderDetailVM.getDiscountDes()));
+        tvOrderEgiftDes.setText(String.format(description, orderDetailVM.getEgiftDes()));
+        tvOrderPointsDes.setText(String.format(description, orderDetailVM.getPointsDes()));
+        tvOrderEgiftCard.setText(orderDetailVM.getEgift());
+        tvOrderGoShopPoints.setText(orderDetailVM.getPoints());
     }
 
     @Override
