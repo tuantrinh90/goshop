@@ -3,6 +3,8 @@ package com.goshop.app.presentation.category;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
+import com.goshop.app.data.model.response.CategoryResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
@@ -52,7 +54,7 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
         setContentView(getContentView());
         initToolbar();
         initRecyclerView();
-        mPresenter.getCategoryLeftMenu();
+        mPresenter.getCategory();
     }
 
     private void initToolbar() {
@@ -106,6 +108,21 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
     public void showRightMenu(List<CategoryRightMenuModel> rightMenuModels) {
         rightAdapter.setUpdateRightModels(rightMenuModels);
         recycleviewCategoryRight.smoothScrollToPosition(0);
+    }
+
+    @Override
+    public void onCategoryRequestSuccess(Response<CategoryResponse> categoryMenuResponse) {
+
+    }
+
+    @Override
+    public void showServiceErrorMessage(String errorMessage) {
+
+    }
+
+    @Override
+    public void showNetworkErrorMessage(String message) {
+
     }
 
     @Override

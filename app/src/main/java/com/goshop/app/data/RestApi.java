@@ -7,7 +7,7 @@ import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
@@ -168,9 +168,9 @@ public interface RestApi {
 
     Observable<AddressResponse> selectAddressRequest(Map<String, Object> params);
 
-    Observable<CategoryMenuResponse> getCategoryLeftMenu();
+    Observable<Response<CategoryResponse>> getCategory(Map<String, Object> params);
 
-    Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params);
+    Observable<CategoryResponse> categoryRightMenuRequest(Map<String, Object> params);
 
     Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params);
 

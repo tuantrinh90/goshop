@@ -9,7 +9,7 @@ import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
@@ -95,7 +95,7 @@ public class RetrofitRestApiImpl implements RestApi {
     @Override
     public Observable<Response<MyEGiftResponse>> getEGiftCardDetails(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.EGIFTCARD_DETAILS);
-        return retrofitRestApi.getEGiftCardDetails(url,params);
+        return retrofitRestApi.getEGiftCardDetails(url, params);
     }
 
     @Override
@@ -147,7 +147,8 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params) {
+    public Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(
+        Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.REMOVE_WISHLIST);
         return retrofitRestApi.wishilistDeleteRequest(url, params);
     }
@@ -161,7 +162,7 @@ public class RetrofitRestApiImpl implements RestApi {
     @Override
     public Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_WISHLIST_ITEMS);
-        return retrofitRestApi.getWishlistItems(url,params);
+        return retrofitRestApi.getWishlistItems(url, params);
     }
 
     @Override
@@ -171,7 +172,8 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
+    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(
+        Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_PRODUCT_RATING_REVIEWS);
         return retrofitRestApi.getProductRatingReviews(url, params);
     }
@@ -230,7 +232,8 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<ResetPasswordResponse>> resetPasswordRequest(Map<String, Object> params) {
+    public Observable<Response<ResetPasswordResponse>> resetPasswordRequest(
+        Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.RESET_PASSWORD);
         return retrofitRestApi.resetPasswordRequest(url, params);
     }
@@ -243,7 +246,8 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<ProductDetailResponse>> getProductDetails(Map<String, Object> params) {
+    public Observable<Response<ProductDetailResponse>> getProductDetails(
+        Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_PRODUCT_DETAILS);
         return retrofitRestApi.getProductDetails(url, params);
     }
@@ -381,9 +385,10 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(
+        Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_GOSHOP_POINTS_DETAIL);
-        return retrofitRestApi.getGoShopPointsDetails(url,params);
+        return retrofitRestApi.getGoShopPointsDetails(url, params);
     }
 
     @Override
@@ -399,13 +404,13 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.CATEGORY_LEFT);
-        return retrofitRestApi.getCategoryLeftMenu(url);
+    public Observable<Response<CategoryResponse>> getCategory(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.CATEGORY_TREE);
+        return retrofitRestApi.getCategory(url, params);
     }
 
     @Override
-    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+    public Observable<CategoryResponse> categoryRightMenuRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CATEGORY_RIGHT);
         return retrofitRestApi.categoryRightMenuRequest(url, params);
     }

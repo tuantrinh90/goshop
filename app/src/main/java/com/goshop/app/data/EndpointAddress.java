@@ -22,9 +22,11 @@ public class EndpointAddress {
     public static final String LIST_CUSTOMER_ADDRESSES =
         "rest/all/V1/rest-api/customer/customer_id/address";
 
-    public static final String ADD_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/customer_id/address";
+    public static final String ADD_CUSTOMER_ADDRESS =
+        "rest/all/V1/rest-api/customer/customer_id/address";
 
-    public static final String EDIT_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/customer_id/address";
+    public static final String EDIT_CUSTOMER_ADDRESS =
+        "rest/all/V1/rest-api/customer/customer_id/address";
 
     public static final String GET_GOSHOP_POINTS_DETAIL =
         "rest/all/V1/rest-api/customer/customer_id/goshop-points?website_idstore_id";
@@ -75,11 +77,14 @@ public class EndpointAddress {
 
     public static final String ADD_REMOVE_CART = "rest/all/V1/rest-api/customer/customer_id/cart";
 
-    public static final String LIST_ORDER = "rest/all/V1/rest-api/customer/customer_id/order?website_id=1&store_id=3&page=1&limit=10";
+    public static final String LIST_ORDER =
+        "rest/all/V1/rest-api/customer/customer_id/order?website_id=1&store_id=3&page=1&limit=10";
 
-    public static final String VIEW_ORDER_DETAIL = "rest/all/V1/rest-api/customer/customer_id/order/order_id?website_id=1&store_id=3";
+    public static final String VIEW_ORDER_DETAIL =
+        "rest/all/V1/rest-api/customer/customer_id/order/order_id?website_id=1&store_id=3";
 
-    public static final String VIEW_CART_DETAIL = "rest/all/V1/rest-api/customer/<customer_id>/carts/mine";
+    public static final String VIEW_CART_DETAIL =
+        "rest/all/V1/rest-api/customer/<customer_id>/carts/mine";
 
     public static final String ADD_ADDRESS = "";
 
@@ -93,7 +98,7 @@ public class EndpointAddress {
 
     public static final String CATEGORY_DETAIL = "";
 
-    public static final String CATEGORY_LEFT = "";
+    public static final String CATEGORY_TREE = "rest/all/V1/rest-api/catalog/categories";
 
     public static final String CATEGORY_RIGHT = "";
 

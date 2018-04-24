@@ -5,7 +5,7 @@ import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
@@ -384,12 +384,13 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<CategoryMenuResponse> getCategoryLeftMenu(@Url String fullUrl);
+    Observable<Response<CategoryResponse>> getCategory(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<CategoryMenuResponse> categoryRightMenuRequest(@Url String fullUrl,
+    Observable<CategoryResponse> categoryRightMenuRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -501,7 +502,6 @@ public interface RetrofitRestApi {
     @POST
     Observable<Response> selectDefaultBillingRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
-
 
     @Headers({CONTENT_TYPE_JSON})
     @POST
