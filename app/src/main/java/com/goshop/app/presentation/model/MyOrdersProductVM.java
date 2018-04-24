@@ -1,10 +1,10 @@
 package com.goshop.app.presentation.model;
 
-import java.util.List;
+import java.util.Map;
 
 public class MyOrdersProductVM {
 
-    private List<String> attr;
+    private Map<String, String> attrMap;
 
     private String count;
 
@@ -25,18 +25,26 @@ public class MyOrdersProductVM {
     private String title;
 
     public MyOrdersProductVM(String statuNo, String statuContent, String thumb, int thumbDefault,
-        String title, List<String> attr, String priceOld, String priceNow, String count,
+        String title, Map<String, String> attrMap, String priceOld, String priceNow, String count,
         String percent) {
         this.statuNo = statuNo;
         this.statuContent = statuContent;
         this.thumb = thumb;
         this.thumbDefault = thumbDefault;
         this.title = title;
-        this.attr = attr;
+        this.attrMap = attrMap;
         this.priceOld = priceOld;
         this.priceNow = priceNow;
         this.count = count;
         this.percent = percent;
+    }
+
+    public Map<String, String> getAttrMap() {
+        return attrMap;
+    }
+
+    public void setAttrMap(Map<String, String> attrMap) {
+        this.attrMap = attrMap;
     }
 
     public String getThumb() {
@@ -77,14 +85,6 @@ public class MyOrdersProductVM {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public List<String> getAttr() {
-        return attr;
-    }
-
-    public void setAttr(List<String> attr) {
-        this.attr = attr;
     }
 
     public String getPriceOld() {

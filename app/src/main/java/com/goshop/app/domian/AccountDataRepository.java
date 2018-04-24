@@ -11,7 +11,7 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.OrderDetailResponse;
+import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
@@ -22,15 +22,12 @@ import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
-import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.OrderResponse;
-import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.ResetPasswordResponse;
@@ -235,42 +232,39 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<HomeResponse> homeRequest(Map<String, Object> params) {
-        return accountCloudDataSource.homeRequest(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
-    }
-
-    @Override
     public Observable<CheckoutResponse> checkoutRequest(String sessionKey) {
         return accountCloudDataSource.checkoutRequest(sessionKey)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread());
     }
 
+
+
     @Override
-    public Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params) {
-        return accountCloudDataSource.myOrderListRequest(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
+    public Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params) {
+        return accountCloudDataSource.getListOrder(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
-    public Observable<MyOrderListResponse> myOrdersRequest(Map<String, Object> params) {
-        return accountCloudDataSource.myOrdersRequest(params);
+    public Observable<Response<OrderDetailResponse>> getOrderDetail(Map<String, Object> params) {
+        return accountCloudDataSource.getOrderDetail(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    @Override
-    public Observable<OrderDetailResponse> orderDetailRequest(Map<String, Object> params) {
-        return accountCloudDataSource.orderDetailRequest(params);
-    }
 
-    @Override
-    public Observable<MyOrderDetailResponse> myOrderDetailRequest(Map<String, Object> params) {
-        return accountCloudDataSource.myOrderDetailRequest(params)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
-    }
 
     @Override
     public Observable<NotificationsResponse> notificationRequest(Map<String, Object> params) {

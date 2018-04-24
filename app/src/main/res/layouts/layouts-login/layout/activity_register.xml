@@ -130,6 +130,7 @@
                             android:paddingBottom="@dimen/size_8"
                             android:paddingTop="@dimen/size_20"
                             android:textSize="@dimen/size_font_16"
+                            android:text="@string/malay"
                             android:textColorHint="@color/color_text_hint"
                             android:textColor="@color/color_grayscale_text"
                             android:hint="@string/language_optional"

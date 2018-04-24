@@ -162,10 +162,11 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
                 break;
 
             case R.id.tv_profile_language:
-                EditTextUtil.eidtLoseFocus(view);
+                //todo please dont delete this it now use default
+                /*EditTextUtil.eidtLoseFocus(view);
                 currentPopType = PopWindowUtil.LANGUAGE_POP;
                 PopWindowUtil.showSingleChoosePop(tvProfileLanguage,
-                    getResources().getString(R.string.choose_language), languagesVMS, this);
+                    getResources().getString(R.string.choose_language), languagesVMS, this);*/
                 break;
 
             case R.id.tv_profile_race:

@@ -17,7 +17,7 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.OrderDetailResponse;
+import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
@@ -33,12 +33,9 @@ import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
-import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
@@ -168,14 +165,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.PDP_DETAILS);
-        return retrofitRestApi.pdpDetailRequest(url, params);
-    }
-
-    @Override
-    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(
-        Map<String, Object> params) {
+    public Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_PRODUCT_RATING_REVIEWS);
         return retrofitRestApi.getProductRatingReviews(url, params);
     }
@@ -185,40 +175,17 @@ public class RetrofitRestApiImpl implements RestApi {
         return retrofitRestApi.registerRequest(url, params);
     }
 
+
     @Override
-    public Observable<HomeResponse> homeRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.HOME_REQUEST);
-        return retrofitRestApi.homeRequest(url, params);
+    public Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.LIST_ORDER);
+        return retrofitRestApi.getListOrder(url, params);
     }
 
     @Override
-    public Observable<CheckoutResponse> checkoutRequest(String sessionkey) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.CHECKOUT_REQUEST);
-        return retrofitRestApi.checkoutRequest(url, sessionkey);
-    }
-
-    @Override
-    public Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.MYORDER_LIST_REQUEST);
-        return retrofitRestApi.myOrderListRequest(url, params);
-    }
-
-    @Override
-    public Observable<MyOrderListResponse> myOrdersRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.MYORDER_LIST_REQUEST);
-        return retrofitRestApi.myOrdersRequest(url, params);
-    }
-
-    @Override
-    public Observable<OrderDetailResponse> orderDetailRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.MYORDER_DETAIL_REQUEST);
-        return retrofitRestApi.orderDetailRequest(url, params);
-    }
-
-    @Override
-    public Observable<MyOrderDetailResponse> myOrderDetailRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.MYORDER_DETAIL_REQUEST);
-        return retrofitRestApi.myOrderDetailRequest(url, params);
+    public Observable<Response<OrderDetailResponse>> getOrderDetail(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.VIEW_ORDER_DETAIL);
+        return retrofitRestApi.getOrderDetail(url, params);
     }
 
     @Override

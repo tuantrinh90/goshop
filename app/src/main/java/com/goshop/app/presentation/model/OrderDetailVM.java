@@ -24,6 +24,14 @@ public class OrderDetailVM {
 
     private String shipTel;
 
+    private String subTotal;
+
+    private String shipping;
+
+    private String disscount;
+
+    private String total;
+
     public OrderDetailVM(String orderNumber, String orderStatus, String placeAt,
         String shipName, String shipAddress, String shipCity, String shipCountry,
         String shipTel, String method,
@@ -38,6 +46,38 @@ public class OrderDetailVM {
         this.shipTel = shipTel;
         this.method = method;
         this.myOrdersProductVMS = myOrdersProductVMS;
+    }
+
+    public String getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(String subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public String getShipping() {
+        return shipping;
+    }
+
+    public void setShipping(String shipping) {
+        this.shipping = shipping;
+    }
+
+    public String getDisscount() {
+        return disscount;
+    }
+
+    public void setDisscount(String disscount) {
+        this.disscount = disscount;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 
     public String getOrderNumber() {

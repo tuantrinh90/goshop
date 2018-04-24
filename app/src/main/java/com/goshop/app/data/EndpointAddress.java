@@ -83,11 +83,10 @@ public class EndpointAddress {
 
     public static final String ADD_REMOVE_CART = "rest/all/V1/rest-api/customer/customer_id/cart";
 
-    public static final String LIST_ORDER =
-        "rest/all/V1/rest-api/customer/customer_id/order?website_id=1&store_id=3&page=1&limit=10";
+    public static final String LIST_ORDER = "rest/all/V1/rest-api/customer/customer_id/order";
 
     public static final String VIEW_ORDER_DETAIL =
-        "rest/all/V1/rest-api/customer/customer_id/order/order_id?website_id=1&store_id=3";
+        "rest/all/V1/rest-api/customer/customer_id/order/order_id";
 
     public static final String VIEW_CART_DETAIL =
         "rest/all/V1/rest-api/customer/<customer_id>/carts/mine";
@@ -140,9 +139,6 @@ public class EndpointAddress {
 
     //todo wait for api
     public static final String MYORDER_DETAIL_REQUEST = "";
-
-    //todo wait for api
-    public static final String MYORDER_LIST_REQUEST = "";
 
     //todo wait for api
     public static final String MY_ADDRESS = "";

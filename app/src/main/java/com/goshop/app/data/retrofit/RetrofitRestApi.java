@@ -13,7 +13,7 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.OrderDetailResponse;
+import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
@@ -31,12 +31,9 @@ import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
-import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
-import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
@@ -160,52 +157,20 @@ public interface RetrofitRestApi {
     Observable<Response<MyWishlistResponse>> getWishlistItems(@Url String fullUrl,
         @QueryMap Map<String, Object> params);
 
-    @FormUrlEncoded
-    @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<ProductDetailResponse> pdpDetailRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
-
     @Headers({CONTENT_TYPE_JSON})
     @GET
     Observable<Response<AllReviewsResponse>> getProductRatingReviews(@Url String fullUrl,
         @QueryMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<HomeResponse> homeRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<MyOrderListResponse>> getListOrder(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<MyOrderListResponse> myOrderListRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
-
-    @FormUrlEncoded
-    @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<MyOrderListResponse> myOrdersRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
-
-    @FormUrlEncoded
-    @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<OrderDetailResponse> orderDetailRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
-
-    @FormUrlEncoded
-    @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<MyOrderDetailResponse> myOrderDetailRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
-
-    @FormUrlEncoded
-    @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<CheckoutResponse> checkoutRequest(@Url String fullUrl,
-        String sessionKey);
+    @GET
+    Observable<Response<OrderDetailResponse>> getOrderDetail(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

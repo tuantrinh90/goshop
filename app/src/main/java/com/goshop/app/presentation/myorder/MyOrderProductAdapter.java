@@ -6,6 +6,7 @@ import com.goshop.app.common.view.RobotoItaticTextView;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.NumberFormater;
 
 import android.graphics.Paint;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +36,7 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
     public void setUpdateDatas(List<MyOrdersProductVM> myOrdersProductVMS) {
         this.myOrdersProductVMS.clear();
         this.myOrdersProductVMS = myOrdersProductVMS;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -115,13 +118,15 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
                 .error(productVM.getThumbDefault())
                 .into(ivOrderProductThumb);
             tvOrderProductTitle.setText(productVM.getTitle());
-            tvOrderProductOld.setText(NumberFormater.formaterMoney(productVM.getPriceOld()));
+            tvOrderProductOld.setText( productVM.getPriceOld());
             tvOrderProductOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            tvOrderProductNow.setText(NumberFormater.formaterMoney(productVM.getPriceNow()));
-            //todo hard code wait for decide
-            tvOrderProductCount.setText("x" + productVM.getCount());
-            List<String> attrs = productVM.getAttr();
-            String attr = "Color:" + attrs.get(0) + ", Size:" + attrs.get(1);
+            tvOrderProductNow.setText(productVM.getPriceNow());
+            tvOrderProductCount.setText(productVM.getCount());
+            Map<String, String> attrsMap = productVM.getAttrMap();
+            String attr = "";
+            for (Map.Entry<String, String> entry : attrsMap.entrySet()) {
+                attr = attr + entry.getKey() + ":\t" + entry.getValue() + ";\t";
+            }
             tvOrderProductAttr.setText(attr);
             tvOrderProductTrack.setOnClickListener(v -> {
                 if (productVM.getStatuContent().equals("Delivered")) {

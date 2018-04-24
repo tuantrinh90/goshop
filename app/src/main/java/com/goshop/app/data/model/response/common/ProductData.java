@@ -39,6 +39,9 @@ public class ProductData {
     @SerializedName("super_attributes")
     private List<SuperAttributeData> superAttributes;
 
+    @SerializedName("allow_return")
+    private boolean allowReturn;
+
     public String getSku() {
         return sku;
     }
@@ -117,5 +120,13 @@ public class ProductData {
 
     public void setQty(String qty) {
         this.qty = qty;
+    }
+
+    public boolean isAllowReturn() {
+        return allowReturn;
+    }
+
+    public void setAllowReturn(boolean allowReturn) {
+        this.allowReturn = allowReturn;
     }
 }
