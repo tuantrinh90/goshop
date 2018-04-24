@@ -14,7 +14,6 @@ import com.goshop.app.data.model.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -130,7 +129,7 @@ public interface AccountRepository {
 
     Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params);
 
-    Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params);
+    Observable<Response> settingsLogoutRequest(Map<String, Object> params);
 
     Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params);
 

@@ -41,6 +41,8 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     BrandsDetailContract.View, OnProductItemClickListener, PopWindowUtil
     .OnPopWindowDismissListener {
 
+    public static final String EXTRA_BRAND_ID = "brand_id";
+
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
 

@@ -1,17 +1,20 @@
 package com.goshop.app.data.model.response;
 
-import com.google.gson.annotations.SerializedName;
-
 import java.util.List;
 
 public class VideoProductsResponse {
 
     private List<String> attributes;
 
-    @SerializedName("id")
-    private String idX;
+    private List<String> labels;
+
+    private String id;
+
+    private String sku;
 
     private String image;
+
+    private String name;
 
     private String link;
 
@@ -19,12 +22,36 @@ public class VideoProductsResponse {
 
     private String title;
 
-    public String getIdX() {
-        return idX;
+    public String getName() {
+        return name;
     }
 
-    public void setIdX(String idX) {
-        this.idX = idX;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
+    public List<String> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(List<String> labels) {
+        this.labels = labels;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {

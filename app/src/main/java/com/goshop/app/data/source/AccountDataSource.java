@@ -130,7 +130,7 @@ public interface AccountDataSource {
 
     Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params);
 
-    Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params);
+    Observable<Response> settingsLogoutRequest(Map<String, Object> params);
 
     Observable<PaymentStatusResponse> paymentStatusRequest(Map<String, Object> params);
 

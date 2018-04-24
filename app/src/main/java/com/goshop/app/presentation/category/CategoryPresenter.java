@@ -59,6 +59,5 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
                     mView.hideLoadingBar();
                 }
             }));
-
     }
 }

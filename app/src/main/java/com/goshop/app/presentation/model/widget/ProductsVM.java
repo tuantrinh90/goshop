@@ -6,17 +6,47 @@ public class ProductsVM {
 
     private List<String> attributes;
 
+    private List<String> labels;
+
     private String id = "";
 
     private String image;
 
     private String link;
 
+    private String name;
+
+    private String sku;
+
     private ProductPriceVM priceVM;
 
     private String title;
 
     private String amount;
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<String> getLabels() {
+        return labels;
+    }
+
+    public void setLabels(List<String> labels) {
+        this.labels = labels;
+    }
 
     public String getAmount() {
         return amount;

@@ -18,13 +18,14 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
+import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
+import com.goshop.app.data.model.response.OnAirScheduleResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -49,9 +50,8 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.ZipCodeResponse;
-
+import java.util.HashMap;
 import java.util.Map;
-
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -74,11 +74,10 @@ public interface RetrofitRestApi {
     Observable<TrendingNowResponse> trendingNowRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<BrandsResponse> brandsRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<BrandsResponse>> brandsRequest(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -355,7 +354,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<SettingsLogoutResponse> settingsLogoutRequest(@Url String fullUrl,
+    Observable<Response> settingsLogoutRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded
@@ -501,6 +500,16 @@ public interface RetrofitRestApi {
     @POST
     Observable<Response> selectDefaultBillingRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<BannerResponse>> getHomeBanner(@Url String url,
+        @QueryMap HashMap<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(@Url String url,
+        @QueryMap HashMap<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @POST

@@ -1,9 +1,15 @@
 package com.goshop.app.presentation.home;
 
+import com.goshop.app.Const;
+import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
+import com.goshop.app.data.model.response.BannerResponse;
+import com.goshop.app.data.model.response.OnAirScheduleResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.TrendingBannerVM;
+import com.goshop.app.domian.ProductRepository;
+import com.goshop.app.presentation.mapper.TrendingMapper;
 import com.goshop.app.presentation.model.TrendingHorizontalProductsVM;
 import com.goshop.app.presentation.model.TrendingNowModel;
 import com.goshop.app.presentation.model.TrendingSingleBannerVM;
@@ -14,7 +20,10 @@ import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 
+import android.content.Context;
+
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,8 +34,14 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
 
     AccountRepository accountRepository;
 
-    public TrendingNowPresenter(AccountRepository accountRepository) {
+    ProductRepository productRepository;
+
+    List<TrendingNowModel> trendingNowModels = new ArrayList<>();
+
+    public TrendingNowPresenter(AccountRepository accountRepository,
+        ProductRepository productRepository) {
         this.accountRepository = accountRepository;
+        this.productRepository = productRepository;
     }
 
     @Override
@@ -41,7 +56,7 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
                     /*List<BaseWidgetResponse> baseWidgetRepons = widgetListResponse
                     .getWidgetlist();
                     Log.d("TrendingNowPresenter", "size:" + baseWidgetRepons.size());
-                    mView.trendingNowResult(WidgetViewMapper.transform(widgetListResponse));*/
+                    mView.trendingNowResult(WidgetViewMapper.transformBanner(widgetListResponse));*/
                 }
 
                 @Override
@@ -58,10 +73,61 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
             }));
     }
 
+    @Override
+    public void getHomeBanner() {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put(Const.REQUEST_PARAM_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.REQUEST_PARAM_STORE_ID, Const.STORE_ID);
+        addSubscrebe(productRepository.getHomeBanner(params).subscribeWith(
+            new DisposableObserver<Response<BannerResponse>>() {
+                @Override
+                public void onNext(Response<BannerResponse> response) {
+                    mView.onBannerRequestSuccess(TrendingMapper.transformBanner(response));
+                    
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.onBannerRequestFailure(throwable.getMessage());
+                }
+
+                @Override
+                public void onComplete() {
+                }
+            }));
+    }
+
+    public void getOnAirSchedule(Context context) {
+        HashMap<String, Object> params = new HashMap<>();
+        params.put(Const.REQUEST_PARAM_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.REQUEST_PARAM_STORE_ID, Const.STORE_ID);
+        addSubscrebe(productRepository.getOnAirSchedule(params).subscribeWith(
+            new DisposableObserver<Response<OnAirScheduleResponse>>() {
+                @Override
+                public void onNext(Response<OnAirScheduleResponse> response) {
+                    trendingNowModels.add(new TrendingVideoVM(context.getString(R.string.on_air),
+                        context.getString(R.string.tv_schedule),
+                        TrendingMapper.transformOnAirSchedule(response)));
+                    mView.onAirScheduleRequestSuccess(trendingNowModels);
+                    mView.hideLoadingBar();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.onAirScheduleRequestFailure(throwable.getMessage());
+                    mView.hideLoadingBar();
+                }
+
+                @Override
+                public void onComplete() {
+                    mView.hideLoadingBar();
+                }
+            }));
+    }
+
     //TODO(helen) this is mock data
     private List<TrendingNowModel> getMockData() {
         List<TrendingNowModel> models = new ArrayList<>();
-        models.add(getTopBanners());
         models.add(getVideoVM());
         models.add(getSingleBanner());
         models.add(getHorizontalProductsVM("Trending Now"));
@@ -70,20 +136,6 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
         models.add(getSingleBanner());
         models.add(getHorizontalProductsVM("TV Special"));
         return models;
-    }
-
-    //TODO(helen) this is mock data
-    private TrendingBannerVM getTopBanners() {
-        List<CarouselItemsVM> itemsVMS = new ArrayList<>();
-        CarouselItemsVM itemsVM = new CarouselItemsVM("");
-        CarouselItemsVM itemsVM1 = new CarouselItemsVM("");
-        CarouselItemsVM itemsVM2 = new CarouselItemsVM("");
-        CarouselItemsVM itemsVM3 = new CarouselItemsVM("");
-        itemsVMS.add(itemsVM);
-        itemsVMS.add(itemsVM1);
-        itemsVMS.add(itemsVM2);
-        itemsVMS.add(itemsVM3);
-        return new TrendingBannerVM(itemsVMS, true, 2000);
     }
 
     //TODO(helen) this is mock data

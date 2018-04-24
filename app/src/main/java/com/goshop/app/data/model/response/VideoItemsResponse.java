@@ -6,30 +6,39 @@ import java.util.List;
 
 public class VideoItemsResponse {
 
-    @SerializedName("id")
-    private String idX;
+    private String id;
+
+    @SerializedName("playback_url")
+    private String playbackUrl;
 
     private String link;
 
-    @SerializedName("name")
-    private String nameX;
+    private String name;
 
     private List<VideoProductsResponse> products;
 
-    public String getIdX() {
-        return idX;
+    public String getPlaybackUrl() {
+        return playbackUrl;
     }
 
-    public void setIdX(String idX) {
-        this.idX = idX;
+    public void setPlaybackUrl(String playbackUrl) {
+        this.playbackUrl = playbackUrl;
     }
 
-    public String getNameX() {
-        return nameX;
+    public String getId() {
+        return id;
     }
 
-    public void setNameX(String nameX) {
-        this.nameX = nameX;
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLink() {

@@ -9,14 +9,18 @@ public class SettingsContract {
 
     interface View extends BaseView {
 
-        void logoutResult();
+        void logoutSuccess();
 
         void userInfoClearedSucceed(Boolean response);
+
+        void showServiceErrorMessage(String errorMessage);
+
+        void showNetworkErrorMessage(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void settingsLogoutRequest(Map<String, Object> params);
+        void settingsLogoutRequest();
 
         void clearUserInfo();
     }

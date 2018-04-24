@@ -13,7 +13,6 @@ import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -27,10 +26,8 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;

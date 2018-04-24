@@ -281,7 +281,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params) {
+    public Observable<Response> settingsLogoutRequest(Map<String, Object> params) {
         return restApi.settingsLogoutRequest(params);
     }
 

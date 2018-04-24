@@ -9,14 +9,17 @@ import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
+import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
+import com.goshop.app.data.model.response.OnAirScheduleResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.source.ProductDataSource;
 
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -33,7 +36,7 @@ public class ProductLocalDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
+    public Observable<Response<BrandsResponse>> brandsRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -53,12 +56,14 @@ public class ProductLocalDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(
+        Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<Response<ProductDetailResponse>> getProductDetails(Map<String, Object> params) {
+    public Observable<Response<ProductDetailResponse>> getProductDetails(
+        Map<String, Object> params) {
         return null;
     }
 
@@ -119,11 +124,20 @@ public class ProductLocalDataSource implements ProductDataSource {
     }
 
     @Override
+    public Observable<Response<BannerResponse>> getHomeBanner(HashMap<String, Object> params) {
+        return null;
+    }
+
     public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request) {
         return null;
     }
 
     @Override
+    public Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(
+        HashMap<String, Object> params) {
+        return null;
+    }
+
     public Observable<Response<CartDataResponse>> removeFromCartRequest(
         AddRemoveCartRequest request) {
         return null;

@@ -46,7 +46,7 @@ public class SearchResultPresenter extends RxPresenter<SearchResultContract.View
                     //TODO  wait for api
 //                    List<SearchFilterModel> suggestModels = new ArrayList<>();
 //                    suggestModels.addAll(getSuggestDatas());
-//                    mView.showResult(suggestModels);
+//                    mView.onBandRequestSuccess(suggestModels);
                     mView.showProductsData(getProductsVMS());
                 }
 
