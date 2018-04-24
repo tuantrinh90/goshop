@@ -19,11 +19,10 @@ import com.goshop.app.presentation.model.SizeVM;
 import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.QAVM;
 import com.goshop.app.presentation.model.widget.ReviewsVM;
+import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.NumberFormater;
-
 import java.util.ArrayList;
 import java.util.List;
 

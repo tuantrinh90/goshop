@@ -52,7 +52,8 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
     }
 
     public void setDatasUpdate(List<TrendingNowModel> models) {
-        this.models = models;
+        this.models.clear();
+        this.models.addAll(models);
         notifyDataSetChanged();
     }
 

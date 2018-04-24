@@ -14,6 +14,9 @@ public class ProductPriceRMVM {
         this.original = original;
     }
 
+    public ProductPriceRMVM() {
+    }
+
     public String getOriginal() {
         return original;
     }

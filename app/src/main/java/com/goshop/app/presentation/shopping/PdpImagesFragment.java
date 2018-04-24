@@ -80,11 +80,16 @@ public class PdpImagesFragment extends BaseFragment implements PdpImagesAdapter
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+    }
+
+    @Override
     public int getContentView() {
         return R.layout.fragment_pdp_images;
     }
 
-    @Override
     public void initView() {
         initRecyclerview();
         initViewPager();
@@ -129,7 +134,7 @@ public class PdpImagesFragment extends BaseFragment implements PdpImagesAdapter
     }
 
     @Override
-    public void setup() {
+    public void inject() {
 
     }
 

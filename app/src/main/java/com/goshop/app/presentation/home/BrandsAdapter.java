@@ -2,7 +2,7 @@ package com.goshop.app.presentation.home;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.presentation.model.BrandsVM;
+import com.goshop.app.presentation.model.BrandsListVM;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -17,17 +17,17 @@ import butterknife.ButterKnife;
 
 public class BrandsAdapter extends RecyclerView.Adapter {
 
-    private List<BrandsVM> brandsVMS;
+    private List<BrandsListVM> brandsVMS;
 
     private OnBrandsItemClickListener onBrandsItemClickListener;
 
-    public BrandsAdapter(List<BrandsVM> brandsVMS,
+    public BrandsAdapter(List<BrandsListVM> brandsVMS,
         OnBrandsItemClickListener onBrandsItemClickListener) {
         this.brandsVMS = brandsVMS;
         this.onBrandsItemClickListener = onBrandsItemClickListener;
     }
 
-    public void setUpdateDatas(List<BrandsVM> brandsVMS) {
+    public void setUpdateDatas(List<BrandsListVM> brandsVMS) {
         this.brandsVMS.clear();
         this.brandsVMS = brandsVMS;
         notifyDataSetChanged();
@@ -52,7 +52,7 @@ public class BrandsAdapter extends RecyclerView.Adapter {
 
     public interface OnBrandsItemClickListener {
 
-        void onBrandsItemClick();
+        void onBrandsItemClick(BrandsListVM brandsVM);
     }
 
     class BrandsPageViewHolder extends RecyclerView.ViewHolder {
@@ -86,9 +86,9 @@ public class BrandsAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(BrandsVM brandsVM, int position) {
+        void bindingData(BrandsListVM brandsVM, int position) {
             viewBrandDivider.setVisibility(position == 0 ? View.GONE : View.VISIBLE);
-            itemView.setOnClickListener(v -> onBrandsItemClickListener.onBrandsItemClick());
+            itemView.setOnClickListener(v -> onBrandsItemClickListener.onBrandsItemClick(brandsVM));
         }
     }
 }

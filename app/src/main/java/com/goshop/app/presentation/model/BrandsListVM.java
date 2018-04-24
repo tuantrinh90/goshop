@@ -1,6 +1,12 @@
 package com.goshop.app.presentation.model;
 
-public class BrandsVM {
+public class BrandsListVM {
+
+    private String id;
+
+    private String image;
+
+    private String link;
 
     private String detail;
 
@@ -15,6 +21,30 @@ public class BrandsVM {
     private String thumbThree;
 
     private String thumbTwo;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
+    }
 
     public String getLogo() {
         return logo;

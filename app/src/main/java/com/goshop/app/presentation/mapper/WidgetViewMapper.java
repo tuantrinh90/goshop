@@ -94,12 +94,12 @@ public class WidgetViewMapper {
                     NumberFormater.formaterMoney(rmReponse.getOriginal()));
                 ProductPriceVM priceVM = new ProductPriceVM(rmvm);
                 productsVM.setPriceVM(priceVM);
-                productsVM.setId(productsReponse.getIdX());
+                productsVM.setId(productsReponse.getId());
                 productsVM.setAttributes(productsReponse.getAttributes());
                 productsVMS.add(productsVM);
             }
             videoPlayerItemsVM.setProductsVMS(productsVMS);
-            videoPlayerItemsVM.setName(itemsReponse.getNameX());
+            videoPlayerItemsVM.setName(itemsReponse.getName());
             videoPlayerItemsVMS.add(videoPlayerItemsVM);
         }
         return new WidgetVideoPlayerVM(title, detailTitle, videoPlayerItemsVMS);

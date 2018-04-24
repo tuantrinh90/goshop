@@ -47,22 +47,24 @@ public class ExpiredFragment extends BaseFragment<ExpiredContract.Presenter> imp
     }
 
     @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        initView();
+        initData();
+    }
+
+    private void initData() {
+        //todo wait for api
+        mPresenter.expiredRequest(null);
+    }
+
+    @Override
     public int getContentView() {
         return R.layout.fragment_expired;
     }
 
-    @Override
     public void initView() {
-        initPresenter();
         initRecyclerView();
-    }
-
-    private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
     }
 
     private void initRecyclerView() {
@@ -73,9 +75,12 @@ public class ExpiredFragment extends BaseFragment<ExpiredContract.Presenter> imp
     }
 
     @Override
-    public void setup() {
-        //todo wait for api
-        mPresenter.expiredRequest(null);
+    public void inject() {
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
     }
 
     @Override

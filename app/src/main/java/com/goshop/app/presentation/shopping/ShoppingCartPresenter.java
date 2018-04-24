@@ -12,18 +12,7 @@ import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.mapper.ShoppingCartMapper;
-import com.goshop.app.presentation.model.ShoppingCartApplyVM;
-import com.goshop.app.presentation.model.ShoppingCartModel;
-import com.goshop.app.presentation.model.ShoppingCartProductVM;
-import com.goshop.app.presentation.model.widget.ProductCartListVM;
-import com.goshop.app.presentation.model.widget.ProductListModel;
-import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
-import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
-
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -58,7 +47,7 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    if(throwable instanceof ServiceApiFail) {
+                    if (throwable instanceof ServiceApiFail) {
                         mView.showErrorMessage(((ServiceApiFail) throwable).getErrorMessage());
                     } else {
                         mView.showNetError();
@@ -94,7 +83,7 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
                     String errorMessage;
-                    if(throwable instanceof ServiceApiFail) {
+                    if (throwable instanceof ServiceApiFail) {
                         errorMessage = ((ServiceApiFail) throwable).getErrorMessage();
                     } else {
                         errorMessage = throwable.getMessage().toString();
@@ -108,7 +97,6 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
                 }
             }));
     }
-
 
     @Override
     public void addWishlistRequest(String skuId) {

@@ -92,6 +92,7 @@
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
             android:contentDescription="@string/app_name"
+            android:background="@drawable/ic_samsung_thumb3"
             android:layout_weight="1"/>
 
     </LinearLayout>

@@ -426,8 +426,15 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params) {
-        return accountCloudDataSource.settingsLogoutRequest(params);
+    public Observable<Response> settingsLogoutRequest(Map<String, Object> params) {
+        return accountCloudDataSource.settingsLogoutRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

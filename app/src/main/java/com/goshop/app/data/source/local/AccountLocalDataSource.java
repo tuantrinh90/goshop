@@ -268,7 +268,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<SettingsLogoutResponse> settingsLogoutRequest(Map<String, Object> params) {
+    public Observable<Response> settingsLogoutRequest(Map<String, Object> params) {
         return null;
     }
 

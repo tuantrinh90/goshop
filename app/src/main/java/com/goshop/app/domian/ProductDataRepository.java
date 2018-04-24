@@ -9,8 +9,10 @@ import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
+import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
+import com.goshop.app.data.model.response.OnAirScheduleResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
@@ -18,6 +20,9 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.ProductDataSource;
 
+import android.util.Log;
+
+import java.util.HashMap;
 import java.util.Map;
 
 import javax.inject.Inject;
@@ -42,8 +47,15 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<BrandsResponse> brandsRequest(Map<String, Object> params) {
-        return productCloudDataSource.brandsRequest(params);
+    public Observable<Response<BrandsResponse>> brandsRequest(Map<String, Object> params) {
+        return productCloudDataSource.brandsRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
@@ -62,7 +74,8 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(Map<String, Object> params) {
+    public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(
+        Map<String, Object> params) {
         return productCloudDataSource.getGoShopPointsDetails(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
@@ -74,7 +87,8 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<Response<ProductDetailResponse>> getProductDetails(Map<String, Object> params) {
+    public Observable<Response<ProductDetailResponse>> getProductDetails(
+        Map<String, Object> params) {
         return productCloudDataSource.getProductDetails(params)
             .concatMap(response -> {
                 if (isSuccess(response.getMessage().getStatus())) {
@@ -176,8 +190,9 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request) {
-        return productCloudDataSource.addToCartRequest(request)
+    public Observable<Response<BannerResponse>> getHomeBanner(
+        HashMap<String, Object> params) {
+        return productCloudDataSource.getHomeBanner(params)
             .concatMap(response -> {
                 if (isSuccess(response.getMessage().getStatus())) {
                     return Observable.just(response);
@@ -189,6 +204,35 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
+    public Observable<Response<OnAirScheduleResponse>> getOnAirSchedule(
+        HashMap<String, Object> params) {
+        return productCloudDataSource.getOnAirSchedule(params)
+            .concatMap(response -> {
+                // TODO: 2018/4/23 need api
+//                if (isSuccess(response.getMessage().getStatus())) {
+                if (true) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request)
+
+    {
+        return productCloudDataSource.addToCartRequest(request)
+            .concatMap(response -> {
+                if (isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     public Observable<Response<CartDataResponse>> removeFromCartRequest(
         AddRemoveCartRequest request) {
         return productCloudDataSource.removeFromCartRequest(request)

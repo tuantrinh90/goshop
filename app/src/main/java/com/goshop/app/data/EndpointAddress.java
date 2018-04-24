@@ -22,9 +22,11 @@ public class EndpointAddress {
     public static final String LIST_CUSTOMER_ADDRESSES =
         "rest/all/V1/rest-api/customer/customer_id/address";
 
-    public static final String ADD_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/customer_id/address";
+    public static final String ADD_CUSTOMER_ADDRESS =
+        "rest/all/V1/rest-api/customer/customer_id/address";
 
-    public static final String EDIT_CUSTOMER_ADDRESS = "rest/all/V1/rest-api/customer/customer_id/address";
+    public static final String EDIT_CUSTOMER_ADDRESS =
+        "rest/all/V1/rest-api/customer/customer_id/address";
 
     public static final String GET_GOSHOP_POINTS_DETAIL =
         "rest/all/V1/rest-api/customer/customer_id/goshop-points?website_idstore_id";
@@ -73,13 +75,22 @@ public class EndpointAddress {
 
     public static final String RETURN_ORDER = "rest/all/V1/rest-api/order/order_id/return";
 
+    public static final String SETTING_LOGOUT = "rest/all/V1/rest-api/customer/logout";
+
+    public static final String HOME_BRAND_LIST = "rest/all/V1/rest-api/brands";
+
+    public static final String HOME_BANNER = "rest/all/V1/rest-api/banners";
+
     public static final String ADD_REMOVE_CART = "rest/all/V1/rest-api/customer/customer_id/cart";
 
-    public static final String LIST_ORDER = "rest/all/V1/rest-api/customer/customer_id/order?website_id=1&store_id=3&page=1&limit=10";
+    public static final String LIST_ORDER =
+        "rest/all/V1/rest-api/customer/customer_id/order?website_id=1&store_id=3&page=1&limit=10";
 
-    public static final String VIEW_ORDER_DETAIL = "rest/all/V1/rest-api/customer/customer_id/order/order_id?website_id=1&store_id=3";
+    public static final String VIEW_ORDER_DETAIL =
+        "rest/all/V1/rest-api/customer/customer_id/order/order_id?website_id=1&store_id=3";
 
-    public static final String VIEW_CART_DETAIL = "rest/all/V1/rest-api/customer/<customer_id>/carts/mine";
+    public static final String VIEW_CART_DETAIL =
+        "rest/all/V1/rest-api/customer/<customer_id>/carts/mine";
 
     public static final String ADD_ADDRESS = "";
 
@@ -197,6 +208,9 @@ public class EndpointAddress {
 
     //todo test api
     public static final String USER_INFO = "data/cityinfo/101190408.html";
+
+    public static final String HOME_ON_AIR_SCHEDULE =
+        "rest/all/V1/rest-api/channel/on-air-schedule";
 
     public static String getFullUrl(String endpointUrl) {
         return BuildConfig.SERVICE_API_URL + endpointUrl;

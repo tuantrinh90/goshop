@@ -30,19 +30,16 @@ public abstract class BaseFragment<T extends BasePresenter> extends Fragment imp
         @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(getContentView(), container, false);
         ButterKnife.bind(this, view);
-        initView();
+        inject();
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
-        setup();
         return view;
     }
 
     public abstract int getContentView();
 
-    public abstract void initView();
-
-    public abstract void setup();
+    public abstract void inject();
 
     public void showLoadingBar() {
         if (getActivity() instanceof BaseActivity) {

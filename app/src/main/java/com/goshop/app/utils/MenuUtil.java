@@ -103,10 +103,8 @@ public class MenuUtil {
         menuModels.add(new MenuModel(MenuModel.MENU_DIVIDER));
         menuModels.add(new MenuItemVM(0, activity.getResources().getString(R.string.help_support),
             MENU_TYPE_HELP_AND_SUPPORT));
-        if (isLogin) {
-            menuModels.add(new MenuItemVM(0, activity.getResources().getString(R.string.settings),
-                MENU_TYPE_SETTINGS));
-        }
+        menuModels.add(new MenuItemVM(0, activity.getResources().getString(R.string.settings),
+            MENU_TYPE_SETTINGS));
 
         return menuModels;
     }
