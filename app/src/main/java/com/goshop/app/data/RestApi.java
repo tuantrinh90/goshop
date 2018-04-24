@@ -15,8 +15,11 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.response.BannerResponse;
+import com.goshop.app.data.model.response.ApplyEGiftResponse;
+import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.CityResponse;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
@@ -208,5 +211,11 @@ public interface RestApi {
     Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request);
 
     Observable<Response<CartDataResponse>> removeFromCartRequest(AddRemoveCartRequest request);
+
+    Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params);
+
+    Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params);
+
+    Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
 
 }

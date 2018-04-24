@@ -28,11 +28,12 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
 
     private CheckoutSelectAddressAdapter addressAdapter;
 
+    private String type = "";
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //todo(helen) wait for api
-        mPresenter.selectAddressRequest(null);
+        mPresenter.selectAddressRequest(type,null);
     }
 
     @Override
@@ -42,13 +43,26 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
 
     @Override
     public void inject() {
+        initIntent();
         initPresenter();
         initRecyclerView();
     }
 
+    private void initIntent() {
+        type = getIntent().getStringExtra(CheckoutActivity.TYPE);
+    }
+
     @Override
     public String getScreenTitle() {
-        return getResources().getString(R.string.select_address);
+        String title;
+        if (type.equals(CheckoutActivity.type_billing)) {
+            title = String.format(getResources().getString(R.string.select_type_address),
+                getResources().getString(R.string.type_billing));
+        } else {
+            title = String.format(getResources().getString(R.string.select_type_address),
+                getResources().getString(R.string.type_shipping));
+        }
+        return title;
     }
 
     private void initPresenter() {

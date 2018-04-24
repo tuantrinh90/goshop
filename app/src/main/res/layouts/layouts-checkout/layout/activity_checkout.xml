@@ -14,51 +14,69 @@
         android:orientation="vertical">
         <include
             layout="@layout/toolbar_img_text_img_close"/>
+
+    </LinearLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ll_checkout_toolbar">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:focusableInTouchMode="true"
+                android:focusable="true"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <include
+                    layout="@layout/layout_checkout_top"/>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_8"
+                    android:background="@drawable/drawable_biger_divider_with_shadow"/>
+
+                <include
+                    layout="@layout/layout_checkout_bottom"/>
+
+                <com.goshop.app.common.view.RobotoMediumTextView
+                    android:id="@+id/btn_checkout_place_my_order"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/size_54"
+                    android:background="@drawable/ic_icon_pink_btn"
+                    android:layout_marginLeft="@dimen/size_8"
+                    android:layout_marginRight="@dimen/size_8"
+                    android:layout_marginBottom="@dimen/size_8"
+                    android:gravity="center"
+                    android:textColor="@android:color/white"
+                    android:textSize="@dimen/size_font_16"
+                    android:text="@string/checkout_place_my_order"/>
+
+
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+
+        <FrameLayout
+            android:id="@+id/fl_connection_break"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+            <include layout="@layout/layout_connection_break"/>
+
+        </FrameLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_4"
             android:background="@drawable/bg_navigation_bar_shadow"/>
-    </LinearLayout>
-
-    <android.support.v4.widget.NestedScrollView
-        android:layout_below="@id/ll_checkout_toolbar"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-        <LinearLayout
-            android:orientation="vertical"
-            android:focusableInTouchMode="true"
-            android:focusable="true"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <include
-                layout="@layout/layout_checkout_top"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_8"
-                android:background="@drawable/drawable_biger_divider_with_shadow"/>
-
-            <include
-                layout="@layout/layout_checkout_bottom"/>
-
-            <com.goshop.app.common.view.RobotoMediumTextView
-                android:id="@+id/btn_checkout_place_my_order"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/size_54"
-                android:background="@drawable/ic_icon_pink_btn"
-                android:layout_marginLeft="@dimen/size_8"
-                android:layout_marginRight="@dimen/size_8"
-                android:layout_marginBottom="@dimen/size_8"
-                android:gravity="center"
-                android:textColor="@android:color/white"
-                android:textSize="@dimen/size_font_16"
-                android:text="@string/checkout_place_my_order"/>
+    </FrameLayout>
 
 
-        </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
 
 
 </RelativeLayout>

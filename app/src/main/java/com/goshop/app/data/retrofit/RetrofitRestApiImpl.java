@@ -17,6 +17,9 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
+import com.goshop.app.data.model.response.ApplyEGiftResponse;
+import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
@@ -528,5 +531,23 @@ public class RetrofitRestApiImpl implements RestApi {
         AddRemoveCartRequest request) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.ADD_REMOVE_CART);
         return retrofitRestApi.removeFromCartRequest(url, request);
+    }
+
+    @Override
+    public Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.APPLY_COUPON);
+        return retrofitRestApi.applyCoupon(url, params);
+    }
+
+    @Override
+    public Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.APPLY_GOSHOP_POINTS);
+        return retrofitRestApi.applyGoShopPoints(url, params);
+    }
+
+    @Override
+    public Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.APPLY_EGIFTCART);
+        return retrofitRestApi.applyEGiftCard(url, params);
     }
 }

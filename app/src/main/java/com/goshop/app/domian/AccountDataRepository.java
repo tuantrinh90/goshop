@@ -11,6 +11,9 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
+import com.goshop.app.data.model.response.ApplyEGiftResponse;
+import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -608,9 +611,44 @@ public class AccountDataRepository implements AccountRepository {
         return accountLocalDataSource.saveFlags(flagsVM);
     }
 
+    @Override
+    public Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params) {
+        return accountCloudDataSource.applyCoupon(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params) {
+        return accountCloudDataSource.applyGoShopPoints(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    @Override
+    public Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params) {
+        return accountCloudDataSource.applyEGiftCard(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     private boolean isSuccess(String status) {
         return Const.SUCCESS_STATUS.equals(status);
     }
-
 
 }

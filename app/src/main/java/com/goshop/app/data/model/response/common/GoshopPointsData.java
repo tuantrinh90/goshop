@@ -25,6 +25,16 @@ public class GoshopPointsData {
 
     private String applied;
 
+    private String balance;
+
+    public String getBalance() {
+        return balance;
+    }
+
+    public void setBalance(String balance) {
+        this.balance = balance;
+    }
+
     public String getApplied() {
         return applied;
     }

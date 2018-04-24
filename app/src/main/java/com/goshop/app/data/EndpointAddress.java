@@ -91,6 +91,12 @@ public class EndpointAddress {
     public static final String VIEW_CART_DETAIL =
         "rest/all/V1/rest-api/customer/<customer_id>/carts/mine";
 
+    public static final String APPLY_COUPON = "rest/all/V1/rest-api/order/coupon";
+
+    public static final String APPLY_GOSHOP_POINTS = "rest/all/V1/rest-api/order/goshop-points";
+
+    public static final String APPLY_EGIFTCART = "rest/all/V1/rest-api/order/egift-card";
+
     public static final String ADD_ADDRESS = "";
 
     public static final String EDIT_ADDRESS = "";

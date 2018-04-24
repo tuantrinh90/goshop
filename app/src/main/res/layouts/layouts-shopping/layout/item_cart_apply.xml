@@ -25,7 +25,7 @@
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
             android:gravity="center"
-            android:background="@drawable/drawable_round_black"
+            android:background="@drawable/selector_bg_apply"
             android:layout_alignParentEnd="true"/>
 
         <com.goshop.app.common.view.RobotoRegularEditText
@@ -105,6 +105,7 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/rl_cart_disscount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_8">

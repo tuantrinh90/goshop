@@ -10,6 +10,9 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
+import com.goshop.app.data.model.response.ApplyEGiftResponse;
+import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.OrderResponse;
@@ -163,4 +166,10 @@ public interface AccountDataSource {
     Observable<FlagsVM> getFlags();
 
     Observable<Object> saveFlags(FlagsVM flagsVM);
+
+    Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params);
+
+    Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params);
+
+    Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
 }

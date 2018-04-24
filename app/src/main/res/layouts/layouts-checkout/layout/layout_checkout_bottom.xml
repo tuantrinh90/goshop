@@ -20,7 +20,7 @@
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
             android:gravity="center"
-            android:background="@drawable/drawable_round_black"
+            android:background="@drawable/selector_bg_apply"
             android:layout_alignParentEnd="true"
             tools:ignore="RtlHardcoded"/>
 
@@ -58,7 +58,7 @@
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
             android:gravity="center"
-            android:background="@drawable/drawable_round_black"
+            android:background="@drawable/selector_bg_apply"
             android:layout_alignParentEnd="true"
             tools:ignore="RtlHardcoded"/>
 
@@ -96,7 +96,7 @@
             android:layout_alignParentRight="true"
             android:textColor="@android:color/white"
             android:gravity="center"
-            android:background="@drawable/drawable_round_black"
+            android:background="@drawable/selector_bg_apply"
             android:layout_alignParentEnd="true"
             tools:ignore="RtlHardcoded"/>
 
@@ -116,6 +116,7 @@
                 android:text="@string/use"
                 tools:ignore="RtlHardcoded,RtlSymmetry"/>
             <com.goshop.app.common.view.RobotoMediumEditText
+                android:id="@+id/et_checkout_point"
                 android:layout_width="@dimen/size_86"
                 android:layout_height="@dimen/size_36"
                 android:textSize="@dimen/size_font_14"

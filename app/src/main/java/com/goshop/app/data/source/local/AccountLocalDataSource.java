@@ -11,6 +11,9 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
+import com.goshop.app.data.model.response.ApplyEGiftResponse;
+import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -355,5 +358,20 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Override
     public Observable<Object> saveFlags(FlagsVM flagsVM) {
         return localApi.saveFlags(flagsVM);
+    }
+
+    @Override
+    public Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params) {
+        return null;
     }
 }

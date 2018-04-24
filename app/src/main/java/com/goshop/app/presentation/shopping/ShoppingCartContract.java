@@ -2,7 +2,9 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
+import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ShoppingCartModel;
+import com.goshop.app.presentation.model.ShoppingCartProductVM;
 
 import java.util.List;
 import java.util.Map;
@@ -11,7 +13,7 @@ public class ShoppingCartContract {
 
     interface View extends BaseView {
 
-        void showCartDetail(List<ShoppingCartModel> cartModels);
+        void showCartDetail(ShoppingCartProductVM cartProductVM);
 
         void showNetError();
 
@@ -23,6 +25,7 @@ public class ShoppingCartContract {
 
         void showErrorMessage(String errorMessage);
 
+        void applySuccess(ApplyDiscountVM discountVM);
     }
 
     public interface Presenter extends BasePresenter<View> {
@@ -32,5 +35,7 @@ public class ShoppingCartContract {
         void removeFromCartRequest(String sku, String qty);
 
         void addWishlistRequest(String skuId);
+
+        void applyCoupon(String couponCode, String cartId);
     }
 }

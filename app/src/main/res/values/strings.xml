@@ -250,6 +250,7 @@
     <string name="country">Country</string>
     <string name="state">State</string>
     <string name="city">City</string>
+    <string name="installment_plan_optional">Installment Plan(Optional)</string>
     <string name="edit">Edit</string>
     <string name="remove">Remove</string>
     <string name="test_name">Test Name</string>
@@ -344,8 +345,14 @@
     <string name="check_order">Check Order</string>
     <string name="payment_status">Payment Status</string>
     <string name="set_it_as_shipping_address">Set it as shipping address</string>
+    <string name="set_it_as_type">Set it as %s address</string>
+    <string name="little_billing">billing</string>
+    <string name="little_shipping">shipping</string>
     <string name="set_default">Default</string>
     <string name="select_address">Select Address</string>
+    <string name="select_type_address">Select %s Address</string>
+    <string name="type_billing">Billing</string>
+    <string name="type_shipping">Shipping</string>
     <string name="search_hint">Search products or brands</string>
     <string name="category">Category</string>
     <string name="sign_up_login">Sign up / Login</string>
@@ -393,7 +400,8 @@
     <string name="active_now">Active Now</string>
     <string name="user_name_test">User Name test</string>
     <string name="use">Use</string>
-    <string name="checkout_tip">You have 300 Go Shop Points available</string>
+    <string name="checkout_tip">You have <b>300</b> Go Shop Points available</string>
+    <string name="checkout_points_tip">You have <![CDATA[<b>%s</b>]]> Go Shop Points available.</string>
     <string name="checkout_points">300</string>
     <string name="total_order_cost">Total order cost</string>
     <string name="myr">MYR 1413.00</string>
@@ -487,4 +495,7 @@
     <string name="malaysia">Malaysia</string>
     <string name="loading">Loading...</string>
     <string name="attribute_title">Please choose the %s</string>
+    <string name="use_the_same_address">Use the same address for billing</string>
+    <string name="payment_thankyou">Thank you for your confirmation.</string>
+    <string name="payment_tip">Please do not close this mobile application while we are processing your payment.</string>
 </resources>
