@@ -12,7 +12,17 @@ public class CategoriesParentVM {
 
     private String name;
 
-    private List<CategoriesChildFirstVM> child;
+    private List<CategoriesChildVM> child;
+
+    private boolean isSelect;
+
+    public boolean isSelect() {
+        return isSelect;
+    }
+
+    public void setSelect(boolean select) {
+        isSelect = select;
+    }
 
     public String getIcon() {
         return icon;
@@ -46,11 +56,22 @@ public class CategoriesParentVM {
         this.name = name;
     }
 
-    public List<CategoriesChildFirstVM> getChild() {
+    public List<CategoriesChildVM> getChild() {
         return child;
     }
 
-    public void setChild(List<CategoriesChildFirstVM> child) {
+    public void setChild(List<CategoriesChildVM> child) {
         this.child = child;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoriesParentVM{" +
+            "icon='" + icon + '\'' +
+            ", id=" + id +
+            ", link='" + link + '\'' +
+            ", name='" + name + '\'' +
+            ", child=" + child +
+            '}';
     }
 }

@@ -12,7 +12,7 @@ public class CategoriesParent {
 
     private String name;
 
-    private List<CategoriesChildFirst> child;
+    private List<CategoriesChild> child;
 
     public String getIcon() {
         return icon;
@@ -46,11 +46,22 @@ public class CategoriesParent {
         this.name = name;
     }
 
-    public List<CategoriesChildFirst> getChild() {
+    public List<CategoriesChild> getChild() {
         return child;
     }
 
-    public void setChild(List<CategoriesChildFirst> child) {
+    public void setChild(List<CategoriesChild> child) {
         this.child = child;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoriesParent{" +
+            "icon='" + icon + '\'' +
+            ", id=" + id +
+            ", link='" + link + '\'' +
+            ", name='" + name + '\'' +
+            ", child=" + child +
+            '}';
     }
 }

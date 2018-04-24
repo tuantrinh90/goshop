@@ -3,12 +3,12 @@ package com.goshop.app.presentation.category;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
-import com.goshop.app.data.model.response.CategoryResponse;
-import com.goshop.app.data.model.response.Response;
+import com.goshop.app.presentation.model.CategoriesParentVM;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.listener.OnCategoryItemClickListener;
 
 import android.content.Intent;
@@ -47,6 +47,8 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
 
     private CategoryRightAdapter rightAdapter;
 
+    List<CategoriesParentVM> categoryResponse;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,16 +79,25 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
     }
 
     private void initRecyclerView() {
-        LinearLayoutManager leftManager = new LinearLayoutManager(this);
-        leftManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recycleviewCategoryLeft.setLayoutManager(leftManager);
-        leftAdapter = new CategoryLeftAdapter(new ArrayList<>(), this);
+        categoryResponse = new ArrayList<>();
+        recycleviewCategoryLeft.setLayoutManager(new LinearLayoutManager(this));
+        leftAdapter = new CategoryLeftAdapter(categoryResponse, this);
         recycleviewCategoryLeft.setAdapter(leftAdapter);
-        LinearLayoutManager rightManager = new LinearLayoutManager(this);
-        rightManager.setOrientation(LinearLayoutManager.VERTICAL);
-        recycleviewCategoryRight.setLayoutManager(rightManager);
+        recycleviewCategoryRight.setLayoutManager( new LinearLayoutManager(this));
         rightAdapter = new CategoryRightAdapter(new ArrayList<>(), this);
         recycleviewCategoryRight.setAdapter(rightAdapter);
+    }
+
+    @Override
+    public void onCategoryRequestSuccess(List<CategoriesParentVM> categoryResponse) {
+        this.categoryResponse.addAll(categoryResponse);
+        if (this.categoryResponse.size() > 0) {
+            leftAdapter.selectPosition(0);
+        }
+        if (categoryResponse.get(0) != null && categoryResponse.get(0)
+            .getChild() != null && categoryResponse.get(0).getChild().size() > 0) {
+            updateChildList(categoryResponse.get(0));
+        }
     }
 
     @Override
@@ -96,11 +107,8 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
 
     @Override
     public void showLeftMenu(List<CategoryLeftMenuVM> leftMenuVMS) {
-        leftAdapter.setUpdateLeftCategorys(leftMenuVMS);
         if (leftMenuVMS.size() > 0) {
             leftAdapter.selectPosition(0);
-            //TODO  wait for api
-            mPresenter.categoryRightMenuRequest(null);
         }
     }
 
@@ -111,24 +119,22 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
     }
 
     @Override
-    public void onCategoryRequestSuccess(Response<CategoryResponse> categoryMenuResponse) {
-
-    }
-
-    @Override
     public void showServiceErrorMessage(String errorMessage) {
-
+        PopWindowUtil.showRequestMessagePop(recycleviewCategoryLeft, errorMessage);
     }
 
     @Override
     public void showNetworkErrorMessage(String message) {
-
+        PopWindowUtil.showRequestMessagePop(recycleviewCategoryLeft, message);
     }
 
     @Override
-    public void onLeftClick(CategoryLeftMenuVM leftMenuVM) {
-        //TODO wait for api
-        mPresenter.categoryRightMenuRequest(null);
+    public void onLeftClick(CategoriesParentVM leftMenuVM) {
+        updateChildList(leftMenuVM);
+    }
+
+    private void updateChildList(CategoriesParentVM leftMenuVM) {
+
     }
 
     @OnClick({R.id.imageview_left_menu})

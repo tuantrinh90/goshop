@@ -4,6 +4,7 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.presentation.model.CategoriesParentVM;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
 
@@ -18,7 +19,7 @@ public class CategoryContract {
 
         void showRightMenu(List<CategoryRightMenuModel> rightMenuModels);
 
-        void onCategoryRequestSuccess(Response<CategoryResponse> categoryMenuResponse);
+        void onCategoryRequestSuccess(List<CategoriesParentVM> categoryMenuResponse);
 
         void showServiceErrorMessage(String errorMessage);
 

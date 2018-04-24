@@ -1,8 +1,8 @@
-package com.goshop.app.presentation.model;
+package com.goshop.app.data.model.response;
 
 import java.util.List;
 
-public class CategoriesChildFirstVM {
+public class CategoriesChild {
 
     private String icon;
 
@@ -14,7 +14,7 @@ public class CategoriesChildFirstVM {
 
     private int parent;
 
-    private List<CategoriesChildSecondVM> child;
+    private List<CategoriesChild> child;
 
     public String getIcon() {
         return icon;
@@ -56,11 +56,23 @@ public class CategoriesChildFirstVM {
         this.parent = parent;
     }
 
-    public List<CategoriesChildSecondVM> getChild() {
+    public List<CategoriesChild> getChild() {
         return child;
     }
 
-    public void setChild(List<CategoriesChildSecondVM> child) {
+    public void setChild(List<CategoriesChild> child) {
         this.child = child;
+    }
+
+    @Override
+    public String toString() {
+        return "CategoriesChild{" +
+            "icon='" + icon + '\'' +
+            ", id=" + id +
+            ", link='" + link + '\'' +
+            ", name='" + name + '\'' +
+            ", parent=" + parent +
+            ", child=" + child +
+            '}';
     }
 }

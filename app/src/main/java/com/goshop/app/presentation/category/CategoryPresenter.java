@@ -7,6 +7,7 @@ import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.ProductRepository;
+import com.goshop.app.presentation.mapper.CategoryMapper;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
@@ -39,7 +40,7 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
                 @Override
                 public void onNext(Response<CategoryResponse> categoryMenuResponse) {
                     mView.hideLoadingBar();
-                    mView.onCategoryRequestSuccess(categoryMenuResponse);
+                    mView.onCategoryRequestSuccess(CategoryMapper.transform(categoryMenuResponse));
                 }
 
                 @Override
@@ -52,6 +53,7 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
                         mView.showNetworkErrorMessage(throwable.getMessage());
                     }
                 }
+
                 @Override
                 public void onComplete() {
                     mView.hideLoadingBar();
