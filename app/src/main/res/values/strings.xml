@@ -315,6 +315,7 @@
     <string name="settings_sms">I wish to receive shopping news via SMS.</string>
     <string name="settings_notification">Subscription to Points Expiring Notification.</string>
     <string name="sms_marketing_consent">SMS Marketing Consent.</string>
+    <string name="receive_exclusive_offers">Receive exclusive offers.</string>
     <string name="logout">Logout</string>
     <string name="you_have">You have</string>
     <string name="pts">pts</string>
@@ -377,6 +378,7 @@
     <string name="add_to_wishlist">Add to Wishlist</string>
     <string name="delete">Delete</string>
     <string name="newsletter_subscription">Newsletter Subscription</string>
+    <string name="notification">Notification</string>
     <string name="my_egift_cards">My eGiftCards</string>
     <string name="egift_cards">eGiftCards</string>
     <string name="code">Code</string>

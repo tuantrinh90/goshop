@@ -7,6 +7,8 @@ import com.goshop.app.data.model.response.common.BannerData;
 import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.model.BannerVm;
+import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
+import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 
@@ -51,12 +53,18 @@ public class TrendingMapper {
                         videoProductsVM.setLabels(videoProductsResponse.getLabels());
                         videoProductsVM.setLink(videoProductsResponse.getLink());
                         videoProductsVM.setName(videoProductsResponse.getName());
-                        videoProductsVM.getPriceVM().getRm().setDiscounted(
-                            videoProductsResponse.getPrice().getRM().getDiscounted());
-                        videoProductsVM.getPriceVM().getRm().setDiscountTitle(
-                            videoProductsResponse.getPrice().getRM().getDiscountTitle());
-                        videoProductsVM.getPriceVM().getRm()
-                            .setOriginal(videoProductsResponse.getPrice().getRM().getOriginal());
+                        if (videoProductsResponse.getPrice() != null && videoProductsResponse
+                            .getPrice().getRM() != null) {
+                            ProductPriceRMVM productPriceRMVM = new ProductPriceRMVM();
+                            productPriceRMVM.setOriginal(
+                                videoProductsResponse.getPrice().getRM().getOriginal());
+                            productPriceRMVM.setDiscountTitle(
+                                videoProductsResponse.getPrice().getRM().getDiscountTitle());
+                            productPriceRMVM.setDiscounted(
+                                videoProductsResponse.getPrice().getRM().getDiscounted());
+                            ProductPriceVM productPriceVM = new ProductPriceVM(productPriceRMVM);
+                            videoProductsVM.setPriceVM(productPriceVM);
+                        }
                         videoProductsVM.setSku(videoProductsResponse.getSku());
                         videoProductsVMs.add(videoProductsVM);
                     }

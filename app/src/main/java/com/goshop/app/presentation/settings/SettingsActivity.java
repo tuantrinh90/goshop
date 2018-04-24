@@ -22,6 +22,7 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -42,14 +43,11 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     @BindView(R.id.switch_setting_email)
     Switch switchSettingEmail;
 
-    @BindView(R.id.switch_setting_market)
-    Switch switchSettingMarket;
-
-    @BindView(R.id.switch_setting_notification)
-    Switch switchSettingNotification;
-
     @BindView(R.id.switch_setting_sms)
     Switch switchSettingSms;
+
+    @BindView(R.id.switch_setting_exclusive_offers)
+    Switch switchSettingOffers;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -104,18 +102,17 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
         switchSettingEmail
             .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
                 //todo wait for api
+                Toast.makeText(this, "" + isChecked, Toast.LENGTH_SHORT).show();
             });
         switchSettingSms
             .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
                 //todo wait for api
+                Toast.makeText(this, "" + isChecked, Toast.LENGTH_SHORT).show();
             });
-        switchSettingNotification
+        switchSettingOffers
             .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
                 //todo wait for api
-            });
-        switchSettingMarket
-            .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
-                //todo wait for api
+                Toast.makeText(this, "" + isChecked, Toast.LENGTH_SHORT).show();
             });
     }
 

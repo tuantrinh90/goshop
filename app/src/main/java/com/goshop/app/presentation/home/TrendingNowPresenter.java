@@ -83,8 +83,7 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
                 @Override
                 public void onNext(Response<BannerResponse> response) {
                     mView.onBannerRequestSuccess(TrendingMapper.transformBanner(response));
-                    // TODO: 2018/4/23  wait for api
-                    trendingNowRequest(null);
+                    
                 }
 
                 @Override
