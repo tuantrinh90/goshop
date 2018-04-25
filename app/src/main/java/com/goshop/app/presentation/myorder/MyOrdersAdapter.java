@@ -94,7 +94,7 @@ public class MyOrdersAdapter extends RecyclerView.Adapter {
 
         void bindingData(MyOrdersVM myOrdersVM, int position) {
             viewMyOrdersDivider.setVisibility(position == 0 ? View.GONE : View.VISIBLE);
-            tvMyOrdersTotal.setText(NumberFormater.formaterMoney(myOrdersVM.getTotalPrice()));
+            tvMyOrdersTotal.setText(myOrdersVM.getTotalPrice());
             tvMyordersNumber.setText(myOrdersVM.getOrderNumber());
             tvMyOrdersStatus.setText(myOrdersVM.getOrderStatus());
             LinearLayoutManager layoutManager = new LinearLayoutManager(itemView.getContext());

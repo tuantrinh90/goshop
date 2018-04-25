@@ -73,9 +73,6 @@ public class CheckoutSelectAddressAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_select_address_country)
         RobotoLightTextView tvSelectAddressCountry;
 
-        @BindView(R.id.tv_select_address_edit)
-        RobotoRegularTextView tvSelectAddressEdit;
-
         @BindView(R.id.tv_select_address_name)
         RobotoMediumTextView tvSelectAddressName;
 
@@ -99,7 +96,7 @@ public class CheckoutSelectAddressAdapter extends RecyclerView.Adapter {
             tvSelectAddressCode.setText(selectAddressVM.getCode());
             tvSelectAddressCountry.setText(selectAddressVM.getCountry());
             tvSelectAddressTel.setText(selectAddressVM.getTel());
-            tvSelectAddressEdit.setOnClickListener(v -> onEditClickListener.onEditClick());
+            rbSelectAddressSet.setText(String.format(itemView.getContext().getResources().getString(R.string.set_it_as_type),  selectAddressVM.getType()));
         }
     }
 }

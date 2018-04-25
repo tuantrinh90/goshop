@@ -4,7 +4,9 @@ import com.goshop.app.presentation.model.widget.ProductListModel;
 
 import java.util.List;
 
-public class ShoppingCartProductVM extends ShoppingCartModel {
+public class ShoppingCartProductVM{
+
+    private String id;
 
     private String color;
 
@@ -20,14 +22,22 @@ public class ShoppingCartProductVM extends ShoppingCartModel {
 
     private String title;
 
+    private String subTotal;
+
+    private String discount;
+
+    private String shipping;
+
+    private String total;
+
+    public ShoppingCartProductVM(){}
+
     public ShoppingCartProductVM(List<ProductListModel> productListModels) {
-        super(ShoppingCartModel.CART_PRODUCT);
         this.productListModels = productListModels;
     }
 
     public ShoppingCartProductVM(String title, String color, String oldPrice,
         String nowPrice, int icon, int count) {
-        super(ShoppingCartModel.CART_PRODUCT);
         this.title = title;
         this.color = color;
         this.oldPrice = oldPrice;
@@ -43,6 +53,14 @@ public class ShoppingCartProductVM extends ShoppingCartModel {
     public void setProductListModels(
         List<ProductListModel> productListModels) {
         this.productListModels = productListModels;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getTitle() {
@@ -91,5 +109,37 @@ public class ShoppingCartProductVM extends ShoppingCartModel {
 
     public void setCount(int count) {
         this.count = count;
+    }
+
+    public String getSubTotal() {
+        return subTotal;
+    }
+
+    public void setSubTotal(String subTotal) {
+        this.subTotal = subTotal;
+    }
+
+    public String getDiscount() {
+        return discount;
+    }
+
+    public void setDiscount(String discount) {
+        this.discount = discount;
+    }
+
+    public String getShipping() {
+        return shipping;
+    }
+
+    public void setShipping(String shipping) {
+        this.shipping = shipping;
+    }
+
+    public String getTotal() {
+        return total;
+    }
+
+    public void setTotal(String total) {
+        this.total = total;
     }
 }

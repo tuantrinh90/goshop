@@ -117,27 +117,6 @@
             android:text="@string/set_default"
             android:layout_alignParentStart="true"/>
 
-        <com.goshop.app.common.view.RobotoRegularTextView
-            android:id="@+id/tv_select_address_edit"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:textColor="@color/color_grayscale_text"
-            android:text="@string/edit"/>
-
-        <ImageView
-            android:layout_width="@dimen/size_24"
-            android:layout_height="@dimen/size_24"
-            android:layout_toLeftOf="@id/tv_select_address_edit"
-            android:layout_marginRight="@dimen/size_4"
-            android:layout_centerVertical="true"
-            android:src="@drawable/ic_icon_edit"
-            android:scaleType="center"
-            android:contentDescription="@string/app_name"/>
-
-
     </RelativeLayout>
 
 </LinearLayout>

@@ -11,11 +11,15 @@ public class OrderDetailContract {
     interface View extends BaseView {
 
         void showOrderDetailResult(OrderDetailVM orderDetailVM);
+
+        void showNetBreak();
+
+        void showErrorMessage(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void orderDetailRequest(Map<String, Object> params);
+        void getOrderDetail();
     }
 
 }

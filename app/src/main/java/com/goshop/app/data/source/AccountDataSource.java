@@ -10,7 +10,10 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.OrderDetailResponse;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
+import com.goshop.app.data.model.response.ApplyEGiftResponse;
+import com.goshop.app.data.model.response.ApplyPointsResponse;
+import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
@@ -22,10 +25,8 @@ import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
-import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
@@ -77,17 +78,11 @@ public interface AccountDataSource {
 
     Observable<Response> registerRequest(Map<String, Object> params);
 
-    Observable<HomeResponse> homeRequest(Map<String, Object> params);
-
     Observable<CheckoutResponse> checkoutRequest(String sessionKey);
 
-    Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params);
+    Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params);
 
-    Observable<MyOrderListResponse> myOrdersRequest(Map<String, Object> params);
-
-    Observable<OrderDetailResponse> orderDetailRequest(Map<String, Object> params);
-
-    Observable<MyOrderDetailResponse> myOrderDetailRequest(Map<String, Object> params);
+    Observable<Response<OrderDetailResponse>> getOrderDetail(Map<String, Object> params);
 
     Observable<NotificationsResponse> notificationRequest(Map<String, Object> params);
 
@@ -171,4 +166,10 @@ public interface AccountDataSource {
     Observable<FlagsVM> getFlags();
 
     Observable<Object> saveFlags(FlagsVM flagsVM);
+
+    Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params);
+
+    Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params);
+
+    Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
 }

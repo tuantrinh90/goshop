@@ -18,6 +18,8 @@ public class SelectAddressVM {
 
     private String tel;
 
+    private String type;
+
     public SelectAddressVM(String name, String address, String city, String state,
         String code, String country, String tel, boolean isShipping) {
         this.name = name;
@@ -28,6 +30,14 @@ public class SelectAddressVM {
         this.country = country;
         this.tel = tel;
         this.isShipping = isShipping;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getAddress() {

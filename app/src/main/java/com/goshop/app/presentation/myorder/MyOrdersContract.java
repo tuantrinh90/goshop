@@ -12,11 +12,15 @@ public class MyOrdersContract {
     interface View extends BaseView {
 
         void showMyOrdersResult(List<MyOrdersVM> myOrdersVMS);
+
+        void showNetError();
+
+        void showGetListFailedMessage(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void myOrdersRequest(Map<String, Object> params);
+        void getListOrder(int page);
     }
 
 }

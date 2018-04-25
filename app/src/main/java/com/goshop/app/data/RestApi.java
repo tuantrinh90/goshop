@@ -15,14 +15,17 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.response.BannerResponse;
+import com.goshop.app.data.model.response.ApplyEGiftResponse;
+import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.CityResponse;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
-import com.goshop.app.data.model.OrderDetailResponse;
+import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
@@ -37,10 +40,7 @@ import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
-import com.goshop.app.data.model.response.CheckoutResponse;
-import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
-import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.ProfileResponse;
@@ -90,23 +90,13 @@ public interface RestApi {
 
     Observable<Response<MyWishlistResponse>> getWishlistItems(Map<String, Object> params);
 
-    Observable<ProductDetailResponse> pdpDetailRequest(Map<String, Object> params);
-
     Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params);
 
     io.reactivex.Observable<Response> registerRequest(Map<String, Object> params);
 
-    io.reactivex.Observable<HomeResponse> homeRequest(Map<String, Object> params);
+    Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params);
 
-    io.reactivex.Observable<CheckoutResponse> checkoutRequest(String sessionkey);
-
-    io.reactivex.Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params);
-
-    Observable<MyOrderListResponse> myOrdersRequest(Map<String, Object> params);
-
-    Observable<OrderDetailResponse> orderDetailRequest(Map<String, Object> params);
-
-    io.reactivex.Observable<MyOrderDetailResponse> myOrderDetailRequest(Map<String, Object> params);
+    Observable<Response<OrderDetailResponse>> getOrderDetail(Map<String, Object> params);
 
     io.reactivex.Observable<NotificationsResponse> notificationRequest(Map<String, Object> params);
 
@@ -221,5 +211,11 @@ public interface RestApi {
     Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request);
 
     Observable<Response<CartDataResponse>> removeFromCartRequest(AddRemoveCartRequest request);
+
+    Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params);
+
+    Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params);
+
+    Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
 
 }

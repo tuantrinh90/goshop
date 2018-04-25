@@ -24,6 +24,12 @@ public class WidgetProductListAdapter extends RecyclerView.Adapter {
         this.listModels = productsVMS;
     }
 
+    public void setListModels (List<ProductListModel> productsVMS) {
+        this.listModels.clear();
+        this.listModels = productsVMS;
+        notifyDataSetChanged();
+    }
+
     public void setOnItemMenuClickListener(OnItemMenuClickListener menuClickListener) {
         this.menuClickListener = menuClickListener;
     }

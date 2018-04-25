@@ -18,7 +18,11 @@ public class NumberFormater {
 
     private static final String TEL_HEADER = "T:\t";
 
+    private static final String ORDER_NUMBER = "#\t";
+
     private static final String ANSWER_COUNTS_FORMAT = "All %s Answers";
+
+    private static final String SYMBOL_QTY = "x\t";
 
     public static String formaterPhoneNumber(String phoneNumber) {
         return phoneNumber.replaceFirst("(\\d{4})(\\d{2})(\\d{4})", "$1 - $2 - $3");
@@ -43,6 +47,18 @@ public class NumberFormater {
     public static String formaterBrackets(String discount) {
         StringBuilder result = new StringBuilder(LEFT_BRACKETS);
         result.append(discount).append(RIGHT_BRACKETS);
+        return result.toString();
+    }
+
+    public static String formaterOrderNumber(String orderNumber) {
+        StringBuilder result = new StringBuilder(ORDER_NUMBER);
+        result.append(orderNumber);
+        return result.toString();
+    }
+
+    public static String formaterOrderQty(String qty) {
+        StringBuilder result = new StringBuilder(SYMBOL_QTY);
+        result.append(qty);
         return result.toString();
     }
 

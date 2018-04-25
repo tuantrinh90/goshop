@@ -6,6 +6,7 @@ import com.goshop.app.common.view.RobotoItaticTextView;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.NumberFormater;
 
 import android.graphics.Paint;
@@ -16,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import java.util.List;
+import java.util.Map;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -34,6 +36,7 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
     public void setUpdateDatas(List<MyOrdersProductVM> myOrdersProductVMS) {
         this.myOrdersProductVMS.clear();
         this.myOrdersProductVMS = myOrdersProductVMS;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -99,6 +102,17 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_order_product_write)
         RobotoLightTextView tvOrderProductWrite;
 
+        private static final String DELIVERED = "Delivered";
+
+        private static final String BTN_RETURN = "Return";
+
+        private static final String BTN_TRACK = "Track";
+
+        private static final String MIDDLE_SPACE = ":\t";
+
+        private static final String END_SPACE = ";\t";
+
+
         public MyOrdersProductViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -107,24 +121,26 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
         void bindingDatas(MyOrdersProductVM productVM) {
             tvOrderProductNumber.setText(productVM.getStatuNo());
             tvOrderProductStatu.setText(productVM.getStatuContent());
-            //todo this hard code is wait for api
+            //todo this part is wait for api
             tvOrderProductTrack
-                .setText(productVM.getStatuContent().equals("Delivered") ? "Return" : "Track");
+                .setText(productVM.getStatuContent().equals(DELIVERED) ? BTN_RETURN : BTN_TRACK);
 
             Glide.with(itemView.getContext()).load(productVM.getThumb()).asBitmap()
                 .error(productVM.getThumbDefault())
                 .into(ivOrderProductThumb);
             tvOrderProductTitle.setText(productVM.getTitle());
-            tvOrderProductOld.setText(NumberFormater.formaterMoney(productVM.getPriceOld()));
+            tvOrderProductOld.setText( productVM.getPriceOld());
             tvOrderProductOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-            tvOrderProductNow.setText(NumberFormater.formaterMoney(productVM.getPriceNow()));
-            //todo hard code wait for decide
-            tvOrderProductCount.setText("x" + productVM.getCount());
-            List<String> attrs = productVM.getAttr();
-            String attr = "Color:" + attrs.get(0) + ", Size:" + attrs.get(1);
+            tvOrderProductNow.setText(productVM.getPriceNow());
+            tvOrderProductCount.setText(productVM.getCount());
+            Map<String, String> attrsMap = productVM.getAttrMap();
+            String attr = "";
+            for (Map.Entry<String, String> entry : attrsMap.entrySet()) {
+                attr = attr + entry.getKey() + MIDDLE_SPACE + entry.getValue() + END_SPACE;
+            }
             tvOrderProductAttr.setText(attr);
             tvOrderProductTrack.setOnClickListener(v -> {
-                if (productVM.getStatuContent().equals("Delivered")) {
+                if (productVM.getStatuContent().equals(DELIVERED)) {
                     onOrderDetailItemClickListener.onReturnClick();
                 } else {
                     onOrderDetailItemClickListener.onTrackClick();

@@ -94,6 +94,12 @@ public class Const {
 
     public static final String PARAMS_SKU = "sku";
 
+    public static final String PARAMS_CART_ID = "cart_id";
+
+    public static final String PARAMS_COUPON_CODE = "coupon_code";
+
+    public static final String PARAMS_GOSHOP_POINT = "goshop_point";
+
     public static final String PARAMS_SKUID = "skuid";
 
     public static final String PARAMS_SKU_ID = "sku_id";

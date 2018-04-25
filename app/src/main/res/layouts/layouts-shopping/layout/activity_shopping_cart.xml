@@ -17,10 +17,6 @@
         <include
             layout="@layout/toolbar_img_text_img_close"
         />
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_4"
-            android:background="@drawable/bg_navigation_bar_shadow"/>
     </LinearLayout>
 
     <FrameLayout
@@ -42,6 +38,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <include layout="@layout/layout_shopping_no_data"/>
+
         </FrameLayout>
 
         <FrameLayout
@@ -50,11 +47,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent">
             <include layout="@layout/layout_connection_break"/>
+
         </FrameLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/size_4"
+            android:background="@drawable/bg_navigation_bar_shadow"/>
     </FrameLayout>
-
-
-
-
 
 </RelativeLayout>

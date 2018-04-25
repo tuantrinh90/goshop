@@ -7,6 +7,7 @@ import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.MyOrdersVM;
 import com.goshop.app.presentation.shopping.RatingActivity;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -46,6 +47,8 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
 
     private MyOrdersAdapter myOrdersAdapter;
 
+    private int page = 1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,8 +56,7 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
         setContentView(getContentView());
         initRecyclerView();
         initToolbar();
-        //todo wait for api
-        mPresenter.myOrdersRequest(null);
+        mPresenter.getListOrder(page);
     }
 
     private void initToolbar() {
@@ -101,15 +103,28 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak,false);
-                // TODO: 2018/4/11 need real api
-                mPresenter.myOrdersRequest(null);
+                mPresenter.getListOrder(page);
                 break;
         }
     }
 
     @Override
     public void showMyOrdersResult(List<MyOrdersVM> myOrdersVMS) {
-        myOrdersAdapter.setUpdateDatas(myOrdersVMS);
+        if(myOrdersVMS.size() > 0) {
+            myOrdersAdapter.setUpdateDatas(myOrdersVMS);
+        } else {
+            updateLayoutStatus(flNoData,true);
+        }
+    }
+
+    @Override
+    public void showNetError() {
+        updateLayoutStatus(flConnectionBreak,true);
+    }
+
+    @Override
+    public void showGetListFailedMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(recyclerviewMyOrders, errorMessage);
     }
 
     @Override
