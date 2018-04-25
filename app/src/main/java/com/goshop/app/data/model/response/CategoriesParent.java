@@ -54,14 +54,4 @@ public class CategoriesParent {
         this.child = child;
     }
 
-    @Override
-    public String toString() {
-        return "CategoriesParent{" +
-            "icon='" + icon + '\'' +
-            ", id=" + id +
-            ", link='" + link + '\'' +
-            ", name='" + name + '\'' +
-            ", child=" + child +
-            '}';
-    }
 }

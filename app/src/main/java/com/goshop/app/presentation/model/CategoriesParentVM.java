@@ -74,14 +74,4 @@ public class CategoriesParentVM {
         this.child = child;
     }
 
-    @Override
-    public String toString() {
-        return "CategoriesParentVM{" +
-            "icon='" + icon + '\'' +
-            ", id=" + id +
-            ", link='" + link + '\'' +
-            ", name='" + name + '\'' +
-            ", child=" + child +
-            '}';
-    }
 }

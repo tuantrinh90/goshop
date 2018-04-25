@@ -249,8 +249,6 @@ public class Const {
 
     public static final String COUNTRY_ID = "MY";
 
-    public static final String CURRENCY_RM = "RM ";
-
     public static final String PARAMS_COUNTRY_ID = "country_id";
 
     public static final String PARAMS_COUNTRY_CODE = "country_code";
