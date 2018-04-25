@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -189,17 +190,19 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
     }
 
     private void redirectContactUs(String type) {
+        // TODO: 2018/4/25 this method need decide
         Intent intent = new Intent();
         String url = "";
         switch (type) {
             case REDIRECT_TYPE_EMAIL:
-                intent = new Intent(Intent.ACTION_SENDTO);
-                intent.setType("text/plain");
-                intent.setData(Uri.parse(contactUsVM != null ? contactUsVM.getEmail() : ""));
-                intent.putExtra(Intent.EXTRA_SUBJECT, "");
+                Intent it = new Intent(Intent.ACTION_SEND);
+                it.putExtra(Intent.EXTRA_EMAIL, "me@abc.com");
+                it.putExtra(Intent.EXTRA_TEXT, "The email body text");
+                it.setType("text/plain");
+                startActivity(Intent.createChooser(it, "Choose Email Client"));
                 break;
             case REDIRECT_TYPE_PHONE:
-                intent = new Intent(Intent.ACTION_CALL_BUTTON);
+                intent = new Intent(Intent.ACTION_DIAL, Uri.parse("tel:" + contactUsVM.getPhone()));
                 break;
             case REDIRECT_TYPE_FACEBOOK:
                 url = "https://www.facebook.com/";
