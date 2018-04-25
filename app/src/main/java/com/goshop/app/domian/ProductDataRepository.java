@@ -48,14 +48,7 @@ public class ProductDataRepository implements ProductRepository {
 
     @Override
     public Observable<Response<BrandsResponse>> brandsRequest(Map<String, Object> params) {
-        return productCloudDataSource.brandsRequest(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(productCloudDataSource.brandsRequest(params));
     }
 
     @Override
@@ -76,28 +69,13 @@ public class ProductDataRepository implements ProductRepository {
     @Override
     public Observable<Response<MyPointsResponse>> getGoShopPointsDetails(
         Map<String, Object> params) {
-        return productCloudDataSource.getGoShopPointsDetails(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(productCloudDataSource.getGoShopPointsDetails(params));
     }
 
     @Override
     public Observable<Response<ProductDetailResponse>> getProductDetails(
         Map<String, Object> params) {
-        return productCloudDataSource.getProductDetails(params)
-            .concatMap(response -> {
-                if (isSuccess(response.getMessage().getStatus())) {
-                    return Observable.just(response);
-                } else {
-                    return Observable
-                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-                }
-            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(productCloudDataSource.getProductDetails(params));
     }
 
     @Override
@@ -144,38 +122,17 @@ public class ProductDataRepository implements ProductRepository {
 
     @Override
     public Observable<Response> writeReviewRequest(Map<String, Object> params) {
-        return productCloudDataSource.writeReviewRequest(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerDataMessage(productCloudDataSource.writeReviewRequest(params));
     }
 
     @Override
     public Observable<Response<QuestionAnswerResponse>> listProductQA(Map<String, Object> params) {
-        return productCloudDataSource.listProductQA(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(productCloudDataSource.listProductQA(params));
     }
 
     @Override
     public Observable<Response> submitQuestions(Map<String, Object> params) {
-        return productCloudDataSource.submitQuestions(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerDataMessage(productCloudDataSource.submitQuestions(params));
     }
 
     @Override
@@ -186,29 +143,13 @@ public class ProductDataRepository implements ProductRepository {
     @Override
     public Observable<Response<DeliveryCheckResponse>> deliveryCheckRequest(
         Map<String, Object> params) {
-        return productCloudDataSource.deliveryCheckRequest(params)
-            .concatMap(response -> {
-                if (isSuccess(response.getMessage().getStatus())) {
-                    return Observable.just(response);
-                } else {
-                    return Observable
-                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-                }
-            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(productCloudDataSource.deliveryCheckRequest(params));
     }
 
     @Override
     public Observable<Response<BannerResponse>> getHomeBanner(
         HashMap<String, Object> params) {
-        return productCloudDataSource.getHomeBanner(params)
-            .concatMap(response -> {
-                if (isSuccess(response.getMessage().getStatus())) {
-                    return Observable.just(response);
-                } else {
-                    return Observable
-                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-                }
-            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(productCloudDataSource.getHomeBanner(params));
     }
 
     @Override
@@ -227,34 +168,38 @@ public class ProductDataRepository implements ProductRepository {
             }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
-    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request)
-
-    {
-        return productCloudDataSource.addToCartRequest(request)
-            .concatMap(response -> {
-                if (isSuccess(response.getMessage().getStatus())) {
-                    return Observable.just(response);
-                } else {
-                    return Observable
-                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-                }
-            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    public Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request) {
+        return getServerData(productCloudDataSource.addToCartRequest(request));
     }
 
     public Observable<Response<CartDataResponse>> removeFromCartRequest(
         AddRemoveCartRequest request) {
-        return productCloudDataSource.removeFromCartRequest(request)
-            .concatMap(response -> {
-                if (isSuccess(response.getMessage().getStatus())) {
-                    return Observable.just(response);
-                } else {
-                    return Observable
-                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-                }
-            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(productCloudDataSource.removeFromCartRequest(request));
     }
 
     private boolean isSuccess(String status) {
         return Const.SUCCESS_STATUS.equals(status.toLowerCase());
+    }
+
+    private <T> Observable<Response<T>> getServerData(Observable<Response<T>> observable) {
+        return observable.concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
+    private Observable<Response> getServerDataMessage(Observable<Response> observable) {
+        return observable.concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 }
