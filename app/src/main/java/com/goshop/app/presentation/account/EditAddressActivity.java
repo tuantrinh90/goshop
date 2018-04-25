@@ -104,6 +104,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     @Override
     public void inject() {
         textviewRightMenu.setText(getResources().getString(R.string.done));
+        tvEditAddressCountry.setText(getResources().getString(R.string.malaysia));
         checkboxDefaultBilling.setChecked(true);
         checkboxDefaultShipping.setChecked(true);
         setUp();
@@ -163,9 +164,11 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                         this);
                 break;
             case R.id.tv_edit_address_country:
-                currentPop = PopWindowUtil.COUNTRY_POP;
-                PopWindowUtil.showSingleChoosePop(view, getResources().getString(R.string.country),
-                    countryVMS, this);
+                //todo now api have no data about country
+                // todo this will do nothing, please dont delete
+//                currentPop = PopWindowUtil.COUNTRY_POP;
+//                PopWindowUtil.showSingleChoosePop(view, getResources().getString(R.string.country),
+//                    countryVMS, this);
                 break;
             case R.id.tv_edit_address_state:
                 currentPop = PopWindowUtil.STATE_POP;
