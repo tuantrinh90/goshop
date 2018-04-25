@@ -15,15 +15,17 @@ public class ReturnOrderContract {
         void returnRequestFailed(String errorMessage);
 
         void returnRequestNetError(String errorMessage);
+
+        void setReasonCode(List<ProfileMetaVM> reasonCodes);
+
+        void setReasonDetail(List<ProfileMetaVM> reasonDetails);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        List<ProfileMetaVM> getCodeChooses();
-
-        List<ProfileMetaVM> getDetailChooses();
-
         void returnOrderRequest(String name, String email, String mobile, String handing,
             String reasonCode, String reasonDetail);
+
+        void getOrderMetadata();
     }
 }

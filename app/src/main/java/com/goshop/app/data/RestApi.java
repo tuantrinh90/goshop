@@ -27,6 +27,7 @@ import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.OnAirScheduleResponse;
@@ -217,5 +218,7 @@ public interface RestApi {
     Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params);
 
     Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
+
+    Observable<Response<OrderMetadataResponse>> getOrderMetadata(Map<String, Object> params);
 
 }

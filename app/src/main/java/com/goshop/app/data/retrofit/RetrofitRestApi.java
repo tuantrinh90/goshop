@@ -19,6 +19,7 @@ import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.BannerResponse;
@@ -511,4 +512,9 @@ public interface RetrofitRestApi {
     @POST
     Observable<Response<ApplyEGiftResponse>> applyEGiftCard(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<OrderMetadataResponse>> getOrderMetadata(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 }

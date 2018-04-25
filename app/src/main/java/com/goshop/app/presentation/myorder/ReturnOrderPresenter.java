@@ -2,10 +2,12 @@ package com.goshop.app.presentation.myorder;
 
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.OrderMetaMapper;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 
 import java.util.ArrayList;
@@ -22,26 +24,6 @@ public class ReturnOrderPresenter extends RxPresenter<ReturnOrderContract.View>
 
     public ReturnOrderPresenter(AccountRepository accountRepository) {
         this.accountRepository = accountRepository;
-    }
-
-    @Override
-    public List<ProfileMetaVM> getCodeChooses() {
-        //todo this is mock data
-        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            profileMetaVMS.add(new ProfileMetaVM("Code " + (i + 1)));
-        }
-        return profileMetaVMS;
-    }
-
-    @Override
-    public List<ProfileMetaVM> getDetailChooses() {
-        //todo this is mock data
-        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            profileMetaVMS.add(new ProfileMetaVM("Reason " + (i + 1)));
-        }
-        return profileMetaVMS;
     }
 
     @Override
@@ -66,6 +48,39 @@ public class ReturnOrderPresenter extends RxPresenter<ReturnOrderContract.View>
                 public void onNext(Response<OrderResponse> response) {
                     mView.hideLoadingBar();
                     mView.returnRequestSuccess();
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    if (throwable instanceof ServiceApiFail) {
+                        mView.returnRequestFailed(((ServiceApiFail) throwable).getErrorMessage());
+                    } else {
+                        mView.returnRequestNetError(throwable.getMessage().toString());
+                    }
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void getOrderMetadata() {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+
+        addSubscrebe(accountRepository.getOrderMetadata(params).subscribeWith(
+            new DisposableObserver<Response<OrderMetadataResponse>>() {
+                @Override
+                public void onNext(Response<OrderMetadataResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.setReasonCode(OrderMetaMapper.transformReturnReason(response.getData()));
+                    mView.setReasonDetail(OrderMetaMapper.transformReturnProductResolution(response.getData()));
                 }
 
                 @Override

@@ -19,7 +19,6 @@ import com.goshop.app.presentation.model.ApplyPointsVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ScreenHelper;
-import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
@@ -159,6 +158,10 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         String pointsTip = String
             .format(getResources().getString(R.string.checkout_points_tip), "300");
         tvCheckoutAttention.setText(Html.fromHtml(pointsTip));
+        //todo when checkout api added, this will delete
+        tvBtnCheckDiscountApply.setSelected(false);
+        tvBtnCheckGiftCardApply.setSelected(false);
+        tvBtnCheckPointsApply.setSelected(false);
     }
 
     @Override
@@ -199,11 +202,11 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     public void applyCouponSuccess(ApplyDiscountVM discountVM) {
         if(tvBtnCheckDiscountApply.isSelected()) {
             tvBtnCheckDiscountApply.setSelected(false);
-            tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
+            tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
             etCheckoutDiscount.setText(discountVM.getDiscount());
         } else {
             tvBtnCheckDiscountApply.setSelected(true);
-            tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
+            tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
         }
 
     }
@@ -212,11 +215,11 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     public void applyPointsSuccess(ApplyPointsVM pointsVM) {
         if(tvBtnCheckPointsApply.isSelected()) {
             tvBtnCheckPointsApply.setSelected(false);
-            tvBtnCheckPointsApply.setText(getResources().getString(R.string.cancel));
+            tvBtnCheckPointsApply.setText(getResources().getString(R.string.apply));
             etCheckoutPoint.setText(pointsVM.getPointsApplied());
         } else {
             tvBtnCheckPointsApply.setSelected(true);
-            tvBtnCheckPointsApply.setText(getResources().getString(R.string.apply));
+            tvBtnCheckPointsApply.setText(getResources().getString(R.string.cancel));
         }
     }
 
@@ -224,11 +227,11 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     public void applyEGiftSuccess(ApplyEGiftVM eGiftVM) {
         if(tvBtnCheckGiftCardApply.isSelected()) {
             tvBtnCheckGiftCardApply.setSelected(false);
-            tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
+            tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.apply));
             etCheckoutEgift.setText(eGiftVM.geteGiftApplied());
         } else {
             tvBtnCheckGiftCardApply.setSelected(true);
-            tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.apply));
+            tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
         }
     }
 
