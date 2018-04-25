@@ -88,6 +88,7 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
             tabLayoutArrays);
         viewpagerMain.setAdapter(pagerAdapter);
         tablayoutMain.setupWithViewPager(viewpagerMain);
+        viewpagerMain.setOffscreenPageLimit(fragments.size());
     }
 
     private void initSearchBar() {

@@ -103,8 +103,8 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
             new DisposableObserver<Response<OnAirScheduleResponse>>() {
                 @Override
                 public void onNext(Response<OnAirScheduleResponse> response) {
-                    trendingNowModels.add(new TrendingVideoVM(context.getString(R.string.on_air),
-                        context.getString(R.string.tv_schedule),
+                    // TODO: 2018/4/25  hard code need api return
+                    trendingNowModels.add(new TrendingVideoVM("On Air", "TV Schedule",
                         TrendingMapper.transformOnAirSchedule(response)));
                     getMockData();
                     mView.onAirScheduleRequestSuccess(trendingNowModels);
