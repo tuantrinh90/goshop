@@ -100,7 +100,6 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     private void initData() {
         mPresenter.getHomeBanner();
-        swipeRefresh.setRefreshing(true);
     }
 
     @Override
