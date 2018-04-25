@@ -79,7 +79,8 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(CategoriesParentVM leftMenuVM, int position) {
-            Glide.with(itemView.getContext()).load(leftMenuVM.getIcon()).asBitmap()
+            // TODO: 2018/4/25 mockIcon need change
+            Glide.with(itemView.getContext()).load(leftMenuVM.getMockIcon()).asBitmap()
                 .error(R.mipmap.ic_launcher)
                 .into(ivCategoryLeftMenu);
             tvCategoryLeftMenu.setText(leftMenuVM.getName());

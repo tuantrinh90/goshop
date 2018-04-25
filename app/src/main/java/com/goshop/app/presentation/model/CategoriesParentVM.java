@@ -6,6 +6,8 @@ public class CategoriesParentVM {
 
     private String icon;
 
+    private int mockIcon;
+
     private int id;
 
     private String link;
@@ -15,6 +17,14 @@ public class CategoriesParentVM {
     private List<CategoriesChildVM> child;
 
     private boolean isSelect;
+
+    public int getMockIcon() {
+        return mockIcon;
+    }
+
+    public void setMockIcon(int mockIcon) {
+        this.mockIcon = mockIcon;
+    }
 
     public boolean isSelect() {
         return isSelect;
