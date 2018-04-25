@@ -250,6 +250,8 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onRefresh() {
-        mPresenter.getOnAirSchedule(getContext());
+        // TODO: 2018/4/25 refresh need decide
+        swipeRefresh.setRefreshing(false);
+//        mPresenter.getOnAirSchedule(getContext());
     }
 }

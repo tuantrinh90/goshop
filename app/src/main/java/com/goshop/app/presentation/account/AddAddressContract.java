@@ -17,6 +17,12 @@ public class AddAddressContract {
         void addAddressSuccess();
 
         void addAddressFailed(String errorMessage);
+
+        void onStatesRequestSuccess(List<ProfileMetaVM> response);
+
+        void onCitysRequestSuccess(List<ProfileMetaVM> response);
+
+        void onZipCodeRequestSuccess(List<ProfileMetaVM> response);
     }
 
     public interface Presenter extends BasePresenter<View> {
@@ -27,14 +33,10 @@ public class AddAddressContract {
 
         List<ProfileMetaVM> getCountryChooses();
 
-        List<ProfileMetaVM> getStateChooses();
+        void getStates();
 
-        List<ProfileMetaVM> getCityChooses();
+        void getCitys(String stateId);
 
-        void getState();
-
-        void getCity();
-
-        void getZipCode();
+        void getZipCode(String stateId, String cityCode);
     }
 }

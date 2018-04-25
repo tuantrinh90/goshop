@@ -19,6 +19,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -83,9 +84,13 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO: 2018/4/25 this code need decide
+        mPresenter.getStates();
+        mPresenter.getCitys("543");
+        mPresenter.getZipCode("543", "Kualalumpur");
         countryVMS = mPresenter.getCountryChooses();
-        stateVMS = mPresenter.getStateChooses();
-        cityVMS = mPresenter.getCityChooses();
+        stateVMS = new ArrayList<>();
+        cityVMS = new ArrayList<>();
     }
 
     @Override
@@ -153,6 +158,21 @@ public class AddAddressActivity extends BaseActivity<AddAddressContract.Presente
                         this);
                 break;
         }
+    }
+
+    @Override
+    public void onStatesRequestSuccess(List<ProfileMetaVM> response) {
+        stateVMS.addAll(response);
+    }
+
+    @Override
+    public void onCitysRequestSuccess(List<ProfileMetaVM> response) {
+        cityVMS.addAll(response);
+    }
+
+    @Override
+    public void onZipCodeRequestSuccess(List<ProfileMetaVM> response) {
+        //need decide
     }
 
     private void judgmentInput(String name, String addressOne,
