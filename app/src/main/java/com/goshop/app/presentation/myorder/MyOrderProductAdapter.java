@@ -102,6 +102,17 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_order_product_write)
         RobotoLightTextView tvOrderProductWrite;
 
+        private static final String DELIVERED = "Delivered";
+
+        private static final String BTN_RETURN = "Return";
+
+        private static final String BTN_TRACK = "Track";
+
+        private static final String MIDDLE_SPACE = ":\t";
+
+        private static final String END_SPACE = ";\t";
+
+
         public MyOrdersProductViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -110,9 +121,9 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
         void bindingDatas(MyOrdersProductVM productVM) {
             tvOrderProductNumber.setText(productVM.getStatuNo());
             tvOrderProductStatu.setText(productVM.getStatuContent());
-            //todo this hard code is wait for api
+            //todo this part is wait for api
             tvOrderProductTrack
-                .setText(productVM.getStatuContent().equals("Delivered") ? "Return" : "Track");
+                .setText(productVM.getStatuContent().equals(DELIVERED) ? BTN_RETURN : BTN_TRACK);
 
             Glide.with(itemView.getContext()).load(productVM.getThumb()).asBitmap()
                 .error(productVM.getThumbDefault())
@@ -125,11 +136,11 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
             Map<String, String> attrsMap = productVM.getAttrMap();
             String attr = "";
             for (Map.Entry<String, String> entry : attrsMap.entrySet()) {
-                attr = attr + entry.getKey() + ":\t" + entry.getValue() + ";\t";
+                attr = attr + entry.getKey() + MIDDLE_SPACE + entry.getValue() + END_SPACE;
             }
             tvOrderProductAttr.setText(attr);
             tvOrderProductTrack.setOnClickListener(v -> {
-                if (productVM.getStatuContent().equals("Delivered")) {
+                if (productVM.getStatuContent().equals(DELIVERED)) {
                     onOrderDetailItemClickListener.onReturnClick();
                 } else {
                     onOrderDetailItemClickListener.onTrackClick();
