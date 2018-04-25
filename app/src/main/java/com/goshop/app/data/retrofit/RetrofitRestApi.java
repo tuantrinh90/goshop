@@ -50,8 +50,10 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.ZipCodeResponse;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -417,15 +419,18 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<StatesResponse>> getStates(@Url String fullUrl);
+    Observable<Response<StatesResponse>> getStates(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<CityResponse>> getCity(@Url String fullUrl);
+    Observable<Response<CityResponse>> getCity(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<ZipCodeResponse>> getZipCode(@Url String fullUrl);
+    Observable<Response<ZipCodeResponse>> getZipCode(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

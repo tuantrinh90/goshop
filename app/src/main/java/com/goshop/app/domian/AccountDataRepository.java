@@ -17,7 +17,6 @@ import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -526,8 +525,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<StatesResponse>> getStates() {
-        return accountCloudDataSource.getStates().concatMap(response -> {
+    public Observable<Response<StatesResponse>> getStates(Map<String, Object> params) {
+        return accountCloudDataSource.getStates(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -538,8 +537,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<CityResponse>> getCity() {
-        return accountCloudDataSource.getCity().concatMap(response -> {
+    public Observable<Response<CityResponse>> getCity(Map<String, Object> params) {
+        return accountCloudDataSource.getCity(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {
@@ -550,8 +549,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Response<ZipCodeResponse>> getZipCode() {
-        return accountCloudDataSource.getZipCode().concatMap(response -> {
+    public Observable<Response<ZipCodeResponse>> getZipCode(Map<String, Object> params) {
+        return accountCloudDataSource.getZipCode(params).concatMap(response -> {
             if (isSuccess(response.getMessage().getStatus())) {
                 return Observable.just(response);
             } else {

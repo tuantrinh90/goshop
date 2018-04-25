@@ -448,21 +448,21 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<StatesResponse>> getStates() {
+    public Observable<Response<StatesResponse>> getStates(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_STATES);
-        return retrofitRestApi.getStates(url);
+        return retrofitRestApi.getStates(url,params);
     }
 
     @Override
-    public Observable<Response<CityResponse>> getCity() {
+    public Observable<Response<CityResponse>> getCity(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_CITY);
-        return retrofitRestApi.getCity(url);
+        return retrofitRestApi.getCity(url,params);
     }
 
     @Override
-    public Observable<Response<ZipCodeResponse>> getZipCode() {
+    public Observable<Response<ZipCodeResponse>> getZipCode(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_ZIPCODE);
-        return retrofitRestApi.getZipCode(url);
+        return retrofitRestApi.getZipCode(url,params);
     }
 
     @Override
