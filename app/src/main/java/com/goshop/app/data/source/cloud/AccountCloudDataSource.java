@@ -17,6 +17,7 @@ import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -376,6 +377,12 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params) {
         return restApi.applyEGiftCard(params);
+    }
+
+    @Override
+    public Observable<Response<OrderMetadataResponse>> getOrderMetadata(
+        Map<String, Object> params) {
+        return restApi.getOrderMetadata(params);
     }
 
 }

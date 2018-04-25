@@ -17,6 +17,7 @@ import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -240,8 +241,6 @@ public class AccountDataRepository implements AccountRepository {
             .observeOn(AndroidSchedulers.mainThread());
     }
 
-
-
     @Override
     public Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params) {
         return accountCloudDataSource.getListOrder(params).concatMap(response -> {
@@ -265,8 +264,6 @@ public class AccountDataRepository implements AccountRepository {
             }
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
-
-
 
     @Override
     public Observable<NotificationsResponse> notificationRequest(Map<String, Object> params) {
@@ -574,14 +571,7 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<Response<OrderResponse>> returnOrderRequest(Map<String, Object> params) {
-        return accountCloudDataSource.returnOrderRequest(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(accountCloudDataSource.returnOrderRequest(params));
     }
 
     @Override
@@ -654,8 +644,32 @@ public class AccountDataRepository implements AccountRepository {
         }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
+    @Override
+    public Observable<Response<OrderMetadataResponse>> getOrderMetadata(
+        Map<String, Object> params) {
+        return accountCloudDataSource.getOrderMetadata(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+    }
+
     private boolean isSuccess(String status) {
         return Const.SUCCESS_STATUS.equals(status);
+    }
+
+    private <T> Observable<Response<T>> getServerData(Observable<Response<T>> observable) {
+        return observable.concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
 }

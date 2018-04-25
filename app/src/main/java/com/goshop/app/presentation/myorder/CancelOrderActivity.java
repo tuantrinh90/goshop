@@ -16,6 +16,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -60,8 +61,6 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        reasonCodes = mPresenter.getReasonCodeChooses();
-        reasonDetails = mPresenter.getDetailReasonChooses();
     }
 
     @Override
@@ -71,6 +70,8 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
 
     @Override
     public void inject() {
+        reasonCodes = new ArrayList<>();
+        reasonDetails = new ArrayList<>();
         hideRightMenu();
         initPresenter();
     }
@@ -145,6 +146,18 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
     @Override
     public void cancelRequestNetError(String errorMessage) {
         PopWindowUtil.showRequestMessagePop(tvBtnCancelOrderSubmit, errorMessage);
+    }
+
+    @Override
+    public void setReasonCode(List<ProfileMetaVM> reasonCodes) {
+        this.reasonCodes.clear();
+        this.reasonCodes = reasonCodes;
+    }
+
+    @Override
+    public void setReasonDetail(List<ProfileMetaVM> reasonDetails) {
+        this.reasonDetails.clear();
+        this.reasonDetails = reasonDetails;
     }
 
     @Override
