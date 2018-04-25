@@ -45,7 +45,7 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
     public void bindingData(ProductsVM productsVM,
         OnProductItemClickListener onProductItemClickListener,
         OnProductBuyClickListener buyClickListener) {
-        tvVideoProductTitle.setText(productsVM.getTitle());
+        tvVideoProductTitle.setText(productsVM.getName());
         tvVideoProductOld.setText(productsVM.getPriceVM().getRm().getOriginal());
         tvVideoProductOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
         tvVideoProductNow.setText(productsVM.getPriceVM().getRm().getDiscounted());
