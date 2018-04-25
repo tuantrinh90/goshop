@@ -1,15 +1,21 @@
 package com.goshop.app.presentation.category;
 
+import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.ProductRepository;
+import com.goshop.app.presentation.mapper.CategoryMapper;
+import com.goshop.app.presentation.model.CategoriesParentVM;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightChildVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
 import com.goshop.app.presentation.model.CategoryRightParentVM;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -25,50 +31,44 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
     }
 
     @Override
-    public void getCategoryLeftMenu() {
+    public void getCategory() {
         mView.showLoadingBar();
-        addSubscrebe(repository.getCategoryLeftMenu().subscribeWith(
-            new DisposableObserver<CategoryMenuResponse>() {
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.REQUEST_PARAM_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.REQUEST_PARAM_STORE_ID, Const.STORE_ID);
+        addSubscrebe(repository.getCategory(params).subscribeWith(
+            new DisposableObserver<Response<CategoryResponse>>() {
                 @Override
-                public void onNext(CategoryMenuResponse categoryMenuResponse) {
+                public void onNext(Response<CategoryResponse> categoryMenuResponse) {
                     mView.hideLoadingBar();
+                    mView.onCategoryRequestSuccess(
+                        getmockIcon(CategoryMapper.transform(categoryMenuResponse)));
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.showLeftMenu(getMockLeftMenu());
+                    if (throwable instanceof ServiceApiFail) {
+                        ServiceApiFail serviceApiFail = (ServiceApiFail) throwable;
+                        mView.showServiceErrorMessage(serviceApiFail.getErrorMessage());
+                    } else {
+                        mView.showNetworkErrorMessage(throwable.getMessage());
+                    }
                 }
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
-
     }
 
-    @Override
-    public void categoryRightMenuRequest(Map<String, Object> params) {
-        mView.showLoadingBar();
-        addSubscrebe(repository.categoryRightMenuRequest(params).subscribeWith(
-            new DisposableObserver<CategoryMenuResponse>() {
-                @Override
-                public void onNext(CategoryMenuResponse categoryMenuResponse) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                    mView.showRightMenu(getMockRightMenu());
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
+    private List<CategoriesParentVM> getmockIcon(List<CategoriesParentVM> transform) {
+        List<CategoryLeftMenuVM> categoryLeftMenuVMs = getMockLeftMenu();
+        for (int i = 0; i < transform.size(); i++) {
+            transform.get(i).setMockIcon(categoryLeftMenuVMs.get(i).getDefaultIcon());
+        }
+        return transform;
     }
 
     //TODO this is mock data

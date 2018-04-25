@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.FAQVM;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
@@ -19,7 +20,8 @@ import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
-public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements FAQContract.View {
+public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements FAQContract.View,
+    FAQAdapter.OnFAQItemClickListener {
 
     @BindView(R.id.recyclerview_faq)
     RecyclerView recyclerviewFaq;
@@ -55,6 +57,7 @@ public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements 
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         recyclerviewFaq.setLayoutManager(layoutManager);
         adapter = new FAQAdapter(new ArrayList<>());
+        adapter.setOnFAQItemClickListener(this);
         recyclerviewFaq.setAdapter(adapter);
     }
 
@@ -78,5 +81,18 @@ public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements 
                 finish();
                 break;
         }
+    }
+
+    @Override
+    public void onItemClick(FAQVM faqvm) {
+        gotoInfoDetails(faqvm.getLabel());
+    }
+
+    private void gotoInfoDetails(String title) {
+        Intent intent = new Intent(this, WebContentActivity.class);
+        intent.putExtra(WebContentActivity.EXTRA__LINK, title);
+        intent.putExtra(WebContentActivity.EXTRA__TITLE, title);
+        intent.putExtra(WebContentActivity.EXTRA_TYPE, title);
+        startActivity(intent);
     }
 }

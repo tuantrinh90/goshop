@@ -1,7 +1,7 @@
 package com.goshop.app.domian;
 
 import com.goshop.app.data.model.BrandsResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
@@ -42,9 +42,9 @@ public interface ProductRepository {
 
     Observable<PromotionListResponse> promotionListRequest(Map<String, Object> params);
 
-    Observable<CategoryMenuResponse> getCategoryLeftMenu();
+    Observable<Response<CategoryResponse>> getCategory(Map<String, Object> params);
 
-    Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params);
+    Observable<CategoryResponse> categoryRightMenuRequest(Map<String, Object> params);
 
     Observable<SearchResultResponse> categoryDetailRequest(Map<String, Object> params);
 

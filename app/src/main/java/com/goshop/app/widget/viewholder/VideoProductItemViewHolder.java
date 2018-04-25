@@ -1,11 +1,13 @@
 package com.goshop.app.widget.viewholder;
 
 import com.bumptech.glide.Glide;
+import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
@@ -45,10 +47,12 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
     public void bindingData(ProductsVM productsVM,
         OnProductItemClickListener onProductItemClickListener,
         OnProductBuyClickListener buyClickListener) {
-        tvVideoProductTitle.setText(productsVM.getTitle());
-        tvVideoProductOld.setText(productsVM.getPriceVM().getRm().getOriginal());
+        tvVideoProductTitle.setText(productsVM.getName());
+        tvVideoProductOld
+            .setText(NumberFormater.formaterPrice(productsVM.getPriceVM().getRm().getOriginal()));
         tvVideoProductOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
-        tvVideoProductNow.setText(productsVM.getPriceVM().getRm().getDiscounted());
+        tvVideoProductNow
+            .setText(NumberFormater.formaterPrice(productsVM.getPriceVM().getRm().getDiscounted()));
         tvVideoProductPercent.setText(productsVM.getPriceVM().getRm().getDiscountTitle());
         Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
             .error(R.drawable.ic_bought)

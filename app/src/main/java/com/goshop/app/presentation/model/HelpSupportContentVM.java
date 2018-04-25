@@ -6,15 +6,26 @@ public class HelpSupportContentVM extends HelpSupportModel {
 
     private String label;
 
+    private String link;
+
     public HelpSupportContentVM(String label, HelpContentClickListener helpContentClickListener) {
         super(HelpSupportModel.HELP_CONTENT);
         this.label = label;
         this.helpContentClickListener = helpContentClickListener;
     }
 
-    public HelpSupportContentVM(String label) {
+    public HelpSupportContentVM(String label, String link) {
         super(HelpSupportModel.HELP_CONTENT);
         this.label = label;
+        this.link = link;
+    }
+
+    public String getLink() {
+        return link;
+    }
+
+    public void setLink(String link) {
+        this.link = link;
     }
 
     public String getLabel() {

@@ -83,7 +83,10 @@ public class TermsConditionsActivity extends BaseActivity<TermsConditionsContrac
     }
 
     @Override
-    public void onTermsClick() {
-        startActivity(new Intent(this, WebContentActivity.class));
+    public void onTermsClick(TermsConditionsVM termsConditionsVM) {
+        Intent intent = new Intent(this, WebContentActivity.class);
+        intent.putExtra(WebContentActivity.EXTRA_TYPE, termsConditionsVM.getLabel());
+        intent.putExtra(WebContentActivity.EXTRA__TITLE, termsConditionsVM.getLabel());
+        startActivity(intent);
     }
 }

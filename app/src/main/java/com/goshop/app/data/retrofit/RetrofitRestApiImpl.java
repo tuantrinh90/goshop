@@ -9,13 +9,13 @@ import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
-import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
@@ -315,7 +315,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<HelpSupportResponse> helpSupportRequest(Map<String, Object> params) {
+    public Observable<Response<HelpSupportResponse>> helpSupportRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.HELP_SUPPORT);
         return retrofitRestApi.helpSupportRequest(url, params);
     }
@@ -376,13 +376,13 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.CATEGORY_LEFT);
-        return retrofitRestApi.getCategoryLeftMenu(url);
+    public Observable<Response<CategoryResponse>> getCategory(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.CATEGORY_TREE);
+        return retrofitRestApi.getCategory(url, params);
     }
 
     @Override
-    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+    public Observable<CategoryResponse> categoryRightMenuRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CATEGORY_RIGHT);
         return retrofitRestApi.categoryRightMenuRequest(url, params);
     }

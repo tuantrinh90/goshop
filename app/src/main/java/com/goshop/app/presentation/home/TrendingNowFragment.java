@@ -71,6 +71,8 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     private ArrayList<BannerVm> bannerVmList;
 
+    private List<TrendingNowModel> trendingNowModels;
+
     public static TrendingNowFragment getInstance() {
         return new TrendingNowFragment();
     }
@@ -121,12 +123,13 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     private void initRecyclerView() {
+        trendingNowModels = new ArrayList<>();
         bannerVmList = new ArrayList<>();
         swipeRefresh.setColorSchemeResources(R.color.color_main_pink);
         swipeRefresh.setOnRefreshListener(this);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerviewTrending.setLayoutManager(manager);
-        trendingNowAdapter = new TrendingNowAdapter(this, new ArrayList<>());
+        trendingNowAdapter = new TrendingNowAdapter(this, trendingNowModels);
         recyclerviewTrending.setIAdapter(trendingNowAdapter);
     }
 
@@ -136,28 +139,23 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         unbinder.unbind();
     }
 
-    @Override
-    public void trendingNowResult(List<TrendingNowModel> models) {
-        trendingNowAdapter.setDatasUpdate(models);
-    }
 
     @Override
     public void onBannerRequestSuccess(List<BannerVm> bannerVms) {
         mPresenter.getOnAirSchedule(getContext());
-        swipeRefresh.setRefreshing(false);
-        bannerVmList.clear();
-        bannerVmList.addAll(bannerVms);
         if (!isHeaderAdded) {
+            bannerVmList.addAll(bannerVms);
             isHeaderAdded = true;
             addHeaderView();
+            bannerViewPager
+                .setAdapter(new HomeBannerAdapter(bannerVmList, this));
+            customPagerIndicator.setViewPager(bannerViewPager);
+            BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(
+                bannerViewPager, 2000);
+            bannerAutoPlayHelper.autoPlay();
+            trendingNowAdapter.notifyDataSetChanged();
         }
-        bannerViewPager
-            .setAdapter(new HomeBannerAdapter(bannerVmList, this));
-        customPagerIndicator.setViewPager(bannerViewPager);
-        BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(
-            bannerViewPager, 2000);
-        bannerAutoPlayHelper.autoPlay();
-        trendingNowAdapter.notifyDataSetChanged();
+
     }
 
     @Override
@@ -171,7 +169,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         RelativeLayout rlBannerContainer = header.findViewById(R.id.rl_banner_layout);
         customPagerIndicator = header.findViewById(R.id.indicator_widget);
         bannerViewPager = header.findViewById(R.id.viewpager_widget_banner);
-        int height = ScreenHelper.getWidth(getContext()) / 8 * 3;
+        int height = ScreenHelper.dip2px(getContext(),238);
         rlBannerContainer.setLayoutParams(
             new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
         recyclerviewTrending.addHeaderView(header);
@@ -191,8 +189,11 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     @Override
-    public void onAirScheduleRequestSuccess(List<TrendingNowModel> bannerVms) {
-        trendingNowAdapter.setDatasUpdate(bannerVms);
+    public void onAirScheduleRequestSuccess(List<TrendingNowModel> trendingNowModels) {
+        swipeRefresh.setRefreshing(false);
+        this.trendingNowModels.clear();
+        this.trendingNowModels.addAll(trendingNowModels);
+        trendingNowAdapter.notifyDataSetChanged();
     }
 
     @Override
@@ -249,6 +250,6 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onRefresh() {
-        mPresenter.getHomeBanner();
+        mPresenter.getOnAirSchedule(getContext());
     }
 }

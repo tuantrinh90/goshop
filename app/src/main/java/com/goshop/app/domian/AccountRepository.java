@@ -8,7 +8,7 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
-import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
@@ -114,7 +114,7 @@ public interface AccountRepository {
 
     Observable<GetWebContentResponse> getContactContent();
 
-    Observable<HelpSupportResponse> helpSupportRequest(Map<String, Object> params);
+    Observable<Response<HelpSupportResponse>> helpSupportRequest(Map<String, Object> params);
 
     Observable<FAQResponse> faqRequest(Map<String, Object> params);
 
