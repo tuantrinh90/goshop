@@ -8,16 +8,15 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
 
 import butterknife.BindView;
+import butterknife.OnClick;
 
 public class CheckoutAddNewAddressActivity extends BaseActivity {
 
-    @BindView(R.id.et_new_address_first)
-    CustomAnimEditText etNewAddressFirst;
-
-    @BindView(R.id.et_new_address_last)
-    CustomAnimEditText etNewAddressLast;
+    @BindView(R.id.et_new_address_name)
+    CustomAnimEditText etNewAddressName;
 
     @BindView(R.id.et_new_address_one)
     CustomAnimEditText etNewAddressOne;
@@ -56,11 +55,20 @@ public class CheckoutAddNewAddressActivity extends BaseActivity {
     @Override
     public void inject() {
         hideRightMenu();
-        textviewRightMenu.setText(getResources().getString(R.string.save));
+        textviewRightMenu.setText(getResources().getString(R.string.done));
     }
 
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.add_new_address);
+    }
+
+    @OnClick({R.id.imageview_left_menu})
+    public void onClick(View view) {
+        switch (view.getId()) {
+            case R.id.imageview_left_menu:
+                finish();
+                break;
+        }
     }
 }

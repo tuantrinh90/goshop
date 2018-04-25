@@ -16,6 +16,6 @@ public class CheckoutSelectContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void selectAddressRequest(Map<String, Object> params);
+        void selectAddressRequest(String type, Map<String, Object> params);
     }
 }

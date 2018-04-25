@@ -196,14 +196,6 @@
             android:theme="@style/WhiteBackground"/>
 
         <activity
-            android:name=".presentation.myorder.MyOrderListActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity
-            android:name=".presentation.myorder.MyOrderDetailActivity"
-            android:theme="@style/WhiteBackground"/>
-
-        <activity
             android:name=".presentation.myorder.CancelOrderActivity"
             android:windowSoftInputMode="adjustPan|stateHidden"
             android:theme="@style/WhiteBackground"/>

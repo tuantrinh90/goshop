@@ -11,7 +11,10 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
-import com.goshop.app.data.model.OrderDetailResponse;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
+import com.goshop.app.data.model.response.ApplyEGiftResponse;
+import com.goshop.app.data.model.response.ApplyPointsResponse;
+import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.SettingsLogoutResponse;
@@ -22,10 +25,8 @@ import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.HomeResponse;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
-import com.goshop.app.data.model.response.MyOrderDetailResponse;
 import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
@@ -136,32 +137,17 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<HomeResponse> homeRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
     public Observable<CheckoutResponse> checkoutRequest(String sessionKey) {
         return null;
     }
 
     @Override
-    public Observable<MyOrderListResponse> myOrderListRequest(Map<String, Object> params) {
+    public Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<MyOrderListResponse> myOrdersRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<OrderDetailResponse> orderDetailRequest(Map<String, Object> params) {
-        return null;
-    }
-
-    @Override
-    public Observable<MyOrderDetailResponse> myOrderDetailRequest(Map<String, Object> params) {
+    public Observable<Response<OrderDetailResponse>> getOrderDetail(Map<String, Object> params) {
         return null;
     }
 
@@ -372,5 +358,20 @@ public class AccountLocalDataSource implements AccountDataSource {
     @Override
     public Observable<Object> saveFlags(FlagsVM flagsVM) {
         return localApi.saveFlags(flagsVM);
+    }
+
+    @Override
+    public Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params) {
+        return null;
     }
 }

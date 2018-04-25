@@ -269,10 +269,11 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                     getResources().getString(R.string.choose_title), titleVMS, this);
                 break;
             case R.id.tv_register_language:
-                EditTextUtil.eidtLoseFocus(view);
+                //todo please dont delete this, now it use default value
+                /*EditTextUtil.eidtLoseFocus(view);
                 currentPopType = PopWindowUtil.LANGUAGE_POP;
                 PopWindowUtil.showSingleChoosePop(tvRegisterLanguage,
-                    getResources().getString(R.string.choose_language), languagesVMS, this);
+                    getResources().getString(R.string.choose_language), languagesVMS, this);*/
                 break;
             case R.id.tv_register_date_of_birth:
                 EditTextUtil.eidtLoseFocus(view);

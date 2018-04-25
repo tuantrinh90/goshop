@@ -80,8 +80,6 @@ import com.goshop.app.presentation.login.RegisterContract;
 import com.goshop.app.presentation.login.RegisterPresenter;
 import com.goshop.app.presentation.myorder.CancelOrderContract;
 import com.goshop.app.presentation.myorder.CancelOrderPresenter;
-import com.goshop.app.presentation.myorder.MyOrderContract;
-import com.goshop.app.presentation.myorder.MyOrderPresenter;
 import com.goshop.app.presentation.myorder.MyOrdersContract;
 import com.goshop.app.presentation.myorder.MyOrdersPresenter;
 import com.goshop.app.presentation.myorder.OrderDetailContract;
@@ -242,12 +240,6 @@ public class PresenterModule {
     public CheckoutContract.Presenter provideCheckoutPresenter(
         AccountDataRepository dataRepository) {
         return new CheckoutPresenter(dataRepository);
-    }
-
-    @Provides
-    @ActivityScope
-    public MyOrderContract.Presenter provideMyOrderPresenter(AccountDataRepository dataRepository) {
-        return new MyOrderPresenter(dataRepository);
     }
 
     @Provides

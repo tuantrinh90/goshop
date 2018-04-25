@@ -1,14 +1,16 @@
 package com.goshop.app.presentation.myorder;
 
-import com.goshop.app.R;
+import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.OrderDetailResponse;
+import com.goshop.app.data.model.response.OrderDetailResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
-import com.goshop.app.presentation.model.MyOrdersProductVM;
-import com.goshop.app.presentation.model.OrderDetailVM;
+import com.goshop.app.presentation.mapper.OrderDetailMapper;
 
-import java.util.ArrayList;
-import java.util.List;
+import android.util.Log;
+
+import java.util.HashMap;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
@@ -23,19 +25,27 @@ public class OrderDetailPresenter extends RxPresenter<OrderDetailContract.View> 
     }
 
     @Override
-    public void orderDetailRequest(Map<String, Object> params) {
+    public void getOrderDetail() {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.orderDetailRequest(params).subscribeWith(
-            new DisposableObserver<OrderDetailResponse>() {
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        addSubscrebe(accountRepository.getOrderDetail(params).subscribeWith(
+            new DisposableObserver<Response<OrderDetailResponse>>() {
                 @Override
-                public void onNext(OrderDetailResponse orderDetailResponse) {
+                public void onNext(Response<OrderDetailResponse> response) {
                     mView.hideLoadingBar();
+                    mView.showOrderDetailResult(OrderDetailMapper.transform(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showOrderDetailResult(getMockData());
+                    if (e instanceof ServiceApiFail) {
+                        mView.showErrorMessage(((ServiceApiFail) e).getErrorMessage());
+                    } else {
+                        mView.showNetBreak();
+                    }
                 }
 
                 @Override
@@ -45,30 +55,4 @@ public class OrderDetailPresenter extends RxPresenter<OrderDetailContract.View> 
             }));
     }
 
-    private OrderDetailVM getMockData() {
-        return new OrderDetailVM("123019223", "Shipped", "12:00 PM, 12 July 2018", "Test Name",
-            "Test Address", "city, 1000", "China", "T:+123456789", "Method 1", getMockDatas());
-    }
-
-    //todo this is mock data
-    private List<MyOrdersProductVM> getMockDatas() {
-        List<MyOrdersProductVM> myOrdersProductVMS = new ArrayList<>();
-        List<String> attrs = new ArrayList<>();
-        attrs.add("Blue");
-        attrs.add("L");
-        MyOrdersProductVM productVM = new MyOrdersProductVM("#123019223", "Shipped", "",
-            R.drawable.ic_bought, "Manjung Korean Crispy Seaweed (Sea Salt)", attrs, "269", "119",
-            "3", "30% OFF");
-        MyOrdersProductVM productVM2 = new MyOrdersProductVM("#123019223", "Processing", "",
-            R.drawable.ic_bought, "Manjung Korean Crispy Seaweed (Sea Salt)", attrs, "269", "119",
-            "3", "30% OFF");
-
-        MyOrdersProductVM productVM3 = new MyOrdersProductVM("#123019223", "Delivered", "",
-            R.drawable.ic_bought, "Manjung Korean Crispy Seaweed (Sea Salt)", attrs, "269", "119",
-            "3", "30% OFF");
-        myOrdersProductVMS.add(productVM);
-        myOrdersProductVMS.add(productVM2);
-        myOrdersProductVMS.add(productVM3);
-        return myOrdersProductVMS;
-    }
 }

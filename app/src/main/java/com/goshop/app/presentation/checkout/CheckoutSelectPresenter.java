@@ -21,7 +21,7 @@ public class CheckoutSelectPresenter extends RxPresenter<CheckoutSelectContract.
     }
 
     @Override
-    public void selectAddressRequest(Map<String, Object> params) {
+    public void selectAddressRequest(String type, Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.selectAddressRequest(params).subscribeWith(
             new DisposableObserver<AddressResponse>() {
@@ -33,7 +33,7 @@ public class CheckoutSelectPresenter extends RxPresenter<CheckoutSelectContract.
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    mView.showResult(getMockData());
+                    mView.showResult(getMockData(type));
                 }
 
                 @Override
@@ -43,13 +43,22 @@ public class CheckoutSelectPresenter extends RxPresenter<CheckoutSelectContract.
             }));
     }
 
-    //TODO(helen)wait for api
+    //TODO wait for api
     private List<SelectAddressVM> getMockData() {
         List<SelectAddressVM> addressVMS = new ArrayList<>();
         addressVMS.add(new SelectAddressVM("Test Name", "Address", "City", "State", "1000", "China",
             "T: +1234567890", true));
         addressVMS.add(new SelectAddressVM("Test Name", "Address", "City", "State", "1000", "China",
             "T: +1234567890", false));
+        return addressVMS;
+    }
+
+    //TODO this is mock data
+    private List<SelectAddressVM> getMockData(String type) {
+        List<SelectAddressVM> addressVMS = getMockData();
+        for(SelectAddressVM addressVM:addressVMS) {
+            addressVM.setType(type);
+        }
         return addressVMS;
     }
 }

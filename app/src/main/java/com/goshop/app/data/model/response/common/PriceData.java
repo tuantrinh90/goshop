@@ -10,6 +10,33 @@ public class PriceData {
     @SerializedName("RM")
     private RMData rm;
 
+    @SerializedName("new_price")
+    private String newPrice;
+
+    /**
+     * original_price : 120
+     * new_price : 20
+     */
+
+    @SerializedName("original_price")
+    private String originalPrice;
+
+    public String getOriginalPrice() {
+        return originalPrice;
+    }
+
+    public void setOriginalPrice(String originalPrice) {
+        this.originalPrice = originalPrice;
+    }
+
+    public String getNewPrice() {
+        return newPrice;
+    }
+
+    public void setNewPrice(String newPrice) {
+        this.newPrice = newPrice;
+    }
+
     public RMData getRM() {
         return rm;
     }

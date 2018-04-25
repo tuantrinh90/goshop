@@ -163,7 +163,6 @@
                     android:textColor="@color/color_greyish_brown" />
             </LinearLayout>
 
-
         </ScrollView>
         <View
             android:layout_width="match_parent"

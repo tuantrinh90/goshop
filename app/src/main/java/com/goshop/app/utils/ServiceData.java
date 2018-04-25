@@ -4,137 +4,16 @@ import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.CheckoutResponse;
-import com.goshop.app.data.model.response.HomeResponse;
-import com.goshop.app.data.model.response.MyOrderDetailResponse;
-import com.goshop.app.data.model.response.MyOrderListResponse;
 import com.goshop.app.data.model.response.NotificationsResponse;
 import com.goshop.app.data.model.response.PromotionBannerResponse;
 import com.goshop.app.data.model.response.PromotionListResponse;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 import io.reactivex.Observable;
 
 public class ServiceData {
-
-    static String productName = GoShopApplication.getAppContext().getResources()
-        .getString(R.string.home_item_test_product_name);
-
-    static String productPrice = GoShopApplication.getAppContext().getResources()
-        .getString(R.string.home_item_test_product_price);
-
-    /**
-     * TODO this is temp code
-     */
-    public static Observable<HomeResponse> getBaseData() {
-        HomeResponse topBannerData = getTopBannerData();
-        HomeResponse contentVideoData = getContentVideoData(topBannerData);
-        HomeResponse bottomSlidedata = getBottomSlidedata(contentVideoData);
-        return Observable.just(bottomSlidedata);
-    }
-
-    /**
-     * TODO this is temp code
-     */
-    public static HomeResponse getTopBannerData() {
-        HomeResponse homeResponse = new HomeResponse();
-        List<HomeResponse.TopBanner> topBanners = new ArrayList<>();
-        //top banner
-        List<String> imgs = Arrays.asList(Const.HOME_TEST_IMG1,
-            Const.HOME_TEST_IMG2,
-            Const.HOME_TEST_IMG3);
-        HomeResponse.TopBanner topbanner1 = new HomeResponse.TopBanner();
-        topbanner1.setImg(Const.HOME_TEST_IMG1);
-        topbanner1.setType(Const.PROMOTION_PAGE_PDP);
-        topBanners.add(topbanner1);
-
-        HomeResponse.TopBanner topbanner2 = new HomeResponse.TopBanner();
-        topbanner2.setImg(Const.HOME_TEST_IMG2);
-        topbanner2.setType(Const.PROMOTION_PAGE_LIST);
-        topBanners.add(topbanner2);
-
-        HomeResponse.TopBanner topbanner3 = new HomeResponse.TopBanner();
-        topbanner3.setImg(Const.HOME_TEST_IMG3);
-        topbanner3.setType(Const.PROMOTION_PAGE_BANNER);
-        topBanners.add(topbanner3);
-
-        homeResponse.setTopBanner(topBanners);
-        return homeResponse;
-    }
-
-    /**
-     * TODO this is temp code
-     */
-    public static HomeResponse getContentVideoData(HomeResponse homeResponse) {
-        List<HomeResponse.CenterVideo> centerVideos = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            HomeResponse.CenterVideo centerVideo = new HomeResponse.CenterVideo();
-            HomeResponse.CenterVideo.CenterVideoMsg centerVideoMsg = new HomeResponse.CenterVideo
-                .CenterVideoMsg();
-            centerVideo.setItemType(Const.HOME_CENTER_VIDEO_CHILD_VIDEO);
-            centerVideoMsg.setVideoMsg("i'm " + i + " page");
-            centerVideo.setPosition(i);
-            centerVideo.setCenterVideoMsg(centerVideoMsg);
-            List<HomeResponse.CenterVideo.CenterVideoList> centerVideoLists = new ArrayList<>();
-            for (int j = 0; j < 4; j++) {
-                HomeResponse.CenterVideo.CenterVideoList centerVideoList = new HomeResponse
-                    .CenterVideo.CenterVideoList();
-                centerVideoList.setImgUrl(Const.HOME_TEST_IMG1);
-                centerVideoList.setProductName(productName + j);
-                centerVideoList.setProductPrice(productPrice);
-                centerVideo.setItemType(1);
-                centerVideoLists.add(centerVideoList);
-            }
-            centerVideo.setCenterVideoList(centerVideoLists);
-
-            HomeResponse.CenterVideo.PrevAndNext prevAndNext = new HomeResponse.CenterVideo
-                .PrevAndNext();
-            prevAndNext.setImgUrls(Const.HOME_TEST_IMG1);
-            prevAndNext.setProductName(productName + i);
-            prevAndNext.setProductPrice(productPrice);
-            centerVideo.setItemType(Const.HOME_CENTER_VIDEO_CHILD_PREV_NEXT);
-            centerVideo.setPrevAndNext(prevAndNext);
-            centerVideos.add(centerVideo);
-        }
-        homeResponse.setCenterVideo(centerVideos);
-        return homeResponse;
-    }
-
-    /**
-     * TODO this is temp code
-     */
-    public static HomeResponse getBottomSlidedata(HomeResponse homeResponse) {
-        List<HomeResponse.BottomSlide> bottomSlides = new ArrayList<>();
-        for (int i = 0; i < 3; i++) {
-            String headImageUrl = Const.HOME_TEST_IMG3;
-            HomeResponse.BottomSlide bottomSlideHeader = new HomeResponse.BottomSlide();
-            bottomSlideHeader.setHeadImageUrl(headImageUrl);
-            bottomSlideHeader.setViewType(Const.HOME_BOTTOM_SLIDE_HEADER_IMG);
-            bottomSlides.add(bottomSlideHeader);
-            HomeResponse.BottomSlide bottomSlideTitle = new HomeResponse.BottomSlide();
-            bottomSlideTitle.setViewType(Const.HOME_BOTTOM_SLIDE_TITLE);
-            bottomSlideTitle.setSlideTitle(GoShopApplication.getAppContext().getResources()
-                .getString(R.string.home_bottom_slide_title));
-            bottomSlides.add(bottomSlideTitle);
-            HomeResponse.BottomSlide bottomSlideItem = new HomeResponse.BottomSlide();
-            List<HomeResponse.BottomSlide.BottomSlideChild> bottomSlideChildren = new ArrayList<>();
-            for (int j = 0; j < 10; j++) {
-                HomeResponse.BottomSlide.BottomSlideChild bottomSlideBody = new HomeResponse
-                    .BottomSlide.BottomSlideChild();
-                bottomSlideBody.setProductName(productName);
-                bottomSlideBody.setProductPrice(productPrice);
-                bottomSlideBody.setImageUrl(Const.HOME_TEST_IMG2);
-                bottomSlideChildren.add(bottomSlideBody);
-            }
-            bottomSlideItem.setViewType(Const.HOME_BOTTOM_SLIDE_BODY);
-            bottomSlideItem.setBottomSlideChildren(bottomSlideChildren);
-            bottomSlides.add(bottomSlideItem);
-        }
-        homeResponse.setBottomSlide(bottomSlides);
-        return homeResponse;
-    }
 
     /**
      * TODO this is temp code
@@ -185,95 +64,6 @@ public class ServiceData {
         return Observable.just(promotionBannerResponse);
     }
 
-    /**
-     * TODO this is temp mock code
-     */
-    public static Observable<MyOrderListResponse> getMyOrderLists() {
-        MyOrderListResponse myOrderListResponse = new MyOrderListResponse();
-        List<MyOrderListResponse.ResultsBean> results = new ArrayList<>();
-
-        for (int k = 0; k < 5; k++) {
-            MyOrderListResponse.ResultsBean titleBean = new MyOrderListResponse.ResultsBean();
-            titleBean.setDate("21 Mar 2017");
-            titleBean.setOrderId(String.valueOf(44814 + k));
-            titleBean.setOrderSn(String.valueOf(910312525 + k));
-            titleBean.setTotal("245.00");
-            titleBean.setStatus("pending");
-            titleBean.setType(Const.MYORDER_LIST_TITLE);
-            results.add(titleBean);
-
-            for (int i = 0; i < 3; i++) {
-                MyOrderListResponse.ResultsBean bodyBean = new MyOrderListResponse.ResultsBean();
-                bodyBean.setProductId(String.valueOf(145071 + i));
-                bodyBean.setItemId(String.valueOf(467363 + i));
-                bodyBean.setName("PS4 DUALSHOCK®4 Wireless Controller (Wave Blue)");
-                bodyBean.setBrand("PlayStation");
-                bodyBean.setBrandId(String.valueOf(4813 + i));
-                bodyBean.setCategory("Others");
-                bodyBean.setQty(1 + i);
-                bodyBean.setPrice("208.00");
-                bodyBean.setImage(Const.BANNER_IMG1);
-                bodyBean.setId(String.valueOf(910312525 + i));
-                bodyBean.setStatus("Shipped");
-                bodyBean.setType(Const.MYORDER_LIST_CONTENT);
-                results.add(bodyBean);
-            }
-
-            MyOrderListResponse.ResultsBean bottomPriceBean = new MyOrderListResponse.ResultsBean();
-            bottomPriceBean.setTotal("245.00");
-            bottomPriceBean.setType(Const.MYORDER_LIST_PRICE);
-            results.add(bottomPriceBean);
-        }
-
-        myOrderListResponse.setResults(results);
-        myOrderListResponse.setStatus(1);
-        myOrderListResponse.setTotal(results.size());
-        return Observable.just(myOrderListResponse);
-    }
-
-    /**
-     * TODO this is temp mock code
-     */
-    public static Observable<MyOrderDetailResponse> getMyOrderDetail() {
-        MyOrderDetailResponse myOrderDetailResponse = new MyOrderDetailResponse();
-        myOrderDetailResponse.setOrderId("44752");
-        myOrderDetailResponse.setDate("11 Jan 2018");
-        myOrderDetailResponse.setState("processing");
-        myOrderDetailResponse.setStatus(1);
-        myOrderDetailResponse.setCustomerName("Test Test");
-        myOrderDetailResponse.setPaymentMethod("PayPal Express Checkout");
-        myOrderDetailResponse.setSubtotal("RM 1,461.00");
-        myOrderDetailResponse.setShippingFee("RM 0.00");
-        myOrderDetailResponse.setGrandTotal("RM 1,461.00");
-
-        MyOrderDetailResponse.ShippingAddressBean shippingAddressBean = new MyOrderDetailResponse
-            .ShippingAddressBean();
-        shippingAddressBean.setFirstname("Test Name");
-        shippingAddressBean.setCountry("China");
-        shippingAddressBean.setRegion("Discovery Bay & Tung Chung");
-        shippingAddressBean.setCity("Hong kong");
-        shippingAddressBean.setPostcode("123");
-        shippingAddressBean.setTelephone("+123456789");
-        myOrderDetailResponse.setShippingAddress(shippingAddressBean);
-
-        ArrayList<MyOrderDetailResponse.SubordersBean> subordersBeans = new ArrayList<>();
-        for (int i = 0; i < 4; i++) {
-            MyOrderDetailResponse.SubordersBean subordersBean = new MyOrderDetailResponse
-                .SubordersBean();
-            subordersBean.setProductId(String.valueOf(467363123 + i));
-            if (i % 2 == 0) {
-                subordersBean.setStatus("Shipped");
-            } else {
-                subordersBean.setStatus("Processing");
-            }
-            subordersBean.setName("PS4 DUALSHOCK®4 Wireless Controller (Wave Blue)");
-            subordersBean.setImage(Const.HOME_TEST_IMG2);
-            subordersBeans.add(subordersBean);
-        }
-        myOrderDetailResponse.setSuborders(subordersBeans);
-        return Observable.just(myOrderDetailResponse);
-
-    }
 
     /**
      * TODO this is temp mock code

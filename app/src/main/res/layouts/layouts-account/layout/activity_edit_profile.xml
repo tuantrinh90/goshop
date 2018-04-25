@@ -196,6 +196,7 @@
                     android:background="@drawable/selector_textinput_edittext"
                     android:paddingBottom="@dimen/size_8"
                     android:paddingTop="@dimen/size_20"
+                    android:text="@string/malay"
                     android:textSize="@dimen/size_font_16"
                     android:textColorHint="@color/color_text_hint"
                     android:textColor="@color/color_grayscale_text"
