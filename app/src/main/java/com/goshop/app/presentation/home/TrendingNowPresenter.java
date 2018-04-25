@@ -73,6 +73,7 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
 
     @Override
     public void getHomeBanner() {
+        mView.showLoadingBar();
         HashMap<String, Object> params = new HashMap<>();
         params.put(Const.REQUEST_PARAM_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.REQUEST_PARAM_STORE_ID, Const.STORE_ID);

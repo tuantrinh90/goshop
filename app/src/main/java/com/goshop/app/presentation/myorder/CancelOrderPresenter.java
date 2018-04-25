@@ -2,10 +2,12 @@ package com.goshop.app.presentation.myorder;
 
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.OrderMetaMapper;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 
 import java.util.ArrayList;
@@ -64,22 +66,37 @@ public class CancelOrderPresenter extends RxPresenter<CancelOrderContract.View>
     }
 
     @Override
-    public List<ProfileMetaVM> getReasonCodeChooses() {
-        //todo this is mock data
-        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            profileMetaVMS.add(new ProfileMetaVM("Code " + (i + 1)));
-        }
-        return profileMetaVMS;
+    public void getOrderMetadata() {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+
+        addSubscrebe(accountRepository.getOrderMetadata(params).subscribeWith(
+            new DisposableObserver<Response<OrderMetadataResponse>>() {
+                @Override
+                public void onNext(Response<OrderMetadataResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.setReasonCode(OrderMetaMapper.transformReturnReason(response.getData()));
+                    mView.setReasonDetail(OrderMetaMapper.transformReturnProductResolution(response.getData()));
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    if (throwable instanceof ServiceApiFail) {
+                        mView.cancelRequestFailed(((ServiceApiFail) throwable).getErrorMessage());
+                    } else {
+                        mView.cancelRequestNetError(throwable.getMessage().toString());
+                    }
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
 
-    @Override
-    public List<ProfileMetaVM> getDetailReasonChooses() {
-        //todo this is mock data
-        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
-        for (int i = 0; i < 5; i++) {
-            profileMetaVMS.add(new ProfileMetaVM("Detail " + (i + 1)));
-        }
-        return profileMetaVMS;
-    }
+
 }

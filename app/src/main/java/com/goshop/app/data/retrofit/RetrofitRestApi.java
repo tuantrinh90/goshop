@@ -19,6 +19,7 @@ import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.BannerResponse;
@@ -50,8 +51,10 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.ZipCodeResponse;
+
 import java.util.HashMap;
 import java.util.Map;
+
 import io.reactivex.Observable;
 import retrofit2.http.Body;
 import retrofit2.http.DELETE;
@@ -417,15 +420,18 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<StatesResponse>> getStates(@Url String fullUrl);
+    Observable<Response<StatesResponse>> getStates(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<CityResponse>> getCity(@Url String fullUrl);
+    Observable<Response<CityResponse>> getCity(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<ZipCodeResponse>> getZipCode(@Url String fullUrl);
+    Observable<Response<ZipCodeResponse>> getZipCode(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -506,4 +512,9 @@ public interface RetrofitRestApi {
     @POST
     Observable<Response<ApplyEGiftResponse>> applyEGiftCard(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<OrderMetadataResponse>> getOrderMetadata(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 }

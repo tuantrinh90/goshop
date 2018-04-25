@@ -1,15 +1,15 @@
 package com.goshop.app.data.model.response.common;
 
-public class StatesData {
+public class ReasonData {
 
     /**
-     * id : 512
-     * name : Johor
+     * id : 1
+     * value : ProductDamage
      */
 
     private String id;
 
-    private String name;
+    private String value;
 
     public String getId() {
         return id;
@@ -19,11 +19,11 @@ public class StatesData {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getValue() {
+        return value;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setValue(String value) {
+        this.value = value;
     }
 }

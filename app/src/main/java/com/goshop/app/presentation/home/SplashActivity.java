@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.home;
 
-import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
@@ -30,6 +29,11 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO: 2018/4/25 this need decide 
+//        mPresenter.getStates();
+//        mPresenter.getCitys("543");
+//        mPresenter.getZipCode("543","Kualalumpur");
+
         mPresenter.getFlags();
     }
 

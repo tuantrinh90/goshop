@@ -25,6 +25,12 @@ public class SplashContract {
         void getFlags();
 
         void saveFlags(boolean isLoadLocalData, String type);
+
+        void getStates();
+
+        void getCitys(String stateId);
+
+        void getZipCode(String stateId,String cityCode);
     }
 
 }

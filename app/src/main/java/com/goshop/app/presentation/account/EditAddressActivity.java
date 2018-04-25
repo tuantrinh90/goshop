@@ -19,6 +19,7 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import android.view.View;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -86,9 +87,13 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // TODO: 2018/4/25 this code need decide
+        mPresenter.getStates();
+        mPresenter.getCitys("543");
+        mPresenter.getZipCode("543", "Kualalumpur");
         countryVMS = mPresenter.getCountryChooses();
-        stateVMS = mPresenter.getStateChooses();
-        cityVMS = mPresenter.getCityChooses();
+        stateVMS = new ArrayList<>();
+        cityVMS = new ArrayList<>();
     }
 
     @Override
@@ -99,6 +104,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     @Override
     public void inject() {
         textviewRightMenu.setText(getResources().getString(R.string.done));
+        tvEditAddressCountry.setText(getResources().getString(R.string.malaysia));
         checkboxDefaultBilling.setChecked(true);
         checkboxDefaultShipping.setChecked(true);
         setUp();
@@ -158,9 +164,11 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                         this);
                 break;
             case R.id.tv_edit_address_country:
-                currentPop = PopWindowUtil.COUNTRY_POP;
-                PopWindowUtil.showSingleChoosePop(view, getResources().getString(R.string.country),
-                    countryVMS, this);
+                //todo now api have no data about country
+                // todo this will do nothing, please dont delete
+//                currentPop = PopWindowUtil.COUNTRY_POP;
+//                PopWindowUtil.showSingleChoosePop(view, getResources().getString(R.string.country),
+//                    countryVMS, this);
                 break;
             case R.id.tv_edit_address_state:
                 currentPop = PopWindowUtil.STATE_POP;
@@ -169,6 +177,21 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                         this);
                 break;
         }
+    }
+
+    @Override
+    public void onStatesRequestSuccess(List<ProfileMetaVM> response) {
+        stateVMS.addAll(response);
+    }
+
+    @Override
+    public void onCitysRequestSuccess(List<ProfileMetaVM> response) {
+        cityVMS.addAll(response);
+    }
+
+    @Override
+    public void onZipCodeRequestSuccess(List<ProfileMetaVM> response) {
+        //need decide
     }
 
     private void judgmentInput(String name, String addressOne,
@@ -273,4 +296,6 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     public void editAddressFailed(String errorMessage) {
         PopWindowUtil.showRequestMessagePop(textviewRightMenu, errorMessage);
     }
+
+
 }

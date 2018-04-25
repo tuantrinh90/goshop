@@ -15,6 +15,7 @@ import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
@@ -146,11 +147,11 @@ public interface AccountRepository {
 
     Observable<UserData> getUserInfo();
 
-    Observable<Response<StatesResponse>> getStates();
+    Observable<Response<StatesResponse>> getStates(Map<String, Object> params);
 
-    Observable<Response<CityResponse>> getCity();
+    Observable<Response<CityResponse>> getCity(Map<String, Object> params);
 
-    Observable<Response<ZipCodeResponse>> getZipCode();
+    Observable<Response<ZipCodeResponse>> getZipCode(Map<String, Object> params);
 
     Observable<Boolean> clearUserInfo();
 
@@ -171,4 +172,6 @@ public interface AccountRepository {
     Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params);
 
     Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
+
+    Observable<Response<OrderMetadataResponse>> getOrderMetadata(Map<String, Object> params);
 }

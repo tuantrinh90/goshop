@@ -97,6 +97,8 @@ public class EndpointAddress {
 
     public static final String APPLY_EGIFTCART = "rest/all/V1/rest-api/order/egift-card";
 
+    public static final String GET_ORDER_METADATA = "rest/all/V1/rest-api/metadata/order";
+
     public static final String ADD_ADDRESS = "";
 
     public static final String EDIT_ADDRESS = "";

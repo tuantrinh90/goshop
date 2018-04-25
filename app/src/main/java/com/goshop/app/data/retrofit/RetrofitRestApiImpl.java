@@ -23,6 +23,7 @@ import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.BannerResponse;
@@ -448,21 +449,21 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<Response<StatesResponse>> getStates() {
+    public Observable<Response<StatesResponse>> getStates(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_STATES);
-        return retrofitRestApi.getStates(url);
+        return retrofitRestApi.getStates(url,params);
     }
 
     @Override
-    public Observable<Response<CityResponse>> getCity() {
+    public Observable<Response<CityResponse>> getCity(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_CITY);
-        return retrofitRestApi.getCity(url);
+        return retrofitRestApi.getCity(url,params);
     }
 
     @Override
-    public Observable<Response<ZipCodeResponse>> getZipCode() {
+    public Observable<Response<ZipCodeResponse>> getZipCode(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_ZIPCODE);
-        return retrofitRestApi.getZipCode(url);
+        return retrofitRestApi.getZipCode(url,params);
     }
 
     @Override
@@ -549,5 +550,12 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.APPLY_EGIFTCART);
         return retrofitRestApi.applyEGiftCard(url, params);
+    }
+
+    @Override
+    public Observable<Response<OrderMetadataResponse>> getOrderMetadata(
+        Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.GET_ORDER_METADATA);
+        return retrofitRestApi.getOrderMetadata(url, params);
     }
 }
