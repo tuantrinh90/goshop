@@ -6,6 +6,7 @@ import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ApplyEGiftVM;
 import com.goshop.app.presentation.model.ApplyPointsVM;
+import com.goshop.app.presentation.model.CheckoutVM;
 
 public interface CheckoutContract {
 
@@ -24,11 +25,13 @@ public interface CheckoutContract {
         void applyEGiftSuccess(ApplyEGiftVM eGiftVM);
 
         void showPaymentProgress();
+
+        void checkoutRequestSuccess(CheckoutVM checkoutVM);
     }
 
     interface Presenter extends BasePresenter<View> {
 
-        void getCheckout(String sessionKey);
+        void checkoutRequest(String quoteId, String addressId);
 
         void applyCoupon(String couponCode, String cartId);
 

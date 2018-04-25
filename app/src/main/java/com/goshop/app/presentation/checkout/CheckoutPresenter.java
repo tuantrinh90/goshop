@@ -7,8 +7,10 @@ import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.ApplyVMMapper;
+import com.goshop.app.presentation.mapper.CheckoutMapper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,7 +30,7 @@ public class CheckoutPresenter extends RxPresenter<CheckoutContract.View> implem
     }
 
     @Override
-    public void getCheckout(String sessionKey) {
+    public void checkoutRequest(String quoteId, String addressId) {
         mView.showLoadingBar();
         Map<String , Object> params = new HashMap<>();
         addSubscrebe(accountRepository.checkoutRequest(params).subscribeWith(
@@ -36,12 +38,13 @@ public class CheckoutPresenter extends RxPresenter<CheckoutContract.View> implem
                 @Override
                 public void onNext(Response<CheckoutResponse> response) {
                     mView.hideLoadingBar();
-//                    mView.showCheckout(checkoutResponse);
+                    mView.checkoutRequestSuccess(CheckoutMapper.transform(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
+                    mView.showErrorMessage(throwable.getMessage().toString());
                 }
 
                 @Override

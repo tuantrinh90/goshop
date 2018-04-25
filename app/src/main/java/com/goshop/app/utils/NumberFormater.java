@@ -16,7 +16,7 @@ public class NumberFormater {
 
     private static final String RIGHT_BRACKETS = "\t)";
 
-    private static final String TEL_HEADER = "T:\t";
+    private static final String TEL_HEADER = "T:\t+";
 
     private static final String ORDER_NUMBER = "#\t";
 

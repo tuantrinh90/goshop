@@ -16,6 +16,7 @@ import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ApplyEGiftVM;
 import com.goshop.app.presentation.model.ApplyPointsVM;
+import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ScreenHelper;
@@ -134,7 +135,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.getCheckout("");
+//        mPresenter.getCheckout("");
         cbCheckoutUseSame.setChecked(true);
         cbCheckoutUseSame.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked)->{
             rlBillingRoot.setVisibility(isChecked ?View.GONE:View.VISIBLE);
@@ -166,11 +167,11 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void showCheckout(CheckoutResponse checkoutResponse) {
-        initCheckoutPage(checkoutResponse);
-        initRecycler(checkoutResponse);
+        /*initCheckoutPage(checkoutResponse);
+        initRecycler(checkoutResponse);*/
     }
 
-    @SuppressLint("SetTextI18n")
+    /*@SuppressLint("SetTextI18n")
     private void initCheckoutPage(CheckoutResponse checkoutResponse) {
         tvCheckoutUsername.setText(checkoutResponse.getUserName());
         tvCheckoutAddressFirst.setText(checkoutResponse.getFirstAddress());
@@ -186,7 +187,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         rvOrderList.setLayoutManager(new LinearLayoutManager(this));
         rvOrderList.setNestedScrollingEnabled(false);
         rvOrderList.setAdapter(new CheckoutListAdapter(response.getCheckoutItems()));
-    }
+    }*/
 
     @Override
     public void showNetwordErrorMessage() {
@@ -242,6 +243,11 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         customAlertDialog.show(getSupportFragmentManager(),TAG);
     }
 
+    @Override
+    public void checkoutRequestSuccess(CheckoutVM checkoutVM) {
+
+    }
+
     private void initRadioGroup() {
         rbCheckoutPaymentCredit.setSelected(true);
         radioPaymentType.setOnCheckedChangeListener((group, checkedId) -> {
@@ -292,7 +298,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak, false);
-                mPresenter.getCheckout("");
+//                mPresenter.getCheckout("");
                 break;
             case R.id.tv_btn_check_discount_apply:
                 KeyBoardUtils.hideKeyboard(this);

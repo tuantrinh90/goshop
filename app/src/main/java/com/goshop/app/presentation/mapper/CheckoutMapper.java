@@ -13,6 +13,7 @@ import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.NumberFormater;
+import com.goshop.app.utils.TextFormater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,18 +22,19 @@ public class CheckoutMapper {
 
     public static CheckoutVM transform(CheckoutResponse response) {
         CheckoutVM checkoutVM = new CheckoutVM();
-        checkoutVM.setShippingUserName("");
-        checkoutVM.setShippingAddressOne("");
-        checkoutVM.setShippingAddressTwo("");
-        checkoutVM.setShippingCityStatePost("");
-        checkoutVM.setShippingCountry("");
-        checkoutVM.setShippingTel("");
-        checkoutVM.setBillingUserName("");
-        checkoutVM.setBillingAddressOne("");
-        checkoutVM.setBillingAddressTwo("");
-        checkoutVM.setBillingCityStatePost("");
-        checkoutVM.setBillingCountry("");
-        checkoutVM.setBillingTel("");
+        //todo these hard code is wait for api
+        checkoutVM.setShippingUserName("User Name");
+        checkoutVM.setShippingAddressOne("Address 1");
+        checkoutVM.setShippingAddressTwo("Address 2");
+        checkoutVM.setShippingCityStatePost(TextFormater.formatCityStateCode("City", "State", "1000"));
+        checkoutVM.setShippingCountry("China");
+        checkoutVM.setShippingTel(NumberFormater.formaterTelNo("1234155434232"));
+        checkoutVM.setBillingUserName("User Name");
+        checkoutVM.setBillingAddressOne("Address 1");
+        checkoutVM.setBillingAddressTwo("Address 2");
+        checkoutVM.setBillingCityStatePost(TextFormater.formatCityStateCode("City", "State", "1000"));
+        checkoutVM.setBillingCountry("China");
+        checkoutVM.setBillingTel(NumberFormater.formaterTelNo("1234155434232"));
         PaymentMethodVM paymentMethodVM;
         List<PaymentMethodVM> methodVMS = new ArrayList<>();
         List<PaymentMethodData> paymentMethodDatas =  response.getPaymentMethod();
@@ -64,15 +66,14 @@ public class CheckoutMapper {
             listModels.add(new ProductCartListVM(productsVM));
         }
 
-
         checkoutVM.setProductListModels(listModels);
         OrderRMData orderRMData = response.getBilling().getRm();
         checkoutVM.setSubTotal(NumberFormater.formaterPrice(orderRMData.getSubTotal()));
         checkoutVM.setShipping(NumberFormater.formaterPrice(orderRMData.getShipping()));
-        checkoutVM.setDiscountCode();
-        checkoutVM.setDiscountAmount();
-        checkoutVM.seteGiftCode();
-        checkoutVM.seteGiftAmount(NumberFormater.formaterPrice(orderRMData.getEgiftCard().getAmount()));
+        checkoutVM.setDiscountCode(TextFormater.formatBillingCode(orderRMData.getDiscount().getCode()));
+        checkoutVM.setDiscountAmount(NumberFormater.formaterDiscountPrice(orderRMData.getDiscount().getAmount()));
+        checkoutVM.seteGiftCode(TextFormater.formatBillingCode(orderRMData.getEgiftCard().getCode()));
+        checkoutVM.seteGiftAmount(NumberFormater.formaterDiscountPrice(orderRMData.getEgiftCard().getAmount()));
         checkoutVM.setBillingTotal(NumberFormater.formaterPrice(orderRMData.getTotal()));
 
         return checkoutVM;
