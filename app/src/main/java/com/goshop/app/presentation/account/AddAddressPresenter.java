@@ -3,9 +3,7 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
-import com.goshop.app.data.model.response.CityResponse;
 import com.goshop.app.data.model.response.Response;
-import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.ProfileMetaVM;
@@ -104,67 +102,15 @@ public class AddAddressPresenter extends RxPresenter<AddAddressContract.View> im
 
     @Override
     public void getState() {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.getStates().subscribeWith(
-            new DisposableObserver<Response<StatesResponse>>() {
-                @Override
-                public void onNext(Response<StatesResponse> response) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
     }
 
     @Override
     public void getCity() {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.getCity().subscribeWith(
-            new DisposableObserver<Response<CityResponse>>() {
-                @Override
-                public void onNext(Response<CityResponse> response) {
-                    mView.hideLoadingBar();
-                }
 
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
     }
 
     @Override
     public void getZipCode() {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.getZipCode().subscribeWith(
-            new DisposableObserver<Response<ZipCodeResponse>>() {
-                @Override
-                public void onNext(Response<ZipCodeResponse> response) {
-                    mView.hideLoadingBar();
-                }
 
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
     }
 }

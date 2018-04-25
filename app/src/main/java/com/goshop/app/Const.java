@@ -156,6 +156,8 @@ public class Const {
 
     public static final int LIMIT = 10;
 
+    public static final String COUNTRY_CODE_MY = "MY";
+
     public static final String PARAMS_PAGE = "page";
 
     public static final String PARAMS_LIMIT = "limit";
@@ -166,6 +168,12 @@ public class Const {
     public static final String REQUEST_PARAM_WEBSITE_ID = "website_id";
 
     public static final String REQUEST_PARAM_STORE_ID = "store_id";
+
+    public static final String REQUEST_PARAM_COUNTRY_CODE = "country_code";
+
+    public static final String REQUEST_PARAM_STATE_ID = "state_id";
+
+    public static final String REQUEST_PARAM_CITY_CODE = "city_code";
 
     public static final String REQUEST_PARAM_NAME = "name";
 

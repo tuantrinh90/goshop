@@ -17,7 +17,6 @@ import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -320,18 +319,18 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<StatesResponse>> getStates() {
-        return restApi.getStates();
+    public Observable<Response<StatesResponse>> getStates(Map<String, Object> params) {
+        return restApi.getStates(params);
     }
 
     @Override
-    public Observable<Response<CityResponse>> getCity() {
-        return restApi.getCity();
+    public Observable<Response<CityResponse>> getCity(Map<String, Object> params) {
+        return restApi.getCity(params);
     }
 
     @Override
-    public Observable<Response<ZipCodeResponse>> getZipCode() {
-        return restApi.getZipCode();
+    public Observable<Response<ZipCodeResponse>> getZipCode(Map<String, Object> params) {
+        return restApi.getZipCode(params);
     }
 
     @Override

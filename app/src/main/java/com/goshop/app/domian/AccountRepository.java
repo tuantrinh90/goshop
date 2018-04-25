@@ -146,11 +146,11 @@ public interface AccountRepository {
 
     Observable<UserData> getUserInfo();
 
-    Observable<Response<StatesResponse>> getStates();
+    Observable<Response<StatesResponse>> getStates(Map<String, Object> params);
 
-    Observable<Response<CityResponse>> getCity();
+    Observable<Response<CityResponse>> getCity(Map<String, Object> params);
 
-    Observable<Response<ZipCodeResponse>> getZipCode();
+    Observable<Response<ZipCodeResponse>> getZipCode(Map<String, Object> params);
 
     Observable<Boolean> clearUserInfo();
 

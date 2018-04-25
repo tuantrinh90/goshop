@@ -149,11 +149,11 @@ public interface AccountDataSource {
 
     Observable<Boolean> clearUserInfo();
 
-    Observable<Response<StatesResponse>> getStates();
+    Observable<Response<StatesResponse>> getStates(Map<String, Object> params);
 
-    Observable<Response<CityResponse>> getCity();
+    Observable<Response<CityResponse>> getCity(Map<String, Object> params);
 
-    Observable<Response<ZipCodeResponse>> getZipCode();
+    Observable<Response<ZipCodeResponse>> getZipCode(Map<String, Object> params);
 
     Observable<Response<OrderResponse>> cancelOrderRequest(Map<String, Object> params);
 
