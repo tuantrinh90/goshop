@@ -62,8 +62,6 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
-                    //TODO(helen) wait for api
-                    mView.trendingNowResult(getMockData());
                 }
 
                 @Override
@@ -83,7 +81,7 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
                 @Override
                 public void onNext(Response<BannerResponse> response) {
                     mView.onBannerRequestSuccess(TrendingMapper.transformBanner(response));
-                    
+
                 }
 
                 @Override
@@ -108,6 +106,7 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
                     trendingNowModels.add(new TrendingVideoVM(context.getString(R.string.on_air),
                         context.getString(R.string.tv_schedule),
                         TrendingMapper.transformOnAirSchedule(response)));
+                    getMockData();
                     mView.onAirScheduleRequestSuccess(trendingNowModels);
                     mView.hideLoadingBar();
                 }
@@ -125,17 +124,13 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
             }));
     }
 
-    //TODO(helen) this is mock data
-    private List<TrendingNowModel> getMockData() {
-        List<TrendingNowModel> models = new ArrayList<>();
-        models.add(getVideoVM());
-        models.add(getSingleBanner());
-        models.add(getHorizontalProductsVM("Trending Now"));
-        models.add(getSingleBanner());
-        models.add(getHorizontalProductsVM("Best Seller"));
-        models.add(getSingleBanner());
-        models.add(getHorizontalProductsVM("TV Special"));
-        return models;
+    private void getMockData() {
+        trendingNowModels.add(getSingleBanner());
+        trendingNowModels.add(getHorizontalProductsVM("Trending Now"));
+        trendingNowModels.add(getSingleBanner());
+        trendingNowModels.add(getHorizontalProductsVM("Best Seller"));
+        trendingNowModels.add(getSingleBanner());
+        trendingNowModels.add(getHorizontalProductsVM("TV Special"));
     }
 
     //TODO(helen) this is mock data
