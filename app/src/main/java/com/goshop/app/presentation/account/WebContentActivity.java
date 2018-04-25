@@ -21,14 +21,13 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class WebContentActivity extends BaseActivity<WebContentContract.Presenter> implements
-    WebContentContract
-    .View {
+    WebContentContract.View {
 
-    public static final String CONTACT_US = "contact_us";
+    public static final String EXTRA_TYPE = "content_type";
 
-    public static final String CONTENT_TAG = "content";
+    public static final String EXTRA__LINK = "content_link";
 
-    public static final String ECMC = "ECMC";
+    public static final String EXTRA__TITLE = "content_title";
 
     @BindView(R.id.textview_toolbar_title)
     RobotoMediumTextView textviewToolbarTitle;
@@ -39,18 +38,27 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
     @BindView(R.id.progressbar_content)
     ProgressBar progressBarContent;
 
-    private String contentTag;
+    private String title;
+
+    private String link;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (contentTag.equals(CONTACT_US)) {
-            textviewToolbarTitle.setText(getResources().getString(R.string.contact_us));
-            mPresenter.getContactUsContent();
-        } else if (contentTag.equals(ECMC)) {
-            textviewToolbarTitle.setText(getResources().getString(R.string.ecmc));
-            mPresenter.getEcmcContent();
-        }
+        initData();
+        initView();
+    }
+
+    private void initView() {
+        hideRightMenu();
+        initWebView();
+    }
+
+    private void initData() {
+        link = getIntent().getStringExtra(EXTRA__LINK);
+        title = getIntent().getStringExtra(EXTRA__TITLE);
+        textviewToolbarTitle.setText(title);
+
     }
 
     @Override
@@ -60,15 +68,16 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
 
     @Override
     public void inject() {
-        hideRightMenu();
-        initWebView();
-        initDatas();
-        initPresenter();
+        DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build()
+            .inject(this);
     }
 
     @Override
     public String getScreenTitle() {
-        return getResources().getString(R.string.ecmc);
+        return "";
     }
 
     @SuppressLint("SetJavaScriptEnabled")
@@ -84,14 +93,13 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
         wvContent.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
         wvContent.getSettings().setDomStorageEnabled(true);
         wvContent.getSettings().setDatabaseEnabled(true);
-
         wvContent.setWebChromeClient(new WebChromeClient() {
             @Override
             public void onProgressChanged(WebView view, int newProgress) {
                 if (newProgress == 100) {
                     progressBarContent.setVisibility(View.GONE);
                 } else {
-                    if(View.GONE == progressBarContent.getVisibility()) {
+                    if (View.GONE == progressBarContent.getVisibility()) {
                         progressBarContent.setVisibility(View.VISIBLE);
                     }
                     progressBarContent.setProgress(newProgress);
@@ -99,20 +107,8 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
                 super.onProgressChanged(view, newProgress);
             }
         });
-    }
-
-    private void initDatas() {
-        contentTag = getIntent().getStringExtra(CONTENT_TAG);
-        //TODO  wait for real data
-        contentTag = ECMC;
-    }
-
-    private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        // TODO: 2018/4/24 need real url
+        wvContent.loadUrl("https://app.zeplin.io/welcome");
     }
 
     @Override

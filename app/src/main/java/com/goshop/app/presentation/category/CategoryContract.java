@@ -2,6 +2,9 @@ package com.goshop.app.presentation.category;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
+import com.goshop.app.data.model.response.CategoryResponse;
+import com.goshop.app.data.model.response.Response;
+import com.goshop.app.presentation.model.CategoriesParentVM;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.presentation.model.CategoryRightMenuModel;
 
@@ -12,16 +15,16 @@ public class CategoryContract {
 
     interface View extends BaseView {
 
-        void showLeftMenu(List<CategoryLeftMenuVM> leftMenuVMS);
+        void onCategoryRequestSuccess(List<CategoriesParentVM> categoryMenuResponse);
 
-        void showRightMenu(List<CategoryRightMenuModel> rightMenuModels);
+        void showServiceErrorMessage(String errorMessage);
+
+        void showNetworkErrorMessage(String message);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void getCategoryLeftMenu();
-
-        void categoryRightMenuRequest(Map<String, Object> params);
+        void getCategory();
     }
 
 }

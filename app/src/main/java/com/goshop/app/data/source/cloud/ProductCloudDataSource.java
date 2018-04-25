@@ -2,7 +2,7 @@ package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.BrandsResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
@@ -88,12 +88,12 @@ public class ProductCloudDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
-        return restApi.getCategoryLeftMenu();
+    public Observable<Response<CategoryResponse>> getCategory(Map<String, Object> params) {
+        return restApi.getCategory(params);
     }
 
     @Override
-    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+    public Observable<CategoryResponse> categoryRightMenuRequest(Map<String, Object> params) {
         return restApi.categoryRightMenuRequest(params);
     }
 

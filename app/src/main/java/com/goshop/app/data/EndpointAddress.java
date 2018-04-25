@@ -109,7 +109,7 @@ public class EndpointAddress {
 
     public static final String CATEGORY_DETAIL = "";
 
-    public static final String CATEGORY_LEFT = "";
+    public static final String CATEGORY_TREE = "rest/all/V1/rest-api/catalog/categories";
 
     public static final String CATEGORY_RIGHT = "";
 
@@ -136,7 +136,7 @@ public class EndpointAddress {
 
     public static final String GO_LOYALTY = "";
 
-    public static final String HELP_SUPPORT = "";
+    public static final String HELP_SUPPORT = "rest/all/V1/rest-api/help-support";
 
     public static final String HOME_PAGE = "";
 

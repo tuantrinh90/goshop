@@ -51,7 +51,7 @@ public class TermsConditionsAdapter extends RecyclerView.Adapter {
 
     interface OnTermsItemClickListener {
 
-        void onTermsClick();
+        void onTermsClick(TermsConditionsVM termsConditionsVM);
     }
 
     class ContentViewHolder extends RecyclerView.ViewHolder {
@@ -66,7 +66,7 @@ public class TermsConditionsAdapter extends RecyclerView.Adapter {
 
         void bindingDatas(TermsConditionsVM termsConditionsVM) {
             tvHelpSupportContent.setText(termsConditionsVM.getLabel());
-            itemView.setOnClickListener(v -> onTermsItemClickListener.onTermsClick());
+            itemView.setOnClickListener(v -> onTermsItemClickListener.onTermsClick(termsConditionsVM));
         }
     }
 }

@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.Typefaces;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.CategoriesParentVM;
 import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.widget.listener.OnCategoryItemClickListener;
 
@@ -24,18 +25,12 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
 
     private OnCategoryItemClickListener leftClickListener;
 
-    private List<CategoryLeftMenuVM> leftMenuVMS;
+    private List<CategoriesParentVM> leftMenuVMS;
 
     public CategoryLeftAdapter(
-        List<CategoryLeftMenuVM> leftMenuVMS, OnCategoryItemClickListener leftClickListener) {
+        List<CategoriesParentVM> leftMenuVMS, OnCategoryItemClickListener leftClickListener) {
         this.leftMenuVMS = leftMenuVMS;
         this.leftClickListener = leftClickListener;
-    }
-
-    public void setUpdateLeftCategorys(List<CategoryLeftMenuVM> leftMenuVMS) {
-        this.leftMenuVMS.clear();
-        this.leftMenuVMS = leftMenuVMS;
-        notifyDataSetChanged();
     }
 
     @Override
@@ -58,7 +53,7 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
 
     public void selectPosition(int position) {
         if (!leftMenuVMS.get(position).isSelect()) {
-            for (CategoryLeftMenuVM leftMenuVM : leftMenuVMS) {
+            for (CategoriesParentVM leftMenuVM : leftMenuVMS) {
                 leftMenuVM.setSelect(false);
             }
             leftMenuVMS.get(position).setSelect(true);
@@ -83,12 +78,12 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(CategoryLeftMenuVM leftMenuVM, int position) {
-            Glide.with(itemView.getContext()).load(leftMenuVM.getIconUrl()).asBitmap()
-                .error(leftMenuVM.getDefaultIcon())
+        void bindingData(CategoriesParentVM leftMenuVM, int position) {
+            // TODO: 2018/4/25 mockIcon need change
+            Glide.with(itemView.getContext()).load(leftMenuVM.getMockIcon()).asBitmap()
+                .error(R.mipmap.ic_launcher)
                 .into(ivCategoryLeftMenu);
-            tvCategoryLeftMenu.setText(leftMenuVM.getTitle());
-
+            tvCategoryLeftMenu.setText(leftMenuVM.getName());
             tvCategoryLeftMenu.setSelected(leftMenuVM.isSelect());
             ivCategoryLeftMenu.setSelected(leftMenuVM.isSelect());
             Typeface typeface = Typefaces.get(itemView.getContext(), leftMenuVM

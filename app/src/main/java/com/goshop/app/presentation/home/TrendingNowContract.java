@@ -15,8 +15,6 @@ public class TrendingNowContract {
 
     interface View extends BaseView {
 
-        void trendingNowResult(List<TrendingNowModel> models);
-
         void onBannerRequestSuccess(List<BannerVm> transform);
 
         void onBannerRequestFailure(String message);

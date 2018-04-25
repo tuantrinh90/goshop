@@ -5,13 +5,13 @@ import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
 import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
-import com.goshop.app.data.model.HelpSupportResponse;
+import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
@@ -292,11 +292,10 @@ public interface RetrofitRestApi {
     @GET
     Observable<GetWebContentResponse> getContactContent(@Url String fullUrl);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<HelpSupportResponse> helpSupportRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<HelpSupportResponse>> helpSupportRequest(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -351,12 +350,13 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<CategoryMenuResponse> getCategoryLeftMenu(@Url String fullUrl);
+    Observable<Response<CategoryResponse>> getCategory(@Url String fullUrl,
+        @QueryMap Map<String, Object> params);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<CategoryMenuResponse> categoryRightMenuRequest(@Url String fullUrl,
+    Observable<CategoryResponse> categoryRightMenuRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

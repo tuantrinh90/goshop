@@ -2,7 +2,7 @@ package com.goshop.app.data.source.local;
 
 import com.goshop.app.data.LocalApi;
 import com.goshop.app.data.model.BrandsResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
@@ -83,12 +83,12 @@ public class ProductLocalDataSource implements ProductDataSource {
     }
 
     @Override
-    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
+    public Observable<Response<CategoryResponse>> getCategory(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+    public Observable<CategoryResponse> categoryRightMenuRequest(Map<String, Object> params) {
         return null;
     }
 

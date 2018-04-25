@@ -26,9 +26,6 @@ import injection.modules.PresenterModule;
 public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.Presenter>
     implements ChangePasswordContract.View, EncryptPasswordHandler.OnPasswordEncryptListener {
 
-    @BindView(R.id.cp_et_confirm)
-    CustomPasswordEditText cpEtConfirm;
-
     @BindView(R.id.ll_container)
     LinearLayout llContainer;
 
@@ -44,8 +41,6 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
     private String oldPassword;
 
     private String newPassword;
-
-    private String newConfirmPassword;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -86,7 +81,6 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
             case R.id.textview_right_menu:
                 oldPassword = cpEtCurrent.getText();
                 newPassword = cpEtNew.getText();
-                newConfirmPassword = cpEtConfirm.getText();
                 judgmentPassword();
                 break;
         }
@@ -99,14 +93,6 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
         }
         if (TextUtils.isEmpty(newPassword)) {
             cpEtNew.setErrorMessage(getResources().getString(R.string.empty_error));
-            return;
-        }
-        if (TextUtils.isEmpty(newConfirmPassword)) {
-            cpEtConfirm.setErrorMessage(getResources().getString(R.string.empty_error));
-            return;
-        }
-        if (!newPassword.equals(newConfirmPassword)) {
-            cpEtConfirm.setErrorMessage(getResources().getString(R.string.confirm_error));
             return;
         }
         KeyBoardUtils.hideKeyboard(this);

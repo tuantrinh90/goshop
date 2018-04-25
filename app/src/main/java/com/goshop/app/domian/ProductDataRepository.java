@@ -2,7 +2,7 @@ package com.goshop.app.domian;
 
 import com.goshop.app.Const;
 import com.goshop.app.data.model.BrandsResponse;
-import com.goshop.app.data.model.CategoryMenuResponse;
+import com.goshop.app.data.model.response.CategoryResponse;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
@@ -120,12 +120,20 @@ public class ProductDataRepository implements ProductRepository {
     }
 
     @Override
-    public Observable<CategoryMenuResponse> getCategoryLeftMenu() {
-        return productCloudDataSource.getCategoryLeftMenu();
+    public Observable<Response<CategoryResponse>> getCategory(Map<String, Object> params) {
+        return productCloudDataSource.getCategory(params)
+            .concatMap(response -> {
+                if (isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override
-    public Observable<CategoryMenuResponse> categoryRightMenuRequest(Map<String, Object> params) {
+    public Observable<CategoryResponse> categoryRightMenuRequest(Map<String, Object> params) {
         return productCloudDataSource.categoryRightMenuRequest(params);
     }
 

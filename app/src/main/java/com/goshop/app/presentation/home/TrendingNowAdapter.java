@@ -51,21 +51,10 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
         this.models = models;
     }
 
-    public void setDatasUpdate(List<TrendingNowModel> models) {
-        this.models.clear();
-        this.models.addAll(models);
-        notifyDataSetChanged();
-    }
-
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         RecyclerView.ViewHolder viewHolder = null;
         switch (viewType) {
-            case TrendingNowModel.VIEW_TYPE_BANNER:
-                View topBannerView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_trending_top_banner, parent, false);
-                viewHolder = new TrendingBannerViewHolder(topBannerView);
-                break;
             case TrendingNowModel.VIEW_TYPE_VIDEOPLAYER:
                 View videoView = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.item_trending_videoplayer, parent, false);
@@ -89,9 +78,7 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         TrendingNowModel model = models.get(position);
-        if (holder instanceof TrendingBannerViewHolder) {
-            ((TrendingBannerViewHolder) holder).bindingData((TrendingBannerVM) model);
-        } else if (holder instanceof TrendingVideoViewHolder) {
+        if (holder instanceof TrendingVideoViewHolder) {
             ((TrendingVideoViewHolder) holder).bindingData((TrendingVideoVM) model);
         } else if (holder instanceof TrendingSingleBannerViewHolder) {
             ((TrendingSingleBannerViewHolder) holder).bindingData((TrendingSingleBannerVM) model);
@@ -109,39 +96,6 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return models.size();
-    }
-
-    class TrendingBannerViewHolder extends RecyclerView.ViewHolder implements
-        OnBannerItemClickListener {
-
-        @BindView(R.id.indicator_widget)
-        CustomPagerIndicator indicatorWidget;
-
-        @BindView(R.id.viewpager_widget_banner)
-        ViewPager viewpagerWidgetBanner;
-
-        public TrendingBannerViewHolder(View itemView) {
-            super(itemView);
-            ButterKnife.bind(this, itemView);
-        }
-
-        void bindingData(TrendingBannerVM bannerVM) {
-            List<CarouselItemsVM> itemsVMS = bannerVM.getCarouselItemsVMS();
-            viewpagerWidgetBanner
-                .setAdapter(new WidgetBannerAdapter(itemsVMS, this::onBannerItemClick));
-            indicatorWidget.setViewPager(viewpagerWidgetBanner);
-
-            if (bannerVM.isAutoEnabled()) {
-                BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(
-                    viewpagerWidgetBanner, bannerVM.getAutoDuration());
-                bannerAutoPlayHelper.autoPlay();
-            }
-        }
-
-        @Override
-        public void onBannerItemClick(CarouselItemsVM carouselItemsVM) {
-            onTrendingNowClickListener.onTopBannerClick(carouselItemsVM);
-        }
     }
 
     class TrendingVideoViewHolder extends RecyclerView.ViewHolder implements
