@@ -79,7 +79,7 @@ public interface AccountDataSource {
 
     Observable<Response> registerRequest(Map<String, Object> params);
 
-    Observable<CheckoutResponse> checkoutRequest(String sessionKey);
+    Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params);
 
     Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params);
 

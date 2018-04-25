@@ -30,12 +30,13 @@ public class CheckoutPresenter extends RxPresenter<CheckoutContract.View> implem
     @Override
     public void getCheckout(String sessionKey) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.checkoutRequest(sessionKey).subscribeWith(
-            new DisposableObserver<CheckoutResponse>() {
+        Map<String , Object> params = new HashMap<>();
+        addSubscrebe(accountRepository.checkoutRequest(params).subscribeWith(
+            new DisposableObserver<Response<CheckoutResponse>>() {
                 @Override
-                public void onNext(CheckoutResponse checkoutResponse) {
+                public void onNext(Response<CheckoutResponse> response) {
                     mView.hideLoadingBar();
-                    mView.showCheckout(checkoutResponse);
+//                    mView.showCheckout(checkoutResponse);
                 }
 
                 @Override

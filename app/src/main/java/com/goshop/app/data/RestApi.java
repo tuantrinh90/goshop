@@ -13,6 +13,7 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
+import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
@@ -94,6 +95,8 @@ public interface RestApi {
     Observable<Response<AllReviewsResponse>> getProductRatingReviews(Map<String, Object> params);
 
     io.reactivex.Observable<Response> registerRequest(Map<String, Object> params);
+
+    Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params);
 
     Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params);
 

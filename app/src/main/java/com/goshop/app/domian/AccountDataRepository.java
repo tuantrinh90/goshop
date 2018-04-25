@@ -183,10 +183,16 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<CheckoutResponse> checkoutRequest(String sessionKey) {
-        return accountCloudDataSource.checkoutRequest(sessionKey)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
+    public Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params) {
+        return accountCloudDataSource.checkoutRequest(params)
+            .concatMap(response -> {
+                if (isSuccess(response.getMessage().getStatus())) {
+                    return Observable.just(response);
+                } else {
+                    return Observable
+                        .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+                }
+            }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

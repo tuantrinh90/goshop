@@ -140,10 +140,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<CheckoutResponse> checkoutRequest(String sessionKey) {
-        //TODO joyson temp code
-//        return restApi.checkoutRequest(sessionKey);
-        return ServiceData.getCheckout();
+    public Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params) {
+        return restApi.checkoutRequest(params);
     }
 
     @Override

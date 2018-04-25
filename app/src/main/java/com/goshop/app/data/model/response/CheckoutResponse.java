@@ -1,170 +1,71 @@
 package com.goshop.app.data.model.response;
 
+import com.google.gson.annotations.SerializedName;
+
+import com.goshop.app.data.model.response.common.AddressesData;
+import com.goshop.app.data.model.response.common.OrderBillingData;
+import com.goshop.app.data.model.response.common.PaymentMethodData;
+import com.goshop.app.data.model.response.common.ProductData;
+
 import java.util.List;
 
 public class CheckoutResponse {
 
-    private List<CheckoutItem> checkoutItems;
+    /**
+     * address : {"id":"29","firstname":"Pankaj","lastname":"Kavani","street":{"0":"Bukit Jalil",
+     * "1":"Astro"},"country_id":"MY","region_id":512,"city":"Alor Setar","postcode":12345,
+     * "telephone":"9999999999","default_billing":true,"default_shipping":true}
+     * payment_method : [{"id":"123","name":"Online Banking"},{"id":"345","name":"Cash On
+     * Delivery"},{"id":"567","name":"EPP","months":[3,6,9]}]
+     * products : [{"quote_item_id":"3456","sku":"345","qty":5,"name":"iPhone7","in_stock":true,
+     * "link":"http://api.goshop.com.my/catalog/product/345","super_attributes":[{"id":"123",
+     * "name":"Color","variant_name":"Red","variant_id":"234"},{"id":"123","name":"Size",
+     * "variant_name":"XL","variant_id":"234"}],"price":{"RM":{"original":"200",
+     * "discounted":"149","discount_title":"25%OFF"}},"image":"http://image.goshop.com
+     * .my/product1.jpg"}]
+     * billing : {"RM":{"sub_total":"100.00","shipping":"15.00","discount":{"code":"ASTRO10",
+     * "amount":"10.00"},"egift_card":{"code":"GIFTCARD1","amount":"10.00"},
+     * "goshop_points":{"applied":"100","amount":"10.00"},"total":"150.00"}}
+     */
 
-    private String city;
+    private AddressesData address;
 
-    private String country;
+    private OrderBillingData billing;
+    @SerializedName("payment_method")
+    private List<PaymentMethodData> paymentMethod;
 
-    private String firstAddress;
+    private List<ProductData> products;
 
-    private String postcode;
-
-    private String secondAddress;
-
-    private String state;
-
-    private String tel;
-
-    private String userName;
-
-    public String getUserName() {
-        return userName;
+    public AddressesData getAddress() {
+        return address;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
+    public void setAddress(AddressesData address) {
+        this.address = address;
     }
 
-    public String getFirstAddress() {
-        return firstAddress;
+    public OrderBillingData getBilling() {
+        return billing;
     }
 
-    public void setFirstAddress(String firstAddress) {
-        this.firstAddress = firstAddress;
+    public void setBilling(OrderBillingData billing) {
+        this.billing = billing;
     }
 
-    public String getSecondAddress() {
-        return secondAddress;
+    public List<PaymentMethodData> getPaymentMethod() {
+        return paymentMethod;
     }
 
-    public void setSecondAddress(String secondAddress) {
-        this.secondAddress = secondAddress;
+    public void setPaymentMethod(List<PaymentMethodData> paymentMethod) {
+        this.paymentMethod = paymentMethod;
     }
 
-    public String getCity() {
-        return city;
+    public List<ProductData> getProducts() {
+        return products;
     }
 
-    public void setCity(String city) {
-        this.city = city;
+    public void setProducts(List<ProductData> products) {
+        this.products = products;
     }
 
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getPostcode() {
-        return postcode;
-    }
-
-    public void setPostcode(String postcode) {
-        this.postcode = postcode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public String getTel() {
-        return tel;
-    }
-
-    public void setTel(String tel) {
-        this.tel = tel;
-    }
-
-    public List<CheckoutItem> getCheckoutItems() {
-        return checkoutItems;
-    }
-
-    public void setCheckoutItems(
-        List<CheckoutItem> checkoutItems) {
-        this.checkoutItems = checkoutItems;
-    }
-
-    public static class CheckoutItem {
-
-        private String amount;
-
-        private String color;
-
-        private String currentPrice;
-
-        private String image;
-
-        private String oldPrice;
-
-        private String productName;
-
-        private String size;
-
-        public String getProductName() {
-            return productName;
-        }
-
-        public void setProductName(String productName) {
-            this.productName = productName;
-        }
-
-        public String getColor() {
-            return color;
-        }
-
-        public void setColor(String color) {
-            this.color = color;
-        }
-
-        public String getSize() {
-            return size;
-        }
-
-        public void setSize(String size) {
-            this.size = size;
-        }
-
-        public String getOldPrice() {
-            return oldPrice;
-        }
-
-        public void setOldPrice(String oldPrice) {
-            this.oldPrice = oldPrice;
-        }
-
-        public String getCurrentPrice() {
-            return currentPrice;
-        }
-
-        public void setCurrentPrice(String currentPrice) {
-            this.currentPrice = currentPrice;
-        }
-
-        public String getAmount() {
-            return amount;
-        }
-
-        public void setAmount(String amount) {
-            this.amount = amount;
-        }
-
-        public String getImage() {
-            return image;
-        }
-
-        public void setImage(String image) {
-            this.image = image;
-        }
-    }
 }

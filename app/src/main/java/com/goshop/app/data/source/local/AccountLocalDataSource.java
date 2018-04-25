@@ -137,7 +137,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<CheckoutResponse> checkoutRequest(String sessionKey) {
+    public Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params) {
         return null;
     }
 
