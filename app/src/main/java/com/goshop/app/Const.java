@@ -185,6 +185,10 @@ public class Const {
 
     public static final String REQUEST_PARAM_EMAIL_SUBSCRIBE = "email_subscribe";
 
+    public static final String REQUEST_PARAM_PRODUCT_HANDLING = "product_handling";
+
+    public static final String REQUEST_PARAM_DETAILS = "details";
+
     public static final String REQUEST_PARAM_SMS_SUBSCRIBE = "sms_subscribe";
 
     public static final String TITLE_PRODUCT_SUMMARY = "Product Summary";

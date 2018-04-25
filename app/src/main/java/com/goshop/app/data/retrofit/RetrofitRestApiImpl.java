@@ -339,7 +339,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params) {
+    public Observable<Response> contactMessageRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.CONTACT_MESSAGE);
         return retrofitRestApi.contactMessageRequest(url, params);
     }

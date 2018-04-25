@@ -256,7 +256,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params) {
+    public Observable<Response> contactMessageRequest(Map<String, Object> params) {
         return restApi.contactMessageRequest(params);
     }
 
