@@ -219,6 +219,7 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
         Intent intent = new Intent(this, LoginComplementEmailActivity.class);
         intent.putExtra(LoginComplementEmailActivity.EXTRA_FACEBOOK_INFO, facebookVm);
         startActivity(intent);
+        this.finish();
     }
 
 }
