@@ -16,7 +16,10 @@ import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ApplyEGiftVM;
 import com.goshop.app.presentation.model.ApplyPointsVM;
 import com.goshop.app.presentation.model.CheckoutVM;
+import com.goshop.app.presentation.model.PaymentMethodVM;
 import com.goshop.app.presentation.model.PaymentVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
+import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
 
@@ -37,6 +40,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -44,7 +48,7 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> implements
-    CheckoutContract.View {
+    CheckoutContract.View , PopWindowUtil.OnPopWindowDismissListener{
 
     @BindView(R.id.btn_checkout_place_my_order)
     RobotoMediumTextView btnCheckoutPlaceMyOrder;
@@ -63,6 +67,9 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @BindView(R.id.ll_checkout_discount)
     LinearLayout llCheckoutDiscount;
+
+    @BindView(R.id.ll_checkout_egift)
+    LinearLayout llCheckoutEGift;
 
     @BindView(R.id.ll_checkout_toolbar)
     LinearLayout llCheckoutToolbar;
@@ -193,6 +200,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     private CheckoutListAdapter productListAdapter;
 
+    private List<ProfileMetaVM> months;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -212,6 +221,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void inject() {
+        months = new ArrayList<>();
         hideRightMenu();
         initPresenter();
         initRadioGroup();
@@ -260,9 +270,17 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             tvBtnCheckDiscountApply.setSelected(false);
             tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
             etCheckoutDiscount.setText(discountVM.getDiscount());
+            etCheckoutDiscount.setFocusableInTouchMode(true);
+            etCheckoutDiscount.setFocusable(true);
+            etCheckoutDiscount.requestFocus();
+            llCheckoutDiscount.setVisibility(View.GONE);
         } else {
             tvBtnCheckDiscountApply.setSelected(true);
             tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
+            etCheckoutDiscount.setFocusable(false);
+            etCheckoutDiscount.setFocusableInTouchMode(false);
+            etCheckoutDiscount.setText(discountVM.getDiscount());
+            llCheckoutDiscount.setVisibility(View.VISIBLE);
         }
 
     }
@@ -273,9 +291,15 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             tvBtnCheckPointsApply.setSelected(false);
             tvBtnCheckPointsApply.setText(getResources().getString(R.string.apply));
             etCheckoutPoint.setText(pointsVM.getPointsApplied());
+            etCheckoutPoint.setFocusableInTouchMode(true);
+            etCheckoutPoint.setFocusable(true);
+            etCheckoutPoint.requestFocus();
         } else {
             tvBtnCheckPointsApply.setSelected(true);
             tvBtnCheckPointsApply.setText(getResources().getString(R.string.cancel));
+            etCheckoutPoint.setFocusable(false);
+            etCheckoutPoint.setFocusableInTouchMode(false);
+            etCheckoutPoint.setText(pointsVM.getPointsApplied());
         }
     }
 
@@ -285,9 +309,17 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             tvBtnCheckGiftCardApply.setSelected(false);
             tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.apply));
             etCheckoutEgift.setText(eGiftVM.geteGiftApplied());
+            etCheckoutEgift.setFocusableInTouchMode(true);
+            etCheckoutEgift.setFocusable(true);
+            etCheckoutEgift.requestFocus();
+            llCheckoutEGift.setVisibility(View.GONE);
         } else {
             tvBtnCheckGiftCardApply.setSelected(true);
             tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
+            etCheckoutEgift.setFocusable(false);
+            etCheckoutEgift.setFocusableInTouchMode(false);
+            etCheckoutEgift.setText(eGiftVM.geteGiftApplied());
+            llCheckoutEGift.setVisibility(View.VISIBLE);
         }
     }
 
@@ -313,6 +345,13 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             checkoutVM.getDiscountCode(),
             checkoutVM.getDiscountAmount(), checkoutVM.geteGiftCode(), checkoutVM.geteGiftAmount(),
             checkoutVM.getBillingTotal());
+        List<PaymentMethodVM> paymentMethodVMs = checkoutVM.getPaymentMethodVMs();
+        for(PaymentMethodVM methodVM:paymentMethodVMs) {
+            if(methodVM.getMonths()!=null && methodVM.getMonths().size() > 0){
+                months = methodVM.getMonths();
+                break;
+            }
+        }
     }
 
     @Override
@@ -378,7 +417,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order,
         R.id.imageview_left_menu, R.id.tv_net_refresh, R.id.tv_btn_check_discount_apply,
-        R.id.tv_btn_check_gift_card_apply, R.id.tv_btn_check_points_apply, R.id.rl_billing_root})
+        R.id.tv_btn_check_gift_card_apply, R.id.tv_btn_check_points_apply, R.id.rl_billing_root,
+        R.id.tv_checkout_installment})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_shipping_root:
@@ -433,6 +473,21 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                 billingIntent.putExtra(TYPE, type_billing);
                 startActivity(billingIntent);
                 break;
+            case R.id.tv_checkout_installment:
+                PopWindowUtil.showSingleChoosePop(tvCheckoutInstallment,
+                    getResources().getString(R.string.installment_plan_optional), months, this);
+                break;
         }
+    }
+
+    @Override
+    public void onPopItemClick(int position) {
+        months = PopWindowUtil.updateSinglePopDatas(position, months);
+        tvCheckoutInstallment.setText(months.get(position).getValue());
+    }
+
+    @Override
+    public void onDismiss() {
+        //don't need to implement it yet.
     }
 }

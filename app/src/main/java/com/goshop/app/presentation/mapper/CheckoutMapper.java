@@ -8,6 +8,7 @@ import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.data.model.response.common.RMData;
 import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentMethodVM;
+import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
 import com.goshop.app.presentation.model.widget.ProductListModel;
@@ -45,7 +46,11 @@ public class CheckoutMapper {
             paymentMethodVM.setId(data.getId());
             paymentMethodVM.setName(data.getName());
             if(data.getMonths() != null && data.getMonths().size() > 0) {
-                paymentMethodVM.setMonths(data.getMonths());
+                List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
+                for(String month :data.getMonths()) {
+                    profileMetaVMS.add(new ProfileMetaVM(month, month + "month"));
+                }
+                paymentMethodVM.setMonths(profileMetaVMS);
             }
             methodVMS.add(paymentMethodVM);
         }

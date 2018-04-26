@@ -12,7 +12,7 @@ public class ApplyVMMapper {
 
     public static ApplyDiscountVM transform(ApplyCouponResponse response) {
         ApplyDiscountVM discountVM = new ApplyDiscountVM();
-        discountVM.setDiscount(NumberFormater.formaterDiscountPrice(response.getDiscount().getDiscount()));
+        discountVM.setDiscount(response.getDiscount().getDiscount());
         discountVM.setDiscountedPrice(response.getDiscount().getDiscountedPrice());
         discountVM.setOriginalPrice(NumberFormater.formaterPrice(response.getDiscount().getOriginalPrice()));
         discountVM.setType(response.getDiscount().getType());

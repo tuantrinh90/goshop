@@ -442,7 +442,7 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     private boolean isSuccess(String status) {
-        return Const.SUCCESS_STATUS.equals(status);
+        return Const.SUCCESS_STATUS.equals(status.toLowerCase());
     }
 
     private <T> Observable<Response<T>> getServerData(Observable<Response<T>> observable) {

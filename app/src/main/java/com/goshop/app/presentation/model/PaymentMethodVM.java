@@ -8,7 +8,7 @@ public class PaymentMethodVM {
 
     private String name;
 
-    private List<String> months;
+    private List<ProfileMetaVM> months;
 
     public String getId() {
         return id;
@@ -26,11 +26,11 @@ public class PaymentMethodVM {
         this.name = name;
     }
 
-    public List<String> getMonths() {
+    public List<ProfileMetaVM> getMonths() {
         return months;
     }
 
-    public void setMonths(List<String> months) {
+    public void setMonths(List<ProfileMetaVM> months) {
         this.months = months;
     }
 }

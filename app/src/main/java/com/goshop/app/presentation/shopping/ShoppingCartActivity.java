@@ -184,6 +184,9 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 rlCartDisscount.setVisibility(View.GONE);
                 tvBtnCartApply.setText(getResources().getString(R.string.apply));
                 tvBtnCartApply.setSelected(false);
+                etCartApply.setFocusableInTouchMode(true);
+                etCartApply.setFocusable(true);
+                etCartApply.requestFocus();
             } else {
                 rlCartDisscount.setVisibility(View.VISIBLE);
                 tvCartBillingDisscount.setText(
@@ -191,6 +194,8 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 etCartApply.setText(cartProductVM.getDiscount());
                 tvBtnCartApply.setText(getResources().getString(R.string.cancel));
                 tvBtnCartApply.setSelected(true);
+                etCartApply.setFocusable(false);
+                etCartApply.setFocusableInTouchMode(false);
             }
             tvCartBillingSubtotal.setText(cartProductVM.getSubTotal());
             tvCartBillingShipping.setText(cartProductVM.getShipping());
@@ -234,11 +239,17 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             tvBtnCartApply.setText(getResources().getString(R.string.apply));
             tvBtnCartApply.setSelected(false);
             etCartApply.setText("");
+            etCartApply.setFocusableInTouchMode(true);
+            etCartApply.setFocusable(true);
+            etCartApply.requestFocus();
         } else {
             rlCartDisscount.setVisibility(View.VISIBLE);
             tvBtnCartApply.setText(getResources().getString(R.string.cancel));
             tvBtnCartApply.setSelected(true);
             etCartApply.setText(discountVM.getDiscount());
+            etCartApply.setFocusable(false);
+            etCartApply.setFocusableInTouchMode(false);
+            tvCartBillingDisscount.setText(NumberFormater.formaterDiscountPrice(discountVM.getDiscount()));
         }
 
         tvCartBillingTotal.setText(discountVM.getOriginalPrice());

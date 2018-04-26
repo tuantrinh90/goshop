@@ -159,7 +159,7 @@ public class CheckoutVM {
         this.billingTel = billingTel;
     }
 
-    public List<PaymentMethodVM> getPaymentMethodVMs() {
+    public  List<PaymentMethodVM> getPaymentMethodVMs() {
         return paymentMethodVMs;
     }
 
