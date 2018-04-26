@@ -115,6 +115,8 @@ public class BrandsFragment extends BaseFragment<BrandsContract.Presenter> imple
 
     @Override
     public void onBandRequestSuccess(List<BrandsListVM> brandsVMS, PaginationData pagination) {
+        // TODO: 2018/4/26  setCurrentPage(1) is hard code
+        pagination.setCurrentPage(1);
         this.pagination = pagination;
         isCanLoadMore = brandsVMS.size() >= Const.LIMIT;
         if (pagination.getCurrentPage() == 1) {

@@ -125,6 +125,8 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
 
     @Override
     public void showWishlistItems(List<WishlistVM> wishlistVMS, PaginationData pagination) {
+        // TODO: 2018/4/26  setCurrentPage(1) is hard code
+        pagination.setCurrentPage(1);
         this.pagination = pagination;
         isCanLoadMore = wishlistVMS.size() >= Const.LIMIT;
         if (this.pagination.getCurrentPage() == 1) {

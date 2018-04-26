@@ -71,7 +71,9 @@ ext {
             constraintlayout              : "com.android.support.constraint:constraint-layout:$constraintlayoutVersion",
             crashlyticsSdk                : "com.crashlytics.sdk.android:crashlytics:$crashlyticsSdkVersion@aar",
             logger                        : "com.orhanobut:logger:$loggerVersion",
-            facebook                      : "com.facebook.android:facebook-android-sdk:$facebookVersion"
+            facebook                      : "com.facebook.android:facebook-android-sdk:$facebookVersion",
+            jwplayerCore                  : "com.longtailvideo.jwplayer:jwplayer-core:+",
+            jwplayerCommon                : "com.longtailvideo.jwplayer:jwplayer-common:+"
     ]
     developmentDependencies = [
             leakCanaryDebug  : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",

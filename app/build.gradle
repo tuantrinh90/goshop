@@ -130,6 +130,8 @@ dependencies {
     compile appDependencies.systembartint
     compile appDependencies.logger
     compile appDependencies.facebook
+    compile appDependencies.jwplayerCore
+    compile appDependencies.jwplayerCommon
     compile appDependencies.dagger2
     annotationProcessor appDependencies.daggerComiler
     compile(appDependencies.permissionsdispatcher) {

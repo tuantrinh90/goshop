@@ -89,6 +89,8 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
 
     @Override
     public void getEGiftCardSuccess(List<MyEGiftModel> eGiftModels, PaginationData pagination) {
+        // TODO: 2018/4/26  setCurrentPage(1) is hard code
+        pagination.setCurrentPage(1);
         this.pagination = pagination;
         isCanLoadMore = eGiftModels.size() >= Const.LIMIT;
         if (this.pagination.getCurrentPage() == 1) {
@@ -125,6 +127,8 @@ public class MyEGiftCardsActivity extends BaseActivity<MyEGiftCardContract.Prese
 
     @Override
     public void activeSuccess(List<MyEGiftModel> eGiftModels, PaginationData pagination) {
+        // TODO: 2018/4/26  setCurrentPage(1) is hard code
+        pagination.setCurrentPage(1);
         this.pagination = pagination;
         if (this.pagination.getCurrentPage() == 1) {
             eGiftModels.clear();

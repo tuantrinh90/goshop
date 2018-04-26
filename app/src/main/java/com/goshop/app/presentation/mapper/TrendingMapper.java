@@ -17,6 +17,14 @@ import java.util.List;
 
 public class TrendingMapper {
 
+    public static final String VIDEO_URL = "http://playback01.aotg-video.astro.com" +
+        ".my/AOTGHLS/master_AGSS.m3u8";
+
+    public static final String VIDEO_URL1 = " http://playertest.longtailvideo" +
+        ".com/adaptive/bipbop/gear4/prog_index.m3u8";
+
+    private static String[] videoUrl = {VIDEO_URL1, VIDEO_URL};
+
     public static List<BannerVm> transformBanner(Response<BannerResponse> response) {
         List<BannerVm> bannerVmList = new ArrayList<>();
         if (response != null && response.getData() != null && !response.getData().getBanners()
@@ -38,11 +46,16 @@ public class TrendingMapper {
         List<VideoPlayerItemsVM> videoPlayerItemsVMS = new ArrayList<>();
         if (response != null && response.getData() != null && response.getData()
             .getChannel() != null && !response.getData().getChannel().isEmpty()) {
-            for (VideoItemsResponse videoItemsResponse : response.getData().getChannel()) {
+            for (int i = 0; i < response.getData().getChannel().size(); i++) {
+                VideoItemsResponse videoItemsResponse = response.getData().getChannel().get(i);
                 VideoPlayerItemsVM videoPlayerItemsVM = new VideoPlayerItemsVM();
                 videoPlayerItemsVM.setId(videoItemsResponse.getId());
                 videoPlayerItemsVM.setName(videoItemsResponse.getName());
-                videoPlayerItemsVM.setPlaybackUrl(videoItemsResponse.getPlaybackUrl());
+                // TODO: 2018/4/26 mock video url
+                if (i < videoUrl.length) {
+                    videoPlayerItemsVM.setPlaybackUrl(videoUrl[i]);
+                }
+//                videoPlayerItemsVM.setPlaybackUrl(videoItemsResponse.getPlaybackUrl());
                 if (videoItemsResponse.getProducts() != null && !videoItemsResponse.getProducts()
                     .isEmpty()) {
                     List<ProductsVM> videoProductsVMs = new ArrayList<>();
@@ -71,6 +84,9 @@ public class TrendingMapper {
                     videoPlayerItemsVM.setProductsVMS(videoProductsVMs);
                 }
                 videoPlayerItemsVMS.add(videoPlayerItemsVM);
+            }
+            for (VideoItemsResponse videoItemsResponse : response.getData().getChannel()) {
+
             }
         }
         return videoPlayerItemsVMS;
