@@ -48,7 +48,7 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
     public void getAddressListSuccess(List<AddressVM> addressVMS) {
         if (page == 1 && addressVMS.size() > 0) {
             addressBookAdapter.setUpdates(addressVMS);
-        } else if(page !=1 && addressVMS.size() == 0){
+        } else if(page !=1 && addressVMS.isEmpty()){
             updateLayoutStatus(flNoData, true);
         }
     }
