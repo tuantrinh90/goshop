@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.model;
 
+import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.presentation.model.widget.ProductListModel;
 
 import java.util.List;
@@ -34,7 +35,7 @@ public class CheckoutVM {
 
     private List<PaymentMethodVM> paymentMethodVMs;
 
-    private List<ProductListModel> productListModels;
+    private List<ProductVM> productVMS;
 
     private String subTotal;
 
@@ -167,13 +168,12 @@ public class CheckoutVM {
         this.paymentMethodVMs = paymentMethodVMs;
     }
 
-    public List<ProductListModel> getProductListModels() {
-        return productListModels;
+    public List<ProductVM> getProductVMS() {
+        return productVMS;
     }
 
-    public void setProductListModels(
-        List<ProductListModel> productListModels) {
-        this.productListModels = productListModels;
+    public void setProductVMS(List<ProductVM> productVMS) {
+        this.productVMS = productVMS;
     }
 
     public String getSubTotal() {

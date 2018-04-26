@@ -21,6 +21,7 @@ import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.BannerResponse;
@@ -524,4 +525,10 @@ public interface RetrofitRestApi {
     @GET
     Observable<Response<OrderMetadataResponse>> getOrderMetadata(@Url String fullUrl,
         @QueryMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
+    @POST
+    Observable<Response<PaymentResponse>> paymentRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
 }

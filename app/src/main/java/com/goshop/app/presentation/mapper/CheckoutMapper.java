@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.mapper;
 
+import com.goshop.app.R;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.common.OrderRMData;
 import com.goshop.app.data.model.response.common.PaymentMethodData;
@@ -7,6 +8,7 @@ import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.data.model.response.common.RMData;
 import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentMethodVM;
+import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
 import com.goshop.app.presentation.model.widget.ProductListModel;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
@@ -50,23 +52,24 @@ public class CheckoutMapper {
         checkoutVM.setPaymentMethodVMs(methodVMS);
 
         List<ProductData> productDatas = response.getProducts();
-        List<ProductListModel> listModels = new ArrayList<>();
+        List<ProductVM> productVMS = new ArrayList<>();
         for (ProductData data : productDatas) {
-            ProductsVM productsVM = new ProductsVM();
-            productsVM.setTitle(data.getName());
-            productsVM.setId(data.getSku());
-            productsVM.setAmount(data.getQty());
-            productsVM.setImage(data.getImage());
+            ProductVM productVM = new ProductVM();
+            productVM.setTitle(data.getName());
+            productVM.setId(data.getSku());
+            productVM.setAmount(NumberFormater.formaterOrderQty(data.getQty()));
+            productVM.setImage(data.getImage());
+            productVM.setImageDefault(R.drawable.ic_bought);
+
             RMData rmData = data.getPrice().getRM();
-            ProductPriceRMVM rmvm = new ProductPriceRMVM(rmData.getDiscountTitle(),
-                rmData.getDiscounted(), rmData.getOriginal());
-            ProductPriceVM priceVM = new ProductPriceVM(rmvm);
-            productsVM.setPriceVM(priceVM);
-            productsVM.setAttributes(data.getAttributes());
-            listModels.add(new ProductCartListVM(productsVM));
+            productVM.setOldPrice(NumberFormater.formaterPrice(rmData.getOriginal()));
+            productVM.setNowPrice(NumberFormater.formaterPrice(rmData.getDiscounted()));
+            productVM.setPercent(rmData.getDiscountTitle());
+            productVM.setAttrs(data.getAttributes());
+            productVMS.add(productVM);
         }
 
-        checkoutVM.setProductListModels(listModels);
+        checkoutVM.setProductVMS(productVMS);
         OrderRMData orderRMData = response.getBilling().getRm();
         checkoutVM.setSubTotal(NumberFormater.formaterPrice(orderRMData.getSubTotal()));
         checkoutVM.setShipping(NumberFormater.formaterPrice(orderRMData.getShipping()));

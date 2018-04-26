@@ -18,6 +18,7 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -174,4 +175,6 @@ public interface AccountRepository {
     Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
 
     Observable<Response<OrderMetadataResponse>> getOrderMetadata(Map<String, Object> params);
+
+    Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params);
 }

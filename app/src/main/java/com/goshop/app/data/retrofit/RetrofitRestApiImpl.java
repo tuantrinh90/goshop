@@ -25,6 +25,7 @@ import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.BannerResponse;
@@ -563,5 +564,11 @@ public class RetrofitRestApiImpl implements RestApi {
         Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_ORDER_METADATA);
         return retrofitRestApi.getOrderMetadata(url, params);
+    }
+
+    @Override
+    public Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PLACE_ORDER);
+        return retrofitRestApi.paymentRequest(url, params);
     }
 }

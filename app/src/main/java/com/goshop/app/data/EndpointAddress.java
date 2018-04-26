@@ -101,6 +101,8 @@ public class EndpointAddress {
 
     public static final String CHECKOUT = "rest/all/V1/rest-api/cart/checkout";
 
+    public static final String PLACE_ORDER = "rest/all/V1/rest-api/cart/place-order";
+
     public static final String ADD_ADDRESS = "";
 
     public static final String EDIT_ADDRESS = "";

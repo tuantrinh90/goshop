@@ -12,18 +12,17 @@ import com.goshop.app.common.view.RobotoMediumEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ApplyEGiftVM;
 import com.goshop.app.presentation.model.ApplyPointsVM;
 import com.goshop.app.presentation.model.CheckoutVM;
+import com.goshop.app.presentation.model.PaymentVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.utils.ScreenHelper;
 
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -32,9 +31,12 @@ import android.view.View;
 import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -53,8 +55,20 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.et_checkout_egift)
     RobotoRegularEditText etCheckoutEgift;
 
+    @BindView(R.id.iv_checkout_billing_shipping_more)
+    ImageView ivCheckoutBillingShippingMore;
+
     @BindView(R.id.iv_checkout_shipping_more)
     ImageView ivCheckoutShippingMore;
+
+    @BindView(R.id.ll_checkout_discount)
+    LinearLayout llCheckoutDiscount;
+
+    @BindView(R.id.ll_checkout_toolbar)
+    LinearLayout llCheckoutToolbar;
+
+    @BindView(R.id.ll_shipping_top)
+    LinearLayout llShippingTop;
 
     String paymentType;
 
@@ -73,8 +87,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.rl_shipping_root)
     RelativeLayout rlShippingRoot;
 
-    @BindView(R.id.rv_order_list)
-    RecyclerView rvOrderList;
+    @BindView(R.id.recyclerview_checkout)
+    RecyclerView recyclerView;
 
     @BindView(R.id.tv_btn_check_discount_apply)
     RobotoMediumTextView tvBtnCheckDiscountApply;
@@ -94,14 +108,50 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.tv_checkout_attention)
     RobotoLightTextView tvCheckoutAttention;
 
+    @BindView(R.id.tv_checkout_billing_address_first)
+    RobotoLightTextView tvCheckoutBillingAddressFirst;
+
+    @BindView(R.id.tv_checkout_billing_address_second)
+    RobotoLightTextView tvCheckoutBillingAddressSecond;
+
+    @BindView(R.id.tv_checkout_billing_city_state_code)
+    RobotoLightTextView tvCheckoutBillingCityStateCode;
+
+    @BindView(R.id.tv_checkout_billing_country)
+    RobotoLightTextView tvCheckoutBillingCountry;
+
+    @BindView(R.id.tv_checkout_billing_shipping)
+    RobotoLightTextView tvCheckoutBillingShipping;
+
+    @BindView(R.id.tv_checkout_billing_tel)
+    RobotoLightTextView tvCheckoutBillingTel;
+
+    @BindView(R.id.tv_checkout_billing_total)
+    RobotoMediumTextView tvCheckoutBillingTotal;
+
+    @BindView(R.id.tv_checkout_billing_username)
+    RobotoMediumTextView tvCheckoutBillingUsername;
+
     @BindView(R.id.tv_checkout_city_state_code)
     RobotoLightTextView tvCheckoutCityStateCode;
 
     @BindView(R.id.tv_checkout_country)
     RobotoLightTextView tvCheckoutCountry;
 
-    @BindView(R.id.tv_checkout_shipping_title)
-    RobotoMediumTextView tvCheckoutShippingTitle;
+    @BindView(R.id.tv_checkout_discount_amount)
+    RobotoLightTextView tvCheckoutDiscountAmount;
+
+    @BindView(R.id.tv_checkout_discount_code)
+    RobotoLightTextView tvCheckoutDiscountCode;
+
+    @BindView(R.id.tv_checkout_egift_amount)
+    RobotoLightTextView tvCheckoutEgiftAmount;
+
+    @BindView(R.id.tv_checkout_egift_code)
+    RobotoLightTextView tvCheckoutEgiftCode;
+
+    @BindView(R.id.tv_checkout_sub_total)
+    RobotoLightTextView tvCheckoutSubTotal;
 
     @BindView(R.id.tv_checkout_tel)
     RobotoLightTextView tvCheckoutTel;
@@ -124,22 +174,30 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.rl_billing_root)
     RelativeLayout rlBillingRoot;
 
-    public static final  String type_shipping = "shipping";
+    @BindView(R.id.fl_content)
+    FrameLayout flContent;
 
-    public static final  String type_billing = "billing";
+    public static final String type_shipping = "shipping";
+
+    public static final String type_billing = "billing";
 
     public static final String TYPE = "type";
 
     private static final String TAG = "CheckoutActivity";
 
+    @BindView(R.id.tv_net)
+    RobotoRegularTextView tvNet;
+
+    @BindView(R.id.tv_net_refresh)
+    RobotoRegularTextView tvNetRefresh;
+
+    private CheckoutListAdapter productListAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        mPresenter.getCheckout("");
-        cbCheckoutUseSame.setChecked(true);
-        cbCheckoutUseSame.setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked)->{
-            rlBillingRoot.setVisibility(isChecked ?View.GONE:View.VISIBLE);
-        });
+        //todo wait for api
+        mPresenter.checkoutRequest("", "");
     }
 
     @Override
@@ -148,46 +206,43 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     @Override
+    public String getScreenTitle() {
+        return getResources().getString(R.string.checkout_title);
+    }
+
+    @Override
     public void inject() {
         hideRightMenu();
+        initPresenter();
+        initRadioGroup();
+        initBilling();
+        intRecyclerView();
+    }
+
+    private void intRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        productListAdapter = new CheckoutListAdapter(new ArrayList<>());
+        recyclerView.setAdapter(productListAdapter);
+    }
+
+    private void initBilling() {
+        String pointsTip = String
+            .format(getResources().getString(R.string.checkout_points_tip), "300");
+        tvCheckoutAttention.setText(Html.fromHtml(pointsTip));
+        cbCheckoutUseSame.setChecked(true);
+        cbCheckoutUseSame
+            .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
+                rlBillingRoot.setVisibility(isChecked ? View.GONE : View.VISIBLE);
+            });
+    }
+
+    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
-        initRadioGroup();
-        String pointsTip = String
-            .format(getResources().getString(R.string.checkout_points_tip), "300");
-        tvCheckoutAttention.setText(Html.fromHtml(pointsTip));
-        //todo when checkout api added, this will delete
-        tvBtnCheckDiscountApply.setSelected(false);
-        tvBtnCheckGiftCardApply.setSelected(false);
-        tvBtnCheckPointsApply.setSelected(false);
     }
-
-    @Override
-    public void showCheckout(CheckoutResponse checkoutResponse) {
-        /*initCheckoutPage(checkoutResponse);
-        initRecycler(checkoutResponse);*/
-    }
-
-    /*@SuppressLint("SetTextI18n")
-    private void initCheckoutPage(CheckoutResponse checkoutResponse) {
-        tvCheckoutUsername.setText(checkoutResponse.getUserName());
-        tvCheckoutAddressFirst.setText(checkoutResponse.getFirstAddress());
-        tvCheckoutAddressSecond.setText(checkoutResponse.getSecondAddress());
-        tvCheckoutCityStateCode
-            .setText(checkoutResponse.getCity() + "," + checkoutResponse.getPostcode());
-        tvCheckoutCountry.setText(checkoutResponse.getCountry());
-        tvCheckoutTel.setText(checkoutResponse.getTel());
-        radioPaymentType.check(R.id.rb_checkout_payment_banking);
-    }
-
-    private void initRecycler(CheckoutResponse response) {
-        rvOrderList.setLayoutManager(new LinearLayoutManager(this));
-        rvOrderList.setNestedScrollingEnabled(false);
-        rvOrderList.setAdapter(new CheckoutListAdapter(response.getCheckoutItems()));
-    }*/
 
     @Override
     public void showNetwordErrorMessage() {
@@ -201,7 +256,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void applyCouponSuccess(ApplyDiscountVM discountVM) {
-        if(tvBtnCheckDiscountApply.isSelected()) {
+        if (tvBtnCheckDiscountApply.isSelected()) {
             tvBtnCheckDiscountApply.setSelected(false);
             tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
             etCheckoutDiscount.setText(discountVM.getDiscount());
@@ -214,7 +269,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void applyPointsSuccess(ApplyPointsVM pointsVM) {
-        if(tvBtnCheckPointsApply.isSelected()) {
+        if (tvBtnCheckPointsApply.isSelected()) {
             tvBtnCheckPointsApply.setSelected(false);
             tvBtnCheckPointsApply.setText(getResources().getString(R.string.apply));
             etCheckoutPoint.setText(pointsVM.getPointsApplied());
@@ -226,7 +281,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @Override
     public void applyEGiftSuccess(ApplyEGiftVM eGiftVM) {
-        if(tvBtnCheckGiftCardApply.isSelected()) {
+        if (tvBtnCheckGiftCardApply.isSelected()) {
             tvBtnCheckGiftCardApply.setSelected(false);
             tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.apply));
             etCheckoutEgift.setText(eGiftVM.geteGiftApplied());
@@ -240,12 +295,61 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     public void showPaymentProgress() {
         CustomAlertDialog customAlertDialog = CustomAlertDialog
             .getInstance();
-        customAlertDialog.show(getSupportFragmentManager(),TAG);
+        customAlertDialog.show(getSupportFragmentManager(), TAG);
     }
 
     @Override
     public void checkoutRequestSuccess(CheckoutVM checkoutVM) {
+        updateLayoutStatus(flContent, true);
+        updateShippingAddress(checkoutVM.getShippingUserName(), checkoutVM.getShippingAddressOne()
+            , checkoutVM.getShippingAddressTwo(), checkoutVM.getShippingCityStatePost(),
+            checkoutVM.getShippingCountry(), checkoutVM.getShippingTel());
+        updateBillingAddress(checkoutVM.getBillingUserName(), checkoutVM.getBillingAddressOne(),
+            checkoutVM.getBillingAddressTwo(),
+            checkoutVM.getBillingCityStatePost(), checkoutVM.getBillingCountry(),
+            checkoutVM.getBillingTel());
+        productListAdapter.setProductVMS(checkoutVM.getProductVMS());
+        updateBilling(checkoutVM.getSubTotal(), checkoutVM.getShipping(),
+            checkoutVM.getDiscountCode(),
+            checkoutVM.getDiscountAmount(), checkoutVM.geteGiftCode(), checkoutVM.geteGiftAmount(),
+            checkoutVM.getBillingTotal());
+    }
 
+    @Override
+    public void placeOrderSuccess(PaymentVM paymentVM) {
+        finish();
+    }
+
+    private void updateBilling(String sub, String shipping, String discountCode,
+        String discountAmount, String eGiftCode, String eGiftAmount,
+        String total) {
+        tvCheckoutSubTotal.setText(sub);
+        tvCheckoutBillingShipping.setText(shipping);
+        tvCheckoutDiscountCode.setText(discountCode);
+        tvCheckoutDiscountAmount.setText(discountAmount);
+        tvCheckoutEgiftCode.setText(eGiftCode);
+        tvCheckoutEgiftAmount.setText(eGiftAmount);
+        tvCheckoutBillingTotal.setText(total);
+    }
+
+    private void updateBillingAddress(String username, String first, String second, String place,
+        String country, String tel) {
+        tvCheckoutBillingUsername.setText(username);
+        tvCheckoutBillingAddressFirst.setText(first);
+        tvCheckoutBillingAddressSecond.setText(second);
+        tvCheckoutBillingCityStateCode.setText(place);
+        tvCheckoutBillingCountry.setText(country);
+        tvCheckoutBillingTel.setText(tel);
+    }
+
+    private void updateShippingAddress(String username, String first, String second, String place,
+        String country, String tel) {
+        tvCheckoutUsername.setText(username);
+        tvCheckoutAddressFirst.setText(first);
+        tvCheckoutAddressSecond.setText(second);
+        tvCheckoutCityStateCode.setText(place);
+        tvCheckoutCountry.setText(country);
+        tvCheckoutTel.setText(tel);
     }
 
     private void initRadioGroup() {
@@ -272,12 +376,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         });
     }
 
-    @Override
-    public String getScreenTitle() {
-        return ScreenHelper.getString(R.string.checkout_title);
-    }
-
-
     @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order,
         R.id.imageview_left_menu, R.id.tv_net_refresh, R.id.tv_btn_check_discount_apply,
         R.id.tv_btn_check_gift_card_apply, R.id.tv_btn_check_points_apply, R.id.rl_billing_root})
@@ -290,15 +388,15 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                 break;
             case R.id.btn_checkout_place_my_order:
                 //todo this part need decide
-                mPresenter.paymentRequest();
-//                startActivity(new Intent(this, CheckoutPaymentActivity.class));
+                mPresenter.paymentRequest("", "", "", "");
                 break;
             case R.id.imageview_left_menu:
                 finish();
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak, false);
-//                mPresenter.getCheckout("");
+                //todo wait for api
+                mPresenter.checkoutRequest("", "");
                 break;
             case R.id.tv_btn_check_discount_apply:
                 KeyBoardUtils.hideKeyboard(this);
