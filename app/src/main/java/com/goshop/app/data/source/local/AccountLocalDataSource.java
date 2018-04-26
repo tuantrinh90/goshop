@@ -249,7 +249,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params) {
+    public Observable<Response> contactMessageRequest(Map<String, Object> params) {
         return null;
     }
 

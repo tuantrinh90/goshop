@@ -124,7 +124,7 @@ public interface AccountDataSource {
 
     Observable<ContactUsResponse> getContactInfo();
 
-    Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params);
+    Observable<Response> contactMessageRequest(Map<String, Object> params);
 
     Observable<Response> settingsLogoutRequest(Map<String, Object> params);
 

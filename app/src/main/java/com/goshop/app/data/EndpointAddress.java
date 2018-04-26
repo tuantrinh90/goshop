@@ -121,7 +121,7 @@ public class EndpointAddress {
     //todo wait for api
     public static final String COMPLEMENT_EMAIL = "";
 
-    public static final String CONTACT_MESSAGE = "";
+    public static final String CONTACT_MESSAGE = "rest/all/V1/rest-api/contact-us";
 
     //todo wait for api
     public static final String EDIT_PROFILE = "";

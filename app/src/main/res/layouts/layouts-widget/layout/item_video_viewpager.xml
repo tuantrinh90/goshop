@@ -11,6 +11,11 @@
         android:background="@drawable/ic_video"
         android:scaleType="fitXY"
         android:contentDescription="@string/app_name"/>
+    <com.longtailvideo.jwplayer.JWPlayerView
+        android:id="@+id/jwplayer"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/size_208"/>
 
     <include
         layout="@layout/layout_widget_video_product"/>

@@ -143,6 +143,10 @@ public class CustomAnimEditText extends RelativeLayout {
         textInputLayoutAnim.setHintTextAppearance(R.style.errorAppearance);
     }
 
+    public void setInputType(int type) {
+        textInputLayoutAnim.getEditText().setInputType(type);
+    }
+
     public void setNomarl() {
         textInputLayoutAnim.setErrorEnabled(false);
         textInputLayoutAnim.setHintTextAppearance(R.style.hintAppearance);

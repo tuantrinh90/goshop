@@ -14,6 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
+        <!--JWPLAYER-->
+        <meta-data
+            android:name="JW_LICENSE_KEY"
+            android:value="dKHVX2vjs24Xp7PaGoBcW4wZKDx9fNdMlrDRyw=="/>
+
         <!-- FABRIC-->
         <meta-data
             android:name="io.fabric.ApiKey"
@@ -44,6 +49,8 @@
         <!--ACTIVITY-->
         <activity
             android:name=".presentation.home.MainPageActivity"
+            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
+            android:screenOrientation="portrait"
             android:theme="@style/WhiteBackground"/>
 
         <activity

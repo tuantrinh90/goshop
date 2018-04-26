@@ -307,8 +307,15 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<ContactUsResponse> contactMessageRequest(Map<String, Object> params) {
-        return accountCloudDataSource.contactMessageRequest(params);
+    public Observable<Response> contactMessageRequest(Map<String, Object> params) {
+        return accountCloudDataSource.contactMessageRequest(params).concatMap(response -> {
+            if (isSuccess(response.getMessage().getStatus())) {
+                return Observable.just(response);
+            } else {
+                return Observable
+                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
+            }
+        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
     }
 
     @Override

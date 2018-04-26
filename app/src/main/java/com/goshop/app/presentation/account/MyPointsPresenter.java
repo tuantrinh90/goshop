@@ -17,8 +17,6 @@ import io.reactivex.observers.DisposableObserver;
 public class MyPointsPresenter extends RxPresenter<MyPointsContract.View> implements
     MyPointsContract.Presenter {
 
-    public static final int LIMIT = 10;
-
     private ProductRepository repository;
 
     public PaginationData paginationData;

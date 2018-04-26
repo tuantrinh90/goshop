@@ -95,6 +95,8 @@ public class MyPointsActivity extends BaseActivity<MyPointsContract.Presenter> i
 
     @Override
     public void getPointDetailsSuccess(List<PointsModel> pointsModels, PaginationData pagination) {
+        // TODO: 2018/4/26  setCurrentPage(1) is hard code
+        pagination.setCurrentPage(1);
         this.pagination = pagination;
         isCanLoadMore = pointsModels.size() >= Const.LIMIT;
         if (pagination.getCurrentPage() == 1) {

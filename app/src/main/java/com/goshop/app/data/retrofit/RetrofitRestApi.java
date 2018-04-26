@@ -319,7 +319,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<ContactUsResponse> contactMessageRequest(@Url String fullUrl,
+    Observable<Response> contactMessageRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

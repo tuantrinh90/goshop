@@ -45,10 +45,15 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
 
     private OnTrendingNowClickListener onTrendingNowClickListener;
 
-    public TrendingNowAdapter(OnTrendingNowClickListener onTrendingNowClickListener,
+    private VideoViewPagerAdapter.OnFullscreenListener onFullscreenListener;
+
+    public TrendingNowAdapter(
+        OnTrendingNowClickListener onTrendingNowClickListener,
+        VideoViewPagerAdapter.OnFullscreenListener onFullscreenListener,
         List<TrendingNowModel> models) {
         this.onTrendingNowClickListener = onTrendingNowClickListener;
         this.models = models;
+        this.onFullscreenListener = onFullscreenListener;
     }
 
     @Override
@@ -118,6 +123,7 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
 
         public TrendingVideoViewHolder(View itemView) {
             super(itemView);
+            setIsRecyclable(false);
             ButterKnife.bind(this, itemView);
             heights = new ArrayList<>();
         }
@@ -144,11 +150,12 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
 
             List<VideoPlayerItemsVM> videoPlayerItemsVMS = videoVM.getVideoPlayerItemsVMS();
             VideoViewPagerAdapter pagerAdapter = new VideoViewPagerAdapter(videoPlayerItemsVMS);
+            pagerAdapter.setOnFullscreenListener(onFullscreenListener);
             pagerAdapter.setOnProductItemClickListener(this::onProductItemClick);
             pagerAdapter.setOnProductBuyClickListener(this::onBuyNowClick);
             pagerAdapter.setOnPagerHeightChangeListener(this::onHeightChange);
             viewPager.setAdapter(pagerAdapter);
-            viewPager.setOffscreenPageLimit(3);
+            viewPager.setOffscreenPageLimit(videoPlayerItemsVMS.size());
             for (int i = 0; i < videoPlayerItemsVMS.size(); i++) {
                 heights.add(viewPager.getLayoutParams().height);
             }
@@ -170,6 +177,7 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onPageSelected(int position) {
                     channelAdapter.updateChannels(position);
+                    pagerAdapter.updateVideo(position);
                 }
 
                 @Override

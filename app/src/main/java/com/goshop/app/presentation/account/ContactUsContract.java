@@ -13,12 +13,18 @@ public class ContactUsContract {
         void showContactInfo(ContactUsVM contactUsVM);
 
         void requestResult();
+
+        void showServiceErrorMessage(String errorMessage);
+
+        void showNetworkErrorMessage(String message);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
         void getContactInfo();
 
-        void contactMessageRequest(Map<String, Object> params);
+        void contactMessageRequest(String name, String email, String mobile, String productHanding,
+            String details);
+
     }
 }

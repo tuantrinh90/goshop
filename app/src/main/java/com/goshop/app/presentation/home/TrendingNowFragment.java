@@ -15,6 +15,7 @@ import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.widget.BannerAutoPlayHelper;
 import com.goshop.app.widget.adapter.HomeBannerAdapter;
+import com.goshop.app.widget.adapter.VideoViewPagerAdapter;
 import com.goshop.app.widget.listener.OnHomeBannerItemClickListener;
 import com.goshop.app.widget.listener.OnScheduleClickListener;
 import com.goshop.app.widget.listener.OnTrendingNowClickListener;
@@ -25,9 +26,11 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
@@ -50,6 +53,9 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     private final String PRD = "prd";
 
     private final String SKU = "promotionlandSKU";
+
+    @BindView(R.id.ll_trending_content)
+    LinearLayout llTrendingContainer;
 
     @BindView(R.id.recyclerview_trending)
     IRecyclerView recyclerviewTrending;
@@ -128,7 +134,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         swipeRefresh.setOnRefreshListener(this);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerviewTrending.setLayoutManager(manager);
-        trendingNowAdapter = new TrendingNowAdapter(this, trendingNowModels);
+        trendingNowAdapter = new TrendingNowAdapter(this, onFullscreenListener, trendingNowModels);
         recyclerviewTrending.setIAdapter(trendingNowAdapter);
     }
 
@@ -138,6 +144,9 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         unbinder.unbind();
     }
 
+    private VideoViewPagerAdapter.OnFullscreenListener onFullscreenListener = isFullScreen -> {
+        llTrendingContainer.setFitsSystemWindows(!isFullScreen);
+    };
 
     @Override
     public void onBannerRequestSuccess(List<BannerVm> bannerVms) {
@@ -168,7 +177,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         RelativeLayout rlBannerContainer = header.findViewById(R.id.rl_banner_layout);
         customPagerIndicator = header.findViewById(R.id.indicator_widget);
         bannerViewPager = header.findViewById(R.id.viewpager_widget_banner);
-        int height = ScreenHelper.dip2px(getContext(),238);
+        int height = ScreenHelper.dip2px(getContext(), 238);
         rlBannerContainer.setLayoutParams(
             new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, height));
         recyclerviewTrending.addHeaderView(header);
