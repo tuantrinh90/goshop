@@ -26,11 +26,13 @@ public class ShoppingCartContract {
         void showErrorMessage(String errorMessage);
 
         void applySuccess(ApplyDiscountVM discountVM);
+
+        void stopRefresh();
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void viewCartDetails();
+        void viewCartDetails(int page, boolean isRefresh);
 
         void removeFromCartRequest(String sku, String qty);
 

@@ -28,9 +28,13 @@
             android:visibility="gone"
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-            <include
-                layout="@layout/layout_shopping_cart"/>
-
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+                <include
+                    layout="@layout/layout_shopping_cart"/>
+            </android.support.v4.widget.SwipeRefreshLayout>
         </FrameLayout>
         <FrameLayout
             android:id="@+id/fl_no_data"

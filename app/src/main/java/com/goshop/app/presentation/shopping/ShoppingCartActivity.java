@@ -22,6 +22,7 @@ import com.goshop.app.widget.listener.OnItemMenuClickListener;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -97,6 +98,11 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     private String cartId;
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    private int page = 1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -105,7 +111,8 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         initIntent();
         initToolbar();
         initRecyclerView();
-        mPresenter.viewCartDetails();
+        initSwipRefreshLayout();
+        mPresenter.viewCartDetails(page, false);
     }
 
     private void initIntent() {
@@ -135,6 +142,21 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             .inject(this);
     }
 
+    private void initSwipRefreshLayout() {
+        swipeRefreshLayout.setColorSchemeResources(R.color.color_main_pink);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            page = 1;
+            mPresenter.viewCartDetails(page, true);
+        });
+    }
+
+    @Override
+    public void stopRefresh() {
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
+    }
+
     private void initRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
@@ -151,12 +173,14 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @Override
     public void showCartDetail(ShoppingCartProductVM cartProductVM) {
-        if(cartProductVM.getProductListModels() != null && cartProductVM.getProductListModels().size() > 0) {
-            updateLayoutStatus(flContent,true);
+        if (cartProductVM.getProductListModels() != null && cartProductVM.getProductListModels()
+            .size() > 0) {
+            updateLayoutStatus(flContent, true);
             cartId = cartProductVM.getId();
             shoppingCartAdapter.setListModels(cartProductVM.getProductListModels());
 
-            if (cartProductVM.getDiscount() != null && TextUtils.isEmpty(cartProductVM.getDiscount())) {
+            if (cartProductVM.getDiscount() != null && TextUtils
+                .isEmpty(cartProductVM.getDiscount())) {
                 rlCartDisscount.setVisibility(View.GONE);
                 tvBtnCartApply.setText(getResources().getString(R.string.apply));
                 tvBtnCartApply.setSelected(false);
@@ -172,18 +196,20 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             tvCartBillingShipping.setText(cartProductVM.getShipping());
             tvCartBillingTotal.setText(cartProductVM.getTotal());
         } else {
-            updateLayoutStatus(flNoData,true);
+            updateLayoutStatus(flNoData, true);
         }
     }
 
     @Override
     public void showNetError() {
-        updateLayoutStatus(flConnectionBreak,true);
+        page = 1;
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
     public void removeSuccess() {
-        PopWindowUtil.showRequestMessagePop(rvShoppintCart, getResources().getString(R.string.success));
+        PopWindowUtil
+            .showRequestMessagePop(rvShoppintCart, getResources().getString(R.string.success));
     }
 
     @Override
@@ -203,7 +229,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @Override
     public void applySuccess(ApplyDiscountVM discountVM) {
-        if(tvBtnCartApply.isSelected()) {
+        if (tvBtnCartApply.isSelected()) {
             rlCartDisscount.setVisibility(View.GONE);
             tvBtnCartApply.setText(getResources().getString(R.string.apply));
             tvBtnCartApply.setSelected(false);
@@ -234,14 +260,16 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         mPresenter.removeFromCartRequest(productsVM.getId(), productsVM.getAmount());
     }
 
-    @OnClick({R.id.tv_btn_cart_apply,R.id.tv_btn_cart_checkout, R.id.imageview_left_menu, R.id.tv_net_refresh})
+    @OnClick({R.id.tv_btn_cart_apply, R.id.tv_btn_cart_checkout, R.id.imageview_left_menu, R.id
+        .tv_net_refresh})
     public void onCartClick(View view) {
         switch (view.getId()) {
             case R.id.tv_btn_cart_apply:
                 KeyBoardUtils.hideKeyboard(this);
                 String code = etCartApply.getText().toString();
-                if(TextUtils.isEmpty(code)) {
-                    Toast.makeText(this, getResources().getString(R.string.empty_error), Toast.LENGTH_SHORT).show();
+                if (TextUtils.isEmpty(code)) {
+                    Toast.makeText(this, getResources().getString(R.string.empty_error),
+                        Toast.LENGTH_SHORT).show();
                 } else {
                     mPresenter.applyCoupon(code, cartId);
                 }
@@ -258,12 +286,12 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 startActivity(new Intent(this, CheckoutActivity.class));
                 break;
             case R.id.tv_shop_now:
-                updateLayoutStatus(flNoData,false);
+                updateLayoutStatus(flNoData, false);
                 startActivity(new Intent(this, MainPageActivity.class));
                 break;
             case R.id.tv_net_refresh:
-                updateLayoutStatus(flConnectionBreak,false);
-                mPresenter.viewCartDetails();
+                updateLayoutStatus(flConnectionBreak, false);
+                mPresenter.viewCartDetails(page, false);
                 break;
 
         }

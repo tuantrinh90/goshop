@@ -28,8 +28,10 @@ public class MyOrdersPresenter extends RxPresenter<MyOrdersContract.View> implem
     }
 
     @Override
-    public void getListOrder(int page) {
-        mView.showLoadingBar();
+    public void getListOrder(int page, boolean isRefresh) {
+        if(!isRefresh) {
+            mView.showLoadingBar();
+        }
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
@@ -40,12 +42,14 @@ public class MyOrdersPresenter extends RxPresenter<MyOrdersContract.View> implem
                 @Override
                 public void onNext(Response<MyOrderListResponse> response) {
                     mView.hideLoadingBar();
+                    mView.stopRefresh();
                     mView.showMyOrdersResult(ListOrderMapper.transform(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
+                    mView.stopRefresh();
                     if(e instanceof ServiceApiFail) {
                         mView.showGetListFailedMessage(((ServiceApiFail) e).getErrorMessage());
                     } else {
