@@ -11,10 +11,13 @@ import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -95,6 +98,8 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
         mPresenter.categoryDetailRequest(null);
         sortVMS = mPresenter.getSortVMS();
         sortVMS.get(0).setSelect(true);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewFilter), 200);
     }
 
     @Override
@@ -163,6 +168,7 @@ public class CategoryTreeDetailActivity extends BaseActivity<CategoryTreeDetailC
     @Override
     public void onClick() {
         //todo wait for api
+        startActivity(new Intent(this, ProductDetailActivity.class));
     }
 
     @Override

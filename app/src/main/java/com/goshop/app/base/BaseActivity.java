@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.ActionBar;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -55,6 +56,7 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
+        Log.d(TAG, "onCreate: "+this.getClass().getSimpleName());
         setToolbar();
         setStatusBar();
     }

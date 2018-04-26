@@ -298,4 +298,16 @@ public class PopWindowUtil {
         popupWindow.setOutsideTouchable(true);
         popupWindow.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
     }
+
+    // TODO: 2018/4/26 show no api pop , this need delete later
+    public static void showNoApiPop(View parentView) {
+        View view = LayoutInflater.from(parentView.getContext())
+            .inflate(R.layout.layout_no_api, null);
+        PopupWindow popupWindow = new PopupWindow(view, ViewGroup.LayoutParams.MATCH_PARENT,
+            ViewGroup.LayoutParams.MATCH_PARENT);
+        popupWindow.setBackgroundDrawable(new ColorDrawable(0));
+        popupWindow.setOutsideTouchable(true);
+        popupWindow.showAtLocation(parentView, Gravity.BOTTOM, 0, 0);
+        view.setOnClickListener(v -> popupWindow.dismiss());
+    }
 }

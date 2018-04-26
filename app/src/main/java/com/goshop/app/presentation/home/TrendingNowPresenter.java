@@ -44,32 +44,6 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
         this.productRepository = productRepository;
     }
 
-    @Override
-    public void trendingNowRequest(Map<String, Object> params) {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.trendingNowRequest(params).subscribeWith(
-            new DisposableObserver<TrendingNowResponse>() {
-                @Override
-                public void onNext(TrendingNowResponse response) {
-                    mView.hideLoadingBar();
-                    //todo wait for api
-                    /*List<BaseWidgetResponse> baseWidgetRepons = widgetListResponse
-                    .getWidgetlist();
-                    Log.d("TrendingNowPresenter", "size:" + baseWidgetRepons.size());
-                    mView.trendingNowResult(WidgetViewMapper.transformBanner(widgetListResponse));*/
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
-    }
 
     @Override
     public void getHomeBanner() {
@@ -107,7 +81,6 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
                     // TODO: 2018/4/25  hard code need api return
                     trendingNowModels.add(new TrendingVideoVM("On Air", "TV Schedule",
                         TrendingMapper.transformOnAirSchedule(response)));
-                    getMockData();
                     mView.onAirScheduleRequestSuccess(trendingNowModels);
                     mView.hideLoadingBar();
                 }

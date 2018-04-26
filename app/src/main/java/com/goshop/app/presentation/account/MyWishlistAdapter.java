@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
@@ -23,6 +24,8 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
 
     private OnItemMenuClickListener menuClickListener;
 
+    private OnWishListItemClickListener onWishListItemClickListener;
+
     private List<WishlistVM> productsVMS;
 
     public MyWishlistAdapter(
@@ -41,6 +44,11 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
         View view = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_wishlist, parent, false);
         return new MyWishlistViewHolder(view);
+    }
+
+    public void setOnWishListItemClickListener(
+        OnWishListItemClickListener onWishListItemClickListener) {
+        this.onWishListItemClickListener = onWishListItemClickListener;
     }
 
     @Override
@@ -74,6 +82,9 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_wishlist_title)
         RobotoLightTextView tvWishlistTitle;
 
+        @BindView(R.id.tv_wishlist_percent)
+        RobotoRegularTextView tvPersent;
+
         @BindView(R.id.view_wishlist_divider)
         View viewWishlistDivider;
 
@@ -89,12 +100,23 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
                     v -> menuClickListener.onItemMenuClick(ivWishlistMenu, wishlistVM));
 
             Glide.with(itemView.getContext()).load(wishlistVM.getThumb()).asBitmap()
-                .error(R.drawable.ic_bought)
+                .error(R.drawable.ic_image_404_small)
                 .into(ivWishlistThumb);
             tvWishlistNow.setText(wishlistVM.getNowPrice());
             tvWishlistOld.setText(wishlistVM.getOldPrice());
             tvWishlistOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             tvWishlistTitle.setText(wishlistVM.getTitle());
+            tvPersent.setText(wishlistVM.getPercent());
+            itemView.setOnClickListener(v -> {
+                if (onWishListItemClickListener != null) {
+                    onWishListItemClickListener.onWishListClick(wishlistVM);
+                }
+            });
         }
+    }
+
+    public interface OnWishListItemClickListener {
+
+        void onWishListClick(WishlistVM wishlistVM);
     }
 }

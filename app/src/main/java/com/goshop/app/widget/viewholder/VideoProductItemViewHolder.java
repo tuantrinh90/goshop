@@ -55,7 +55,7 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
             .setText(NumberFormater.formaterPrice(productsVM.getPriceVM().getRm().getDiscounted()));
         tvVideoProductPercent.setText(productsVM.getPriceVM().getRm().getDiscountTitle());
         Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
-            .error(R.drawable.ic_bought)
+            .error(R.drawable.ic_image_404_small)
             .into(ivVideoProductThumb);
 
         tvBtnVideoProductBuy.setOnClickListener(v -> buyClickListener.onBuyNowClick(productsVM));

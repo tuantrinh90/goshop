@@ -18,6 +18,7 @@ import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -91,6 +92,8 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
         //todo wait for api
         mPresenter.brandsDetailRequest(null);
         mPresenter.filterMenuRequest(null);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewDetails), 200);
     }
 
     @Override

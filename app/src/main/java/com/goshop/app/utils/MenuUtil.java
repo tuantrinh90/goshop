@@ -125,12 +125,20 @@ public class MenuUtil {
                 intent = new Intent(activity, CategoryActivity.class);
                 break;
             case MENU_TYPE_GO_LOYALTY:
-                intent = new Intent(activity, GoLoyaltyActivity.class);
+                if (UserHelper.isLogin()) {
+                    intent = new Intent(activity, GoLoyaltyActivity.class);
+                } else {
+                    UserHelper.goToLogin(activity);
+                }
                 break;
             case MENU_TYPE_SHOPPING_CART:
-                intent = new Intent(activity, ShoppingCartActivity.class);
-                intent.putExtra(ShoppingCartActivity.EXTRA_ENTRANCE,
-                    ShoppingCartActivity.TYPE_ENTRANCE_DRAWER);
+                if (UserHelper.isLogin()) {
+                    intent = new Intent(activity, ShoppingCartActivity.class);
+                    intent.putExtra(ShoppingCartActivity.EXTRA_ENTRANCE,
+                        ShoppingCartActivity.TYPE_ENTRANCE_DRAWER);
+                } else {
+                    UserHelper.goToLogin(activity);
+                }
                 break;
             case MENU_TYPE_MY_WISHLIST:
                 intent = new Intent(activity, MyWishlistActivity.class);
@@ -148,7 +156,11 @@ public class MenuUtil {
                 intent = new Intent(activity, HelpSupportActivity.class);
                 break;
             case MENU_TYPE_SETTINGS:
-                intent = new Intent(activity, SettingsActivity.class);
+                if (UserHelper.isLogin()) {
+                    intent = new Intent(activity, SettingsActivity.class);
+                } else {
+                    UserHelper.goToLogin(activity);
+                }
                 break;
         }
 

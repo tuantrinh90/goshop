@@ -4,9 +4,11 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.FAQVM;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -33,6 +35,8 @@ public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements 
         super.onCreate(savedInstanceState);
         //TODO wait for api
         mPresenter.faqRequest(null);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewFaq), 200);
     }
 
     @Override

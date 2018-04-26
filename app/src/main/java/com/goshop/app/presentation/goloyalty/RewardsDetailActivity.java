@@ -8,8 +8,10 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumItalicTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.RewardsDetailVM;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
@@ -65,6 +67,8 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
         super.onCreate(savedInstanceState);
         //todo wait for api
         mPresenter.rewardsDetailRequest(null);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(ivRewardsDetailsThumb), 200);
     }
 
     @Override

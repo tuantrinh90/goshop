@@ -5,8 +5,6 @@ import com.goshop.app.presentation.model.widget.ProductsVM;
 
 public interface OnTrendingNowClickListener {
 
-    void onTopBannerClick(CarouselItemsVM carouselItemsVM);
-
     void onTVScheduleClick();
 
     void onProductItemClick(ProductsVM productsVM);
