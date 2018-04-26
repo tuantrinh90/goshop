@@ -138,6 +138,10 @@ public class Const {
 
     public static final String PARAMS_EPP_MONTH = "epp_month";
 
+    public static final String PARAMS_DEFAULT_BILLING = "default_billing";
+
+    public static final String PARAMS_DEFAULT_SHIPPING = "default_shipping";
+
     public static final int PROMOTION_CONTENT_ITEM = 2;
 
     //type-banner

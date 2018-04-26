@@ -205,7 +205,7 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
+    public Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params) {
         return null;
     }
 

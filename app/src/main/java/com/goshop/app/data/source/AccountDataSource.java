@@ -107,7 +107,7 @@ public interface AccountDataSource {
 
     Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params);
 
-    Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
+    Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params);
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 

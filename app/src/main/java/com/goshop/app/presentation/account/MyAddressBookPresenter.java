@@ -22,34 +22,17 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
     }
 
     @Override
-    public void myAddressRequest(Map<String, Object> params) {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.myAddressRequest(params).subscribeWith(
-            new DisposableObserver<AddressResponse>() {
-                @Override
-                public void onNext(AddressResponse addressResponse) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
-    }
-
-    @Override
-    public void getAddressList() {
+    public void editAddressRequest(boolean isBilling) {
         mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
-        addSubscrebe(accountRepository.getAddressList(params).subscribeWith(
+        if(isBilling) {
+            params.put(Const.PARAMS_DEFAULT_BILLING, isBilling);
+        } else {
+            params.put(Const.PARAMS_DEFAULT_SHIPPING, !isBilling);
+        }
+        addSubscrebe(accountRepository.editAddressRequest(params).subscribeWith(
             new DisposableObserver<Response<AddressResponse>>() {
                 @Override
                 public void onNext(Response<AddressResponse> response) {
@@ -58,8 +41,40 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
                 }
 
                 @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.showErrorMessage(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+
+    }
+
+    @Override
+    public void getAddressList(int page, boolean isRefresh) {
+        if(!isRefresh) {
+            mView.showLoadingBar();
+        }
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        addSubscrebe(accountRepository.getAddressList(params).subscribeWith(
+            new DisposableObserver<Response<AddressResponse>>() {
+                @Override
+                public void onNext(Response<AddressResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.stopRefresh();
+                    mView.getAddressListSuccess(AddressMapper.transform(response));
+                }
+
+                @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
+                    mView.stopRefresh();
                     mView.showErrorMessage(throwable.getLocalizedMessage().toString());
                 }
 
@@ -70,59 +85,5 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
             }));
     }
 
-    @Override
-    public void selectDefaultShippingRequest(int position) {
-        mView.showLoadingBar();
-        Map<String, Object> params = new HashMap<>();
-        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
-        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
-        addSubscrebe(accountRepository.selectDefaultShippingRequest(params).subscribeWith(
-            new DisposableObserver<Response>() {
-                @Override
-                public void onNext(Response response) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                    //todo wait for api
-                    mView.selectDefaultShippingSuccess(position);
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
-    }
-
-    @Override
-    public void selectDefaultBillingRequest(int position) {
-        mView.showLoadingBar();
-        Map<String, Object> params = new HashMap<>();
-        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
-        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
-        addSubscrebe(accountRepository.selectDefaultBillingRequest(params).subscribeWith(
-            new DisposableObserver<Response>() {
-                @Override
-                public void onNext(Response response) {
-                    mView.hideLoadingBar();
-
-                }
-
-                @Override
-                public void onError(Throwable throwable) {
-                    mView.hideLoadingBar();
-                    //todo wait for api
-                    mView.selectDefaultBillingSuccess(position);
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
-    }
 
 }

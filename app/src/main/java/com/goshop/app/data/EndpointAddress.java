@@ -105,8 +105,6 @@ public class EndpointAddress {
 
     public static final String ADD_ADDRESS = "";
 
-    public static final String EDIT_ADDRESS = "";
-
     public static final String ALL_DEALS = "";
 
     public static final String BRANDS_DETAIL = "";

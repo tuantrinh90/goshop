@@ -281,7 +281,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<AddressResponse> editAddressRequest(@Url String fullUrl,
+    Observable<Response<AddressResponse>> editAddressRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

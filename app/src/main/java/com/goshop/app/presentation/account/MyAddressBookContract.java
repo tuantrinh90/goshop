@@ -11,25 +11,17 @@ public class MyAddressBookContract {
 
     interface View extends BaseView {
 
-        void myAddressResult(List<AddressVM> addressVMS);
-
         void getAddressListSuccess(List<AddressVM> addressVMS);
 
         void showErrorMessage(String errorMessage);
 
-        void selectDefaultShippingSuccess(int position);
-
-        void selectDefaultBillingSuccess(int position);
+        void stopRefresh();
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void myAddressRequest(Map<String, Object> params);
+        void editAddressRequest(boolean isBilling);
 
-        void getAddressList();
-
-        void selectDefaultShippingRequest(int position);
-
-        void selectDefaultBillingRequest(int position);
+        void getAddressList(int page, boolean isRefresh);
     }
 }

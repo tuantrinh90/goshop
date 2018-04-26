@@ -248,8 +248,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
-        return accountCloudDataSource.editAddressRequest(params);
+    public Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params) {
+        return getServerData(accountCloudDataSource.editAddressRequest(params));
     }
 
     @Override

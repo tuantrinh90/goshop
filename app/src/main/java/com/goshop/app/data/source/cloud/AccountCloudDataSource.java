@@ -210,7 +210,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
+    public Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params) {
         return restApi.editAddressRequest(params);
     }
 
