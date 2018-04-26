@@ -9,6 +9,7 @@ import com.goshop.app.utils.PopWindowUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -38,20 +39,16 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     private List<AddressVM> displayAddressVMs;
 
-    @Override
-    public void myAddressResult(List<AddressVM> addressVMS) {
-        displayAddressVMs.clear();
-        displayAddressVMs.addAll(addressVMS);
-        addressBookAdapter.notifyDataSetChanged();
-        //TODO this part need decide
-//        addressBookAdapter.setUpdates(displayAddressVMs);
-    }
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    private int page = 1;
 
     @Override
     public void getAddressListSuccess(List<AddressVM> addressVMS) {
-        if (addressVMS.size() > 0) {
+        if (page == 1 && addressVMS.size() > 0) {
             addressBookAdapter.setUpdates(addressVMS);
-        } else {
+        } else if(page !=1 && addressVMS.isEmpty()){
             updateLayoutStatus(flNoData, true);
         }
     }
@@ -62,21 +59,11 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
         PopWindowUtil.showRequestMessagePop(flConnectionBreak,errorMessage);
     }
 
-    @Override
-    public void selectDefaultShippingSuccess(int position) {
-        addressBookAdapter.setSelectShippingUpdate(position);
-    }
-
-    @Override
-    public void selectDefaultBillingSuccess(int position) {
-        addressBookAdapter.setSelectBillingUpdate(position);
-    }
-
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.getAddressList();
+        mPresenter.getAddressList(page, false);
         displayAddressVMs = new ArrayList<>();
         initRecyclerView();
     }
@@ -93,6 +80,8 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+
+        initSwipRefreshLayout();
     }
 
     @Override
@@ -123,7 +112,8 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak, false);
-                mPresenter.getAddressList();
+                page = 1;
+                mPresenter.getAddressList(page, false);
                 break;
         }
     }
@@ -139,11 +129,25 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     @Override
     public void selectDefaultShippingAddress(AddressVM addressVM, int position) {
-        mPresenter.selectDefaultShippingRequest(position);
+        mPresenter.editAddressRequest(false);
     }
 
     @Override
     public void selectDefaultBillingAddress(AddressVM addressVM, int position) {
-        mPresenter.selectDefaultBillingRequest(position);
+        mPresenter.editAddressRequest(false);
+    }
+
+    private void initSwipRefreshLayout() {
+        swipeRefreshLayout.setColorSchemeResources(R.color.color_main_pink);
+        swipeRefreshLayout.setOnRefreshListener(()->{
+            page = 1;
+            mPresenter.getAddressList(page, true);});
+    }
+
+    @Override
+    public void stopRefresh() {
+        if(swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 }

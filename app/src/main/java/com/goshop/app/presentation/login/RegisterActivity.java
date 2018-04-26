@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.CustomPasswordEditText;
+import com.goshop.app.common.view.RobotoLightCheckBox;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -52,6 +53,12 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     public static final String TIP_TYPE_TERMS_OF_USER = "Terms Of User";
 
+    @BindView(R.id.cb_register_email)
+    RobotoLightCheckBox cbRegisterEmail;
+
+    @BindView(R.id.cb_register_sms)
+    RobotoLightCheckBox cbRegisterSms;
+
     @BindView(R.id.ll_container)
     LinearLayout llContainer;
 
@@ -69,12 +76,6 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @BindView(R.id.ctd_et_register_password)
     CustomPasswordEditText etRegisterPassword;
-
-    @BindView(R.id.iv_register_email)
-    ImageView ivRegisterEmail;
-
-    @BindView(R.id.iv_register_sms)
-    ImageView ivRegisterSms;
 
     @BindView(R.id.iv_select_female)
     ImageView ivSelectFemale;
@@ -136,8 +137,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     private void initView() {
         textviewRightMenu.setText(getResources().getString(R.string.done));
-        ivRegisterSms.setSelected(true);
-        ivRegisterEmail.setSelected(true);
+        cbRegisterEmail.setChecked(true);
+        cbRegisterSms.setChecked(true);
         ivSelectFemale.setSelected(true);
         tvRegisterDateOfBirthWarning.setVisibility(View.GONE);
     }
@@ -236,7 +237,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @OnClick({R.id.tv_btn_register_login, R.id.imageview_left_menu, R.id
         .textview_right_menu, R.id.tv_register_title, R.id.tv_register_language, R.id
-        .tv_register_date_of_birth, R.id.ll_register_email, R.id.ll_register_sms, R.id
+        .tv_register_date_of_birth,  R.id
         .ll_select_male, R.id.ll_select_female})
     public void onRegisterClick(View view) {
 
@@ -280,14 +281,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
                 EditTextUtil.eidtLoseFocus(view);
                 PopWindowUtil.showDatePickerDialog(tvRegisterDateOfBirth, this::onDatePicker);
                 break;
-            case R.id.ll_register_email:
-                EditTextUtil.eidtLoseFocus(view);
-                ivRegisterEmail.setSelected(!ivRegisterEmail.isSelected());
-                break;
-            case R.id.ll_register_sms:
-                EditTextUtil.eidtLoseFocus(view);
-                ivRegisterSms.setSelected(!ivRegisterSms.isSelected());
-                break;
+
             case R.id.ll_select_female:
                 EditTextUtil.eidtLoseFocus(view);
                 ivSelectFemale.setSelected(true);
@@ -361,8 +355,8 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     private void registerRequest() {
         String gender = ivSelectMale.isSelected() ? "1" : "2";
-        boolean isRegisterEmail = ivRegisterEmail.isSelected();
-        boolean isRegisterSms = ivRegisterSms.isSelected();
+        boolean isRegisterEmail = cbRegisterEmail.isChecked();
+        boolean isRegisterSms = cbRegisterSms.isChecked();
         mPresenter
             .registerRequest(name, email, password, title, gender, birth,
                 mobile, language, isRegisterEmail, isRegisterSms);

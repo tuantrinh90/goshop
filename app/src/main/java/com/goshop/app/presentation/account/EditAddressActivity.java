@@ -283,11 +283,6 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     }
 
     @Override
-    public void showEditAddressResult() {
-        //todo wait for api
-    }
-
-    @Override
     public void editAddressSuccess() {
         finish();
     }

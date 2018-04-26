@@ -16,8 +16,6 @@ public class EditAddressContract {
 
     interface View extends BaseView {
 
-        void showEditAddressResult();
-
         void editAddressSuccess();
 
         void editAddressFailed(String errorMessage);
@@ -30,8 +28,6 @@ public class EditAddressContract {
     }
 
     public interface Presenter extends BasePresenter<View> {
-
-        void editAddressRequest(Map<String, Object> params);
 
         List<ProfileMetaVM> getCountryChooses();
 

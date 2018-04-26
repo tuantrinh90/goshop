@@ -12,6 +12,7 @@ import com.goshop.app.utils.PopWindowUtil;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -49,6 +50,9 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
 
     private int page = 1;
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +60,8 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
         setContentView(getContentView());
         initRecyclerView();
         initToolbar();
-        mPresenter.getListOrder(page);
+        initSwipRefreshLayout();
+        mPresenter.getListOrder(page, false);
     }
 
     private void initToolbar() {
@@ -98,28 +103,29 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
                 openDrawerLayout();
                 break;
             case R.id.tv_shop_now:
-                updateLayoutStatus(flNoData,false);
+                updateLayoutStatus(flNoData, false);
                 startActivity(new Intent(this, MainPageActivity.class));
                 break;
             case R.id.tv_net_refresh:
-                updateLayoutStatus(flConnectionBreak,false);
-                mPresenter.getListOrder(page);
+                updateLayoutStatus(flConnectionBreak, false);
+                page = 1;
+                mPresenter.getListOrder(page, false);
                 break;
         }
     }
 
     @Override
     public void showMyOrdersResult(List<MyOrdersVM> myOrdersVMS) {
-        if(myOrdersVMS.size() > 0) {
+        if (myOrdersVMS.size() > 0) {
             myOrdersAdapter.setUpdateDatas(myOrdersVMS);
         } else {
-            updateLayoutStatus(flNoData,true);
+            updateLayoutStatus(flNoData, true);
         }
     }
 
     @Override
     public void showNetError() {
-        updateLayoutStatus(flConnectionBreak,true);
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
@@ -145,5 +151,20 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
     @Override
     public void onReturnClick() {
         startActivity(new Intent(this, ReturnOrderActivity.class));
+    }
+
+    private void initSwipRefreshLayout() {
+        swipeRefreshLayout.setColorSchemeResources(R.color.color_main_pink);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            page = 1;
+            mPresenter.getListOrder(page, true);
+        });
+    }
+
+    @Override
+    public void stopRefresh() {
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 }

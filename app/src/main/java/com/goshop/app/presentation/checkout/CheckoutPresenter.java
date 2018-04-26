@@ -6,9 +6,13 @@ import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.ApplyVMMapper;
+import com.goshop.app.presentation.mapper.CheckoutMapper;
+import com.goshop.app.presentation.mapper.PaymentMapper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -28,19 +32,25 @@ public class CheckoutPresenter extends RxPresenter<CheckoutContract.View> implem
     }
 
     @Override
-    public void getCheckout(String sessionKey) {
+    public void checkoutRequest(String quoteId, String addressId) {
         mView.showLoadingBar();
-        addSubscrebe(accountRepository.checkoutRequest(sessionKey).subscribeWith(
-            new DisposableObserver<CheckoutResponse>() {
+        Map<String , Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_QUOTE_ID, quoteId);
+        params.put(Const.PARAMS_ADDRESS_ID, addressId);
+        addSubscrebe(accountRepository.checkoutRequest(params).subscribeWith(
+            new DisposableObserver<Response<CheckoutResponse>>() {
                 @Override
-                public void onNext(CheckoutResponse checkoutResponse) {
+                public void onNext(Response<CheckoutResponse> response) {
                     mView.hideLoadingBar();
-                    mView.showCheckout(checkoutResponse);
+                    mView.checkoutRequestSuccess(CheckoutMapper.transform(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
+                    mView.showErrorMessage(throwable.getMessage().toString());
                 }
 
                 @Override
@@ -141,8 +151,31 @@ public class CheckoutPresenter extends RxPresenter<CheckoutContract.View> implem
     }
 
     @Override
-    public void paymentRequest() {
-        //todo wait for api
+    public void paymentRequest(String quoteId, String addressId, String paymentMethod, String eppMonth) {
         mView.showPaymentProgress();
+        Map<String , Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_QUOTE_ID, quoteId);
+        params.put(Const.PARAMS_ADDRESS_ID, addressId);
+        params.put(Const.PARAMS_PAYMENT_METHOD, paymentMethod);
+        params.put(Const.PARAMS_EPP_MONTH, eppMonth);
+        addSubscrebe(accountRepository.paymentRequest(params).subscribeWith(
+            new DisposableObserver<Response<PaymentResponse>>() {
+                @Override
+                public void onNext(Response<PaymentResponse> response) {
+                    mView.placeOrderSuccess(PaymentMapper.transform(response.getData()));
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.showErrorMessage(throwable.getMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
 }

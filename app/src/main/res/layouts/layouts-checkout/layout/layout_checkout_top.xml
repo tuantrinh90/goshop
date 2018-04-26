@@ -285,18 +285,5 @@
         android:layout_height="@dimen/size_8"
         android:background="@drawable/drawable_biger_divider_with_shadow"/>
 
-    <com.goshop.app.common.view.RobotoMediumTextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="@dimen/size_18"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingBottom="@dimen/size_8"
-        android:textColor="@color/color_black_light"
-        android:textSize="@dimen/size_font_20"
-        android:text="@string/my_orders_items"
-        tools:ignore="RtlHardcoded,RtlSymmetry"/>
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/rv_order_list"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+
 </LinearLayout>

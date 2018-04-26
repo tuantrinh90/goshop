@@ -15,6 +15,7 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
+import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
@@ -24,6 +25,7 @@ import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.BannerResponse;
@@ -179,6 +181,11 @@ public class RetrofitRestApiImpl implements RestApi {
         return retrofitRestApi.registerRequest(url, params);
     }
 
+    @Override
+    public Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.CHECKOUT);
+        return retrofitRestApi.checkoutRequest(url, params);
+    }
 
     @Override
     public Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params) {
@@ -286,8 +293,8 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
-        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_ADDRESS);
+    public Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.EDIT_CUSTOMER_ADDRESS);
         return retrofitRestApi.editAddressRequest(url, params);
     }
 
@@ -557,5 +564,11 @@ public class RetrofitRestApiImpl implements RestApi {
         Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.GET_ORDER_METADATA);
         return retrofitRestApi.getOrderMetadata(url, params);
+    }
+
+    @Override
+    public Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.PLACE_ORDER);
+        return retrofitRestApi.paymentRequest(url, params);
     }
 }

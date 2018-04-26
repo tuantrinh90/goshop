@@ -42,6 +42,18 @@ public class ProductData {
     @SerializedName("allow_return")
     private boolean allowReturn;
 
+    @SerializedName("quote_item_id")
+    private String quoteItemId;
+
+
+    public String getQuoteItemId() {
+        return quoteItemId;
+    }
+
+    public void setQuoteItemId(String quoteItemId) {
+        this.quoteItemId = quoteItemId;
+    }
+
     public String getSku() {
         return sku;
     }

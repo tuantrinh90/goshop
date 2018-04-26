@@ -1,5 +1,7 @@
 package com.goshop.app.data.model.response.common;
 
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class OrdersData {
@@ -24,9 +26,40 @@ public class OrdersData {
 
     private String number;
 
+    private String code;
+
+    @SerializedName("payment_url")
+    private String paymentUrl;
+
+    private String state;
+
     private List<OrderProductData> product;
 
     private String status;
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public String getPaymentUrl() {
+        return paymentUrl;
+    }
+
+    public void setPaymentUrl(String paymentUrl) {
+        this.paymentUrl = paymentUrl;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
+    }
 
     public String getId() {
         return id;

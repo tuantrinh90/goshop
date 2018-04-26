@@ -18,6 +18,7 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -78,7 +79,7 @@ public interface AccountRepository {
 
     Observable<Response> registerRequest(Map<String, Object> params);
 
-    Observable<CheckoutResponse> checkoutRequest(String sessionKey);
+    Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params);
 
     Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params);
 
@@ -103,7 +104,7 @@ public interface AccountRepository {
 
     Observable<Response<AddressResponse>> editAddressRequest(AddressRequest addressRequest);
 
-    Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
+    Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params);
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
@@ -174,4 +175,6 @@ public interface AccountRepository {
     Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
 
     Observable<Response<OrderMetadataResponse>> getOrderMetadata(Map<String, Object> params);
+
+    Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params);
 }

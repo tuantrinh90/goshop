@@ -171,6 +171,7 @@
             android:layout_alignParentStart="true"/>
 
         <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_checkout_sub_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
@@ -183,32 +184,7 @@
     </RelativeLayout>
 
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_8">
 
-        <com.goshop.app.common.view.RobotoLightTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/rounding_amount"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="start"
-            android:layout_alignParentStart="true"/>
-
-        <com.goshop.app.common.view.RobotoLightTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/demo_cart_price1"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="end"
-            android:layout_alignParentEnd="true"
-            tools:ignore="RelativeOverlap"/>
-    </RelativeLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -226,6 +202,7 @@
             android:layout_alignParentStart="true"/>
 
         <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_checkout_billing_shipping"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
@@ -237,50 +214,66 @@
             tools:ignore="RelativeOverlap"/>
     </RelativeLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_checkout_discount"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="@dimen/size_8">
 
         <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/disscount_only"
+            android:textColor="@color/color_black_light"
+            android:gravity="start" />
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_checkout_discount_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
             android:text="@string/disscount"
-            android:layout_alignParentLeft="true"
             android:textColor="@color/color_black_light"
-            android:gravity="start"
-            android:layout_alignParentStart="true"/>
+            android:gravity="start" />
 
         <com.goshop.app.common.view.RobotoLightTextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_checkout_discount_amount"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
             android:text="@string/demo_cart_price2"
-            android:layout_alignParentRight="true"
             android:textColor="@color/color_black_light"
             android:gravity="end"
-            android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap"/>
-    </RelativeLayout>
+    </LinearLayout>
 
-    <RelativeLayout
+    <LinearLayout
+        android:id="@+id/ll_checkout_egift"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:orientation="horizontal"
         android:layout_marginTop="@dimen/size_8">
 
         <com.goshop.app.common.view.RobotoLightTextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
-            android:text="@string/egift_card"
-            android:layout_alignParentLeft="true"
+            android:text="@string/egift_card_only"
             android:textColor="@color/color_black_light"
-            android:gravity="start"
-            android:layout_alignParentStart="true"/>
+            android:gravity="start" />
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_checkout_egift_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/egift_card"
+            android:textColor="@color/color_black_light"
+            android:gravity="start" />
 
         <com.goshop.app.common.view.RobotoLightTextView
-            android:layout_width="wrap_content"
+            android:id="@+id/tv_checkout_egift_amount"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_14"
             android:text="@string/demo_cart_price2"
@@ -289,11 +282,12 @@
             android:gravity="end"
             android:layout_alignParentEnd="true"
             tools:ignore="RelativeOverlap"/>
-    </RelativeLayout>
+    </LinearLayout>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         android:layout_marginTop="@dimen/size_8">
 
         <com.goshop.app.common.view.RobotoLightTextView
@@ -333,6 +327,7 @@
             android:layout_alignParentStart="true"/>
 
         <com.goshop.app.common.view.RobotoMediumTextView
+            android:id="@+id/tv_checkout_billing_total"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="@dimen/size_font_18"
