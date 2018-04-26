@@ -18,6 +18,7 @@ import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -183,10 +184,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<CheckoutResponse> checkoutRequest(String sessionKey) {
-        return accountCloudDataSource.checkoutRequest(sessionKey)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread());
+    public Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params) {
+        return getServerData(accountCloudDataSource.checkoutRequest(params)) ;
     }
 
     @Override
@@ -249,8 +248,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
-        return accountCloudDataSource.editAddressRequest(params);
+    public Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params) {
+        return getServerData(accountCloudDataSource.editAddressRequest(params));
     }
 
     @Override
@@ -281,14 +280,7 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<Response<HelpSupportResponse>> helpSupportRequest(
         Map<String, Object> params) {
-        return accountCloudDataSource.helpSupportRequest(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(accountCloudDataSource.helpSupportRequest(params)) ;
     }
 
     @Override
@@ -320,14 +312,7 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<Response> settingsLogoutRequest(Map<String, Object> params) {
-        return accountCloudDataSource.settingsLogoutRequest(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerDataMessage(accountCloudDataSource.settingsLogoutRequest(params)) ;
     }
 
     @Override
@@ -357,38 +342,17 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<Response<ProfileMetadataResponse>> getProfileMetadata() {
-        return accountCloudDataSource.getProfileMetadata().concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(accountCloudDataSource.getProfileMetadata()) ;
     }
 
     @Override
     public Observable<Response<LoginResponse>> loginRequest(Map<String, Object> params) {
-        return accountCloudDataSource.loginRequest(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(accountCloudDataSource.loginRequest(params)) ;
     }
 
     @Override
     public Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params) {
-        return accountCloudDataSource.facebookLoginRequest(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(accountCloudDataSource.facebookLoginRequest(params)) ;
     }
 
     @Override
@@ -408,38 +372,17 @@ public class AccountDataRepository implements AccountRepository {
 
     @Override
     public Observable<Response<StatesResponse>> getStates(Map<String, Object> params) {
-        return accountCloudDataSource.getStates(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(accountCloudDataSource.getStates(params)) ;
     }
 
     @Override
     public Observable<Response<CityResponse>> getCity(Map<String, Object> params) {
-        return accountCloudDataSource.getCity(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(accountCloudDataSource.getCity(params)) ;
     }
 
     @Override
     public Observable<Response<ZipCodeResponse>> getZipCode(Map<String, Object> params) {
-        return accountCloudDataSource.getZipCode(params).concatMap(response -> {
-            if (isSuccess(response.getMessage().getStatus())) {
-                return Observable.just(response);
-            } else {
-                return Observable
-                    .error(new ServiceApiFail(response.getMessage().getDisplayMessage()));
-            }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread());
+        return getServerData(accountCloudDataSource.getZipCode(params)) ;
     }
 
     @Override
@@ -493,8 +436,13 @@ public class AccountDataRepository implements AccountRepository {
         return getServerData(accountCloudDataSource.getOrderMetadata(params));
     }
 
+    @Override
+    public Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params) {
+        return getServerData(accountCloudDataSource.paymentRequest(params));
+    }
+
     private boolean isSuccess(String status) {
-        return Const.SUCCESS_STATUS.equals(status);
+        return Const.SUCCESS_STATUS.equals(status.toLowerCase());
     }
 
     private <T> Observable<Response<T>> getServerData(Observable<Response<T>> observable) {

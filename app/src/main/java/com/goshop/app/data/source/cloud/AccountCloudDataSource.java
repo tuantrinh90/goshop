@@ -18,6 +18,7 @@ import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
@@ -140,10 +141,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<CheckoutResponse> checkoutRequest(String sessionKey) {
-        //TODO joyson temp code
-//        return restApi.checkoutRequest(sessionKey);
-        return ServiceData.getCheckout();
+    public Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params) {
+        return restApi.checkoutRequest(params);
     }
 
     @Override
@@ -211,7 +210,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<AddressResponse> editAddressRequest(Map<String, Object> params) {
+    public Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params) {
         return restApi.editAddressRequest(params);
     }
 
@@ -383,6 +382,11 @@ public class AccountCloudDataSource implements AccountDataSource {
     public Observable<Response<OrderMetadataResponse>> getOrderMetadata(
         Map<String, Object> params) {
         return restApi.getOrderMetadata(params);
+    }
+
+    @Override
+    public Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params) {
+        return restApi.paymentRequest(params);
     }
 
 }

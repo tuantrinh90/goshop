@@ -130,6 +130,18 @@ public class Const {
 
     public static final String PARAMS_QTY = "qty";
 
+    public static final String PARAMS_QUOTE_ID = "quote_id";
+
+    public static final String PARAMS_ADDRESS_ID = "address_id";
+
+    public static final String PARAMS_PAYMENT_METHOD = "payment_method";
+
+    public static final String PARAMS_EPP_MONTH = "epp_month";
+
+    public static final String PARAMS_DEFAULT_BILLING = "default_billing";
+
+    public static final String PARAMS_DEFAULT_SHIPPING = "default_shipping";
+
     public static final int PROMOTION_CONTENT_ITEM = 2;
 
     //type-banner

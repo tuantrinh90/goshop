@@ -281,7 +281,7 @@
     <string name="shipping_fee">Shipping Fee:</string>
     <string name="shipping">Shipping:</string>
     <string name="disscount">Disscount(ABCDE):</string>
-    <string name="disscount_only">Disscount</string>
+    <string name="disscount_only">Discount</string>
     <string name="egift_card">eGift Card(ASDFG):</string>
     <string name="egift_card_only">eGift Card</string>
     <string name="go_shop_points_num">Go Shop Points(200)</string>

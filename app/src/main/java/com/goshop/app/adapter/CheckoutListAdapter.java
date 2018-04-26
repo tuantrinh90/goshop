@@ -2,23 +2,16 @@ package com.goshop.app.adapter;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
-import com.goshop.app.common.listener.IRecyclerItemClick;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.presentation.model.common.ProductVM;
 
-import android.annotation.SuppressLint;
-import android.graphics.Typeface;
 import android.support.v7.widget.RecyclerView;
-import android.text.SpannableString;
-import android.text.Spanned;
-import android.text.style.StyleSpan;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -26,16 +19,17 @@ import butterknife.ButterKnife;
 
 public class CheckoutListAdapter extends RecyclerView.Adapter {
 
-    IRecyclerItemClick iRecyclerItemClick;
+    private List<ProductVM> productVMS;
 
-    List<CheckoutResponse.CheckoutItem> results = new ArrayList<>();
-
-    public CheckoutListAdapter(List<CheckoutResponse.CheckoutItem> results) {
-        this.results = results;
+    public CheckoutListAdapter(
+        List<ProductVM> productVMS) {
+        this.productVMS = productVMS;
     }
 
-    public void setiRecyclerItemClick(IRecyclerItemClick iRecyclerItemClick) {
-        this.iRecyclerItemClick = iRecyclerItemClick;
+    public void setProductVMS(List<ProductVM> productVMS) {
+        this.productVMS.clear();
+        this.productVMS = productVMS;
+        notifyDataSetChanged();
     }
 
     @Override
@@ -45,36 +39,14 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
         return new CheckoutHolder(view);
     }
 
-    @SuppressLint("SetTextI18n")
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
-        CheckoutResponse.CheckoutItem checkoutItem = results.get(position);
-        CheckoutHolder holder = (CheckoutHolder) viewHolder;
-        holder.tvCheckoutAmount.setText(checkoutItem.getAmount());
-        Glide.with(holder.itemView.getContext()).load(checkoutItem.getImage()).asBitmap()
-            .error(R.drawable.ic_right_video_demo)
-            .into(holder.ivCheckoutItemIcon);
-        holder.tvCheckoutProductName.setText(checkoutItem.getProductName());
-        holder.tvCheckoutColorAndSize
-            .setText(checkoutItem.getColor() + "," + checkoutItem.getSize());
-        holder.tvCheckoutOldPrice.setText(checkoutItem.getOldPrice());
-        holder.tvCheckoutPrice.setText(checkoutItem.getCurrentPrice());
-        holder.tvCheckoutAmount.setText(checkoutItem.getAmount());
-
+        ((CheckoutHolder)viewHolder).bindingData(productVMS.get(position));
     }
 
     @Override
     public int getItemCount() {
-        return results.size();
-    }
-
-    private SpannableString setBoldText(String frontText, String behindText) {
-        String allText = frontText + behindText;
-        SpannableString spannableString = new SpannableString(allText);
-        StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
-        spannableString.setSpan(styleSpan, frontText.length(), allText.length(),
-            Spanned.SPAN_INCLUSIVE_EXCLUSIVE);
-        return spannableString;
+        return productVMS.size();
     }
 
     static class CheckoutHolder extends RecyclerView.ViewHolder {
@@ -102,7 +74,16 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
         }
 
+        void bindingData(ProductVM productVM) {
+            Glide.with(itemView.getContext()).load(productVM.getImage()).asBitmap()
+                .error(productVM.getImageDefault())
+                .into(ivCheckoutItemIcon);
+            tvCheckoutAmount.setText(productVM.getAmount());
+            //todo hard code wait for api
+            tvCheckoutColorAndSize.setText("Color:Blue;Size:L");
+            tvCheckoutOldPrice.setText(productVM.getOldPrice());
+            tvCheckoutPrice.setText(productVM.getNowPrice());
+            tvCheckoutProductName.setText(productVM.getTitle());
+        }
     }
-
-
 }

@@ -2,16 +2,15 @@ package com.goshop.app.presentation.checkout;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
-import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ApplyEGiftVM;
 import com.goshop.app.presentation.model.ApplyPointsVM;
+import com.goshop.app.presentation.model.CheckoutVM;
+import com.goshop.app.presentation.model.PaymentVM;
 
 public interface CheckoutContract {
 
     interface View extends BaseView {
-
-        void showCheckout(CheckoutResponse checkoutResponse);
 
         void showNetwordErrorMessage();
 
@@ -24,11 +23,15 @@ public interface CheckoutContract {
         void applyEGiftSuccess(ApplyEGiftVM eGiftVM);
 
         void showPaymentProgress();
+
+        void checkoutRequestSuccess(CheckoutVM checkoutVM);
+
+        void placeOrderSuccess(PaymentVM paymentVM);
     }
 
     interface Presenter extends BasePresenter<View> {
 
-        void getCheckout(String sessionKey);
+        void checkoutRequest(String quoteId, String addressId);
 
         void applyCoupon(String couponCode, String cartId);
 
@@ -36,7 +39,7 @@ public interface CheckoutContract {
 
         void applyEGiftCard(String egiftCard, String cartId);
 
-        void paymentRequest();
+        void paymentRequest(String quoteId, String addressId, String paymentMethod, String eppMonth);
     }
 
 }

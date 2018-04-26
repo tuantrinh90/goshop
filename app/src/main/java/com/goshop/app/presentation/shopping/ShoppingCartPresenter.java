@@ -33,8 +33,10 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
     }
 
     @Override
-    public void viewCartDetails() {
-        mView.showLoadingBar();
+    public void viewCartDetails(int page, boolean isRefresh) {
+        if(!isRefresh) {
+            mView.showLoadingBar();
+        }
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
@@ -43,12 +45,14 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
                 @Override
                 public void onNext(Response<ShoppingCartResponse> response) {
                     mView.hideLoadingBar();
+                    mView.stopRefresh();
                     mView.showCartDetail(ShoppingCartMapper.transform(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
+                    mView.stopRefresh();
                     if (throwable instanceof ServiceApiFail) {
                         mView.showErrorMessage(((ServiceApiFail) throwable).getErrorMessage());
                     } else {

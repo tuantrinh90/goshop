@@ -16,11 +16,13 @@ public class MyOrdersContract {
         void showNetError();
 
         void showGetListFailedMessage(String errorMessage);
+
+        void stopRefresh();
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void getListOrder(int page);
+        void getListOrder(int page, boolean isRefresh);
     }
 
 }

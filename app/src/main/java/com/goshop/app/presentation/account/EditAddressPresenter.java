@@ -31,30 +31,6 @@ public class EditAddressPresenter extends RxPresenter<EditAddressContract.View> 
     }
 
     @Override
-    public void editAddressRequest(Map<String, Object> params) {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.editAddressRequest(params).subscribeWith(
-            new DisposableObserver<AddressResponse>() {
-                @Override
-                public void onNext(AddressResponse addressResponse) {
-                    mView.hideLoadingBar();
-                }
-
-                @Override
-                public void onError(Throwable e) {
-                    mView.hideLoadingBar();
-                    mView.showEditAddressResult();
-                }
-
-                @Override
-                public void onComplete() {
-
-                }
-            }));
-
-    }
-
-    @Override
     public void editAddressRequest(AddressRequest addressRequest) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.editAddressRequest(addressRequest).subscribeWith(

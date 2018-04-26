@@ -60,7 +60,7 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
         super.onCreate(savedInstanceState);
         scrollviewAllReviews.setVisibility(View.INVISIBLE);
         //todo wait for api
-        mPresenter.getProductRatingReviews(Const.PAGE, false);
+        mPresenter.getProductRatingReviews(page, false);
     }
 
     @Override

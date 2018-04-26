@@ -13,6 +13,7 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
+import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
@@ -28,6 +29,7 @@ import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
+import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.PromotionSkuResponse;
 import com.goshop.app.data.model.response.OnAirScheduleResponse;
@@ -95,6 +97,8 @@ public interface RestApi {
 
     io.reactivex.Observable<Response> registerRequest(Map<String, Object> params);
 
+    Observable<Response<CheckoutResponse>> checkoutRequest(Map<String, Object> params);
+
     Observable<Response<MyOrderListResponse>> getListOrder(Map<String, Object> params);
 
     Observable<Response<OrderDetailResponse>> getOrderDetail(Map<String, Object> params);
@@ -131,7 +135,7 @@ public interface RestApi {
 
     Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params);
 
-    Observable<AddressResponse> editAddressRequest(Map<String, Object> params);
+    Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params);
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
@@ -220,5 +224,7 @@ public interface RestApi {
     Observable<Response<ApplyEGiftResponse>> applyEGiftCard(Map<String, Object> params);
 
     Observable<Response<OrderMetadataResponse>> getOrderMetadata(Map<String, Object> params);
+
+    Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params);
 
 }
