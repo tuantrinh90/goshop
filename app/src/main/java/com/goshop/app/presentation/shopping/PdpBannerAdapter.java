@@ -40,7 +40,7 @@ public class PdpBannerAdapter extends PagerAdapter {
             .findViewById(R.id.iv_pdp_banner);
         imageView.setOnClickListener(v -> bannerClickListener.onBannerClick());
         Glide.with(container.getContext()).load(imageUrls.get(position))
-            .error(R.drawable.ic_left_demo).into(imageView);
+            .error(R.drawable.ic_image_404_small).into(imageView);
         container.addView(imageLayout, 0);
         return imageLayout;
     }

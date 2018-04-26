@@ -90,7 +90,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     @BindView(R.id.rl_cart_disscount)
     RelativeLayout rlCartDisscount;
 
-    private WidgetProductListAdapter shoppingCartAdapter;
+    private ShoppingCartAdapter shoppingCartAdapter;
 
     private String entranceType;
 
@@ -161,7 +161,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvShoppintCart.setLayoutManager(layoutManager);
-        shoppingCartAdapter = new WidgetProductListAdapter(new ArrayList<>());
+        shoppingCartAdapter = new ShoppingCartAdapter(new ArrayList<>());
         rvShoppintCart.setAdapter(shoppingCartAdapter);
         shoppingCartAdapter.setOnItemMenuClickListener(this);
     }
@@ -173,11 +173,10 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @Override
     public void showCartDetail(ShoppingCartProductVM cartProductVM) {
-        if (cartProductVM.getProductListModels() != null && cartProductVM.getProductListModels()
-            .size() > 0) {
+        if (cartProductVM.getProductVMS() != null && !cartProductVM.getProductVMS().isEmpty()) {
             updateLayoutStatus(flContent, true);
             cartId = cartProductVM.getId();
-            shoppingCartAdapter.setListModels(cartProductVM.getProductListModels());
+            shoppingCartAdapter.setProductVMS(cartProductVM.getProductVMS());
 
             if (cartProductVM.getDiscount() != null && TextUtils
                 .isEmpty(cartProductVM.getDiscount())) {

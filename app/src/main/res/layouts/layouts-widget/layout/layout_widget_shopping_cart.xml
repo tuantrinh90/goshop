@@ -12,13 +12,24 @@
         android:layout_height="@dimen/size_97"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/ic_bought"
         android:layout_marginLeft="@dimen/size_16"
         android:layout_marginTop="@dimen/size_16"
         android:layout_marginBottom="@dimen/size_16"
         android:layout_marginRight="@dimen/size_8"
         android:contentDescription="@string/app_name"
         tools:ignore="RtlHardcoded"/>
+
+    <com.goshop.app.common.view.RobotoMediumTextView
+        android:id="@+id/tv_cart_product_percent"
+        android:layout_width="@dimen/size_60"
+        android:layout_height="@dimen/size_21"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/size_font_13"
+        android:gravity="center_vertical"
+        android:paddingLeft="@dimen/size_2"
+        android:layout_alignLeft="@id/iv_cart_product_thumb"
+        android:layout_alignBottom="@id/iv_cart_product_thumb"
+        android:background="@color/color_main_pink"/>
 
     <LinearLayout
         android:id="@+id/ll_cart_menu"

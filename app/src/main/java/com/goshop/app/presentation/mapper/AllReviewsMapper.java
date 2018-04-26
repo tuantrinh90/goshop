@@ -27,6 +27,6 @@ public class AllReviewsMapper {
                 DateFormater.formaterDDMMYY(data.getDate()))
             );
         }
-        return new AllReviewsVM(thumb, R.drawable.ic_bought, step, amount, reviewsVMS);
+        return new AllReviewsVM(thumb, R.drawable.ic_image_404_small, step, amount, reviewsVMS);
     }
 }

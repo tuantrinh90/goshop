@@ -1,10 +1,11 @@
 package com.goshop.app.presentation.model;
 
+import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.presentation.model.widget.ProductListModel;
 
 import java.util.List;
 
-public class ShoppingCartProductVM{
+public class ShoppingCartProductVM {
 
     private String id;
 
@@ -18,7 +19,7 @@ public class ShoppingCartProductVM{
 
     private String oldPrice;
 
-    private List<ProductListModel> productListModels;
+    private List<ProductVM> productVMS;
 
     private String title;
 
@@ -30,29 +31,15 @@ public class ShoppingCartProductVM{
 
     private String total;
 
-    public ShoppingCartProductVM(){}
-
-    public ShoppingCartProductVM(List<ProductListModel> productListModels) {
-        this.productListModels = productListModels;
+    public ShoppingCartProductVM() {
     }
 
-    public ShoppingCartProductVM(String title, String color, String oldPrice,
-        String nowPrice, int icon, int count) {
-        this.title = title;
-        this.color = color;
-        this.oldPrice = oldPrice;
-        this.nowPrice = nowPrice;
-        this.icon = icon;
-        this.count = count;
+    public List<ProductVM> getProductVMS() {
+        return productVMS;
     }
 
-    public List<ProductListModel> getProductListModels() {
-        return productListModels;
-    }
-
-    public void setProductListModels(
-        List<ProductListModel> productListModels) {
-        this.productListModels = productListModels;
+    public void setProductVMS(List<ProductVM> productVMS) {
+        this.productVMS = productVMS;
     }
 
     public String getId() {

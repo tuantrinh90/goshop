@@ -22,6 +22,8 @@ public class ProductVM {
 
     private String amount;
 
+    private String attribute;
+
     public String getId() {
         return id;
     }
@@ -36,6 +38,14 @@ public class ProductVM {
 
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public String getAttribute() {
+        return attribute;
+    }
+
+    public void setAttribute(String attribute) {
+        this.attribute = attribute;
     }
 
     public int getImageDefault() {
