@@ -54,10 +54,6 @@ public class MenuUtil {
 
     public final static String MENU_TYPE_SETTINGS = "settings";
 
-    public final static String MENU_KEY = "menu";
-
-    public final static String MENU_VALUE = "slideMenu";
-
     private Activity activity;
 
     private DrawerLayout drawerLayout;
@@ -168,7 +164,6 @@ public class MenuUtil {
 
         if (intent != null) {
             intent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
-            intent.putExtra(MENU_KEY, MENU_VALUE);
             activity.startActivity(intent);
 
             if(!(activity instanceof MainPageActivity)) {

@@ -233,7 +233,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onBuyNowClick() {
-        Intent intent = new Intent(getActivity(), ShoppingCartActivity.class);
+        Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
         startActivity(intent);
     }
 

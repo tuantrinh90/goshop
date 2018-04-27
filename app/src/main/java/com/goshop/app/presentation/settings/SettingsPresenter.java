@@ -4,6 +4,7 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 
@@ -70,6 +71,26 @@ public class SettingsPresenter extends RxPresenter<SettingsContract.View> implem
                 @Override
                 public void onComplete() {
                     mView.hideLoadingBar();
+                }
+            }));
+    }
+
+    @Override
+    public void getUserInfo() {
+        addSubscrebe(accountRepository.getUserInfo()
+            .subscribeWith(new DisposableObserver<UserData>() {
+                @Override
+                public void onNext(UserData response) {
+                    mView.onUserInfoGetSuccess(response);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                }
+
+                @Override
+                public void onComplete() {
+
                 }
             }));
     }
