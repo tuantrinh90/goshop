@@ -10,9 +10,11 @@ import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
 import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.utils.PageIntentUtils;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -81,6 +83,8 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
         super.onCreate(savedInstanceState);
         //todo wait for api
         mPresenter.promotionSkuRequest(null);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(tvBtnFilterDone), 200);
     }
 
     @Override
