@@ -56,7 +56,6 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         if (mPresenter != null) {
             mPresenter.attachView(this);
         }
-        Log.d(TAG, "onCreate: "+this.getClass().getSimpleName());
         setToolbar();
         setStatusBar();
     }
