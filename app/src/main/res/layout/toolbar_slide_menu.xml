@@ -48,7 +48,6 @@
             android:visibility="gone"
             android:background="@drawable/bg_slide_menu_number"
             android:text="1"
-            android:visibility="gone"
             android:textSize="@dimen/size_font_10"
             android:layout_margin="@dimen/size_12"
             android:layout_alignParentRight="true"
