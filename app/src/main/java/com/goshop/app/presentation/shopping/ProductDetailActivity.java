@@ -7,6 +7,7 @@ import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
+import com.goshop.app.presentation.login.LoginActivity;
 import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.presentation.model.ProductDetailTopVM;
@@ -14,6 +15,7 @@ import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.SizeVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.utils.UserHelper;
 import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
 
 import android.content.Intent;
@@ -155,14 +157,27 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
                 finish();
                 break;
             case R.id.imageview_right_menu:
-                startActivity(new Intent(this, ShoppingCartActivity.class));
+                if(UserHelper.isLogin()) {
+                    startActivity(new Intent(this, ShoppingCartActivity.class));
+                } else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
                 break;
 
             case R.id.tv_btn_buy_now:
-                startActivity(new Intent(this, CheckoutActivity.class));
+                if(UserHelper.isLogin()) {
+                    startActivity(new Intent(this, CheckoutActivity.class));
+                } else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
                 break;
             case R.id.tv_btn_add_to_cart:
-                onAddCartClickListener.onAddClick();
+                if(UserHelper.isLogin()) {
+                    onAddCartClickListener.onAddClick();
+                } else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
+
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak, false);
@@ -283,7 +298,6 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     @Override
     public void getQASuccess(List<ProductDetailModel> detailDatas) {
         productDetailModels.addAll(detailDatas);
-
         showDetailDatas();
     }
 
@@ -314,10 +328,14 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void onWishlistSelect(boolean isSelect) {
-        if (isSelect) {
-            mPresenter.addWishlistRequest(sku);
+        if(UserHelper.isLogin()){
+            if (isSelect) {
+                mPresenter.addWishlistRequest(sku);
+            } else {
+                mPresenter.removeWishlistRequest(sku);
+            }
         } else {
-            mPresenter.removeWishlistRequest(sku);
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
 
