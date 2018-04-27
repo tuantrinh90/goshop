@@ -155,7 +155,6 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
             tvEgiftSender.setText(detailsVM.getSender());
             // TODO: 2018/4/27  status need api decide
             tvEgiftStatus.setText(detailsVM.getStatus().equals("0")?"Inactive":"Active");
-            Log.d("jay", "bindingData: "+detailsVM.getDate());
             tvEgiftTime.setText(Const.EXPIRE_TILL+DateFormater.formaterDDMMMYYYY(detailsVM.getDate()));
         }
     }
