@@ -4,15 +4,19 @@ import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.request.common.CartRequestData;
+import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
+import com.goshop.app.presentation.mapper.AllReviewsMapper;
 import com.goshop.app.presentation.mapper.ProductDetailMapper;
+import com.goshop.app.presentation.mapper.QuestionAnswerMapper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -64,6 +68,73 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
 
                 @Override
                 public void onComplete() {
+                }
+            }));
+    }
+
+    @Override
+    public void getReviews() {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_PAGE, 1);
+        params.put(Const.PARAMS_LIMIT, 2);
+        addSubscrebe(accountRepository.getProductRatingReviews(params).subscribeWith(
+            new DisposableObserver<Response<AllReviewsResponse>>() {
+                @Override
+                public void onNext(Response<AllReviewsResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.getReviewsSuccess(ProductDetailMapper.transform(response.getData()));
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    if (e instanceof ServiceApiFail) {
+                        mView.showFailedMessage(((ServiceApiFail) e).getErrorMessage());
+                    } else {
+                        mView.showFailedMessage(e.getMessage().toString());
+                    }
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void getQA() {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_PAGE, 1);
+        params.put(Const.PARAMS_LIMIT, 2);
+        addSubscrebe(productRepository.listProductQA(params).subscribeWith(
+            new DisposableObserver<Response<QuestionAnswerResponse>>() {
+                @Override
+                public void onNext(Response<QuestionAnswerResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.getQASuccess(ProductDetailMapper.transform(response.getData()));
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.hideDataLayout();
+                    if (e instanceof ServiceApiFail) {
+                        mView.showFailedMessage(((ServiceApiFail) e).getErrorMessage());
+                    } else {
+                        mView.showFailedMessage(e.getMessage().toString());
+                    }
+                }
+
+                @Override
+                public void onComplete() {
+
                 }
             }));
     }

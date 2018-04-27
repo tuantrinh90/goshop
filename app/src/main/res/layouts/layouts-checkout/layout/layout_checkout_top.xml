@@ -215,7 +215,7 @@
         android:paddingLeft="@dimen/size_16"
         android:textColor="@color/color_black_light"
         android:textSize="@dimen/size_font_20"
-        android:text="@string/checkout_shipping"
+        android:text="@string/payment"
         tools:ignore="RtlHardcoded,RtlSymmetry"/>
     <RadioGroup
         android:id="@+id/radio_payment_type"

@@ -39,7 +39,7 @@ public class ListOrderMapper {
                 String qty = NumberFormater.formaterOrderQty(data.getQty());
                 MyOrdersProductVM productVM = new MyOrdersProductVM(orderNumber, "",
                     data.getImage(),
-                    R.drawable.ic_bought, data.getName(), attributeMap, olderPrice, nowPrice,
+                    R.drawable.ic_image_404_small, data.getName(), attributeMap, olderPrice, nowPrice,
                     qty, data.getPrice().getRM().getDiscountTitle());
                 myOrdersProductVMS.add(productVM);
             }

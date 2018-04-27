@@ -28,7 +28,7 @@
                     android:layout_height="@dimen/size_60"
                     android:layout_marginTop="@dimen/size_21"
                     android:contentDescription="@string/app_name"
-                    android:background="@drawable/ic_bought"/>
+                    android:background="@drawable/ic_image_404_small"/>
                 <RatingBar
                     android:id="@+id/ratingbar_rating"
                     android:layout_width="wrap_content"

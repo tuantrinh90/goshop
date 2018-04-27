@@ -24,6 +24,8 @@ public class NumberFormater {
 
     private static final String SYMBOL_QTY = "x\t";
 
+    private static String INSIDE_NUMBER = "(%s)";
+
     public static String formaterPhoneNumber(String phoneNumber) {
         return phoneNumber.replaceFirst("(\\d{4})(\\d{2})(\\d{4})", "$1 - $2 - $3");
     }
@@ -80,6 +82,10 @@ public class NumberFormater {
 
     public static String formaterAnswersCounts(String count) {
         return String.format(ANSWER_COUNTS_FORMAT, count);
+    }
+
+    public static String formaterInsideNumber(String number) {
+        return String.format(INSIDE_NUMBER, number);
     }
 
 }
