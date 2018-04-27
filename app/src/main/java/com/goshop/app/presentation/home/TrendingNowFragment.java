@@ -142,6 +142,10 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     private VideoViewPagerAdapter.OnFullscreenListener onFullscreenListener = isFullScreen -> {
         llTrendingContainer.setFitsSystemWindows(!isFullScreen);
+        recyclerviewTrending.setVerticalScrollBarEnabled(!isFullScreen);
+        recyclerviewTrending.setNestedScrollingEnabled(!isFullScreen);
+        trendingNowAdapter.notifyDataSetChanged();
+
     };
 
     @Override
