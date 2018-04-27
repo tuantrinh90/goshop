@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.account;
 
+import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightItalicTextView;
 import com.goshop.app.common.view.RobotoLightTextView;
@@ -7,9 +8,11 @@ import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.MyEGiftCardsDetailsVM;
 import com.goshop.app.presentation.model.MyEGiftModel;
+import com.goshop.app.utils.DateFormater;
 
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -150,11 +153,12 @@ public class MyEGiftCardsAdapter extends RecyclerView.Adapter {
             tvEGiftTitle.setText(detailsVM.getTitle());
             tvEgiftPrice.setText(detailsVM.getPrice());
             tvEgiftSender.setText(detailsVM.getSender());
-            tvEgiftStatus.setText(detailsVM.getStatus());
-            tvEgiftTime.setText(detailsVM.getDate());
+            // TODO: 2018/4/27  status need api decide
+            tvEgiftStatus.setText(detailsVM.getStatus().equals("0")?"Inactive":"Active");
+            Log.d("jay", "bindingData: "+detailsVM.getDate());
+            tvEgiftTime.setText(Const.EXPIRE_TILL+DateFormater.formaterDDMMMYYYY(detailsVM.getDate()));
         }
     }
-
     class CenterViewHolder extends RecyclerView.ViewHolder {
 
         public CenterViewHolder(View itemView) {

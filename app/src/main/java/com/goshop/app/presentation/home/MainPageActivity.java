@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -121,6 +122,11 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
             }
         });
         ivleftMenu.setImageResource(R.drawable.ic_menu);
+        if (UserHelper.isLogin()) {
+            tvToolbarCartCounter.setVisibility(View.VISIBLE);
+        }else{
+            tvToolbarCartCounter.setVisibility(View.GONE);
+        }
     }
 
     @OnClick({R.id.imageview_right_menu, R.id.imageview_left_menu})

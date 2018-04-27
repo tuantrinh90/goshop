@@ -11,8 +11,6 @@ import java.util.List;
 
 public class MyEGiftCardMapper {
 
-    private static final String EXPIRE_TILL = "Expire till ";
-
     private static final String SENT_BY = "Sent by ";
 
     public static List<MyEGiftModel> transform(Response<MyEGiftResponse> response, int page) {
@@ -28,7 +26,7 @@ public class MyEGiftCardMapper {
                 detailsVMS.add(
                     new MyEGiftCardsDetailsVM(eGiftCardData.getCode(),
                         SENT_BY + eGiftCardData.getSentby(),
-                        EXPIRE_TILL + eGiftCardData.getExpire(),
+                        eGiftCardData.getExpire(),
                         eGiftCardData.getBalance(),
                         eGiftCardData.getStatus()));
             }

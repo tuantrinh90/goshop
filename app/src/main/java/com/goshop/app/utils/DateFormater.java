@@ -17,6 +17,8 @@ public class DateFormater {
 
     private static final String DDMMYYYY = "dd/MM/yyyy";
 
+    private static final String DDMMMYYYY = "dd MMM yyyy";
+
     private static final String DIAGONAL = "-";
 
     private static final String COLON = ":";
@@ -41,6 +43,19 @@ public class DateFormater {
     public static String formaterDDMMYYYY(String yyyyMMDD) {
         SimpleDateFormat fromFormat = new SimpleDateFormat(YYYYMMDD);
         SimpleDateFormat toFormat = new SimpleDateFormat(DDMMYYYY);
+        String result = "";
+        try {
+            Date date = fromFormat.parse(yyyyMMDD);
+            result = toFormat.format(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public static String formaterDDMMMYYYY(String yyyyMMDD) {
+        SimpleDateFormat fromFormat = new SimpleDateFormat(YYYYMMDD);
+        SimpleDateFormat toFormat = new SimpleDateFormat(DDMMMYYYY);
         String result = "";
         try {
             Date date = fromFormat.parse(yyyyMMDD);
