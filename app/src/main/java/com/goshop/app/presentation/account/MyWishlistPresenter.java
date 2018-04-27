@@ -57,7 +57,7 @@ public class MyWishlistPresenter extends RxPresenter<MyWishlistContract.View> im
 
     @Override
     public void getWishlistItems(int page, boolean isShowLoading) {
-        if (isShowLoading) mView.showLoadingBar();
+        if (isShowLoading) {mView.showLoadingBar();}
         Map<String, Object> params = new HashMap<>();
         params.put(Const.REQUEST_PARAM_PAGE, page);
         params.put(Const.REQUEST_PARAM_LIMIT, Const.LIMIT);

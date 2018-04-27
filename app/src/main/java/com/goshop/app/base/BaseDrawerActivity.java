@@ -38,9 +38,29 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
 
     private String currentMenuType = MenuUtil.MENU_TYPE_HOME;
 
+    public String entranceType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initIntent();
+        initToolbar();
+    }
+
+
+    private void initIntent() {
+        entranceType = getIntent().getStringExtra(MenuUtil.EXTRA_ENTRANCE);
+    }
+
+    private void initToolbar() {
+        hideRightMenu();
+        if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+            ivLeftMenu.setImageResource(R.drawable.ic_menu);
+            unlockDrawerLayout();
+        } else {
+            ivLeftMenu.setImageResource(R.drawable.ic_icon_back);
+            lockDrawerLayout();
+        }
     }
 
     public String getCurrentMenuType() {
@@ -49,6 +69,7 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
 
     public void setCurrentMenuType(String currentMenuType) {
         this.currentMenuType = currentMenuType;
+        menuUtil.setCurrentMenuType(currentMenuType);
     }
 
     @Override
@@ -127,5 +148,13 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
             KeyBoardUtils.hideKeyboard(this);
             drawerLayout.openDrawer(GravityCompat.START);
         }
+    }
+
+    public void lockDrawerLayout() {
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    public void unlockDrawerLayout() {
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 }

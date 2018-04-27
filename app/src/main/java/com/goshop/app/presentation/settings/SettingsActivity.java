@@ -64,20 +64,9 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_SETTINGS);
-        setContentView(getContentView());
-        initSwichsListener();
-        initView();
+
     }
 
-    private void initView() {
-        initToolbar();
-    }
-
-    private void initToolbar() {
-        hideRightMenu();
-        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
-    }
 
     @Override
     public int getContentView() {
@@ -91,6 +80,9 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_SETTINGS);
+        setContentView(getContentView());
+        initSwichsListener();
     }
 
     @Override
@@ -120,7 +112,11 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     public void onClickSettings(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                openDrawerLayout();
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
                 break;
             case R.id.tv_setting_change_password:
                 if (UserHelper.isLogin()) {

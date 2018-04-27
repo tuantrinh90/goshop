@@ -26,6 +26,10 @@ import java.util.List;
 
 public class MenuUtil {
 
+    public static final String EXTRA_ENTRANCE = "extra_entrance";
+
+    public static final String TYPE_ENTRANCE_DRAWER = "drawer";
+
     public final static String MENU_TYPE_HEAD_ACCOUNT = "account";
 
     public final static String MENU_TYPE_HEAD_LOGIN = "login";
@@ -134,8 +138,6 @@ public class MenuUtil {
             case MENU_TYPE_SHOPPING_CART:
                 if (UserHelper.isLogin()) {
                     intent = new Intent(activity, ShoppingCartActivity.class);
-                    intent.putExtra(ShoppingCartActivity.EXTRA_ENTRANCE,
-                        ShoppingCartActivity.TYPE_ENTRANCE_DRAWER);
                 } else {
                     UserHelper.goToLogin(activity);
                 }
@@ -165,11 +167,15 @@ public class MenuUtil {
         }
 
         if (intent != null) {
+            intent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
             intent.putExtra(MENU_KEY, MENU_VALUE);
             activity.startActivity(intent);
+
+            if(!(activity instanceof MainPageActivity)) {
+                activity.finish();
+            }
             activity.overridePendingTransition(R.anim.slide_menu_in,
                 R.anim.slide_menu_out);
-            activity.finish();
         }
     }
 

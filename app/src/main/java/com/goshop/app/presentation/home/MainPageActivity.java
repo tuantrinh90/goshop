@@ -134,9 +134,6 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
         switch (view.getId()) {
             case R.id.imageview_right_menu:
                 if (UserHelper.isLogin()) {
-                    Intent intent = new Intent(this, ShoppingCartActivity.class);
-                    intent.putExtra(ShoppingCartActivity.EXTRA_ENTRANCE,
-                        ShoppingCartActivity.TYPE_ENTRANCE_HOME);
                     startActivity(new Intent(this, ShoppingCartActivity.class));
                 } else {
                     UserHelper.goToLogin(this);
