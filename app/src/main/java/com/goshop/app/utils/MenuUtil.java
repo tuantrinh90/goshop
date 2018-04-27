@@ -54,6 +54,8 @@ public class MenuUtil {
 
     public final static String MENU_TYPE_SETTINGS = "settings";
 
+    public final static String TYPE = "menuType";
+
     private Activity activity;
 
     private DrawerLayout drawerLayout;
@@ -128,14 +130,20 @@ public class MenuUtil {
                 if (UserHelper.isLogin()) {
                     intent = new Intent(activity, GoLoyaltyActivity.class);
                 } else {
-                    UserHelper.goToLogin(activity);
+                    Intent loginIntent = new Intent(activity, LoginActivity.class);
+                    loginIntent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
+                    loginIntent.putExtra(TYPE, MENU_TYPE_GO_LOYALTY);
+                    UserHelper.goToLogin(activity,loginIntent);
                 }
                 break;
             case MENU_TYPE_SHOPPING_CART:
                 if (UserHelper.isLogin()) {
                     intent = new Intent(activity, ShoppingCartActivity.class);
                 } else {
-                    UserHelper.goToLogin(activity);
+                    Intent loginIntent = new Intent(activity, LoginActivity.class);
+                    loginIntent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
+                    loginIntent.putExtra(TYPE, MENU_TYPE_SHOPPING_CART);
+                    UserHelper.goToLogin(activity,loginIntent);
                 }
                 break;
             case MENU_TYPE_MY_WISHLIST:
@@ -157,7 +165,10 @@ public class MenuUtil {
                 if (UserHelper.isLogin()) {
                     intent = new Intent(activity, SettingsActivity.class);
                 } else {
-                    UserHelper.goToLogin(activity);
+                    Intent loginIntent = new Intent(activity, LoginActivity.class);
+                    loginIntent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
+                    loginIntent.putExtra(TYPE, MENU_TYPE_SETTINGS);
+                    UserHelper.goToLogin(activity,loginIntent);
                 }
                 break;
         }

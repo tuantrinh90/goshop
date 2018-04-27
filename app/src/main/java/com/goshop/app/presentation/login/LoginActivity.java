@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
-import com.facebook.login.LoginManager;
 import com.facebook.login.widget.LoginButton;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
@@ -85,6 +84,10 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     private String password;
 
+    private String entrance;
+
+    private String type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -103,6 +106,7 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     @Override
     public void inject() {
+        initIntentData();
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -111,6 +115,11 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
         setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_LOGIN);
         setContentView(getContentView());
         initData();
+    }
+
+    private void initIntentData() {
+        type = getIntent().getStringExtra(MenuUtil.TYPE);
+        entrance = getIntent().getStringExtra(MenuUtil.EXTRA_ENTRANCE);
     }
 
     @Override
@@ -210,6 +219,12 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     private void goToHomePage() {
         Intent intent = new Intent(this, MainPageActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        if(entrance != null) {
+            intent.putExtra(MenuUtil.EXTRA_ENTRANCE, entrance);
+        }
+        if(type != null) {
+            intent.putExtra(MenuUtil.TYPE, type);
+        }
         startActivity(intent);
         finish();
     }

@@ -58,7 +58,6 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         mPresenter.getCategory();
     }
 
