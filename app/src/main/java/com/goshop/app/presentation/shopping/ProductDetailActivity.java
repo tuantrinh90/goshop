@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
@@ -158,7 +159,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
                 break;
 
             case R.id.tv_btn_buy_now:
-                startActivity(new Intent(this, PaymentStatusActivity.class));
+                startActivity(new Intent(this, CheckoutActivity.class));
                 break;
             case R.id.tv_btn_add_to_cart:
                 onAddCartClickListener.onAddClick();
