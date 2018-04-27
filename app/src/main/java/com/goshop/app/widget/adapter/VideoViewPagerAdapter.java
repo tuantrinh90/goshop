@@ -13,7 +13,6 @@ import com.longtailvideo.jwplayer.media.playlists.PlaylistItem;
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,9 +61,11 @@ public class VideoViewPagerAdapter extends PagerAdapter implements VideoPlayerEv
             .inflate(R.layout.item_video_viewpager, container, false);
         jwPlayerView = pagerLayout.findViewById(R.id.jwplayer);
         ImageView ivOnAirVideo = pagerLayout.findViewById(R.id.iv_on_air_video);
+        // TODO: 2018/4/26 need delete this image
         Glide.with(container.getContext()).load("").asBitmap()
-            .error(R.drawable.ic_video)
+            .error(R.drawable.ic_image_404_big)
             .into(ivOnAirVideo);
+        jwPlayerView.setVisibility(View.GONE);//
         LinearLayout llImageViewMore = pagerLayout.findViewById(R.id.ll_image_view_more);
         RecyclerView recyclerViewVideoBuy = pagerLayout.findViewById(R.id.recyclerview_video_buy);
         List<ProductsVM> productsVMS = videoPlayerItemsVMS.get(position).getProductsVMS();
@@ -75,6 +76,7 @@ public class VideoViewPagerAdapter extends PagerAdapter implements VideoPlayerEv
         LinearLayoutManager productLayoutManager = new LinearLayoutManager(container.getContext());
         recyclerViewVideoBuy.setLayoutManager(productLayoutManager);
         recyclerViewVideoBuy.setAdapter(listAdapter);
+        recyclerViewVideoBuy.setNestedScrollingEnabled(false);
         llImageViewMore.setSelected(false);
         listAdapter.updateProductList(false);
         llImageViewMore.setOnClickListener(v -> {

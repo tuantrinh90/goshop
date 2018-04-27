@@ -210,6 +210,7 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     private void goToHomePage() {
         Intent intent = new Intent(this, MainPageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }

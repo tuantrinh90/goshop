@@ -41,8 +41,7 @@ public class CategoryPresenter extends RxPresenter<CategoryContract.View> implem
                 @Override
                 public void onNext(Response<CategoryResponse> categoryMenuResponse) {
                     mView.hideLoadingBar();
-                    mView.onCategoryRequestSuccess(
-                        getmockIcon(CategoryMapper.transform(categoryMenuResponse)));
+                    mView.onCategoryRequestSuccess(CategoryMapper.transform(categoryMenuResponse));
                 }
 
                 @Override

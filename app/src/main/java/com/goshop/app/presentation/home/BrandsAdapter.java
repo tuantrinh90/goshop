@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.home;
 
+import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.BrandsListVM;
@@ -88,6 +89,12 @@ public class BrandsAdapter extends RecyclerView.Adapter {
 
         void bindingData(BrandsListVM brandsVM, int position) {
             viewBrandDivider.setVisibility(position == 0 ? View.GONE : View.VISIBLE);
+            tvBrandsName.setText(brandsVM.getName());
+            Glide.with(itemView.getContext())
+                .load(brandsVM.getImage())
+                .asBitmap()
+                .error(R.drawable.ic_image_404_big)
+                .into(ivBrandsDetail);
             itemView.setOnClickListener(v -> onBrandsItemClickListener.onBrandsItemClick(brandsVM));
         }
     }

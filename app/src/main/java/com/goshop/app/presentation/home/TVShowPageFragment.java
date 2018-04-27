@@ -6,6 +6,7 @@ import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ChannelVM;
 import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.ChannelAdapter;
 import com.goshop.app.widget.listener.OnChannelItemClickListener;
 import com.goshop.app.widget.listener.OnTVShowItemsClickListener;

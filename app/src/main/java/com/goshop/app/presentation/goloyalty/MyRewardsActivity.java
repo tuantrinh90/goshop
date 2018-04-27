@@ -5,8 +5,10 @@ import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.RobotoMediumTabLayout;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -42,6 +44,8 @@ public class MyRewardsActivity extends BaseDrawerActivity {
         setContentView(getContentView());
         initToolbar();
         initTabLayoutViewPager();
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(viewpagerMyRewards), 200);
     }
 
     private void initToolbar() {

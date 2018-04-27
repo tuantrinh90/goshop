@@ -7,7 +7,6 @@ import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.common.view.irecyclerview.IRecyclerView;
 import com.goshop.app.presentation.model.BannerVm;
 import com.goshop.app.presentation.model.TrendingNowModel;
-import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
@@ -26,7 +25,6 @@ import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -48,11 +46,9 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     TrendingNowContract.View, OnTrendingNowClickListener, OnHomeBannerItemClickListener,
     SwipeRefreshLayout.OnRefreshListener {
 
-    private final String BANNER = "promotionlandBanner";
+    private final String BANNER_TYPE_BRAND = "brand";
 
-    private final String PRD = "prd";
-
-    private final String SKU = "promotionlandSKU";
+    private final String BANNER_TYPE_EVENT = "event";
 
     @BindView(R.id.ll_trending_content)
     LinearLayout llTrendingContainer;
@@ -146,6 +142,10 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     private VideoViewPagerAdapter.OnFullscreenListener onFullscreenListener = isFullScreen -> {
         llTrendingContainer.setFitsSystemWindows(!isFullScreen);
+        recyclerviewTrending.setVerticalScrollBarEnabled(!isFullScreen);
+        recyclerviewTrending.setNestedScrollingEnabled(!isFullScreen);
+        trendingNowAdapter.notifyDataSetChanged();
+
     };
 
     @Override
@@ -168,7 +168,24 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onBannerItemClick(BannerVm bannerVm) {
-        startBannerLinkScreen(SKU, "");
+        startBannerLinkScreen(bannerVm);
+    }
+
+    private void startBannerLinkScreen(BannerVm bannerVm) {
+        Intent intent = null;
+        switch (bannerVm.getType()) {
+            case BANNER_TYPE_BRAND:
+                intent = new Intent(getActivity(), ProductDetailActivity.class);
+                intent.putExtra(PROMOTION_BANNER_URL, bannerVm);
+                break;
+            case BANNER_TYPE_EVENT:
+                intent = new Intent(getActivity(), PromotionBannerActivity.class);
+                intent.putExtra(PROMOTION_BANNER_URL, bannerVm);
+                break;
+        }
+        if (intent != null) {
+            startActivity(intent);
+        }
     }
 
     private void addHeaderView() {
@@ -205,15 +222,6 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     @Override
-    public void onTopBannerClick(CarouselItemsVM carouselItemsVM) {
-        //todo wait for api
-        /*String image = carouselItemsVM.getImage();
-        String link = carouselItemsVM.getLink();
-        String[] linkKinds = link.split("/");*/
-        startBannerLinkScreen(SKU, "");
-    }
-
-    @Override
     public void onTVScheduleClick() {
         onScheduleClickListener.onScheduleClick();
     }
@@ -233,27 +241,6 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     public void onSingleBannerClick() {
         Intent intent = new Intent(getActivity(), PromotionSkuActivity.class);
         startActivity(intent);
-    }
-
-    private void startBannerLinkScreen(String link, String image) {
-        Intent intent = null;
-        switch (link) {
-            case PRD:
-                intent = new Intent(getActivity(), ProductDetailActivity.class);
-                intent.putExtra(PROMOTION_BANNER_URL, image);
-                break;
-            case SKU:
-                intent = new Intent(getActivity(), PromotionSkuActivity.class);
-                intent.putExtra(PROMOTION_BANNER_URL, image);
-                break;
-            case BANNER:
-                intent = new Intent(getActivity(), PromotionBannerActivity.class);
-                intent.putExtra(PROMOTION_BANNER_URL, image);
-                break;
-        }
-        if (intent != null) {
-            startActivity(intent);
-        }
     }
 
     @Override

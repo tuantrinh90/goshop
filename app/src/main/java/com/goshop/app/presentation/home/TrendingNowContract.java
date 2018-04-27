@@ -26,8 +26,6 @@ public class TrendingNowContract {
 
     public interface Presenter extends BasePresenter<View> {
 
-        void trendingNowRequest(Map<String, Object> params);
-
         void getHomeBanner();
 
         void getOnAirSchedule(Context context);

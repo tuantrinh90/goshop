@@ -7,10 +7,12 @@ import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.presentation.model.SearchFilterModel;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.PopWindowUtil;
 import com.jakewharton.rxbinding2.widget.RxTextView;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -54,6 +56,8 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         initLisetener();
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewSearchResult), 200);
     }
 
     @Override

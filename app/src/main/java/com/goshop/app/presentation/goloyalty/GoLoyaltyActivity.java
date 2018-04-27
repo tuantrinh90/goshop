@@ -6,9 +6,11 @@ import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.model.GoLoyaltyModel;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -47,6 +49,8 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
         initRecyclerView();
         //todo wait for api
         mPresenter.goLoyaltyRequest(null);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewGoLoyalty), 200);
     }
 
     private void initToolbar() {

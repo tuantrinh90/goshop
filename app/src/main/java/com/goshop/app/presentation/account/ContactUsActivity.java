@@ -243,6 +243,11 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
             etPhone.setErrorMessage(getResources().getString(R.string.format_mobile_warning));
             return;
         }
+
+        if (TextUtils.isEmpty(details)) {
+            etDetail.setError(getResources().getString(R.string.empty_error));
+            return;
+        }
         mPresenter.contactMessageRequest(name, email, mobile, productHanding, details);
     }
 
