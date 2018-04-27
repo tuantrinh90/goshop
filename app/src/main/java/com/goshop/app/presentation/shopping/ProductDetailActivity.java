@@ -80,6 +80,10 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     private OnAddCartClickListener onAddCartClickListener;
 
+    private OnWishlistListener onWishlistListener;
+
+    private List<ProductDetailModel> productDetailModels;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +98,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void inject() {
+        productDetailModels = new ArrayList<>();
         initPresenter();
         initRecyclerView();
         appBarLayoutActionListener();
@@ -160,15 +165,21 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void getProductDetailSuccess(List<ProductDetailModel> detailDatas) {
+        productDetailModels.clear();
+        productDetailModels = detailDatas;
+        mPresenter.getReviews();
+
+    }
+
+    private void showDetailDatas() {
         rlProductDetailData.setVisibility(View.VISIBLE);
-        for (ProductDetailModel detailModel: detailDatas) {
+        for (ProductDetailModel detailModel: productDetailModels) {
             if(detailModel instanceof ProductDetailTopVM) {
                 sku = ((ProductDetailTopVM) detailModel).getSku();
                 break;
             }
         }
-        pdpAdapter.setUpdateDatas(detailDatas);
-
+        pdpAdapter.setUpdateDatas(productDetailModels);
     }
 
     @Override
@@ -180,12 +191,12 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void addWishlistSuccess() {
-        Toast.makeText(this, "add success", Toast.LENGTH_LONG).show();
+        onWishlistListener.onWishlistClick(true);
     }
 
     @Override
     public void removeWishlistSuccess() {
-        Toast.makeText(this, "add success", Toast.LENGTH_LONG).show();
+        onWishlistListener.onWishlistClick(false);
     }
 
     @Override
@@ -244,6 +255,19 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     @Override
+    public void getReviewsSuccess(List<ProductDetailModel> detailDatas) {
+        productDetailModels.addAll(detailDatas);
+        mPresenter.getQA();
+    }
+
+    @Override
+    public void getQASuccess(List<ProductDetailModel> detailDatas) {
+        productDetailModels.addAll(detailDatas);
+
+        showDetailDatas();
+    }
+
+    @Override
     public void onBannerClick() {
         startActivity(new Intent(this, PDPDetailImagesActivity.class));
     }
@@ -271,9 +295,9 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     @Override
     public void onWishlistSelect(boolean isSelect) {
         if (isSelect) {
-            mPresenter.addWishlistRequest("abc");
+            mPresenter.addWishlistRequest(sku);
         } else {
-            mPresenter.removeWishlistRequest("abc");
+            mPresenter.removeWishlistRequest(sku);
         }
     }
 
@@ -341,4 +365,13 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     public void setOnAddCartClickListener(OnAddCartClickListener addCartClickListener) {
         this.onAddCartClickListener = addCartClickListener;
     }
+
+    public interface OnWishlistListener{
+        void onWishlistClick(boolean isAdd);
+    }
+
+    public void setOnWishlistListener(OnWishlistListener onWishlistListener) {
+        this.onWishlistListener = onWishlistListener;
+    }
+
 }

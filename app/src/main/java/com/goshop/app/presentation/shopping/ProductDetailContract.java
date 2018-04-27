@@ -40,11 +40,19 @@ public class ProductDetailContract {
         void setSizeDatas(List<SizeVM> sizeVMS);
 
         void addToCartResult(boolean isSuccess, String message);
+
+        void getReviewsSuccess(List<ProductDetailModel> detailDatas);
+
+        void getQASuccess(List<ProductDetailModel> detailDatas);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
         void getProductDetails();
+
+        void getReviews();
+
+        void getQA();
 
         void addWishlistRequest(String skuId);
 
