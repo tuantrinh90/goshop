@@ -10,6 +10,7 @@ import com.goshop.app.data.model.response.ProductDetailResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.QuestionAnswerResponse;
+import com.goshop.app.data.model.response.ProfileResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
@@ -17,6 +18,8 @@ import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.mapper.AllReviewsMapper;
 import com.goshop.app.presentation.mapper.ProductDetailMapper;
 import com.goshop.app.presentation.mapper.QuestionAnswerMapper;
+import com.goshop.app.presentation.mapper.ProfileMapper;
+import com.goshop.app.presentation.mapper.ShoppingCartMapper;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -34,6 +37,39 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
         ProductRepository productRepository) {
         this.productRepository = productRepository;
         this.accountRepository = accountRepository;
+    }
+
+    @Override
+    public void getUserProfile() {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        addSubscrebe(accountRepository.getUserProfile(params).subscribeWith(
+            new DisposableObserver<Response<ProfileResponse>>() {
+                @Override
+                public void onNext(Response<ProfileResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.getUserProfileSuccess(ProfileMapper.transform(response));
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    String errorMessage;
+                    if (e instanceof ServiceApiFail) {
+                        errorMessage = ((ServiceApiFail) e).getErrorMessage();
+                    } else {
+                        errorMessage = e.getMessage().toString();
+                    }
+                    mView.showFailedMessage(errorMessage);
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
     }
 
     @Override
@@ -238,16 +274,16 @@ public class ProductDetailPresenter extends RxPresenter<ProductDetailContract.Vi
                 @Override
                 public void onNext(Response<CartDataResponse> response) {
                     mView.hideLoadingBar();
-                    mView.addToCartResult(true, response.getMessage().getDisplayMessage());
+                    mView.addToCartSuccess(ShoppingCartMapper.transformCartCount(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable throwable) {
                     mView.hideLoadingBar();
                     if(throwable instanceof ServiceApiFail) {
-                        mView.addToCartResult(false, ((ServiceApiFail) throwable).getErrorMessage());
+                        mView.showFailedMessage(((ServiceApiFail) throwable).getErrorMessage());
                     } else {
-                        mView.addToCartResult(false, throwable.getMessage().toString());
+                        mView.showFailedMessage(throwable.getMessage().toString());
                     }
                 }
 

@@ -3,7 +3,6 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
-import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.request.common.CartRequestData;
 import com.goshop.app.data.model.response.CartDataResponse;
@@ -41,9 +40,9 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
         addSubscrebe(accountRepository.viewCartDetails(params).subscribeWith(
-            new DisposableObserver<Response<ShoppingCartResponse>>() {
+            new DisposableObserver<Response<CartDataResponse>>() {
                 @Override
-                public void onNext(Response<ShoppingCartResponse> response) {
+                public void onNext(Response<CartDataResponse> response) {
                     mView.hideLoadingBar();
                     mView.stopRefresh();
                     mView.showCartDetail(ShoppingCartMapper.transform(response.getData()));

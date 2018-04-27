@@ -1,7 +1,7 @@
 package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.R;
-import com.goshop.app.data.model.response.ShoppingCartResponse;
+import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.common.BillingData;
 import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.data.model.response.common.RMData;
@@ -18,8 +18,7 @@ public class ShoppingCartMapper {
     private static final String COMMA = ", ";
 
     private static final String END = ";";
-
-    public static ShoppingCartProductVM transform(ShoppingCartResponse response) {
+    public static ShoppingCartProductVM transform(CartDataResponse response) {
         List<ProductData> productDatas = response.getCart().getProducts();
         List<ProductVM> productVMS = new ArrayList<>();
         for (ProductData data : productDatas) {
@@ -56,6 +55,15 @@ public class ShoppingCartMapper {
                 .setTotal(NumberFormater.formaterPrice(billingData.getRm().getTotal()));
         }
         return shoppingCartProductVM;
+    }
+
+    public static int transformCartCount(CartDataResponse response) {
+        List<ProductData> productDatas = response.getCart().getProducts();
+        int count = 0;
+        for(ProductData data:productDatas) {
+            count = count + Integer.parseInt(data.getQty());
+        }
+        return count;
     }
 
 }
