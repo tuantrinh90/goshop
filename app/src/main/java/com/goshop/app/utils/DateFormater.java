@@ -27,6 +27,11 @@ public class DateFormater {
 
     private static final String AM = "AM";
 
+    /**
+     *
+     * @param yyyyMMDD
+     * @return 31/01/18
+     */
     public static String formaterDDMMYY(String yyyyMMDD) {
         SimpleDateFormat fromFormat = new SimpleDateFormat(YYYYMMDD);
         SimpleDateFormat toFormat = new SimpleDateFormat(DDMMYY);
@@ -40,6 +45,11 @@ public class DateFormater {
         return result;
     }
 
+    /**
+     *
+     * @param yyyyMMDD
+     * @return 31/01/2018
+     */
     public static String formaterDDMMYYYY(String yyyyMMDD) {
         SimpleDateFormat fromFormat = new SimpleDateFormat(YYYYMMDD);
         SimpleDateFormat toFormat = new SimpleDateFormat(DDMMYYYY);
@@ -107,6 +117,13 @@ public class DateFormater {
         return result.toString();
     }
 
+    /**
+     *
+     * @param year
+     * @param mouth
+     * @param day
+     * @return 12 Feb 2018
+     */
     public static String getAbbreviationDate(int year, int mouth, int day) {
         StringBuilder result = new StringBuilder();
         if (day < 10) {
@@ -159,7 +176,28 @@ public class DateFormater {
         return result;
     }
 
+    /**
+     *
+     * @param time
+     * @return Demo 12:00PM, 12 July 2018
+     */
     public static String formaterISODate(String time) {
+        if (!time.matches("\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z")) {
+            return "";
+        }
+        time = time.replaceFirst("T", "\t").replaceFirst("Z", "");
+        String[] times = time.split("\t");
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(getAMPMTime(times[1])).append(",\t").append(getAbbreviationDate(times[0]));
+        return stringBuilder.toString();
+    }
+
+    /**
+     *  todo
+     * @param time
+     * @return Demo 16/01/2018, 06:52 am
+     */
+    public static String formaterISODateLower(String time) {
         if (!time.matches("\\d{4}-\\d{2}-\\d{2}T\\d{2}:\\d{2}:\\d{2}Z")) {
             return "";
         }

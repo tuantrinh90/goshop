@@ -10,6 +10,7 @@ import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
+import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -86,7 +87,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     private ShoppingCartAdapter shoppingCartAdapter;
 
-    private ProductsVM productsVM;
+    private ProductVM productVM;
 
     private String cartId;
 
@@ -234,18 +235,18 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @Override
     public void onItemMenuClick(View parentView, Object object) {
-        productsVM = ((ProductCartListVM) object).getProductsVM();
+        productVM = (ProductVM) object;
         PopWindowUtil.showShoppingCartMenuPop(parentView, this);
     }
 
     @Override
     public void onCartWishlist() {
-        mPresenter.addWishlistRequest(productsVM.getId());
+        mPresenter.addWishlistRequest(productVM.getId());
     }
 
     @Override
     public void onCartDeleteClick() {
-        mPresenter.removeFromCartRequest(productsVM.getId(), productsVM.getAmount());
+        mPresenter.removeFromCartRequest(productVM.getId(), productVM.getAmount());
     }
 
     @OnClick({R.id.tv_btn_cart_apply, R.id.tv_btn_cart_checkout, R.id.imageview_left_menu, R.id

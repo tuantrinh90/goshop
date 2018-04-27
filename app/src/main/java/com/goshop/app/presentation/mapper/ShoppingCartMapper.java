@@ -17,7 +17,7 @@ public class ShoppingCartMapper {
 
     private static final String COMMA = ", ";
 
-    private static final String END = ";";
+    private static final String END = "; ";
     public static ShoppingCartProductVM transform(CartDataResponse response) {
         List<ProductData> productDatas = response.getCart().getProducts();
         List<ProductVM> productVMS = new ArrayList<>();

@@ -75,7 +75,8 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
                 intent = new Intent(this, MyOrdersActivity.class);
                 break;
             case R.id.rl_account_reviews:
-                intent = new Intent(this, AllReviewsActivity.class);
+                //todo this is for drop 2 please dont delete
+                /*intent = new Intent(this, AllReviewsActivity.class);*/
                 break;
             case R.id.rl_account_address:
                 intent = new Intent(this, MyAddressBookActivity.class);

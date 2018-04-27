@@ -121,7 +121,6 @@ public class CustomAnimEditText extends RelativeLayout {
                         deleteIv.setVisibility(View.GONE);
                     }
                 });
-
             } else {
                 deleteIv.setVisibility(View.GONE);
             }

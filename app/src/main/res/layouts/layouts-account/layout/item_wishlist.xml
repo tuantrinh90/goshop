@@ -69,7 +69,6 @@
                 android:layout_height="wrap_content"
                 android:paddingTop="@dimen/size_4"
                 android:textColor="@color/color_grayscale_secondary"
-                android:text="@string/my_orders_test_color"
                 android:textSize="@dimen/size_font_12"/>
             <com.goshop.app.common.view.RobotoLightTextView
                 android:id="@+id/tv_wishlist_old"

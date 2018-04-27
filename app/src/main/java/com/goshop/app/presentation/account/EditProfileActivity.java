@@ -155,10 +155,12 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
                 break;
 
             case R.id.tv_profile_title:
-                EditTextUtil.eidtLoseFocus(view);
+                //todo please dont delete this, this is mock and wait for api
+                tvProfileTitle.setText("Mr");
+               /* EditTextUtil.eidtLoseFocus(view);
                 currentPopType = PopWindowUtil.TITLE_POP;
                 PopWindowUtil.showSingleChoosePop(tvProfileTitle,
-                    getResources().getString(R.string.choose_title), titleVMS, this);
+                    getResources().getString(R.string.choose_title), titleVMS, this);*/
                 break;
 
             case R.id.tv_profile_language:
