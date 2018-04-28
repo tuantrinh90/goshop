@@ -50,7 +50,7 @@ public class CustomMPCartEditText extends RelativeLayout {
         ivMinus.setOnClickListener(v -> minus());
         editText.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
             switch (actionId) {
-                case EditorInfo.IME_ACTION_SEND:
+                case EditorInfo.IME_ACTION_DONE:
                     onCartMPEditClickListener.onEditSend(v.getText().toString());
                     break;
             }
@@ -75,6 +75,7 @@ public class CustomMPCartEditText extends RelativeLayout {
         if (!TextUtils.isEmpty(count)) {
             int num = Integer.parseInt(count);
             num++;
+            ivMinus.setClickable(true);
             editText.setText(num + placeHolder);
             editText.setSelection(editText.getText().length());
             onCartMPEditClickListener.onPlusMinusClick(true,num + placeHolder);
@@ -93,6 +94,7 @@ public class CustomMPCartEditText extends RelativeLayout {
                 num--;
             } else {
                 num = 1;
+                ivMinus.setClickable(false);
             }
             editText.setText(num + placeHolder);
             editText.setSelection(editText.getText().length());

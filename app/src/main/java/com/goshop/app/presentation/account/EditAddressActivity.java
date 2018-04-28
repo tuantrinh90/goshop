@@ -113,12 +113,15 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
 
     private void setUp() {
         AddressVM addressVM = getIntent().getParcelableExtra(EDIT_ADDRESS);
-        //TODO  wait for real data
-        etEditName.setText("Test");
-        etEditAddressOne.setText("Test Address 1");
-        etEditAddressTwo.setText("Test Address 2");
-        etEditAddressZip.setText("02600");
-        etEditAddressPhone.setText("111111");
+        etEditName.setText(addressVM.getName());
+        String[] addresses = addressVM.getAddress().split(",");
+        etEditAddressOne.setText(addresses[0]);
+        etEditAddressTwo.setText(addresses[1]);
+        etEditAddressZip.setText(addressVM.getCode());
+        etEditAddressPhone.setText(addressVM.getTel());
+        tvEditAddressCity.setText(addressVM.getCity());
+        tvEditAddressState.setText(addressVM.getState());
+        tvEditAddressCountry.setText(addressVM.getCountry());
         checkboxDefaultBilling.setChecked(true);
         checkboxDefaultShipping.setChecked(true);
     }

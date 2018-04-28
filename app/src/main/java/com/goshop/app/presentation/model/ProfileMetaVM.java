@@ -1,6 +1,8 @@
 package com.goshop.app.presentation.model;
 
-public class ProfileMetaVM {
+import android.support.annotation.NonNull;
+
+public class ProfileMetaVM implements Comparable<ProfileMetaVM>{
 
     private String key;
 
@@ -41,4 +43,8 @@ public class ProfileMetaVM {
         isSelect = select;
     }
 
+    @Override
+    public int compareTo(@NonNull ProfileMetaVM o) {
+        return this.getKey().compareTo(o.getKey());
+    }
 }
