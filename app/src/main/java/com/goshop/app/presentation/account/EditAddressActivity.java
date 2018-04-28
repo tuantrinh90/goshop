@@ -118,7 +118,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
         etEditAddressOne.setText(addresses[0]);
         etEditAddressTwo.setText(addresses[1]);
         etEditAddressZip.setText(addressVM.getCode());
-        etEditAddressPhone.setText(addressVM.getTel());
+        etEditAddressPhone.setText(addressVM.getTel().replace("T: +", ""));
         tvEditAddressCity.setText(addressVM.getCity());
         tvEditAddressState.setText(addressVM.getState());
         tvEditAddressCountry.setText(addressVM.getCountry());

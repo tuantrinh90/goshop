@@ -35,7 +35,7 @@ public class AddressMapper {
             Map<String, Object> street = addressesData.getStreet();
             String address = "";
             for (Map.Entry<String, Object> entry : street.entrySet()) {
-                if(TextUtils.isEmpty(address)) {
+                if (TextUtils.isEmpty(address)) {
                     address = (String) entry.getValue();
                 } else {
                     address = address + COMMA + (String) entry.getValue();
@@ -43,11 +43,10 @@ public class AddressMapper {
             }
             addressVM.setAddress(address);
             addressVM.setCountry(addressesData.getCountryId());
-            //todo all "" need decide when api ensure
-            addressVM.setId("" + addressesData.getId());
-            addressVM.setCity("" + addressesData.getCity());
-            addressVM.setCode("" + addressesData.getPostCode());
-            addressVM.setState("" + addressesData.getRegionId());
+            addressVM.setId(addressesData.getId());
+            addressVM.setCity(addressesData.getCity());
+            addressVM.setCode(addressesData.getPostCode());
+            addressVM.setState(addressesData.getRegionId());
             addressVM.setTel(NumberFormater.formaterTelNo(addressesData.getTelephone()));
             addressVM.setShippingDefault(addressesData.isDefaultShipping());
             addressVM.setBillingDefault(addressesData.isDefaultBilling());

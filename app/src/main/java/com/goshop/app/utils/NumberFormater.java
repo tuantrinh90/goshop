@@ -4,25 +4,25 @@ public class NumberFormater {
 
     private static final String MONEY_SUFFIX = ".00";
 
-    private static final String MONEY_SYMBOL = "RM\t";
+    private static final String MONEY_SYMBOL = "RM ";
 
-    private static final String ORDER_NO = "Order No.\t";
+    private static final String ORDER_NO = "Order No. ";
 
-    private static final String SYMBOL_MINUS = "-\t";
+    private static final String SYMBOL_MINUS = "- ";
 
-    private static final String SYMBOL_PLUS = "+\t";
+    private static final String SYMBOL_PLUS = "+ ";
 
-    private static final String LEFT_BRACKETS = "(\t";
+    private static final String LEFT_BRACKETS = "( ";
 
-    private static final String RIGHT_BRACKETS = "\t)";
+    private static final String RIGHT_BRACKETS = " )";
 
-    private static final String TEL_HEADER = "T:\t+";
+    private static final String TEL_HEADER = "T: +";
 
-    private static final String ORDER_NUMBER = "#\t";
+    private static final String ORDER_NUMBER = "# ";
 
     private static final String ANSWER_COUNTS_FORMAT = "All %s Answers";
 
-    private static final String SYMBOL_QTY = "x\t";
+    private static final String SYMBOL_QTY = "x ";
 
     private static String INSIDE_NUMBER = "(%s)";
 
