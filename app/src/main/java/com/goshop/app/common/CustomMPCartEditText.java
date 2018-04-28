@@ -49,10 +49,8 @@ public class CustomMPCartEditText extends RelativeLayout {
         ivPlus.setOnClickListener(v -> plus());
         ivMinus.setOnClickListener(v -> minus());
         editText.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
-            switch (actionId) {
-                case EditorInfo.IME_ACTION_DONE:
-                    onCartMPEditClickListener.onEditSend(v.getText().toString());
-                    break;
+            if(actionId == EditorInfo.IME_ACTION_DONE) {
+                onCartMPEditClickListener.onEditSend(v.getText().toString());
             }
             return true;
         });
