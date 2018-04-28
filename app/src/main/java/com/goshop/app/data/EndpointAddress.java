@@ -83,6 +83,8 @@ public class EndpointAddress {
 
     public static final String ADD_REMOVE_CART = "rest/all/V1/rest-api/customer/customer_id/cart";
 
+    public static final String UPDATE_CART = "rest/all/V1/rest-api/customer/customer_id/cart";
+
     public static final String LIST_ORDER = "rest/all/V1/rest-api/customer/customer_id/order";
 
     public static final String VIEW_ORDER_DETAIL =

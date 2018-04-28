@@ -142,4 +142,9 @@ public class ProductLocalDataSource implements ProductDataSource {
         AddRemoveCartRequest request) {
         return null;
     }
+
+    @Override
+    public Observable<Response<CartDataResponse>> updateCartRequest(Map<String, Object> params) {
+        return null;
+    }
 }

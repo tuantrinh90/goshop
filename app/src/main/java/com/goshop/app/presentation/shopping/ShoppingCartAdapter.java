@@ -7,6 +7,8 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
+import com.goshop.app.widget.listener.OnProductItemClickListener;
+import com.goshop.app.widget.listener.OnProductListItemClickListener;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
@@ -26,7 +28,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
     private List<ProductVM> productVMS;
 
-    private OnItemMenuClickListener menuClickListener;
+    private OnCartItemClickListener onCartItemClickListener;
 
     public ShoppingCartAdapter(
         List<ProductVM> productsVMS) {
@@ -37,10 +39,6 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
         this.productVMS.clear();
         this.productVMS = productsVMS;
         notifyDataSetChanged();
-    }
-
-    public void setOnItemMenuClickListener(OnItemMenuClickListener menuClickListener) {
-        this.menuClickListener = menuClickListener;
     }
 
     @Override
@@ -55,8 +53,7 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         ProductVM productVM = productVMS.get(position);
-        ((CartViewHolder) holder)
-            .bindingData((ProductVM) productVM, menuClickListener);
+        ((CartViewHolder) holder).bindingData(productVM);
     }
 
     @Override
@@ -64,7 +61,8 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
         return productVMS.size();
     }
 
-    class CartViewHolder extends RecyclerView.ViewHolder {
+    class CartViewHolder extends RecyclerView.ViewHolder implements
+        CustomMPCartEditText.OnCartMPEditClickListener {
 
         @BindView(R.id.et_product_cart)
         CustomMPCartEditText etProductCart;
@@ -90,13 +88,15 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_cart_product_percent)
         RobotoMediumTextView tvCartProductPercent;
 
+        private ProductVM productVM;
+
         public CartViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
 
-        public void bindingData(ProductVM productVM,
-            OnItemMenuClickListener menuClickListener) {
+        public void bindingData(ProductVM productVM) {
+            this.productVM = productVM;
             Glide.with(itemView.getContext()).load(productVM.getImage()).asBitmap()
                 .error(productVM.getImageDefault())
                 .into(ivCartProductThumb);
@@ -110,15 +110,44 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
             etProductCart.setMinusBackGround(R.drawable.bg_rectangle_corner_black);
             etProductCart.setPlusBackGround(R.drawable.bg_rectangle_corner_black);
             llCartMenu
-                .setOnClickListener(v -> menuClickListener.onItemMenuClick(llCartMenu, productVM));
+                .setOnClickListener(v -> onCartItemClickListener.onItemMenuClick(llCartMenu, productVM));
             if (productVM.getPercent() != null && !TextUtils.isEmpty(productVM.getPercent())) {
                 tvCartProductPercent.setVisibility(View.VISIBLE);
                 tvCartProductPercent.setText(productVM.getPercent());
             } else {
                 tvCartProductPercent.setVisibility(View.GONE);
             }
+            itemView
+                .setOnClickListener(v ->
+                    onCartItemClickListener.onProductItemClick(productVM));
+
+            etProductCart.setOnCartMPEditClickListener(this);
+        }
+
+        @Override
+        public void onPlusMinusClick(boolean isPlus, String qty) {
+            onCartItemClickListener.onPlusMinusClick(isPlus, qty, productVM);
+        }
+
+        @Override
+        public void onEditSend(String qty) {
+            onCartItemClickListener.onEditSend(qty, productVM);
         }
     }
 
+    public void setOnCartItemClickListener(OnCartItemClickListener onCartItemClickListener) {
+        this.onCartItemClickListener = onCartItemClickListener;
+    }
+
+    public interface OnCartItemClickListener {
+
+        void onPlusMinusClick(boolean isPlus, String qty, ProductVM productVM);
+
+        void onEditSend(String qty, ProductVM productVM);
+
+        void onProductItemClick(ProductVM productVM);
+
+        void onItemMenuClick(View parentView, ProductVM productVM);
+    }
 
 }

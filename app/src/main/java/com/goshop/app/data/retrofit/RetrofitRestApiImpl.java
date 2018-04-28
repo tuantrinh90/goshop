@@ -541,6 +541,12 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
+    public Observable<Response<CartDataResponse>> updateCartRequest(Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.UPDATE_CART);
+        return retrofitRestApi.updateCartRequest(url, params);
+    }
+
+    @Override
     public Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.APPLY_COUPON);
         return retrofitRestApi.applyCoupon(url, params);

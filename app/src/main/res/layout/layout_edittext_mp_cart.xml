@@ -42,6 +42,7 @@
         android:inputType="number"
         android:layout_marginRight="@dimen/size_8"
         android:layout_marginLeft="@dimen/size_8"
+        android:imeOptions="actionSend"
         android:layout_toRightOf="@id/iv_minus"
         android:layout_toStartOf="@id/iv_plus"
         android:layout_toEndOf="@id/iv_minus"/>

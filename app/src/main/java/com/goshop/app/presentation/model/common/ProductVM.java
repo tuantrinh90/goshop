@@ -4,7 +4,9 @@ import java.util.List;
 
 public class ProductVM {
 
-    private String id;
+    private String id;//sku
+
+    private String quoteItemId;
 
     private String image;
 
@@ -23,6 +25,14 @@ public class ProductVM {
     private String amount;
 
     private String attribute;
+
+    public String getQuoteItemId() {
+        return quoteItemId;
+    }
+
+    public void setQuoteItemId(String quoteItemId) {
+        this.quoteItemId = quoteItemId;
+    }
 
     public String getId() {
         return id;

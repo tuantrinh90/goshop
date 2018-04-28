@@ -6,11 +6,14 @@ import android.annotation.SuppressLint;
 import android.content.Context;
 import android.text.TextUtils;
 import android.util.AttributeSet;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -31,6 +34,8 @@ public class CustomMPCartEditText extends RelativeLayout {
     @BindView(R.id.rl_et_minus_plus)
     RelativeLayout layout;
 
+    private OnCartMPEditClickListener onCartMPEditClickListener;
+
     public CustomMPCartEditText(Context context) {
         super(context);
         initView(context, null);
@@ -43,6 +48,25 @@ public class CustomMPCartEditText extends RelativeLayout {
         ButterKnife.bind(this, editView);
         ivPlus.setOnClickListener(v -> plus());
         ivMinus.setOnClickListener(v -> minus());
+        editText.setOnEditorActionListener((TextView v, int actionId, KeyEvent event) -> {
+            switch (actionId) {
+                case EditorInfo.IME_ACTION_SEND:
+                    onCartMPEditClickListener.onEditSend(v.getText().toString());
+                    break;
+            }
+            return true;
+        });
+    }
+
+    public void setOnCartMPEditClickListener(OnCartMPEditClickListener clickListener) {
+        this.onCartMPEditClickListener = clickListener;
+    }
+
+    public interface OnCartMPEditClickListener {
+
+        void onPlusMinusClick(boolean isPlus, String qty);
+
+        void onEditSend(String qty);
     }
 
     @SuppressLint("SetTextI18n")
@@ -52,6 +76,10 @@ public class CustomMPCartEditText extends RelativeLayout {
             int num = Integer.parseInt(count);
             num++;
             editText.setText(num + placeHolder);
+            editText.setSelection(editText.getText().length());
+            onCartMPEditClickListener.onPlusMinusClick(true,num + placeHolder);
+        } else {
+            editText.setText(1 + placeHolder);
             editText.setSelection(editText.getText().length());
         }
     }
@@ -68,6 +96,7 @@ public class CustomMPCartEditText extends RelativeLayout {
             }
             editText.setText(num + placeHolder);
             editText.setSelection(editText.getText().length());
+            onCartMPEditClickListener.onPlusMinusClick(false,num + placeHolder);
         }
     }
 

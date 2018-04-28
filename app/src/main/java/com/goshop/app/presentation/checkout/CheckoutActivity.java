@@ -452,7 +452,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     private void initRadioGroup() {
-        rbCheckoutPaymentCredit.setSelected(true);
         radioPaymentType.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.rb_checkout_payment_banking:
@@ -473,6 +472,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                     break;
             }
         });
+        rbCheckoutPaymentBanking.setChecked(true);
     }
 
     @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order,

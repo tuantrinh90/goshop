@@ -10,6 +10,7 @@ import com.goshop.app.presentation.model.SizeVM;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.WishlistVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
+import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.presentation.shopping.ColorSelectAdapter;
 import com.goshop.app.presentation.shopping.SizeSelectAdapter;
 import com.goshop.app.widget.adapter.SingleChooseListAdapter;
@@ -79,7 +80,7 @@ public class PopWindowUtil {
 
     }
 
-    public static void showShoppingCartMenuPop(View parentView,
+    public static void showShoppingCartMenuPop(View parentView,ProductVM productVM,
         OnCartItemMenuClickListener itemMenuClickListener) {
         View popView = LayoutInflater.from(parentView.getContext())
             .inflate(R.layout.layout_pop_shopping_cart_menu, null);
@@ -96,11 +97,11 @@ public class PopWindowUtil {
         parentView.getLocationOnScreen(location);
         popupWindow.showAtLocation(parentView, Gravity.TOP | Gravity.END, 0, location[1] - 12);
         llDelete.setOnClickListener(v -> {
-            itemMenuClickListener.onCartDeleteClick();
+            itemMenuClickListener.onCartDeleteClick(productVM);
             popupWindow.dismiss();
         });
         llWishlist.setOnClickListener(v -> {
-            itemMenuClickListener.onCartWishlist();
+            itemMenuClickListener.onCartWishlist(productVM);
             popupWindow.dismiss();
         });
     }
@@ -276,9 +277,9 @@ public class PopWindowUtil {
 
     public interface OnCartItemMenuClickListener {
 
-        void onCartWishlist();
+        void onCartWishlist(ProductVM productVM);
 
-        void onCartDeleteClick();
+        void onCartDeleteClick(ProductVM productVM);
     }
 
     public interface OnWishlistDeleteListener {
