@@ -142,6 +142,8 @@ public class Const {
 
     public static final String PARAMS_DEFAULT_SHIPPING = "default_shipping";
 
+    public static final String PARAMS_QUOTE_ITEM_ID = "quote_item_id";
+
     public static final int PROMOTION_CONTENT_ITEM = 2;
 
     //type-banner

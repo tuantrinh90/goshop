@@ -148,4 +148,9 @@ public class ProductCloudDataSource implements ProductDataSource {
         AddRemoveCartRequest request) {
         return restApi.removeFromCartRequest(request);
     }
+
+    @Override
+    public Observable<Response<CartDataResponse>> updateCartRequest(Map<String, Object> params) {
+        return restApi.updateCartRequest(params);
+    }
 }

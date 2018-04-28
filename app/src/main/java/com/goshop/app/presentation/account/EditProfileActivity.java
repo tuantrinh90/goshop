@@ -228,6 +228,10 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         etProfileName.setText(profileVM.getName());
         tvProfileDateOfBirth.setText(profileVM.getBirth());
         etProfileMobile.setText(profileVM.getMobile());
+        //todo api data have some problem
+        tvProfileTitle.setText(profileVM.getTitle().get(0).getValue());
+        tvProfileLanguage.setText(profileVM.getLanguage().get(0).getValue());
+        tvProfileRace.setText(profileVM.getRace().get(0).getValue());
     }
 
     @Override

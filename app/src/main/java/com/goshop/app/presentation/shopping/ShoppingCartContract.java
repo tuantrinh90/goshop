@@ -39,5 +39,7 @@ public class ShoppingCartContract {
         void addWishlistRequest(String skuId);
 
         void applyCoupon(String couponCode, String cartId);
+
+        void updateCartRequest(String quoteItemId, String qty);
     }
 }

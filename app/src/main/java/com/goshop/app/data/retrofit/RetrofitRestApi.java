@@ -504,6 +504,12 @@ public interface RetrofitRestApi {
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
+    @PUT
+    Observable<Response<CartDataResponse>> updateCartRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<Response<ApplyCouponResponse>> applyCoupon(@Url String fullUrl,
         @FieldMap Map<String, Object> params);

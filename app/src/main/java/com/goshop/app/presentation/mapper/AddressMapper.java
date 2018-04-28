@@ -13,11 +13,15 @@ import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.NumberFormater;
 
+import android.text.TextUtils;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 public class AddressMapper {
+
+    private static final String COMMA = ", ";
 
     public static List<AddressVM> transform(Response<AddressResponse> response) {
         List<AddressVM> addressVMS = new ArrayList<>();
@@ -29,14 +33,20 @@ public class AddressMapper {
             addressVM = new AddressVM();
             addressVM.setName(addressesData.getFirstName());
             Map<String, Object> street = addressesData.getStreet();
+            String address = "";
             for (Map.Entry<String, Object> entry : street.entrySet()) {
-                addressVM.setAddress((String) entry.getValue());
+                if (TextUtils.isEmpty(address)) {
+                    address = (String) entry.getValue();
+                } else {
+                    address = address + COMMA + (String) entry.getValue();
+                }
             }
+            addressVM.setAddress(address);
             addressVM.setCountry(addressesData.getCountryId());
-            //todo all "" need decide when api ensure
-            addressVM.setId("" + addressesData.getId());
-            addressVM.setCity("" + addressesData.getCity());
-            addressVM.setCode("" + addressesData.getPostCode());
+            addressVM.setId(addressesData.getId());
+            addressVM.setCity(addressesData.getCity());
+            addressVM.setCode(addressesData.getPostCode());
+            addressVM.setState(addressesData.getRegionId());
             addressVM.setTel(NumberFormater.formaterTelNo(addressesData.getTelephone()));
             addressVM.setShippingDefault(addressesData.isDefaultShipping());
             addressVM.setBillingDefault(addressesData.isDefaultBilling());

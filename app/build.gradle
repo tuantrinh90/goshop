@@ -24,7 +24,7 @@ android {
         applicationId "com.imaginato.goshop"
         minSdkVersion 16
         targetSdkVersion 26
-        versionCode 1
+        versionCode 3
         versionName "1.0"
         multiDexEnabled true
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -69,7 +69,7 @@ android {
 
     buildTypes {
         debug {
-            ext.alwaysUpdateBuildId = false
+            ext.alwaysUpdateBuildId = true
             testCoverageEnabled = true
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

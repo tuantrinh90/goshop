@@ -177,6 +177,11 @@ public class ProductDataRepository implements ProductRepository {
         return getServerData(productCloudDataSource.removeFromCartRequest(request));
     }
 
+    @Override
+    public Observable<Response<CartDataResponse>> updateCartRequest(Map<String, Object> params) {
+        return getServerData(productCloudDataSource.updateCartRequest(params));
+    }
+
     private boolean isSuccess(String status) {
         return Const.SUCCESS_STATUS.equals(status.toLowerCase());
     }

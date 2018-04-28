@@ -216,6 +216,8 @@ public interface RestApi {
 
     Observable<Response<CartDataResponse>> removeFromCartRequest(AddRemoveCartRequest request);
 
+    Observable<Response<CartDataResponse>> updateCartRequest(Map<String, Object> params);
+
     Observable<Response<ApplyCouponResponse>> applyCoupon(Map<String, Object> params);
 
     Observable<Response<ApplyPointsResponse>> applyGoShopPoints(Map<String, Object> params);

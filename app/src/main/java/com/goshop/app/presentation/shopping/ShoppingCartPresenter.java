@@ -13,6 +13,9 @@ import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.mapper.ApplyVMMapper;
 import com.goshop.app.presentation.mapper.ShoppingCartMapper;
+
+import android.util.Log;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -152,6 +155,37 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
                     mView.showErrorMessage(e.getMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+    }
+
+    @Override
+    public void updateCartRequest(String quoteItemId, String qty) {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        params.put(Const.PARAMS_QUOTE_ITEM_ID, quoteItemId);
+        params.put(Const.PARAMS_QTY, qty);
+        addSubscrebe(productRepository.updateCartRequest(params).subscribeWith(
+            new DisposableObserver<Response<CartDataResponse>>() {
+                @Override
+                public void onNext(Response<CartDataResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.stopRefresh();
+                    mView.showCartDetail(ShoppingCartMapper.transform(response.getData()));
+                }
+
+                @Override
+                public void onError(Throwable throwable) {
+                    mView.hideLoadingBar();
+                    mView.stopRefresh();
+                    mView.showErrorMessage(throwable.getMessage().toString());
                 }
 
                 @Override
