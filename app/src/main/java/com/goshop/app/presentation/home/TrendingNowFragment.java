@@ -175,7 +175,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         Intent intent = null;
         switch (bannerVm.getType()) {
             case BANNER_TYPE_BRAND:
-                intent = new Intent(getActivity(), ProductDetailActivity.class);
+                intent = new Intent(getActivity(), PromotionSkuActivity.class);
                 intent.putExtra(PROMOTION_BANNER_URL, bannerVm);
                 break;
             case BANNER_TYPE_EVENT:
@@ -233,7 +233,7 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     @Override
     public void onBuyNowClick() {
-        Intent intent = new Intent(getActivity(), ShoppingCartActivity.class);
+        Intent intent = new Intent(getActivity(), ProductDetailActivity.class);
         startActivity(intent);
     }
 

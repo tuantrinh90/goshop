@@ -23,7 +23,6 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
 
-
     @BindView(R.id.toolbar)
     Toolbar toolbar;
 
@@ -33,15 +32,8 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_ACCOUNT);
-        setContentView(getContentView());
-        initToolbar();
     }
 
-    private void initToolbar() {
-        hideRightMenu();
-        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
-    }
 
     @Override
     public int getContentView() {
@@ -50,7 +42,8 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
 
     @Override
     public void inject() {
-        //don't need to override this method now.
+        setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_ACCOUNT);
+        setContentView(getContentView());
     }
 
     @Override
@@ -66,7 +59,11 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
         Intent intent = null;
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                openDrawerLayout();
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
                 break;
             case R.id.tv_my_account_edit:
                 intent = new Intent(this, EditProfileActivity.class);
@@ -78,7 +75,8 @@ public class MyAccountLandingActivity extends BaseDrawerActivity {
                 intent = new Intent(this, MyOrdersActivity.class);
                 break;
             case R.id.rl_account_reviews:
-                intent = new Intent(this, AllReviewsActivity.class);
+                //todo this is for drop 2 please dont delete
+                /*intent = new Intent(this, AllReviewsActivity.class);*/
                 break;
             case R.id.rl_account_address:
                 intent = new Intent(this, MyAddressBookActivity.class);

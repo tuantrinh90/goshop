@@ -16,7 +16,7 @@ public class ToastUtil {
 
     public static final int DELAY_TIME = 0;
 
-    public static final int SHOW_TIME = 3000;
+    public static final int SHOW_TIME = 5000;
 
     private final Timer cancelTimer = new Timer();
 

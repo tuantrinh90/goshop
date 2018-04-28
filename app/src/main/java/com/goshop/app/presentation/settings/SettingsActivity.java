@@ -6,6 +6,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.login.LoginActivity;
@@ -31,8 +32,6 @@ import injection.modules.PresenterModule;
 
 public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presenter> implements
     SettingsContract.View {
-
-    public static final String REDIRECT_TYPE_SETTING_PAGE = "SettingPage";
 
     @BindView(R.id.rl_container)
     RelativeLayout rlContainer;
@@ -68,6 +67,7 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
         setContentView(getContentView());
         initSwichsListener();
         initView();
+        mPresenter.getUserInfo();
     }
 
     private void initView() {
@@ -102,17 +102,14 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
         switchSettingEmail
             .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
                 //todo wait for api
-                Toast.makeText(this, "" + isChecked, Toast.LENGTH_SHORT).show();
             });
         switchSettingSms
             .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
                 //todo wait for api
-                Toast.makeText(this, "" + isChecked, Toast.LENGTH_SHORT).show();
             });
         switchSettingOffers
             .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
                 //todo wait for api
-                Toast.makeText(this, "" + isChecked, Toast.LENGTH_SHORT).show();
             });
     }
 
@@ -140,8 +137,6 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     }
 
     private void goToLoginPage() {
-        Intent intent = new Intent();
-        intent.putExtra(LoginActivity.EXTRA_REDIRECT_TYPE, REDIRECT_TYPE_SETTING_PAGE);
         startActivity(new Intent(this, ChangePasswordActivity.class));
 
     }
@@ -169,6 +164,12 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     @Override
     public void showNetworkErrorMessage(String errorMessage) {
         PopWindowUtil.showRequestMessagePop(rlContainer, errorMessage);
+    }
+
+    @Override
+    public void onUserInfoGetSuccess(UserData response) {
+        switchSettingEmail.setChecked(response.isEmailSubscribe());
+        switchSettingSms.setChecked(response.isSmsSubscribe());
     }
 
     private void goToHomePage() {

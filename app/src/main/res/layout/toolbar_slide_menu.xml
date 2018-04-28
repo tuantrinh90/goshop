@@ -45,6 +45,7 @@
             android:id="@+id/tv_toolbar_cart_counter"
             android:layout_width="@dimen/size_13"
             android:layout_height="@dimen/size_13"
+            android:visibility="gone"
             android:background="@drawable/bg_slide_menu_number"
             android:text="1"
             android:textSize="@dimen/size_font_10"

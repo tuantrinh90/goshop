@@ -4,6 +4,7 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.presentation.model.ProductDetailModel;
+import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.SizeVM;
 import com.goshop.app.presentation.model.ColorVM;
 
@@ -39,14 +40,18 @@ public class ProductDetailContract {
 
         void setSizeDatas(List<SizeVM> sizeVMS);
 
-        void addToCartResult(boolean isSuccess, String message);
-
         void getReviewsSuccess(List<ProductDetailModel> detailDatas);
 
         void getQASuccess(List<ProductDetailModel> detailDatas);
+
+        void addToCartSuccess(int cartNum);
+
+        void getUserProfileSuccess(ProfileVM profileVM);
     }
 
     public interface Presenter extends BasePresenter<View> {
+
+        void getUserProfile();
 
         void getProductDetails();
 

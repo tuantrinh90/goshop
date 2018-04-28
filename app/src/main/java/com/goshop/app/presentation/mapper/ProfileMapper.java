@@ -13,6 +13,7 @@ public class ProfileMapper {
         profileVM.setName(response.getData().getCustomer().getName());
         profileVM.setBirth(DateFormater.getAbbreviationDate(response.getData().getCustomer().getDob()));
         profileVM.setMobile(response.getData().getCustomer().getMobileNumber());
+        profileVM.setCartCount(response.getData().getCustomer().getCartItemsCount());
         return profileVM;
     }
 

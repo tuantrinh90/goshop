@@ -88,6 +88,9 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
         @BindView(R.id.view_wishlist_divider)
         View viewWishlistDivider;
 
+        @BindView(R.id.tv_wishlist_attr)
+        RobotoLightTextView tvWishlistAttr;
+
         public MyWishlistViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -112,6 +115,7 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
                     onWishListItemClickListener.onWishListClick(wishlistVM);
                 }
             });
+            tvWishlistAttr.setText(wishlistVM.getAttr());
         }
     }
 

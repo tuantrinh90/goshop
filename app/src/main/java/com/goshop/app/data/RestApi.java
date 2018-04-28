@@ -40,7 +40,6 @@ import com.goshop.app.data.model.response.ResetPasswordResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.response.LoginResponse;
@@ -139,7 +138,7 @@ public interface RestApi {
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
-    Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params);
+    Observable<Response<CartDataResponse>> viewCartDetails(Map<String, Object> params);
 
     Observable<GetWebContentResponse> getEcmcContent();
 

@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
-import com.facebook.login.LoginManager;
 import com.facebook.login.widget.LoginButton;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
@@ -85,13 +84,13 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     private String password;
 
+    private String entrance;
+
+    private String type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_LOGIN);
-        setContentView(getContentView());
-        initData();
-        initToolbar();
     }
 
     private void initData() {
@@ -99,10 +98,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
     }
 
-    private void initToolbar() {
-        hideRightMenu();
-        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
-    }
 
     @Override
     public int getContentView() {
@@ -111,11 +106,20 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     @Override
     public void inject() {
+        initIntentData();
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_LOGIN);
+        setContentView(getContentView());
+        initData();
+    }
+
+    private void initIntentData() {
+        type = getIntent().getStringExtra(MenuUtil.TYPE);
+        entrance = getIntent().getStringExtra(MenuUtil.EXTRA_ENTRANCE);
     }
 
     @Override
@@ -135,7 +139,11 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                openDrawerLayout();
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
                 break;
             case R.id.tv_btn_login:
                 emailLogin();
@@ -211,6 +219,12 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     private void goToHomePage() {
         Intent intent = new Intent(this, MainPageActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        if(entrance != null) {
+            intent.putExtra(MenuUtil.EXTRA_ENTRANCE, entrance);
+        }
+        if(type != null) {
+            intent.putExtra(MenuUtil.TYPE, type);
+        }
         startActivity(intent);
         finish();
     }

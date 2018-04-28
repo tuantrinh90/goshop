@@ -20,6 +20,16 @@ public class ProfileVM {
 
     private List<ProfileMetaVM> title;
 
+    private int cartCount;
+
+    public int getCartCount() {
+        return cartCount;
+    }
+
+    public void setCartCount(int cartCount) {
+        this.cartCount = cartCount;
+    }
+
     public String getEmail() {
         return email;
     }

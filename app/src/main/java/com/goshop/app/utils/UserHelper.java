@@ -33,8 +33,7 @@ public class UserHelper {
             .isEmpty(userData.getToken().getToken());
     }
 
-    public static void goToLogin(Activity activity) {
-        Intent intent = new Intent(activity, LoginActivity.class);
+    public static void goToLogin(Activity activity, Intent intent) {
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         activity.startActivity(intent);
         activity.overridePendingTransition(R.anim.enter_bottom_top, R.anim.enter_top_bottom);

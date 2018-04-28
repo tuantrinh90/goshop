@@ -1,6 +1,5 @@
 package com.goshop.app.base;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MenuModel;
@@ -39,9 +38,29 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
 
     private String currentMenuType = MenuUtil.MENU_TYPE_HOME;
 
+    public String entranceType;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        initIntent();
+        initToolbar();
+    }
+
+
+    private void initIntent() {
+        entranceType = getIntent().getStringExtra(MenuUtil.EXTRA_ENTRANCE);
+    }
+
+    private void initToolbar() {
+        hideRightMenu();
+        if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+            ivLeftMenu.setImageResource(R.drawable.ic_menu);
+            unlockDrawerLayout();
+        } else {
+            ivLeftMenu.setImageResource(R.drawable.ic_icon_back);
+            lockDrawerLayout();
+        }
     }
 
     public String getCurrentMenuType() {
@@ -50,6 +69,7 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
 
     public void setCurrentMenuType(String currentMenuType) {
         this.currentMenuType = currentMenuType;
+        menuUtil.setCurrentMenuType(currentMenuType);
     }
 
     @Override
@@ -104,7 +124,16 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
     public void onItemClick(MenuModel itemVM, int position) {
         drawerLayout.closeDrawer(GravityCompat.START);
         if (!currentMenuType.equals(itemVM.getMenuType())) {
-            menuUtil.startNextScreen(itemVM.getMenuType());
+            if(!isLogin
+                && currentMenuType.equals(MenuUtil.MENU_TYPE_HEAD_LOGIN)
+                &&(itemVM.getMenuType().equals(MenuUtil.MENU_TYPE_GO_LOYALTY)
+                    || itemVM.getMenuType().equals(MenuUtil.MENU_TYPE_SHOPPING_CART)
+                    || itemVM.getMenuType().equals(MenuUtil.MENU_TYPE_SETTINGS))
+                ) {
+                //do nothing
+            } else {
+                menuUtil.startNextScreen(itemVM.getMenuType());
+            }
         }
     }
 
@@ -119,5 +148,13 @@ public abstract class BaseDrawerActivity<T extends BasePresenter> extends BaseAc
             KeyBoardUtils.hideKeyboard(this);
             drawerLayout.openDrawer(GravityCompat.START);
         }
+    }
+
+    public void lockDrawerLayout() {
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+    }
+
+    public void unlockDrawerLayout() {
+        drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
     }
 }

@@ -285,5 +285,6 @@ public class Const {
 
     }
 
+    public static final String EXPIRE_TILL = "Expire till ";
 
 }

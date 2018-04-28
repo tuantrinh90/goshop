@@ -144,6 +144,18 @@
                                 tools:ignore="ContentDescription"
                                 android:layout_alignParentEnd="true"/>
 
+                            <com.goshop.app.common.view.RobotoMediumTextView
+                                android:id="@+id/textview_cart_counter"
+                                android:layout_width="@dimen/size_14"
+                                android:layout_height="@dimen/size_14"
+                                android:visibility="gone"
+                                android:layout_alignParentRight="true"
+                                android:background="@drawable/bg_slide_menu_number"
+                                android:textSize="@dimen/size_font_10"
+                                android:textColor="@color/white"
+                                android:gravity="center"
+                                tools:ignore="HardcodedText" />
+
 
                             <com.goshop.app.common.view.RobotoMediumTextView
                                 android:id="@+id/textview_toolbar_title"

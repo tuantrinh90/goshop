@@ -49,7 +49,7 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
     }
 
     private void initView() {
-        textviewRightMenu.setText(getResources().getString(R.string.save));
+        textviewRightMenu.setText(getResources().getString(R.string.done));
         hideRightMenu();
     }
 

@@ -10,6 +10,7 @@ import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
+import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.presentation.model.widget.ProductCartListVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.KeyBoardUtils;
@@ -44,12 +45,6 @@ import injection.modules.PresenterModule;
 public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContract.Presenter>
     implements ShoppingCartContract.View, OnItemMenuClickListener,
     PopWindowUtil.OnCartItemMenuClickListener {
-
-    public static final String EXTRA_ENTRANCE = "extra_entrance";
-
-    public static final String TYPE_ENTRANCE_DRAWER = "drawer";
-
-    public static final String TYPE_ENTRANCE_HOME = "pdp";
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
@@ -92,9 +87,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     private ShoppingCartAdapter shoppingCartAdapter;
 
-    private String entranceType;
-
-    private ProductsVM productsVM;
+    private ProductVM productVM;
 
     private String cartId;
 
@@ -106,27 +99,11 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_SHOPPING_CART);
-        setContentView(getContentView());
-        initIntent();
-        initToolbar();
         initRecyclerView();
         initSwipRefreshLayout();
         mPresenter.viewCartDetails(page, false);
     }
 
-    private void initIntent() {
-        entranceType = getIntent().getStringExtra(EXTRA_ENTRANCE);
-    }
-
-    private void initToolbar() {
-        hideRightMenu();
-        if (TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
-            imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
-        } else {
-            imageViewLeftMenu.setImageResource(R.drawable.ic_icon_back);
-        }
-    }
 
     @Override
     public int getContentView() {
@@ -140,6 +117,8 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_SHOPPING_CART);
+        setContentView(getContentView());
     }
 
     private void initSwipRefreshLayout() {
@@ -256,18 +235,18 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @Override
     public void onItemMenuClick(View parentView, Object object) {
-        productsVM = ((ProductCartListVM) object).getProductsVM();
+        productVM = (ProductVM) object;
         PopWindowUtil.showShoppingCartMenuPop(parentView, this);
     }
 
     @Override
     public void onCartWishlist() {
-        mPresenter.addWishlistRequest(productsVM.getId());
+        mPresenter.addWishlistRequest(productVM.getId());
     }
 
     @Override
     public void onCartDeleteClick() {
-        mPresenter.removeFromCartRequest(productsVM.getId(), productsVM.getAmount());
+        mPresenter.removeFromCartRequest(productVM.getId(), productVM.getAmount());
     }
 
     @OnClick({R.id.tv_btn_cart_apply, R.id.tv_btn_cart_checkout, R.id.imageview_left_menu, R.id
@@ -286,7 +265,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
                 break;
             case R.id.imageview_left_menu:
-                if (TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
                     openDrawerLayout();
                 } else {
                     finish();

@@ -51,6 +51,7 @@ public class CustomAnimEditText extends RelativeLayout {
     public CustomAnimEditText(Context context) {
         super(context);
         initView(context, null);
+        setNomarl();
     }
 
     private void initView(Context context, AttributeSet attrs) {
@@ -82,6 +83,7 @@ public class CustomAnimEditText extends RelativeLayout {
     private void deleteImageShowListener(final EditText targetEditText, final ImageView deleteIv) {
         targetEditText.setOnFocusChangeListener((View v, boolean hasFocus) -> {
             if (hasFocus) {
+                setNomarl();
                 RxTextView.textChanges(targetEditText).subscribe(charSequence -> {
                     if (charSequence.length() > 0) {
                         textInputLayoutAnim.setErrorEnabled(false);
@@ -92,38 +94,35 @@ public class CustomAnimEditText extends RelativeLayout {
                             targetEditText.requestFocus();
                             deleteIv.setVisibility(View.GONE);
                         });
-
-                        switch (hintText) {
-                            case INPUT_EMAIL:
-                                if (!isEmail(charSequence.toString())) {
-                                    setError(targetEditText.getContext()
-                                        .getString(R.string.format_email_warning));
-                                } else {
-                                    setNomarl();
-                                }
-                                break;
-                            case INPUT_PHONE:
-                            case INPUT_MOBILE:
-                            case INPUT_MOBILE_OPTIONAL:
-                                if (!isMobileNO(charSequence.toString())) {
-                                    setError(targetEditText.getContext()
-                                        .getString(R.string.format_mobile_warning));
-                                } else {
-                                    setNomarl();
-                                }
-                                break;
-                            default:
-                                setNomarl();
-                                break;
-                        }
-
                     } else {
                         deleteIv.setVisibility(View.GONE);
                     }
                 });
-
             } else {
                 deleteIv.setVisibility(View.GONE);
+                switch (hintText) {
+                    case INPUT_EMAIL:
+                        if (!isEmail(targetEditText.getText().toString())) {
+                            setError(targetEditText.getContext()
+                                .getString(R.string.format_email_warning));
+                        } else {
+                            setNomarl();
+                        }
+                        break;
+                    case INPUT_PHONE:
+                    case INPUT_MOBILE:
+                    case INPUT_MOBILE_OPTIONAL:
+                        if (!isMobileNO(targetEditText.getText().toString())) {
+                            setError(targetEditText.getContext()
+                                .getString(R.string.format_mobile_warning));
+                        } else {
+                            setNomarl();
+                        }
+                        break;
+                    default:
+                        setNomarl();
+                        break;
+                }
             }
         });
     }
@@ -141,6 +140,7 @@ public class CustomAnimEditText extends RelativeLayout {
         textInputLayoutAnim.setErrorEnabled(true);
         textInputLayoutAnim.setError(errorMessage);
         textInputLayoutAnim.setHintTextAppearance(R.style.errorAppearance);
+        textInputLayoutAnim.setErrorTextAppearance(R.style.errorAppearance);
     }
 
     public void setInputType(int type) {
