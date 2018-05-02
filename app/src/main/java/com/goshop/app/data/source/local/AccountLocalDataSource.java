@@ -10,6 +10,8 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.FilterCategoryResponse;
+import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
@@ -384,6 +386,16 @@ public class AccountLocalDataSource implements AccountDataSource {
 
     @Override
     public Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params) {
+        return null;
+    }
+
+    @Override
+    public Observable<Response<FilterCategoryResponse>> getFilterCategory() {
+        return null;
+    }
+
+    @Override
+    public Observable<Response<FilterStatusResponse>> getFilterStatus() {
         return null;
     }
 }

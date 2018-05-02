@@ -11,6 +11,7 @@ import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.adapter.FilterDrawerAdapter;
 import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
@@ -71,7 +72,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
 
     private ProductGridVerticalAdapter gridVerticalAdapter;
 
-    private FilterMenuAdapter menuAdapter;
+    private FilterDrawerAdapter menuAdapter;
 
     private List<SortVM> sortVMS;
 
@@ -135,7 +136,7 @@ public class SearchResultActivity extends BaseActivity<SearchResultContract.Pres
     private void initFilterMenuRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerviewFilter.setLayoutManager(layoutManager);
-        menuAdapter = new FilterMenuAdapter(new ArrayList<>());
+        menuAdapter = new FilterDrawerAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
     }
 

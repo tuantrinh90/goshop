@@ -15,14 +15,24 @@ public class AllDealsContract {
 
         void showAllDealsResult(List<GoLoyaltyDealsVM> dealsVMS);
 
-        void showFilterMenu(List<FilterMenuModel> filterMenuModels);
+//        void showFilterMenu(List<FilterMenuModel> filterMenuModels);
+
+        void getCategorySuccess(List<FilterMenuModel> filterMenuModels);
+
+        void getStatusSuccess(List<FilterMenuModel> filterMenuModels);
+
+        void showErrorMessage(String errorMessage);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
         void allDealsRequest(Map<String, Object> params);
 
-        void filterMenuRequest(Map<String, Object> params);
+//        void filterMenuRequest(Map<String, Object> params);
+
+        void getFilterCategory();
+
+        void getFilterStatus();
 
         List<SortVM> getSortVMS();
     }

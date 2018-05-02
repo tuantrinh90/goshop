@@ -8,8 +8,8 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 import com.goshop.app.presentation.model.SortVM;
-import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.adapter.FilterDrawerAdapter;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -69,20 +69,22 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     @BindView(R.id.tv_filter_menu_top)
     RobotoRegularTextView tvFilterMenuTop;
 
-    private FilterMenuAdapter menuAdapter;
+    private FilterDrawerAdapter menuAdapter;
 
     private List<SortVM> sortVMS;
+
+    private List<FilterMenuModel> drawerFilterDatas;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        drawerFilterDatas = new ArrayList<>();
         //todo wait for api
         sortVMS = mPresenter.getSortVMS();
         sortVMS.get(0).setSelect(true);
         tvBtnSort.setText(sortVMS.get(0).getTitle());
         mPresenter.allDealsRequest(null);
-        mPresenter.filterMenuRequest(null);
+        mPresenter.getFilterCategory();
         // TODO: 2018/4/26 this need delete later
         new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewFilter), 200);
     }
@@ -121,7 +123,7 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     private void initFilterMenuRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerviewFilter.setLayoutManager(layoutManager);
-        menuAdapter = new FilterMenuAdapter(new ArrayList<>());
+        menuAdapter = new FilterDrawerAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
     }
 
@@ -145,8 +147,21 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     }
 
     @Override
-    public void showFilterMenu(List<FilterMenuModel> filterMenuModels) {
-        menuAdapter.updateDatas(filterMenuModels);
+    public void getCategorySuccess(List<FilterMenuModel> filterMenuModels) {
+        this.drawerFilterDatas.clear();
+        this.drawerFilterDatas.addAll(filterMenuModels);
+        mPresenter.getFilterStatus();
+    }
+
+    @Override
+    public void getStatusSuccess(List<FilterMenuModel> filterMenuModels) {
+        this.drawerFilterDatas.addAll(filterMenuModels);
+        menuAdapter.updateDatas(drawerFilterDatas);
+    }
+
+    @Override
+    public void showErrorMessage(String errorMessage) {
+        PopWindowUtil.showRequestMessagePop(recyclerviewFilter, errorMessage);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.iv_btn_filter, R.id.iv_sort_arrow, R.id.tv_btn_sort,

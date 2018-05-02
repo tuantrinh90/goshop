@@ -25,8 +25,7 @@ public class ShoppingCartMapper {
             ProductVM productVM = new ProductVM();
             productVM.setTitle(data.getName());
             productVM.setId(data.getSku());
-            //todo this is wait for api
-//            productVM.setQuoteItemId(response.getCart().getQuoteId());
+            productVM.setQuoteItemId(data.getQuoteItemId());
             productVM.setAmount(data.getQty());
             productVM.setImage(data.getImage());
             productVM.setImageDefault(R.drawable.ic_image_404_small);

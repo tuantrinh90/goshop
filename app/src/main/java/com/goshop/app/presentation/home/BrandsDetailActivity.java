@@ -10,9 +10,9 @@ import com.goshop.app.presentation.model.BrandsDetailVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
-import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.adapter.FilterDrawerAdapter;
 import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
@@ -82,7 +82,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
 
     private ProductGridVerticalAdapter gridVerticalAdapter;
 
-    private FilterMenuAdapter menuAdapter;
+    private FilterDrawerAdapter menuAdapter;
 
     private List<SortVM> sortVMS;
 
@@ -131,7 +131,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     private void initFilterMenuRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerviewFilter.setLayoutManager(layoutManager);
-        menuAdapter = new FilterMenuAdapter(new ArrayList<>());
+        menuAdapter = new FilterDrawerAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
     }
 

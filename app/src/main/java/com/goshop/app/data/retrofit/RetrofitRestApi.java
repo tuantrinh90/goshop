@@ -12,6 +12,8 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.FilterCategoryResponse;
+import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
@@ -536,4 +538,12 @@ public interface RetrofitRestApi {
     @POST
     Observable<Response<PaymentResponse>> paymentRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<FilterCategoryResponse>> getFilterCategory(@Url String fullUrl);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<FilterStatusResponse>> getFilterStatus(@Url String fullUrl);
 }

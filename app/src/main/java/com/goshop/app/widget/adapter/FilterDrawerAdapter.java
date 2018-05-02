@@ -1,10 +1,11 @@
-package com.goshop.app.presentation.search;
+package com.goshop.app.widget.adapter;
 
 import com.goshop.app.R;
 import com.goshop.app.common.FlowLayout;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoRegularCheckBox;
 import com.goshop.app.common.view.RobotoRegularEditText;
+import com.goshop.app.presentation.model.FilterFlowVM;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -23,13 +24,13 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class FilterMenuAdapter extends RecyclerView.Adapter {
+public class FilterDrawerAdapter extends RecyclerView.Adapter {
 
     private List<FilterMenuModel> displayModels;
 
     private List<FilterMenuModel> menuModels;
 
-    public FilterMenuAdapter(
+    public FilterDrawerAdapter(
         List<FilterMenuModel> menuModels) {
         this.displayModels = menuModels;
         this.menuModels = new ArrayList<>();
@@ -38,7 +39,6 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
     public void updateDatas(List<FilterMenuModel> menuModels) {
         this.menuModels.clear();
         this.menuModels = menuModels;
-        //TODO  this part need decide
         expandAll();
         notifyDataSetChanged();
     }
@@ -109,7 +109,6 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
             insert++;
             displayModels.add(insert, menuModels.get(i));
         }
-        //Todo(helen)this part need to decide
         notifyDataSetChanged();
     }
 
@@ -121,7 +120,6 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
             count++;
             displayModels.remove(position + 1);
         }
-        //Todo this part need to decide
         notifyDataSetChanged();
     }
 
@@ -171,27 +169,23 @@ public class FilterMenuAdapter extends RecyclerView.Adapter {
         @BindView(R.id.flow_search_filter)
         FlowLayout flowSearchFilter;
 
-        private List<String> categorys;
-
         public FlowButtonViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
-            categorys = new ArrayList<>();
         }
 
         void bindingData(FilterMenuFlowButtonVM categoryVM) {
-            categorys.clear();
-            categorys = categoryVM.getCategorys();
+            List<FilterFlowVM> filterFlowVMS = categoryVM.getFilterFlowVMS();
 
             LayoutInflater mInflater = LayoutInflater.from(itemView.getContext());
-            for (int i = 0; i < categorys.size(); i++) {
+            for (int i = 0; i < filterFlowVMS.size(); i++) {
                 RobotoRegularCheckBox categoryCheckView = (RobotoRegularCheckBox) mInflater
                     .inflate(R.layout.item_checkbox,
                         flowSearchFilter, false);
-                categoryCheckView.setText(categorys.get(i));
+                categoryCheckView.setText(filterFlowVMS.get(i).getName());
                 categoryCheckView.setOnCheckedChangeListener(((buttonView, isChecked) -> {
                     if (isChecked) {
-                        //todo(helen) wait for design
+                        //todo wait for design
                     }
                 }));
                 flowSearchFilter.addView(categoryCheckView);
