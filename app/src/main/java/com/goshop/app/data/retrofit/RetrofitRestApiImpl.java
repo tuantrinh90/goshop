@@ -139,7 +139,7 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
+    public Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.SWIPE_REDEEM);
         return retrofitRestApi.swipeRedeemRequest(url, params);
     }

@@ -178,7 +178,7 @@ public class EndpointAddress {
 
     public static final String CARD_REDEEM = "";
 
-    public static final String SWIPE_REDEEM = "";
+    public static final String SWIPE_REDEEM = "rest/all/V1/rest-api/deal/redeem";
 
     //todo wait for api
     public static final String REGISTER = "";

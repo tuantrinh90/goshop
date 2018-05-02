@@ -105,7 +105,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
+    public Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params) {
         return restApi.swipeRedeemRequest(params);
     }
 

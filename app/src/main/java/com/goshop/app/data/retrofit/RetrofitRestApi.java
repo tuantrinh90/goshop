@@ -139,7 +139,7 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<CardRedeemResponse> swipeRedeemRequest(@Url String fullUrl,
+    Observable<Response<CardRedeemResponse>> swipeRedeemRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
     @FormUrlEncoded

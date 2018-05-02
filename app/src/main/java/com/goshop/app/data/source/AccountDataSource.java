@@ -65,7 +65,7 @@ public interface AccountDataSource {
 
     Observable<CardRedeemResponse> cardRedeemRequest(Map<String, Object> params);
 
-    Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params);
+    Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params);
 
     Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
 

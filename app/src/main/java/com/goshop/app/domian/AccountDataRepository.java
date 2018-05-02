@@ -148,8 +148,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
-        return accountCloudDataSource.swipeRedeemRequest(params);
+    public Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params) {
+        return getServerData(accountCloudDataSource.swipeRedeemRequest(params));
     }
 
     @Override
