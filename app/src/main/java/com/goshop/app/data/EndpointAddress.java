@@ -183,7 +183,7 @@ public class EndpointAddress {
     //todo wait for api
     public static final String REGISTER = "";
 
-    public static final String REWARDS_DETAIL = "";
+    public static final String REWARDS_DETAIL = "rest/all/V1/rest-api/deal/deal_id";
 
     public static final String MY_WISHLIST = "";
 

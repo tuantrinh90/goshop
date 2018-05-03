@@ -10,7 +10,7 @@ import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
@@ -67,7 +67,7 @@ public interface AccountRepository {
 
     Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params);
 
-    Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
+    Observable<Response<MyRewardsResponse>> rewardsDetailRequest(Map<String, Object> params);
 
     Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params);
 

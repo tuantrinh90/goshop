@@ -24,7 +24,7 @@ import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.DeliveryCheckResponse;
 import com.goshop.app.data.model.response.MyEGiftResponse;
 import com.goshop.app.data.model.response.MyPointsResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.OrderDetailResponse;
 import com.goshop.app.data.model.PaymentStatusResponse;
@@ -84,7 +84,7 @@ public interface RestApi {
 
     Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params);
 
-    Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
+    Observable<Response<MyRewardsResponse>> rewardsDetailRequest(Map<String, Object> params);
 
     Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params);
 
