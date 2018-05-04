@@ -1,6 +1,5 @@
 package com.goshop.app.data.retrofit;
 
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -12,6 +11,7 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.DealsResponse;
 import com.goshop.app.data.model.response.FilterCategoryResponse;
 import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
@@ -108,11 +108,9 @@ public interface RetrofitRestApi {
     Observable<GoLoyaltyResponse> goLoyaltyRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<AllDealsResponse> allDealsRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<DealsResponse>> getListDeals(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})

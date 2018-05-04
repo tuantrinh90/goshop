@@ -3,7 +3,6 @@ package com.goshop.app.data;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
@@ -14,6 +13,7 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.DealsResponse;
 import com.goshop.app.data.model.response.FilterCategoryResponse;
 import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
@@ -74,7 +74,7 @@ public interface RestApi {
 
     Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
 
-    Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params);
+    Observable<Response<DealsResponse>> getListDeals();
 
     Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params);
 

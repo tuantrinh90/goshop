@@ -7,26 +7,64 @@
     android:orientation="vertical">
     <include
         layout="@layout/toolbar_img_text_img_close"/>
-    <RelativeLayout
+
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include
-            layout="@layout/layout_filter_bar"/>
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:id="@+id/ll_data"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:orientation="vertical">
+            <include
+                layout="@layout/layout_filter_bar"/>
+
+            <android.support.v4.widget.SwipeRefreshLayout
+                android:id="@+id/swipe_refresh_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recycleview_all_deals"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/white"
+                    android:paddingTop="@dimen/size_20"/>
+            </android.support.v4.widget.SwipeRefreshLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_8"
+                android:background="@drawable/drawable_end_divider_with_shadow"/>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_no_data"
+            android:layout_below="@+id/ll_toolbar"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/layout_address_no_data"/>
+
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/fl_connection_break"
+            android:layout_below="@+id/ll_toolbar"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <include layout="@layout/layout_connection_break"/>
+
+        </FrameLayout>
+
         <View
             android:layout_width="match_parent"
             android:layout_height="@dimen/size_4"
             android:background="@drawable/bg_navigation_bar_shadow"/>
-    </RelativeLayout>
+    </FrameLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycleview_all_deals"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@android:color/white"
-        android:paddingTop="@dimen/size_20"/>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/size_8"
-        android:background="@drawable/drawable_end_divider_with_shadow"/>
 
 </LinearLayout>

@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
+import com.goshop.app.widget.listener.OnDealsItemClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,8 +22,14 @@ public class AllDealsAdapter extends RecyclerView.Adapter {
 
     private List<GoLoyaltyDealsVM> dealsVMS;
 
+    private OnDealsItemClickListener onDealsItemClickListener;
+
     public AllDealsAdapter(List<GoLoyaltyDealsVM> dealsVMS) {
         this.dealsVMS = dealsVMS;
+    }
+
+    public void setOnDealsItemClickListener( OnDealsItemClickListener listener) {
+        this.onDealsItemClickListener = listener;
     }
 
     public void setUpdateDatas(List<GoLoyaltyDealsVM> dealsVMS) {
@@ -78,6 +85,9 @@ public class AllDealsAdapter extends RecyclerView.Adapter {
             tvDealDetail.setText(dealsVM.getDetail());
             tvDealTime.setText(dealsVM.getTime());
             tvDealEnd.setText(dealsVM.getEnd());
+            itemView.setOnClickListener(v -> {
+                onDealsItemClickListener.onDealItemClick(dealsVM);
+            });
         }
     }
 }

@@ -111,7 +111,7 @@ public class EndpointAddress {
 
     public static final String ADD_ADDRESS = "";
 
-    public static final String ALL_DEALS = "";
+    public static final String ALL_DEALS = "rest/all/V1/rest-api/deals";
 
     public static final String BRANDS_DETAIL = "";
 

@@ -10,15 +10,19 @@ import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.FilterDrawerAdapter;
+import com.goshop.app.widget.listener.OnDealsItemClickListener;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -32,9 +36,9 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> implements
-    AllDealsContract.View, PopWindowUtil.OnPopWindowDismissListener {
+    AllDealsContract.View, PopWindowUtil.OnPopWindowDismissListener, OnDealsItemClickListener {
 
-    AllDealsAdapter allDealsAdapter;
+    private AllDealsAdapter allDealsAdapter;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -75,6 +79,20 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
 
     private List<FilterMenuModel> drawerFilterDatas;
 
+    @BindView(R.id.ll_data)
+    LinearLayout llData;
+
+    @BindView(R.id.fl_no_data)
+    FrameLayout flNoData;
+
+    @BindView(R.id.fl_connection_break)
+    FrameLayout flConnectionBreak;
+
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    private int page = 1;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,10 +101,8 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
         sortVMS = mPresenter.getSortVMS();
         sortVMS.get(0).setSelect(true);
         tvBtnSort.setText(sortVMS.get(0).getTitle());
-        mPresenter.allDealsRequest(null);
+        mPresenter.getListDeals(page, false);
         mPresenter.getFilterCategory();
-        // TODO: 2018/4/26 this need delete later
-        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewFilter), 200);
     }
 
     @Override
@@ -103,6 +119,22 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
         initPresenter();
         initRecyclerView();
         initFilterMenuRecyclerView();
+        initSwipRefreshLayout();
+    }
+
+    private void initSwipRefreshLayout() {
+        swipeRefreshLayout.setColorSchemeResources(R.color.color_main_pink);
+        swipeRefreshLayout.setOnRefreshListener(() -> {
+            page = 1;
+            mPresenter.getListDeals(page, true);
+        });
+    }
+
+    @Override
+    public void stopRefresh() {
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+        }
     }
 
     private void initPresenter() {
@@ -117,6 +149,7 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
         LinearLayoutManager manager = new LinearLayoutManager(this);
         recycleviewAllDeals.setLayoutManager(manager);
         allDealsAdapter = new AllDealsAdapter(new ArrayList<>());
+        allDealsAdapter.setOnDealsItemClickListener(this);
         recycleviewAllDeals.setAdapter(allDealsAdapter);
     }
 
@@ -143,7 +176,20 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
 
     @Override
     public void showAllDealsResult(List<GoLoyaltyDealsVM> dealsVMS) {
-        allDealsAdapter.setUpdateDatas(dealsVMS);
+        if (dealsVMS.size() > 0) {
+            updateLayoutStatus(llData, true);
+            allDealsAdapter.setUpdateDatas(dealsVMS);
+        } else {
+            updateLayoutStatus(llData, false);
+            updateLayoutStatus(flNoData, true);
+        }
+
+    }
+
+    @Override
+    public void showNetError() {
+        updateLayoutStatus(llData, false);
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
@@ -165,7 +211,7 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.iv_btn_filter, R.id.iv_sort_arrow, R.id.tv_btn_sort,
-        R.id.tv_btn_filter_clear, R.id.tv_btn_filter_done})
+        R.id.tv_btn_filter_clear, R.id.tv_btn_filter_done, R.id.tv_net_refresh})
     public void onAllViewClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -189,6 +235,10 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
             case R.id.tv_btn_filter_done:
                 drawerLayout.closeDrawer(GravityCompat.END);
                 break;
+            case R.id.tv_net_refresh:
+                updateLayoutStatus(flConnectionBreak, false);
+                mPresenter.getListDeals(page, false);
+                break;
         }
     }
 
@@ -202,5 +252,10 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     public void onDismiss() {
         ivSortArrow.setSelected(false);
         tvBtnSort.setSelected(false);
+    }
+
+    @Override
+    public void onDealItemClick(GoLoyaltyDealsVM dealsVM) {
+        startActivity(new Intent(this, RewardsDetailActivity.class));
     }
 }

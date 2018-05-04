@@ -1,23 +1,20 @@
 package com.goshop.app.presentation.goloyalty;
 
-import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.AllDealsResponse;
+import com.goshop.app.data.model.response.DealsResponse;
 import com.goshop.app.data.model.response.FilterCategoryResponse;
 import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.FilterDataMapper;
-import com.goshop.app.presentation.model.FilterMenuExpandVM;
-import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
-import com.goshop.app.presentation.model.FilterMenuModel;
-import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
+import com.goshop.app.presentation.mapper.GoLoyaltyDealsMapper;
 import com.goshop.app.presentation.model.SortVM;
 
-import android.os.Handler;
+import android.util.Log;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -33,19 +30,30 @@ public class AllDealsPresenter extends RxPresenter<AllDealsContract.View> implem
     }
 
     @Override
-    public void allDealsRequest(Map<String, Object> params) {
-        mView.showLoadingBar();
-        addSubscrebe(accountRepository.allDealsRequest(params).subscribeWith(
-            new DisposableObserver<AllDealsResponse>() {
+    public void getListDeals(int page, boolean isRefresh) {
+        //todo wait for api
+//        Map<String, Object> params = new HashMap<>();
+        if (!isRefresh) {
+            mView.showLoadingBar();
+        }
+        addSubscrebe(accountRepository.getListDeals().subscribeWith(
+            new DisposableObserver<Response<DealsResponse>>() {
                 @Override
-                public void onNext(AllDealsResponse allDealsResponse) {
+                public void onNext(Response<DealsResponse> response) {
                     mView.hideLoadingBar();
+                    mView.stopRefresh();
+                    mView.showAllDealsResult(GoLoyaltyDealsMapper.transform(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showAllDealsResult(getMockDatas());
+                    mView.stopRefresh();
+                    if (e instanceof ServiceApiFail) {
+                        mView.showErrorMessage(((ServiceApiFail) e).getErrorMessage());
+                    } else {
+                        mView.showNetError();
+                    }
                 }
 
                 @Override
@@ -53,18 +61,6 @@ public class AllDealsPresenter extends RxPresenter<AllDealsContract.View> implem
 
                 }
             }));
-    }
-
-    //todo this is mock data
-    private List<GoLoyaltyDealsVM> getMockDatas() {
-        GoLoyaltyDealsVM dealsVM = new GoLoyaltyDealsVM("", R.drawable.ic_deals,
-            "Starbucks(Merchant)",
-            "Buy 1 cup and get 1 cup", "12 Jan 2017 - 14 Jan 2017", "Kuala Lumpor");
-        List<GoLoyaltyDealsVM> dealsVMS = new ArrayList<>();
-        dealsVMS.add(dealsVM);
-        dealsVMS.add(dealsVM);
-        dealsVMS.add(dealsVM);
-        return dealsVMS;
     }
 
     @Override
@@ -75,13 +71,14 @@ public class AllDealsPresenter extends RxPresenter<AllDealsContract.View> implem
                 @Override
                 public void onNext(Response<FilterCategoryResponse> response) {
                     mView.hideLoadingBar();
-                    mView.getCategorySuccess(FilterDataMapper.transformDealCategory(response.getData()));
+                    mView.getCategorySuccess(
+                        FilterDataMapper.transformDealCategory(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    if(e instanceof ServiceApiFail) {
+                    if (e instanceof ServiceApiFail) {
                         mView.showErrorMessage(((ServiceApiFail) e).getErrorMessage());
                     }
                 }
@@ -101,13 +98,14 @@ public class AllDealsPresenter extends RxPresenter<AllDealsContract.View> implem
                 @Override
                 public void onNext(Response<FilterStatusResponse> response) {
                     mView.hideLoadingBar();
-                    mView.getStatusSuccess(FilterDataMapper.transformDealStatus(response.getData()));
+                    mView
+                        .getStatusSuccess(FilterDataMapper.transformDealStatus(response.getData()));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    if(e instanceof ServiceApiFail) {
+                    if (e instanceof ServiceApiFail) {
                         mView.showErrorMessage(((ServiceApiFail) e).getErrorMessage());
                     }
                 }

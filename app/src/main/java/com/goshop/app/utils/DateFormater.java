@@ -133,6 +133,19 @@ public class DateFormater {
         return stringBuilder.toString();
     }
 
+    public static String getDealTimePeriod(String startTime, String endTime){
+        String start = getAbbreviationDate(startTime);
+        String end = getAbbreviationDate(endTime);
+        StringBuilder result = new StringBuilder();
+        result.append(start).append(" ").append(DIAGONAL).append(" ").append(end);
+        return result.toString();
+    }
+
+    /**
+     *
+     * @param "2018-04-05"
+     * @return 05 Apr 2018
+     */
     public static String getAbbreviationDate(String time) {
         String[] arrays = time.split(DIAGONAL);
         int year = Integer.parseInt(arrays[0]);

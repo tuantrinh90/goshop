@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
+import com.goshop.app.widget.listener.OnDealsItemClickListener;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,7 +22,7 @@ public class DealsAdapter extends RecyclerView.Adapter {
 
     private List<GoLoyaltyDealsVM> dealsVMS;
 
-    private OnDealItemClickListener onDealItemClickListener;
+    private OnDealsItemClickListener onDealItemClickListener;
 
     public DealsAdapter(List<GoLoyaltyDealsVM> dealsVMS) {
         this.dealsVMS = dealsVMS;
@@ -44,13 +45,8 @@ public class DealsAdapter extends RecyclerView.Adapter {
         return dealsVMS.size();
     }
 
-    public void setOnDealItemClickListener(OnDealItemClickListener onDealItemClickListener) {
+    public void setOnDealItemClickListener(OnDealsItemClickListener onDealItemClickListener) {
         this.onDealItemClickListener = onDealItemClickListener;
-    }
-
-    public interface OnDealItemClickListener {
-
-        void onDealItemClick();
     }
 
     class DealViewHolder extends RecyclerView.ViewHolder {
@@ -83,7 +79,7 @@ public class DealsAdapter extends RecyclerView.Adapter {
             tvDealDetail.setText(dealsVM.getDetail());
             tvDealTime.setText(dealsVM.getTime());
             tvDealEnd.setText(dealsVM.getEnd());
-            itemView.setOnClickListener(v -> onDealItemClickListener.onDealItemClick());
+            itemView.setOnClickListener(v -> onDealItemClickListener.onDealItemClick(dealsVM));
         }
     }
 }

@@ -1,7 +1,6 @@
 package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -10,6 +9,7 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.DealsResponse;
 import com.goshop.app.data.model.response.FilterCategoryResponse;
 import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
@@ -82,8 +82,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params) {
-        return restApi.allDealsRequest(params);
+    public Observable<Response<DealsResponse>> getListDeals() {
+        return restApi.getListDeals();
     }
 
     @Override
