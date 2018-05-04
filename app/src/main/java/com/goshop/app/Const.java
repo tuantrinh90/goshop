@@ -293,4 +293,6 @@ public class Const {
 
     public static final String EXPIRE_TILL = "Expire till ";
 
+    public static final String TEXT_SEPARATOR = "; ";
+
 }

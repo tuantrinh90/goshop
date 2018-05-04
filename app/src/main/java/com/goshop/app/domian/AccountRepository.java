@@ -109,6 +109,8 @@ public interface AccountRepository {
 
     Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params);
 
+    Observable<Response<AddressResponse>> setDefaultShippingBilling(Map<String, Object> params);
+
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
     Observable<Response<AddressResponse>> getAddressList(Map<String, Object> params);
