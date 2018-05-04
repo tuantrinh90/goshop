@@ -23,21 +23,11 @@ public class FootLoadingHelper {
                 int bottom = lastChildView.getBottom();
                 int bottomEdge = recyclerView.getHeight() - recyclerView.getPaddingBottom();
                 int topEdge = recyclerView.getPaddingTop();
-                if (bottom <= bottomEdge && top < topEdge) {
-                    adapter.setShowFoot(true);
-                } else {
-                    adapter.setShowFoot(false);
-                }
+                adapter.setShowFoot(bottom <= bottomEdge && top < topEdge);
                 int lastItemPosition = linearLayoutManager.findLastVisibleItemPosition();
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastItemPosition + 1 ==
-                    adapter.getItemCount()) {
-                    if (bottom <= bottomEdge) {
-                        if (adapter.isShowFoot()) {
-                            if(adapter.isLoadMore()) {
-                                footLoadingListener.loadingMore();
-                            }
-                        }
-                    }
+                    adapter.getItemCount() && bottom <= bottomEdge && adapter.isShowFoot() && adapter.isLoadMore()) {
+                    footLoadingListener.loadingMore();
                 }
             }
 
