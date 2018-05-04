@@ -400,14 +400,10 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             ivProductDetailWish.setOnClickListener(
                 v -> onProductDetailItemClickListener
                     .onWishlistSelect(!ivProductDetailWish.isSelected()));
-            rlProductDetailColor.setOnClickListener(v -> {
-                onProductDetailItemClickListener.
-                    onProductColorClick(itemView,tvProductDetailColor.getText().toString());
-            });
-            rlProductDetailSize.setOnClickListener(v -> {
-                onProductDetailItemClickListener.
-                    onProductSizeClick(itemView,tvProductDetailSize.getText().toString());
-            });
+            rlProductDetailColor.setOnClickListener(v -> onProductDetailItemClickListener.
+                onProductColorClick(itemView,tvProductDetailColor.getText().toString()));
+            rlProductDetailSize.setOnClickListener(v -> onProductDetailItemClickListener.
+                onProductSizeClick(itemView,tvProductDetailSize.getText().toString()));
             tvProductDetailColor.setText(bannerVM.getColorVMS().get(0).getColorName());
             tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSizeName());
         }

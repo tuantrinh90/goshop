@@ -7,11 +7,8 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.mapper.BrandMapper;
-import com.goshop.app.presentation.model.BrandsListVM;
 
-import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 import io.reactivex.observers.DisposableObserver;
 

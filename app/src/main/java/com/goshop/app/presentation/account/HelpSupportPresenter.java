@@ -13,11 +13,8 @@ import com.goshop.app.presentation.model.HelpSupportModel;
 import com.goshop.app.presentation.model.HelpSupportSectionVM;
 import com.goshop.app.presentation.model.HelpSupportTitleVM;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;

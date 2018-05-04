@@ -8,7 +8,6 @@ import com.goshop.app.data.model.response.ApplyPointsResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.PaymentResponse;
 import com.goshop.app.data.model.response.Response;
-import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.ApplyVMMapper;
 import com.goshop.app.presentation.mapper.CheckoutMapper;

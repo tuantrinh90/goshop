@@ -2,7 +2,6 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.presentation.model.SizeVM;
 
 import android.support.v7.widget.RecyclerView;

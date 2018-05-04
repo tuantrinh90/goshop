@@ -1,7 +1,6 @@
 package com.goshop.app.domian;
 
 import com.goshop.app.Const;
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -10,6 +9,9 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.DealsResponse;
+import com.goshop.app.data.model.response.FilterCategoryResponse;
+import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
@@ -123,8 +125,8 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params) {
-        return accountCloudDataSource.allDealsRequest(params);
+    public Observable<Response<DealsResponse>> getListDeals() {
+        return getServerData(accountCloudDataSource.getListDeals());
     }
 
     @Override
@@ -439,6 +441,16 @@ public class AccountDataRepository implements AccountRepository {
     @Override
     public Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params) {
         return getServerData(accountCloudDataSource.paymentRequest(params));
+    }
+
+    @Override
+    public Observable<Response<FilterCategoryResponse>> getFilterCategory() {
+        return getServerData(accountCloudDataSource.getFilterCategory());
+    }
+
+    @Override
+    public Observable<Response<FilterStatusResponse>> getFilterStatus() {
+        return getServerData(accountCloudDataSource.getFilterStatus());
     }
 
     private boolean isSuccess(String status) {

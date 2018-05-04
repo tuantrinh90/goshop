@@ -5,7 +5,6 @@ import com.goshop.app.common.view.irecyclerview.widget.header.ClassicRefreshHead
 
 import android.animation.Animator;
 import android.animation.ValueAnimator;
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.support.annotation.LayoutRes;

@@ -7,6 +7,12 @@ public class RMData {
     @SerializedName("discount_title")
     private String discountTitle;
 
+    @SerializedName("egift_card")
+    EgiftCardData eGiftCard;
+
+    @SerializedName("goshop_points")
+    GoshopPointsData goshopPoints;
+
     private String discounted;
 
     /**
@@ -17,7 +23,7 @@ public class RMData {
 
     private String original;
 
-    private String discount;
+    private DiscountData discount;
 
     private String shipping;
 
@@ -41,12 +47,28 @@ public class RMData {
         this.subTotal = subTotal;
     }
 
-    public String getDiscount() {
+    public DiscountData getDiscount() {
         return discount;
     }
 
-    public void setDiscount(String discount) {
+    public void setDiscount(DiscountData discount) {
         this.discount = discount;
+    }
+
+    public EgiftCardData geteGiftCard() {
+        return eGiftCard;
+    }
+
+    public void seteGiftCard(EgiftCardData eGiftCard) {
+        this.eGiftCard = eGiftCard;
+    }
+
+    public GoshopPointsData getGoshopPoints() {
+        return goshopPoints;
+    }
+
+    public void setGoshopPoints(GoshopPointsData goshopPoints) {
+        this.goshopPoints = goshopPoints;
     }
 
     public String getShipping() {

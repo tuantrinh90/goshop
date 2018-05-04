@@ -2,7 +2,6 @@ package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.data.model.response.AddressResponse;
 import com.goshop.app.data.model.response.CityResponse;
-import com.goshop.app.data.model.response.ProfileMetadataResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.StatesResponse;
 import com.goshop.app.data.model.response.ZipCodeResponse;

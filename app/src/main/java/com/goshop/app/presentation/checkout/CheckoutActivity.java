@@ -19,14 +19,12 @@ import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentMethodVM;
 import com.goshop.app.presentation.model.PaymentVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
-import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -240,9 +238,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
         cbCheckoutUseSame.setChecked(true);
         cbCheckoutUseSame
-            .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
-                rlBillingRoot.setVisibility(isChecked ? View.GONE : View.VISIBLE);
-            });
+            .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> rlBillingRoot.setVisibility(isChecked ? View.GONE : View.VISIBLE));
     }
 
     private void initPresenter() {

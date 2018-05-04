@@ -11,15 +11,10 @@ import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
 import com.goshop.app.presentation.model.common.ProductVM;
-import com.goshop.app.presentation.model.widget.ProductCartListVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.widget.listener.OnItemMenuClickListener;
-import com.goshop.app.widget.listener.OnProductItemClickListener;
-import com.goshop.app.widget.listener.OnProductListItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -78,6 +73,9 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @BindView(R.id.tv_cart_billing_disscount)
     RobotoLightTextView tvCartBillingDisscount;
+
+    @BindView(R.id.tv_cart_disscount_code)
+    RobotoLightTextView tvCartDisscountCode;
 
     @BindView(R.id.tv_cart_billing_total)
     RobotoMediumTextView tvCartBillingTotal;
@@ -166,6 +164,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 rlCartDisscount.setVisibility(View.VISIBLE);
                 tvCartBillingDisscount.setText(
                     NumberFormater.formaterDiscountPrice(cartProductVM.getDiscount()));
+                tvCartDisscountCode.setText(cartProductVM.getDiscountCode());
                 etCartApply.setText(cartProductVM.getDiscount());
                 tvBtnCartApply.setText(getResources().getString(R.string.cancel));
                 tvBtnCartApply.setSelected(true);

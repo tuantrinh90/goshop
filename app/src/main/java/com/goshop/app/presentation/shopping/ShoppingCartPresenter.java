@@ -14,8 +14,6 @@ import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.mapper.ApplyVMMapper;
 import com.goshop.app.presentation.mapper.ShoppingCartMapper;
 
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.Map;
 

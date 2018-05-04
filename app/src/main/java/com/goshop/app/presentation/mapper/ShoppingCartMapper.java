@@ -9,6 +9,7 @@ import com.goshop.app.data.model.response.common.SuperAttributeData;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
 import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.utils.NumberFormater;
+import com.goshop.app.utils.TextFormater;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,6 +19,7 @@ public class ShoppingCartMapper {
     private static final String COMMA = ", ";
 
     private static final String END = "; ";
+
     public static ShoppingCartProductVM transform(CartDataResponse response) {
         List<ProductData> productDatas = response.getCart().getProducts();
         List<ProductVM> productVMS = new ArrayList<>();
@@ -25,8 +27,7 @@ public class ShoppingCartMapper {
             ProductVM productVM = new ProductVM();
             productVM.setTitle(data.getName());
             productVM.setId(data.getSku());
-            //todo this is wait for api
-//            productVM.setQuoteItemId(response.getCart().getQuoteId());
+            productVM.setQuoteItemId(data.getQuoteItemId());
             productVM.setAmount(data.getQty());
             productVM.setImage(data.getImage());
             productVM.setImageDefault(R.drawable.ic_image_404_small);
@@ -38,7 +39,7 @@ public class ShoppingCartMapper {
             String attribute = "";
             for (SuperAttributeData attributeData : attributeDatas) {
                 attribute = attribute + attributeData.getName() + COMMA + attributeData
-                    .getValue() + END;
+                    .getVariantName() + END;
             }
             productVM.setAttribute(attribute);
             productVMS.add(productVM);
@@ -48,7 +49,9 @@ public class ShoppingCartMapper {
         if (productVMS.size() > 0) {
             shoppingCartProductVM.setProductVMS(productVMS);
             BillingData billingData = response.getCart().getBilling();
-            shoppingCartProductVM.setDiscount(billingData.getRm().getDiscount());
+            shoppingCartProductVM.setDiscount(billingData.getRm().getDiscount().getAmount());
+            shoppingCartProductVM.setDiscountCode(
+                TextFormater.formatBillingCode(billingData.getRm().getDiscount().getCode()));
             shoppingCartProductVM
                 .setShipping(NumberFormater.formaterPrice(billingData.getRm().getShipping()));
             shoppingCartProductVM
@@ -62,7 +65,7 @@ public class ShoppingCartMapper {
     public static int transformCartCount(CartDataResponse response) {
         List<ProductData> productDatas = response.getCart().getProducts();
         int count = 0;
-        for(ProductData data:productDatas) {
+        for (ProductData data : productDatas) {
             count = count + Integer.parseInt(data.getQty());
         }
         return count;

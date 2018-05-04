@@ -6,7 +6,6 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
-import com.goshop.app.presentation.checkout.PaymentStatusActivity;
 import com.goshop.app.presentation.login.LoginActivity;
 import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.presentation.model.ProductDetailModel;

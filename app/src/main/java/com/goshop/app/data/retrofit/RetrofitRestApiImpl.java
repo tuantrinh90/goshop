@@ -5,7 +5,6 @@ import com.goshop.app.data.RestApi;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.request.AddressRequest;
 import com.goshop.app.data.model.response.AddressResponse;
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
@@ -16,6 +15,9 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.DealsResponse;
+import com.goshop.app.data.model.response.FilterCategoryResponse;
+import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
@@ -109,9 +111,9 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
-    public Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params) {
+    public Observable<Response<DealsResponse>> getListDeals() {
         String url = EndpointAddress.getFullUrl(EndpointAddress.ALL_DEALS);
-        return retrofitRestApi.allDealsRequest(url, params);
+        return retrofitRestApi.getListDeals(url);
     }
 
     @Override
@@ -575,5 +577,17 @@ public class RetrofitRestApiImpl implements RestApi {
     public Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.PLACE_ORDER);
         return retrofitRestApi.paymentRequest(url, params);
+    }
+
+    @Override
+    public Observable<Response<FilterCategoryResponse>> getFilterCategory() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.DEAL_CATEGORY_LIST);
+        return retrofitRestApi.getFilterCategory(url);
+    }
+
+    @Override
+    public Observable<Response<FilterStatusResponse>> getFilterStatus() {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.DEAL_STATUS_LIST);
+        return retrofitRestApi.getFilterStatus(url);
     }
 }

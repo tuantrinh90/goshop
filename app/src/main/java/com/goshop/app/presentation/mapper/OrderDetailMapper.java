@@ -2,7 +2,6 @@ package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.OrderDetailResponse;
-import com.goshop.app.data.model.response.common.BillingData;
 import com.goshop.app.data.model.response.common.InformationData;
 import com.goshop.app.data.model.response.common.OrderBillingData;
 import com.goshop.app.data.model.response.common.OrderDetailData;

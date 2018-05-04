@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.domian.ProductRepository;
+import com.goshop.app.presentation.model.FilterFlowVM;
 import com.goshop.app.presentation.model.FilterMenuExpandVM;
 import com.goshop.app.presentation.model.FilterMenuFlowButtonVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
@@ -87,16 +88,16 @@ public class CategoryTreeDetailPresenter extends RxPresenter<CategoryTreeDetailC
     }
 
     //todo  this is mock data, please do not delete
-    private List<String> getCategorys() {
-        List<String> categorys = new ArrayList<>();
-        categorys.add("Beauty");
-        categorys.add("Fashion");
-        categorys.add("Applicance");
-        categorys.add("Kids & Baby");
-        categorys.add("Digital & Electronic");
-        categorys.add("Living");
-        categorys.add("Sports & Leisure");
-        categorys.add("Others");
+    private List<FilterFlowVM> getCategorys() {
+        List<FilterFlowVM> categorys = new ArrayList<>();
+        categorys.add(new FilterFlowVM("", "Beauty"));
+        categorys.add(new FilterFlowVM("", "Fashion"));
+        categorys.add(new FilterFlowVM("", "Applicance"));
+        categorys.add(new FilterFlowVM("", "Kids & Baby"));
+        categorys.add(new FilterFlowVM("", "Digital & Electronic"));
+        categorys.add(new FilterFlowVM("", "Living"));
+        categorys.add(new FilterFlowVM("", "Sports & Leisure"));
+        categorys.add(new FilterFlowVM("", "Others"));
         return categorys;
     }
 

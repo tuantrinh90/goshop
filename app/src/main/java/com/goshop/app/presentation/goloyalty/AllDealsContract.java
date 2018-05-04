@@ -7,7 +7,6 @@ import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 import com.goshop.app.presentation.model.SortVM;
 
 import java.util.List;
-import java.util.Map;
 
 public class AllDealsContract {
 
@@ -15,14 +14,24 @@ public class AllDealsContract {
 
         void showAllDealsResult(List<GoLoyaltyDealsVM> dealsVMS);
 
-        void showFilterMenu(List<FilterMenuModel> filterMenuModels);
+        void showNetError();
+
+        void getCategorySuccess(List<FilterMenuModel> filterMenuModels);
+
+        void getStatusSuccess(List<FilterMenuModel> filterMenuModels);
+
+        void showErrorMessage(String errorMessage);
+
+        void stopRefresh();
     }
 
     public interface Presenter extends BasePresenter<View> {
 
-        void allDealsRequest(Map<String, Object> params);
+        void getListDeals(int page, boolean isRefresh);
 
-        void filterMenuRequest(Map<String, Object> params);
+        void getFilterCategory();
+
+        void getFilterStatus();
 
         List<SortVM> getSortVMS();
     }

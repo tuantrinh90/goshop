@@ -4,8 +4,6 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.response.common.UserData;
 
-import java.util.Map;
-
 public class SettingsContract {
 
     interface View extends BaseView {
