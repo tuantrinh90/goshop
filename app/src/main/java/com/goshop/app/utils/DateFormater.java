@@ -2,11 +2,8 @@ package com.goshop.app.utils;
 
 import com.goshop.app.Const;
 
-import android.util.Log;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.Date;
 
 public class DateFormater {

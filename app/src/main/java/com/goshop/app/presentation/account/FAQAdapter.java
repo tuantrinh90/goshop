@@ -3,7 +3,6 @@ package com.goshop.app.presentation.account;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FAQVM;
-import com.goshop.app.presentation.model.HelpSupportContentVM;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;

@@ -33,7 +33,9 @@ public class FootLoadingHelper {
                     adapter.getItemCount()) {
                     if (bottom <= bottomEdge) {
                         if (adapter.isShowFoot()) {
-                            footLoadingListener.loadingMore();
+                            if(adapter.isLoadMore()) {
+                                footLoadingListener.loadingMore();
+                            }
                         }
                     }
                 }

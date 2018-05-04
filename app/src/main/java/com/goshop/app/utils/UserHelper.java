@@ -3,8 +3,6 @@ package com.goshop.app.utils;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.common.UserData;
-import com.goshop.app.presentation.login.LoginActivity;
-import com.orhanobut.logger.LogAdapter;
 
 import android.app.Activity;
 import android.content.Intent;

@@ -58,7 +58,7 @@ public abstract class BaseFootLoadingAdapter<T> extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
-    public void setLoadList(List<T> listDatas) {
+    public void addLoadingDatas(List<T> listDatas) {
         this.listDatas.addAll(listDatas);
         notifyDataSetChanged();
     }
@@ -86,7 +86,6 @@ public abstract class BaseFootLoadingAdapter<T> extends RecyclerView.Adapter {
 
     public void setShowFoot(boolean showFoot) {
         isShowFoot = showFoot;
-        notifyDataSetChanged();
     }
 
     public boolean isLoadMore() {
@@ -95,7 +94,6 @@ public abstract class BaseFootLoadingAdapter<T> extends RecyclerView.Adapter {
 
     public void setLoadMore(boolean loadMore) {
         isLoadMore = loadMore;
-        notifyDataSetChanged();
     }
 
     @Override

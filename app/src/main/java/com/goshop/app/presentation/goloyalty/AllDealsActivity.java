@@ -8,13 +8,14 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 import com.goshop.app.presentation.model.SortVM;
+import com.goshop.app.utils.FootLoadingHelper;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.FilterDrawerAdapter;
+import com.goshop.app.widget.listener.FootLoadingListener;
 import com.goshop.app.widget.listener.OnDealsItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -36,7 +37,8 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> implements
-    AllDealsContract.View, PopWindowUtil.OnPopWindowDismissListener, OnDealsItemClickListener {
+    AllDealsContract.View, PopWindowUtil.OnPopWindowDismissListener,
+    OnDealsItemClickListener, FootLoadingListener {
 
     private AllDealsAdapter allDealsAdapter;
 
@@ -151,6 +153,7 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
         allDealsAdapter = new AllDealsAdapter(new ArrayList<>());
         allDealsAdapter.setOnDealsItemClickListener(this);
         recycleviewAllDeals.setAdapter(allDealsAdapter);
+        FootLoadingHelper.addLoadingListener(recycleviewAllDeals, manager, allDealsAdapter, this);
     }
 
     private void initFilterMenuRecyclerView() {
@@ -178,12 +181,19 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     public void showAllDealsResult(List<GoLoyaltyDealsVM> dealsVMS) {
         if (dealsVMS.size() > 0) {
             updateLayoutStatus(llData, true);
-            allDealsAdapter.setUpdateDatas(dealsVMS);
+            if(page == 1) {
+                allDealsAdapter.setListDatas(dealsVMS);
+            } else {
+                allDealsAdapter.addLoadingDatas(dealsVMS);
+            }
         } else {
-            updateLayoutStatus(llData, false);
-            updateLayoutStatus(flNoData, true);
+            if(page == 1) {
+                updateLayoutStatus(llData, false);
+                updateLayoutStatus(flNoData, true);
+            } else {
+                allDealsAdapter.setLoadMore(false);
+            }
         }
-
     }
 
     @Override
@@ -257,5 +267,10 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     @Override
     public void onDealItemClick(GoLoyaltyDealsVM dealsVM) {
         startActivity(new Intent(this, RewardsDetailActivity.class));
+    }
+
+    @Override
+    public void loadingMore() {
+        mPresenter.getListDeals(page++, false);
     }
 }

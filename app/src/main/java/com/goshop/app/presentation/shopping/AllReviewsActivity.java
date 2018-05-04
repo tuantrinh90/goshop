@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.shopping;
 
 import com.bumptech.glide.Glide;
-import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;

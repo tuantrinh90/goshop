@@ -91,7 +91,7 @@ public class EndpointAddress {
         "rest/all/V1/rest-api/customer/customer_id/order/order_id";
 
     public static final String VIEW_CART_DETAIL =
-        "rest/all/V1/rest-api/customer/<customer_id>/carts/mine";
+        "rest/all/V1/rest-api/customer/customer_id/cart";
 
     public static final String APPLY_COUPON = "rest/all/V1/rest-api/order/coupon";
 

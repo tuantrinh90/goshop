@@ -2,14 +2,9 @@ package com.goshop.app.presentation.category;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
-import com.goshop.app.data.model.response.CategoryResponse;
-import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.model.CategoriesParentVM;
-import com.goshop.app.presentation.model.CategoryLeftMenuVM;
-import com.goshop.app.presentation.model.CategoryRightMenuModel;
 
 import java.util.List;
-import java.util.Map;
 
 public class CategoryContract {
 

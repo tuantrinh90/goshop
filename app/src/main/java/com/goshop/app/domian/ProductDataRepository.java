@@ -20,8 +20,6 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.ProductDataSource;
 
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.Map;
 

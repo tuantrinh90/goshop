@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
+import com.goshop.app.widget.adapter.BaseFootLoadingAdapter;
 import com.goshop.app.widget.listener.OnDealsItemClickListener;
 
 import android.support.v7.widget.RecyclerView;
@@ -18,41 +19,45 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class AllDealsAdapter extends RecyclerView.Adapter {
-
-    private List<GoLoyaltyDealsVM> dealsVMS;
+public class AllDealsAdapter extends BaseFootLoadingAdapter {
 
     private OnDealsItemClickListener onDealsItemClickListener;
 
-    public AllDealsAdapter(List<GoLoyaltyDealsVM> dealsVMS) {
-        this.dealsVMS = dealsVMS;
+    public AllDealsAdapter(List<GoLoyaltyDealsVM> listDatas) {
+        super(listDatas);
     }
 
     public void setOnDealsItemClickListener( OnDealsItemClickListener listener) {
         this.onDealsItemClickListener = listener;
     }
 
-    public void setUpdateDatas(List<GoLoyaltyDealsVM> dealsVMS) {
-        this.dealsVMS.clear();
-        this.dealsVMS = dealsVMS;
-        notifyDataSetChanged();
-    }
-
     @Override
-    public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public RecyclerView.ViewHolder onCreateContentItemViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
             .inflate(R.layout.item_all_deals, parent, false);
         return new DealViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        ((DealViewHolder) holder).bindingData(dealsVMS.get(position));
+    public void onBindContentItemView(RecyclerView.ViewHolder holder, int position) {
+        if(holder instanceof DealViewHolder) {
+            ((DealViewHolder) holder).bindingData((GoLoyaltyDealsVM) listDatas.get(position));
+        }
+    }
+
+    @Override
+    public int getContentItemCount() {
+        return listDatas.size();
+    }
+
+    @Override
+    public int getContentItemType(int position) {
+        return 0;
     }
 
     @Override
     public int getItemCount() {
-        return dealsVMS.size();
+        return super.getItemCount();
     }
 
     class DealViewHolder extends RecyclerView.ViewHolder {
@@ -85,9 +90,7 @@ public class AllDealsAdapter extends RecyclerView.Adapter {
             tvDealDetail.setText(dealsVM.getDetail());
             tvDealTime.setText(dealsVM.getTime());
             tvDealEnd.setText(dealsVM.getEnd());
-            itemView.setOnClickListener(v -> {
-                onDealsItemClickListener.onDealItemClick(dealsVM);
-            });
+            itemView.setOnClickListener(v -> onDealsItemClickListener.onDealItemClick(dealsVM));
         }
     }
 }

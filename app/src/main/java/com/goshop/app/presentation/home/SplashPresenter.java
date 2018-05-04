@@ -10,11 +10,8 @@ import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.domian.AccountDataRepository;
 import com.goshop.app.presentation.model.FlagsVM;
 
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import java.util.concurrent.TimeUnit;
 
 import io.reactivex.Observable;

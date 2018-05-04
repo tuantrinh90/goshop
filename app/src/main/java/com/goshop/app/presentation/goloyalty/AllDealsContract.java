@@ -7,7 +7,6 @@ import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 import com.goshop.app.presentation.model.SortVM;
 
 import java.util.List;
-import java.util.Map;
 
 public class AllDealsContract {
 

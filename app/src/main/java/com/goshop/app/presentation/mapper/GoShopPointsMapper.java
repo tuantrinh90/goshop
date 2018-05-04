@@ -9,8 +9,6 @@ import com.goshop.app.presentation.model.PointsTotalVM;
 import com.goshop.app.utils.DateFormater;
 import com.goshop.app.utils.NumberFormater;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
 

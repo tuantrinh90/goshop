@@ -2,7 +2,6 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
-import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.SizeVM;

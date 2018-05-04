@@ -5,7 +5,6 @@ import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.goloyalty.MyRewardsActivity;
 import com.goshop.app.presentation.myorder.MyOrdersActivity;
-import com.goshop.app.presentation.shopping.AllReviewsActivity;
 import com.goshop.app.utils.MenuUtil;
 
 import android.content.Intent;

@@ -11,12 +11,8 @@ import com.goshop.app.presentation.mapper.FilterDataMapper;
 import com.goshop.app.presentation.mapper.GoLoyaltyDealsMapper;
 import com.goshop.app.presentation.model.SortVM;
 
-import android.util.Log;
-
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import io.reactivex.observers.DisposableObserver;
 

@@ -6,8 +6,6 @@ import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.model.FacebookLoginVm;
 
-import java.util.Map;
-
 public class LoginComplementEmailContract {
 
     interface View extends BaseView {

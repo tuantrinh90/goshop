@@ -1,7 +1,6 @@
 package com.goshop.app.widget.viewholder;
 
 import com.bumptech.glide.Glide;
-import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
