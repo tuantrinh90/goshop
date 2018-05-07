@@ -15,9 +15,7 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
-import com.goshop.app.presentation.mapper.AllReviewsMapper;
 import com.goshop.app.presentation.mapper.ProductDetailMapper;
-import com.goshop.app.presentation.mapper.QuestionAnswerMapper;
 import com.goshop.app.presentation.mapper.ProfileMapper;
 import com.goshop.app.presentation.mapper.ShoppingCartMapper;
 

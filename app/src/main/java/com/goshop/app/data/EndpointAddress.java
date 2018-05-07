@@ -91,7 +91,7 @@ public class EndpointAddress {
         "rest/all/V1/rest-api/customer/customer_id/order/order_id";
 
     public static final String VIEW_CART_DETAIL =
-        "rest/all/V1/rest-api/customer/<customer_id>/carts/mine";
+        "rest/all/V1/rest-api/customer/customer_id/cart";
 
     public static final String APPLY_COUPON = "rest/all/V1/rest-api/order/coupon";
 
@@ -105,9 +105,13 @@ public class EndpointAddress {
 
     public static final String PLACE_ORDER = "rest/all/V1/rest-api/cart/place-order";
 
+    public static final String DEAL_CATEGORY_LIST = "rest/all/V1/rest-api/deal/categories";
+
+    public static final String DEAL_STATUS_LIST = "rest/all/V1/rest-api/deal/status";
+
     public static final String ADD_ADDRESS = "";
 
-    public static final String ALL_DEALS = "";
+    public static final String ALL_DEALS = "rest/all/V1/rest-api/deals";
 
     public static final String BRANDS_DETAIL = "";
 

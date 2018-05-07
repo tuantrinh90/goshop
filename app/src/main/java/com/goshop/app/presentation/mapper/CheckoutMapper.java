@@ -12,11 +12,6 @@ import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentMethodVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.presentation.model.common.ProductVM;
-import com.goshop.app.presentation.model.widget.ProductCartListVM;
-import com.goshop.app.presentation.model.widget.ProductListModel;
-import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
-import com.goshop.app.presentation.model.widget.ProductPriceVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.TextFormater;
 

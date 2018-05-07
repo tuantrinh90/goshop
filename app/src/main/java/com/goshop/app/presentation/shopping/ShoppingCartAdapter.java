@@ -6,9 +6,6 @@ import com.goshop.app.common.CustomMPCartEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.common.ProductVM;
-import com.goshop.app.widget.listener.OnItemMenuClickListener;
-import com.goshop.app.widget.listener.OnProductItemClickListener;
-import com.goshop.app.widget.listener.OnProductListItemClickListener;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;

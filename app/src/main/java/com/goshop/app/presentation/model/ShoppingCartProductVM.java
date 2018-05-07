@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.model;
 
 import com.goshop.app.presentation.model.common.ProductVM;
-import com.goshop.app.presentation.model.widget.ProductListModel;
 
 import java.util.List;
 
@@ -30,6 +29,16 @@ public class ShoppingCartProductVM {
     private String shipping;
 
     private String total;
+
+    private String discountCode;
+
+    public String getDiscountCode() {
+        return discountCode;
+    }
+
+    public void setDiscountCode(String discountCode) {
+        this.discountCode = discountCode;
+    }
 
     public ShoppingCartProductVM() {
     }

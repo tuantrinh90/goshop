@@ -9,7 +9,6 @@ import com.goshop.app.presentation.model.BannerVm;
 import com.goshop.app.presentation.model.TrendingNowModel;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
-import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.ScreenHelper;
 import com.goshop.app.widget.BannerAutoPlayHelper;

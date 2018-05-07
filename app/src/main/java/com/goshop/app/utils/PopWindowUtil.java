@@ -5,7 +5,6 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.ColorVM;
-import com.goshop.app.presentation.model.PdpAttributeModel;
 import com.goshop.app.presentation.model.SizeVM;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.WishlistVM;
@@ -29,7 +28,6 @@ import android.widget.LinearLayout;
 import android.widget.PopupWindow;
 
 import java.util.Calendar;
-import java.util.Collections;
 import java.util.List;
 
 public class PopWindowUtil {

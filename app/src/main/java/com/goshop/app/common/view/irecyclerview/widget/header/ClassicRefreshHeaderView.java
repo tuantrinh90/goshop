@@ -58,7 +58,7 @@ public class ClassicRefreshHeaderView extends RelativeLayout implements RefreshT
 
         ivSuccess = (ImageView) findViewById(R.id.ivSuccess);
 
-        progressBar = (ProgressBar) findViewById(R.id.progressbar);
+        progressBar = (ProgressBar) findViewById(R.id.progressbar_loading);
 
         rotateUp = AnimationUtils.loadAnimation(context, R.anim.rotate_up);
 

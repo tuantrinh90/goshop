@@ -2,7 +2,6 @@ package com.goshop.app.presentation.settings;
 
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.retrofit.ServiceApiFail;

@@ -6,8 +6,6 @@ import com.goshop.app.common.view.RobotoItaticTextView;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
-import com.goshop.app.presentation.model.ProfileMetaVM;
-import com.goshop.app.utils.NumberFormater;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;

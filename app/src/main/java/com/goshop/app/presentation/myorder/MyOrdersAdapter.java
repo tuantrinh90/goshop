@@ -3,7 +3,6 @@ package com.goshop.app.presentation.myorder;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MyOrdersVM;
-import com.goshop.app.utils.NumberFormater;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;

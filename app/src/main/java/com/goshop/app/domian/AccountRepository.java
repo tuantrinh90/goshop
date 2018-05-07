@@ -1,6 +1,5 @@
 package com.goshop.app.domian;
 
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -9,6 +8,9 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.DealsResponse;
+import com.goshop.app.data.model.response.FilterCategoryResponse;
+import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
 import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
@@ -56,7 +58,7 @@ public interface AccountRepository {
 
     Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
 
-    Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params);
+    Observable<Response<DealsResponse>> getListDeals();
 
     Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params);
 
@@ -178,4 +180,8 @@ public interface AccountRepository {
     Observable<Response<OrderMetadataResponse>> getOrderMetadata(Map<String, Object> params);
 
     Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params);
+
+    Observable<Response<FilterCategoryResponse>> getFilterCategory();
+
+    Observable<Response<FilterStatusResponse>> getFilterStatus();
 }

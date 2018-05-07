@@ -14,8 +14,6 @@ import com.goshop.app.presentation.mapper.ProfileMapper;
 import com.goshop.app.presentation.model.FlagsVM;
 import com.goshop.app.presentation.model.UserDataVM;
 
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.TimeUnit;
@@ -72,7 +70,6 @@ public class SplashPresenter extends RxPresenter<SplashContract.View> implements
                 @Override
                 public void onNext(UserDataVM response) {
                     userDataVM = response;
-                    Log.d("jay", "onNext: " + userDataVM.toString());
                     mView.getLocalUserInfoSuccess(response);
                 }
 

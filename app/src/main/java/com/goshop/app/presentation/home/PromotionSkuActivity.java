@@ -8,9 +8,9 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.PromotionSkuModel;
 import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
-import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.utils.PageIntentUtils;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.adapter.FilterDrawerAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -74,7 +74,7 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
 
     private String intentUrl = "";
 
-    private FilterMenuAdapter menuAdapter;
+    private FilterDrawerAdapter menuAdapter;
 
     private PromotionSkuAdapter skuAdapter;
 
@@ -128,7 +128,7 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
     private void initFilterMenuRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerviewFilter.setLayoutManager(layoutManager);
-        menuAdapter = new FilterMenuAdapter(new ArrayList<>());
+        menuAdapter = new FilterDrawerAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
     }
 

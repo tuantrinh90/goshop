@@ -111,15 +111,28 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_8">
 
-        <com.goshop.app.common.view.RobotoLightTextView
+        <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/disscount"
             android:layout_alignParentLeft="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="start"
-            android:layout_alignParentStart="true"/>
+            android:layout_alignParentStart="true"
+            android:orientation="horizontal">
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:text="@string/disscount_only"
+                android:textColor="@color/color_black_light"
+                android:gravity="start"
+               />
+            <com.goshop.app.common.view.RobotoLightTextView
+                android:id="@+id/tv_cart_disscount_code"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/size_font_14"
+                android:textColor="@color/color_black_light"
+                android:gravity="start" />
+        </LinearLayout>
 
         <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_cart_billing_disscount"

@@ -5,7 +5,6 @@ import com.goshop.app.R;
 import com.goshop.app.common.Typefaces;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CategoriesParentVM;
-import com.goshop.app.presentation.model.CategoryLeftMenuVM;
 import com.goshop.app.widget.listener.OnCategoryItemClickListener;
 
 import android.graphics.Typeface;
