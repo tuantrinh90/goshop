@@ -27,20 +27,17 @@ public class RewardsDetailPresenter extends RxPresenter<RewardsDetailContract.Vi
 
     @Override
     public void rewardsDetailRequest(Map<String, Object> params) {
-        Log.d("jay", "rewardsDetailRequest: ");
         mView.showLoadingBar();
         addSubscrebe(accountRepository.rewardsDetailRequest(params).subscribeWith(
             new DisposableObserver<Response<MyRewardsResponse>>() {
                 @Override
                 public void onNext(Response<MyRewardsResponse> myRewardsResponse) {
-                    Log.d("jay", "onNext: "+myRewardsResponse.getData().getDeal().getDealLocationResponses().size());
                     mView.hideLoadingBar();
                     mView.showRewardsDetails(RewardsMapper.transformDealDetail(myRewardsResponse));
                 }
 
                 @Override
                 public void onError(Throwable e) {
-                    Log.d("jay", "onError: "+e.getMessage());
                     mView.hideLoadingBar();
                     mView.showError(e.getMessage());
                 }
