@@ -42,6 +42,7 @@ import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.goshop.app.utils.ServiceData;
 
 import java.util.Map;
@@ -304,12 +305,12 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Object> saveUserInfo(UserData customer) {
+    public Observable<Object> saveUserInfo(UserDataVM customer) {
         return null;
     }
 
     @Override
-    public Observable<UserData> getUserInfo() {
+    public Observable<UserDataVM> getUserInfo() {
         return null;
     }
 

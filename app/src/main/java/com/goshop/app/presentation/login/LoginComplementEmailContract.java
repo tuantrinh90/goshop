@@ -5,6 +5,7 @@ import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.model.FacebookLoginVm;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.Map;
 
@@ -12,7 +13,7 @@ public class LoginComplementEmailContract {
 
     interface View extends BaseView {
 
-        void complementEmailSuccess(Response<LoginResponse> response);
+        void complementEmailSuccess(UserDataVM response);
 
         void showServiceErrorMessage(String message);
 
@@ -23,6 +24,8 @@ public class LoginComplementEmailContract {
     public interface Presenter extends BasePresenter<View> {
 
         void facebookLoginRequest(FacebookLoginVm facebookLoginVm);
+
+        void saveUserInfo(UserDataVM response);
     }
 
 }

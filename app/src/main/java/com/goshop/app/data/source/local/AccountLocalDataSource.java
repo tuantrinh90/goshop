@@ -42,6 +42,7 @@ import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.Map;
 import javax.inject.Inject;
@@ -317,12 +318,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Object> saveUserInfo(UserData customer) {
+    public Observable<Object> saveUserInfo(UserDataVM customer) {
         return localApi.saveUserInfo(customer);
     }
 
     @Override
-    public Observable<UserData> getUserInfo() {
+    public Observable<UserDataVM> getUserInfo() {
         return localApi.getUserInfo();
     }
 

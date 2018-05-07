@@ -4,6 +4,7 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.presentation.login.LoginActivity;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.orhanobut.logger.LogAdapter;
 
 import android.app.Activity;
@@ -28,7 +29,7 @@ public class UserHelper {
         return false;
     }
 
-    public static boolean checkUserData(UserData userData) {
+    public static boolean isLogin(UserDataVM userData) {
         return userData != null && userData.getToken() != null && !TextUtils
             .isEmpty(userData.getToken().getToken());
     }

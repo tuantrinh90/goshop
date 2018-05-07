@@ -40,6 +40,7 @@ import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.Map;
 
@@ -144,9 +145,9 @@ public interface AccountRepository {
 
     Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params);
 
-    Observable<Object> saveUserInfo(UserData customer);
+    Observable<Object> saveUserInfo(UserDataVM customer);
 
-    Observable<UserData> getUserInfo();
+    Observable<UserDataVM> getUserInfo();
 
     Observable<Response<StatesResponse>> getStates(Map<String, Object> params);
 

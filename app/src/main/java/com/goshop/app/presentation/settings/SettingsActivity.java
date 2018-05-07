@@ -6,10 +6,9 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.presentation.account.ChangePasswordActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
-import com.goshop.app.presentation.login.LoginActivity;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.UserHelper;
@@ -23,7 +22,6 @@ import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
-import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -167,7 +165,7 @@ public class SettingsActivity extends BaseDrawerActivity<SettingsContract.Presen
     }
 
     @Override
-    public void onUserInfoGetSuccess(UserData response) {
+    public void onUserInfoGetSuccess(UserDataVM response) {
         switchSettingEmail.setChecked(response.isEmailSubscribe());
         switchSettingSms.setChecked(response.isSmsSubscribe());
     }

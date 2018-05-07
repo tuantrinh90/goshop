@@ -8,6 +8,7 @@ import com.goshop.app.data.model.UserInfo;
 import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.model.FacebookLoginVm;
+import com.goshop.app.presentation.model.UserDataVM;
 
 public interface LoginContract {
 
@@ -19,7 +20,7 @@ public interface LoginContract {
 
         void fbLoginError();
 
-        void loginSuccess(Response<LoginResponse> response);
+        void loginSuccess(UserDataVM response);
 
         void setFacebookLoginParams(FacebookLoginVm facebookLoginVm);
     }
@@ -31,5 +32,7 @@ public interface LoginContract {
         void loginRequest(String email, String password);
 
         void getFacebookAccessToken(AccessToken accessToken);
+
+        void saveUserInfo(UserDataVM userDataVM);
     }
 }

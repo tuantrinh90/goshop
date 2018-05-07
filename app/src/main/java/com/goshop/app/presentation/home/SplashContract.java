@@ -4,6 +4,7 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 public class SplashContract {
 
@@ -11,16 +12,18 @@ public class SplashContract {
 
         void onDelayFinished();
 
-        void checkLoginSuccess(UserData userData);
+        void getLocalUserInfoSuccess(UserDataVM userData);
 
-        void getFlagsSuccess(FlagsVM response);
+        void getUserProfileSuccess(UserDataVM userDataVM);
+
+        void showErrorMessage(String message);
     }
 
     public interface Presenter extends BasePresenter<View> {
 
         void delayToJump();
 
-        void getUserInfo();
+        void getLocalUserInfo();
 
         void getFlags();
 
@@ -31,6 +34,10 @@ public class SplashContract {
         void getCitys(String stateId);
 
         void getZipCode(String stateId,String cityCode);
+
+        void getUserProfile();
+
+        void updateUserInfo(UserDataVM userDataVM);
     }
 
 }

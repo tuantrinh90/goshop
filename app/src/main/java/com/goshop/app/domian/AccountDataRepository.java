@@ -43,6 +43,7 @@ import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.Map;
 
@@ -356,12 +357,12 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Object> saveUserInfo(UserData customer) {
+    public Observable<Object> saveUserInfo(UserDataVM customer) {
         return accountLocalDataSource.saveUserInfo(customer);
     }
 
     @Override
-    public Observable<UserData> getUserInfo() {
+    public Observable<UserDataVM> getUserInfo() {
         return accountLocalDataSource.getUserInfo();
     }
 
