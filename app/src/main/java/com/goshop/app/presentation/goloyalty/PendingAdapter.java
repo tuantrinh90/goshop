@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
+import com.goshop.app.utils.GlideUtils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -98,9 +99,11 @@ public class PendingAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(GoLoyaltyDealsVM dealsVM) {
-            Glide.with(itemView.getContext()).load(dealsVM.getImageUrl()).asBitmap()
-                .error(dealsVM.getIconDefault())
-                .into(ivPendingThumb);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                dealsVM.getImageUrl(),
+                ivPendingThumb,
+                dealsVM.getIconDefault());
             tvPendingName.setText(dealsVM.getName());
             tvPendingDetail.setText(dealsVM.getDetail());
             tvPendingTime.setText(dealsVM.getTime());

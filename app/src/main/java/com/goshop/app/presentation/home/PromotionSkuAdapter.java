@@ -8,6 +8,7 @@ import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
@@ -100,9 +101,11 @@ public class PromotionSkuAdapter extends RecyclerView.Adapter {
 
         void bindingData(SkuBannerVM bannerVM) {
             //todo wait for api
-            Glide.with(itemView.getContext()).load(""/*bannerVM.getBannerUrl()*/).asBitmap()
-                .error(bannerVM.getBannerDefault())
-                .into(ivSkuBanner);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                ""/*bannerVM.getBannerUrl()*/,
+                ivSkuBanner,
+                R.drawable.ic_image_404_big);
         }
     }
 

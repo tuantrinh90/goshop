@@ -8,6 +8,7 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CardRedeemVM;
+import com.goshop.app.utils.GlideUtils;
 import com.ncorti.slidetoact.SlideToActView;
 
 import android.os.Bundle;
@@ -111,9 +112,11 @@ public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presente
 
     @Override
     public void showRedeemResult(CardRedeemVM cardRedeemVM) {
-        Glide.with(this).load(cardRedeemVM.getThumb()).asBitmap()
-            .error(cardRedeemVM.getThumbDefault())
-            .into(ivCardRedeemThumb);
+        GlideUtils.loadImageError(
+            this,
+            cardRedeemVM.getThumb(),
+            ivCardRedeemThumb,
+            R.drawable.ic_image_404_big);
         tvCardRedeemMerchantTitle.setText(cardRedeemVM.getTitle());
         tvCardRedeemMerchantEnd.setText(cardRedeemVM.getEnd());
         tvCardRedeemMerchantDetail.setText(cardRedeemVM.getDetail());

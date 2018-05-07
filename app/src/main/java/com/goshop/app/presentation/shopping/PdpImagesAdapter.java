@@ -3,6 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.ImagesVM;
+import com.goshop.app.utils.GlideUtils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -77,12 +78,17 @@ public class PdpImagesAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(ImagesVM imagesVM, int position) {
-            Glide.with(itemView.getContext()).load(imagesVM.getImageUrl()).asBitmap()
-                .error(imagesVM.getImageDefault())
-                .into(ivImageSelected);
-            Glide.with(itemView.getContext()).load(imagesVM.getImageUrl()).asBitmap()
-                .error(imagesVM.getImageDefault())
-                .into(ivImageUnselected);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                imagesVM.getImageUrl(),
+                ivImageSelected,
+                imagesVM.getImageDefault());
+
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                imagesVM.getImageUrl(),
+                ivImageUnselected,
+                imagesVM.getImageDefault());
             ivImageSelected.setVisibility(imagesVM.isSelected() ? View.VISIBLE : View.GONE);
             ivImageUnselected.setVisibility(imagesVM.isSelected() ? View.GONE : View.VISIBLE);
             itemView.setOnClickListener(v -> {

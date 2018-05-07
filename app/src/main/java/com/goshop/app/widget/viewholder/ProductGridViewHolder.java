@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.graphics.Paint;
@@ -39,9 +40,11 @@ public class ProductGridViewHolder extends RecyclerView.ViewHolder {
 
     public void bindingData(ProductsVM productsVM,
         OnProductItemClickListener onProductItemClickListener) {
-        Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
-            .error(R.drawable.ic_bought)
-            .into(ivGridPic);
+        GlideUtils.loadImageError(
+            itemView.getContext(),
+            productsVM.getImage(),
+            ivGridPic,
+            R.drawable.ic_bought);
         tvGridPercent.setText(productsVM.getPriceVM().getRm().getDiscountTitle());
         tvGridTitle.setText(productsVM.getTitle());
         String oldPrice = productsVM.getPriceVM().getRm().getOriginal();

@@ -3,6 +3,7 @@ package com.goshop.app.adapter;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.HomeResponse;
+import com.goshop.app.utils.GlideUtils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -40,8 +41,6 @@ public class HomeBottomChildAdapter extends RecyclerView.Adapter {
         BottomSlideItemHolder bottomSlideItemHolder = (BottomSlideItemHolder) holder;
         HomeResponse.BottomSlide.BottomSlideChild bottomSlideChild = bottomSlideChildren
             .get(position);
-        Glide.with(bottomSlideItemHolder.ivBottomIcon.getContext())
-            .load(bottomSlideChild.getImageUrl()).into(bottomSlideItemHolder.ivBottomIcon);
         bottomSlideItemHolder.tvProductName.setText(bottomSlideChild.getProductName());
         bottomSlideItemHolder.tvProductPrice.setText(bottomSlideChild.getProductPrice());
     }

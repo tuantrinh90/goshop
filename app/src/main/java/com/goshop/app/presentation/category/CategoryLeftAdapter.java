@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.Typefaces;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CategoriesParentVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnCategoryItemClickListener;
 
 import android.graphics.Typeface;
@@ -79,9 +80,11 @@ public class CategoryLeftAdapter extends RecyclerView.Adapter {
 
         void bindingData(CategoriesParentVM leftMenuVM, int position) {
             // TODO: 2018/4/25 mockIcon need change
-            Glide.with(itemView.getContext()).load(leftMenuVM.getMockIcon()).asBitmap()
-                .error(R.mipmap.ic_launcher)
-                .into(ivCategoryLeftMenu);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                leftMenuVM.getMockIcon(),
+                ivCategoryLeftMenu,
+                R.drawable.ic_image_404_big);
             tvCategoryLeftMenu.setText(leftMenuVM.getName());
             tvCategoryLeftMenu.setSelected(leftMenuVM.isSelect());
             ivCategoryLeftMenu.setSelected(leftMenuVM.isSelect());

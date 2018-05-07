@@ -9,6 +9,7 @@ import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 import com.goshop.app.presentation.model.GoLoyaltyDetailsVM;
 import com.goshop.app.presentation.model.GoLoyaltyModel;
 import com.goshop.app.presentation.model.GoLoyaltyTopVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnDealsItemClickListener;
 
 import android.support.v7.widget.LinearLayoutManager;
@@ -124,9 +125,11 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter implements OnDealsIte
         }
 
         void bindingData(GoLoyaltyTopVM goLoyaltyTopVM) {
-            Glide.with(itemView.getContext()).load(goLoyaltyTopVM.getUserUrl()).asBitmap()
-                .error(goLoyaltyTopVM.getUserIcon())
-                .into(ivGoLoyaltyThumb);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                goLoyaltyTopVM.getUserUrl(),
+                ivGoLoyaltyThumb,
+                R.drawable.ic_image_404_big);
             tvGoLoyaltyName.setText(goLoyaltyTopVM.getUserName());
             tvLoyaltyId.setText(goLoyaltyTopVM.getUserId());
             tvLoyaltyPoints.setText(goLoyaltyTopVM.getUserPoints());

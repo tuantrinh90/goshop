@@ -8,6 +8,7 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumItalicTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.RewardsDetailVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
@@ -110,12 +111,17 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
 
     @Override
     public void showRewardsDetails(RewardsDetailVM rewardsDetailVM) {
-        Glide.with(this).load(rewardsDetailVM.getMerchantLogo()).asBitmap()
-            .error(rewardsDetailVM.getMerchantLogoDefault())
-            .into(ivRewardsDetailsThumb);
-        Glide.with(this).load(rewardsDetailVM.getPromotionImage()).asBitmap()
-            .error(rewardsDetailVM.getPromtionImageDefault())
-            .into(ivRewardsDetailPic);
+        GlideUtils.loadImageError(
+            this,
+            rewardsDetailVM.getMerchantLogo(),
+            ivRewardsDetailsThumb,
+            rewardsDetailVM.getPromtionImageDefault());
+
+        GlideUtils.loadImageError(
+            this,
+            rewardsDetailVM.getPromotionImage(),
+            ivRewardsDetailPic,
+            rewardsDetailVM.getPromtionImageDefault());
 
         tvRewardsMerchantName.setText(rewardsDetailVM.getMerchantName());
         tvPromoDetails.setText(rewardsDetailVM.getPromoDetail());

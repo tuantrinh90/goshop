@@ -86,8 +86,6 @@ public class HomeBottomSlideAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(HomeResponse.BottomSlide bottomSlide,int position) {
-            Glide.with(ivBottomHeader.getContext()).load(bottomSlide.getHeadImageUrl())
-                .into(ivBottomHeader);
             RxView.clicks(ivBottomHeader).subscribe(v -> PageIntentUtils.skipBannerPromotion(ivBottomHeader.getContext(), bottomSlide));
         }
     }
