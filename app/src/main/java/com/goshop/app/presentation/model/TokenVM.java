@@ -1,11 +1,6 @@
-package com.goshop.app.data.model.response.common;
+package com.goshop.app.presentation.model;
 
-public class TokenData {
-
-    /**
-     * token : 8s4ht6x8rlmq9k3cjigpqgvf3cfn1nd5
-     * expiration : 3600
-     */
+public class TokenVM {
 
     private String expiration;
 
@@ -25,5 +20,13 @@ public class TokenData {
 
     public void setExpiration(String expiration) {
         this.expiration = expiration;
+    }
+
+    @Override
+    public String toString() {
+        return "TokenVM{" +
+            "expiration='" + expiration + '\'' +
+            ", token='" + token + '\'' +
+            '}';
     }
 }

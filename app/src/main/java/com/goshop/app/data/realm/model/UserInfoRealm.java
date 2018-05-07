@@ -1,6 +1,7 @@
 package com.goshop.app.data.realm.model;
 
 import com.goshop.app.data.model.response.common.UserData;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import io.realm.RealmObject;
 import io.realm.annotations.PrimaryKey;
@@ -44,11 +45,13 @@ public class UserInfoRealm extends RealmObject {
 
     int wishListItemsCount;
 
+    String availableGoshopPoints;
+
     public UserInfoRealm() {
     }
 
-    public UserInfoRealm(UserData userData) {
-        this.realmId="1";
+    public UserInfoRealm(UserDataVM userData) {
+        this.realmId = "1";
         this.id = userData.getId();
         this.title = userData.getTitle();
         this.name = userData.getName();
@@ -72,6 +75,15 @@ public class UserInfoRealm extends RealmObject {
         }
         this.wishListItemsCount = userData.getWishlistTemsCount();
         this.cartItemsCount = userData.getCartItemsCount();
+        this.availableGoshopPoints = userData.getAvailableGoshopPoints();
+    }
+
+    public String getAvailableGoshopPoints() {
+        return availableGoshopPoints;
+    }
+
+    public void setAvailableGoshopPoints(String availableGoshopPoints) {
+        this.availableGoshopPoints = availableGoshopPoints;
     }
 
     public int getId() {

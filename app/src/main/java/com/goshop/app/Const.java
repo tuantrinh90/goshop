@@ -279,6 +279,10 @@ public class Const {
 
     public static final String PARAMS_COUNTRY_CODE = "country_code";
 
+    public static final String REQUEST_PARAM_CUSTOMER_ID = "customer_id";
+
+    public static final String REQUEST_PARAM_DEAL_ID = "deal_id";
+
     public class FlagType {
 
         public static final String FLAG_TYPE_LOAD_LOCAL_DATA = "loadLocalDataFlag";

@@ -1,75 +1,67 @@
-package com.goshop.app.data.model.response.common;
-
-import com.google.gson.annotations.SerializedName;
+package com.goshop.app.presentation.model;
 
 import com.goshop.app.data.realm.model.UserInfoRealm;
 
-public class UserData {
+public class UserDataVM {
 
-    @SerializedName("available_goshop_points")
     private String availableGoshopPoints;
 
-    @SerializedName("cart_items_count")
     private int cartItemsCount;
 
     private String dob;
 
     private String email;
 
-    @SerializedName("email_subscribe")
     private boolean emailSubscribe;
 
     private int id;
 
-    private LanguageData language;
+    private LanguageVM language;
 
-    @SerializedName("max_failed_login")
     private int maxFailedLogin;
 
-    @SerializedName("mobile_number")
     private String mobileNumber;
 
     private String name;
 
-    private RaceData race;
+    private RaceVM race;
 
-    @SerializedName("sms_subscribe")
     private boolean smsSubscribe;
 
     private String title;
 
-    private TokenData token;
+    private TokenVM token;
 
-    @SerializedName("wishlist_tems_count")
     private int wishlistTemsCount;
 
-    public UserData() {
+    public UserDataVM() {
     }
 
-    public UserData(UserInfoRealm userInfoRealm) {
+    public UserDataVM(UserInfoRealm userInfoRealm) {
         this.id = userInfoRealm.getId();
         this.title = userInfoRealm.getTitle();
         this.name = userInfoRealm.getName();
         this.email = userInfoRealm.getEmail();
         this.mobileNumber = userInfoRealm.getMobileNumber();
-        LanguageData languageData = new LanguageData();
+        LanguageVM languageData = new LanguageVM();
         languageData.setId(userInfoRealm.getLanguageId());
         languageData.setName(userInfoRealm.getLanguageName());
         this.language = languageData;
         this.dob = userInfoRealm.getDob();
-        RaceData raceData = new RaceData();
+        RaceVM raceData = new RaceVM();
         raceData.setId(userInfoRealm.getRaceId());
         raceData.setName(userInfoRealm.getRaceName());
         this.race = raceData;
         this.maxFailedLogin = userInfoRealm.getMaxFailedLogin();
         this.emailSubscribe = userInfoRealm.isEmailSubscribe();
         this.smsSubscribe = userInfoRealm.isSmsSubscribe();
-        TokenData tokenData = new TokenData();
+        TokenVM tokenData = new TokenVM();
         tokenData.setToken(userInfoRealm.getToken());
         tokenData.setExpiration(userInfoRealm.getTokenExpiration());
         this.token = tokenData;
         this.wishlistTemsCount = userInfoRealm.getWishListItemsCount();
         this.cartItemsCount = userInfoRealm.getCartItemsCount();
+        this.availableGoshopPoints = userInfoRealm.getAvailableGoshopPoints();
     }
 
     public int getWishlistTemsCount() {
@@ -136,11 +128,11 @@ public class UserData {
         this.mobileNumber = mobileNumber;
     }
 
-    public LanguageData getLanguage() {
+    public LanguageVM getLanguage() {
         return language;
     }
 
-    public void setLanguage(LanguageData language) {
+    public void setLanguage(LanguageVM language) {
         this.language = language;
     }
 
@@ -152,11 +144,11 @@ public class UserData {
         this.dob = dob;
     }
 
-    public RaceData getRace() {
+    public RaceVM getRace() {
         return race;
     }
 
-    public void setRace(RaceData race) {
+    public void setRace(RaceVM race) {
         this.race = race;
     }
 
@@ -184,13 +176,32 @@ public class UserData {
         this.smsSubscribe = smsSubscribe;
     }
 
-    public TokenData getToken() {
+    public TokenVM getToken() {
         return token;
     }
 
-    public void setToken(TokenData token) {
+    public void setToken(TokenVM token) {
         this.token = token;
     }
 
-
+    @Override
+    public String toString() {
+        return "UserDataVM{" +
+            "availableGoshopPoints='" + availableGoshopPoints + '\'' +
+            ", cartItemsCount=" + cartItemsCount +
+            ", dob='" + dob + '\'' +
+            ", email='" + email + '\'' +
+            ", emailSubscribe=" + emailSubscribe +
+            ", id=" + id +
+            ", language=" + language +
+            ", maxFailedLogin=" + maxFailedLogin +
+            ", mobileNumber='" + mobileNumber + '\'' +
+            ", name='" + name + '\'' +
+            ", race=" + race +
+            ", smsSubscribe=" + smsSubscribe +
+            ", title='" + title + '\'' +
+            ", token=" + token +
+            ", wishlistTemsCount=" + wishlistTemsCount +
+            '}';
+    }
 }

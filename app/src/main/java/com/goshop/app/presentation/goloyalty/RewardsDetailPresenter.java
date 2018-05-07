@@ -2,9 +2,13 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
+import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.RewardsMapper;
 import com.goshop.app.presentation.model.RewardsDetailVM;
+
+import android.util.Log;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,21 +29,22 @@ public class RewardsDetailPresenter extends RxPresenter<RewardsDetailContract.Vi
     public void rewardsDetailRequest(Map<String, Object> params) {
         mView.showLoadingBar();
         addSubscrebe(accountRepository.rewardsDetailRequest(params).subscribeWith(
-            new DisposableObserver<MyRewardsResponse>() {
+            new DisposableObserver<Response<MyRewardsResponse>>() {
                 @Override
-                public void onNext(MyRewardsResponse myRewardsResponse) {
+                public void onNext(Response<MyRewardsResponse> myRewardsResponse) {
                     mView.hideLoadingBar();
+                    mView.showRewardsDetails(RewardsMapper.transformDealDetail(myRewardsResponse));
                 }
 
                 @Override
                 public void onError(Throwable e) {
                     mView.hideLoadingBar();
-                    mView.showRewardsDetails(getMockData());
+                    mView.showError(e.getMessage());
                 }
 
                 @Override
                 public void onComplete() {
-
+                    mView.hideLoadingBar();
                 }
             }));
     }

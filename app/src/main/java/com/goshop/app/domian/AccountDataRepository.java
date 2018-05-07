@@ -13,7 +13,7 @@ import com.goshop.app.data.model.response.DealsResponse;
 import com.goshop.app.data.model.response.FilterCategoryResponse;
 import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
@@ -45,6 +45,7 @@ import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.Map;
 
@@ -150,13 +151,13 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
-        return accountCloudDataSource.swipeRedeemRequest(params);
+    public Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params) {
+        return getServerData(accountCloudDataSource.swipeRedeemRequest(params));
     }
 
     @Override
-    public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
-        return accountCloudDataSource.rewardsDetailRequest(params);
+    public Observable<Response<MyRewardsResponse>> rewardsDetailRequest(Map<String, Object> params) {
+        return getServerData(accountCloudDataSource.rewardsDetailRequest(params));
     }
 
     @Override
@@ -358,12 +359,12 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
-    public Observable<Object> saveUserInfo(UserData customer) {
+    public Observable<Object> saveUserInfo(UserDataVM customer) {
         return accountLocalDataSource.saveUserInfo(customer);
     }
 
     @Override
-    public Observable<UserData> getUserInfo() {
+    public Observable<UserDataVM> getUserInfo() {
         return accountLocalDataSource.getUserInfo();
     }
 

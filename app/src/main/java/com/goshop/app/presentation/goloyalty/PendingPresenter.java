@@ -2,7 +2,7 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.goshop.app.R;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 

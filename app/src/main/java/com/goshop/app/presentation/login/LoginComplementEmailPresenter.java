@@ -6,7 +6,9 @@ import com.goshop.app.data.model.response.LoginResponse;
 import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.mapper.ProfileMapper;
 import com.goshop.app.presentation.model.FacebookLoginVm;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -38,8 +40,9 @@ public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEm
                 @Override
                 public void onNext(Response<LoginResponse> response) {
                     mView.hideLoadingBar();
-                    mView.complementEmailSuccess(response);
-                    saveUserInfo(response);
+                    mView.complementEmailSuccess(
+                        ProfileMapper.transformCustomer(response.getData().getCustomer()));
+
                 }
 
                 @Override
@@ -60,8 +63,9 @@ public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEm
             }));
     }
 
-    private void saveUserInfo(Response<LoginResponse> response) {
-        addSubscrebe(accountRepository.saveUserInfo(response.getData().getCustomer())
+    @Override
+    public void saveUserInfo(UserDataVM response) {
+        addSubscrebe(accountRepository.saveUserInfo(response)
             .subscribeWith(new DisposableObserver<Object>() {
                 @Override
                 public void onNext(Object response) {
@@ -77,4 +81,5 @@ public class LoginComplementEmailPresenter extends RxPresenter<LoginComplementEm
                 }
             }));
     }
+
 }
