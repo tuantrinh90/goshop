@@ -5,6 +5,7 @@ import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.realm.model.FlagsRealm;
 import com.goshop.app.data.realm.model.UserInfoRealm;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import javax.inject.Inject;
 
@@ -20,7 +21,7 @@ public class RealmDataSource implements LocalApi {
     }
 
     @Override
-    public Observable<Object> saveUserInfo(UserData customer) {
+    public Observable<Object> saveUserInfo(UserDataVM customer) {
         if (customer != null) {
             UserInfoRealm userInfoRealm = new UserInfoRealm(customer);
             Realm realm = Realm.getDefaultInstance();
@@ -35,16 +36,16 @@ public class RealmDataSource implements LocalApi {
     }
 
     @Override
-    public Observable<UserData> getUserInfo() {
+    public Observable<UserDataVM> getUserInfo() {
         Realm realm = Realm.getDefaultInstance();
         UserInfoRealm userInfoRealm = realm.where(UserInfoRealm.class)
             .findFirst();
         if (userInfoRealm != null) {
-            UserData userInfo = new UserData(userInfoRealm);
+            UserDataVM userInfo = new UserDataVM(userInfoRealm);
             realm.close();
             return Observable.just(userInfo);
         } else {
-            return Observable.just(new UserData());
+            return Observable.just(new UserDataVM());
         }
     }
 

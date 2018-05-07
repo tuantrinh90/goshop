@@ -92,7 +92,7 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
                 itemView.getContext(),
                 tvShowVM.getImageUrl(),
                 ivTVShowRight,
-                R.drawable.ic_image_404_big);
+                tvShowVM.getImageDefault());
             tvTvShowRightTime.setText(tvShowVM.getDuration());
             ivTvshowRightCover.setSelected(tvShowVM.isCurrent());
             ivTvshowRightCover.setOnClickListener(v -> {

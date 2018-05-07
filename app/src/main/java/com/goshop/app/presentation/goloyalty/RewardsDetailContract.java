@@ -11,6 +11,8 @@ public class RewardsDetailContract {
     interface View extends BaseView {
 
         void showRewardsDetails(RewardsDetailVM rewardsDetailVM);
+
+        void showError(String message);
     }
 
     public interface Presenter extends BasePresenter<View> {

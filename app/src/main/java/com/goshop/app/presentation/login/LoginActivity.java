@@ -10,10 +10,9 @@ import com.goshop.app.common.CustomPasswordEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.data.model.response.LoginResponse;
-import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.FacebookLoginVm;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.goshop.app.utils.EncryptPasswordHandler;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PasswordEncoderUtil;
@@ -97,7 +96,6 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
         callbackManager = mPresenter.initFaceBook();
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
     }
-
 
     @Override
     public int getContentView() {
@@ -208,10 +206,10 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     }
 
     @Override
-    public void loginSuccess(Response<LoginResponse> response) {
-        if (response != null && response.getData() != null && response.getData()
-            .getCustomer() != null && response.getData().getCustomer().getToken() != null) {
-            GoShopApplication.cacheUserInfo(response.getData().getCustomer());
+    public void loginSuccess(UserDataVM userDataVM) {
+        if (userDataVM != null && userDataVM.getToken() != null) {
+            GoShopApplication.cacheUserInfo(userDataVM);
+            mPresenter.saveUserInfo(userDataVM);
             goToHomePage();
         }
     }
@@ -219,10 +217,10 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     private void goToHomePage() {
         Intent intent = new Intent(this, MainPageActivity.class);
         intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if(entrance != null) {
+        if (entrance != null) {
             intent.putExtra(MenuUtil.EXTRA_ENTRANCE, entrance);
         }
-        if(type != null) {
+        if (type != null) {
             intent.putExtra(MenuUtil.TYPE, type);
         }
         startActivity(intent);

@@ -15,7 +15,7 @@ import com.goshop.app.data.model.response.DealsResponse;
 import com.goshop.app.data.model.response.FilterCategoryResponse;
 import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
@@ -139,14 +139,12 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<CardRedeemResponse> swipeRedeemRequest(@Url String fullUrl,
+    Observable<Response<CardRedeemResponse>> swipeRedeemRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<MyRewardsResponse> rewardsDetailRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<MyRewardsResponse>> rewardsDetailRequest(@Url String fullUrl);
 
     @Headers({CONTENT_TYPE_JSON})
     @DELETE

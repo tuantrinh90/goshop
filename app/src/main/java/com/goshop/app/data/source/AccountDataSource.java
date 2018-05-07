@@ -12,7 +12,7 @@ import com.goshop.app.data.model.response.DealsResponse;
 import com.goshop.app.data.model.response.FilterCategoryResponse;
 import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
@@ -42,6 +42,7 @@ import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.Map;
 
@@ -67,9 +68,9 @@ public interface AccountDataSource {
 
     Observable<CardRedeemResponse> cardRedeemRequest(Map<String, Object> params);
 
-    Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params);
+    Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params);
 
-    Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
+    Observable<Response<MyRewardsResponse>> rewardsDetailRequest(Map<String, Object> params);
 
     Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params);
 
@@ -146,9 +147,9 @@ public interface AccountDataSource {
 
     Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params);
 
-    Observable<Object> saveUserInfo(UserData customer);
+    Observable<Object> saveUserInfo(UserDataVM customer);
 
-    Observable<UserData> getUserInfo();
+    Observable<UserDataVM> getUserInfo();
 
     Observable<Boolean> clearUserInfo();
 

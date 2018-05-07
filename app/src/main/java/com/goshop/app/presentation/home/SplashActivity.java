@@ -3,14 +3,17 @@ package com.goshop.app.presentation.home;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
-import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.presentation.login.LoginActivity;
-import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.goshop.app.utils.UserHelper;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.annotation.Nullable;
+
+import java.lang.ref.WeakReference;
 
 import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
@@ -18,23 +21,32 @@ import injection.modules.PresenterModule;
 public class SplashActivity extends BaseActivity<SplashContract.Presenter> implements
     SplashContract.View {
 
+    public static final int REQUEST_SUCCESS = 0;
+
+    public static final int REQUEST_FAILURE = 1;
+
     public static final String NEXT_PAGE_TYPE_HOME = "home";
 
     public static final String NEXT_PAGE_TYPE_HOME_UN_LOGIN = "homeUnLogin";
 
     public static final String NEXT_PAGE_TYPE_LOGIN = "login";
 
+    public static final int DELAY_TIME = 3000;
+
     private String nextPageType;
+
+    private StartHandler mStartHandler;
+
+    private StartRunnable mStartRunnable;
+
+    private long mStartTimeLong;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        // TODO: 2018/4/25 this need decide 
-//        mPresenter.getStates();
-//        mPresenter.getCitys("543");
-//        mPresenter.getZipCode("543","Kualalumpur");
-
-        mPresenter.getFlags();
+        mPresenter.getLocalUserInfo();
+        mStartHandler = new StartHandler(this);
+        mStartTimeLong = System.currentTimeMillis();
     }
 
     @Override
@@ -83,19 +95,83 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
     }
 
     @Override
-    public void checkLoginSuccess(UserData userData) {
-        if (UserHelper.checkUserData(userData)) {
+    public void getLocalUserInfoSuccess(UserDataVM userData) {
+        if (UserHelper.isLogin(userData)) {
             nextPageType = NEXT_PAGE_TYPE_HOME;
-            GoShopApplication.cacheUserInfo(userData);
+            mPresenter.getUserProfile();
         } else {
-            nextPageType = NEXT_PAGE_TYPE_HOME_UN_LOGIN;
+            nextPageType = NEXT_PAGE_TYPE_HOME;
+            mPresenter.delayToJump();
         }
-        mPresenter.delayToJump();
     }
 
     @Override
-    public void getFlagsSuccess(FlagsVM response) {
-        mPresenter.getUserInfo();
+    public void getUserProfileSuccess(UserDataVM userDataVM) {
+        mPresenter.updateUserInfo(userDataVM);
     }
 
+    @Override
+    public void showErrorMessage(String message) {
+        mPresenter.delayToJump();
+    }
+
+    private static class StartHandler extends Handler {
+
+        private WeakReference<SplashActivity> activity;
+
+        private StartHandler(SplashActivity startActivity) {
+            activity = new WeakReference<SplashActivity>(startActivity);
+        }
+
+        @Override
+        public void handleMessage(Message msg) {
+            if (activity.get() == null) {
+                return;
+            }
+            long deploy = System.currentTimeMillis() - activity.get().mStartTimeLong;
+            if (deploy < DELAY_TIME) {
+                activity.get().postDelayed(deploy);
+            } else {
+                activity.get().postHandler(msg.what, null);
+            }
+            super.handleMessage(msg);
+        }
+    }
+
+    private void postDelayed(long deploy) {
+        mStartRunnable = new StartRunnable(SplashActivity.this);
+        mStartHandler.postDelayed(mStartRunnable, (DELAY_TIME - deploy));
+    }
+
+    private static class StartRunnable implements Runnable {
+
+        WeakReference<SplashActivity> mActivity;
+
+        public StartRunnable(SplashActivity start) {
+            mActivity = new WeakReference<>(start);
+        }
+
+        @Override
+        public void run() {
+            if (mActivity.get() == null) return;
+
+        }
+    }
+
+    public void postHandler(int code, Object obj) {
+        if (mStartHandler != null) {
+            Message msg = new Message();
+            if (obj != null) {
+                msg.obj = obj;
+            }
+            msg.what = code;
+            mStartHandler.sendMessage(msg);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mStartHandler.removeCallbacks(mStartRunnable);
+    }
 }

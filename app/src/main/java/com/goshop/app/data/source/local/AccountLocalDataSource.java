@@ -13,7 +13,7 @@ import com.goshop.app.data.model.response.DealsResponse;
 import com.goshop.app.data.model.response.FilterCategoryResponse;
 import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
@@ -44,6 +44,7 @@ import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.Map;
 import javax.inject.Inject;
@@ -104,12 +105,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
+    public Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params) {
         return null;
     }
 
     @Override
-    public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
+    public Observable<Response<MyRewardsResponse>> rewardsDetailRequest(Map<String, Object> params) {
         return null;
     }
 
@@ -319,12 +320,12 @@ public class AccountLocalDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Object> saveUserInfo(UserData customer) {
+    public Observable<Object> saveUserInfo(UserDataVM customer) {
         return localApi.saveUserInfo(customer);
     }
 
     @Override
-    public Observable<UserData> getUserInfo() {
+    public Observable<UserDataVM> getUserInfo() {
         return localApi.getUserInfo();
     }
 
