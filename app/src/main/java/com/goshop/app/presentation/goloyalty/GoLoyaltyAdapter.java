@@ -5,9 +5,11 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
 import com.goshop.app.presentation.model.GoLoyaltyDetailsVM;
 import com.goshop.app.presentation.model.GoLoyaltyModel;
 import com.goshop.app.presentation.model.GoLoyaltyTopVM;
+import com.goshop.app.widget.listener.OnDealsItemClickListener;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -22,7 +24,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class GoLoyaltyAdapter extends RecyclerView.Adapter implements DealsAdapter.OnDealItemClickListener{
+public class GoLoyaltyAdapter extends RecyclerView.Adapter implements OnDealsItemClickListener{
 
     private List<GoLoyaltyModel> goLoyaltyModels;
 
@@ -63,7 +65,7 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter implements DealsAdapt
         if (holder instanceof TopViewHolder) {
             ((TopViewHolder) holder).bindingData((GoLoyaltyTopVM) goLoyaltyModel);
         } else if (holder instanceof DetailViewHolder) {
-            ((DetailViewHolder) holder).bindingData((GoLoyaltyDetailsVM) goLoyaltyModel, this::onDealItemClick);
+            ((DetailViewHolder) holder).bindingData((GoLoyaltyDetailsVM) goLoyaltyModel, this);
         }
     }
 
@@ -83,7 +85,7 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter implements DealsAdapt
     }
 
     @Override
-    public void onDealItemClick() {
+    public void onDealItemClick(GoLoyaltyDealsVM dealsVM) {
         onGoLoyaltyItemsClickListener.onDealItemClick();
     }
 
@@ -150,7 +152,7 @@ public class GoLoyaltyAdapter extends RecyclerView.Adapter implements DealsAdapt
             ButterKnife.bind(this, itemView);
         }
 
-        void bindingData(GoLoyaltyDetailsVM goLoyaltyDetailsVM, DealsAdapter.OnDealItemClickListener onDealItemClickListener) {
+        void bindingData(GoLoyaltyDetailsVM goLoyaltyDetailsVM, OnDealsItemClickListener onDealItemClickListener) {
             tvGoLoyaltyTitle.setText(goLoyaltyDetailsVM.getTitle());
             tvBtnGoLoyaltyMore.setOnClickListener(v -> onGoLoyaltyItemsClickListener.onViewAllClick());
             LinearLayoutManager manager = new LinearLayoutManager(itemView.getContext());

@@ -6,9 +6,14 @@ import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.CustomSearchEditText;
 import com.goshop.app.common.view.RobotoMediumTabLayout;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.presentation.goloyalty.GoLoyaltyActivity;
+import com.goshop.app.presentation.login.LoginActivity;
 import com.goshop.app.presentation.search.SearchActivity;
+import com.goshop.app.presentation.settings.SettingsActivity;
 import com.goshop.app.presentation.shopping.ShoppingCartActivity;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.utils.UserHelper;
 import com.goshop.app.widget.listener.OnScheduleClickListener;
 
 import android.content.Intent;
@@ -46,12 +51,38 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
 
     private MainPagerAdapter pagerAdapter;
 
+    private String entrance;
+
+    private String type;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setCurrentMenuType(MenuUtil.MENU_TYPE_HOME);
         setContentView(getContentView());
         initView();
+        type = getIntent().getStringExtra(MenuUtil.TYPE);
+        entrance = getIntent().getStringExtra(MenuUtil.EXTRA_ENTRANCE);
+        Intent newIntent = null;
+        if(type != null) {
+            switch (type) {
+                case MenuUtil.MENU_TYPE_SHOPPING_CART:
+                    newIntent = new Intent(this, ShoppingCartActivity.class);
+                    break;
+                case MenuUtil.MENU_TYPE_GO_LOYALTY:
+                    newIntent = new Intent(this, GoLoyaltyActivity.class);
+                    break;
+                case MenuUtil.MENU_TYPE_SETTINGS:
+                    newIntent = new Intent(this, SettingsActivity.class);
+                    break;
+            }
+            if(entrance != null) {
+                newIntent.putExtra(MenuUtil.EXTRA_ENTRANCE, entrance);
+            }
+        }
+        if(newIntent != null) {
+            startActivity(newIntent);
+        }
     }
 
     private void initView() {
@@ -89,6 +120,25 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
         viewpagerMain.setAdapter(pagerAdapter);
         tablayoutMain.setupWithViewPager(viewpagerMain);
         viewpagerMain.setOffscreenPageLimit(fragments.size());
+        viewpagerMain.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                // TODO: 2018/4/26 this need delete later
+                if (i == 1) {
+                    PopWindowUtil.showNoApiPop(viewpagerMain);
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
     }
 
     private void initSearchBar() {
@@ -99,16 +149,24 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
             }
         });
         ivleftMenu.setImageResource(R.drawable.ic_menu);
+        if (UserHelper.isLogin()) {
+            tvToolbarCartCounter.setVisibility(View.VISIBLE);
+        }else{
+            tvToolbarCartCounter.setVisibility(View.GONE);
+        }
     }
 
     @OnClick({R.id.imageview_right_menu, R.id.imageview_left_menu})
     public void onMainPageClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_right_menu:
-                Intent intent = new Intent(this, ShoppingCartActivity.class);
-                intent.putExtra(ShoppingCartActivity.EXTRA_ENTRANCE,
-                    ShoppingCartActivity.TYPE_ENTRANCE_HOME);
-                startActivity(new Intent(this, ShoppingCartActivity.class));
+                if (UserHelper.isLogin()) {
+                    startActivity(new Intent(this, ShoppingCartActivity.class));
+                } else {
+                    Intent loginIntent = new Intent(this, LoginActivity.class);
+                    loginIntent.putExtra(MenuUtil.TYPE, MenuUtil.MENU_TYPE_SHOPPING_CART);
+                    UserHelper.goToLogin(this,loginIntent);
+                }
                 break;
 
             case R.id.imageview_left_menu:

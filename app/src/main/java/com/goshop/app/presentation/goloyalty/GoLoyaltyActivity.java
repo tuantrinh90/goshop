@@ -6,9 +6,11 @@ import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.account.MyPointsActivity;
 import com.goshop.app.presentation.model.GoLoyaltyModel;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -41,18 +43,14 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_GO_LOYALTY);
-        setContentView(getContentView());
-        initToolbar();
+
         initRecyclerView();
         //todo wait for api
         mPresenter.goLoyaltyRequest(null);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewGoLoyalty), 200);
     }
 
-    private void initToolbar() {
-        hideRightMenu();
-        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
-    }
 
     @Override
     public int getContentView() {
@@ -66,6 +64,8 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_GO_LOYALTY);
+        setContentView(getContentView());
     }
 
     private void initRecyclerView() {
@@ -80,7 +80,11 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
     public void onCategoryClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                openDrawerLayout();
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
                 break;
         }
     }

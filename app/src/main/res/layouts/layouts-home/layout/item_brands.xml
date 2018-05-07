@@ -25,7 +25,7 @@
             android:id="@+id/iv_brands_logo"
             android:layout_width="@dimen/size_60"
             android:layout_height="@dimen/size_20"
-            android:background="@drawable/ic_samsung_logo"
+            android:background="@drawable/ic_image_404_small"
             android:contentDescription="@string/app_name"/>
 
         <com.goshop.app.common.view.RobotoMediumTextView
@@ -45,9 +45,9 @@
     <ImageView
         android:id="@+id/iv_brands_detail"
         android:layout_width="match_parent"
+        android:scaleType="centerCrop"
         android:layout_height="@dimen/size_128"
-        android:contentDescription="@string/app_name"
-        android:background="@drawable/ic_samsung_detail"/>
+        android:contentDescription="@string/app_name"/>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -65,7 +65,7 @@
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
             android:contentDescription="@string/app_name"
-            android:background="@drawable/ic_samsung_thumb1"
+            android:background="@drawable/ic_image_404_small"
             android:layout_weight="1"/>
         <ImageView
             android:id="@+id/iv_brands_thumb_second"
@@ -74,7 +74,7 @@
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
             android:contentDescription="@string/app_name"
-            android:background="@drawable/ic_samsung_thumb2"
+            android:background="@drawable/ic_image_404_small"
             android:layout_weight="1"/>
         <ImageView
             android:id="@+id/iv_brands_thumb_third"
@@ -83,7 +83,7 @@
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
             android:contentDescription="@string/app_name"
-            android:background="@drawable/ic_samsung_thumb3"
+            android:background="@drawable/ic_image_404_small"
             android:layout_weight="1"/>
         <ImageView
             android:id="@+id/iv_brands_thumb_four"
@@ -92,7 +92,7 @@
             android:layout_marginLeft="@dimen/size_4"
             android:layout_marginRight="@dimen/size_4"
             android:contentDescription="@string/app_name"
-            android:background="@drawable/ic_samsung_thumb3"
+            android:background="@drawable/ic_image_404_small"
             android:layout_weight="1"/>
 
     </LinearLayout>

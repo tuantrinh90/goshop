@@ -6,7 +6,9 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.common.ProductVM;
 
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,6 +71,9 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
         @BindView(R.id.tv_checkout_product_name)
         RobotoLightTextView tvCheckoutProductName;
 
+        @BindView(R.id.tv_checkout_percent)
+        RobotoMediumTextView tvCheckoutPercent;
+
         public CheckoutHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this, itemView);
@@ -79,11 +84,18 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
                 .error(productVM.getImageDefault())
                 .into(ivCheckoutItemIcon);
             tvCheckoutAmount.setText(productVM.getAmount());
-            //todo hard code wait for api
-            tvCheckoutColorAndSize.setText("Color:Blue;Size:L");
+            tvCheckoutColorAndSize.setText(productVM.getAttribute());
             tvCheckoutOldPrice.setText(productVM.getOldPrice());
+            tvCheckoutOldPrice.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             tvCheckoutPrice.setText(productVM.getNowPrice());
             tvCheckoutProductName.setText(productVM.getTitle());
+            if(productVM.getPercent()!=null && !TextUtils.isEmpty(productVM.getPercent())) {
+                tvCheckoutPercent.setText(productVM.getPercent());
+                tvCheckoutPercent.setVisibility(View.VISIBLE);
+            } else {
+                tvCheckoutPercent.setVisibility(View.GONE);
+            }
+
         }
     }
 }

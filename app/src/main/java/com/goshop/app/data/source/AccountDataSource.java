@@ -1,6 +1,5 @@
 package com.goshop.app.data.source;
 
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -8,8 +7,12 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.DealsResponse;
+import com.goshop.app.data.model.response.FilterCategoryResponse;
+import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
@@ -18,9 +21,7 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.OrderResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.response.PaymentResponse;
-import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -41,6 +42,7 @@ import com.goshop.app.data.model.response.TrendingNowResponse;
 import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.Map;
 
@@ -56,7 +58,7 @@ public interface AccountDataSource {
 
     Observable<GoLoyaltyResponse> goLoyaltyRequest(Map<String, Object> params);
 
-    Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params);
+    Observable<Response<DealsResponse>> getListDeals();
 
     Observable<MyRewardsResponse> expiredRequest(Map<String, Object> params);
 
@@ -66,9 +68,9 @@ public interface AccountDataSource {
 
     Observable<CardRedeemResponse> cardRedeemRequest(Map<String, Object> params);
 
-    Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params);
+    Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params);
 
-    Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params);
+    Observable<Response<MyRewardsResponse>> rewardsDetailRequest(Map<String, Object> params);
 
     Observable<Response<MyWishlistResponse>> wishlistDeleteRequest(Map<String, Object> params);
 
@@ -111,7 +113,7 @@ public interface AccountDataSource {
 
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
-    Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params);
+    Observable<Response<CartDataResponse>> viewCartDetails(Map<String, Object> params);
 
     Observable<GetWebContentResponse> getEcmcContent();
 
@@ -145,9 +147,9 @@ public interface AccountDataSource {
 
     Observable<Response<LoginResponse>> facebookLoginRequest(Map<String, Object> params);
 
-    Observable<Object> saveUserInfo(UserData customer);
+    Observable<Object> saveUserInfo(UserDataVM customer);
 
-    Observable<UserData> getUserInfo();
+    Observable<UserDataVM> getUserInfo();
 
     Observable<Boolean> clearUserInfo();
 
@@ -178,4 +180,8 @@ public interface AccountDataSource {
     Observable<Response<OrderMetadataResponse>> getOrderMetadata(Map<String, Object> params);
 
     Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params);
+
+    Observable<Response<FilterCategoryResponse>> getFilterCategory();
+
+    Observable<Response<FilterStatusResponse>> getFilterStatus();
 }

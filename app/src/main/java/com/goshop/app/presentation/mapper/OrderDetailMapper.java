@@ -2,7 +2,6 @@ package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.OrderDetailResponse;
-import com.goshop.app.data.model.response.common.BillingData;
 import com.goshop.app.data.model.response.common.InformationData;
 import com.goshop.app.data.model.response.common.OrderBillingData;
 import com.goshop.app.data.model.response.common.OrderDetailData;
@@ -47,7 +46,7 @@ public class OrderDetailMapper {
             String nowPrice = rmData.getDiscounted();
             String percent = rmData.getDiscountTitle();
             MyOrdersProductVM productVM = new MyOrdersProductVM(sku, "", thumb,
-                R.drawable.ic_bought, title, attributeMap, oldPrice, nowPrice,
+                R.drawable.ic_image_404_small, title, attributeMap, oldPrice, nowPrice,
                 qty, percent);
             myOrdersProductVMS.add(productVM);
         }
@@ -62,7 +61,7 @@ public class OrderDetailMapper {
         OrderDetailVM orderDetailVM = new OrderDetailVM(informationData.getNumber(),
             informationData.getStatus(), placeAt, shippingAddressData.getFirstName(),
             shipAddress, shipCity, shippingAddressData.getCountry(),
-            shippingAddressData.getTelephone(), paymentMethod, myOrdersProductVMS);
+            NumberFormater.formaterTelNo(shippingAddressData.getTelephone()), paymentMethod, myOrdersProductVMS);
 
         OrderRMData rm = billingData.getRm();
         orderDetailVM.setSubTotal(NumberFormater.formaterPrice(rm.getSubTotal()));

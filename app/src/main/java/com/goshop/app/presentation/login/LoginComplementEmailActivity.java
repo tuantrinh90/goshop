@@ -5,10 +5,9 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.data.model.response.LoginResponse;
-import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.FacebookLoginVm;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
@@ -109,15 +108,16 @@ public class LoginComplementEmailActivity extends BaseActivity<LoginComplementEm
 
     private void goToHomePage() {
         Intent intent = new Intent(this, MainPageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
         finish();
     }
 
     @Override
-    public void complementEmailSuccess(Response<LoginResponse> response) {
-        if (response != null && response.getData() != null && response.getData()
-            .getCustomer() != null && response.getData().getCustomer().getToken() != null) {
-            GoShopApplication.cacheUserInfo(response.getData().getCustomer());
+    public void complementEmailSuccess(UserDataVM response) {
+        if (response != null && response.getToken() != null) {
+            GoShopApplication.cacheUserInfo(response);
+            mPresenter.saveUserInfo(response);
             toastUtil.showThanksToast();
 
         }

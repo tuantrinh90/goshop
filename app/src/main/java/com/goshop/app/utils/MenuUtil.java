@@ -26,6 +26,10 @@ import java.util.List;
 
 public class MenuUtil {
 
+    public static final String EXTRA_ENTRANCE = "extra_entrance";
+
+    public static final String TYPE_ENTRANCE_DRAWER = "drawer";
+
     public final static String MENU_TYPE_HEAD_ACCOUNT = "account";
 
     public final static String MENU_TYPE_HEAD_LOGIN = "login";
@@ -50,9 +54,7 @@ public class MenuUtil {
 
     public final static String MENU_TYPE_SETTINGS = "settings";
 
-    public final static String MENU_KEY = "menu";
-
-    public final static String MENU_VALUE = "slideMenu";
+    public final static String TYPE = "menuType";
 
     private Activity activity;
 
@@ -125,12 +127,24 @@ public class MenuUtil {
                 intent = new Intent(activity, CategoryActivity.class);
                 break;
             case MENU_TYPE_GO_LOYALTY:
-                intent = new Intent(activity, GoLoyaltyActivity.class);
+                if (UserHelper.isLogin()) {
+                    intent = new Intent(activity, GoLoyaltyActivity.class);
+                } else {
+                    Intent loginIntent = new Intent(activity, LoginActivity.class);
+                    loginIntent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
+                    loginIntent.putExtra(TYPE, MENU_TYPE_GO_LOYALTY);
+                    UserHelper.goToLogin(activity,loginIntent);
+                }
                 break;
             case MENU_TYPE_SHOPPING_CART:
-                intent = new Intent(activity, ShoppingCartActivity.class);
-                intent.putExtra(ShoppingCartActivity.EXTRA_ENTRANCE,
-                    ShoppingCartActivity.TYPE_ENTRANCE_DRAWER);
+                if (UserHelper.isLogin()) {
+                    intent = new Intent(activity, ShoppingCartActivity.class);
+                } else {
+                    Intent loginIntent = new Intent(activity, LoginActivity.class);
+                    loginIntent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
+                    loginIntent.putExtra(TYPE, MENU_TYPE_SHOPPING_CART);
+                    UserHelper.goToLogin(activity,loginIntent);
+                }
                 break;
             case MENU_TYPE_MY_WISHLIST:
                 intent = new Intent(activity, MyWishlistActivity.class);
@@ -148,16 +162,26 @@ public class MenuUtil {
                 intent = new Intent(activity, HelpSupportActivity.class);
                 break;
             case MENU_TYPE_SETTINGS:
-                intent = new Intent(activity, SettingsActivity.class);
+                if (UserHelper.isLogin()) {
+                    intent = new Intent(activity, SettingsActivity.class);
+                } else {
+                    Intent loginIntent = new Intent(activity, LoginActivity.class);
+                    loginIntent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
+                    loginIntent.putExtra(TYPE, MENU_TYPE_SETTINGS);
+                    UserHelper.goToLogin(activity,loginIntent);
+                }
                 break;
         }
 
         if (intent != null) {
-            intent.putExtra(MENU_KEY, MENU_VALUE);
+            intent.putExtra(EXTRA_ENTRANCE, TYPE_ENTRANCE_DRAWER);
             activity.startActivity(intent);
+
+            if(!(activity instanceof MainPageActivity)) {
+                activity.finish();
+            }
             activity.overridePendingTransition(R.anim.slide_menu_in,
                 R.anim.slide_menu_out);
-            activity.finish();
         }
     }
 

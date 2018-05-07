@@ -1,7 +1,6 @@
 package com.goshop.app.data.source.cloud;
 
 import com.goshop.app.data.RestApi;
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.ComplementEmailResponse;
@@ -9,8 +8,12 @@ import com.goshop.app.data.model.ContactUsResponse;
 import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
+import com.goshop.app.data.model.response.CartDataResponse;
+import com.goshop.app.data.model.response.DealsResponse;
+import com.goshop.app.data.model.response.FilterCategoryResponse;
+import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
@@ -19,7 +22,6 @@ import com.goshop.app.data.model.PaymentStatusResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
 import com.goshop.app.data.model.response.OrderMetadataResponse;
 import com.goshop.app.data.model.response.PaymentResponse;
-import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -42,6 +44,7 @@ import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.model.response.ZipCodeResponse;
 import com.goshop.app.data.source.AccountDataSource;
 import com.goshop.app.presentation.model.FlagsVM;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.goshop.app.utils.ServiceData;
 
 import java.util.Map;
@@ -80,8 +83,8 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<AllDealsResponse> allDealsRequest(Map<String, Object> params) {
-        return restApi.allDealsRequest(params);
+    public Observable<Response<DealsResponse>> getListDeals() {
+        return restApi.getListDeals();
     }
 
     @Override
@@ -105,12 +108,12 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<CardRedeemResponse> swipeRedeemRequest(Map<String, Object> params) {
+    public Observable<Response<CardRedeemResponse>> swipeRedeemRequest(Map<String, Object> params) {
         return restApi.swipeRedeemRequest(params);
     }
 
     @Override
-    public Observable<MyRewardsResponse> rewardsDetailRequest(Map<String, Object> params) {
+    public Observable<Response<MyRewardsResponse>> rewardsDetailRequest(Map<String, Object> params) {
         return restApi.rewardsDetailRequest(params);
     }
 
@@ -220,7 +223,7 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Response<ShoppingCartResponse>> viewCartDetails(Map<String, Object> params) {
+    public Observable<Response<CartDataResponse>> viewCartDetails(Map<String, Object> params) {
         return restApi.viewCartDetails(params);
     }
 
@@ -304,12 +307,12 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
-    public Observable<Object> saveUserInfo(UserData customer) {
+    public Observable<Object> saveUserInfo(UserDataVM customer) {
         return null;
     }
 
     @Override
-    public Observable<UserData> getUserInfo() {
+    public Observable<UserDataVM> getUserInfo() {
         return null;
     }
 
@@ -387,6 +390,16 @@ public class AccountCloudDataSource implements AccountDataSource {
     @Override
     public Observable<Response<PaymentResponse>> paymentRequest(Map<String, Object> params) {
         return restApi.paymentRequest(params);
+    }
+
+    @Override
+    public Observable<Response<FilterCategoryResponse>> getFilterCategory() {
+        return restApi.getFilterCategory();
+    }
+
+    @Override
+    public Observable<Response<FilterStatusResponse>> getFilterStatus() {
+        return restApi.getFilterStatus();
     }
 
 }

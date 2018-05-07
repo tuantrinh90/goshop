@@ -1,6 +1,5 @@
 package com.goshop.app.data.retrofit;
 
-import com.goshop.app.data.model.AllDealsResponse;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.BrandsResponse;
@@ -12,8 +11,11 @@ import com.goshop.app.data.model.FAQResponse;
 import com.goshop.app.data.model.GetWebContentResponse;
 import com.goshop.app.data.model.GoLoyaltyResponse;
 import com.goshop.app.data.model.response.CheckoutResponse;
+import com.goshop.app.data.model.response.DealsResponse;
+import com.goshop.app.data.model.response.FilterCategoryResponse;
+import com.goshop.app.data.model.response.FilterStatusResponse;
 import com.goshop.app.data.model.response.HelpSupportResponse;
-import com.goshop.app.data.model.MyRewardsResponse;
+import com.goshop.app.data.model.response.MyRewardsResponse;
 import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.ApplyEGiftResponse;
 import com.goshop.app.data.model.response.ApplyPointsResponse;
@@ -32,7 +34,6 @@ import com.goshop.app.data.model.response.QuestionAnswerResponse;
 import com.goshop.app.data.model.SearchFilterResponse;
 import com.goshop.app.data.model.SearchResultResponse;
 import com.goshop.app.data.model.SendConfirmationLinkResponse;
-import com.goshop.app.data.model.response.ShoppingCartResponse;
 import com.goshop.app.data.model.TVShowResponse;
 import com.goshop.app.data.model.TermsConditionsResponse;
 import com.goshop.app.data.model.request.AddressRequest;
@@ -107,11 +108,9 @@ public interface RetrofitRestApi {
     Observable<GoLoyaltyResponse> goLoyaltyRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<AllDealsResponse> allDealsRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<DealsResponse>> getListDeals(@Url String fullUrl);
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
@@ -140,14 +139,12 @@ public interface RetrofitRestApi {
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
     @POST
-    Observable<CardRedeemResponse> swipeRedeemRequest(@Url String fullUrl,
+    Observable<Response<CardRedeemResponse>> swipeRedeemRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
 
-    @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
-    @POST
-    Observable<MyRewardsResponse> rewardsDetailRequest(@Url String fullUrl,
-        @FieldMap Map<String, Object> params);
+    @GET
+    Observable<Response<MyRewardsResponse>> rewardsDetailRequest(@Url String fullUrl);
 
     @Headers({CONTENT_TYPE_JSON})
     @DELETE
@@ -292,7 +289,7 @@ public interface RetrofitRestApi {
 
     @Headers({CONTENT_TYPE_JSON})
     @GET
-    Observable<Response<ShoppingCartResponse>> viewCartDetails(@Url String fullUrl,
+    Observable<Response<CartDataResponse>> viewCartDetails(@Url String fullUrl,
         @QueryMap Map<String, Object> params);
 
     @Headers({CONTENT_TYPE_JSON})
@@ -505,6 +502,12 @@ public interface RetrofitRestApi {
 
     @FormUrlEncoded
     @Headers({CONTENT_TYPE_JSON})
+    @PUT
+    Observable<Response<CartDataResponse>> updateCartRequest(@Url String fullUrl,
+        @FieldMap Map<String, Object> params);
+
+    @FormUrlEncoded
+    @Headers({CONTENT_TYPE_JSON})
     @POST
     Observable<Response<ApplyCouponResponse>> applyCoupon(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
@@ -531,4 +534,12 @@ public interface RetrofitRestApi {
     @POST
     Observable<Response<PaymentResponse>> paymentRequest(@Url String fullUrl,
         @FieldMap Map<String, Object> params);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<FilterCategoryResponse>> getFilterCategory(@Url String fullUrl);
+
+    @Headers({CONTENT_TYPE_JSON})
+    @GET
+    Observable<Response<FilterStatusResponse>> getFilterStatus(@Url String fullUrl);
 }

@@ -14,7 +14,6 @@ import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -50,9 +49,6 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_HELP_AND_SUPPORT);
-        setContentView(getContentView());
-        initView();
         initData();
     }
 
@@ -60,15 +56,6 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
         mPresenter.helpSupportRequest();
     }
 
-    private void initView() {
-        initToolbar();
-        initRecyclerView();
-    }
-
-    private void initToolbar() {
-        hideRightMenu();
-        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
-    }
 
     @Override
     public int getContentView() {
@@ -82,6 +69,9 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_HELP_AND_SUPPORT);
+        setContentView(getContentView());
+        initRecyclerView();
     }
 
     private void initRecyclerView() {
@@ -134,7 +124,11 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
     public void OnHelpClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                openDrawerLayout();
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
                 break;
         }
     }

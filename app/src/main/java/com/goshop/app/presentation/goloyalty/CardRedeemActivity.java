@@ -1,6 +1,7 @@
 package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
+import com.goshop.app.Const;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
@@ -8,14 +9,21 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.CardRedeemVM;
+import com.goshop.app.presentation.model.RedeemSuccessVM;
+import com.goshop.app.utils.PopWindowUtil;
 import com.ncorti.slidetoact.SlideToActView;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import butterknife.BindView;
 import injection.components.DaggerPresenterComponent;
@@ -23,6 +31,9 @@ import injection.modules.PresenterModule;
 
 public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presenter> implements
     CardRedeemContract.View {
+
+    @BindView(R.id.ll_content)
+    LinearLayout llContent;
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageviewLeftMenu;
@@ -51,42 +62,51 @@ public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presente
     @BindView(R.id.tv_redeemed_show)
     RobotoRegularTextView tvRedeemedShow;
 
+    private CardRedeemVM cardRedeemVM;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //todo wait for api
-        mPresenter.cardRedeemRequest(null);
+        initView();
+        initData();
     }
 
-    @Override
-    public int getContentView() {
-        return R.layout.activity_card_redeem;
+    private void initData() {
+        // TODO: 2018/5/2 get real data from intent
+        cardRedeemVM = mPresenter.getMockData();
+        Glide.with(this).load(cardRedeemVM.getThumb()).asBitmap()
+            .error(R.drawable.ic_image_404_small)
+            .into(ivCardRedeemThumb);
+        tvCardRedeemMerchantTitle.setText(cardRedeemVM.getTitle());
+        tvCardRedeemMerchantEnd.setText(cardRedeemVM.getEnd());
+        tvCardRedeemMerchantDetail.setText(cardRedeemVM.getDetail());
+        tvCardRedeemMerchantTime.setText(cardRedeemVM.getTime());
+
     }
 
-    @Override
-    public void inject() {
+    private void initView() {
         imageviewLeftMenu.setVisibility(View.GONE);
-        initPresenter();
         tvRedeemedShow.setVisibility(View.GONE);
         slidetoactviewRedeem.setOnSlideToActAnimationEventListener(
             new SlideToActView.OnSlideToActAnimationEventListener() {
                 @Override
                 public void onSlideCompleteAnimationStarted(@NonNull SlideToActView view,
                     float threshold) {
-                    //todo wait for api
-                    slidetoactviewRedeem.setVisibility(View.GONE);
                     tvRedeemedShow.setVisibility(View.VISIBLE);
-                    mPresenter.swipeRedeemRequest(null);
+                    slidetoactviewRedeem.setVisibility(View.GONE);
+                    //todo wait for api
+                    Map<String, Object> params = new HashMap<>();
+                    params.put(Const.REQUEST_PARAM_CUSTOMER_ID, "1");
+                    params.put(Const.REQUEST_PARAM_DEAL_ID, "3");
+                    mPresenter.swipeRedeemRequest(params);
                 }
 
                 @Override
                 public void onSlideCompleteAnimationEnded(@NonNull SlideToActView view) {
-
                 }
 
                 @Override
                 public void onSlideResetAnimationStarted(@NonNull SlideToActView view) {
-
                 }
 
                 @Override
@@ -96,7 +116,13 @@ public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presente
             });
     }
 
-    private void initPresenter() {
+    @Override
+    public int getContentView() {
+        return R.layout.activity_card_redeem;
+    }
+
+    @Override
+    public void inject() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -110,18 +136,7 @@ public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presente
     }
 
     @Override
-    public void showRedeemResult(CardRedeemVM cardRedeemVM) {
-        Glide.with(this).load(cardRedeemVM.getThumb()).asBitmap()
-            .error(cardRedeemVM.getThumbDefault())
-            .into(ivCardRedeemThumb);
-        tvCardRedeemMerchantTitle.setText(cardRedeemVM.getTitle());
-        tvCardRedeemMerchantEnd.setText(cardRedeemVM.getEnd());
-        tvCardRedeemMerchantDetail.setText(cardRedeemVM.getDetail());
-        tvCardRedeemMerchantTime.setText(cardRedeemVM.getTime());
-    }
-
-    @Override
-    public void swipeRedeemSuccess() {
+    public void swipeRedeemSuccess(RedeemSuccessVM redeemSuccessVM) {
         tvRedeemedShow.setText(getResources().getString(R.string.redeemed));
         slidetoactviewRedeem.setVisibility(View.GONE);
         tvCardRedeemTip.setTextColor(
@@ -129,7 +144,8 @@ public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presente
     }
 
     @Override
-    public void swipeRedeemFailed() {
+    public void swipeRedeemFailed(String message) {
+        PopWindowUtil.showRequestMessagePop(llContent, message);
         slidetoactviewRedeem.setOnSlideCompleteListener((SlideToActView slideToActView) ->
             slidetoactviewRedeem.resetSlider());
     }

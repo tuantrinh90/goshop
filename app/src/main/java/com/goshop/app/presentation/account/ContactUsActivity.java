@@ -18,7 +18,6 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.InputType;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -239,8 +238,8 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
             return;
         }
 
-        if (TextUtils.isEmpty(mobile) || !etPhone.isMobileNo()) {
-            etPhone.setErrorMessage(getResources().getString(R.string.format_mobile_warning));
+        if (TextUtils.isEmpty(details)) {
+            etDetail.setError(getResources().getString(R.string.empty_error));
             return;
         }
         mPresenter.contactMessageRequest(name, email, mobile, productHanding, details);

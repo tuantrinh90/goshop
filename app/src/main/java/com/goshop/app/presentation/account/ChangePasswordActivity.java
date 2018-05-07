@@ -14,7 +14,6 @@ import com.goshop.app.utils.UserHelper;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -49,7 +48,7 @@ public class ChangePasswordActivity extends BaseActivity<ChangePasswordContract.
     }
 
     private void initView() {
-        textviewRightMenu.setText(getResources().getString(R.string.save));
+        textviewRightMenu.setText(getResources().getString(R.string.done));
         hideRightMenu();
     }
 

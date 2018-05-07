@@ -19,13 +19,12 @@ import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentMethodVM;
 import com.goshop.app.presentation.model.PaymentVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
-import com.goshop.app.utils.EditTextUtil;
 import com.goshop.app.utils.KeyBoardUtils;
+import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.widget.NestedScrollView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.text.Html;
@@ -236,14 +235,10 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     private void initBilling() {
-        String pointsTip = String
-            .format(getResources().getString(R.string.checkout_points_tip), "300");
-        tvCheckoutAttention.setText(Html.fromHtml(pointsTip));
+
         cbCheckoutUseSame.setChecked(true);
         cbCheckoutUseSame
-            .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> {
-                rlBillingRoot.setVisibility(isChecked ? View.GONE : View.VISIBLE);
-            });
+            .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> rlBillingRoot.setVisibility(isChecked ? View.GONE : View.VISIBLE));
     }
 
     private void initPresenter() {
@@ -343,7 +338,9 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         productListAdapter.setProductVMS(checkoutVM.getProductVMS());
         updateBilling(checkoutVM.getSubTotal(), checkoutVM.getShipping(),
             checkoutVM.getDiscountCode(),
-            checkoutVM.getDiscountAmount(), checkoutVM.geteGiftCode(), checkoutVM.geteGiftAmount(),
+            NumberFormater.formaterDiscountPrice(checkoutVM.getDiscountAmount()),
+            checkoutVM.geteGiftCode(),
+            NumberFormater.formaterDiscountPrice(checkoutVM.geteGiftAmount()),
             checkoutVM.getBillingTotal());
         List<PaymentMethodVM> paymentMethodVMs = checkoutVM.getPaymentMethodVMs();
         for(PaymentMethodVM methodVM:paymentMethodVMs) {
@@ -352,6 +349,65 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                 break;
             }
         }
+
+        updateInputEditLayout(checkoutVM.getDiscountAmount(), checkoutVM.geteGiftAmount(),
+            checkoutVM.getPointsApplied(), checkoutVM.getPointsAmount());
+    }
+
+    private void updateInputEditLayout(String discountAmount, String egiftAmount,
+        String appliedPoints, String pointsAmount) {
+        if(!TextUtils.isEmpty(discountAmount)) {
+            tvBtnCheckDiscountApply.setSelected(true);
+            tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
+            etCheckoutDiscount.setFocusable(false);
+            etCheckoutDiscount.setFocusableInTouchMode(false);
+            etCheckoutDiscount.setText(discountAmount);
+            llCheckoutDiscount.setVisibility(View.VISIBLE);
+        } else {
+            tvBtnCheckDiscountApply.setSelected(false);
+            tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
+            etCheckoutDiscount.setText("");
+            etCheckoutDiscount.setFocusableInTouchMode(true);
+            etCheckoutDiscount.setFocusable(true);
+            etCheckoutDiscount.requestFocus();
+            llCheckoutDiscount.setVisibility(View.GONE);
+        }
+
+        if (TextUtils.isEmpty(egiftAmount)) {
+            tvBtnCheckGiftCardApply.setSelected(false);
+            tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.apply));
+            etCheckoutEgift.setText("");
+            etCheckoutEgift.setFocusableInTouchMode(true);
+            etCheckoutEgift.setFocusable(true);
+            etCheckoutEgift.requestFocus();
+            llCheckoutEGift.setVisibility(View.GONE);
+        } else {
+            tvBtnCheckGiftCardApply.setSelected(true);
+            tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
+            etCheckoutEgift.setFocusable(false);
+            etCheckoutEgift.setFocusableInTouchMode(false);
+            etCheckoutEgift.setText(egiftAmount);
+            llCheckoutEGift.setVisibility(View.VISIBLE);
+        }
+
+        if (TextUtils.isEmpty(pointsAmount)) {
+            tvBtnCheckPointsApply.setSelected(false);
+            tvBtnCheckPointsApply.setText(getResources().getString(R.string.apply));
+            etCheckoutPoint.setText("");
+            etCheckoutPoint.setFocusableInTouchMode(true);
+            etCheckoutPoint.setFocusable(true);
+            etCheckoutPoint.requestFocus();
+        } else {
+            tvBtnCheckPointsApply.setSelected(true);
+            tvBtnCheckPointsApply.setText(getResources().getString(R.string.cancel));
+            etCheckoutPoint.setFocusable(false);
+            etCheckoutPoint.setFocusableInTouchMode(false);
+            etCheckoutPoint.setText(pointsAmount);
+            String pointsTip = String
+                .format(getResources().getString(R.string.checkout_points_tip), appliedPoints);
+            tvCheckoutAttention.setText(Html.fromHtml(pointsTip));
+        }
+
     }
 
     @Override
@@ -392,7 +448,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     private void initRadioGroup() {
-        rbCheckoutPaymentCredit.setSelected(true);
         radioPaymentType.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.rb_checkout_payment_banking:
@@ -413,6 +468,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                     break;
             }
         });
+        rbCheckoutPaymentBanking.setChecked(true);
     }
 
     @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order,

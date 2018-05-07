@@ -40,8 +40,10 @@
         android:background="@null"
         android:gravity="center"
         android:inputType="number"
+        android:singleLine="true"
         android:layout_marginRight="@dimen/size_8"
         android:layout_marginLeft="@dimen/size_8"
+        android:imeOptions="actionDone"
         android:layout_toRightOf="@id/iv_minus"
         android:layout_toStartOf="@id/iv_plus"
         android:layout_toEndOf="@id/iv_minus"/>

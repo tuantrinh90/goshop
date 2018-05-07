@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.model;
 
 import com.goshop.app.presentation.model.common.ProductVM;
-import com.goshop.app.presentation.model.widget.ProductListModel;
 
 import java.util.List;
 

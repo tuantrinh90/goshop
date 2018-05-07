@@ -45,6 +45,7 @@
             android:textColor="@color/color_grayscale_text"
             android:paddingTop="@dimen/size_8"
             android:paddingBottom="@dimen/size_8"
+            android:textCursorDrawable="@null"
             android:background="@drawable/bg_hint_line"
             android:layout_toLeftOf="@id/tv_btn_active_now"
             tools:ignore="RtlHardcoded"/>

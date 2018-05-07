@@ -4,11 +4,12 @@ import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
-import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
@@ -47,6 +48,8 @@ public class WebContentActivity extends BaseActivity<WebContentContract.Presente
         super.onCreate(savedInstanceState);
         initData();
         initView();
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(wvContent), 200);
     }
 
     private void initView() {

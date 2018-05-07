@@ -2,12 +2,12 @@ package com.goshop.app.data.model.response.common;
 
 public class TokenData {
 
-    private String expiration;
-
     /**
      * token : 8s4ht6x8rlmq9k3cjigpqgvf3cfn1nd5
      * expiration : 3600
      */
+
+    private String expiration;
 
     private String token;
 

@@ -5,14 +5,18 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
 import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.presentation.checkout.PaymentStatusActivity;
+import com.goshop.app.presentation.checkout.CheckoutActivity;
+import com.goshop.app.presentation.login.LoginActivity;
+import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.presentation.model.ProductDetailModel;
 import com.goshop.app.presentation.model.ProductDetailTopVM;
+import com.goshop.app.presentation.model.ProfileVM;
 import com.goshop.app.presentation.model.SizeVM;
-import com.goshop.app.presentation.model.ColorVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.utils.UserHelper;
 import com.goshop.app.widget.listener.OnProductDetailItemClickListener;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -26,8 +30,10 @@ import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.OnClick;
 import injection.components.DaggerPresenterComponent;
@@ -45,6 +51,9 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @BindView(R.id.rcv_pdp_details)
     RecyclerView rcvPdpDetails;
+
+    @BindView(R.id.textview_cart_counter)
+    RobotoMediumTextView textviewCartCounter;
 
     @BindView(R.id.toolbar)
     Toolbar toolbar;
@@ -80,6 +89,10 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     private OnAddCartClickListener onAddCartClickListener;
 
+    private OnWishlistListener onWishlistListener;
+
+    private List<ProductDetailModel> productDetailModels;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -94,6 +107,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void inject() {
+        productDetailModels = new ArrayList<>();
         initPresenter();
         initRecyclerView();
         appBarLayoutActionListener();
@@ -142,14 +156,27 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
                 finish();
                 break;
             case R.id.imageview_right_menu:
-                startActivity(new Intent(this, ShoppingCartActivity.class));
+                if(UserHelper.isLogin()) {
+                    startActivity(new Intent(this, ShoppingCartActivity.class));
+                } else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
                 break;
 
             case R.id.tv_btn_buy_now:
-                startActivity(new Intent(this, PaymentStatusActivity.class));
+                if(UserHelper.isLogin()) {
+                    startActivity(new Intent(this, CheckoutActivity.class));
+                } else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
                 break;
             case R.id.tv_btn_add_to_cart:
-                onAddCartClickListener.onAddClick();
+                if(UserHelper.isLogin()) {
+                    onAddCartClickListener.onAddClick();
+                } else {
+                    startActivity(new Intent(this, LoginActivity.class));
+                }
+
                 break;
             case R.id.tv_net_refresh:
                 updateLayoutStatus(flConnectionBreak, false);
@@ -160,15 +187,21 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void getProductDetailSuccess(List<ProductDetailModel> detailDatas) {
+        productDetailModels.clear();
+        productDetailModels = detailDatas;
+        mPresenter.getReviews();
+
+    }
+
+    private void showDetailDatas() {
         rlProductDetailData.setVisibility(View.VISIBLE);
-        for (ProductDetailModel detailModel: detailDatas) {
+        for (ProductDetailModel detailModel: productDetailModels) {
             if(detailModel instanceof ProductDetailTopVM) {
                 sku = ((ProductDetailTopVM) detailModel).getSku();
                 break;
             }
         }
-        pdpAdapter.setUpdateDatas(detailDatas);
-
+        pdpAdapter.setUpdateDatas(productDetailModels);
     }
 
     @Override
@@ -180,12 +213,12 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void addWishlistSuccess() {
-        Toast.makeText(this, "add success", Toast.LENGTH_LONG).show();
+        onWishlistListener.onWishlistClick(true);
     }
 
     @Override
     public void removeWishlistSuccess() {
-        Toast.makeText(this, "add success", Toast.LENGTH_LONG).show();
+        onWishlistListener.onWishlistClick(false);
     }
 
     @Override
@@ -235,12 +268,36 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     @Override
-    public void addToCartResult(boolean isSuccess, String message) {
-        if(isSuccess) {
-            PopWindowUtil.showRequestMessagePop(tvBtnAddToCart, message);
+    public void addToCartSuccess(int cartNum) {
+        if(cartNum > 0) {
+            textviewCartCounter.setVisibility(View.VISIBLE);
+            textviewCartCounter.setText(cartNum + "");
         } else {
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+            textviewCartCounter.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void getUserProfileSuccess(ProfileVM profileVM) {
+        int cartCount = profileVM.getCartCount();
+        if(cartCount > 0) {
+            textviewCartCounter.setVisibility(View.VISIBLE);
+            textviewCartCounter.setText(cartCount + "");
+        } else {
+            textviewCartCounter.setVisibility(View.GONE);
+        }
+    }
+
+    @Override
+    public void getReviewsSuccess(List<ProductDetailModel> detailDatas) {
+        productDetailModels.addAll(detailDatas);
+        mPresenter.getQA();
+    }
+
+    @Override
+    public void getQASuccess(List<ProductDetailModel> detailDatas) {
+        productDetailModels.addAll(detailDatas);
+        showDetailDatas();
     }
 
     @Override
@@ -270,10 +327,14 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void onWishlistSelect(boolean isSelect) {
-        if (isSelect) {
-            mPresenter.addWishlistRequest("abc");
+        if(UserHelper.isLogin()){
+            if (isSelect) {
+                mPresenter.addWishlistRequest(sku);
+            } else {
+                mPresenter.removeWishlistRequest(sku);
+            }
         } else {
-            mPresenter.removeWishlistRequest("abc");
+            startActivity(new Intent(this, LoginActivity.class));
         }
     }
 
@@ -308,7 +369,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         if (type.equals(PopWindowUtil.COLOR)) {
             String colorName = colorVMS.get(position).getColorName();
             onAttributeSelectListener.onColorSelect(colorName);
-        } else if(type.equals(PopWindowUtil.SIZE)) {
+        } else if (type.equals(PopWindowUtil.SIZE)) {
             String sizeName = sizeVMS.get(position).getSizeName();
             onAttributeSelectListener.onSizeSelect(sizeName);
         }
@@ -334,11 +395,21 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         this.onAttributeSelectListener = listener;
     }
 
-    public interface OnAddCartClickListener{
+    public interface OnAddCartClickListener {
+
         void onAddClick();
     }
 
     public void setOnAddCartClickListener(OnAddCartClickListener addCartClickListener) {
         this.onAddCartClickListener = addCartClickListener;
     }
+
+    public interface OnWishlistListener{
+        void onWishlistClick(boolean isAdd);
+    }
+
+    public void setOnWishlistListener(OnWishlistListener onWishlistListener) {
+        this.onWishlistListener = onWishlistListener;
+    }
+
 }

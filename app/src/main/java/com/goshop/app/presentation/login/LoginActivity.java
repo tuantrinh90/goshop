@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.login;
 
 import com.facebook.CallbackManager;
-import com.facebook.login.LoginManager;
 import com.facebook.login.widget.LoginButton;
 import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
@@ -11,10 +10,9 @@ import com.goshop.app.common.CustomPasswordEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
-import com.goshop.app.data.model.response.LoginResponse;
-import com.goshop.app.data.model.response.Response;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.FacebookLoginVm;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.goshop.app.utils.EncryptPasswordHandler;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PasswordEncoderUtil;
@@ -85,23 +83,18 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     private String password;
 
+    private String entrance;
+
+    private String type;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_LOGIN);
-        setContentView(getContentView());
-        initData();
-        initToolbar();
     }
 
     private void initData() {
         callbackManager = mPresenter.initFaceBook();
         loginButton.setReadPermissions(Arrays.asList("public_profile", "user_friends", "email"));
-    }
-
-    private void initToolbar() {
-        hideRightMenu();
-        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -111,11 +104,20 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
 
     @Override
     public void inject() {
+        initIntentData();
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_LOGIN);
+        setContentView(getContentView());
+        initData();
+    }
+
+    private void initIntentData() {
+        type = getIntent().getStringExtra(MenuUtil.TYPE);
+        entrance = getIntent().getStringExtra(MenuUtil.EXTRA_ENTRANCE);
     }
 
     @Override
@@ -135,7 +137,11 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                openDrawerLayout();
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
                 break;
             case R.id.tv_btn_login:
                 emailLogin();
@@ -200,16 +206,23 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     }
 
     @Override
-    public void loginSuccess(Response<LoginResponse> response) {
-        if (response != null && response.getData() != null && response.getData()
-            .getCustomer() != null && response.getData().getCustomer().getToken() != null) {
-            GoShopApplication.cacheUserInfo(response.getData().getCustomer());
+    public void loginSuccess(UserDataVM userDataVM) {
+        if (userDataVM != null && userDataVM.getToken() != null) {
+            GoShopApplication.cacheUserInfo(userDataVM);
+            mPresenter.saveUserInfo(userDataVM);
             goToHomePage();
         }
     }
 
     private void goToHomePage() {
         Intent intent = new Intent(this, MainPageActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        if (entrance != null) {
+            intent.putExtra(MenuUtil.EXTRA_ENTRANCE, entrance);
+        }
+        if (type != null) {
+            intent.putExtra(MenuUtil.TYPE, type);
+        }
         startActivity(intent);
         finish();
     }

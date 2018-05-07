@@ -20,11 +20,6 @@ public class TrendingMapper {
     public static final String VIDEO_URL = "http://playback01.aotg-video.astro.com" +
         ".my/AOTGHLS/master_AGSS.m3u8";
 
-    public static final String VIDEO_URL1 = " http://playertest.longtailvideo" +
-        ".com/adaptive/bipbop/gear4/prog_index.m3u8";
-
-    private static String[] videoUrl = {VIDEO_URL1, VIDEO_URL};
-
     public static List<BannerVm> transformBanner(Response<BannerResponse> response) {
         List<BannerVm> bannerVmList = new ArrayList<>();
         if (response != null && response.getData() != null && !response.getData().getBanners()
@@ -52,9 +47,7 @@ public class TrendingMapper {
                 videoPlayerItemsVM.setId(videoItemsResponse.getId());
                 videoPlayerItemsVM.setName(videoItemsResponse.getName());
                 // TODO: 2018/4/26 mock video url
-                if (i < videoUrl.length) {
-                    videoPlayerItemsVM.setPlaybackUrl(videoUrl[i]);
-                }
+                videoPlayerItemsVM.setPlaybackUrl(VIDEO_URL);
 //                videoPlayerItemsVM.setPlaybackUrl(videoItemsResponse.getPlaybackUrl());
                 if (videoItemsResponse.getProducts() != null && !videoItemsResponse.getProducts()
                     .isEmpty()) {

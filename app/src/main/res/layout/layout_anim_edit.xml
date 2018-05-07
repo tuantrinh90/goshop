@@ -10,9 +10,7 @@
         android:id="@+id/textinputlayout_anim"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="top"
-        app:errorTextAppearance="@style/errorAppearance"
-        app:hintTextAppearance="@style/hintAppearance">
+        android:gravity="top">
 
         <com.goshop.app.common.view.RobotoRegularEditText
             android:id="@+id/et_anim_edittext"

@@ -23,6 +23,7 @@ public class MyWishlistMapper {
             for (ProductData wishlistData : productDatas) {
                 wishlistVM = new WishlistVM();
                 wishlistVM.setTitle(wishlistData.getName());
+                //todo api attribute have some problem
                 wishlistVM.setAttr("");
                 wishlistVM.setOldPrice(
                     NumberFormater.formaterMoney(wishlistData.getPrice().getRM().getOriginal()));

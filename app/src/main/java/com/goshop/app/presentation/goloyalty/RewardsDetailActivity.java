@@ -8,11 +8,16 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumItalicTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.RewardsDetailVM;
+import com.goshop.app.utils.DateFormater;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import java.util.List;
 
@@ -23,6 +28,12 @@ import injection.modules.PresenterModule;
 
 public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Presenter>
     implements RewardsDetailContract.View {
+
+    @BindView(R.id.ll_content)
+    LinearLayout llContent;
+
+    @BindView(R.id.sv_content)
+    NestedScrollView nestedScrollView;
 
     @BindView(R.id.iv_rewards_detail_pic)
     ImageView ivRewardsDetailPic;
@@ -63,8 +74,17 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //todo wait for api
+        initView();
+        initData();
+    }
+
+    private void initData() {
         mPresenter.rewardsDetailRequest(null);
+    }
+
+    private void initView() {
+        hideRightMenu();
+        nestedScrollView.setVisibility(View.GONE);
     }
 
     @Override
@@ -74,11 +94,6 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
 
     @Override
     public void inject() {
-        hideRightMenu();
-        initPresenter();
-    }
-
-    private void initPresenter() {
         DaggerPresenterComponent.builder()
             .applicationComponent(GoShopApplication.getApplicationComponent())
             .presenterModule(new PresenterModule(this))
@@ -106,29 +121,30 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
 
     @Override
     public void showRewardsDetails(RewardsDetailVM rewardsDetailVM) {
-        Glide.with(this).load(rewardsDetailVM.getMerchantLogo()).asBitmap()
-            .error(rewardsDetailVM.getMerchantLogoDefault())
+        nestedScrollView.setVisibility(View.VISIBLE);
+        Glide.with(this).load(rewardsDetailVM.getDealImage()).asBitmap()
+            .error(R.drawable.ic_image_404_small)
             .into(ivRewardsDetailsThumb);
-        Glide.with(this).load(rewardsDetailVM.getPromotionImage()).asBitmap()
-            .error(rewardsDetailVM.getPromtionImageDefault())
+        Glide.with(this).load(rewardsDetailVM.getDealImage()).asBitmap()
+            .error(R.drawable.ic_image_404_small)
             .into(ivRewardsDetailPic);
 
-        tvRewardsMerchantName.setText(rewardsDetailVM.getMerchantName());
-        tvPromoDetails.setText(rewardsDetailVM.getPromoDetail());
-        tvPromoDetailsSummary.setText(rewardsDetailVM.getPromoDetailSummary());
-        tvPromoTerms.setText(rewardsDetailVM.getPromoTerms());
-        tvPromotionTitle.setText(rewardsDetailVM.getPromotionTitle());
-        tvRewardsDetailTime.setText(rewardsDetailVM.getPromotionTime());
-        tvRewardsDetailLocation.setText(rewardsDetailVM.getLocations());
+        tvRewardsMerchantName.setText(rewardsDetailVM.getDealMerchantVM().getMerchantName());
+        tvPromoDetails.setText(rewardsDetailVM.getDealDescription());
+        tvPromoDetailsSummary.setText(rewardsDetailVM.getDealDescription());
+        tvPromoTerms.setText(rewardsDetailVM.getDealDescription());
+        tvPromoTermsSummary.setText(rewardsDetailVM.getDealDescription());
+        tvPromotionTitle.setText(rewardsDetailVM.getDealName());
+        tvRewardsDetailTime.setText(DateFormater
+            .formaterDDMMMYYYY(rewardsDetailVM.getDealStartDt()) + " - " +
+            DateFormater.formaterDDMMMYYYY(rewardsDetailVM.getDealEndDt()));
+        // TODO: 2018/5/3 this need decide
+        tvRewardsDetailLocation.setText(rewardsDetailVM.getDealLocationVMs().get(0).getLocationName());
         tvRewardsDetailTimeLeft.setText(rewardsDetailVM.getTimeLeft());
-        List<String> terms = rewardsDetailVM.getPromoTermsSummarys();
-        //todo this wait for api
-        StringBuilder termsSummary = new StringBuilder();
-        for (String content : terms) {
-            content = "· " + content + "\n";
-            termsSummary.append(content);
-        }
-        tvPromoTermsSummary.setText(termsSummary.toString());
+    }
 
+    @Override
+    public void showError(String message) {
+        PopWindowUtil.showRequestMessagePop(llContent, message);
     }
 }

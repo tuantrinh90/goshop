@@ -10,6 +10,7 @@ import com.goshop.app.common.view.irecyclerview.widget.footer.LoadMoreFooterView
 import com.goshop.app.data.model.response.common.PaginationData;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.WishlistVM;
+import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
@@ -36,7 +37,7 @@ import injection.modules.PresenterModule;
 public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Presenter> implements
     MyWishlistContract.View,
     OnItemMenuClickListener, PopWindowUtil.OnWishlistDeleteListener, SwipeRefreshLayout
-    .OnRefreshListener, OnLoadMoreListener {
+    .OnRefreshListener, OnLoadMoreListener, MyWishlistAdapter.OnWishListItemClickListener {
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
@@ -69,25 +70,11 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_WISHLIST);
-        setContentView(getContentView());
-        ButterKnife.bind(this);
-        initView();
         initData();
     }
 
     private void initData() {
         mPresenter.getWishlistItems(1, true);
-    }
-
-    private void initView() {
-        initRecyclerView();
-        initToolbar();
-    }
-
-    private void initToolbar() {
-        hideRightMenu();
-        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
     }
 
     @Override
@@ -102,6 +89,10 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_WISHLIST);
+        setContentView(getContentView());
+        ButterKnife.bind(this);
+        initRecyclerView();
     }
 
     private void initRecyclerView() {
@@ -110,6 +101,7 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
         swipeRefresh.setOnRefreshListener(this);
         wishlistAdapter = new MyWishlistAdapter(wishlistVMS);
         wishlistAdapter.setOnItemMenuClickListener(this);
+        wishlistAdapter.setOnWishListItemClickListener(this);
         recyclerviewWishlist.setIAdapter(wishlistAdapter);
         recyclerviewWishlist.setLayoutManager(new LinearLayoutManager(this));
         recyclerviewWishlist.setOnLoadMoreListener(this);
@@ -198,7 +190,11 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
     public void onCategoryClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                openDrawerLayout();
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
                 break;
             case R.id.tv_add_now:
                 updateLayoutStatus(flNoData, false);
@@ -211,5 +207,8 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
         }
     }
 
-
+    @Override
+    public void onWishListClick(WishlistVM wishlistVM) {
+        startActivity(new Intent(this, ProductDetailActivity.class));
+    }
 }

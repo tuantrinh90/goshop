@@ -8,9 +8,11 @@ import com.goshop.app.data.model.response.PromotionListResponse;
 import com.goshop.app.presentation.model.PromotionBannerModel;
 import com.goshop.app.presentation.model.PromotionBannerTopVM;
 import com.goshop.app.utils.PageIntentUtils;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
@@ -43,6 +45,8 @@ public class PromotionBannerActivity extends BaseActivity<PromotionContract.Pres
         super.onCreate(savedInstanceState);
         initIntent();
         mPresenter.getPromotionBanner(new HashMap<>());
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerPromotionBanner), 200);
     }
 
     @Override

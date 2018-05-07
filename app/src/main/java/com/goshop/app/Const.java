@@ -142,6 +142,8 @@ public class Const {
 
     public static final String PARAMS_DEFAULT_SHIPPING = "default_shipping";
 
+    public static final String PARAMS_QUOTE_ITEM_ID = "quote_item_id";
+
     public static final int PROMOTION_CONTENT_ITEM = 2;
 
     //type-banner
@@ -277,6 +279,10 @@ public class Const {
 
     public static final String PARAMS_COUNTRY_CODE = "country_code";
 
+    public static final String REQUEST_PARAM_CUSTOMER_ID = "customer_id";
+
+    public static final String REQUEST_PARAM_DEAL_ID = "deal_id";
+
     public class FlagType {
 
         public static final String FLAG_TYPE_LOAD_LOCAL_DATA = "loadLocalDataFlag";
@@ -285,5 +291,6 @@ public class Const {
 
     }
 
+    public static final String EXPIRE_TILL = "Expire till ";
 
 }

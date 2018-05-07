@@ -2,10 +2,11 @@ package com.goshop.app.presentation.settings;
 
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.SettingsLogoutResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.domian.AccountRepository;
+import com.goshop.app.presentation.model.UserDataVM;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -70,6 +71,26 @@ public class SettingsPresenter extends RxPresenter<SettingsContract.View> implem
                 @Override
                 public void onComplete() {
                     mView.hideLoadingBar();
+                }
+            }));
+    }
+
+    @Override
+    public void getUserInfo() {
+        addSubscrebe(accountRepository.getUserInfo()
+            .subscribeWith(new DisposableObserver<UserDataVM>() {
+                @Override
+                public void onNext(UserDataVM response) {
+                    mView.onUserInfoGetSuccess(response);
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                }
+
+                @Override
+                public void onComplete() {
+
                 }
             }));
     }

@@ -8,11 +8,13 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.PromotionSkuModel;
 import com.goshop.app.data.model.SkuBannerVM;
 import com.goshop.app.data.model.SkuFilterWithDataVM;
-import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.utils.PageIntentUtils;
+import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.adapter.FilterDrawerAdapter;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -72,7 +74,7 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
 
     private String intentUrl = "";
 
-    private FilterMenuAdapter menuAdapter;
+    private FilterDrawerAdapter menuAdapter;
 
     private PromotionSkuAdapter skuAdapter;
 
@@ -81,6 +83,8 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
         super.onCreate(savedInstanceState);
         //todo wait for api
         mPresenter.promotionSkuRequest(null);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(tvBtnFilterDone), 200);
     }
 
     @Override
@@ -124,7 +128,7 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
     private void initFilterMenuRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerviewFilter.setLayoutManager(layoutManager);
-        menuAdapter = new FilterMenuAdapter(new ArrayList<>());
+        menuAdapter = new FilterDrawerAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
     }
 

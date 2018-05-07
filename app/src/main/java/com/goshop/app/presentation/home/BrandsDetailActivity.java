@@ -10,14 +10,15 @@ import com.goshop.app.presentation.model.BrandsDetailVM;
 import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
-import com.goshop.app.presentation.search.FilterMenuAdapter;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.widget.adapter.FilterDrawerAdapter;
 import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
@@ -81,7 +82,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
 
     private ProductGridVerticalAdapter gridVerticalAdapter;
 
-    private FilterMenuAdapter menuAdapter;
+    private FilterDrawerAdapter menuAdapter;
 
     private List<SortVM> sortVMS;
 
@@ -91,6 +92,8 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
         //todo wait for api
         mPresenter.brandsDetailRequest(null);
         mPresenter.filterMenuRequest(null);
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewDetails), 200);
     }
 
     @Override
@@ -128,7 +131,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     private void initFilterMenuRecyclerView() {
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerviewFilter.setLayoutManager(layoutManager);
-        menuAdapter = new FilterMenuAdapter(new ArrayList<>());
+        menuAdapter = new FilterDrawerAdapter(new ArrayList<>());
         recyclerviewFilter.setAdapter(menuAdapter);
     }
 

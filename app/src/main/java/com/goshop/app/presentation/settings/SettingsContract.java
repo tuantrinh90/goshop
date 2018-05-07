@@ -2,8 +2,8 @@ package com.goshop.app.presentation.settings;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
-
-import java.util.Map;
+import com.goshop.app.data.model.response.common.UserData;
+import com.goshop.app.presentation.model.UserDataVM;
 
 public class SettingsContract {
 
@@ -16,6 +16,8 @@ public class SettingsContract {
         void showServiceErrorMessage(String errorMessage);
 
         void showNetworkErrorMessage(String errorMessage);
+
+        void onUserInfoGetSuccess(UserDataVM response);
     }
 
     public interface Presenter extends BasePresenter<View> {
@@ -23,6 +25,7 @@ public class SettingsContract {
         void settingsLogoutRequest();
 
         void clearUserInfo();
+        void getUserInfo();
     }
 
 }

@@ -5,8 +5,10 @@ import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.RobotoMediumTabLayout;
 import com.goshop.app.utils.MenuUtil;
+import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v7.widget.Toolbar;
@@ -38,16 +40,12 @@ public class MyRewardsActivity extends BaseDrawerActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_REWARDS);
-        setContentView(getContentView());
-        initToolbar();
+
         initTabLayoutViewPager();
+        // TODO: 2018/4/26 this need delete later
+        new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(viewpagerMyRewards), 200);
     }
 
-    private void initToolbar() {
-        hideRightMenu();
-        imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
-    }
 
     @Override
     public int getContentView() {
@@ -56,7 +54,8 @@ public class MyRewardsActivity extends BaseDrawerActivity {
 
     @Override
     public void inject() {
-        //don't need to override this method now.
+        setCurrentMenuType(MenuUtil.MENU_TYPE_MY_REWARDS);
+        setContentView(getContentView());
     }
 
     private void initTabLayoutViewPager() {
@@ -83,7 +82,11 @@ public class MyRewardsActivity extends BaseDrawerActivity {
     public void onMyRewardsClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
-                openDrawerLayout();
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                    openDrawerLayout();
+                } else {
+                    finish();
+                }
                 break;
         }
     }

@@ -20,8 +20,6 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.data.retrofit.ServiceApiFail;
 import com.goshop.app.data.source.ProductDataSource;
 
-import android.util.Log;
-
 import java.util.HashMap;
 import java.util.Map;
 
@@ -175,6 +173,11 @@ public class ProductDataRepository implements ProductRepository {
     public Observable<Response<CartDataResponse>> removeFromCartRequest(
         AddRemoveCartRequest request) {
         return getServerData(productCloudDataSource.removeFromCartRequest(request));
+    }
+
+    @Override
+    public Observable<Response<CartDataResponse>> updateCartRequest(Map<String, Object> params) {
+        return getServerData(productCloudDataSource.updateCartRequest(params));
     }
 
     private boolean isSuccess(String status) {

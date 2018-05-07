@@ -344,7 +344,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
 
     class ProductDetailTopViewHolder extends RecyclerView.ViewHolder
         implements ProductDetailActivity.OnAttributeSelectListener,
-        ProductDetailActivity.OnAddCartClickListener{
+        ProductDetailActivity.OnAddCartClickListener, ProductDetailActivity.OnWishlistListener{
 
         @BindView(R.id.et_product_minus_plus)
         CustomMPEditText etProductMinusPlus;
@@ -384,6 +384,7 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             ButterKnife.bind(this, itemView);
             ((ProductDetailActivity)context).setOnAttributeSelectListener(this);
             ((ProductDetailActivity)context).setOnAddCartClickListener(this::onAddClick);
+            ((ProductDetailActivity)context).setOnWishlistListener(this);
         }
 
         void bindingData(ProductDetailTopVM bannerVM) {
@@ -397,20 +398,12 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
             ivProductDetailShare.setOnClickListener(v -> {
             });
             ivProductDetailWish.setOnClickListener(
-                v -> {
-                    onProductDetailItemClickListener
-                        .onWishlistSelect(!ivProductDetailWish.isSelected());
-                    ivProductDetailWish.setSelected(!ivProductDetailWish.isSelected());
-
-                });
-            rlProductDetailColor.setOnClickListener(v -> {
-                onProductDetailItemClickListener.
-                    onProductColorClick(itemView,tvProductDetailColor.getText().toString());
-            });
-            rlProductDetailSize.setOnClickListener(v -> {
-                onProductDetailItemClickListener.
-                    onProductSizeClick(itemView,tvProductDetailSize.getText().toString());
-            });
+                v -> onProductDetailItemClickListener
+                    .onWishlistSelect(!ivProductDetailWish.isSelected()));
+            rlProductDetailColor.setOnClickListener(v -> onProductDetailItemClickListener.
+                onProductColorClick(itemView,tvProductDetailColor.getText().toString()));
+            rlProductDetailSize.setOnClickListener(v -> onProductDetailItemClickListener.
+                onProductSizeClick(itemView,tvProductDetailSize.getText().toString()));
             tvProductDetailColor.setText(bannerVM.getColorVMS().get(0).getColorName());
             tvProductDetailSize.setText(bannerVM.getSizeVMS().get(0).getSizeName());
         }
@@ -428,6 +421,11 @@ public class ProductDetailAdapter extends RecyclerView.Adapter {
         @Override
         public void onAddClick() {
             onProductDetailItemClickListener.setAddCartQty(etProductMinusPlus.getText());
+        }
+
+        @Override
+        public void onWishlistClick(boolean isAdd) {
+            ivProductDetailWish.setSelected(isAdd);
         }
     }
 

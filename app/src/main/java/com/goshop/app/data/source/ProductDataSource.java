@@ -65,4 +65,6 @@ public interface ProductDataSource {
     Observable<Response<CartDataResponse>> addToCartRequest(AddRemoveCartRequest request);
 
     Observable<Response<CartDataResponse>> removeFromCartRequest(AddRemoveCartRequest request);
+
+    Observable<Response<CartDataResponse>> updateCartRequest(Map<String, Object> params);
 }

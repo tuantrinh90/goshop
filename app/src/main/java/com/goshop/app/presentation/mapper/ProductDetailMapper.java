@@ -1,9 +1,14 @@
 package com.goshop.app.presentation.mapper;
 
 import com.goshop.app.Const;
+import com.goshop.app.data.model.response.AllReviewsResponse;
 import com.goshop.app.data.model.response.ProductDetailResponse;
+import com.goshop.app.data.model.response.QuestionAnswerResponse;
+import com.goshop.app.data.model.response.common.AdditionalInformationData;
 import com.goshop.app.data.model.response.common.PDPProductData;
 import com.goshop.app.data.model.response.common.PriceData;
+import com.goshop.app.data.model.response.common.QuestionsData;
+import com.goshop.app.data.model.response.common.ReviewsData;
 import com.goshop.app.data.model.response.common.SuperAttributeData;
 import com.goshop.app.data.model.response.common.VariantData;
 import com.goshop.app.presentation.model.PdpAdditionalInformationVM;
@@ -22,7 +27,9 @@ import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.QAVM;
 import com.goshop.app.presentation.model.widget.ReviewsVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.utils.DateFormater;
 import com.goshop.app.utils.NumberFormater;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,16 +39,27 @@ public class ProductDetailMapper {
 
     private static final String COLOR = "Color";
 
+    private static List<ProductDetailModel> informations;
+
     public static List<ProductDetailModel> transform(ProductDetailResponse response) {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(getProductTopData(response));
         detailModels.addAll(getProductSummary(response.getProduct().getSummary()));
         detailModels.addAll(getProductsDetail(response.getProduct().getDetails()));
         detailModels.addAll(getProductsDelivery());
-        detailModels.addAll(getProductReviews());
-        detailModels.addAll(getProductQuestionAnswer());
-        detailModels.addAll(getAdditionalInformation());
-        detailModels.addAll(getFrequentlyBoughtTogether());
+        informations = getAdditionalInformation(response.getProduct().getAdditionalInformation());
+        return detailModels;
+    }
+
+    public static List<ProductDetailModel> transform(AllReviewsResponse response) {
+        List<ProductDetailModel> detailModels = new ArrayList<>();
+        detailModels.addAll(getProductReviews(response));
+        return detailModels;
+    }
+
+    public static List<ProductDetailModel> transform(QuestionAnswerResponse response) {
+        List<ProductDetailModel> detailModels = new ArrayList<>();
+        detailModels.addAll(getProductQuestionAnswer(response));
         return detailModels;
     }
 
@@ -112,7 +130,6 @@ public class ProductDetailMapper {
         return detailModels;
     }
 
-    //TODO  this is mock data
     private static List<ProductDetailModel> getProductsDelivery() {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(false, false, "Delivery Info"));
@@ -120,50 +137,56 @@ public class ProductDetailMapper {
         return detailModels;
     }
 
-    //TODO this is mock data
-    private static List<ProductDetailModel> getProductReviews() {
+    private static List<ProductDetailModel> getProductReviews(AllReviewsResponse response) {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(true, true, "Reviews"));
+
         List<ReviewsVM> reviewsVMS = new ArrayList<>();
-        ReviewsVM reviewsVM = new ReviewsVM(4, "Lorem ipsum dolor sit amet",
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla quam velit",
-            "User Name", "1/2/18");
-        reviewsVMS.add(reviewsVM);
-        reviewsVMS.add(reviewsVM);
-        detailModels.add(new PdpReviewsVM(5, "(100)", reviewsVMS));
+        List<ReviewsData> reviewsDatas = response.getReviews();
+        for (int i = 0; i < reviewsDatas.size(); i++) {
+            ReviewsData data = reviewsDatas.get(i);
+            reviewsVMS.add(new ReviewsVM(data.getRating(), data.getTitle(),
+                data.getDescription(),
+                data.getName(), DateFormater.formaterDDMMYY(data.getDate())));
+            if (i == 1) {
+                break;
+            }
+        }
+        detailModels.add(new PdpReviewsVM(response.getTotalRating(),
+            NumberFormater.formaterInsideNumber(response.getTotalReviews()), reviewsVMS));
         return detailModels;
     }
 
-    //TODO this is mock data
-    private static List<ProductDetailModel> getProductQuestionAnswer() {
+    private static List<ProductDetailModel> getProductQuestionAnswer(
+        QuestionAnswerResponse response) {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(true, true, "Q&A"));
 
-        QAVM qavm = new QAVM("3", "Lorem ipsum dolor sit amet, consectetur adipiscing elit. ",
-            "1/2/2018");
+        List<QuestionsData> questionsDatas = response.getQuestions();
         List<QAVM> qavms = new ArrayList<>();
-        qavms.add(qavm);
-        qavms.add(qavm);
-        detailModels.add(new PdpQAVM("10", "10", qavms));
+        for (int i = 0; i < questionsDatas.size(); i++) {
+            QuestionsData data = questionsDatas.get(i);
+            qavms.add(new QAVM("", data.getQuestion(),
+                DateFormater.formaterDDMMYY(data.getQuestionDate())));
+            if (i == 1) {
+                break;
+            }
+        }
+        detailModels
+            .add(new PdpQAVM(response.getTotalAnswers(), response.getTotalQuestions(), qavms));
+        detailModels.addAll(informations);
         return detailModels;
     }
 
-    //TODO  this is mock data
-    private static List<ProductDetailModel> getAdditionalInformation() {
+    private static List<ProductDetailModel> getAdditionalInformation(
+        List<AdditionalInformationData> informationDatas) {
         List<ProductDetailModel> detailModels = new ArrayList<>();
         detailModels.add(new PdpExpandTitleVM(true, true, "Additional Information"));
-
         List<PdpAdditionalItemVM> additionalItemVMS = new ArrayList<>();
-
-        additionalItemVMS.add(new PdpAdditionalItemVM("A/S Processing Standard", "N/A"));
-        additionalItemVMS.add(new PdpAdditionalItemVM("Quality Guarantee Period", "N/A"));
-        additionalItemVMS.add(new PdpAdditionalItemVM("Basic Constitution", "N/A"));
-        additionalItemVMS.add(new PdpAdditionalItemVM("Precaution", "N/A"));
-        additionalItemVMS
-            .add(new PdpAdditionalItemVM("Return/Cancel Processing Standard", "N/A"));
-        additionalItemVMS.add(new PdpAdditionalItemVM("Model Name", "N/A"));
-        additionalItemVMS.add(new PdpAdditionalItemVM("Material", "N/A"));
-        additionalItemVMS.add(new PdpAdditionalItemVM("Product Features", "N/A"));
+        for (AdditionalInformationData informationData : informationDatas) {
+            additionalItemVMS.add(new PdpAdditionalItemVM(informationData.getAttributeLabel(),
+                informationData.getValueLabel()));
+        }
         detailModels.add(new PdpAdditionalInformationVM(additionalItemVMS));
         return detailModels;
     }

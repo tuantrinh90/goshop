@@ -155,10 +155,12 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
                 break;
 
             case R.id.tv_profile_title:
-                EditTextUtil.eidtLoseFocus(view);
+                //todo please dont delete this, this is mock and wait for api
+                tvProfileTitle.setText("Mr");
+               /* EditTextUtil.eidtLoseFocus(view);
                 currentPopType = PopWindowUtil.TITLE_POP;
                 PopWindowUtil.showSingleChoosePop(tvProfileTitle,
-                    getResources().getString(R.string.choose_title), titleVMS, this);
+                    getResources().getString(R.string.choose_title), titleVMS, this);*/
                 break;
 
             case R.id.tv_profile_language:
@@ -226,6 +228,10 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
         etProfileName.setText(profileVM.getName());
         tvProfileDateOfBirth.setText(profileVM.getBirth());
         etProfileMobile.setText(profileVM.getMobile());
+        //todo api data have some problem
+        tvProfileTitle.setText(profileVM.getTitle().get(0).getValue());
+        tvProfileLanguage.setText(profileVM.getLanguage().get(0).getValue());
+        tvProfileRace.setText(profileVM.getRace().get(0).getValue());
     }
 
     @Override

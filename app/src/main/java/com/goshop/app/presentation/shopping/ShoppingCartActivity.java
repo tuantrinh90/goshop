@@ -10,14 +10,11 @@ import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
-import com.goshop.app.presentation.model.widget.ProductCartListVM;
-import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.PopWindowUtil;
-import com.goshop.app.widget.adapter.WidgetProductListAdapter;
-import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,7 +24,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
@@ -42,14 +38,8 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContract.Presenter>
-    implements ShoppingCartContract.View, OnItemMenuClickListener,
+    implements ShoppingCartContract.View, ShoppingCartAdapter.OnCartItemClickListener,
     PopWindowUtil.OnCartItemMenuClickListener {
-
-    public static final String EXTRA_ENTRANCE = "extra_entrance";
-
-    public static final String TYPE_ENTRANCE_DRAWER = "drawer";
-
-    public static final String TYPE_ENTRANCE_HOME = "pdp";
 
     @BindView(R.id.imageview_left_menu)
     ImageView imageViewLeftMenu;
@@ -84,17 +74,16 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     @BindView(R.id.tv_cart_billing_disscount)
     RobotoLightTextView tvCartBillingDisscount;
 
+    @BindView(R.id.tv_cart_disscount_code)
+    RobotoLightTextView tvCartDisscountCode;
+
     @BindView(R.id.tv_cart_billing_total)
     RobotoMediumTextView tvCartBillingTotal;
 
     @BindView(R.id.rl_cart_disscount)
     RelativeLayout rlCartDisscount;
 
-    private WidgetProductListAdapter shoppingCartAdapter;
-
-    private String entranceType;
-
-    private ProductsVM productsVM;
+    private ShoppingCartAdapter shoppingCartAdapter;
 
     private String cartId;
 
@@ -106,26 +95,9 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setCurrentMenuType(MenuUtil.MENU_TYPE_SHOPPING_CART);
-        setContentView(getContentView());
-        initIntent();
-        initToolbar();
         initRecyclerView();
         initSwipRefreshLayout();
         mPresenter.viewCartDetails(page, false);
-    }
-
-    private void initIntent() {
-        entranceType = getIntent().getStringExtra(EXTRA_ENTRANCE);
-    }
-
-    private void initToolbar() {
-        hideRightMenu();
-        if (TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
-            imageViewLeftMenu.setImageResource(R.drawable.ic_menu);
-        } else {
-            imageViewLeftMenu.setImageResource(R.drawable.ic_icon_back);
-        }
     }
 
     @Override
@@ -140,6 +112,8 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             .presenterModule(new PresenterModule(this))
             .build()
             .inject(this);
+        setCurrentMenuType(MenuUtil.MENU_TYPE_SHOPPING_CART);
+        setContentView(getContentView());
     }
 
     private void initSwipRefreshLayout() {
@@ -161,9 +135,9 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvShoppintCart.setLayoutManager(layoutManager);
-        shoppingCartAdapter = new WidgetProductListAdapter(new ArrayList<>());
+        shoppingCartAdapter = new ShoppingCartAdapter(new ArrayList<>());
         rvShoppintCart.setAdapter(shoppingCartAdapter);
-        shoppingCartAdapter.setOnItemMenuClickListener(this);
+        shoppingCartAdapter.setOnCartItemClickListener(this);
     }
 
     @Override
@@ -173,11 +147,10 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @Override
     public void showCartDetail(ShoppingCartProductVM cartProductVM) {
-        if (cartProductVM.getProductListModels() != null && cartProductVM.getProductListModels()
-            .size() > 0) {
+        if (cartProductVM.getProductVMS() != null && !cartProductVM.getProductVMS().isEmpty()) {
             updateLayoutStatus(flContent, true);
             cartId = cartProductVM.getId();
-            shoppingCartAdapter.setListModels(cartProductVM.getProductListModels());
+            shoppingCartAdapter.setProductVMS(cartProductVM.getProductVMS());
 
             if (cartProductVM.getDiscount() != null && TextUtils
                 .isEmpty(cartProductVM.getDiscount())) {
@@ -191,6 +164,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 rlCartDisscount.setVisibility(View.VISIBLE);
                 tvCartBillingDisscount.setText(
                     NumberFormater.formaterDiscountPrice(cartProductVM.getDiscount()));
+                tvCartDisscountCode.setText(cartProductVM.getDiscountCode());
                 etCartApply.setText(cartProductVM.getDiscount());
                 tvBtnCartApply.setText(getResources().getString(R.string.cancel));
                 tvBtnCartApply.setSelected(true);
@@ -249,26 +223,21 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             etCartApply.setText(discountVM.getDiscount());
             etCartApply.setFocusable(false);
             etCartApply.setFocusableInTouchMode(false);
-            tvCartBillingDisscount.setText(NumberFormater.formaterDiscountPrice(discountVM.getDiscount()));
+            tvCartBillingDisscount
+                .setText(NumberFormater.formaterDiscountPrice(discountVM.getDiscount()));
         }
 
         tvCartBillingTotal.setText(discountVM.getOriginalPrice());
     }
 
     @Override
-    public void onItemMenuClick(View parentView, Object object) {
-        productsVM = ((ProductCartListVM) object).getProductsVM();
-        PopWindowUtil.showShoppingCartMenuPop(parentView, this);
+    public void onCartWishlist(ProductVM productVM) {
+        mPresenter.addWishlistRequest(productVM.getId());
     }
 
     @Override
-    public void onCartWishlist() {
-        mPresenter.addWishlistRequest(productsVM.getId());
-    }
-
-    @Override
-    public void onCartDeleteClick() {
-        mPresenter.removeFromCartRequest(productsVM.getId(), productsVM.getAmount());
+    public void onCartDeleteClick(ProductVM productVM) {
+        mPresenter.removeFromCartRequest(productVM.getId(), productVM.getAmount());
     }
 
     @OnClick({R.id.tv_btn_cart_apply, R.id.tv_btn_cart_checkout, R.id.imageview_left_menu, R.id
@@ -287,7 +256,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
                 break;
             case R.id.imageview_left_menu:
-                if (TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
+                if (MenuUtil.TYPE_ENTRANCE_DRAWER.equals(entranceType)) {
                     openDrawerLayout();
                 } else {
                     finish();
@@ -308,4 +277,27 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
         }
     }
 
+    @Override
+    public void onPlusMinusClick(boolean isPlus, String qty, ProductVM productVM) {
+        //todo this is wait for api
+        mPresenter.updateCartRequest("", qty);
+    }
+
+    @Override
+    public void onEditSend(String qty, ProductVM productVM) {
+        KeyBoardUtils.hideKeyboard(this);
+        //todo this is wait for api
+        mPresenter.updateCartRequest("", qty);
+    }
+
+    @Override
+    public void onProductItemClick(ProductVM productVM) {
+        Intent intent = new Intent(this, ProductDetailActivity.class);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onItemMenuClick(View parentView, ProductVM productVM) {
+        PopWindowUtil.showShoppingCartMenuPop(parentView, productVM, this);
+    }
 }

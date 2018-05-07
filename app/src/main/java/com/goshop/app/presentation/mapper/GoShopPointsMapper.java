@@ -6,6 +6,7 @@ import com.goshop.app.data.model.response.common.TransactionsData;
 import com.goshop.app.presentation.model.PointsDetailVM;
 import com.goshop.app.presentation.model.PointsModel;
 import com.goshop.app.presentation.model.PointsTotalVM;
+import com.goshop.app.utils.DateFormater;
 import com.goshop.app.utils.NumberFormater;
 
 import java.util.ArrayList;
@@ -36,7 +37,7 @@ public class GoShopPointsMapper {
                     transactionsData.getType(),
                     transactionsData.getValidUntil(),
                     NumberFormater.formaterPointOrderNo(transactionsData.getOrderNumber()),
-                    transactionsData.getDate());
+                    DateFormater.formaterISODateLower(transactionsData.getDate()));
                 detailVMS.add(detailVM);
             }
             pointsModels.addAll(detailVMS);

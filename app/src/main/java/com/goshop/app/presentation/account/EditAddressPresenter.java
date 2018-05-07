@@ -12,8 +12,6 @@ import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.presentation.mapper.AddressMapper;
 import com.goshop.app.presentation.model.ProfileMetaVM;
 
-import android.view.View;
-
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;

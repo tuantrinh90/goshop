@@ -171,4 +171,6 @@
         rx.internal.util.atomic.LinkedQueueNode consumerNode;
     }
 
+## exoplayer2
+-dontwarn com.google.android.exoplayer2.ui.**
 

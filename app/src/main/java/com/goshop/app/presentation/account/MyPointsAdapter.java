@@ -7,6 +7,7 @@ import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.PointsDetailVM;
 import com.goshop.app.presentation.model.PointsModel;
 import com.goshop.app.presentation.model.PointsTotalVM;
+import com.goshop.app.utils.DateFormater;
 
 import android.annotation.SuppressLint;
 import android.support.v4.content.ContextCompat;
@@ -133,7 +134,7 @@ public class MyPointsAdapter extends RecyclerView.Adapter {
             tvPointsCounts.setTextColor(
                 ContextCompat.getColor(itemView.getContext(), detailVM
                     .getType() == 1 ? R.color.color_main_pink : R.color.color_grayscale_text));
-            tvPointsDate.setText(detailVM.getDate());
+            tvPointsDate.setText(DateFormater.formaterDDMMYYYY(detailVM.getDate()));
             tvPointsDescription.setText(detailVM.getDescription());
             tvPointsOrderNo.setText(detailVM.getOrderNo());
             tvPointsTime.setText(detailVM.getTime());

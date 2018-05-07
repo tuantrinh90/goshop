@@ -5,7 +5,6 @@ import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.AddressVM;
 
 import java.util.List;
-import java.util.Map;
 
 public class MyAddressBookContract {
 

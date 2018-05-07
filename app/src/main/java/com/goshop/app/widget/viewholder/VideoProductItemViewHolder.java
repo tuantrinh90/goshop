@@ -1,7 +1,6 @@
 package com.goshop.app.widget.viewholder;
 
 import com.bumptech.glide.Glide;
-import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
@@ -55,7 +54,7 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
             .setText(NumberFormater.formaterPrice(productsVM.getPriceVM().getRm().getDiscounted()));
         tvVideoProductPercent.setText(productsVM.getPriceVM().getRm().getDiscountTitle());
         Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
-            .error(R.drawable.ic_bought)
+            .error(R.drawable.ic_image_404_small)
             .into(ivVideoProductThumb);
 
         tvBtnVideoProductBuy.setOnClickListener(v -> buyClickListener.onBuyNowClick(productsVM));

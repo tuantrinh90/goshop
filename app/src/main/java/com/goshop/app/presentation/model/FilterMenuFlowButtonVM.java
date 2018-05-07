@@ -4,18 +4,20 @@ import java.util.List;
 
 public class FilterMenuFlowButtonVM extends FilterMenuModel {
 
-    private List<String> categorys;
+    private List<FilterFlowVM> filterFlowVMS;
 
-    public FilterMenuFlowButtonVM(List<String> categorys) {
+    public FilterMenuFlowButtonVM(List<FilterFlowVM> filterFlowVMS) {
         super(FilterMenuModel.FILTER_FLOWBUTTONS);
-        this.categorys = categorys;
+        this.filterFlowVMS = filterFlowVMS;
     }
 
-    public List<String> getCategorys() {
-        return categorys;
+    public List<FilterFlowVM> getFilterFlowVMS() {
+        return filterFlowVMS;
     }
 
-    public void setCategorys(List<String> categorys) {
-        this.categorys = categorys;
+    public void setFilterFlowVMS(
+        List<FilterFlowVM> filterFlowVMS) {
+        this.filterFlowVMS = filterFlowVMS;
     }
+
 }

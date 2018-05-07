@@ -4,8 +4,6 @@ import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.OrderDetailVM;
 
-import java.util.Map;
-
 public class OrderDetailContract {
 
     interface View extends BaseView {
