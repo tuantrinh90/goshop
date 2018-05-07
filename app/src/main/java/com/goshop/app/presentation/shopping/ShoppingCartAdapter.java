@@ -6,6 +6,7 @@ import com.goshop.app.common.CustomMPCartEditText;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.common.ProductVM;
+import com.goshop.app.utils.GlideUtils;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
@@ -94,9 +95,11 @@ public class ShoppingCartAdapter extends RecyclerView.Adapter {
 
         public void bindingData(ProductVM productVM) {
             this.productVM = productVM;
-            Glide.with(itemView.getContext()).load(productVM.getImage()).asBitmap()
-                .error(productVM.getImageDefault())
-                .into(ivCartProductThumb);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                productVM.getImage(),
+                ivCartProductThumb,
+                productVM.getImageDefault());
             tvCartProductTitle.setText(productVM.getTitle());
             tvProductCartAttr.setText(productVM.getAttribute());
             tvProductCartNow.setText(productVM.getNowPrice());

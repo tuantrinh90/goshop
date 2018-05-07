@@ -2,6 +2,7 @@ package com.goshop.app.adapter;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.goshop.app.utils.GlideUtils;
 import com.jakewharton.rxbinding2.view.RxView;
 
 import android.content.Context;
@@ -43,6 +44,10 @@ public class SlidingImageAdapter extends PagerAdapter {
         final ImageView imageView = imageLayout
             .findViewById(R.id.iv_sliding);
         Glide.with(context).load(imageUrls.get(position)).into(imageView);
+        GlideUtils.loadImage(
+            context,
+            imageUrls.get(position),
+            imageView);
         view.addView(imageLayout, 0);
         RxView.clicks(imageView)
             .subscribe(v -> {

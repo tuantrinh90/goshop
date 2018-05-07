@@ -3,6 +3,7 @@ package com.goshop.app.widget;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.WidgetSinglePictureVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnSinglePicturClickListener;
 
 import android.support.v7.widget.RecyclerView;
@@ -25,9 +26,11 @@ public class WidgetSinglePictureViewHolder extends RecyclerView.ViewHolder {
     void bindingData(WidgetSinglePictureVM singlePictureVM,
         OnSinglePicturClickListener onSinglePicturClickListener) {
         //todo wait for api
-        Glide.with(itemView.getContext()).load(""/*singlePictureVM.getOfferListItemsVMS().get(0).getImage()*/).asBitmap()
-            .error(R.drawable.ic_detail_top_demo)
-            .into(ivSinglePicture);
+        GlideUtils.loadImageError(
+            itemView.getContext(),
+            ""/*singlePictureVM.getOfferListItemsVMS().get(0).getImage()*/,
+            ivSinglePicture,
+            R.drawable.ic_detail_top_demo);
         itemView.setOnClickListener(v -> onSinglePicturClickListener.onSinglePictureClick(singlePictureVM));
     }
 }

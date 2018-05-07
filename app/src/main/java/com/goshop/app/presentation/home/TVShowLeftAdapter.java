@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.utils.GlideUtils;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
@@ -79,9 +80,11 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(TVShowVM tvShowVM, int position) {
-            Glide.with(itemView.getContext()).load(tvShowVM.getImageUrl()).asBitmap()
-                .error(tvShowVM.getImageDefault())
-                .into(ivTvShowLeft);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                tvShowVM.getImageUrl(),
+                ivTvShowLeft,
+                R.drawable.ic_image_404_big);
             tvTvShowLeftTime.setText(tvShowVM.getDuration());
             tvTvShowTitle.setText(tvShowVM.getTitle());
             tvBtnTvShowBuy.setOnClickListener(v -> {
