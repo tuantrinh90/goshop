@@ -129,12 +129,12 @@ public class MyAddressBookActivity extends BaseActivity<MyAddressBookContract.Pr
 
     @Override
     public void selectDefaultShippingAddress(AddressVM addressVM, int position) {
-        mPresenter.editAddressRequest(false);
+        mPresenter.setDefaultShippingBilling(false);
     }
 
     @Override
     public void selectDefaultBillingAddress(AddressVM addressVM, int position) {
-        mPresenter.editAddressRequest(false);
+        mPresenter.setDefaultShippingBilling(true);
     }
 
     private void initSwipRefreshLayout() {

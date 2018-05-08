@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@android:color/white"
     android:paddingLeft="@dimen/size_16"
@@ -50,7 +50,7 @@
 
         <com.goshop.app.common.view.RobotoLightTextView
             android:id="@+id/tv_all_deal_end"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingTop="@dimen/size_2"
             android:textColor="@color/color_black_light_second"

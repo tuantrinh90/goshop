@@ -138,6 +138,8 @@ public interface RestApi {
 
     Observable<Response<AddressResponse>> editAddressRequest(Map<String, Object> params);
 
+    Observable<Response<AddressResponse>> setDefaultShippingBilling(Map<String, Object> params);
+
     Observable<AddressResponse> myAddressRequest(Map<String, Object> params);
 
     Observable<Response<CartDataResponse>> viewCartDetails(Map<String, Object> params);

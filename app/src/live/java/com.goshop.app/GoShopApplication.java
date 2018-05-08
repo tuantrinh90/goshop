@@ -2,9 +2,9 @@ package com.goshop.app;
 
 import com.crashlytics.android.Crashlytics;
 import com.facebook.FacebookSdk;
-import com.goshop.app.data.model.response.common.UserData;
 import com.goshop.app.data.realm.EncryptionKey;
 import com.goshop.app.data.realm.SchemaMigration;
+import com.goshop.app.presentation.model.UserDataVM;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
@@ -28,7 +28,7 @@ public class GoShopApplication extends MultiDexApplication {
 
     private static boolean isLogin;
 
-    private static UserData userInfo;
+    private static UserDataVM userInfo;
 
     public static Context getAppContext() {
         return GoShopApplication.context;
@@ -85,11 +85,11 @@ public class GoShopApplication extends MultiDexApplication {
         isLogin = login;
     }
 
-    public static void cacheUserInfo(UserData userInfo) {
+    public static void cacheUserInfo(UserDataVM userInfo) {
         GoShopApplication.userInfo = userInfo;
     }
 
-    public static UserData getCacheUserInfo() {
+    public static UserDataVM getCacheUserInfo() {
         return userInfo;
     }
 

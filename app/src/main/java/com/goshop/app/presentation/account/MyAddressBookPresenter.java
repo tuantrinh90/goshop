@@ -85,5 +85,38 @@ public class MyAddressBookPresenter extends RxPresenter<MyAddressBookContract.Vi
             }));
     }
 
+    @Override
+    public void setDefaultShippingBilling(boolean isBilling) {
+        mView.showLoadingBar();
+        Map<String, Object> params = new HashMap<>();
+        params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
+        params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
+        if(isBilling) {
+            params.put(Const.PARAMS_DEFAULT_BILLING, isBilling);
+        } else {
+            params.put(Const.PARAMS_DEFAULT_SHIPPING, !isBilling);
+        }
+        addSubscrebe(accountRepository.setDefaultShippingBilling(params).subscribeWith(
+            new DisposableObserver<Response<AddressResponse>>() {
+                @Override
+                public void onNext(Response<AddressResponse> response) {
+                    mView.hideLoadingBar();
+                    mView.getAddressListSuccess(AddressMapper.transform(response));
+                }
+
+                @Override
+                public void onError(Throwable e) {
+                    mView.hideLoadingBar();
+                    mView.showErrorMessage(e.getLocalizedMessage().toString());
+                }
+
+                @Override
+                public void onComplete() {
+
+                }
+            }));
+
+    }
+
 
 }

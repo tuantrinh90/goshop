@@ -300,6 +300,13 @@ public class RetrofitRestApiImpl implements RestApi {
     }
 
     @Override
+    public Observable<Response<AddressResponse>> setDefaultShippingBilling(
+        Map<String, Object> params) {
+        String url = EndpointAddress.getFullUrl(EndpointAddress.SET_DEFAULT_SHIPPING_BILLING_ADDRESS);
+        return retrofitRestApi.setDefaultShippingBilling(url, params);
+    }
+
+    @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         String url = EndpointAddress.getFullUrl(EndpointAddress.MY_ADDRESS);
         return retrofitRestApi.myAddressRequest(url, params);

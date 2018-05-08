@@ -22,5 +22,7 @@ public class MyAddressBookContract {
         void editAddressRequest(boolean isBilling);
 
         void getAddressList(int page, boolean isRefresh);
+
+        void setDefaultShippingBilling(boolean isBilling);
     }
 }
