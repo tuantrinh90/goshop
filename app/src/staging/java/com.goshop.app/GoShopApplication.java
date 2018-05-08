@@ -6,6 +6,7 @@ import com.goshop.app.data.realm.SchemaMigration;
 import com.goshop.app.presentation.model.UserDataVM;
 import com.orhanobut.logger.AndroidLogAdapter;
 import com.orhanobut.logger.Logger;
+import com.pushwoosh.Pushwoosh;
 import com.squareup.leakcanary.LeakCanary;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -38,6 +39,11 @@ public class GoShopApplication extends MultiDexApplication {
         setLeakCanary();
         initRealm();
         Logger.addLogAdapter(new AndroidLogAdapter());
+        initPushwoosh();
+    }
+
+    private void initPushwoosh() {
+        Pushwoosh.getInstance().registerForPushNotifications();
     }
 
     public static ApplicationComponent getApplicationComponent() {
