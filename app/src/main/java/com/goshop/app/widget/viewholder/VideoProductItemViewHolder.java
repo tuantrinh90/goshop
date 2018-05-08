@@ -6,6 +6,7 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
@@ -53,9 +54,11 @@ public class VideoProductItemViewHolder extends RecyclerView.ViewHolder {
         tvVideoProductNow
             .setText(NumberFormater.formaterPrice(productsVM.getPriceVM().getRm().getDiscounted()));
         tvVideoProductPercent.setText(productsVM.getPriceVM().getRm().getDiscountTitle());
-        Glide.with(itemView.getContext()).load(productsVM.getImage()).asBitmap()
-            .error(R.drawable.ic_image_404_small)
-            .into(ivVideoProductThumb);
+        GlideUtils.loadImageError(
+            itemView.getContext(),
+            productsVM.getImage(),
+            ivVideoProductThumb,
+            R.drawable.ic_image_404_small);
 
         tvBtnVideoProductBuy.setOnClickListener(v -> buyClickListener.onBuyNowClick(productsVM));
 

@@ -6,6 +6,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.AllReviewsVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
@@ -104,9 +105,11 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
 
     @Override
     public void showAllReviewsResult(AllReviewsVM allReviewsVM) {
-        Glide.with(this).load(allReviewsVM.getThumb()).asBitmap()
-            .error(allReviewsVM.getThumbDefault())
-            .into(ivAllReviewsThumb);
+        GlideUtils.loadImageError(
+            this,
+            allReviewsVM.getThumb(),
+            ivAllReviewsThumb,
+            R.drawable.ic_image_404_big);
         ratingbarWriteReview.setRating(allReviewsVM.getStep());
         tvReviewsAmount.setText(allReviewsVM.getAmount());
         reviewsItemAdapter.setUpdateDatas(allReviewsVM.getReviewsVMS());

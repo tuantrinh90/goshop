@@ -6,6 +6,7 @@ import com.goshop.app.common.view.RobotoItaticTextView;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
+import com.goshop.app.utils.GlideUtils;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
@@ -122,10 +123,11 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
             //todo this part is wait for api
             tvOrderProductTrack
                 .setText(productVM.getStatuContent().equals(DELIVERED) ? BTN_RETURN : BTN_TRACK);
-
-            Glide.with(itemView.getContext()).load(productVM.getThumb()).asBitmap()
-                .error(productVM.getThumbDefault())
-                .into(ivOrderProductThumb);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                productVM.getThumb(),
+                ivOrderProductThumb,
+                R.drawable.ic_image_404_big);
             tvOrderProductTitle.setText(productVM.getTitle());
             tvOrderProductOld.setText( productVM.getPriceOld());
             tvOrderProductOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);

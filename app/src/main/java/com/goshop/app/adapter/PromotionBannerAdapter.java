@@ -3,6 +3,7 @@ package com.goshop.app.adapter;
 import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
 import com.goshop.app.R;
+import com.goshop.app.utils.GlideUtils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -51,14 +52,18 @@ public class PromotionBannerAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (viewHolder instanceof TopBannerHolder) {
             TopBannerHolder holder = (TopBannerHolder) viewHolder;
-            Glide.with(holder.ivPromotionHeader.getContext()).load(headBannerUrl)
-                .into(holder.ivPromotionHeader);
-
+            GlideUtils.loadImageError(
+                holder.ivPromotionHeader.getContext(),
+                headBannerUrl,
+                holder.ivPromotionHeader,
+                R.drawable.ic_image_404_big);
         } else if (viewHolder instanceof BannerListHolder) {
             BannerListHolder holder = (BannerListHolder) viewHolder;
-            Glide.with(holder.ivPromotionBannerItem.getContext())
-                .load(imgUrls.get(position - TOP_BANNER_PLACEHOLDER))
-                .into(holder.ivPromotionBannerItem);
+            GlideUtils.loadImageError(
+                holder.ivPromotionBannerItem.getContext(),
+                imgUrls.get(position - TOP_BANNER_PLACEHOLDER),
+                holder.ivPromotionBannerItem,
+                R.drawable.ic_image_404_big);
         }
     }
 

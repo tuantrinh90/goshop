@@ -6,6 +6,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.listener.IRecyclerItemClick;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.data.model.response.PromotionListResponse;
+import com.goshop.app.utils.GlideUtils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -74,7 +75,11 @@ public class PromotionListAdapter extends RecyclerView.Adapter {
     public void onBindViewHolder(RecyclerView.ViewHolder viewHolder, int position) {
         if (viewHolder instanceof TopBannerHolder) {
             TopBannerHolder holder = (TopBannerHolder) viewHolder;
-            Glide.with(holder.itemView.getContext()).load(bannerUrl).into(holder.ivPromotionHeader);
+            GlideUtils.loadImageError(
+                holder.itemView.getContext(),
+                bannerUrl,
+                holder.ivPromotionHeader,
+                R.drawable.ic_image_404_big);
         } else if (viewHolder instanceof TopBarHolder) {
             TopBarHolder topBarHolder = (TopBarHolder) viewHolder;
 
@@ -200,8 +205,11 @@ public class PromotionListAdapter extends RecyclerView.Adapter {
 
         private void bindingData(List<PromotionListResponse.PromotionItem> datas, int position) {
             PromotionListResponse.PromotionItem response = datas.get(position);
-            Glide.with(ivPromotionIcon.getContext()).load(response.getImageUrl())
-                .into(ivPromotionIcon);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                response.getImageUrl(),
+                ivPromotionIcon,
+                R.drawable.ic_image_404_big);
             rlPromotionItemGiftSymbol.setVisibility(setViewIsVisible(response.isGiftShow()));
             rlItemLeftTopTv.setVisibility(setViewIsVisible(response.isTvShow()));
             tvPromotionItemNewSymbol.setVisibility(setViewIsVisible(response.isNew()));

@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.longtailvideo.jwplayer.JWPlayerView;
@@ -62,9 +63,11 @@ public class VideoViewPagerAdapter extends PagerAdapter implements VideoPlayerEv
         jwPlayerView = pagerLayout.findViewById(R.id.jwplayer);
         ImageView ivOnAirVideo = pagerLayout.findViewById(R.id.iv_on_air_video);
         // TODO: 2018/4/26 need delete this image
-        Glide.with(container.getContext()).load("").asBitmap()
-            .error(R.drawable.ic_image_404_big)
-            .into(ivOnAirVideo);
+        GlideUtils.loadImageError(
+            container.getContext(),
+            "",
+            ivOnAirVideo,
+            R.drawable.ic_image_404_big);
         jwPlayerView.setVisibility(View.GONE);//
         LinearLayout llImageViewMore = pagerLayout.findViewById(R.id.ll_image_view_more);
         RecyclerView recyclerViewVideoBuy = pagerLayout.findViewById(R.id.recyclerview_video_buy);

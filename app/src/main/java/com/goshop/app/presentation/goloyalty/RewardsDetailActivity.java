@@ -8,18 +8,16 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumItalicTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.RewardsDetailVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.utils.DateFormater;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.NestedScrollView;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
@@ -121,14 +119,17 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
 
     @Override
     public void showRewardsDetails(RewardsDetailVM rewardsDetailVM) {
+        GlideUtils.loadImageError(
+            this,
+            rewardsDetailVM.getMerchantLogo(),
+            ivRewardsDetailsThumb,
+            rewardsDetailVM.getPromtionImageDefault());
+        GlideUtils.loadImageError(
+            this,
+            rewardsDetailVM.getPromotionImage(),
+            ivRewardsDetailPic,
+            rewardsDetailVM.getPromtionImageDefault());
         nestedScrollView.setVisibility(View.VISIBLE);
-        Glide.with(this).load(rewardsDetailVM.getDealImage()).asBitmap()
-            .error(R.drawable.ic_image_404_small)
-            .into(ivRewardsDetailsThumb);
-        Glide.with(this).load(rewardsDetailVM.getDealImage()).asBitmap()
-            .error(R.drawable.ic_image_404_small)
-            .into(ivRewardsDetailPic);
-
         tvRewardsMerchantName.setText(rewardsDetailVM.getDealMerchantVM().getMerchantName());
         tvPromoDetails.setText(rewardsDetailVM.getDealDescription());
         tvPromoDetailsSummary.setText(rewardsDetailVM.getDealDescription());
@@ -139,7 +140,8 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
             .formaterDDMMMYYYY(rewardsDetailVM.getDealStartDt()) + " - " +
             DateFormater.formaterDDMMMYYYY(rewardsDetailVM.getDealEndDt()));
         // TODO: 2018/5/3 this need decide
-        tvRewardsDetailLocation.setText(rewardsDetailVM.getDealLocationVMs().get(0).getLocationName());
+        tvRewardsDetailLocation
+            .setText(rewardsDetailVM.getDealLocationVMs().get(0).getLocationName());
         tvRewardsDetailTimeLeft.setText(rewardsDetailVM.getTimeLeft());
     }
 
