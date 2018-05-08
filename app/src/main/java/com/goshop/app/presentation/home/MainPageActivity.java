@@ -15,6 +15,7 @@ import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.utils.UserHelper;
 import com.goshop.app.widget.listener.OnScheduleClickListener;
+import com.longtailvideo.jwplayer.JWPlayerView;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -55,6 +56,10 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
 
     private String type;
 
+    private boolean isFullScreen;
+
+    private JWPlayerView jwPlayerView;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,7 +69,7 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
         type = getIntent().getStringExtra(MenuUtil.TYPE);
         entrance = getIntent().getStringExtra(MenuUtil.EXTRA_ENTRANCE);
         Intent newIntent = null;
-        if(type != null) {
+        if (type != null) {
             switch (type) {
                 case MenuUtil.MENU_TYPE_SHOPPING_CART:
                     newIntent = new Intent(this, ShoppingCartActivity.class);
@@ -76,11 +81,11 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
                     newIntent = new Intent(this, SettingsActivity.class);
                     break;
             }
-            if(entrance != null) {
+            if (entrance != null) {
                 newIntent.putExtra(MenuUtil.EXTRA_ENTRANCE, entrance);
             }
         }
-        if(newIntent != null) {
+        if (newIntent != null) {
             startActivity(newIntent);
         }
     }
@@ -151,7 +156,7 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
         ivleftMenu.setImageResource(R.drawable.ic_menu);
         if (UserHelper.isLogin()) {
             tvToolbarCartCounter.setVisibility(View.VISIBLE);
-        }else{
+        } else {
             tvToolbarCartCounter.setVisibility(View.GONE);
         }
     }
@@ -165,7 +170,7 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
                 } else {
                     Intent loginIntent = new Intent(this, LoginActivity.class);
                     loginIntent.putExtra(MenuUtil.TYPE, MenuUtil.MENU_TYPE_SHOPPING_CART);
-                    UserHelper.goToLogin(this,loginIntent);
+                    UserHelper.goToLogin(this, loginIntent);
                 }
                 break;
 
@@ -182,7 +187,11 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
 
     @Override
     public void onBackPressed() {
-        super.onBackPressed();
+        if (jwPlayerView != null && isFullScreen) {
+            jwPlayerView.setFullscreen(false,true);
+        } else {
+            super.onBackPressed();
+        }
     }
 
     //TODO(helen) this part need decide
@@ -195,4 +204,10 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
     public void onScheduleClick() {
         viewpagerMain.setCurrentItem(1);
     }
+
+    public void onJWPlayerViewFullscreen(boolean isFullScreen, JWPlayerView jwPlayerView) {
+        this.isFullScreen = isFullScreen;
+        this.jwPlayerView = jwPlayerView;
+    }
+
 }

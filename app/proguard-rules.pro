@@ -174,3 +174,17 @@
 ## exoplayer2
 -dontwarn com.google.android.exoplayer2.ui.**
 
+#jwplayer
+-keepclassmembers class com.longtailvideo.jwplayer.** {
+    @android.webkit.JavascriptInterface *;
+}
+
+# Block warnings about missing module classes
+-dontwarn com.longtailvideo.jwplayer.**
+-dontwarn com.google.ads.interactivemedia.**
+
+# Classes get rejected without this when running the app if the app has been run through ProGuard
+-keepattributes InnerClasses,EnclosingMethod
+
+# Keep module indicator classes
+-keep class com.longtailvideo.jwplayer.modules.** { *; }

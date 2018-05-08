@@ -60,17 +60,10 @@ public class VideoViewPagerAdapter extends PagerAdapter implements VideoPlayerEv
         View pagerLayout = LayoutInflater.from(container.getContext())
             .inflate(R.layout.item_video_viewpager, container, false);
         jwPlayerView = pagerLayout.findViewById(R.id.jwplayer);
-        ImageView ivOnAirVideo = pagerLayout.findViewById(R.id.iv_on_air_video);
-        // TODO: 2018/4/26 need delete this image
-        Glide.with(container.getContext()).load("").asBitmap()
-            .error(R.drawable.ic_image_404_big)
-            .into(ivOnAirVideo);
-        jwPlayerView.setVisibility(View.GONE);//
         LinearLayout llImageViewMore = pagerLayout.findViewById(R.id.ll_image_view_more);
         RecyclerView recyclerViewVideoBuy = pagerLayout.findViewById(R.id.recyclerview_video_buy);
         List<ProductsVM> productsVMS = videoPlayerItemsVMS.get(position).getProductsVMS();
-        // TODO: 2018/4/26  video sill have some problem
-//        initJWPlayerView(jwPlayerView, videoPlayerItemsVMS.get(position));
+        initJWPlayerView(jwPlayerView, videoPlayerItemsVMS.get(position));
         VideoProductItemAdapter listAdapter = new VideoProductItemAdapter(productsVMS,
             onProductItemClickListener, buyClickListener);
         LinearLayoutManager productLayoutManager = new LinearLayoutManager(container.getContext());
