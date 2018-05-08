@@ -13,6 +13,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <!--pushwoosh-->
+        <meta-data android:name="com.pushwoosh.appid" android:value="@string/pushwoosh_code" />
+        <meta-data android:name="com.pushwoosh.senderid" android:value="@string/fcm_sender_id" />
 
         <!--JWPLAYER-->
         <meta-data

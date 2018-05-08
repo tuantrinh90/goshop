@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">GoShop</string>
-
+    <!--pushwoosh-->
+    <string name="fcm_sender_id">334660349288</string>
+    <string name="pushwoosh_code">51E30-A5EF8</string>
     <string name="app_network_error">network error</string>
     <!--home-->
     <string name="payday_treat">Payday Treat</string>
