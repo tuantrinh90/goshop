@@ -1,26 +1,20 @@
 package com.goshop.app.presentation.home;
 
-import com.google.android.exoplayer2.drm.ExoMediaDrm;
-
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.utils.JWEventHandler;
+import com.goshop.app.utils.KeepScreenOnHandler;
 import com.longtailvideo.jwplayer.JWPlayerView;
-import com.longtailvideo.jwplayer.events.listeners.VideoPlayerEvents;
-import com.longtailvideo.jwplayer.media.drm.MediaDrmCallback;
 import com.longtailvideo.jwplayer.media.playlists.PlaylistItem;
-
+import android.app.Activity;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import java.util.List;
-import java.util.UUID;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -29,6 +23,16 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
     private List<TVShowVM> tvShowVMS;
 
     private JWPlayerListener jwPlayerListener;
+
+    private JWEventHandler mEventHandler;
+
+    private Activity activity;
+
+    public TVShowLeftAdapter(Activity activity,
+        List<TVShowVM> tvShowVMS) {
+        this(tvShowVMS);
+        this.activity = activity;
+    }
 
     public void setJWPlayerListener(JWPlayerListener jwPlayerListener) {
         this.jwPlayerListener = jwPlayerListener;
@@ -112,11 +116,17 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
             .build();
         jwPlayerView.addOnFullscreenListener(b -> {
             if (jwPlayerListener != null) {
-                jwPlayerListener.onFullscreen(b,jwPlayerView);
+                jwPlayerListener.onFullscreen(b, jwPlayerView);
             }
         });
         if (jwPlayerView.getTag().equals(tvShowVM.getImageUrl())) {
             jwPlayerView.load(pi);
+            jwPlayerView.stop();
+        }
+        mEventHandler = new JWEventHandler(jwPlayerView, position);
+        if (activity != null) {
+            // Keep the screen on during playback
+            new KeepScreenOnHandler(jwPlayerView, activity.getWindow());
         }
     }
 

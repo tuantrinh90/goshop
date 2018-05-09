@@ -39,15 +39,15 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
 
     private OnTrendingNowClickListener onTrendingNowClickListener;
 
-    private VideoViewPagerAdapter.OnFullscreenListener onFullscreenListener;
+    private VideoViewPagerAdapter.JWPlayerListener jwPlayerListener;
+
+    private VideoViewPagerAdapter videoViewPagerAdapter;
 
     public TrendingNowAdapter(
         OnTrendingNowClickListener onTrendingNowClickListener,
-        VideoViewPagerAdapter.OnFullscreenListener onFullscreenListener,
         List<TrendingNowModel> models) {
         this.onTrendingNowClickListener = onTrendingNowClickListener;
         this.models = models;
-        this.onFullscreenListener = onFullscreenListener;
     }
 
     @Override
@@ -97,6 +97,18 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
         return models.size();
     }
 
+    public void onPause() {
+        if(videoViewPagerAdapter!=null){
+            videoViewPagerAdapter.onPause();
+        }
+    }
+
+    public void onDestroyView() {
+        if(videoViewPagerAdapter!=null){
+            videoViewPagerAdapter.onDestroyView();
+        }
+    }
+
     class TrendingVideoViewHolder extends RecyclerView.ViewHolder implements
         OnChannelItemClickListener, VideoViewPagerAdapter.OnPagerHeightChangeListener,
         OnProductItemClickListener, OnProductBuyClickListener {
@@ -143,12 +155,12 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
                 onTrendingNowClickListener.onTVScheduleClick());
 
             List<VideoPlayerItemsVM> videoPlayerItemsVMS = videoVM.getVideoPlayerItemsVMS();
-            VideoViewPagerAdapter pagerAdapter = new VideoViewPagerAdapter(videoPlayerItemsVMS);
-            pagerAdapter.setOnFullscreenListener(onFullscreenListener);
-            pagerAdapter.setOnProductItemClickListener(this::onProductItemClick);
-            pagerAdapter.setOnProductBuyClickListener(this::onBuyNowClick);
-            pagerAdapter.setOnPagerHeightChangeListener(this::onHeightChange);
-            viewPager.setAdapter(pagerAdapter);
+            videoViewPagerAdapter = new VideoViewPagerAdapter(videoPlayerItemsVMS);
+            videoViewPagerAdapter.setJWPlayerListener(jwPlayerListener);
+            videoViewPagerAdapter.setOnProductItemClickListener(this::onProductItemClick);
+            videoViewPagerAdapter.setOnProductBuyClickListener(this::onBuyNowClick);
+            videoViewPagerAdapter.setOnPagerHeightChangeListener(this::onHeightChange);
+            viewPager.setAdapter(videoViewPagerAdapter);
             viewPager.setOffscreenPageLimit(videoPlayerItemsVMS.size());
             for (int i = 0; i < videoPlayerItemsVMS.size(); i++) {
                 heights.add(viewPager.getLayoutParams().height);
@@ -171,7 +183,7 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onPageSelected(int position) {
                     channelAdapter.updateChannels(position);
-                    pagerAdapter.updateVideo(position);
+                    videoViewPagerAdapter.updateVideo(position);
                 }
 
                 @Override
@@ -257,5 +269,9 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
         public void onProductItemClick(ProductsVM productItemVM) {
             onTrendingNowClickListener.onProductItemClick(productItemVM);
         }
+    }
+
+    public void setJWPlayerListener(VideoViewPagerAdapter.JWPlayerListener jwPlayerListener) {
+        this.jwPlayerListener = jwPlayerListener;
     }
 }

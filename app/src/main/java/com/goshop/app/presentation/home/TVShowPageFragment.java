@@ -113,6 +113,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         }
     }
 
+
     private void initData() {
         //TODO wait for api
         mPresenter.tvShowRequest(null);
@@ -147,7 +148,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
         channelAdapter = new ChannelAdapter(new ArrayList<>());
         calendarAdapter = new TVShowCalendarAdapter(new ArrayList<>(), currentDay);
-        leftAdapter = new TVShowLeftAdapter(new ArrayList<>());
+        leftAdapter = new TVShowLeftAdapter(getActivity(),new ArrayList<>());
         rightAdapter = new TVShowRightAdapter(new ArrayList<>());
         recyclerViewTvShowChannel.setAdapter(channelAdapter);
         recyclerviewCalendar.setAdapter(calendarAdapter);

@@ -13,15 +13,6 @@
         android:paddingBottom="@dimen/size_6"
         android:textSize="@dimen/size_font_16"
         android:textColor="@color/color_grayscale_text"/>
-    <!--do not delete this now-->
-    <!--<ImageView-->
-        <!--android:id="@+id/iv_tv_show_left"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="@dimen/size_224"-->
-        <!--android:scaleType="fitXY"-->
-        <!--android:visibility="gone"-->
-        <!--android:contentDescription="@string/app_name"-->
-        <!--android:layout_below="@id/tv_tvshow_lefttime"/>-->
 
     <com.longtailvideo.jwplayer.JWPlayerView
         android:id="@+id/iv_tv_show_left"

@@ -18,9 +18,11 @@ import com.goshop.app.widget.listener.OnScheduleClickListener;
 import com.longtailvideo.jwplayer.JWPlayerView;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -133,9 +135,17 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
 
             @Override
             public void onPageSelected(int i) {
-                // TODO: 2018/4/26 this need delete later
                 if (i == 1) {
+                    if (pagerAdapter.getItem(0) instanceof TrendingNowFragment) {
+                        ((TrendingNowFragment) pagerAdapter.getItem(0)).onPause();
+                    }
+                    // TODO: 2018/4/26 this need delete later
                     PopWindowUtil.showNoApiPop(viewpagerMain);
+                }
+                if (i == 0) {
+                    if (pagerAdapter.getItem(1) instanceof TrendingNowFragment) {
+                        ((TrendingNowFragment) pagerAdapter.getItem(1)).onPause();
+                    }
                 }
             }
 
@@ -173,7 +183,6 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
                     UserHelper.goToLogin(this, loginIntent);
                 }
                 break;
-
             case R.id.imageview_left_menu:
                 openDrawerLayout();
                 break;
@@ -188,7 +197,7 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
     @Override
     public void onBackPressed() {
         if (jwPlayerView != null && isFullScreen) {
-            jwPlayerView.setFullscreen(false,true);
+            jwPlayerView.setFullscreen(false, true);
         } else {
             super.onBackPressed();
         }
@@ -208,6 +217,14 @@ public class MainPageActivity extends BaseDrawerActivity implements OnScheduleCl
     public void onJWPlayerViewFullscreen(boolean isFullScreen, JWPlayerView jwPlayerView) {
         this.isFullScreen = isFullScreen;
         this.jwPlayerView = jwPlayerView;
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            if (isFullScreen) {
+                actionBar.hide();
+            } else {
+                actionBar.show();
+            }
+        }
     }
 
 }
