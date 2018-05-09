@@ -3,6 +3,7 @@
     <!--pushwoosh-->
     <string name="fcm_sender_id">334660349288</string>
     <string name="pushwoosh_code">C8B70-A50A6</string>
+    <string name="pwappid">pw-c8b70-a50a6</string>
     <string name="app_network_error">network error</string>
     <!--home-->
     <string name="payday_treat">Payday Treat</string>

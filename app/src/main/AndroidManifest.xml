@@ -4,6 +4,12 @@
 
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <!-- Keeps the processor from sleeping when a message is received. -->
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <!-- This permission is used to determine whether the device can access the network. -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <!-- This app has permission to register and receive data message. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
         android:name=".GoShopApplication"
@@ -17,6 +23,12 @@
         <meta-data android:name="com.pushwoosh.appid" android:value="@string/pushwoosh_code" />
         <meta-data android:name="com.pushwoosh.senderid" android:value="@string/fcm_sender_id" />
 
+        <service
+            android:name=".presentation.pushwoosh.MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT"/>
+            </intent-filter>
+        </service>
         <!--JWPLAYER-->
         <meta-data
             android:name="JW_LICENSE_KEY"

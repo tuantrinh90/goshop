@@ -173,6 +173,9 @@
 
 ## exoplayer2
 -dontwarn com.google.android.exoplayer2.ui.**
+## pushwoosh
+-keep class com.pushwoosh.** { *; }
+-dontwarn com.pushwoosh.**
 
 #jwplayer
 -keepclassmembers class com.longtailvideo.jwplayer.** {
