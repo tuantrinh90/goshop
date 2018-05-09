@@ -3,6 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.ImagesVM;
+import com.goshop.app.utils.GlideUtils;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -30,8 +31,11 @@ public class PdpImagesPagerAdapter extends PagerAdapter {
         View imageLayout = LayoutInflater.from(container.getContext())
             .inflate(R.layout.item_images_page, container, false);
         ImageView imageView = imageLayout.findViewById(R.id.iv_item_pdp_image);
-        Glide.with(container.getContext()).load(imageUrls.get(position).getImageUrl())
-            .error(imageUrls.get(position).getImageDefault()).into(imageView);
+        GlideUtils.loadImageError(
+            container.getContext(),
+            imageUrls.get(position).getImageUrl(),
+            imageView,
+            imageUrls.get(position).getImageDefault());
         container.addView(imageLayout);
         return imageLayout;
     }

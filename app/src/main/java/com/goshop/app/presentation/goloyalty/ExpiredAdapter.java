@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
+import com.goshop.app.utils.GlideUtils;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -71,9 +72,11 @@ public class ExpiredAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(GoLoyaltyDealsVM dealsVM) {
-            Glide.with(itemView.getContext()).load(dealsVM.getImageUrl()).asBitmap()
-                .error(dealsVM.getIconDefault())
-                .into(ivExpiredThumb);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                dealsVM.getImageUrl(),
+                ivExpiredThumb,
+                R.drawable.ic_image_404_big);
             tvExpiredName.setText(dealsVM.getName());
             tvExpiredDetail.setText(dealsVM.getDetail());
             tvExpiredTime.setText(dealsVM.getTime());

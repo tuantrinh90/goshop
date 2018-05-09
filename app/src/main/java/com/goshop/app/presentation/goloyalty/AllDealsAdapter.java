@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.adapter.BaseFootLoadingAdapter;
 import com.goshop.app.widget.listener.OnDealsItemClickListener;
 
@@ -27,7 +28,7 @@ public class AllDealsAdapter extends BaseFootLoadingAdapter {
         super(listDatas);
     }
 
-    public void setOnDealsItemClickListener( OnDealsItemClickListener listener) {
+    public void setOnDealsItemClickListener(OnDealsItemClickListener listener) {
         this.onDealsItemClickListener = listener;
     }
 
@@ -40,7 +41,7 @@ public class AllDealsAdapter extends BaseFootLoadingAdapter {
 
     @Override
     public void onBindContentItemView(RecyclerView.ViewHolder holder, int position) {
-        if(holder instanceof DealViewHolder) {
+        if (holder instanceof DealViewHolder) {
             ((DealViewHolder) holder).bindingData((GoLoyaltyDealsVM) listDatas.get(position));
         }
     }
@@ -83,9 +84,11 @@ public class AllDealsAdapter extends BaseFootLoadingAdapter {
         }
 
         void bindingData(GoLoyaltyDealsVM dealsVM) {
-            Glide.with(itemView.getContext()).load(dealsVM.getImageUrl()).asBitmap()
-                .error(dealsVM.getIconDefault())
-                .into(ivDealThumb);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                dealsVM.getImageUrl(),
+                ivDealThumb,
+                R.drawable.ic_image_404_big);
             tvDealName.setText(dealsVM.getName());
             tvDealDetail.setText(dealsVM.getDetail());
             tvDealTime.setText(dealsVM.getTime());

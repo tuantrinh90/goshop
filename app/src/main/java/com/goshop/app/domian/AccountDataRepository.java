@@ -256,6 +256,12 @@ public class AccountDataRepository implements AccountRepository {
     }
 
     @Override
+    public Observable<Response<AddressResponse>> setDefaultShippingBilling(
+        Map<String, Object> params) {
+        return getServerData(accountCloudDataSource.setDefaultShippingBilling(params));
+    }
+
+    @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         return accountCloudDataSource.addAddressRequest(params);
     }

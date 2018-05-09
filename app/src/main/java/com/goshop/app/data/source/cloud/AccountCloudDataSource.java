@@ -218,6 +218,12 @@ public class AccountCloudDataSource implements AccountDataSource {
     }
 
     @Override
+    public Observable<Response<AddressResponse>> setDefaultShippingBilling(
+        Map<String, Object> params) {
+        return restApi.setDefaultShippingBilling(params);
+    }
+
+    @Override
     public Observable<AddressResponse> myAddressRequest(Map<String, Object> params) {
         return restApi.myAddressRequest(params);
     }

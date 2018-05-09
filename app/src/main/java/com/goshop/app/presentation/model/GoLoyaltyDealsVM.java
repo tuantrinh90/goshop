@@ -1,5 +1,9 @@
 package com.goshop.app.presentation.model;
 
+import com.goshop.app.presentation.mapper.ArraysVM;
+
+import java.util.List;
+
 public class GoLoyaltyDealsVM {
 
     private String detail;
@@ -14,6 +18,12 @@ public class GoLoyaltyDealsVM {
 
     private String time;
 
+    private List<ArraysVM> categorys;
+
+    private List<ArraysVM> locations;
+
+    public GoLoyaltyDealsVM() {}
+
     public GoLoyaltyDealsVM(String imageUrl, int iconDefault, String name, String detail,
         String time, String end) {
         this.imageUrl = imageUrl;
@@ -22,6 +32,22 @@ public class GoLoyaltyDealsVM {
         this.detail = detail;
         this.time = time;
         this.end = end;
+    }
+
+    public List<ArraysVM> getCategorys() {
+        return categorys;
+    }
+
+    public void setCategorys(List<ArraysVM> categorys) {
+        this.categorys = categorys;
+    }
+
+    public List<ArraysVM> getLocations() {
+        return locations;
+    }
+
+    public void setLocations(List<ArraysVM> locations) {
+        this.locations = locations;
     }
 
     public String getEnd() {

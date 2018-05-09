@@ -2,6 +2,7 @@ package com.goshop.app.presentation.shopping;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.goshop.app.utils.GlideUtils;
 
 import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
@@ -39,8 +40,11 @@ public class PdpBannerAdapter extends PagerAdapter {
         final ImageView imageView = imageLayout
             .findViewById(R.id.iv_pdp_banner);
         imageView.setOnClickListener(v -> bannerClickListener.onBannerClick());
-        Glide.with(container.getContext()).load(imageUrls.get(position))
-            .error(R.drawable.ic_image_404_small).into(imageView);
+        GlideUtils.loadImageError(
+            container.getContext(),
+            imageUrls.get(position),
+            imageView,
+            R.drawable.ic_image_404_small);
         container.addView(imageLayout, 0);
         return imageLayout;
     }

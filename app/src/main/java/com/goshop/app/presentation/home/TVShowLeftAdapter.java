@@ -94,9 +94,7 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(TVShowVM tvShowVM, int position) {
-
             initJwPlayerView(jwPlayerView, tvShowVM, position);
-
             tvTvShowLeftTime.setText(tvShowVM.getDuration());
             tvTvShowTitle.setText(tvShowVM.getTitle());
             tvBtnTvShowBuy.setOnClickListener(v -> {

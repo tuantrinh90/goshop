@@ -12,12 +12,10 @@ import com.goshop.app.presentation.model.CardRedeemVM;
 import com.goshop.app.presentation.model.RedeemSuccessVM;
 import com.goshop.app.utils.PopWindowUtil;
 import com.ncorti.slidetoact.SlideToActView;
-
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;

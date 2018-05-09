@@ -6,6 +6,7 @@ import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.WishlistVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnItemMenuClickListener;
 
 import android.graphics.Paint;
@@ -105,6 +106,11 @@ public class MyWishlistAdapter extends RecyclerView.Adapter {
             Glide.with(itemView.getContext()).load(wishlistVM.getThumb()).asBitmap()
                 .error(R.drawable.ic_image_404_small)
                 .into(ivWishlistThumb);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                wishlistVM.getThumb(),
+                ivWishlistThumb,
+                R.drawable.ic_image_404_small);
             tvWishlistNow.setText(wishlistVM.getNowPrice());
             tvWishlistOld.setText(wishlistVM.getOldPrice());
             tvWishlistOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);

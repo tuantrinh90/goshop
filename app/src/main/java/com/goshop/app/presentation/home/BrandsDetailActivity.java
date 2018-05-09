@@ -11,6 +11,7 @@ import com.goshop.app.presentation.model.FilterMenuModel;
 import com.goshop.app.presentation.model.SortVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.shopping.ProductDetailActivity;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.utils.PopWindowUtil;
 import com.goshop.app.widget.adapter.FilterDrawerAdapter;
 import com.goshop.app.widget.adapter.ProductGridVerticalAdapter;
@@ -174,10 +175,11 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
         //todo wait for api
         sortVMS.get(0).setSelect(true);
         tvBtnSort.setText(sortVMS.get(0).getTitle());
-
-        Glide.with(this).load(brandsDetailVM.getLogoUrl()).asBitmap()
-            .error(R.drawable.ic_brands_detail_logo)
-            .into(ivBrandsDetailLogo);
+        GlideUtils.loadImageError(
+            this,
+            brandsDetailVM.getLogoUrl(),
+            ivBrandsDetailLogo,
+            R.drawable.ic_image_404_big);
         tvBrandsDetailSummary.setText(brandsDetailVM.getLogoSummary());
         gridVerticalAdapter.setUpdateDatas(brandsDetailVM.getFilterProductsVMS());
     }

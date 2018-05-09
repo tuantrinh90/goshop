@@ -6,6 +6,7 @@ import com.goshop.app.presentation.model.PromotionBannerModel;
 import com.goshop.app.presentation.model.PromotionBannerScrollerVM;
 import com.goshop.app.presentation.model.PromotionBannerTopVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 
@@ -90,9 +91,11 @@ public class PromotionBannerScrollerAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(PromotionBannerTopVM bannerTopVM) {
-            Glide.with(itemView.getContext()).load(bannerTopVM.getBannerUrl()).asBitmap()
-                .error(bannerTopVM.getBannerDefault())
-                .into(ivSkuBanner);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                bannerTopVM.getBannerUrl(),
+                ivSkuBanner,
+                R.drawable.ic_image_404_big);
         }
     }
 

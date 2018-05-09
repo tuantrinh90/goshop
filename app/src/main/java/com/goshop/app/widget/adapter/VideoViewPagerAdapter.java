@@ -8,7 +8,6 @@ import com.goshop.app.widget.listener.OnProductBuyClickListener;
 import com.goshop.app.widget.listener.OnProductItemClickListener;
 import com.longtailvideo.jwplayer.JWPlayerView;
 import com.longtailvideo.jwplayer.media.playlists.PlaylistItem;
-
 import android.support.v4.view.PagerAdapter;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -16,7 +15,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.LinearLayout;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,7 +59,7 @@ public class VideoViewPagerAdapter extends PagerAdapter {
         RecyclerView recyclerViewVideoBuy = pagerLayout.findViewById(R.id.recyclerview_video_buy);
         List<ProductsVM> productsVMS = videoPlayerItemsVMS.get(position).getProductsVMS();
         initJWPlayerView(jwPlayerView, videoPlayerItemsVMS.get(position),position);
-
+        
         VideoProductItemAdapter listAdapter = new VideoProductItemAdapter(productsVMS,
             onProductItemClickListener, buyClickListener);
         LinearLayoutManager productLayoutManager = new LinearLayoutManager(container.getContext());

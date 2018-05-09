@@ -5,6 +5,7 @@ import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.common.ProductVM;
+import com.goshop.app.utils.GlideUtils;
 
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
@@ -80,9 +81,9 @@ public class CheckoutListAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(ProductVM productVM) {
-            Glide.with(itemView.getContext()).load(productVM.getImage()).asBitmap()
-                .error(productVM.getImageDefault())
-                .into(ivCheckoutItemIcon);
+            GlideUtils
+                .loadImageError(itemView.getContext(), productVM.getImage(), ivCheckoutItemIcon,
+                    R.drawable.ic_image_404_big);
             tvCheckoutAmount.setText(productVM.getAmount());
             tvCheckoutColorAndSize.setText(productVM.getAttribute());
             tvCheckoutOldPrice.setText(productVM.getOldPrice());

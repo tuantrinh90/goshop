@@ -4,6 +4,7 @@ import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnTVShowItemsClickListener;
 
 import android.support.v7.widget.RecyclerView;
@@ -87,9 +88,11 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(TVShowVM tvShowVM, int position) {
-            Glide.with(itemView.getContext()).load(tvShowVM.getImageUrl()).asBitmap()
-                .error(tvShowVM.getImageDefault())
-                .into(ivTVShowRight);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                tvShowVM.getImageUrl(),
+                ivTVShowRight,
+                tvShowVM.getImageDefault());
             tvTvShowRightTime.setText(tvShowVM.getDuration());
             ivTvshowRightCover.setSelected(tvShowVM.isCurrent());
             ivTvshowRightCover.setOnClickListener(v -> {

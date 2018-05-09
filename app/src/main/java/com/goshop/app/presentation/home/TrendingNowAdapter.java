@@ -11,6 +11,7 @@ import com.goshop.app.presentation.model.TrendingSingleBannerVM;
 import com.goshop.app.presentation.model.TrendingVideoVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.adapter.ChannelAdapter;
 import com.goshop.app.widget.adapter.ProductGridHorizontalAdapter;
 import com.goshop.app.widget.adapter.VideoViewPagerAdapter;
@@ -230,10 +231,11 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
 
         void bindingData(TrendingSingleBannerVM singleBannerVM) {
             //todo wait for api
-            Glide.with(itemView.getContext())
-                .load(""/*singlePictureVM.getOfferListItemsVMS().get(0).getImage()*/).asBitmap()
-                .error(R.drawable.ic_detail_top_demo)
-                .into(ivSinglePicture);
+            GlideUtils.loadImageError(
+                itemView.getContext(),
+                ""/*singlePictureVM.getOfferListItemsVMS().get(0).getImage()*/,
+                ivSinglePicture,
+                R.drawable.ic_image_404_big);
             itemView.setOnClickListener(v -> onTrendingNowClickListener.onSingleBannerClick());
         }
 

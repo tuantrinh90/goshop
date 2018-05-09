@@ -3,6 +3,7 @@ package com.goshop.app.widget.adapter;
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.presentation.model.BannerVm;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnHomeBannerItemClickListener;
 
 import android.support.v4.view.PagerAdapter;
@@ -37,8 +38,11 @@ public class HomeBannerAdapter extends PagerAdapter {
         BannerVm itemsVM = itemsVMS.get(position);
         final ImageView imageView = imageLayout
             .findViewById(R.id.iv_widget_banner);
-        Glide.with(container.getContext()).load(itemsVM.getImage()).error(R.drawable.ic_image_404_big)
-            .into(imageView);
+        GlideUtils.loadImageError(
+            container.getContext(),
+            itemsVM.getImage(),
+            imageView,
+            R.drawable.ic_image_404_big);
         container.addView(imageLayout, 0);
         imageView.setOnClickListener(v -> onBannerItemClickListener.onBannerItemClick(itemsVM));
         return imageLayout;
