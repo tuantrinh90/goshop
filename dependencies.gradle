@@ -34,6 +34,7 @@ ext {
     chuckVersion = '1.1.0'
     pushwooshVersion = '5.7.2'
     firebaseVersion = '11.8.0'
+    firebaseJobdispatcherVersion = '0.8.5'
 
     appDependencies = [
             slidetoact                    : "com.ncorti:slidetoact:$slidetoactVersion",
@@ -77,7 +78,8 @@ ext {
             jwplayerCore                  : "com.longtailvideo.jwplayer:jwplayer-core:+",
             jwplayerCommon                : "com.longtailvideo.jwplayer:jwplayer-common:+",
             pushwoosh                     : "com.pushwoosh:pushwoosh:$pushwooshVersion",
-            firebase_message              : "com.google.firebase:firebase-messaging:$firebaseVersion"
+            firebase_message              : "com.google.firebase:firebase-messaging:$firebaseVersion",
+            firebase_jobdispatcher        : "com.firebase:firebase-jobdispatcher:$firebaseJobdispatcherVersion"
     ]
     developmentDependencies = [
             leakCanaryDebug  : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",

@@ -99,9 +99,9 @@ dependencies {
     def appDependencies = rootProject.ext.appDependencies
     def developmentDependencies = rootProject.ext.developmentDependencies
     def testDependencies = rootProject.ext.testDependencies
+    //todo this can't put in dependencies.gradle file for Firebase Add FCM
     compile 'com.google.firebase:firebase-messaging:11.8.0'
     compile fileTree(dir: 'libs', include: ['*.jar'])
-    compile 'com.firebase:firebase-jobdispatcher:0.8.5'
     compile appDependencies.slidetoact
     compile appDependencies.appcompat_v7
     compile appDependencies.support_v4
@@ -135,6 +135,7 @@ dependencies {
     compile appDependencies.jwplayerCommon
     compile appDependencies.dagger2
     compile appDependencies.pushwoosh
+    compile appDependencies.firebase_jobdispatcher
     annotationProcessor appDependencies.daggerComiler
     compile(appDependencies.permissionsdispatcher) {
         exclude module: "support-v13"
