@@ -5,6 +5,7 @@ import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.OrderDetailVM;
 import com.goshop.app.presentation.shopping.RatingActivity;
 import com.goshop.app.utils.NumberFormater;
@@ -118,36 +119,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
     @BindView(R.id.ll_billing_total)
     LinearLayout llBillingTotal;
 
-    /*@BindView(R.id.tv_order_disscount)
-    RobotoLightTextView tvOrderDisscount;*/
-
-   /* @BindView(R.id.tv_order_disscount_des)
-    RobotoLightTextView tvOrderDisscountDes;*/
-
-/*    @BindView(R.id.tv_order_egift_card)
-    RobotoLightTextView tvOrderEgiftCard;*/
-
-  /*  @BindView(R.id.tv_order_egift_des)
-    RobotoLightTextView tvOrderEgiftDes;*/
-
-  /*  @BindView(R.id.tv_order_go_shop_points)
-    RobotoLightTextView tvOrderGoShopPoints;*/
-
-   /* @BindView(R.id.tv_order_points_des)
-    RobotoLightTextView tvOrderPointsDes;*/
-
-/*    @BindView(R.id.tv_order_shipping)
-    RobotoLightTextView tvOrderShipping;*/
-
-   /* @BindView(R.id.tv_order_sub_total)
-    RobotoLightTextView tvOrderSubTotal;*/
-
-  /*  @BindView(R.id.tv_order_total)
-    RobotoMediumTextView tvOrderTotal;*/
-
     private MyOrderProductAdapter myOrderProductAdapter;
-
-    /*  private String description = "(%s):";*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -198,25 +170,28 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
         tvOrderDetailTel.setText(orderDetailVM.getShipTel());
         tvOrderDetailMethod.setText(orderDetailVM.getMethod());
 
-        tvBillingSubtotalAmount.setText(orderDetailVM.getSubTotal());
-        tvBillingShippingAmount.setText(orderDetailVM.getShipping());
+        BillingVM billingVM = orderDetailVM.getBillingVM();
+        tvBillingSubtotalAmount.setText(billingVM.getBillingSubTotal());
+        tvBillingShippingAmount.setText(billingVM.getBillingShipping());
         tvBillingDiscountAmount
-            .setText(NumberFormater.formaterOfferPrice(orderDetailVM.getDisscount()));
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingDiscountAmount()));
         tvBillingEgiftAmount
-            .setText(NumberFormater.formaterOfferPrice(orderDetailVM.getEgift()));
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingEGiftAmount()));
         tvBillingPointsAmount
-            .setText(NumberFormater.formaterOfferPrice(orderDetailVM.getPoints()));
-        tvBillingTotal.setText(orderDetailVM.getTotal());
-        tvBillingDiscountCode.setText(orderDetailVM.getDiscountDes());
-        tvBillingEgiftCode.setText(orderDetailVM.getEgiftDes());
-        tvBillingPointsCode.setText(orderDetailVM.getPointsDes());
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingPointsAmount()));
+        tvBillingTotal.setText(billingVM.getBillingTotal());
+        tvBillingDiscountCode.setText(billingVM.getBillingDiscountCode());
+        tvBillingEgiftCode.setText(billingVM.getBillingEGiftCode());
+        tvBillingPointsCode.setText(billingVM.getBillingPointsApplied());
 
         llBillingDiscount.setVisibility(
-            TextUtils.isEmpty(orderDetailVM.getDisscount()) ? View.GONE : View.VISIBLE);
+            TextUtils.isEmpty(billingVM.getBillingDiscountAmount()) ? View.GONE : View.VISIBLE);
         llBillingEgift
-            .setVisibility(TextUtils.isEmpty(orderDetailVM.getEgift()) ? View.GONE : View.VISIBLE);
+            .setVisibility(
+                TextUtils.isEmpty(billingVM.getBillingEGiftAmount()) ? View.GONE : View.VISIBLE);
         llBillingPoints
-            .setVisibility(TextUtils.isEmpty(orderDetailVM.getPoints()) ? View.GONE : View.VISIBLE);
+            .setVisibility(
+                TextUtils.isEmpty(billingVM.getBillingPointsAmount()) ? View.GONE : View.VISIBLE);
     }
 
     @Override

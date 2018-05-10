@@ -14,23 +14,15 @@ public class CheckoutVM {
 
     private List<ProductVM> productVMS;
 
-    private String subTotal;
+    private BillingVM billingVM;
 
-    private String shipping;
+    public BillingVM getBillingVM() {
+        return billingVM;
+    }
 
-    private String discountCode;
-
-    private String discountAmount;
-
-    private String eGiftCode;
-
-    private String eGiftAmount;
-
-    private String pointsApplied;
-
-    private String pointsAmount;
-
-    private String billingTotal;
+    public void setBillingVM(BillingVM billingVM) {
+        this.billingVM = billingVM;
+    }
 
     public List<AddressVM> getAddressVMS() {
         return addressVMS;
@@ -65,75 +57,4 @@ public class CheckoutVM {
         this.productVMS = productVMS;
     }
 
-    public String getSubTotal() {
-        return subTotal;
-    }
-
-    public void setSubTotal(String subTotal) {
-        this.subTotal = subTotal;
-    }
-
-    public String getShipping() {
-        return shipping;
-    }
-
-    public void setShipping(String shipping) {
-        this.shipping = shipping;
-    }
-
-    public String getDiscountCode() {
-        return discountCode;
-    }
-
-    public void setDiscountCode(String discountCode) {
-        this.discountCode = discountCode;
-    }
-
-    public String getDiscountAmount() {
-        return discountAmount;
-    }
-
-    public void setDiscountAmount(String discountAmount) {
-        this.discountAmount = discountAmount;
-    }
-
-    public String geteGiftCode() {
-        return eGiftCode;
-    }
-
-    public void seteGiftCode(String eGiftCode) {
-        this.eGiftCode = eGiftCode;
-    }
-
-    public String geteGiftAmount() {
-        return eGiftAmount;
-    }
-
-    public void seteGiftAmount(String eGiftAmount) {
-        this.eGiftAmount = eGiftAmount;
-    }
-
-    public String getPointsApplied() {
-        return pointsApplied;
-    }
-
-    public void setPointsApplied(String pointsApplied) {
-        this.pointsApplied = pointsApplied;
-    }
-
-    public String getPointsAmount() {
-        return pointsAmount;
-    }
-
-    public void setPointsAmount(String pointsAmount) {
-        this.pointsAmount = pointsAmount;
-    }
-
-    public String getBillingTotal() {
-        return billingTotal;
-    }
-
-    public void setBillingTotal(String billingTotal) {
-        this.billingTotal = billingTotal;
-    }
 }

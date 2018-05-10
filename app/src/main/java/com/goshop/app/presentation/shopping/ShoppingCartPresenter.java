@@ -2,9 +2,9 @@ package com.goshop.app.presentation.shopping;
 
 import com.goshop.app.Const;
 import com.goshop.app.base.RxPresenter;
-import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.request.AddRemoveCartRequest;
 import com.goshop.app.data.model.request.common.CartRequestData;
+import com.goshop.app.data.model.response.ApplyCouponResponse;
 import com.goshop.app.data.model.response.CartDataResponse;
 import com.goshop.app.data.model.response.MyWishlistResponse;
 import com.goshop.app.data.model.response.Response;
@@ -34,7 +34,7 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
 
     @Override
     public void viewCartDetails(int page, boolean isRefresh) {
-        if(!isRefresh) {
+        if (!isRefresh) {
             mView.showLoadingBar();
         }
         Map<String, Object> params = new HashMap<>();
@@ -82,7 +82,7 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
                 @Override
                 public void onNext(Response<CartDataResponse> response) {
                     mView.hideLoadingBar();
-                    mView.removeSuccess();
+                    mView.showCartDetail(ShoppingCartMapper.transform(response.getData()));
                 }
 
                 @Override
@@ -133,7 +133,7 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
     }
 
     @Override
-    public void applyCoupon( String couponCode, String cartId) {
+    public void applyCoupon(String couponCode, String cartId) {
         mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);

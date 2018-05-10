@@ -6,6 +6,7 @@ import com.goshop.app.data.model.response.common.BillingData;
 import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.data.model.response.common.RMData;
 import com.goshop.app.data.model.response.common.SuperAttributeData;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
 import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.utils.NumberFormater;
@@ -49,23 +50,22 @@ public class ShoppingCartMapper {
         if (productVMS.size() > 0) {
             shoppingCartProductVM.setProductVMS(productVMS);
             BillingData billingData = response.getCart().getBilling();
-            shoppingCartProductVM.setDiscount(billingData.getRm().getDiscount().getAmount());
-            shoppingCartProductVM.setDiscountCode(
+            BillingVM billingVM = new BillingVM();
+            billingVM.setBillingDiscountAmount(billingData.getRm().getDiscount().getAmount());
+            billingVM.setBillingDiscountCode(
                 TextFormater.formatBillingCode(billingData.getRm().getDiscount().getCode()));
-            shoppingCartProductVM
-                .setShipping(NumberFormater.formaterPrice(billingData.getRm().getShipping()));
-            shoppingCartProductVM
-                .setSubTotal(NumberFormater.formaterPrice(billingData.getRm().getSubTotal()));
-            shoppingCartProductVM
-                .setTotal(NumberFormater.formaterPrice(billingData.getRm().getTotal()));
-            shoppingCartProductVM.setEgiftCardCode(
+            billingVM.setBillingShipping(
+                NumberFormater.formaterPrice(billingData.getRm().getShipping()));
+            billingVM.setBillingSubTotal(
+                NumberFormater.formaterPrice(billingData.getRm().getSubTotal()));
+            billingVM.setBillingTotal(NumberFormater.formaterPrice(billingData.getRm().getTotal()));
+            billingVM.setBillingEGiftCode(
                 TextFormater.formatBillingCode(billingData.getRm().geteGiftCard().getCode()));
-            shoppingCartProductVM
-                .setEgiftCardAmount(billingData.getRm().geteGiftCard().getAmount());
-            shoppingCartProductVM.setPointsCode(
+            billingVM.setBillingEGiftAmount(billingData.getRm().geteGiftCard().getAmount());
+            billingVM.setBillingPointsApplied(
                 TextFormater.formatBillingCode(billingData.getRm().getGoshopPoints().getApplied()));
-            shoppingCartProductVM
-                .setPointsAmount(billingData.getRm().getGoshopPoints().getAmount());
+            billingVM.setBillingPointsAmount(billingData.getRm().getGoshopPoints().getAmount());
+            shoppingCartProductVM.setBillingVM(billingVM);
         }
         return shoppingCartProductVM;
     }

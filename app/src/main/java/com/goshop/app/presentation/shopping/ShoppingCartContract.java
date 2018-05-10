@@ -13,8 +13,6 @@ public class ShoppingCartContract {
 
         void showNetError();
 
-        void removeSuccess();
-
         void removeFailed(String errorMessage);
 
         void addWishlistSuccess();

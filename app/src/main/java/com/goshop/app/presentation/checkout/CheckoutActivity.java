@@ -14,6 +14,7 @@ import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ApplyEGiftVM;
 import com.goshop.app.presentation.model.ApplyPointsVM;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentMethodVM;
 import com.goshop.app.presentation.model.PaymentVM;
@@ -354,15 +355,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         cbCheckoutUseSame.setChecked(checkoutVM.isUseSame());
         paymentAdapter.setPaymentMethodVMS(checkoutVM.getPaymentMethodVMs());
         productListAdapter.setProductVMS(checkoutVM.getProductVMS());
-        updateBilling(checkoutVM.getSubTotal(),
-            checkoutVM.getShipping(),
-            checkoutVM.getDiscountCode(),
-            checkoutVM.getDiscountAmount(),
-            checkoutVM.geteGiftCode(),
-            checkoutVM.geteGiftAmount(),
-            checkoutVM.getPointsApplied(),
-            checkoutVM.getPointsAmount(),
-            checkoutVM.getBillingTotal());
+        BillingVM billingVM = checkoutVM.getBillingVM();
+        updateBilling(billingVM);
         List<PaymentMethodVM> paymentMethodVMs = checkoutVM.getPaymentMethodVMs();
         for (PaymentMethodVM methodVM : paymentMethodVMs) {
             if (methodVM.getMonths() != null && methodVM.getMonths().size() > 0) {
@@ -370,8 +364,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                 break;
             }
         }
-        updateInputEditLayout(checkoutVM.getDiscountAmount(), checkoutVM.geteGiftAmount(),
-            checkoutVM.getPointsApplied(), checkoutVM.getPointsAmount());
+        updateInputEditLayout(billingVM.getBillingDiscountAmount(), billingVM.getBillingEGiftAmount(),
+            billingVM.getBillingPointsApplied(), billingVM.getBillingPointsAmount());
     }
 
     private void updateInputEditLayout(String discountAmount, String egiftAmount,
@@ -434,23 +428,28 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         finish();
     }
 
-    private void updateBilling(String sub, String shipping, String discountCode,
-        String discountAmount, String eGiftCode, String eGiftAmount, String pointsCode,
-        String pointsAmount, String total) {
-        tvBillingSubtotalAmount.setText(sub);
-        tvBillingShippingAmount.setText(shipping);
-        llBillingShipping.setVisibility(TextUtils.isEmpty(shipping) ? View.GONE : View.VISIBLE);
-        tvBillingDiscountCode.setText(discountCode);
-        tvBillingDiscountAmount.setText(NumberFormater.formaterOfferPrice(discountAmount));
+    private void updateBilling(BillingVM billingVM) {
+        tvBillingSubtotalAmount.setText(billingVM.getBillingSubTotal());
+        tvBillingShippingAmount.setText(billingVM.getBillingShipping());
+        llBillingShipping
+            .setVisibility(TextUtils.isEmpty(billingVM.getBillingShipping()) ? View.GONE : View.VISIBLE);
+        tvBillingDiscountCode.setText(billingVM.getBillingDiscountCode());
+        tvBillingDiscountAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingDiscountAmount()));
         llBillingDiscount
-            .setVisibility(TextUtils.isEmpty(discountAmount) ? View.GONE : View.VISIBLE);
-        tvBillingEgiftCode.setText(eGiftCode);
-        tvBillingEgiftAmount.setText(NumberFormater.formaterOfferPrice(eGiftAmount));
-        llBillingEgift.setVisibility(TextUtils.isEmpty(eGiftAmount) ? View.GONE : View.VISIBLE);
-        tvBillingPointsAmount.setText(NumberFormater.formaterOfferPrice(pointsAmount));
-        tvBillingPointsCode.setText(TextFormater.formatBillingCode(pointsCode));
-        llBillingPoints.setVisibility(TextUtils.isEmpty(pointsAmount) ? View.GONE : View.VISIBLE);
-        tvBillingTotal.setText(total);
+            .setVisibility(
+                TextUtils.isEmpty(billingVM.getBillingDiscountAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingEgiftCode.setText(billingVM.getBillingEGiftCode());
+        tvBillingEgiftAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingEGiftAmount()));
+        llBillingEgift.setVisibility(
+            TextUtils.isEmpty(billingVM.getBillingEGiftAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingPointsAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingPointsAmount()));
+        tvBillingPointsCode.setText(TextFormater.formatBillingCode(billingVM.getBillingPointsApplied()));
+        llBillingPoints.setVisibility(
+            TextUtils.isEmpty(billingVM.getBillingPointsAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingTotal.setText(billingVM.getBillingTotal());
     }
 
     private void updateBillingAddress(String username, String first, String second, String place,

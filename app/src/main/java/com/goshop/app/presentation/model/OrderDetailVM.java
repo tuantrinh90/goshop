@@ -24,23 +24,7 @@ public class OrderDetailVM {
 
     private String shipTel;
 
-    private String subTotal;
-
-    private String shipping;
-
-    private String disscount;
-
-    private String total;
-
-    private String discountDes;
-
-    private String pointsDes;
-
-    private String egiftDes;
-
-    private String egift;
-
-    private String points;
+    private BillingVM billingVM;
 
     public OrderDetailVM(String orderNumber, String orderStatus, String placeAt,
         String shipName, String shipAddress, String shipCity, String shipCountry,
@@ -58,76 +42,12 @@ public class OrderDetailVM {
         this.myOrdersProductVMS = myOrdersProductVMS;
     }
 
-    public String getEgift() {
-        return egift;
+    public BillingVM getBillingVM() {
+        return billingVM;
     }
 
-    public void setEgift(String egift) {
-        this.egift = egift;
-    }
-
-    public String getPoints() {
-        return points;
-    }
-
-    public void setPoints(String points) {
-        this.points = points;
-    }
-
-    public String getDiscountDes() {
-        return discountDes;
-    }
-
-    public void setDiscountDes(String discountDes) {
-        this.discountDes = discountDes;
-    }
-
-    public String getPointsDes() {
-        return pointsDes;
-    }
-
-    public void setPointsDes(String pointsDes) {
-        this.pointsDes = pointsDes;
-    }
-
-    public String getEgiftDes() {
-        return egiftDes;
-    }
-
-    public void setEgiftDes(String egiftDes) {
-        this.egiftDes = egiftDes;
-    }
-
-    public String getSubTotal() {
-        return subTotal;
-    }
-
-    public void setSubTotal(String subTotal) {
-        this.subTotal = subTotal;
-    }
-
-    public String getShipping() {
-        return shipping;
-    }
-
-    public void setShipping(String shipping) {
-        this.shipping = shipping;
-    }
-
-    public String getDisscount() {
-        return disscount;
-    }
-
-    public void setDisscount(String disscount) {
-        this.disscount = disscount;
-    }
-
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
-        this.total = total;
+    public void setBillingVM(BillingVM billingVM) {
+        this.billingVM = billingVM;
     }
 
     public String getOrderNumber() {

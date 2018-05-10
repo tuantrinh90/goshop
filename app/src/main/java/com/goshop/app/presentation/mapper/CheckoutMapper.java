@@ -4,14 +4,13 @@ import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.CheckoutResponse;
 import com.goshop.app.data.model.response.common.AddressData;
-import com.goshop.app.data.model.response.common.AddressesData;
 import com.goshop.app.data.model.response.common.EmiOptionsData;
-import com.goshop.app.data.model.response.common.OrderRMData;
 import com.goshop.app.data.model.response.common.PaymentMethodData;
 import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.data.model.response.common.RMData;
 import com.goshop.app.data.model.response.common.SuperAttributeData;
 import com.goshop.app.presentation.model.AddressVM;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentMethodVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
@@ -19,11 +18,8 @@ import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.TextFormater;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CheckoutMapper {
 
@@ -51,7 +47,7 @@ public class CheckoutMapper {
             addressVM.setBillingDefault(addressData.isDefaultBilling());
             addressVMS.add(addressVM);
         }
-        if(addressVMS.size() == 1) {
+        if (addressVMS.size() == 1) {
             addressVMS.add(addressVMS.get(0));
         }
         checkoutVM.setAddressVMS(addressVMS);
@@ -106,17 +102,17 @@ public class CheckoutMapper {
 
         checkoutVM.setProductVMS(productVMS);
         RMData rmData = response.getBilling().getRm();
-        checkoutVM.setSubTotal(NumberFormater.formaterPrice(rmData.getSubTotal()));
-        checkoutVM.setShipping(NumberFormater.formaterPrice(rmData.getShipping()));
-        checkoutVM
-            .setDiscountCode(TextFormater.formatBillingCode(rmData.getDiscount().getCode()));
-        checkoutVM.setDiscountAmount(rmData.getDiscount().getAmount());
-        checkoutVM
-            .seteGiftCode(TextFormater.formatBillingCode(rmData.geteGiftCard().getCode()));
-        checkoutVM.seteGiftAmount(rmData.geteGiftCard().getAmount());
-        checkoutVM.setBillingTotal(NumberFormater.formaterPrice(rmData.getTotal()));
-        checkoutVM.setPointsAmount(rmData.getGoshopPoints().getAmount());
-        checkoutVM.setPointsApplied(rmData.getGoshopPoints().getApplied());
+        BillingVM billingVM = new BillingVM();
+        billingVM.setBillingSubTotal(NumberFormater.formaterPrice(rmData.getSubTotal()));
+        billingVM.setBillingShipping(NumberFormater.formaterPrice(rmData.getShipping()));
+        billingVM.setBillingDiscountCode(TextFormater.formatBillingCode(rmData.getDiscount().getCode()));
+        billingVM.setBillingDiscountAmount(rmData.getDiscount().getAmount());
+        billingVM.setBillingEGiftAmount(rmData.geteGiftCard().getAmount());
+        billingVM.setBillingEGiftCode(TextFormater.formatBillingCode(rmData.geteGiftCard().getCode()));
+        billingVM.setBillingTotal(NumberFormater.formaterPrice(rmData.getTotal()));
+        billingVM.setBillingPointsAmount(rmData.getGoshopPoints().getAmount());
+        billingVM.setBillingPointsApplied(rmData.getGoshopPoints().getApplied());
+        checkoutVM.setBillingVM(billingVM);
         return checkoutVM;
     }
 
