@@ -286,6 +286,7 @@
     <string name="egift_card_only">eGift Card</string>
     <string name="go_shop_points_num">Go Shop Points(200)</string>
     <string name="go_shop_points_only">Go Shop Points</string>
+    <string name="go_shop_points_">Go Shop Points:</string>
     <string name="malay">Malay</string>
     <string name="grand_total">Grand Total</string>
     <string name="total_incl_gst">Total Incl.GST:</string>

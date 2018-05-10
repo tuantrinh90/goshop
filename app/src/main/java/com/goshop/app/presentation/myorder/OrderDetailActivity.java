@@ -8,6 +8,7 @@ import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
 import com.goshop.app.presentation.model.OrderDetailVM;
 import com.goshop.app.presentation.shopping.RatingActivity;
+import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.content.Intent;
@@ -15,8 +16,10 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 
 import java.util.ArrayList;
 
@@ -73,36 +76,81 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
     @BindView(R.id.tv_order_detail_tel)
     RobotoLightTextView tvOrderDetailTel;
 
-    @BindView(R.id.tv_order_disscount)
-    RobotoLightTextView tvOrderDisscount;
+    @BindView(R.id.tv_billing_subtotal_amount)
+    RobotoLightTextView tvBillingSubtotalAmount;
 
-    @BindView(R.id.tv_order_disscount_des)
-    RobotoLightTextView tvOrderDisscountDes;
+    @BindView(R.id.ll_billing_subtotal)
+    LinearLayout llBillingSubtotal;
 
-    @BindView(R.id.tv_order_egift_card)
-    RobotoLightTextView tvOrderEgiftCard;
+    @BindView(R.id.tv_billing_shipping_amount)
+    RobotoLightTextView tvBillingShippingAmount;
 
-    @BindView(R.id.tv_order_egift_des)
-    RobotoLightTextView tvOrderEgiftDes;
+    @BindView(R.id.ll_billing_shipping)
+    LinearLayout llBillingShipping;
 
-    @BindView(R.id.tv_order_go_shop_points)
-    RobotoLightTextView tvOrderGoShopPoints;
+    @BindView(R.id.tv_billing_discount_code)
+    RobotoLightTextView tvBillingDiscountCode;
 
-    @BindView(R.id.tv_order_points_des)
-    RobotoLightTextView tvOrderPointsDes;
+    @BindView(R.id.tv_billing_discount_amount)
+    RobotoLightTextView tvBillingDiscountAmount;
 
-    @BindView(R.id.tv_order_shipping)
-    RobotoLightTextView tvOrderShipping;
+    @BindView(R.id.ll_billing_discount)
+    LinearLayout llBillingDiscount;
 
-    @BindView(R.id.tv_order_sub_total)
-    RobotoLightTextView tvOrderSubTotal;
+    @BindView(R.id.tv_billing_egift_code)
+    RobotoLightTextView tvBillingEgiftCode;
 
-    @BindView(R.id.tv_order_total)
-    RobotoMediumTextView tvOrderTotal;
+    @BindView(R.id.tv_billing_egift_amount)
+    RobotoLightTextView tvBillingEgiftAmount;
+
+    @BindView(R.id.ll_billing_egift)
+    LinearLayout llBillingEgift;
+
+    @BindView(R.id.tv_billing_points_amount)
+    RobotoLightTextView tvBillingPointsAmount;
+
+    @BindView(R.id.tv_billing_points_code)
+    RobotoLightTextView tvBillingPointsCode;
+
+    @BindView(R.id.ll_billing_points)
+    LinearLayout llBillingPoints;
+
+    @BindView(R.id.tv_billing_total)
+    RobotoMediumTextView tvBillingTotal;
+
+    @BindView(R.id.ll_billing_total)
+    LinearLayout llBillingTotal;
+
+    /*@BindView(R.id.tv_order_disscount)
+    RobotoLightTextView tvOrderDisscount;*/
+
+   /* @BindView(R.id.tv_order_disscount_des)
+    RobotoLightTextView tvOrderDisscountDes;*/
+
+/*    @BindView(R.id.tv_order_egift_card)
+    RobotoLightTextView tvOrderEgiftCard;*/
+
+  /*  @BindView(R.id.tv_order_egift_des)
+    RobotoLightTextView tvOrderEgiftDes;*/
+
+  /*  @BindView(R.id.tv_order_go_shop_points)
+    RobotoLightTextView tvOrderGoShopPoints;*/
+
+   /* @BindView(R.id.tv_order_points_des)
+    RobotoLightTextView tvOrderPointsDes;*/
+
+/*    @BindView(R.id.tv_order_shipping)
+    RobotoLightTextView tvOrderShipping;*/
+
+   /* @BindView(R.id.tv_order_sub_total)
+    RobotoLightTextView tvOrderSubTotal;*/
+
+  /*  @BindView(R.id.tv_order_total)
+    RobotoMediumTextView tvOrderTotal;*/
 
     private MyOrderProductAdapter myOrderProductAdapter;
 
-    private String description = "(%s):";
+    /*  private String description = "(%s):";*/
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -157,15 +205,25 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
         tvOrderDetailTel.setText(orderDetailVM.getShipTel());
         tvOrderDetailMethod.setText(orderDetailVM.getMethod());
 
-        tvOrderSubTotal.setText(orderDetailVM.getSubTotal());
-        tvOrderShipping.setText(orderDetailVM.getShipping());
-        tvOrderDisscount.setText(orderDetailVM.getDisscount());
-        tvOrderTotal.setText(orderDetailVM.getTotal());
-        tvOrderDisscountDes.setText(String.format(description, orderDetailVM.getDiscountDes()));
-        tvOrderEgiftDes.setText(String.format(description, orderDetailVM.getEgiftDes()));
-        tvOrderPointsDes.setText(String.format(description, orderDetailVM.getPointsDes()));
-        tvOrderEgiftCard.setText(orderDetailVM.getEgift());
-        tvOrderGoShopPoints.setText(orderDetailVM.getPoints());
+        tvBillingSubtotalAmount.setText(orderDetailVM.getSubTotal());
+        tvBillingShippingAmount.setText(orderDetailVM.getShipping());
+        tvBillingDiscountAmount
+            .setText(NumberFormater.formaterDiscountPrice(orderDetailVM.getDisscount()));
+        tvBillingEgiftAmount
+            .setText(NumberFormater.formaterDiscountPrice(orderDetailVM.getEgift()));
+        tvBillingPointsAmount
+            .setText(NumberFormater.formaterDiscountPrice(orderDetailVM.getPoints()));
+        tvBillingTotal.setText(orderDetailVM.getTotal());
+        tvBillingDiscountCode.setText(orderDetailVM.getDiscountDes());
+        tvBillingEgiftCode.setText(orderDetailVM.getEgiftDes());
+        tvBillingPointsCode.setText(orderDetailVM.getPointsDes());
+
+        llBillingDiscount.setVisibility(
+            TextUtils.isEmpty(orderDetailVM.getDisscount()) ? View.GONE : View.VISIBLE);
+        llBillingEgift
+            .setVisibility(TextUtils.isEmpty(orderDetailVM.getEgift()) ? View.GONE : View.VISIBLE);
+        llBillingPoints
+            .setVisibility(TextUtils.isEmpty(orderDetailVM.getPoints()) ? View.GONE : View.VISIBLE);
     }
 
     @Override

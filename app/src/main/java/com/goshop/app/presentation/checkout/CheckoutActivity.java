@@ -22,6 +22,7 @@ import com.goshop.app.presentation.model.ProfileMetaVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.utils.TextFormater;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -72,12 +73,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.iv_checkout_shipping_more)
     ImageView ivCheckoutShippingMore;
 
-    @BindView(R.id.ll_checkout_discount)
-    LinearLayout llCheckoutDiscount;
-
-    @BindView(R.id.ll_checkout_egift)
-    LinearLayout llCheckoutEGift;
-
     @BindView(R.id.ll_checkout_toolbar)
     LinearLayout llCheckoutToolbar;
 
@@ -120,14 +115,8 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.tv_checkout_billing_country)
     RobotoLightTextView tvCheckoutBillingCountry;
 
-    @BindView(R.id.tv_checkout_billing_shipping)
-    RobotoLightTextView tvCheckoutBillingShipping;
-
     @BindView(R.id.tv_checkout_billing_tel)
     RobotoLightTextView tvCheckoutBillingTel;
-
-    @BindView(R.id.tv_checkout_billing_total)
-    RobotoMediumTextView tvCheckoutBillingTotal;
 
     @BindView(R.id.tv_checkout_billing_username)
     RobotoMediumTextView tvCheckoutBillingUsername;
@@ -137,21 +126,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @BindView(R.id.tv_checkout_country)
     RobotoLightTextView tvCheckoutCountry;
-
-    @BindView(R.id.tv_checkout_discount_amount)
-    RobotoLightTextView tvCheckoutDiscountAmount;
-
-    @BindView(R.id.tv_checkout_discount_code)
-    RobotoLightTextView tvCheckoutDiscountCode;
-
-    @BindView(R.id.tv_checkout_egift_amount)
-    RobotoLightTextView tvCheckoutEgiftAmount;
-
-    @BindView(R.id.tv_checkout_egift_code)
-    RobotoLightTextView tvCheckoutEgiftCode;
-
-    @BindView(R.id.tv_checkout_sub_total)
-    RobotoLightTextView tvCheckoutSubTotal;
 
     @BindView(R.id.tv_checkout_tel)
     RobotoLightTextView tvCheckoutTel;
@@ -182,6 +156,51 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @BindView(R.id.recyclerview_checkout_payment)
     RecyclerView recyclerviewCheckoutPayment;
+
+    @BindView(R.id.tv_billing_subtotal_amount)
+    RobotoLightTextView tvBillingSubtotalAmount;
+
+    @BindView(R.id.ll_billing_subtotal)
+    LinearLayout llBillingSubtotal;
+
+    @BindView(R.id.tv_billing_shipping_amount)
+    RobotoLightTextView tvBillingShippingAmount;
+
+    @BindView(R.id.ll_billing_shipping)
+    LinearLayout llBillingShipping;
+
+    @BindView(R.id.tv_billing_discount_code)
+    RobotoLightTextView tvBillingDiscountCode;
+
+    @BindView(R.id.tv_billing_discount_amount)
+    RobotoLightTextView tvBillingDiscountAmount;
+
+    @BindView(R.id.ll_billing_discount)
+    LinearLayout llBillingDiscount;
+
+    @BindView(R.id.tv_billing_egift_code)
+    RobotoLightTextView tvBillingEgiftCode;
+
+    @BindView(R.id.tv_billing_egift_amount)
+    RobotoLightTextView tvBillingEgiftAmount;
+
+    @BindView(R.id.tv_billing_points_code)
+    RobotoLightTextView tvBillingPointsCode;
+
+    @BindView(R.id.ll_billing_egift)
+    LinearLayout llBillingEgift;
+
+    @BindView(R.id.tv_billing_points_amount)
+    RobotoLightTextView tvBillingPointsAmount;
+
+    @BindView(R.id.ll_billing_points)
+    LinearLayout llBillingPoints;
+
+    @BindView(R.id.tv_billing_total)
+    RobotoMediumTextView tvBillingTotal;
+
+    @BindView(R.id.ll_billing_total)
+    LinearLayout llBillingTotal;
 
     private CheckoutListAdapter productListAdapter;
 
@@ -266,14 +285,14 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             etCheckoutDiscount.setFocusableInTouchMode(true);
             etCheckoutDiscount.setFocusable(true);
             etCheckoutDiscount.requestFocus();
-            llCheckoutDiscount.setVisibility(View.GONE);
+            llBillingDiscount.setVisibility(View.GONE);
         } else {
             tvBtnCheckDiscountApply.setSelected(true);
             tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
             etCheckoutDiscount.setFocusable(false);
             etCheckoutDiscount.setFocusableInTouchMode(false);
             etCheckoutDiscount.setText(discountVM.getDiscount());
-            llCheckoutDiscount.setVisibility(View.VISIBLE);
+            llBillingDiscount.setVisibility(View.VISIBLE);
         }
     }
 
@@ -304,14 +323,14 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             etCheckoutEgift.setFocusableInTouchMode(true);
             etCheckoutEgift.setFocusable(true);
             etCheckoutEgift.requestFocus();
-            llCheckoutEGift.setVisibility(View.GONE);
+            llBillingEgift.setVisibility(View.GONE);
         } else {
             tvBtnCheckGiftCardApply.setSelected(true);
             tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
             etCheckoutEgift.setFocusable(false);
             etCheckoutEgift.setFocusableInTouchMode(false);
             etCheckoutEgift.setText(eGiftVM.geteGiftApplied());
-            llCheckoutEGift.setVisibility(View.VISIBLE);
+            llBillingEgift.setVisibility(View.VISIBLE);
         }
     }
 
@@ -342,11 +361,14 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         cbCheckoutUseSame.setChecked(checkoutVM.isUseSame());
         paymentAdapter.setPaymentMethodVMS(checkoutVM.getPaymentMethodVMs());
         productListAdapter.setProductVMS(checkoutVM.getProductVMS());
-        updateBilling(checkoutVM.getSubTotal(), checkoutVM.getShipping(),
+        updateBilling(checkoutVM.getSubTotal(),
+            checkoutVM.getShipping(),
             checkoutVM.getDiscountCode(),
-            NumberFormater.formaterDiscountPrice(checkoutVM.getDiscountAmount()),
+            checkoutVM.getDiscountAmount(),
             checkoutVM.geteGiftCode(),
-            NumberFormater.formaterDiscountPrice(checkoutVM.geteGiftAmount()),
+            checkoutVM.geteGiftAmount(),
+            checkoutVM.getPointsApplied(),
+            checkoutVM.getPointsAmount(),
             checkoutVM.getBillingTotal());
         List<PaymentMethodVM> paymentMethodVMs = checkoutVM.getPaymentMethodVMs();
         for (PaymentMethodVM methodVM : paymentMethodVMs) {
@@ -367,7 +389,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             etCheckoutDiscount.setFocusable(false);
             etCheckoutDiscount.setFocusableInTouchMode(false);
             etCheckoutDiscount.setText(discountAmount);
-            llCheckoutDiscount.setVisibility(View.VISIBLE);
+            llBillingDiscount.setVisibility(View.VISIBLE);
         } else {
             tvBtnCheckDiscountApply.setSelected(false);
             tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
@@ -375,7 +397,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             etCheckoutDiscount.setFocusableInTouchMode(true);
             etCheckoutDiscount.setFocusable(true);
             etCheckoutDiscount.requestFocus();
-            llCheckoutDiscount.setVisibility(View.GONE);
+            llBillingDiscount.setVisibility(View.GONE);
         }
 
         if (TextUtils.isEmpty(egiftAmount)) {
@@ -385,14 +407,14 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             etCheckoutEgift.setFocusableInTouchMode(true);
             etCheckoutEgift.setFocusable(true);
             etCheckoutEgift.requestFocus();
-            llCheckoutEGift.setVisibility(View.GONE);
+            llBillingEgift.setVisibility(View.GONE);
         } else {
             tvBtnCheckGiftCardApply.setSelected(true);
             tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
             etCheckoutEgift.setFocusable(false);
             etCheckoutEgift.setFocusableInTouchMode(false);
             etCheckoutEgift.setText(egiftAmount);
-            llCheckoutEGift.setVisibility(View.VISIBLE);
+            llBillingEgift.setVisibility(View.VISIBLE);
         }
 
         if (TextUtils.isEmpty(pointsAmount)) {
@@ -412,7 +434,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                 .format(getResources().getString(R.string.checkout_points_tip), appliedPoints);
             tvCheckoutAttention.setText(Html.fromHtml(pointsTip));
         }
-
     }
 
     @Override
@@ -421,15 +442,22 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     private void updateBilling(String sub, String shipping, String discountCode,
-        String discountAmount, String eGiftCode, String eGiftAmount,
-        String total) {
-        tvCheckoutSubTotal.setText(sub);
-        tvCheckoutBillingShipping.setText(shipping);
-        tvCheckoutDiscountCode.setText(discountCode);
-        tvCheckoutDiscountAmount.setText(discountAmount);
-        tvCheckoutEgiftCode.setText(eGiftCode);
-        tvCheckoutEgiftAmount.setText(eGiftAmount);
-        tvCheckoutBillingTotal.setText(total);
+        String discountAmount, String eGiftCode, String eGiftAmount, String pointsCode,
+        String pointsAmount, String total) {
+        tvBillingSubtotalAmount.setText(sub);
+        tvBillingShippingAmount.setText(shipping);
+        llBillingShipping.setVisibility(TextUtils.isEmpty(shipping) ? View.GONE : View.VISIBLE);
+        tvBillingDiscountCode.setText(discountCode);
+        tvBillingDiscountAmount.setText(NumberFormater.formaterOfferPrice(discountAmount));
+        llBillingDiscount
+            .setVisibility(TextUtils.isEmpty(discountAmount) ? View.GONE : View.VISIBLE);
+        tvBillingEgiftCode.setText(eGiftCode);
+        tvBillingEgiftAmount.setText(NumberFormater.formaterOfferPrice(eGiftAmount));
+        llBillingEgift.setVisibility(TextUtils.isEmpty(eGiftAmount) ? View.GONE : View.VISIBLE);
+        tvBillingPointsAmount.setText(NumberFormater.formaterOfferPrice(pointsAmount));
+        tvBillingPointsCode.setText(TextFormater.formatBillingCode(pointsCode));
+        llBillingPoints.setVisibility(TextUtils.isEmpty(pointsAmount) ? View.GONE : View.VISIBLE);
+        tvBillingTotal.setText(total);
     }
 
     private void updateBillingAddress(String username, String first, String second, String place,

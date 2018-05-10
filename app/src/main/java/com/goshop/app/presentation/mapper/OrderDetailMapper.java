@@ -14,6 +14,7 @@ import com.goshop.app.presentation.model.MyOrdersProductVM;
 import com.goshop.app.presentation.model.OrderDetailVM;
 import com.goshop.app.utils.DateFormater;
 import com.goshop.app.utils.NumberFormater;
+import com.goshop.app.utils.TextFormater;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,20 +62,20 @@ public class OrderDetailMapper {
         OrderDetailVM orderDetailVM = new OrderDetailVM(informationData.getNumber(),
             informationData.getStatus(), placeAt, shippingAddressData.getFirstName(),
             shipAddress, shipCity, shippingAddressData.getCountry(),
-            NumberFormater.formaterTelNo(shippingAddressData.getTelephone()), paymentMethod, myOrdersProductVMS);
+            NumberFormater.formaterTelNo(shippingAddressData.getTelephone()), paymentMethod,
+            myOrdersProductVMS);
 
         OrderRMData rm = billingData.getRm();
         orderDetailVM.setSubTotal(NumberFormater.formaterPrice(rm.getSubTotal()));
         orderDetailVM.setShipping(NumberFormater.formaterPrice(rm.getShipping()));
-        orderDetailVM
-            .setDisscount(NumberFormater.formaterDiscountPrice(rm.getDiscount().getAmount()));
+        orderDetailVM.setDisscount(rm.getDiscount().getAmount());
         orderDetailVM.setTotal(NumberFormater.formaterPrice(rm.getTotal()));
-        orderDetailVM.setEgift(NumberFormater.formaterDiscountPrice(rm.getEgiftCard().getAmount()));
+        orderDetailVM.setEgift(rm.getEgiftCard().getAmount());
+        orderDetailVM.setPoints(rm.getGoshopPoints().getAmount());
+        orderDetailVM.setDiscountDes(TextFormater.formatBillingCode(rm.getDiscount().getCode()));
+        orderDetailVM.setEgiftDes(TextFormater.formatBillingCode(rm.getEgiftCard().getCode()));
         orderDetailVM
-            .setPoints(NumberFormater.formaterDiscountPrice(rm.getGoshopPoints().getAmount()));
-        orderDetailVM.setDiscountDes(rm.getDiscount().getCode());
-        orderDetailVM.setEgiftDes(rm.getEgiftCard().getCode());
-        orderDetailVM.setPointsDes(rm.getGoshopPoints().getApplied());
+            .setPointsDes(TextFormater.formatBillingCode(rm.getGoshopPoints().getApplied()));
         return orderDetailVM;
     }
 
