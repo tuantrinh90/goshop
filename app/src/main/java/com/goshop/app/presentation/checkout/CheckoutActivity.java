@@ -271,11 +271,11 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     @Override
-    public void applyCouponSuccess(ApplyDiscountVM discountVM) {
+    public void applyCouponSuccess(BillingVM billingVM) {
         if (tvBtnCheckDiscountApply.isSelected()) {
             tvBtnCheckDiscountApply.setSelected(false);
             tvBtnCheckDiscountApply.setText(getResources().getString(R.string.apply));
-            etCheckoutDiscount.setText(discountVM.getDiscount());
+            etCheckoutDiscount.setText("");
             etCheckoutDiscount.setFocusableInTouchMode(true);
             etCheckoutDiscount.setFocusable(true);
             etCheckoutDiscount.requestFocus();
@@ -285,17 +285,18 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
             etCheckoutDiscount.setFocusable(false);
             etCheckoutDiscount.setFocusableInTouchMode(false);
-            etCheckoutDiscount.setText(discountVM.getDiscount());
+            etCheckoutDiscount.setText(billingVM.getBillingDiscountAmount());
             llBillingDiscount.setVisibility(View.VISIBLE);
         }
+        updateBilling(billingVM);
     }
 
     @Override
-    public void applyPointsSuccess(ApplyPointsVM pointsVM) {
+    public void applyPointsSuccess(BillingVM billingVM) {
         if (tvBtnCheckPointsApply.isSelected()) {
             tvBtnCheckPointsApply.setSelected(false);
             tvBtnCheckPointsApply.setText(getResources().getString(R.string.apply));
-            etCheckoutPoint.setText(pointsVM.getPointsApplied());
+            etCheckoutPoint.setText("");
             etCheckoutPoint.setFocusableInTouchMode(true);
             etCheckoutPoint.setFocusable(true);
             etCheckoutPoint.requestFocus();
@@ -304,16 +305,17 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             tvBtnCheckPointsApply.setText(getResources().getString(R.string.cancel));
             etCheckoutPoint.setFocusable(false);
             etCheckoutPoint.setFocusableInTouchMode(false);
-            etCheckoutPoint.setText(pointsVM.getPointsApplied());
+            etCheckoutPoint.setText(billingVM.getBillingPointsAmount());
         }
+        updateBilling(billingVM);
     }
 
     @Override
-    public void applyEGiftSuccess(ApplyEGiftVM eGiftVM) {
+    public void applyEGiftSuccess(BillingVM billingVM) {
         if (tvBtnCheckGiftCardApply.isSelected()) {
             tvBtnCheckGiftCardApply.setSelected(false);
             tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.apply));
-            etCheckoutEgift.setText(eGiftVM.geteGiftApplied());
+            etCheckoutEgift.setText("");
             etCheckoutEgift.setFocusableInTouchMode(true);
             etCheckoutEgift.setFocusable(true);
             etCheckoutEgift.requestFocus();
@@ -323,9 +325,10 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             tvBtnCheckGiftCardApply.setText(getResources().getString(R.string.cancel));
             etCheckoutEgift.setFocusable(false);
             etCheckoutEgift.setFocusableInTouchMode(false);
-            etCheckoutEgift.setText(eGiftVM.geteGiftApplied());
+            etCheckoutEgift.setText(billingVM.getBillingEGiftAmount());
             llBillingEgift.setVisibility(View.VISIBLE);
         }
+        updateBilling(billingVM);
     }
 
     @Override

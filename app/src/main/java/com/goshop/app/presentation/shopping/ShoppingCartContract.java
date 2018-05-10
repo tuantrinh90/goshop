@@ -3,6 +3,7 @@ package com.goshop.app.presentation.shopping;
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
 
 public class ShoppingCartContract {
@@ -19,7 +20,7 @@ public class ShoppingCartContract {
 
         void showErrorMessage(String errorMessage);
 
-        void applySuccess(ApplyDiscountVM discountVM);
+        void applySuccess(BillingVM billingVM);
 
         void stopRefresh();
     }
@@ -32,7 +33,7 @@ public class ShoppingCartContract {
 
         void addWishlistRequest(String skuId);
 
-        void applyCoupon(String couponCode, String cartId);
+        void applyCoupon(String couponCode, String quote_id, boolean isRemove);
 
         void updateCartRequest(String quoteItemId, String qty);
     }

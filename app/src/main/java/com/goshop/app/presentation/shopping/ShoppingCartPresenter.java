@@ -133,14 +133,14 @@ public class ShoppingCartPresenter extends RxPresenter<ShoppingCartContract.View
     }
 
     @Override
-    public void applyCoupon(String couponCode, String cartId) {
+    public void applyCoupon(String couponCode, String quote_id, boolean isRemove) {
         mView.showLoadingBar();
         Map<String, Object> params = new HashMap<>();
         params.put(Const.PARAMS_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.PARAMS_STORE_ID, Const.STORE_ID);
-        params.put(Const.PARAMS_CUSTOMER_ID, Const.CUSTOMER_ID);
+        params.put(Const.PARAMS_QUOTE_ID, quote_id);
         params.put(Const.PARAMS_COUPON_CODE, couponCode);
-        params.put(Const.PARAMS_CART_ID, cartId);
+        params.put(Const.PARAMS_REMOVE, isRemove);
         addSubscrebe(accountRepository.applyCoupon(params).subscribeWith(
             new DisposableObserver<Response<ApplyCouponResponse>>() {
                 @Override

@@ -15,6 +15,7 @@ import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.utils.TextFormater;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -113,7 +114,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     private ShoppingCartAdapter shoppingCartAdapter;
 
-    private String cartId;
+    private String quoteId;
 
     private int page = 1;
 
@@ -170,7 +171,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     public void showCartDetail(ShoppingCartProductVM cartProductVM) {
         if (cartProductVM.getProductVMS() != null && !cartProductVM.getProductVMS().isEmpty()) {
             updateLayoutStatus(flContent, true);
-            cartId = cartProductVM.getId();
+            quoteId = cartProductVM.getId();
             shoppingCartAdapter.setProductVMS(cartProductVM.getProductVMS());
             BillingVM billingVM = cartProductVM.getBillingVM();
             if (billingVM.getBillingDiscountAmount() != null && TextUtils
@@ -232,7 +233,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     }
 
     @Override
-    public void applySuccess(ApplyDiscountVM discountVM) {
+    public void applySuccess(BillingVM billingVM) {
         if (tvBtnCartApply.isSelected()) {
             llBillingDiscount.setVisibility(View.GONE);
             tvBtnCartApply.setText(getResources().getString(R.string.apply));
@@ -245,13 +246,11 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             llBillingDiscount.setVisibility(View.VISIBLE);
             tvBtnCartApply.setText(getResources().getString(R.string.cancel));
             tvBtnCartApply.setSelected(true);
-            etCartApply.setText(discountVM.getDiscount());
+            etCartApply.setText(billingVM.getBillingDiscountAmount());
             etCartApply.setFocusable(false);
             etCartApply.setFocusableInTouchMode(false);
-            tvBillingDiscountAmount
-                .setText(NumberFormater.formaterOfferPrice(discountVM.getDiscount()));
         }
-        tvBillingTotal.setText(discountVM.getOriginalPrice());
+        updateBilling(billingVM);
     }
 
     @Override
@@ -275,7 +274,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                     Toast.makeText(this, getResources().getString(R.string.empty_error),
                         Toast.LENGTH_SHORT).show();
                 } else {
-                    mPresenter.applyCoupon(code, cartId);
+                    mPresenter.applyCoupon(code, quoteId, tvBtnCartApply.isSelected());
                 }
 
                 break;
@@ -299,6 +298,30 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 break;
 
         }
+    }
+
+    private void updateBilling(BillingVM billingVM) {
+        tvBillingSubtotalAmount.setText(billingVM.getBillingSubTotal());
+        tvBillingShippingAmount.setText(billingVM.getBillingShipping());
+        llBillingShipping
+            .setVisibility(TextUtils.isEmpty(billingVM.getBillingShipping()) ? View.GONE : View.VISIBLE);
+        tvBillingDiscountCode.setText(billingVM.getBillingDiscountCode());
+        tvBillingDiscountAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingDiscountAmount()));
+        llBillingDiscount
+            .setVisibility(
+                TextUtils.isEmpty(billingVM.getBillingDiscountAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingEgiftCode.setText(billingVM.getBillingEGiftCode());
+        tvBillingEgiftAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingEGiftAmount()));
+        llBillingEgift.setVisibility(
+            TextUtils.isEmpty(billingVM.getBillingEGiftAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingPointsAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingPointsAmount()));
+        tvBillingPointsCode.setText(TextFormater.formatBillingCode(billingVM.getBillingPointsApplied()));
+        llBillingPoints.setVisibility(
+            TextUtils.isEmpty(billingVM.getBillingPointsAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingTotal.setText(billingVM.getBillingTotal());
     }
 
     @Override

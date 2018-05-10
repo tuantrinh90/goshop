@@ -96,6 +96,8 @@ public class Const {
 
     public static final String PARAMS_CART_ID = "cart_id";
 
+    public static final String PARAMS_REMOVE = "remove";
+
     public static final String PARAMS_COUPON_CODE = "coupon_code";
 
     public static final String PARAMS_GOSHOP_POINT = "goshop_point";

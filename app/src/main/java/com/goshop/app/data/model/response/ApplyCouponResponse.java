@@ -1,20 +1,16 @@
 package com.goshop.app.data.model.response;
 
-import com.goshop.app.data.model.response.common.DiscountData;
+import com.goshop.app.data.model.response.common.BillingData;
 
 public class ApplyCouponResponse {
 
-    /**
-     * discount : {"type":"flat","discount":"10","original_price":"120","discounted_price":"110"}
-     */
+    private BillingData billing;
 
-    private DiscountData discount;
-
-    public DiscountData getDiscount() {
-        return discount;
+    public BillingData getBilling() {
+        return billing;
     }
 
-    public void setDiscount(DiscountData discount) {
-        this.discount = discount;
+    public void setBilling(BillingData billing) {
+        this.billing = billing;
     }
 }
