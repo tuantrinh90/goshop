@@ -123,7 +123,7 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
         }
         mEventHandler = new JWEventHandler(jwPlayerView, position);
         if (activity != null) {
-            // Keep the screen on during playback
+            // TODO: 2018/5/10   Keep the screen on during playback
             new KeepScreenOnHandler(jwPlayerView, activity.getWindow());
         }
     }

@@ -82,7 +82,6 @@ public class JWEventHandler implements VideoPlayerEvents.OnSetupErrorListener,
 
     public JWEventHandler(JWPlayerView jwPlayerView, int position) {
         this.position = position;
-        // Subscribe to all JW Player events
         jwPlayerView.addOnSetupErrorListener(this);
         jwPlayerView.addOnPlaylistListener(this);
         jwPlayerView.addOnPlaylistItemListener(this);
@@ -130,48 +129,47 @@ public class JWEventHandler implements VideoPlayerEvents.OnSetupErrorListener,
      */
     @Override
     public void onAudioTracks(List<AudioTrack> audioTracks) {
-        updateOutput("onAudioTracks(List<AudioTrack>)");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onBeforeComplete() {
-        updateOutput("onBeforeComplete()");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onBeforePlay() {
-        updateOutput("onBeforePlay()");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onBuffer(PlayerState oldState) {
-        updateOutput("onBuffer(" + oldState + ")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onCaptionsList(List<Caption> tracks) {
-        updateOutput("onCaptionsList(List<Caption>)");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onComplete() {
-        updateOutput("onComplete()");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onFullscreen(boolean fullscreen) {
-        updateOutput("onFullscreen(" + fullscreen + ")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onIdle(PlayerState oldState) {
-        updateOutput("onIdle(" + oldState + ")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onMeta(Metadata meta) {
-        updateOutput("onMeta(Metadata)");
-
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
         if (meta.getId3Metadata().size() > 0) {
             List<Id3Frame> id3 = meta.getId3Metadata();
             for (Id3Frame id3Obj : id3) {
@@ -190,150 +188,146 @@ public class JWEventHandler implements VideoPlayerEvents.OnSetupErrorListener,
 
     @Override
     public void onPause(PlayerState oldState) {
-        updateOutput("onPause(" + oldState + ")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onPlay(PlayerState oldState) {
-        updateOutput("onPlay(" + oldState + ")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onPlaylistComplete() {
-        updateOutput("onPlaylistComplete()");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onPlaylistItem(int index, PlaylistItem playlistItem) {
-        updateOutput("onPlaylistItem(" + index + ", PlaylistItem)");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onPlaylist(List<PlaylistItem> playlist) {
-        updateOutput("onPlaylist(List<PlaylistItem>)");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onSeek(int position, int offset) {
-        updateOutput("onSeek(" + position + ", " + offset + ")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onSetupError(String message) {
-        updateOutput("onSetupError(\"" + message + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onTime(long position, long duration) {
-        // Do nothing - this fires several times per second
+        // TODO: 2018/5/10   Do nothing - this fires several times per second
     }
 
     @Override
     public void onAdError(String tag, String message) {
-        updateOutput("onAdError(\"" + tag + "\", \"" + message + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onError(ErrorEvent errorEvent) {
-        updateOutput("onError(\"" + errorEvent.getMessage() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onLevelsChanged(int i) {
-        updateOutput("onLevelsChange(" + i + ")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onLevels(List<QualityLevel> list) {
-        updateOutput("onLevels(List<QualityLevel>)");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onAudioTrackChanged(int i) {
-        updateOutput("onAudioTrackChanged(" + i + ")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onCaptionsChanged(int i, List<Caption> list) {
-        updateOutput("onCaptionsChanged(" + i + ", List<Caption>)");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onAdClick(AdClickEvent adClickEvent) {
-        updateOutput("onAdClick(\"" + adClickEvent.getTag() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onAdComplete(AdCompleteEvent adCompleteEvent) {
-        updateOutput("onAdComplete(\"" + adCompleteEvent.getTag() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onAdSkipped(AdSkippedEvent adSkippedEvent) {
-        updateOutput("onAdSkipped(\"" + adSkippedEvent.getTag() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onAdImpression(AdImpressionEvent adImpressionEvent) {
-        updateOutput("onAdImpression(\"" + adImpressionEvent.getTag() + "\", \"" + adImpressionEvent
-            .getCreativeType() + "\", \"" + adImpressionEvent.getAdPosition().name() + "\")");
-
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onAdTime(AdTimeEvent adTimeEvent) {
-        // Do nothing - this fires several times per second
+        // TODO: 2018/5/10  Do nothing - this fires several times per second
     }
 
     @Override
     public void onAdPause(AdPauseEvent adPauseEvent) {
-        updateOutput(
-            "onAdPause(\"" + adPauseEvent.getTag() + "\", \"" + adPauseEvent.getOldState() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onAdPlay(AdPlayEvent adPlayEvent) {
-        updateOutput(
-            "onAdPlay(\"" + adPlayEvent.getTag() + "\", \"" + adPlayEvent.getOldState() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onRelatedClose(RelatedCloseEvent relatedCloseEvent) {
-        updateOutput("onRelatedClose(\"" + relatedCloseEvent.getMethod() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onControls(ControlsEvent controlsEvent) {
-        updateOutput("onControls(\"" + controlsEvent.getControls() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onDisplayClick() {
-        updateOutput("onDisplayClick(\"" + "displayClick" + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onMute(boolean b) {
-        updateOutput("onMute(\"" + b + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onRelatedOpen(RelatedOpenEvent relatedOpenEvent) {
-        updateOutput("onRelatedOpen(\"" + relatedOpenEvent.getMethod() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onRelatedPlay(RelatedPlayEvent relatedPlayEvent) {
-        updateOutput("onRelatedPlay(\"" + relatedPlayEvent.getAuto() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onSeeked() {
-        updateOutput("onSeeked(\"" + "seeked" + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 
     @Override
     public void onVisualQuality(VisualQuality visualQuality) {
-        updateOutput("onVisualQuality(\"" + visualQuality.getQualityLevel().getLabel() + "\")");
+        // TODO: 2018/5/10 JW Player events callback method used to debug video
     }
 }

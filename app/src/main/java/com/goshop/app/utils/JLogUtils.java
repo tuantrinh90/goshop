@@ -13,9 +13,9 @@ public class JLogUtils {
     public static void i(String tag, String msg) {
         if (IS_DEBUG) {
             if (useLogTool) {
-                Logger.t(tag).i(msg + "");
+                Logger.t(tag).i(msg);
             } else {
-                Log.i(tag, msg + "");
+                Log.i(tag, msg);
             }
         }
     }
@@ -23,9 +23,9 @@ public class JLogUtils {
     public static void i(String tag, String msg, Throwable tr) {
         if (IS_DEBUG) {
             if (useLogTool) {
-                Logger.t(tag).i(msg + "");
+                Logger.t(tag).i(msg);
             } else {
-                Log.i(tag, msg + "", tr);
+                Log.i(tag, msg, tr);
             }
         }
     }
@@ -33,9 +33,9 @@ public class JLogUtils {
     public static void e(String tag, String msg) {
         if (IS_DEBUG) {
             if (useLogTool) {
-                Logger.t(tag).e(msg + "");
+                Logger.t(tag).e(msg);
             } else {
-                Log.e(tag, msg + "");
+                Log.e(tag, msg);
             }
         }
     }
@@ -133,9 +133,9 @@ public class JLogUtils {
     public static void json(String tag, int requestCode, String json) {
         if (IS_DEBUG) {
             if (useLogTool) {
-                Logger.t(tag + "-" + requestCode + "-->").json(json);
+                Logger.t(tag + +requestCode).json(json);
             } else {
-                Log.d(tag, requestCode + "-->" + json);
+                Log.d(tag, requestCode + json);
             }
         }
     }
