@@ -295,4 +295,6 @@ public class Const {
 
     public static final String TEXT_SEPARATOR = "; ";
 
+    public static final String PAYMENT_CODE = "eppapgpay";
+
 }

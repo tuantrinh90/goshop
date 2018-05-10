@@ -6,12 +6,12 @@ import com.goshop.app.adapter.CheckoutListAdapter;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.dialogs.CustomAlertDialog;
 import com.goshop.app.common.view.RobotoLightCheckBox;
-import com.goshop.app.common.view.RobotoLightRadioButton;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumEditText;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.common.view.RobotoRegularTextView;
+import com.goshop.app.presentation.model.AddressVM;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ApplyEGiftVM;
 import com.goshop.app.presentation.model.ApplyPointsVM;
@@ -34,7 +34,6 @@ import android.widget.CompoundButton;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -47,7 +46,16 @@ import injection.components.DaggerPresenterComponent;
 import injection.modules.PresenterModule;
 
 public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> implements
-    CheckoutContract.View , PopWindowUtil.OnPopWindowDismissListener{
+    CheckoutContract.View, PopWindowUtil.OnPopWindowDismissListener, CheckoutPaymentAdapter
+    .PaymentSelectListener {
+
+    public static final String type_shipping = "shipping";
+
+    public static final String type_billing = "billing";
+
+    public static final String TYPE = "type";
+
+    private static final String TAG = "CheckoutActivity";
 
     @BindView(R.id.btn_checkout_place_my_order)
     RobotoMediumTextView btnCheckoutPlaceMyOrder;
@@ -75,20 +83,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
 
     @BindView(R.id.ll_shipping_top)
     LinearLayout llShippingTop;
-
-    String paymentType;
-
-    @BindView(R.id.radio_payment_type)
-    RadioGroup radioPaymentType;
-
-    @BindView(R.id.rb_checkout_payment_banking)
-    RobotoLightRadioButton rbCheckoutPaymentBanking;
-
-    @BindView(R.id.rb_checkout_payment_cash_on_deliery)
-    RobotoLightRadioButton rbCheckoutPaymentCashOnDeliery;
-
-    @BindView(R.id.rb_checkout_payment_credit)
-    RobotoLightRadioButton rbCheckoutPaymentCredit;
 
     @BindView(R.id.rl_shipping_root)
     RelativeLayout rlShippingRoot;
@@ -165,9 +159,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.tv_checkout_username)
     RobotoMediumTextView tvCheckoutUsername;
 
-    @BindView(R.id.tv_checkout_installment)
-    RobotoRegularTextView tvCheckoutInstallment;
-
     @BindView(R.id.fl_connection_break)
     FrameLayout flConnectionBreak;
 
@@ -183,23 +174,22 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @BindView(R.id.fl_content)
     FrameLayout flContent;
 
-    public static final String type_shipping = "shipping";
-
-    public static final String type_billing = "billing";
-
-    public static final String TYPE = "type";
-
-    private static final String TAG = "CheckoutActivity";
-
     @BindView(R.id.tv_net)
     RobotoRegularTextView tvNet;
 
     @BindView(R.id.tv_net_refresh)
     RobotoRegularTextView tvNetRefresh;
 
+    @BindView(R.id.recyclerview_checkout_payment)
+    RecyclerView recyclerviewCheckoutPayment;
+
     private CheckoutListAdapter productListAdapter;
 
     private List<ProfileMetaVM> months;
+
+    private CheckoutPaymentAdapter paymentAdapter;
+
+    private OnPaymentListListener onPaymentListListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -223,9 +213,16 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         months = new ArrayList<>();
         hideRightMenu();
         initPresenter();
-        initRadioGroup();
         initBilling();
         intRecyclerView();
+        initPaymentRecyclerView();
+    }
+
+    private void initPaymentRecyclerView() {
+        recyclerviewCheckoutPayment.setLayoutManager(new LinearLayoutManager(this));
+        paymentAdapter = new CheckoutPaymentAdapter(new ArrayList<>());
+        recyclerviewCheckoutPayment.setAdapter(paymentAdapter);
+        paymentAdapter.setPaymentSelectListener(this);
     }
 
     private void intRecyclerView() {
@@ -235,10 +232,11 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     private void initBilling() {
-
         cbCheckoutUseSame.setChecked(true);
         cbCheckoutUseSame
-            .setOnCheckedChangeListener((CompoundButton buttonView, boolean isChecked) -> rlBillingRoot.setVisibility(isChecked ? View.GONE : View.VISIBLE));
+            .setOnCheckedChangeListener(
+                (CompoundButton buttonView, boolean isChecked) -> rlBillingRoot
+                    .setVisibility(isChecked ? View.GONE : View.VISIBLE));
     }
 
     private void initPresenter() {
@@ -277,7 +275,6 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             etCheckoutDiscount.setText(discountVM.getDiscount());
             llCheckoutDiscount.setVisibility(View.VISIBLE);
         }
-
     }
 
     @Override
@@ -328,13 +325,22 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     @Override
     public void checkoutRequestSuccess(CheckoutVM checkoutVM) {
         updateLayoutStatus(flContent, true);
-        updateShippingAddress(checkoutVM.getShippingUserName(), checkoutVM.getShippingAddressOne()
-            , checkoutVM.getShippingAddressTwo(), checkoutVM.getShippingCityStatePost(),
-            checkoutVM.getShippingCountry(), checkoutVM.getShippingTel());
-        updateBillingAddress(checkoutVM.getBillingUserName(), checkoutVM.getBillingAddressOne(),
-            checkoutVM.getBillingAddressTwo(),
-            checkoutVM.getBillingCityStatePost(), checkoutVM.getBillingCountry(),
-            checkoutVM.getBillingTel());
+        List<AddressVM> addressVMS = checkoutVM.getAddressVMS();
+
+        for (AddressVM addressVM : addressVMS) {
+            if (addressVM.isShippingDefault()) {
+                updateShippingAddress(addressVM.getName(), addressVM.getAddress()
+                    , addressVM.getAddressSecond(), addressVM.getCityStatePost(),
+                    addressVM.getCountry(), addressVM.getTel());
+            } else {
+                updateBillingAddress(addressVM.getName(), addressVM.getAddress(),
+                    addressVM.getAddressSecond(),
+                    addressVM.getCityStatePost(), addressVM.getCountry(),
+                    addressVM.getTel());
+            }
+        }
+        cbCheckoutUseSame.setChecked(checkoutVM.isUseSame());
+        paymentAdapter.setPaymentMethodVMS(checkoutVM.getPaymentMethodVMs());
         productListAdapter.setProductVMS(checkoutVM.getProductVMS());
         updateBilling(checkoutVM.getSubTotal(), checkoutVM.getShipping(),
             checkoutVM.getDiscountCode(),
@@ -343,20 +349,19 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
             NumberFormater.formaterDiscountPrice(checkoutVM.geteGiftAmount()),
             checkoutVM.getBillingTotal());
         List<PaymentMethodVM> paymentMethodVMs = checkoutVM.getPaymentMethodVMs();
-        for(PaymentMethodVM methodVM:paymentMethodVMs) {
-            if(methodVM.getMonths()!=null && methodVM.getMonths().size() > 0){
+        for (PaymentMethodVM methodVM : paymentMethodVMs) {
+            if (methodVM.getMonths() != null && methodVM.getMonths().size() > 0) {
                 months = methodVM.getMonths();
                 break;
             }
         }
-
         updateInputEditLayout(checkoutVM.getDiscountAmount(), checkoutVM.geteGiftAmount(),
             checkoutVM.getPointsApplied(), checkoutVM.getPointsAmount());
     }
 
     private void updateInputEditLayout(String discountAmount, String egiftAmount,
         String appliedPoints, String pointsAmount) {
-        if(!TextUtils.isEmpty(discountAmount)) {
+        if (!TextUtils.isEmpty(discountAmount)) {
             tvBtnCheckDiscountApply.setSelected(true);
             tvBtnCheckDiscountApply.setText(getResources().getString(R.string.cancel));
             etCheckoutDiscount.setFocusable(false);
@@ -447,34 +452,9 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
         tvCheckoutTel.setText(tel);
     }
 
-    private void initRadioGroup() {
-        radioPaymentType.setOnCheckedChangeListener((group, checkedId) -> {
-            switch (checkedId) {
-                case R.id.rb_checkout_payment_banking:
-                    paymentType = rbCheckoutPaymentBanking.getText().toString();
-                    tvCheckoutInstallment.setVisibility(View.GONE);
-                    break;
-                case R.id.rb_checkout_payment_credit:
-                    paymentType = rbCheckoutPaymentCredit.getText().toString();
-                    tvCheckoutInstallment.setVisibility(View.VISIBLE);
-                    break;
-                case R.id.rb_checkout_payment_cash_on_deliery:
-                    paymentType = rbCheckoutPaymentCashOnDeliery.getText().toString();
-                    tvCheckoutInstallment.setVisibility(View.GONE);
-                    break;
-                default:
-                    paymentType = rbCheckoutPaymentBanking.getText().toString();
-                    tvCheckoutInstallment.setVisibility(View.GONE);
-                    break;
-            }
-        });
-        rbCheckoutPaymentBanking.setChecked(true);
-    }
-
     @OnClick({R.id.rl_shipping_root, R.id.btn_checkout_place_my_order,
         R.id.imageview_left_menu, R.id.tv_net_refresh, R.id.tv_btn_check_discount_apply,
-        R.id.tv_btn_check_gift_card_apply, R.id.tv_btn_check_points_apply, R.id.rl_billing_root,
-        R.id.tv_checkout_installment})
+        R.id.tv_btn_check_gift_card_apply, R.id.tv_btn_check_points_apply, R.id.rl_billing_root})
     public void onViewClicked(View view) {
         switch (view.getId()) {
             case R.id.rl_shipping_root:
@@ -529,21 +509,37 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
                 billingIntent.putExtra(TYPE, type_billing);
                 startActivity(billingIntent);
                 break;
-            case R.id.tv_checkout_installment:
-                PopWindowUtil.showSingleChoosePop(tvCheckoutInstallment,
-                    getResources().getString(R.string.installment_plan_optional), months, this);
-                break;
         }
     }
 
     @Override
     public void onPopItemClick(int position) {
         months = PopWindowUtil.updateSinglePopDatas(position, months);
-        tvCheckoutInstallment.setText(months.get(position).getValue());
+        onPaymentListListener.onListSelect(months.get(position).getValue());
     }
 
     @Override
     public void onDismiss() {
         //don't need to implement it yet.
+    }
+
+    @Override
+    public void onPaymentSelect() {
+        //todo paymentSelect content
+    }
+
+    @Override
+    public void onOptionsPop(List<ProfileMetaVM> profileMetaVMS) {
+        PopWindowUtil.showSingleChoosePop(recyclerviewCheckoutPayment,
+            getResources().getString(R.string.installment_plan_optional), months, this);
+    }
+
+    public void setOnPaymentListListener(OnPaymentListListener onPaymentListListener) {
+        this.onPaymentListListener = onPaymentListListener;
+    }
+
+    public interface OnPaymentListListener {
+
+        void onListSelect(String content);
     }
 }
