@@ -17,13 +17,16 @@ import com.goshop.app.widget.adapter.VideoViewPagerAdapter;
 import com.goshop.app.widget.listener.OnHomeBannerItemClickListener;
 import com.goshop.app.widget.listener.OnScheduleClickListener;
 import com.goshop.app.widget.listener.OnTrendingNowClickListener;
+import com.longtailvideo.jwplayer.JWPlayerView;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -43,7 +46,7 @@ import static com.goshop.app.utils.PageIntentUtils.PROMOTION_BANNER_URL;
 
 public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presenter> implements
     TrendingNowContract.View, OnTrendingNowClickListener, OnHomeBannerItemClickListener,
-    SwipeRefreshLayout.OnRefreshListener {
+    SwipeRefreshLayout.OnRefreshListener, VideoViewPagerAdapter.JWPlayerListener {
 
     private final String BANNER_TYPE_BRAND = "brand";
 
@@ -74,12 +77,22 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
 
     private List<TrendingNowModel> trendingNowModels;
 
+    private MainPageActivity mainPageActivity;
+
     public static TrendingNowFragment getInstance() {
         return new TrendingNowFragment();
     }
 
     public void setOnScheduleClickListener(OnScheduleClickListener onScheduleClickListener) {
         this.onScheduleClickListener = onScheduleClickListener;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+        if (context instanceof MainPageActivity) {
+            mainPageActivity = (MainPageActivity) context;
+        }
     }
 
     @Nullable
@@ -129,23 +142,25 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         swipeRefresh.setOnRefreshListener(this);
         LinearLayoutManager manager = new LinearLayoutManager(getActivity());
         recyclerviewTrending.setLayoutManager(manager);
-        trendingNowAdapter = new TrendingNowAdapter(this, onFullscreenListener, trendingNowModels);
+        trendingNowAdapter = new TrendingNowAdapter(this, trendingNowModels);
+        trendingNowAdapter.setJWPlayerListener(this);
         recyclerviewTrending.setIAdapter(trendingNowAdapter);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (trendingNowAdapter != null) {
+            trendingNowAdapter.onPause();
+        }
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
         unbinder.unbind();
+        trendingNowAdapter.onDestroyView();
     }
-
-    private VideoViewPagerAdapter.OnFullscreenListener onFullscreenListener = isFullScreen -> {
-        llTrendingContainer.setFitsSystemWindows(!isFullScreen);
-        recyclerviewTrending.setVerticalScrollBarEnabled(!isFullScreen);
-        recyclerviewTrending.setNestedScrollingEnabled(!isFullScreen);
-        trendingNowAdapter.notifyDataSetChanged();
-
-    };
 
     @Override
     public void onBannerRequestSuccess(List<BannerVm> bannerVms) {
@@ -247,5 +262,12 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
         // TODO: 2018/4/25 refresh need decide
         swipeRefresh.setRefreshing(false);
 //        mPresenter.getOnAirSchedule(getContext());
+    }
+
+    @Override
+    public void onFullscreen(boolean isFullScreen, JWPlayerView jwPlayerView) {
+        if (mainPageActivity != null) {
+            mainPageActivity.onJWPlayerViewFullscreen(isFullScreen, jwPlayerView);
+        }
     }
 }

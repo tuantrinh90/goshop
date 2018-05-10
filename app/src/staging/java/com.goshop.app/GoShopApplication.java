@@ -4,6 +4,8 @@ import com.crashlytics.android.Crashlytics;
 import com.goshop.app.data.realm.EncryptionKey;
 import com.goshop.app.data.realm.SchemaMigration;
 import com.goshop.app.presentation.model.UserDataVM;
+import com.orhanobut.logger.AndroidLogAdapter;
+import com.orhanobut.logger.Logger;
 import com.squareup.leakcanary.LeakCanary;
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -35,6 +37,7 @@ public class GoShopApplication extends MultiDexApplication {
         setFabric();
         setLeakCanary();
         initRealm();
+        Logger.addLogAdapter(new AndroidLogAdapter());
     }
 
     public static ApplicationComponent getApplicationComponent() {

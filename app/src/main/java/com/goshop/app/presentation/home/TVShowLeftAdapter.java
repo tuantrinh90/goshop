@@ -1,27 +1,42 @@
 package com.goshop.app.presentation.home;
 
-import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.TVShowVM;
-import com.goshop.app.utils.GlideUtils;
-
+import com.goshop.app.utils.JWEventHandler;
+import com.goshop.app.utils.KeepScreenOnHandler;
+import com.longtailvideo.jwplayer.JWPlayerView;
+import com.longtailvideo.jwplayer.media.playlists.PlaylistItem;
+import android.app.Activity;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
 import java.util.List;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TVShowLeftAdapter extends RecyclerView.Adapter {
 
     private List<TVShowVM> tvShowVMS;
+
+    private JWPlayerListener jwPlayerListener;
+
+    private JWEventHandler mEventHandler;
+
+    private Activity activity;
+
+    public TVShowLeftAdapter(Activity activity,
+        List<TVShowVM> tvShowVMS) {
+        this(tvShowVMS);
+        this.activity = activity;
+    }
+
+    public void setJWPlayerListener(JWPlayerListener jwPlayerListener) {
+        this.jwPlayerListener = jwPlayerListener;
+    }
 
     public TVShowLeftAdapter(List<TVShowVM> tvShowVMS) {
         this.tvShowVMS = tvShowVMS;
@@ -37,7 +52,6 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
             .inflate(R.layout.item_tv_show_left, viewGroup, false);
-
         return new TVShowLeftViewHolder(view);
     }
 
@@ -54,7 +68,7 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
     class TVShowLeftViewHolder extends RecyclerView.ViewHolder {
 
         @BindView(R.id.iv_tv_show_left)
-        ImageView ivTvShowLeft;
+        JWPlayerView jwPlayerView;
 
         @BindView(R.id.tv_btn_tvshow_buy)
         RobotoLightTextView tvBtnTvShowBuy;
@@ -80,11 +94,7 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(TVShowVM tvShowVM, int position) {
-            GlideUtils.loadImageError(
-                itemView.getContext(),
-                tvShowVM.getImageUrl(),
-                ivTvShowLeft,
-                tvShowVM.getImageDefault());
+            initJwPlayerView(jwPlayerView, tvShowVM, position);
             tvTvShowLeftTime.setText(tvShowVM.getDuration());
             tvTvShowTitle.setText(tvShowVM.getTitle());
             tvBtnTvShowBuy.setOnClickListener(v -> {
@@ -94,5 +104,32 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
             tvTvShowPriceNow.setText(tvShowVM.getPriceNow());
             tvTvShowLeftPercent.setText(tvShowVM.getPercent());
         }
+    }
+
+    private void initJwPlayerView(JWPlayerView jwPlayerView, TVShowVM tvShowVM, int position) {
+        jwPlayerView.setTag(tvShowVM.getImageUrl());
+        PlaylistItem pi = new PlaylistItem.Builder()
+            .title(tvShowVM.getTitle())
+            .file(tvShowVM.getImageUrl())
+            .build();
+        jwPlayerView.addOnFullscreenListener(b -> {
+            if (jwPlayerListener != null) {
+                jwPlayerListener.onFullscreen(b, jwPlayerView);
+            }
+        });
+        if (jwPlayerView.getTag().equals(tvShowVM.getImageUrl())) {
+            jwPlayerView.load(pi);
+            jwPlayerView.stop();
+        }
+        mEventHandler = new JWEventHandler(jwPlayerView, position);
+        if (activity != null) {
+            // TODO: 2018/5/10   Keep the screen on during playback
+            new KeepScreenOnHandler(jwPlayerView, activity.getWindow());
+        }
+    }
+
+    public interface JWPlayerListener {
+
+        void onFullscreen(boolean isFullScreen, JWPlayerView jwPlayerView);
     }
 }
