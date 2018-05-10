@@ -78,6 +78,8 @@ public class JWEventHandler implements VideoPlayerEvents.OnSetupErrorListener,
 
     int position;
 
+    private static final String TAG = "JWEventHandler";
+
     public JWEventHandler(JWPlayerView jwPlayerView, int position) {
         this.position = position;
         // Subscribe to all JW Player events
@@ -120,7 +122,7 @@ public class JWEventHandler implements VideoPlayerEvents.OnSetupErrorListener,
     }
 
     private void updateOutput(String output) {
-        Log.d("jay", "Jwplayer: " + position + "---" + output);
+        JLogUtils.d(TAG, output);
     }
 
     /**
