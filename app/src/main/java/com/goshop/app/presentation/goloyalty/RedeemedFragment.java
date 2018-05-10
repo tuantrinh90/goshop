@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.goloyalty;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.presentation.model.GoLoyaltyDealsVM;
@@ -17,18 +16,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class RedeemedFragment extends BaseFragment<RedeemedContract.Presenter> implements
     RedeemedContract.View {
 
     @BindView(R.id.recyclerview_redeemed)
     RecyclerView recyclerviewRedeemed;
-
-    Unbinder unbinder;
 
     private RedeemedAdapter redeemedAdapter;
 
@@ -42,7 +35,6 @@ public class RedeemedFragment extends BaseFragment<RedeemedContract.Presenter> i
         @Nullable Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         assert rootView != null;
-        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -76,11 +68,7 @@ public class RedeemedFragment extends BaseFragment<RedeemedContract.Presenter> i
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override
@@ -88,9 +76,4 @@ public class RedeemedFragment extends BaseFragment<RedeemedContract.Presenter> i
         redeemedAdapter.setUpdateDatas(dealsVMS);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
 }

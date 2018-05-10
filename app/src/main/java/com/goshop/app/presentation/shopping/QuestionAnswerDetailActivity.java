@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.shopping;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoMediumTextView;
@@ -20,8 +19,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class QuestionAnswerDetailActivity extends BaseActivity<QADetailContract.Presenter>
     implements QADetailContract.View {
@@ -63,11 +60,7 @@ public class QuestionAnswerDetailActivity extends BaseActivity<QADetailContract.
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {

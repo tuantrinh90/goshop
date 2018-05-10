@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.goloyalty;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoLightTextView;
@@ -33,14 +32,10 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> implements
     AllDealsContract.View, PopWindowUtil.OnPopWindowDismissListener,
     OnDealsItemClickListener, FootLoadingListener {
-
-    private AllDealsAdapter allDealsAdapter;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout drawerLayout;
@@ -75,12 +70,6 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     @BindView(R.id.tv_filter_menu_top)
     RobotoRegularTextView tvFilterMenuTop;
 
-    private FilterDrawerAdapter menuAdapter;
-
-    private List<SortVM> sortVMS;
-
-    private List<FilterMenuModel> drawerFilterDatas;
-
     @BindView(R.id.ll_data)
     LinearLayout llData;
 
@@ -92,6 +81,14 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
 
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
+
+    private AllDealsAdapter allDealsAdapter;
+
+    private FilterDrawerAdapter menuAdapter;
+
+    private List<SortVM> sortVMS;
+
+    private List<FilterMenuModel> drawerFilterDatas;
 
     private int page = 1;
 
@@ -140,11 +137,7 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {
@@ -181,13 +174,13 @@ public class AllDealsActivity extends BaseActivity<AllDealsContract.Presenter> i
     public void showAllDealsResult(List<GoLoyaltyDealsVM> dealsVMS) {
         if (dealsVMS.size() > 0) {
             updateLayoutStatus(llData, true);
-            if(page == 1) {
+            if (page == 1) {
                 allDealsAdapter.setListDatas(dealsVMS);
             } else {
                 allDealsAdapter.addLoadingDatas(dealsVMS);
             }
         } else {
-            if(page == 1) {
+            if (page == 1) {
                 updateLayoutStatus(llData, false);
                 updateLayoutStatus(flNoData, true);
             } else {

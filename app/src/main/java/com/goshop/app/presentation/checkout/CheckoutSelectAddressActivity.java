@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.checkout;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.SelectAddressVM;
@@ -17,8 +16,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectContract.Presenter>
     implements CheckoutSelectContract.View, CheckoutSelectAddressAdapter.OnEditClickListener {
@@ -33,7 +30,7 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mPresenter.selectAddressRequest(type,null);
+        mPresenter.selectAddressRequest(type, null);
     }
 
     @Override
@@ -66,11 +63,7 @@ public class CheckoutSelectAddressActivity extends BaseActivity<CheckoutSelectCo
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {

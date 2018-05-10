@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.myorder;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
@@ -25,8 +24,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presenter> implements
     MyOrdersContract.View, MyOrdersAdapter.OnOrdersItemClickListener {
@@ -46,12 +43,12 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
     @BindView(R.id.fl_connection_break)
     FrameLayout flConnectionBreak;
 
+    @BindView(R.id.swipe_refresh_layout)
+    SwipeRefreshLayout swipeRefreshLayout;
+
     private MyOrdersAdapter myOrdersAdapter;
 
     private int page = 1;
-
-    @BindView(R.id.swipe_refresh_layout)
-    SwipeRefreshLayout swipeRefreshLayout;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -61,7 +58,6 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
         mPresenter.getListOrder(page, false);
     }
 
-
     @Override
     public int getContentView() {
         return R.layout.activity_my_orders;
@@ -69,11 +65,7 @@ public class MyOrdersActivity extends BaseDrawerActivity<MyOrdersContract.Presen
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         setCurrentMenuType(MenuUtil.MENU_TYPE_MY_ORDERS);
         setContentView(getContentView());
         initRecyclerView();

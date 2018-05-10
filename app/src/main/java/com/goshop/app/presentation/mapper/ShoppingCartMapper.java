@@ -58,6 +58,14 @@ public class ShoppingCartMapper {
                 .setSubTotal(NumberFormater.formaterPrice(billingData.getRm().getSubTotal()));
             shoppingCartProductVM
                 .setTotal(NumberFormater.formaterPrice(billingData.getRm().getTotal()));
+            shoppingCartProductVM.setEgiftCardCode(
+                TextFormater.formatBillingCode(billingData.getRm().geteGiftCard().getCode()));
+            shoppingCartProductVM
+                .setEgiftCardAmount(billingData.getRm().geteGiftCard().getAmount());
+            shoppingCartProductVM.setPointsCode(
+                TextFormater.formatBillingCode(billingData.getRm().getGoshopPoints().getApplied()));
+            shoppingCartProductVM
+                .setPointsAmount(billingData.getRm().getGoshopPoints().getAmount());
         }
         return shoppingCartProductVM;
     }

@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.checkout;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoMediumTextView;
@@ -15,8 +14,6 @@ import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Presenter>
     implements PaymentStatusContract.View {
@@ -60,11 +57,7 @@ public class PaymentStatusActivity extends BaseActivity<PaymentStatusContract.Pr
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @OnClick({R.id.imageview_left_menu, R.id.tv_btn_payment_status, R.id

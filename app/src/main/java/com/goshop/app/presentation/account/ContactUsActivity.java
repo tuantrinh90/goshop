@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.account;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
@@ -24,8 +23,6 @@ import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter> implements
     ContactUsContract.View, ToastUtil.OnToastListener {
@@ -111,11 +108,7 @@ public class ContactUsActivity extends BaseActivity<ContactUsContract.Presenter>
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

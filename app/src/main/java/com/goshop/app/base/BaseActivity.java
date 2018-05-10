@@ -1,9 +1,11 @@
 package com.goshop.app.base;
 
+import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.utils.StatusBarUtils;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -17,6 +19,9 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import injection.components.DaggerPresenterComponent;
+import injection.components.PresenterComponent;
+import injection.modules.PresenterModule;
 
 @SuppressWarnings("ALL")
 public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleActivity
@@ -57,6 +62,13 @@ public abstract class BaseActivity<T extends BasePresenter> extends RxLifecycleA
         }
         setToolbar();
         setStatusBar();
+    }
+
+    public PresenterComponent initPresenterComponent() {
+        return DaggerPresenterComponent.builder()
+            .applicationComponent(GoShopApplication.getApplicationComponent())
+            .presenterModule(new PresenterModule(this))
+            .build();
     }
 
     public abstract int getContentView();

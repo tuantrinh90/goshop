@@ -46,12 +46,6 @@ public class NumberFormater {
         return price.toString();
     }
 
-    public static String formaterDiscountPrice(String money) {
-        StringBuilder price = new StringBuilder(SYMBOL_MINUS);
-        price.append(MONEY_SYMBOL).append(money);
-        return price.toString();
-    }
-
     public static String formaterBrackets(String discount) {
         StringBuilder result = new StringBuilder(LEFT_BRACKETS);
         result.append(discount).append(RIGHT_BRACKETS);

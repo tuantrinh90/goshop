@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.account;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
@@ -22,8 +21,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class EditProfileActivity extends BaseActivity<EditProfileContract.Presenter> implements
     EditProfileContract.View, PopWindowUtil.OnPopWindowDismissListener,
@@ -100,11 +97,7 @@ public class EditProfileActivity extends BaseActivity<EditProfileContract.Presen
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

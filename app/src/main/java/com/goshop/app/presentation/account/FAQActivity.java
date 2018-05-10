@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.account;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.FAQVM;
@@ -19,8 +18,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements FAQContract.View,
     FAQAdapter.OnFAQItemClickListener {
@@ -66,11 +63,7 @@ public class FAQActivity extends BaseActivity<FAQContract.Presenter> implements 
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

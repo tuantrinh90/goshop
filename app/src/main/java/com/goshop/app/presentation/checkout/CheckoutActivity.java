@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.checkout;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.CheckoutListAdapter;
 import com.goshop.app.base.BaseActivity;
@@ -43,8 +42,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> implements
     CheckoutContract.View, PopWindowUtil.OnPopWindowDismissListener, CheckoutPaymentAdapter
@@ -259,11 +256,7 @@ public class CheckoutActivity extends BaseActivity<CheckoutContract.Presenter> i
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

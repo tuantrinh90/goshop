@@ -78,11 +78,7 @@ public class SearchActivity extends BaseActivity<SearchContract.Presenter> imple
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {

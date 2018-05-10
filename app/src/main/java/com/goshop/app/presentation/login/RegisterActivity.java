@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.login;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
@@ -37,8 +36,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> implements
     RegisterContract.View, ToastUtil.OnToastListener, PopWindowUtil.OnPopWindowDismissListener,
@@ -157,11 +154,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override
@@ -237,7 +230,7 @@ public class RegisterActivity extends BaseActivity<RegisterContract.Presenter> i
 
     @OnClick({R.id.tv_btn_register_login, R.id.imageview_left_menu, R.id
         .textview_right_menu, R.id.tv_register_title, R.id.tv_register_language, R.id
-        .tv_register_date_of_birth,  R.id
+        .tv_register_date_of_birth, R.id
         .ll_select_male, R.id.ll_select_female})
     public void onRegisterClick(View view) {
 

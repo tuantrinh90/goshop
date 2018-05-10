@@ -32,6 +32,46 @@ public class ShoppingCartProductVM {
 
     private String discountCode;
 
+    private String egiftCardCode;
+
+    private String pointsCode;
+
+    private String pointsAmount;
+
+    private String egiftCardAmount;
+
+    public String getEgiftCardCode() {
+        return egiftCardCode;
+    }
+
+    public void setEgiftCardCode(String egiftCardCode) {
+        this.egiftCardCode = egiftCardCode;
+    }
+
+    public String getPointsCode() {
+        return pointsCode;
+    }
+
+    public void setPointsCode(String pointsCode) {
+        this.pointsCode = pointsCode;
+    }
+
+    public String getPointsAmount() {
+        return pointsAmount;
+    }
+
+    public void setPointsAmount(String pointsAmount) {
+        this.pointsAmount = pointsAmount;
+    }
+
+    public String getEgiftCardAmount() {
+        return egiftCardAmount;
+    }
+
+    public void setEgiftCardAmount(String egiftCardAmount) {
+        this.egiftCardAmount = egiftCardAmount;
+    }
+
     public String getDiscountCode() {
         return discountCode;
     }

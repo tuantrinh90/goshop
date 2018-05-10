@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.myorder;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
@@ -21,8 +20,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presenter> implements
     ReturnOrderContract.View, PopWindowUtil.OnPopWindowDismissListener {
@@ -78,18 +75,16 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
+
     @Override
     public String getScreenTitle() {
         return getResources().getString(R.string.order_return);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_return_order, R.id.tv_return_reason, R.id.tv_return_detail_reason})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_return_order, R.id.tv_return_reason, R.id
+        .tv_return_detail_reason})
     public void onReturnOrderClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -101,22 +96,26 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
                 String email = etReturnOrderEmail.getText();
                 String mobile = etReturnOrderMobile.getText();
                 String handing = etReturnOrderHanding.getText();
-                if(TextUtils.isEmpty(name)) {
-                    etReturnOrderName.setErrorMessage(getResources().getString(R.string.empty_error));
+                if (TextUtils.isEmpty(name)) {
+                    etReturnOrderName
+                        .setErrorMessage(getResources().getString(R.string.empty_error));
                     return;
                 }
 
-                if(TextUtils.isEmpty(email) || !etReturnOrderEmail.isEmail()) {
-                    etReturnOrderEmail.setErrorMessage(getResources().getString(R.string.format_email_warning));
+                if (TextUtils.isEmpty(email) || !etReturnOrderEmail.isEmail()) {
+                    etReturnOrderEmail
+                        .setErrorMessage(getResources().getString(R.string.format_email_warning));
                     return;
                 }
 
-                if(!TextUtils.isEmpty(mobile) && !etReturnOrderMobile.isMobileNo()) {
-                    etReturnOrderMobile.setErrorMessage(getResources().getString(R.string.format_mobile_warning));
+                if (!TextUtils.isEmpty(mobile) && !etReturnOrderMobile.isMobileNo()) {
+                    etReturnOrderMobile
+                        .setErrorMessage(getResources().getString(R.string.format_mobile_warning));
                     return;
                 }
 
-                mPresenter.returnOrderRequest(name, email, mobile, handing, reasonCode, reasonDetail);
+                mPresenter
+                    .returnOrderRequest(name, email, mobile, handing, reasonCode, reasonDetail);
                 break;
             case R.id.tv_return_reason:
                 EditTextUtil.eidtLoseFocus(view);

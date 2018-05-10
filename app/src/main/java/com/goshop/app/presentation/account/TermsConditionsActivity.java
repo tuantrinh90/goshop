@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.account;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.model.TermsConditionsVM;
@@ -17,8 +16,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class TermsConditionsActivity extends BaseActivity<TermsConditionsContract.Presenter>
     implements TermsConditionsContract.View, TermsConditionsAdapter.OnTermsItemClickListener {
@@ -61,11 +58,7 @@ public class TermsConditionsActivity extends BaseActivity<TermsConditionsContrac
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

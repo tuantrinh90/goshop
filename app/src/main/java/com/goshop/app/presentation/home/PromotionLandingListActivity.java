@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.Const;
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.PromotionListAdapter;
 import com.goshop.app.base.BaseActivity;
@@ -26,8 +25,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class PromotionLandingListActivity extends BaseActivity<PromotionContract.Presenter>
     implements PromotionContract.View {
@@ -64,11 +61,7 @@ public class PromotionLandingListActivity extends BaseActivity<PromotionContract
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.shopping;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
@@ -21,8 +20,6 @@ import android.widget.Toast;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class RatingActivity extends BaseActivity<RatingContract.Presenter> implements
     RatingContract.View {
@@ -57,11 +54,7 @@ public class RatingActivity extends BaseActivity<RatingContract.Presenter> imple
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         textviewRightMenu.setText(getResources().getString(R.string.done));
         contentEditListener();
     }

@@ -1,7 +1,5 @@
 package com.goshop.app.presentation.home;
 
-import com.bumptech.glide.Glide;
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoLightTextView;
@@ -36,8 +34,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Presenter> implements
     BrandsDetailContract.View, OnProductItemClickListener, PopWindowUtil
@@ -114,11 +110,7 @@ public class BrandsDetailActivity extends BaseActivity<BrandsDetailContract.Pres
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {

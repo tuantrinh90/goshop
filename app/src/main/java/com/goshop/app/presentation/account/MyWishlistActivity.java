@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.Const;
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.irecyclerview.IRecyclerView;
@@ -31,8 +30,6 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Presenter> implements
     MyWishlistContract.View,
@@ -84,11 +81,7 @@ public class MyWishlistActivity extends BaseDrawerActivity<MyWishlistContract.Pr
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         setCurrentMenuType(MenuUtil.MENU_TYPE_MY_WISHLIST);
         setContentView(getContentView());
         ButterKnife.bind(this);

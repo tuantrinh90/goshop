@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.login;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
@@ -16,8 +15,6 @@ import android.view.View;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class LoginSendConfirmationLinkActivity extends
     BaseActivity<LoginSendConfirmationLinkContract.Presenter> implements
@@ -54,11 +51,7 @@ public class LoginSendConfirmationLinkActivity extends
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

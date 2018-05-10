@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.myorder;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoLightTextView;
@@ -25,8 +24,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presenter> implements
     OrderDetailContract.View, MyOrderProductAdapter.OnOrderDetailItemClickListener {
@@ -179,11 +176,7 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override
@@ -208,11 +201,11 @@ public class OrderDetailActivity extends BaseActivity<OrderDetailContract.Presen
         tvBillingSubtotalAmount.setText(orderDetailVM.getSubTotal());
         tvBillingShippingAmount.setText(orderDetailVM.getShipping());
         tvBillingDiscountAmount
-            .setText(NumberFormater.formaterDiscountPrice(orderDetailVM.getDisscount()));
+            .setText(NumberFormater.formaterOfferPrice(orderDetailVM.getDisscount()));
         tvBillingEgiftAmount
-            .setText(NumberFormater.formaterDiscountPrice(orderDetailVM.getEgift()));
+            .setText(NumberFormater.formaterOfferPrice(orderDetailVM.getEgift()));
         tvBillingPointsAmount
-            .setText(NumberFormater.formaterDiscountPrice(orderDetailVM.getPoints()));
+            .setText(NumberFormater.formaterOfferPrice(orderDetailVM.getPoints()));
         tvBillingTotal.setText(orderDetailVM.getTotal());
         tvBillingDiscountCode.setText(orderDetailVM.getDiscountDes());
         tvBillingEgiftCode.setText(orderDetailVM.getEgiftDes());

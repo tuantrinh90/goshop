@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.home;
 
 import com.goshop.app.Const;
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.irecyclerview.IRecyclerView;
@@ -24,10 +23,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class BrandsFragment extends BaseFragment<BrandsContract.Presenter> implements
     BrandsContract.View, BrandsAdapter.OnBrandsItemClickListener, SwipeRefreshLayout
@@ -35,8 +30,6 @@ public class BrandsFragment extends BaseFragment<BrandsContract.Presenter> imple
 
     @BindView(R.id.recyclerview_brands)
     IRecyclerView recyclerviewBrands;
-
-    Unbinder unbinder;
 
     @BindView(R.id.swipe_refresh)
     SwipeRefreshLayout swipeRefresh;
@@ -61,7 +54,6 @@ public class BrandsFragment extends BaseFragment<BrandsContract.Presenter> imple
         @Nullable Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         assert rootView != null;
-        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -100,17 +92,7 @@ public class BrandsFragment extends BaseFragment<BrandsContract.Presenter> imple
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+        initPresenterComponent().inject(this);
     }
 
     @Override
