@@ -33,8 +33,6 @@ import java.util.Arrays;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> implements
     LoginContract.View, EncryptPasswordHandler.OnPasswordEncryptListener {
@@ -105,11 +103,7 @@ public class LoginActivity extends BaseDrawerActivity<LoginContract.Presenter> i
     @Override
     public void inject() {
         initIntentData();
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         setCurrentMenuType(MenuUtil.MENU_TYPE_HEAD_LOGIN);
         setContentView(getContentView());
         initData();

@@ -48,132 +48,13 @@
 
     </RelativeLayout>
 
-
-    <RelativeLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/size_16">
-
-        <com.goshop.app.common.view.RobotoLightTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/sub_total"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="start"
-            android:layout_alignParentStart="true"/>
-
-        <com.goshop.app.common.view.RobotoLightTextView
-            android:id="@+id/tv_cart_billing_subtotal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/demo_cart_price1"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="end"
-            android:layout_alignParentEnd="true"
-            tools:ignore="RelativeOverlap"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_8">
-
-        <com.goshop.app.common.view.RobotoLightTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/shipping_fee"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="start"
-            android:layout_alignParentStart="true"/>
-
-        <com.goshop.app.common.view.RobotoLightTextView
-            android:id="@+id/tv_cart_billing_shipping"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/demo_cart_price1"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="end"
-            android:layout_alignParentEnd="true"
-            tools:ignore="RelativeOverlap"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:id="@+id/rl_cart_disscount"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_8">
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="true"
-            android:orientation="horizontal">
-            <com.goshop.app.common.view.RobotoLightTextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/size_font_14"
-                android:text="@string/disscount_only"
-                android:textColor="@color/color_black_light"
-                android:gravity="start"
-               />
-            <com.goshop.app.common.view.RobotoLightTextView
-                android:id="@+id/tv_cart_disscount_code"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textSize="@dimen/size_font_14"
-                android:textColor="@color/color_black_light"
-                android:gravity="start" />
-        </LinearLayout>
-
-        <com.goshop.app.common.view.RobotoLightTextView
-            android:id="@+id/tv_cart_billing_disscount"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_14"
-            android:text="@string/demo_cart_price2"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="end"
-            android:layout_alignParentEnd="true"
-            tools:ignore="RelativeOverlap"/>
-    </RelativeLayout>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/size_6">
-
-        <com.goshop.app.common.view.RobotoMediumTextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_18"
-            android:text="@string/total_incl_gst"
-            android:layout_alignParentLeft="true"
-            android:textColor="@color/color_black_light"
-            android:gravity="start"
-            android:layout_alignParentStart="true"/>
-
-        <com.goshop.app.common.view.RobotoMediumTextView
-            android:id="@+id/tv_cart_billing_total"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="@dimen/size_font_18"
-            android:text="@string/demo_cart_price3"
-            android:layout_alignParentRight="true"
-            android:textColor="@color/color_main_pink"
-            android:gravity="end"
-            android:layout_alignParentEnd="true"
-            tools:ignore="RelativeOverlap"/>
-    </RelativeLayout>
+        <include
+            layout="@layout/layout_billing"/>
+    </FrameLayout>
 
 
 </LinearLayout>

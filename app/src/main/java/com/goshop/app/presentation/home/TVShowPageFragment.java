@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.home;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -26,10 +25,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.Unbinder;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presenter> implements
     TVShowPageContract.View, OnTVShowItemsClickListener, OnChannelItemClickListener,
@@ -54,8 +49,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
     @BindView(R.id.tv_calandar)
     RobotoRegularTextView tvCalandar;
-
-    Unbinder unbinder;
 
     private TVShowCalendarAdapter calendarAdapter;
 
@@ -94,7 +87,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         @Nullable Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         assert rootView != null;
-        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -260,17 +252,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
+        initPresenterComponent().inject(this);
     }
 
     @Override

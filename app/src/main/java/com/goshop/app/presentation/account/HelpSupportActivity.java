@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.account;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.model.HelpSupportContentVM;
@@ -22,8 +21,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.Presenter>
     implements
@@ -56,7 +53,6 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
         mPresenter.helpSupportRequest();
     }
 
-
     @Override
     public int getContentView() {
         return R.layout.activity_help_support;
@@ -64,11 +60,7 @@ public class HelpSupportActivity extends BaseDrawerActivity<HelpSupportContract.
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         setCurrentMenuType(MenuUtil.MENU_TYPE_HELP_AND_SUPPORT);
         setContentView(getContentView());
         initRecyclerView();

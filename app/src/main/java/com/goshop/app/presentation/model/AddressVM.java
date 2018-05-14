@@ -5,18 +5,6 @@ import android.os.Parcelable;
 
 public class AddressVM implements Parcelable {
 
-    public static final Creator<AddressVM> CREATOR = new Creator<AddressVM>() {
-        @Override
-        public AddressVM createFromParcel(Parcel in) {
-            return new AddressVM(in);
-        }
-
-        @Override
-        public AddressVM[] newArray(int size) {
-            return new AddressVM[size];
-        }
-    };
-
     private String address;
 
     private String addressSecond;
@@ -31,6 +19,14 @@ public class AddressVM implements Parcelable {
 
     private String id;
 
+    private String street;
+
+    private String countryId;
+
+    private String regionId;
+
+    private String region;
+
     private String name;
 
     private boolean shippingDefault;
@@ -39,21 +35,80 @@ public class AddressVM implements Parcelable {
 
     private String tel;
 
+    private String cityStatePost;
+
     public AddressVM() {
     }
 
     protected AddressVM(Parcel in) {
-        id = in.readString();
         address = in.readString();
         addressSecond = in.readString();
+        billingDefault = in.readByte() != 0;
         city = in.readString();
         code = in.readString();
         country = in.readString();
-        shippingDefault = in.readByte() != 0;
-        billingDefault = in.readByte() != 0;
+        id = in.readString();
+        street = in.readString();
+        countryId = in.readString();
+        regionId = in.readString();
+        region = in.readString();
         name = in.readString();
+        shippingDefault = in.readByte() != 0;
         state = in.readString();
         tel = in.readString();
+        cityStatePost = in.readString();
+    }
+
+    public static final Creator<AddressVM> CREATOR = new Creator<AddressVM>() {
+        @Override
+        public AddressVM createFromParcel(Parcel in) {
+            return new AddressVM(in);
+        }
+
+        @Override
+        public AddressVM[] newArray(int size) {
+            return new AddressVM[size];
+        }
+    };
+
+    public String getCityStatePost() {
+        return cityStatePost;
+    }
+
+    public void setCityStatePost(String cityStatePost) {
+        this.cityStatePost = cityStatePost;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getCountryId() {
+        return countryId;
+    }
+
+    public void setCountryId(String countryId) {
+        this.countryId = countryId;
+    }
+
+    public String getRegionId() {
+        return regionId;
+    }
+
+    public void setRegionId(String regionId) {
+        this.regionId = regionId;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 
     public String getAddress() {
@@ -151,16 +206,23 @@ public class AddressVM implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(id);
         dest.writeString(address);
         dest.writeString(addressSecond);
+        dest.writeByte((byte) (billingDefault ? 1 : 0));
         dest.writeString(city);
         dest.writeString(code);
         dest.writeString(country);
-        dest.writeByte((byte) (shippingDefault ? 1 : 0));
-        dest.writeByte((byte) (billingDefault ? 1 : 0));
+        dest.writeString(id);
+        dest.writeString(street);
+        dest.writeString(countryId);
+        dest.writeString(regionId);
+        dest.writeString(region);
         dest.writeString(name);
+        dest.writeByte((byte) (shippingDefault ? 1 : 0));
         dest.writeString(state);
         dest.writeString(tel);
+        dest.writeString(cityStatePost);
     }
+
+
 }

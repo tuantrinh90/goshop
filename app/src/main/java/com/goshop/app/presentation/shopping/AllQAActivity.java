@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.shopping;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoMediumTextView;
@@ -24,8 +23,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> implements AllQAContract
     .View, QuestionAnswerDataAdapter.OnQuestionAnswerItemClickListener {
@@ -86,16 +83,14 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
 
     private void initSwipRefreshLayout() {
         swipeRefreshLayout.setColorSchemeResources(R.color.color_main_pink);
-        swipeRefreshLayout.setOnRefreshListener(()->{
+        swipeRefreshLayout.setOnRefreshListener(() -> {
             page = 1;
-            mPresenter.listProductQA(page, true);});
+            mPresenter.listProductQA(page, true);
+        });
     }
+
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {
@@ -122,12 +117,12 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
     @Override
     public void showRequestFailed(String errorMessage) {
         PopWindowUtil.showRequestMessagePop(tvAllQaSubmit, errorMessage);
-        updateLayoutStatus(flConnectionBreak,true);
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
     public void showNetError(String errorMessage) {
-        updateLayoutStatus(flConnectionBreak,true);
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
@@ -143,7 +138,7 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
 
     @Override
     public void stopRefresh() {
-        if(swipeRefreshLayout.isRefreshing()) {
+        if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
         }
     }
@@ -163,8 +158,9 @@ public class AllQAActivity extends BaseActivity<AllQAContract.Presenter> impleme
             case R.id.tv_all_qa_submit:
                 KeyBoardUtils.hideKeyboard(this);
                 String question = etAllQaEnter.getText().toString();
-                if(TextUtils.isEmpty(question)) {
-                    Toast.makeText(this, getResources().getText(R.string.empty_error), Toast.LENGTH_LONG).show();
+                if (TextUtils.isEmpty(question)) {
+                    Toast.makeText(this, getResources().getText(R.string.empty_error),
+                        Toast.LENGTH_LONG).show();
                     return;
                 }
                 mPresenter.submitQuestions(question);

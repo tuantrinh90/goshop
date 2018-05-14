@@ -2,8 +2,9 @@ package com.goshop.app.data.model.response;
 
 import com.google.gson.annotations.SerializedName;
 
-import com.goshop.app.data.model.response.common.AddressesData;
-import com.goshop.app.data.model.response.common.OrderBillingData;
+import com.goshop.app.data.model.response.common.AddressData;
+import com.goshop.app.data.model.response.common.BillingData;
+import com.goshop.app.data.model.response.common.EmiOptionsData;
 import com.goshop.app.data.model.response.common.PaymentMethodData;
 import com.goshop.app.data.model.response.common.ProductData;
 
@@ -11,45 +12,88 @@ import java.util.List;
 
 public class CheckoutResponse {
 
-    /**
-     * address : {"id":"29","firstname":"Pankaj","lastname":"Kavani","street":{"0":"Bukit Jalil",
-     * "1":"Astro"},"country_id":"MY","region_id":512,"city":"Alor Setar","postcode":12345,
-     * "telephone":"9999999999","default_billing":true,"default_shipping":true}
-     * payment_method : [{"id":"123","name":"Online Banking"},{"id":"345","name":"Cash On
-     * Delivery"},{"id":"567","name":"EPP","months":[3,6,9]}]
-     * products : [{"quote_item_id":"3456","sku":"345","qty":5,"name":"iPhone7","in_stock":true,
-     * "link":"http://api.goshop.com.my/catalog/product/345","super_attributes":[{"id":"123",
-     * "name":"Color","variant_name":"Red","variant_id":"234"},{"id":"123","name":"Size",
-     * "variant_name":"XL","variant_id":"234"}],"price":{"RM":{"original":"200",
-     * "discounted":"149","discount_title":"25%OFF"}},"image":"http://image.goshop.com
-     * .my/product1.jpg"}]
-     * billing : {"RM":{"sub_total":"100.00","shipping":"15.00","discount":{"code":"ASTRO10",
-     * "amount":"10.00"},"egift_card":{"code":"GIFTCARD1","amount":"10.00"},
-     * "goshop_points":{"applied":"100","amount":"10.00"},"total":"150.00"}}
-     */
+    private List<AddressData> address;
 
-    private AddressesData address;
+    private BillingData billing;
 
-    private OrderBillingData billing;
+    @SerializedName("emi_options")
+    private List<EmiOptionsData> emiOptions;
+
+    @SerializedName("goshop_points")
+    private String goshopPoints;
+
     @SerializedName("payment_method")
     private List<PaymentMethodData> paymentMethod;
 
     private List<ProductData> products;
 
-    public AddressesData getAddress() {
-        return address;
+    /**
+     * quote_id : 4
+     * address : [{"id":"13","firstname":"Pankaj","lastname":"Kavani","street":["22nd street",
+     * "Brickfields"],"country_id":"MY","country":"Malaysia","region_id":512,"region":"Johor
+     * Darul Tazim","city":"Nusajaya","postcode":"79100","telephone":"9999999999",
+     * "default_shipping":true,"default_billing":false},{"id":"14","firstname":"Pankaj",
+     * "lastname":"Kavani","street":["23rd Street","4th lane"],"country_id":"MY",
+     * "country":"Malaysia","region_id":515,"region":"Melaka","city":"Kaula Lampur",
+     * "postcode":"79000","telephone":"9999999999","default_shipping":false,"default_billing":true}]
+     * products : [{"quote_item_id":3456,"sku":"Test Configurable-5-kissen","qty":1,"name":"Test
+     * Configurable","link":"http://localhost/goshopbit222/rest/all/V1/rest-api/catalog/product
+     * /Test Configurable-5-kissen?store_id=1&website_id=1",
+     * "image":"http://localhost/goshopbit222/pub/media/catalog/product/placeholder/default
+     * /placeholder.jpg","in_stock":true,"price":{"RM":{"discounted":"","original":"100.00",
+     * "discount_title":""}},"super_attributes":[{"id":"123","name":"Color","variant_name":"Red",
+     * "variant_id":"234"},{"id":"123","name":"Size","variant_name":"XL","variant_id":"234"}]}]
+     * goshop_points : 820.00
+     * payment_method : [{"code":"apgbanktrasfer","title":"Bank Transfer"},{"code":"apgastropay",
+     * "title":"Credit/Debit Card"},{"code":"banktransfer","title":"Bank Transfer Payment"},
+     * {"code":"eppapgpay","title":"EPP Installment Plan"}]
+     * emi_options : [{"value":"6","label":"6 Months"},{"value":"9","label":"9 Months"}]
+     * billing : {"RM":{"sub_total":"100.00","shipping":"10.00","discount":{"code":"",
+     * "amount":"20.00"},"egift_card":{"code":"GIFTCARD1","amount":"10.00"},
+     * "goshop_points":{"applied":"40.00","amount":"40.00"},"total":"50.00"}}
+     */
+
+    @SerializedName("quote_id")
+    private int quoteId;
+
+    public int getQuoteId() {
+        return quoteId;
     }
 
-    public void setAddress(AddressesData address) {
-        this.address = address;
+    public void setQuoteId(int quoteId) {
+        this.quoteId = quoteId;
     }
 
-    public OrderBillingData getBilling() {
+    public String getGoshopPoints() {
+        return goshopPoints;
+    }
+
+    public void setGoshopPoints(String goshopPoints) {
+        this.goshopPoints = goshopPoints;
+    }
+
+    public BillingData getBilling() {
         return billing;
     }
 
-    public void setBilling(OrderBillingData billing) {
+    public void setBilling(BillingData billing) {
         this.billing = billing;
+    }
+
+    public List<AddressData> getAddress() {
+        return address;
+    }
+
+    public void setAddress(List<AddressData> address) {
+        this.address = address;
+    }
+
+    public List<ProductData> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductData> products) {
+        this.products = products;
     }
 
     public List<PaymentMethodData> getPaymentMethod() {
@@ -60,12 +104,12 @@ public class CheckoutResponse {
         this.paymentMethod = paymentMethod;
     }
 
-    public List<ProductData> getProducts() {
-        return products;
+    public List<EmiOptionsData> getEmiOptions() {
+        return emiOptions;
     }
 
-    public void setProducts(List<ProductData> products) {
-        this.products = products;
+    public void setEmiOptions(List<EmiOptionsData> emiOptions) {
+        this.emiOptions = emiOptions;
     }
 
 }

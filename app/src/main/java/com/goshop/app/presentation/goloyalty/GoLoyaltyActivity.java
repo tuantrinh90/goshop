@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.goloyalty;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.presentation.account.MyPointsActivity;
@@ -23,8 +22,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Presenter> implements
     GoLoyaltyContract.View, GoLoyaltyAdapter.OnGoLoyaltyItemsClickListener {
@@ -51,7 +48,6 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
         new Handler().postDelayed(() -> PopWindowUtil.showNoApiPop(recyclerviewGoLoyalty), 200);
     }
 
-
     @Override
     public int getContentView() {
         return R.layout.activity_go_loyalty;
@@ -59,11 +55,7 @@ public class GoLoyaltyActivity extends BaseDrawerActivity<GoLoyaltyContract.Pres
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         setCurrentMenuType(MenuUtil.MENU_TYPE_GO_LOYALTY);
         setContentView(getContentView());
     }

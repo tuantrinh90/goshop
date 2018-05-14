@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.category;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.expandablerecyclerview.bean.GroupItem;
@@ -27,8 +26,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presenter> implements
     CategoryContract.View, OnCategoryItemClickListener, OnRecyclerViewListener
@@ -67,11 +64,7 @@ public class CategoryActivity extends BaseDrawerActivity<CategoryContract.Presen
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         setCurrentMenuType(MenuUtil.MENU_TYPE_CATEGORY);
         setContentView(getContentView());
         initRecyclerView();

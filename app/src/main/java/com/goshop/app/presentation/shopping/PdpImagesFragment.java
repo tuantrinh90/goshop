@@ -17,9 +17,7 @@ import android.widget.ImageView;
 import java.util.List;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 import butterknife.OnClick;
-import butterknife.Unbinder;
 
 public class PdpImagesFragment extends BaseFragment implements PdpImagesAdapter
     .OnImageItemClickListener {
@@ -36,8 +34,6 @@ public class PdpImagesFragment extends BaseFragment implements PdpImagesAdapter
 
     @BindView(R.id.recyclerview_pdp_images)
     RecyclerView recyclerviewPdpImages;
-
-    Unbinder unbinder;
 
     @BindView(R.id.viewpager_pdp_image_display)
     ViewPager viewPagerPdpImageDisplay;
@@ -63,19 +59,12 @@ public class PdpImagesFragment extends BaseFragment implements PdpImagesAdapter
         super.onCreate(savedInstanceState);
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-    }
-
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
         @Nullable Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         assert rootView != null;
-        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 

@@ -5,6 +5,7 @@ import com.goshop.app.base.BaseView;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
 import com.goshop.app.presentation.model.ApplyEGiftVM;
 import com.goshop.app.presentation.model.ApplyPointsVM;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentVM;
 
@@ -16,11 +17,11 @@ public interface CheckoutContract {
 
         void showErrorMessage(String errorMessage);
 
-        void applyCouponSuccess(ApplyDiscountVM discountVM);
+        void applyCouponSuccess(BillingVM billingVM);
 
-        void applyPointsSuccess(ApplyPointsVM pointsVM);
+        void applyPointsSuccess(BillingVM billingVM);
 
-        void applyEGiftSuccess(ApplyEGiftVM eGiftVM);
+        void applyEGiftSuccess(BillingVM billingVM);
 
         void showPaymentProgress();
 

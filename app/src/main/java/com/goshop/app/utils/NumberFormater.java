@@ -40,7 +40,7 @@ public class NumberFormater {
         return price.toString();
     }
 
-    public static String formaterDiscountPrice(String money) {
+    public static String formaterOfferPrice(String money) {
         StringBuilder price = new StringBuilder(SYMBOL_MINUS);
         price.append(MONEY_SYMBOL).append(money);
         return price.toString();

@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.home;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoLightTextView;
@@ -30,8 +29,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Presenter> implements
     PromotionSkuContract.View, PromotionSkuAdapter.OnPromotionSkuItemClickListener {
@@ -110,11 +107,7 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {
@@ -152,7 +145,7 @@ public class PromotionSkuActivity extends BaseActivity<PromotionSkuContract.Pres
             if (skuModel instanceof SkuFilterWithDataVM) {
                 menuAdapter.updateDatas(((SkuFilterWithDataVM) skuModel).getFilterMenuModels());
             }
-            if(skuModel instanceof SkuBannerVM) {
+            if (skuModel instanceof SkuBannerVM) {
                 ((SkuBannerVM) skuModel).setBannerUrl(intentUrl);
             }
         }

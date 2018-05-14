@@ -1,7 +1,5 @@
 package com.goshop.app.presentation.shopping;
 
-import com.bumptech.glide.Glide;
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -24,8 +22,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presenter> implements
     AllReviewsContract.View {
@@ -78,17 +74,14 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
 
     private void initSwipRefreshLayout() {
         swipeRefreshLayout.setColorSchemeResources(R.color.color_main_pink);
-        swipeRefreshLayout.setOnRefreshListener(()->{
+        swipeRefreshLayout.setOnRefreshListener(() -> {
             page = 1;
-            mPresenter.getProductRatingReviews(page, true);});
+            mPresenter.getProductRatingReviews(page, true);
+        });
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {
@@ -123,13 +116,13 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
     @Override
     public void showRequestFailed(String errorMessage) {
         PopWindowUtil.showRequestMessagePop(recyclerviewAllReviews, errorMessage);
-        updateLayoutStatus(flConnectionBreak,true);
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
     public void showNetWorkError(String errorMessage) {
         PopWindowUtil.showRequestMessagePop(recyclerviewAllReviews, errorMessage);
-        updateLayoutStatus(flConnectionBreak,true);
+        updateLayoutStatus(flConnectionBreak, true);
     }
 
     @Override
@@ -139,7 +132,7 @@ public class AllReviewsActivity extends BaseActivity<AllReviewsContract.Presente
 
     @Override
     public void stopRefresh() {
-        if(swipeRefreshLayout.isRefreshing()) {
+        if (swipeRefreshLayout.isRefreshing()) {
             swipeRefreshLayout.setRefreshing(false);
         }
     }

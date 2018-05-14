@@ -2,7 +2,6 @@ package com.goshop.app.presentation.goloyalty;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.Const;
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoLightTextView;
@@ -12,6 +11,7 @@ import com.goshop.app.presentation.model.CardRedeemVM;
 import com.goshop.app.presentation.model.RedeemSuccessVM;
 import com.goshop.app.utils.PopWindowUtil;
 import com.ncorti.slidetoact.SlideToActView;
+
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -24,8 +24,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 import butterknife.BindView;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presenter> implements
     CardRedeemContract.View {
@@ -121,11 +119,7 @@ public class CardRedeemActivity extends BaseActivity<CardRedeemContract.Presente
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

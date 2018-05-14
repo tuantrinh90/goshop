@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.shopping;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.CustomPagerCircleIndicator;
@@ -36,8 +35,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Presenter>
     implements ProductDetailContract.View, OnProductDetailItemClickListener,
@@ -120,11 +117,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     private void initRecyclerView() {
@@ -156,7 +149,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
                 finish();
                 break;
             case R.id.imageview_right_menu:
-                if(UserHelper.isLogin()) {
+                if (UserHelper.isLogin()) {
                     startActivity(new Intent(this, ShoppingCartActivity.class));
                 } else {
                     startActivity(new Intent(this, LoginActivity.class));
@@ -164,14 +157,14 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
                 break;
 
             case R.id.tv_btn_buy_now:
-                if(UserHelper.isLogin()) {
+                if (UserHelper.isLogin()) {
                     startActivity(new Intent(this, CheckoutActivity.class));
                 } else {
                     startActivity(new Intent(this, LoginActivity.class));
                 }
                 break;
             case R.id.tv_btn_add_to_cart:
-                if(UserHelper.isLogin()) {
+                if (UserHelper.isLogin()) {
                     onAddCartClickListener.onAddClick();
                 } else {
                     startActivity(new Intent(this, LoginActivity.class));
@@ -195,8 +188,8 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     private void showDetailDatas() {
         rlProductDetailData.setVisibility(View.VISIBLE);
-        for (ProductDetailModel detailModel: productDetailModels) {
-            if(detailModel instanceof ProductDetailTopVM) {
+        for (ProductDetailModel detailModel : productDetailModels) {
+            if (detailModel instanceof ProductDetailTopVM) {
                 sku = ((ProductDetailTopVM) detailModel).getSku();
                 break;
             }
@@ -269,7 +262,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void addToCartSuccess(int cartNum) {
-        if(cartNum > 0) {
+        if (cartNum > 0) {
             textviewCartCounter.setVisibility(View.VISIBLE);
             textviewCartCounter.setText(cartNum + "");
         } else {
@@ -280,7 +273,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
     @Override
     public void getUserProfileSuccess(ProfileVM profileVM) {
         int cartCount = profileVM.getCartCount();
-        if(cartCount > 0) {
+        if (cartCount > 0) {
             textviewCartCounter.setVisibility(View.VISIBLE);
             textviewCartCounter.setText(cartCount + "");
         } else {
@@ -327,7 +320,7 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
 
     @Override
     public void onWishlistSelect(boolean isSelect) {
-        if(UserHelper.isLogin()){
+        if (UserHelper.isLogin()) {
             if (isSelect) {
                 mPresenter.addWishlistRequest(sku);
             } else {
@@ -375,6 +368,22 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         }
     }
 
+    public void setOnDeliveryCheckSuccessListener(OnDeliveryCheckSuccessListener listener) {
+        this.onDeliveryCheckSuccessListener = listener;
+    }
+
+    public void setOnAttributeSelectListener(OnAttributeSelectListener listener) {
+        this.onAttributeSelectListener = listener;
+    }
+
+    public void setOnAddCartClickListener(OnAddCartClickListener addCartClickListener) {
+        this.onAddCartClickListener = addCartClickListener;
+    }
+
+    public void setOnWishlistListener(OnWishlistListener onWishlistListener) {
+        this.onWishlistListener = onWishlistListener;
+    }
+
     public interface OnAttributeSelectListener {
 
         void onColorSelect(String color);
@@ -387,29 +396,14 @@ public class ProductDetailActivity extends BaseActivity<ProductDetailContract.Pr
         void success();
     }
 
-    public void setOnDeliveryCheckSuccessListener(OnDeliveryCheckSuccessListener listener) {
-        this.onDeliveryCheckSuccessListener = listener;
-    }
-
-    public void setOnAttributeSelectListener(OnAttributeSelectListener listener) {
-        this.onAttributeSelectListener = listener;
-    }
-
     public interface OnAddCartClickListener {
 
         void onAddClick();
     }
 
-    public void setOnAddCartClickListener(OnAddCartClickListener addCartClickListener) {
-        this.onAddCartClickListener = addCartClickListener;
-    }
+    public interface OnWishlistListener {
 
-    public interface OnWishlistListener{
         void onWishlistClick(boolean isAdd);
-    }
-
-    public void setOnWishlistListener(OnWishlistListener onWishlistListener) {
-        this.onWishlistListener = onWishlistListener;
     }
 
 }

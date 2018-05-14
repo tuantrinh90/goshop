@@ -1,15 +1,13 @@
 package com.goshop.app.presentation.goloyalty;
 
-import com.bumptech.glide.Glide;
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.view.RobotoLightTextView;
 import com.goshop.app.common.view.RobotoMediumItalicTextView;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.RewardsDetailVM;
-import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.utils.DateFormater;
+import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.utils.PopWindowUtil;
 
 import android.os.Bundle;
@@ -21,8 +19,6 @@ import android.widget.LinearLayout;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Presenter>
     implements RewardsDetailContract.View {
@@ -92,11 +88,7 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override

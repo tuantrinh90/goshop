@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.myorder;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
@@ -21,8 +20,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presenter>
     implements CancelOrderContract.View, PopWindowUtil.OnPopWindowDismissListener {
@@ -77,11 +74,7 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override
@@ -89,8 +82,9 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
         return getResources().getString(R.string.order_cancellation_form);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_cancel_order_submit, R.id.tv_cancel_reason, R.id.tv_cancel_detail_reason})
-    public void onCancelOrderClick(View view){
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_cancel_order_submit, R.id.tv_cancel_reason, R
+        .id.tv_cancel_detail_reason})
+    public void onCancelOrderClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
@@ -101,22 +95,26 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
                 String email = etCancelOrderEmail.getText();
                 String mobile = etCancelOrderMobile.getText();
                 String handing = etCancelOrderHanding.getText();
-                if(TextUtils.isEmpty(name)) {
-                    etCancelOrderName.setErrorMessage(getResources().getString(R.string.empty_error));
+                if (TextUtils.isEmpty(name)) {
+                    etCancelOrderName
+                        .setErrorMessage(getResources().getString(R.string.empty_error));
                     return;
                 }
 
-                if(TextUtils.isEmpty(email) || !etCancelOrderEmail.isEmail()) {
-                    etCancelOrderEmail.setErrorMessage(getResources().getString(R.string.format_email_warning));
+                if (TextUtils.isEmpty(email) || !etCancelOrderEmail.isEmail()) {
+                    etCancelOrderEmail
+                        .setErrorMessage(getResources().getString(R.string.format_email_warning));
                     return;
                 }
 
-                if(!TextUtils.isEmpty(mobile) && !etCancelOrderMobile.isMobileNo()) {
-                    etCancelOrderMobile.setErrorMessage(getResources().getString(R.string.format_mobile_warning));
+                if (!TextUtils.isEmpty(mobile) && !etCancelOrderMobile.isMobileNo()) {
+                    etCancelOrderMobile
+                        .setErrorMessage(getResources().getString(R.string.format_mobile_warning));
                     return;
                 }
 
-                mPresenter.cancelOrderRequest(name, email, mobile, handing, reasonCode, reasonDetail);
+                mPresenter
+                    .cancelOrderRequest(name, email, mobile, handing, reasonCode, reasonDetail);
                 break;
             case R.id.tv_cancel_reason:
                 EditTextUtil.eidtLoseFocus(view);

@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.account;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.adapter.NotificationAdapter;
 import com.goshop.app.base.BaseDrawerActivity;
@@ -22,8 +21,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class NotificationActivity extends BaseDrawerActivity<NotificationContract.Presenter>
     implements NotificationContract.View, NotificationAdapter.OnNotificationItemClickListener {
@@ -53,7 +50,6 @@ public class NotificationActivity extends BaseDrawerActivity<NotificationContrac
         mPresenter.notificationRequest(new HashMap<>());
     }
 
-
     @Override
     public int getContentView() {
         return R.layout.activity_notification;
@@ -61,11 +57,7 @@ public class NotificationActivity extends BaseDrawerActivity<NotificationContrac
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         setCurrentMenuType(MenuUtil.MENU_TYPE_NOTIFICATIONS);
         setContentView(getContentView());
     }

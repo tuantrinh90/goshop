@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.home;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.presentation.login.LoginActivity;
@@ -14,9 +13,6 @@ import android.os.Message;
 import android.support.annotation.Nullable;
 
 import java.lang.ref.WeakReference;
-
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class SplashActivity extends BaseActivity<SplashContract.Presenter> implements
     SplashContract.View {
@@ -56,11 +52,7 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override
@@ -115,6 +107,28 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
         mPresenter.delayToJump();
     }
 
+    private void postDelayed(long deploy) {
+        mStartRunnable = new StartRunnable(SplashActivity.this);
+        mStartHandler.postDelayed(mStartRunnable, (DELAY_TIME - deploy));
+    }
+
+    public void postHandler(int code, Object obj) {
+        if (mStartHandler != null) {
+            Message msg = new Message();
+            if (obj != null) {
+                msg.obj = obj;
+            }
+            msg.what = code;
+            mStartHandler.sendMessage(msg);
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        mStartHandler.removeCallbacks(mStartRunnable);
+    }
+
     private static class StartHandler extends Handler {
 
         private WeakReference<SplashActivity> activity;
@@ -138,11 +152,6 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
         }
     }
 
-    private void postDelayed(long deploy) {
-        mStartRunnable = new StartRunnable(SplashActivity.this);
-        mStartHandler.postDelayed(mStartRunnable, (DELAY_TIME - deploy));
-    }
-
     private static class StartRunnable implements Runnable {
 
         WeakReference<SplashActivity> mActivity;
@@ -156,22 +165,5 @@ public class SplashActivity extends BaseActivity<SplashContract.Presenter> imple
             if (mActivity.get() == null) return;
 
         }
-    }
-
-    public void postHandler(int code, Object obj) {
-        if (mStartHandler != null) {
-            Message msg = new Message();
-            if (obj != null) {
-                msg.obj = obj;
-            }
-            msg.what = code;
-            mStartHandler.sendMessage(msg);
-        }
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        mStartHandler.removeCallbacks(mStartRunnable);
     }
 }

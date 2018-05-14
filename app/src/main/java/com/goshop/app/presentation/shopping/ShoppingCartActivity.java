@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.shopping;
 
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseDrawerActivity;
 import com.goshop.app.common.view.RobotoLightTextView;
@@ -9,12 +8,14 @@ import com.goshop.app.common.view.RobotoRegularEditText;
 import com.goshop.app.presentation.checkout.CheckoutActivity;
 import com.goshop.app.presentation.home.MainPageActivity;
 import com.goshop.app.presentation.model.ApplyDiscountVM;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.ShoppingCartProductVM;
 import com.goshop.app.presentation.model.common.ProductVM;
 import com.goshop.app.utils.KeyBoardUtils;
 import com.goshop.app.utils.MenuUtil;
 import com.goshop.app.utils.NumberFormater;
 import com.goshop.app.utils.PopWindowUtil;
+import com.goshop.app.utils.TextFormater;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -27,15 +28,13 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContract.Presenter>
     implements ShoppingCartContract.View, ShoppingCartAdapter.OnCartItemClickListener,
@@ -65,30 +64,57 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     @BindView(R.id.et_cart_apply)
     RobotoRegularEditText etCartApply;
 
-    @BindView(R.id.tv_cart_billing_subtotal)
-    RobotoLightTextView tvCartBillingSubtotal;
+    @BindView(R.id.tv_billing_subtotal_amount)
+    RobotoLightTextView tvBillingSubtotalAmount;
 
-    @BindView(R.id.tv_cart_billing_shipping)
-    RobotoLightTextView tvCartBillingShipping;
+    @BindView(R.id.ll_billing_subtotal)
+    LinearLayout llBillingSubtotal;
 
-    @BindView(R.id.tv_cart_billing_disscount)
-    RobotoLightTextView tvCartBillingDisscount;
+    @BindView(R.id.tv_billing_shipping_amount)
+    RobotoLightTextView tvBillingShippingAmount;
 
-    @BindView(R.id.tv_cart_disscount_code)
-    RobotoLightTextView tvCartDisscountCode;
+    @BindView(R.id.ll_billing_shipping)
+    LinearLayout llBillingShipping;
 
-    @BindView(R.id.tv_cart_billing_total)
-    RobotoMediumTextView tvCartBillingTotal;
+    @BindView(R.id.tv_billing_discount_code)
+    RobotoLightTextView tvBillingDiscountCode;
 
-    @BindView(R.id.rl_cart_disscount)
-    RelativeLayout rlCartDisscount;
+    @BindView(R.id.tv_billing_discount_amount)
+    RobotoLightTextView tvBillingDiscountAmount;
 
-    private ShoppingCartAdapter shoppingCartAdapter;
+    @BindView(R.id.ll_billing_discount)
+    LinearLayout llBillingDiscount;
 
-    private String cartId;
+    @BindView(R.id.tv_billing_egift_code)
+    RobotoLightTextView tvBillingEgiftCode;
+
+    @BindView(R.id.tv_billing_egift_amount)
+    RobotoLightTextView tvBillingEgiftAmount;
+
+    @BindView(R.id.ll_billing_egift)
+    LinearLayout llBillingEgift;
+
+    @BindView(R.id.tv_billing_points_code)
+    RobotoLightTextView tvBillingPointsCode;
+
+    @BindView(R.id.tv_billing_points_amount)
+    RobotoLightTextView tvBillingPointsAmount;
+
+    @BindView(R.id.ll_billing_points)
+    LinearLayout llBillingPoints;
+
+    @BindView(R.id.tv_billing_total)
+    RobotoMediumTextView tvBillingTotal;
+
+    @BindView(R.id.ll_billing_total)
+    LinearLayout llBillingTotal;
 
     @BindView(R.id.swipe_refresh_layout)
     SwipeRefreshLayout swipeRefreshLayout;
+
+    private ShoppingCartAdapter shoppingCartAdapter;
+
+    private String quoteId;
 
     private int page = 1;
 
@@ -107,11 +133,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
 
     @Override
     public void inject() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
         setCurrentMenuType(MenuUtil.MENU_TYPE_SHOPPING_CART);
         setContentView(getContentView());
     }
@@ -149,31 +171,41 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     public void showCartDetail(ShoppingCartProductVM cartProductVM) {
         if (cartProductVM.getProductVMS() != null && !cartProductVM.getProductVMS().isEmpty()) {
             updateLayoutStatus(flContent, true);
-            cartId = cartProductVM.getId();
+            quoteId = cartProductVM.getId();
             shoppingCartAdapter.setProductVMS(cartProductVM.getProductVMS());
-
-            if (cartProductVM.getDiscount() != null && TextUtils
-                .isEmpty(cartProductVM.getDiscount())) {
-                rlCartDisscount.setVisibility(View.GONE);
+            BillingVM billingVM = cartProductVM.getBillingVM();
+            if (billingVM.getBillingDiscountAmount() != null && TextUtils
+                .isEmpty(billingVM.getBillingDiscountAmount())) {
+                llBillingDiscount.setVisibility(View.GONE);
                 tvBtnCartApply.setText(getResources().getString(R.string.apply));
                 tvBtnCartApply.setSelected(false);
                 etCartApply.setFocusableInTouchMode(true);
                 etCartApply.setFocusable(true);
                 etCartApply.requestFocus();
             } else {
-                rlCartDisscount.setVisibility(View.VISIBLE);
-                tvCartBillingDisscount.setText(
-                    NumberFormater.formaterDiscountPrice(cartProductVM.getDiscount()));
-                tvCartDisscountCode.setText(cartProductVM.getDiscountCode());
-                etCartApply.setText(cartProductVM.getDiscount());
+                llBillingDiscount.setVisibility(View.VISIBLE);
+                tvBillingDiscountAmount.setText(
+                    NumberFormater.formaterOfferPrice(billingVM.getBillingDiscountAmount()));
+                tvBillingDiscountCode.setText(billingVM.getBillingDiscountCode());
+                etCartApply.setText(billingVM.getBillingDiscountAmount());
                 tvBtnCartApply.setText(getResources().getString(R.string.cancel));
                 tvBtnCartApply.setSelected(true);
                 etCartApply.setFocusable(false);
                 etCartApply.setFocusableInTouchMode(false);
             }
-            tvCartBillingSubtotal.setText(cartProductVM.getSubTotal());
-            tvCartBillingShipping.setText(cartProductVM.getShipping());
-            tvCartBillingTotal.setText(cartProductVM.getTotal());
+            tvBillingSubtotalAmount.setText(billingVM.getBillingSubTotal());
+            tvBillingShippingAmount.setText(billingVM.getBillingShipping());
+            tvBillingPointsAmount
+                .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingPointsAmount()));
+            tvBillingPointsCode.setText(billingVM.getBillingPointsApplied());
+            tvBillingEgiftAmount
+                .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingEGiftAmount()));
+            tvBillingEgiftCode.setText(billingVM.getBillingEGiftCode());
+            llBillingEgift.setVisibility(
+                TextUtils.isEmpty(billingVM.getBillingEGiftAmount()) ? View.GONE : View.VISIBLE);
+            llBillingPoints.setVisibility(
+                TextUtils.isEmpty(billingVM.getBillingPointsAmount()) ? View.GONE : View.VISIBLE);
+            tvBillingTotal.setText(billingVM.getBillingTotal());
         } else {
             updateLayoutStatus(flNoData, true);
         }
@@ -183,12 +215,6 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     public void showNetError() {
         page = 1;
         updateLayoutStatus(flConnectionBreak, true);
-    }
-
-    @Override
-    public void removeSuccess() {
-        PopWindowUtil
-            .showRequestMessagePop(rvShoppintCart, getResources().getString(R.string.success));
     }
 
     @Override
@@ -207,9 +233,9 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
     }
 
     @Override
-    public void applySuccess(ApplyDiscountVM discountVM) {
+    public void applySuccess(BillingVM billingVM) {
         if (tvBtnCartApply.isSelected()) {
-            rlCartDisscount.setVisibility(View.GONE);
+            llBillingDiscount.setVisibility(View.GONE);
             tvBtnCartApply.setText(getResources().getString(R.string.apply));
             tvBtnCartApply.setSelected(false);
             etCartApply.setText("");
@@ -217,17 +243,14 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
             etCartApply.setFocusable(true);
             etCartApply.requestFocus();
         } else {
-            rlCartDisscount.setVisibility(View.VISIBLE);
+            llBillingDiscount.setVisibility(View.VISIBLE);
             tvBtnCartApply.setText(getResources().getString(R.string.cancel));
             tvBtnCartApply.setSelected(true);
-            etCartApply.setText(discountVM.getDiscount());
+            etCartApply.setText(billingVM.getBillingDiscountAmount());
             etCartApply.setFocusable(false);
             etCartApply.setFocusableInTouchMode(false);
-            tvCartBillingDisscount
-                .setText(NumberFormater.formaterDiscountPrice(discountVM.getDiscount()));
         }
-
-        tvCartBillingTotal.setText(discountVM.getOriginalPrice());
+        updateBilling(billingVM);
     }
 
     @Override
@@ -251,7 +274,7 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                     Toast.makeText(this, getResources().getString(R.string.empty_error),
                         Toast.LENGTH_SHORT).show();
                 } else {
-                    mPresenter.applyCoupon(code, cartId);
+                    mPresenter.applyCoupon(code, quoteId, tvBtnCartApply.isSelected());
                 }
 
                 break;
@@ -275,6 +298,30 @@ public class ShoppingCartActivity extends BaseDrawerActivity<ShoppingCartContrac
                 break;
 
         }
+    }
+
+    private void updateBilling(BillingVM billingVM) {
+        tvBillingSubtotalAmount.setText(billingVM.getBillingSubTotal());
+        tvBillingShippingAmount.setText(billingVM.getBillingShipping());
+        llBillingShipping
+            .setVisibility(TextUtils.isEmpty(billingVM.getBillingShipping()) ? View.GONE : View.VISIBLE);
+        tvBillingDiscountCode.setText(billingVM.getBillingDiscountCode());
+        tvBillingDiscountAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingDiscountAmount()));
+        llBillingDiscount
+            .setVisibility(
+                TextUtils.isEmpty(billingVM.getBillingDiscountAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingEgiftCode.setText(billingVM.getBillingEGiftCode());
+        tvBillingEgiftAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingEGiftAmount()));
+        llBillingEgift.setVisibility(
+            TextUtils.isEmpty(billingVM.getBillingEGiftAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingPointsAmount
+            .setText(NumberFormater.formaterOfferPrice(billingVM.getBillingPointsAmount()));
+        tvBillingPointsCode.setText(TextFormater.formatBillingCode(billingVM.getBillingPointsApplied()));
+        llBillingPoints.setVisibility(
+            TextUtils.isEmpty(billingVM.getBillingPointsAmount()) ? View.GONE : View.VISIBLE);
+        tvBillingTotal.setText(billingVM.getBillingTotal());
     }
 
     @Override

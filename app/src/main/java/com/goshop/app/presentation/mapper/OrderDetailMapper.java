@@ -10,10 +10,12 @@ import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.data.model.response.common.RMData;
 import com.goshop.app.data.model.response.common.ShippingAddressData;
 import com.goshop.app.data.model.response.common.SuperAttributeData;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.MyOrdersProductVM;
 import com.goshop.app.presentation.model.OrderDetailVM;
 import com.goshop.app.utils.DateFormater;
 import com.goshop.app.utils.NumberFormater;
+import com.goshop.app.utils.TextFormater;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,20 +63,23 @@ public class OrderDetailMapper {
         OrderDetailVM orderDetailVM = new OrderDetailVM(informationData.getNumber(),
             informationData.getStatus(), placeAt, shippingAddressData.getFirstName(),
             shipAddress, shipCity, shippingAddressData.getCountry(),
-            NumberFormater.formaterTelNo(shippingAddressData.getTelephone()), paymentMethod, myOrdersProductVMS);
+            NumberFormater.formaterTelNo(shippingAddressData.getTelephone()), paymentMethod,
+            myOrdersProductVMS);
 
         OrderRMData rm = billingData.getRm();
-        orderDetailVM.setSubTotal(NumberFormater.formaterPrice(rm.getSubTotal()));
-        orderDetailVM.setShipping(NumberFormater.formaterPrice(rm.getShipping()));
-        orderDetailVM
-            .setDisscount(NumberFormater.formaterDiscountPrice(rm.getDiscount().getAmount()));
-        orderDetailVM.setTotal(NumberFormater.formaterPrice(rm.getTotal()));
-        orderDetailVM.setEgift(NumberFormater.formaterDiscountPrice(rm.getEgiftCard().getAmount()));
-        orderDetailVM
-            .setPoints(NumberFormater.formaterDiscountPrice(rm.getGoshopPoints().getAmount()));
-        orderDetailVM.setDiscountDes(rm.getDiscount().getCode());
-        orderDetailVM.setEgiftDes(rm.getEgiftCard().getCode());
-        orderDetailVM.setPointsDes(rm.getGoshopPoints().getApplied());
+        BillingVM billingVM = new BillingVM();
+        billingVM.setBillingSubTotal(NumberFormater.formaterPrice(rm.getSubTotal()));
+        billingVM.setBillingShipping(NumberFormater.formaterPrice(rm.getShipping()));
+        billingVM.setBillingDiscountAmount(rm.getDiscount().getAmount());
+        billingVM.setBillingTotal(NumberFormater.formaterPrice(rm.getTotal()));
+        billingVM.setBillingEGiftAmount(rm.getEgiftCard().getAmount());
+        billingVM.setBillingPointsAmount(rm.getGoshopPoints().getAmount());
+        billingVM
+            .setBillingDiscountCode(TextFormater.formatBillingCode(rm.getDiscount().getCode()));
+        billingVM.setBillingEGiftCode(TextFormater.formatBillingCode(rm.getEgiftCard().getCode()));
+        billingVM.setBillingPointsApplied(
+            TextFormater.formatBillingCode(rm.getGoshopPoints().getApplied()));
+        orderDetailVM.setBillingVM(billingVM);
         return orderDetailVM;
     }
 

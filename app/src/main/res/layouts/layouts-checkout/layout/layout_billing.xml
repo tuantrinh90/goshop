@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:id="@+id/ll_billing_subtotal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/sub_total"
+            android:textColor="@color/color_black_light"
+            android:gravity="start" />
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_billing_subtotal_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            tools:ignore="RelativeOverlap"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_billing_shipping"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/shipping_fee"
+            android:textColor="@color/color_black_light"
+            android:gravity="start" />
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_billing_shipping_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            tools:ignore="RelativeOverlap"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_billing_discount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/disscount_only"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"/>
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_billing_discount_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"/>
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_billing_discount_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            tools:ignore="RelativeOverlap"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_billing_egift"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/egift_card_only"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"/>
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_billing_egift_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_black_light"
+            android:gravity="start"/>
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_billing_egift_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            tools:ignore="RelativeOverlap"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_billing_points"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="@dimen/size_8">
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/go_shop_points"
+            android:textColor="@color/color_black_light"
+            android:gravity="start" />
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_billing_points_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:text="@string/go_shop_points"
+            android:textColor="@color/color_black_light"
+            android:gravity="start" />
+
+        <com.goshop.app.common.view.RobotoLightTextView
+            android:id="@+id/tv_billing_points_amount"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_14"
+            android:textColor="@color/color_black_light"
+            android:gravity="end"
+            tools:ignore="RelativeOverlap"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_billing_total"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/size_6">
+
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_18"
+            android:text="@string/total_incl_gst"
+            android:textColor="@color/color_black_light"
+            android:gravity="start" />
+
+        <com.goshop.app.common.view.RobotoMediumTextView
+            android:id="@+id/tv_billing_total"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/size_font_18"
+            android:textColor="@color/color_main_pink"
+            android:gravity="end"  />
+    </LinearLayout>
+
+</LinearLayout>

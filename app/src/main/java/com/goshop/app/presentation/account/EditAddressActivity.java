@@ -1,7 +1,6 @@
 package com.goshop.app.presentation.account;
 
 import com.goshop.app.Const;
-import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseActivity;
 import com.goshop.app.common.CustomAnimEditText;
@@ -25,8 +24,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.OnClick;
-import injection.components.DaggerPresenterComponent;
-import injection.modules.PresenterModule;
 
 public class EditAddressActivity extends BaseActivity<EditAddressContract.Presenter> implements
     EditAddressContract.View, PopWindowUtil
@@ -127,11 +124,7 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
     }
 
     private void initPresenter() {
-        DaggerPresenterComponent.builder()
-            .applicationComponent(GoShopApplication.getApplicationComponent())
-            .presenterModule(new PresenterModule(this))
-            .build()
-            .inject(this);
+        initPresenterComponent().inject(this);
     }
 
     @Override
@@ -170,7 +163,8 @@ public class EditAddressActivity extends BaseActivity<EditAddressContract.Presen
                 //todo now api have no data about country
                 // todo this will do nothing, please dont delete
 //                currentPop = PopWindowUtil.COUNTRY_POP;
-//                PopWindowUtil.showSingleChoosePop(view, getResources().getString(R.string.country),
+//                PopWindowUtil.showSingleChoosePop(view, getResources().getString(R.string
+// .country),
 //                    countryVMS, this);
                 break;
             case R.id.tv_edit_address_state:

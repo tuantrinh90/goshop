@@ -1,13 +1,16 @@
 package com.goshop.app.presentation.mapper;
 
+import com.goshop.app.Const;
 import com.goshop.app.R;
 import com.goshop.app.data.model.response.CheckoutResponse;
-import com.goshop.app.data.model.response.common.AddressesData;
-import com.goshop.app.data.model.response.common.OrderRMData;
+import com.goshop.app.data.model.response.common.AddressData;
+import com.goshop.app.data.model.response.common.EmiOptionsData;
 import com.goshop.app.data.model.response.common.PaymentMethodData;
 import com.goshop.app.data.model.response.common.ProductData;
 import com.goshop.app.data.model.response.common.RMData;
 import com.goshop.app.data.model.response.common.SuperAttributeData;
+import com.goshop.app.presentation.model.AddressVM;
+import com.goshop.app.presentation.model.BillingVM;
 import com.goshop.app.presentation.model.CheckoutVM;
 import com.goshop.app.presentation.model.PaymentMethodVM;
 import com.goshop.app.presentation.model.ProfileMetaVM;
@@ -17,7 +20,6 @@ import com.goshop.app.utils.TextFormater;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 public class CheckoutMapper {
 
@@ -28,44 +30,48 @@ public class CheckoutMapper {
     public static CheckoutVM transform(CheckoutResponse response) {
         CheckoutVM checkoutVM = new CheckoutVM();
 
-        AddressesData addressesData = response.getAddress();
-        checkoutVM.setShippingUserName(TextFormater
-            .formatFirstLastName(addressesData.getFirstName(), addressesData.getLastName()));
-        Map<String, Object> streets = addressesData.getStreet();
-        List<String> addresses = new ArrayList<>();
-        for (Map.Entry<String, Object> entry : streets.entrySet()) {
-            addresses.add((String) entry.getValue());
+        List<AddressData> addressDatas = response.getAddress();
+        List<AddressVM> addressVMS = new ArrayList<>();
+        for (AddressData addressData : addressDatas) {
+            AddressVM addressVM = new AddressVM();
+            addressVM.setName(TextFormater.formatFirstLastName(addressData.getFirstname(),
+                addressData.getLastname()));
+            List<String> streets = addressData.getStreet();
+            addressVM.setAddress(streets.get(0));
+            addressVM.setAddressSecond(streets.get(1));
+            addressVM.setCityStatePost(TextFormater.formatCityStateCode(addressData.getCity(),
+                addressData.getRegion(), addressData.getPostcode()));
+            addressVM.setCountry(addressData.getCountry());
+            addressVM.setTel(NumberFormater.formaterTelNo(addressData.getTelephone()));
+            addressVM.setShippingDefault(addressData.isDefaultShipping());
+            addressVM.setBillingDefault(addressData.isDefaultBilling());
+            addressVMS.add(addressVM);
         }
-        checkoutVM.setShippingAddressOne(addresses.get(0));
-        checkoutVM.setShippingAddressTwo(addresses.get(1));
-        checkoutVM.setShippingCityStatePost(TextFormater
-            .formatCityStateCode(addressesData.getCity(), addressesData.getRegionId(),
-                addressesData.getCity()));
-        checkoutVM.setShippingCountry(addressesData.getCountryId());
-        checkoutVM.setShippingTel(NumberFormater.formaterTelNo(addressesData.getTelephone()));
-        //todo these hard code is wait for api
-        checkoutVM.setBillingUserName("User Name");
-        checkoutVM.setBillingAddressOne("Address 1");
-        checkoutVM.setBillingAddressTwo("Address 2");
-        checkoutVM
-            .setBillingCityStatePost(TextFormater.formatCityStateCode("City", "State", "1000"));
-        checkoutVM.setBillingCountry("China");
-        checkoutVM.setBillingTel(NumberFormater.formaterTelNo("1234155434232"));
+        if (addressVMS.size() == 1) {
+            addressVMS.add(addressVMS.get(0));
+        }
+        checkoutVM.setAddressVMS(addressVMS);
         PaymentMethodVM paymentMethodVM;
         List<PaymentMethodVM> methodVMS = new ArrayList<>();
         List<PaymentMethodData> paymentMethodDatas = response.getPaymentMethod();
+        List<EmiOptionsData> emiOptionsDatas = response.getEmiOptions();
+        List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
+        if (emiOptionsDatas != null && emiOptionsDatas.size() > 0) {
+            for (EmiOptionsData optionsData : emiOptionsDatas) {
+                profileMetaVMS
+                    .add(new ProfileMetaVM(optionsData.getValue(), optionsData.getLabel()));
+            }
+        }
+
         for (PaymentMethodData data : paymentMethodDatas) {
             paymentMethodVM = new PaymentMethodVM();
-            paymentMethodVM.setId(data.getId());
-            paymentMethodVM.setName(data.getName());
-            if (data.getMonths() != null && data.getMonths().size() > 0) {
-                List<ProfileMetaVM> profileMetaVMS = new ArrayList<>();
-                for (String month : data.getMonths()) {
-                    profileMetaVMS.add(new ProfileMetaVM(month, month + "month"));
-                }
+            paymentMethodVM.setCode(data.getCode());
+            paymentMethodVM.setTitle(data.getTitle());
+            if (data.getCode().equals(Const.PAYMENT_CODE)) {
                 paymentMethodVM.setMonths(profileMetaVMS);
             }
             methodVMS.add(paymentMethodVM);
+
         }
         checkoutVM.setPaymentMethodVMs(methodVMS);
 
@@ -95,18 +101,18 @@ public class CheckoutMapper {
         }
 
         checkoutVM.setProductVMS(productVMS);
-        OrderRMData orderRMData = response.getBilling().getRm();
-        checkoutVM.setSubTotal(NumberFormater.formaterPrice(orderRMData.getSubTotal()));
-        checkoutVM.setShipping(NumberFormater.formaterPrice(orderRMData.getShipping()));
-        checkoutVM
-            .setDiscountCode(TextFormater.formatBillingCode(orderRMData.getDiscount().getCode()));
-        checkoutVM.setDiscountAmount(orderRMData.getDiscount().getAmount());
-        checkoutVM
-            .seteGiftCode(TextFormater.formatBillingCode(orderRMData.getEgiftCard().getCode()));
-        checkoutVM.seteGiftAmount(orderRMData.getEgiftCard().getAmount());
-        checkoutVM.setBillingTotal(NumberFormater.formaterPrice(orderRMData.getTotal()));
-        checkoutVM.setPointsAmount(orderRMData.getGoshopPoints().getAmount());
-        checkoutVM.setPointsApplied(orderRMData.getGoshopPoints().getApplied());
+        RMData rmData = response.getBilling().getRm();
+        BillingVM billingVM = new BillingVM();
+        billingVM.setBillingSubTotal(NumberFormater.formaterPrice(rmData.getSubTotal()));
+        billingVM.setBillingShipping(NumberFormater.formaterPrice(rmData.getShipping()));
+        billingVM.setBillingDiscountCode(TextFormater.formatBillingCode(rmData.getDiscount().getCode()));
+        billingVM.setBillingDiscountAmount(rmData.getDiscount().getAmount());
+        billingVM.setBillingEGiftAmount(rmData.geteGiftCard().getAmount());
+        billingVM.setBillingEGiftCode(TextFormater.formatBillingCode(rmData.geteGiftCard().getCode()));
+        billingVM.setBillingTotal(NumberFormater.formaterPrice(rmData.getTotal()));
+        billingVM.setBillingPointsAmount(rmData.getGoshopPoints().getAmount());
+        billingVM.setBillingPointsApplied(rmData.getGoshopPoints().getApplied());
+        checkoutVM.setBillingVM(billingVM);
         return checkoutVM;
     }
 

@@ -22,25 +22,17 @@ public class ShoppingCartProductVM {
 
     private String title;
 
-    private String subTotal;
-
-    private String discount;
-
-    private String shipping;
-
-    private String total;
-
-    private String discountCode;
-
-    public String getDiscountCode() {
-        return discountCode;
-    }
-
-    public void setDiscountCode(String discountCode) {
-        this.discountCode = discountCode;
-    }
+    private BillingVM billingVM;
 
     public ShoppingCartProductVM() {
+    }
+
+    public BillingVM getBillingVM() {
+        return billingVM;
+    }
+
+    public void setBillingVM(BillingVM billingVM) {
+        this.billingVM = billingVM;
     }
 
     public List<ProductVM> getProductVMS() {
@@ -107,35 +99,4 @@ public class ShoppingCartProductVM {
         this.count = count;
     }
 
-    public String getSubTotal() {
-        return subTotal;
-    }
-
-    public void setSubTotal(String subTotal) {
-        this.subTotal = subTotal;
-    }
-
-    public String getDiscount() {
-        return discount;
-    }
-
-    public void setDiscount(String discount) {
-        this.discount = discount;
-    }
-
-    public String getShipping() {
-        return shipping;
-    }
-
-    public void setShipping(String shipping) {
-        this.shipping = shipping;
-    }
-
-    public String getTotal() {
-        return total;
-    }
-
-    public void setTotal(String total) {
-        this.total = total;
-    }
 }
