@@ -75,7 +75,7 @@ public class RedeemedAdapter extends RecyclerView.Adapter {
                 itemView.getContext(),
                 dealsVM.getImageUrl(),
                 ivRedeemedThumb,
-                R.drawable.ic_image_404_big);
+                R.drawable.ic_image_404_small);
             tvRedeemedName.setText(dealsVM.getName());
             tvRedeemedDetail.setText(dealsVM.getDetail());
             tvRedeemedTime.setText(dealsVM.getTime());

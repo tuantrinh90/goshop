@@ -1,5 +1,6 @@
 package com.goshop.app.presentation.mapper;
 
+import com.goshop.app.R;
 import com.goshop.app.data.model.CardRedeemResponse;
 import com.goshop.app.data.model.response.DealCategoryResponse;
 import com.goshop.app.data.model.response.DealDetailsResponse;
@@ -46,6 +47,7 @@ public class RewardsMapper {
             rewardsDetailVM.setDealEndDt(dealDetailsResponse.getDealEndDt());
             rewardsDetailVM.setDealImage(dealDetailsResponse.getDealImage());
             rewardsDetailVM.setDealName(dealDetailsResponse.getDealName());
+            rewardsDetailVM.setPromtionImageDefault(R.drawable.ic_image_404_small);
             rewardsDetailVM.setDealStartDt(dealDetailsResponse.getDealStartDt());
             DealMerchantVM dealMerchantVM = new DealMerchantVM();
             if (dealDetailsResponse.getDealMerchantResponse() != null) {
