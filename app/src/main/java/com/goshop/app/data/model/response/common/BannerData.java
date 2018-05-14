@@ -1,51 +1,43 @@
 package com.goshop.app.data.model.response.common;
 
+import java.util.List;
+
 public class BannerData {
 
     /**
      * id : 123
-     * type : event
-     * link : /event1
-     * image : https://image.goshop.com.my/banner1.jpg
+     * position : 0
+     * images : [{"path":"https://image.goshop.com.my/banner1.jpg","link":"https://api.goshop.com
+     * .my/catalog/product/123"}]
      */
 
-    private int id;
+    private String id;
 
-    private String type;
+    private int position;
 
-    private String link;
+    private List<ImagesData> images;
 
-    private String image;
-
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
-    public String getType() {
-        return type;
+    public int getPosition() {
+        return position;
     }
 
-    public void setType(String type) {
-        this.type = type;
+    public void setPosition(int position) {
+        this.position = position;
     }
 
-    public String getLink() {
-        return link;
+    public List<ImagesData> getImages() {
+        return images;
     }
 
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
+    public void setImages(List<ImagesData> images) {
+        this.images = images;
     }
 }

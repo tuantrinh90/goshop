@@ -2,26 +2,11 @@ package com.goshop.app.presentation.model;
 
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
 
-public class BannerVm implements Parcelable {
+import java.util.List;
 
-    private int id;
-
-    private String type;
-
-    private String link;
-
-    private String image;
-
-    protected BannerVm(Parcel in) {
-        id = in.readInt();
-        type = in.readString();
-        link = in.readString();
-        image = in.readString();
-    }
-
-    public BannerVm() {
-    }
+public class BannerVm implements Parcelable ,Comparable {
 
     public static final Creator<BannerVm> CREATOR = new Creator<BannerVm>() {
         @Override
@@ -35,36 +20,44 @@ public class BannerVm implements Parcelable {
         }
     };
 
-    public int getId() {
+    private String id;
+
+    private int position;
+
+    private List<BannerImageVM> bannerImageVMS;
+
+    protected BannerVm(Parcel in) {
+        id = in.readString();
+        position = in.readInt();
+        bannerImageVMS = in.createTypedArrayList(BannerImageVM.CREATOR);
+    }
+
+    public BannerVm() {
+    }
+
+    public int getPosition() {
+        return position;
+    }
+
+    public void setPosition(int position) {
+        this.position = position;
+    }
+
+    public List<BannerImageVM> getBannerImageVMS() {
+        return bannerImageVMS;
+    }
+
+    public void setBannerImageVMS(
+        List<BannerImageVM> bannerImageVMS) {
+        this.bannerImageVMS = bannerImageVMS;
+    }
+
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String link) {
-        this.link = link;
-    }
-
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
     }
 
     @Override
@@ -74,9 +67,14 @@ public class BannerVm implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeInt(id);
-        dest.writeString(type);
-        dest.writeString(link);
-        dest.writeString(image);
+        dest.writeString(id);
+        dest.writeInt(position);
+        dest.writeTypedList(bannerImageVMS);
+    }
+
+    @Override
+    public int compareTo(@NonNull Object o) {
+        BannerVm bannerVm = (BannerVm) o;
+        return Integer.valueOf(this.position).compareTo(bannerVm.getPosition());
     }
 }

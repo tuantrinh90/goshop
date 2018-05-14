@@ -2,6 +2,7 @@ package com.goshop.app.presentation.home;
 
 import com.goshop.app.base.BasePresenter;
 import com.goshop.app.base.BaseView;
+import com.goshop.app.presentation.model.BannerImageVM;
 import com.goshop.app.presentation.model.BannerVm;
 import com.goshop.app.presentation.model.TrendingNowModel;
 
@@ -26,7 +27,7 @@ public class TrendingNowContract {
 
         void getHomeBanner();
 
-        void getOnAirSchedule(Context context);
+        void getOnAirSchedule(List<BannerImageVM> bannerImageVMS);
     }
 
 }

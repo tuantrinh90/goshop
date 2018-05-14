@@ -1,8 +1,8 @@
 package com.goshop.app.widget.listener;
 
-import com.goshop.app.presentation.model.BannerVm;
+import com.goshop.app.presentation.model.BannerImageVM;
 
 public interface OnHomeBannerItemClickListener {
 
-    void onBannerItemClick(BannerVm bannerVm);
+    void onBannerItemClick(BannerImageVM bannerImageVM);
 }
