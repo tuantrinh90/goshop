@@ -58,7 +58,8 @@ public class VideoViewPagerAdapter extends PagerAdapter {
         LinearLayout llImageViewMore = pagerLayout.findViewById(R.id.ll_image_view_more);
         RecyclerView recyclerViewVideoBuy = pagerLayout.findViewById(R.id.recyclerview_video_buy);
         List<ProductsVM> productsVMS = videoPlayerItemsVMS.get(position).getProductsVMS();
-        initJWPlayerView(jwPlayerView, videoPlayerItemsVMS.get(position),position);
+        //todo this place need decide
+//        initJWPlayerView(jwPlayerView, videoPlayerItemsVMS.get(position),position);
         
         VideoProductItemAdapter listAdapter = new VideoProductItemAdapter(productsVMS,
             onProductItemClickListener, buyClickListener);

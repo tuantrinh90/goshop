@@ -143,13 +143,6 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-        trendingNowAdapter.onDestroyView();
-    }
-
-    @Override
     public void onBannerRequestSuccess(List<BannerVm> bannerVms) {
 
         if(bannerVms.size()>1&&bannerVms.get(1) != null) {
