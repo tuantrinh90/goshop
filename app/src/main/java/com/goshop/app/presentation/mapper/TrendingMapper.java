@@ -6,13 +6,18 @@ import com.goshop.app.data.model.response.VideoProductsResponse;
 import com.goshop.app.data.model.response.common.BannerData;
 import com.goshop.app.data.model.response.BannerResponse;
 import com.goshop.app.data.model.response.Response;
+import com.goshop.app.data.model.response.common.ImagesData;
+import com.goshop.app.presentation.model.BannerImageVM;
 import com.goshop.app.presentation.model.BannerVm;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
 
+import android.util.Log;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class TrendingMapper {
@@ -27,12 +32,17 @@ public class TrendingMapper {
             for (BannerData banner : response.getData().getBanners()) {
                 BannerVm bannerVm = new BannerVm();
                 bannerVm.setId(banner.getId());
-                bannerVm.setImage(banner.getImage());
-                bannerVm.setLink(banner.getLink());
-                bannerVm.setType(banner.getType());
+                bannerVm.setPosition(banner.getPosition());
+                List<ImagesData> imagesDatas = banner.getImages();
+                List<BannerImageVM> bannerImageVMS = new ArrayList<>();
+                for(ImagesData imagesData:imagesDatas) {
+                    bannerImageVMS.add( new BannerImageVM(imagesData.getPath(), imagesData.getLink()));
+                }
+                bannerVm.setBannerImageVMS(bannerImageVMS);
                 bannerVmList.add(bannerVm);
             }
         }
+        Collections.sort(bannerVmList);
         return bannerVmList;
     }
 

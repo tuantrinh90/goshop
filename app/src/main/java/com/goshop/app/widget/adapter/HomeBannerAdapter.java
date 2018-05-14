@@ -2,6 +2,7 @@ package com.goshop.app.widget.adapter;
 
 import com.bumptech.glide.Glide;
 import com.goshop.app.R;
+import com.goshop.app.presentation.model.BannerImageVM;
 import com.goshop.app.presentation.model.BannerVm;
 import com.goshop.app.utils.GlideUtils;
 import com.goshop.app.widget.listener.OnHomeBannerItemClickListener;
@@ -16,11 +17,11 @@ import java.util.List;
 
 public class HomeBannerAdapter extends PagerAdapter {
 
-    private List<BannerVm> itemsVMS;
+    private List<BannerImageVM> itemsVMS;
 
     private OnHomeBannerItemClickListener onBannerItemClickListener;
 
-    public HomeBannerAdapter(List<BannerVm> itemsVMS,
+    public HomeBannerAdapter(List<BannerImageVM> itemsVMS,
         OnHomeBannerItemClickListener onBannerItemClickListener) {
         this.itemsVMS = itemsVMS;
         this.onBannerItemClickListener = onBannerItemClickListener;
@@ -35,12 +36,12 @@ public class HomeBannerAdapter extends PagerAdapter {
     public Object instantiateItem(ViewGroup container, int position) {
         View imageLayout = LayoutInflater.from(container.getContext())
             .inflate(R.layout.item_widget_banner, container, false);
-        BannerVm itemsVM = itemsVMS.get(position);
+        BannerImageVM itemsVM = itemsVMS.get(position);
         final ImageView imageView = imageLayout
             .findViewById(R.id.iv_widget_banner);
         GlideUtils.loadImageError(
             container.getContext(),
-            itemsVM.getImage(),
+            itemsVM.getPath(),
             imageView,
             R.drawable.ic_image_404_big);
         container.addView(imageLayout, 0);
