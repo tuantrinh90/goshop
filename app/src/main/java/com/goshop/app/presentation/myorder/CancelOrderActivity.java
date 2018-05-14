@@ -27,8 +27,8 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
     @BindView(R.id.et_cancel_order_email)
     CustomAnimEditText etCancelOrderEmail;
 
-    @BindView(R.id.et_cancel_order_handing)
-    CustomAnimEditText etCancelOrderHanding;
+    @BindView(R.id.tv_cancel_order_handing)
+    RobotoRegularTextView tvCancelOrderHanding;
 
     @BindView(R.id.et_cancel_order_mobile)
     CustomAnimEditText etCancelOrderMobile;
@@ -39,8 +39,8 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
     @BindView(R.id.tv_cancel_reason)
     RobotoRegularTextView tvCancelReason;
 
-    @BindView(R.id.tv_cancel_detail_reason)
-    RobotoRegularTextView tvCancelDetailReason;
+    @BindView(R.id.et_cancel_detail_reason)
+    CustomAnimEditText etCancelDetailReason;
 
     @BindView(R.id.tv_btn_cancel_order_submit)
     RobotoMediumTextView tvBtnCancelOrderSubmit;
@@ -51,13 +51,12 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
 
     private List<ProfileMetaVM> reasonCodes;
 
-    private List<ProfileMetaVM> reasonDetails;
-
     private String currentPopType = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        mPresenter.getOrderMetadata();
     }
 
     @Override
@@ -68,7 +67,6 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
     @Override
     public void inject() {
         reasonCodes = new ArrayList<>();
-        reasonDetails = new ArrayList<>();
         hideRightMenu();
         initPresenter();
     }
@@ -82,9 +80,8 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
         return getResources().getString(R.string.order_cancellation_form);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_cancel_order_submit, R.id.tv_cancel_reason, R
-        .id.tv_cancel_detail_reason})
-    public void onCancelOrderClick(View view) {
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_cancel_order_submit, R.id.tv_cancel_reason})
+    public void onCancelOrderClick(View view){
         switch (view.getId()) {
             case R.id.imageview_left_menu:
                 finish();
@@ -94,10 +91,9 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
                 String name = etCancelOrderName.getText();
                 String email = etCancelOrderEmail.getText();
                 String mobile = etCancelOrderMobile.getText();
-                String handing = etCancelOrderHanding.getText();
-                if (TextUtils.isEmpty(name)) {
-                    etCancelOrderName
-                        .setErrorMessage(getResources().getString(R.string.empty_error));
+                String handing = tvCancelOrderHanding.getText().toString();
+                if(TextUtils.isEmpty(name)) {
+                    etCancelOrderName.setErrorMessage(getResources().getString(R.string.empty_error));
                     return;
                 }
 
@@ -121,12 +117,6 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
                 currentPopType = PopWindowUtil.REASON_CODE;
                 PopWindowUtil.showSingleChoosePop(tvCancelReason,
                     getResources().getString(R.string.choose_reason_code), reasonCodes, this);
-                break;
-            case R.id.tv_cancel_detail_reason:
-                EditTextUtil.eidtLoseFocus(view);
-                currentPopType = PopWindowUtil.REASON_DETAIL;
-                PopWindowUtil.showSingleChoosePop(tvCancelDetailReason,
-                    getResources().getString(R.string.choose_reason_detail), reasonDetails, this);
                 break;
         }
     }
@@ -152,11 +142,6 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
         this.reasonCodes = reasonCodes;
     }
 
-    @Override
-    public void setReasonDetail(List<ProfileMetaVM> reasonDetails) {
-        this.reasonDetails.clear();
-        this.reasonDetails = reasonDetails;
-    }
 
     @Override
     public void onPopItemClick(int position) {
@@ -166,11 +151,6 @@ public class CancelOrderActivity extends BaseActivity<CancelOrderContract.Presen
                     reasonCodes = PopWindowUtil.updateSinglePopDatas(position, reasonCodes);
                     reasonCode = reasonCodes.get(position).getValue();
                     tvCancelReason.setText(reasonCode);
-                    break;
-                case PopWindowUtil.REASON_DETAIL:
-                    reasonDetails = PopWindowUtil.updateSinglePopDatas(position, reasonDetails);
-                    reasonDetail = reasonDetails.get(position).getValue();
-                    tvCancelDetailReason.setText(reasonDetail);
                     break;
             }
         }

@@ -77,7 +77,6 @@ public class ReturnOrderPresenter extends RxPresenter<ReturnOrderContract.View>
                 public void onNext(Response<OrderMetadataResponse> response) {
                     mView.hideLoadingBar();
                     mView.setReasonCode(OrderMetaMapper.transformReturnReason(response.getData()));
-                    mView.setReasonDetail(OrderMetaMapper.transformReturnProductResolution(response.getData()));
                 }
 
                 @Override
