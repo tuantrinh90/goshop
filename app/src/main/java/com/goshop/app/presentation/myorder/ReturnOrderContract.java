@@ -17,8 +17,6 @@ public class ReturnOrderContract {
         void returnRequestNetError(String errorMessage);
 
         void setReasonCode(List<ProfileMetaVM> reasonCodes);
-
-        void setReasonDetail(List<ProfileMetaVM> reasonDetails);
     }
 
     public interface Presenter extends BasePresenter<View> {

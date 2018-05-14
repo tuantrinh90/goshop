@@ -420,6 +420,7 @@
     </string>
     <string name="agree_pay_now">Agree &#38; Pay Now</string>
     <string name="payment">Payment</string>
+    <string name="order_cancellation">Order Cancellation</string>
     <string name="my_account">My Account</string>
     <string name="deals">Deals</string>
     <string name="all_deals">All Deals</string>
@@ -462,7 +463,7 @@
     <string name="choose_title">Choose your Title</string>
     <string name="choose_language">Choose your Language</string>
     <string name="choose_race">Choose your Race</string>
-    <string name="choose_reason_code">Choose your Product Handing</string>
+    <string name="choose_reason_code">Choose your Reason Code</string>
     <string name="choose_reason_detail">Choose your Cancel Reason</string>
     <string name="country_empty">Please choose a country!</string>
     <string name="state_empty">Please choose a state!</string>

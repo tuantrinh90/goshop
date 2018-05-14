@@ -17,8 +17,6 @@ public class CancelOrderContract {
         void cancelRequestNetError(String errorMessage);
 
         void setReasonCode(List<ProfileMetaVM> reasonCodes);
-
-        void setReasonDetail(List<ProfileMetaVM> reasonDetails);
     }
 
     public interface Presenter extends BasePresenter<View> {
