@@ -1,70 +1,93 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:paddingTop="@dimen/size_9">
+    android:paddingTop="@dimen/size_9"
+    android:orientation="vertical">
 
     <!--Channel list-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recyclerview_tvshow_channel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/size_16"
-        android:paddingRight="@dimen/size_16" />
+        android:paddingRight="@dimen/size_16"
+        android:paddingLeft="@dimen/size_16"/>
 
-    <!--Calendar List-->
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerview_calendar"
+    <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/bg_bottom_line"
-        app:layout_collapseMode="parallax"
-        app:layout_collapseParallaxMultiplier="0.7" />
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@android:color/white"
+        android:orientation="vertical">
 
-    <!--Video List-->
-    <FrameLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <RelativeLayout
+        <!--Calendar List-->
+        <android.support.design.widget.AppBarLayout
+            android:id="@+id/appbarlayout_tvshow"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview_right"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                tools:ignore="RtlHardcoded" />
-
-            <android.support.v7.widget.RecyclerView
-                android:id="@+id/recyclerview_left"
+            android:layout_height="wrap_content"
+            app:elevation="@dimen/size_0"
+            android:background="@drawable/bg_bottom_line"
+            android:orientation="vertical">
+            <android.support.design.widget.CollapsingToolbarLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_toLeftOf="@id/recyclerview_right"
-                tools:ignore="RtlHardcoded" />
-        </RelativeLayout>
+                android:layout_height="match_parent"
+                app:contentScrim="@color/transparent20"
+                android:minHeight="@dimen/size_2"
+                app:layout_scrollFlags="scroll|enterAlways|snap">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_calendar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layout_collapseMode="parallax"
+                    app:layout_collapseParallaxMultiplier="0.7"
+                    android:background="@drawable/bg_bottom_line"/>
 
-        <com.goshop.app.common.view.RobotoRegularTextView
-            android:id="@+id/tv_calandar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/size_40"
-            android:background="@color/color_bg_disabled_divider"
-            android:gravity="center_vertical"
-            android:paddingLeft="@dimen/size_16"
-            android:textColor="@android:color/white"
-            android:textSize="@dimen/size_font_16"
-            android:visibility="gone"
-            app:layout_collapseMode="pin"
-            app:layout_scrollFlags="scroll|enterAlways"
-            tools:ignore="RtlHardcoded,RtlSymmetry" />
-    </FrameLayout>
+            </android.support.design.widget.CollapsingToolbarLayout>
 
+        </android.support.design.widget.AppBarLayout>
+
+        <!--Video List-->
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_right"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    tools:ignore="RtlHardcoded"/>
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/recyclerview_left"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_toLeftOf="@id/recyclerview_right"
+                    tools:ignore="RtlHardcoded"/>
+            </RelativeLayout>
+
+            <com.goshop.app.common.view.RobotoRegularTextView
+                android:id="@+id/tv_calandar"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/size_40"
+                app:layout_collapseMode="pin"
+                app:layout_scrollFlags="scroll|enterAlways"
+                android:textSize="@dimen/size_font_16"
+                android:visibility="gone"
+                android:gravity="center_vertical"
+                android:textColor="@android:color/white"
+                android:paddingLeft="@dimen/size_16"
+                android:background="@color/color_bg_disabled_divider"
+                tools:ignore="RtlHardcoded,RtlSymmetry"/>
+        </FrameLayout>
+
+    </android.support.design.widget.CoordinatorLayout>
 </LinearLayout>
 
 
