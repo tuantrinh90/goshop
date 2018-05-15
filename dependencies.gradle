@@ -32,6 +32,7 @@ ext {
     loggerVersion = '2.1.1'
     facebookVersion = '[4,5)'
     chuckVersion = '1.1.0'
+    centeringrecyclerview = '1.0.11'
 
     appDependencies = [
             slidetoact                    : "com.ncorti:slidetoact:$slidetoactVersion",
@@ -73,7 +74,8 @@ ext {
             logger                        : "com.orhanobut:logger:$loggerVersion",
             facebook                      : "com.facebook.android:facebook-android-sdk:$facebookVersion",
             jwplayerCore                  : "com.longtailvideo.jwplayer:jwplayer-core:+",
-            jwplayerCommon                : "com.longtailvideo.jwplayer:jwplayer-common:+"
+            jwplayerCommon                : "com.longtailvideo.jwplayer:jwplayer-common:+",
+            centeringrecyclerview         : "org.mightyfrog.centeringrecyclerview:centeringrecyclerview:$centeringrecyclerview"
     ]
     developmentDependencies = [
             leakCanaryDebug  : "com.squareup.leakcanary:leakcanary-android:${leakCanaryVersion}",

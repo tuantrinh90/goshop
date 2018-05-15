@@ -39,9 +39,10 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
     public void updateCurrentVMS(int position) {
         currentPosition = position;
         for (int i = 0; i < tvShowVMS.size(); i++) {
-            tvShowVMS.get(i).setCurrent(position == i);
+            boolean isSelected = tvShowVMS.get(i).isCurrent() ? true : false;
+            tvShowVMS.get(i).setCurrent(isSelected);
         }
-        notifyDataSetChanged();
+        notifyItemChanged(position);
     }
 
     public int getCurrentPosition() {
@@ -51,7 +52,7 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-            .inflate(R.layout.item_tv_show_right, viewGroup, false);
+                .inflate(R.layout.item_tv_show_right, viewGroup, false);
 
         return new TVShowRightViewHolder(view);
     }
@@ -67,7 +68,7 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
     }
 
     public void setOnTVShowRightItemClickListener(
-        OnTVShowItemsClickListener onTVShowRightItemClickListener) {
+            OnTVShowItemsClickListener onTVShowRightItemClickListener) {
         this.onTVShowItemsClickListener = onTVShowRightItemClickListener;
     }
 
@@ -89,10 +90,10 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
 
         void bindingData(TVShowVM tvShowVM, int position) {
             GlideUtils.loadImageError(
-                itemView.getContext(),
-                tvShowVM.getImageUrl(),
-                ivTVShowRight,
-                tvShowVM.getImageDefault());
+                    itemView.getContext(),
+                    tvShowVM.getImageUrl(),
+                    ivTVShowRight,
+                    tvShowVM.getImageDefault());
             tvTvShowRightTime.setText(tvShowVM.getDuration());
             ivTvshowRightCover.setSelected(tvShowVM.isCurrent());
             ivTvshowRightCover.setOnClickListener(v -> {
