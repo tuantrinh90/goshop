@@ -44,6 +44,7 @@
 -keep public class * extends android.app.Fragment
 -keep public class * extends android.support.v4.**
 -keep public class * extends android.support.v7.**
+-keep public class * extends com.goshop.app.base.BaseFragment
 -keep public class * extends android.app.backup.BackupAgentHelper
 -keep public class * extends android.preference.Preference
 -keep public class * extends android.view.View
@@ -58,9 +59,6 @@
 -keep class android.support.v7.** { *; }
 -dontwarn android.support.v7.**
 
-
--keep class com.imaginato.inflighto.data.model.** { *; }
--dontwarn com.imaginato.inflighto.data.model.**
 
 
    -keepnames class * implements java.io.Serializable
@@ -175,7 +173,15 @@
 -dontwarn com.google.android.exoplayer2.ui.**
 ## pushwoosh
 -keep class com.pushwoosh.** { *; }
+-keep class com.arellomobile.** { *; }
 -dontwarn com.pushwoosh.**
+-dontwarn com.arellomobile.**
+
+#firebase-messaging
+-dontwarn com.google.android.gms.measurement.AppMeasurement*
+-keepclassmembers class * extends com.google.android.gms.internal.measurement.zzyv {
+  <fields>;
+}
 
 #jwplayer
 -keepclassmembers class com.longtailvideo.jwplayer.** {
@@ -184,6 +190,7 @@
 
 # Block warnings about missing module classes
 -dontwarn com.longtailvideo.jwplayer.**
+-keep class com.longtailvideo.jwplayer.** { *; }
 -dontwarn com.google.ads.interactivemedia.**
 
 # Classes get rejected without this when running the app if the app has been run through ProGuard
