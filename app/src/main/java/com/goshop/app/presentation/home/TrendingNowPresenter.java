@@ -75,7 +75,7 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
                     // TODO: 2018/4/25  hard code need api return
                     trendingNowModels.add(new TrendingVideoVM("On Air", "TV Schedule",
                         TrendingMapper.transformOnAirSchedule(response)));
-                    if (bannerImageVMS.size() > 0) {
+                    if (!bannerImageVMS.isEmpty()) {
                         for (BannerImageVM bannerImageVM : bannerImageVMS) {
                             trendingNowModels.add(getSingleBanner(bannerImageVM));
                         }
