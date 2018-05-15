@@ -130,6 +130,12 @@ public class DateFormater {
         return stringBuilder.toString();
     }
 
+    /**
+     *
+     * @param startTime"2018-04-05"
+     * @param endTime"2018-04-05"
+     * @return 05 Apr 2018 - 05 Apr 2018
+     */
     public static String getDealTimePeriod(String startTime, String endTime){
         String start = getAbbreviationDate(startTime);
         String end = getAbbreviationDate(endTime);

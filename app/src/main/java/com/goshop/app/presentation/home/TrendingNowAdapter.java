@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.home;
 
-import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -99,15 +98,19 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
     }
 
     public void onPause() {
-        if(videoViewPagerAdapter!=null){
+        if (videoViewPagerAdapter != null) {
             videoViewPagerAdapter.onPause();
         }
     }
 
     public void onDestroyView() {
-        if(videoViewPagerAdapter!=null){
+        if (videoViewPagerAdapter != null) {
             videoViewPagerAdapter.onDestroyView();
         }
+    }
+
+    public void setJWPlayerListener(VideoViewPagerAdapter.JWPlayerListener jwPlayerListener) {
+        this.jwPlayerListener = jwPlayerListener;
     }
 
     class TrendingVideoViewHolder extends RecyclerView.ViewHolder implements
@@ -230,10 +233,9 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
         }
 
         void bindingData(TrendingSingleBannerVM singleBannerVM) {
-            //todo wait for api
             GlideUtils.loadImageError(
                 itemView.getContext(),
-                ""/*singlePictureVM.getOfferListItemsVMS().get(0).getImage()*/,
+                singleBannerVM.getBannerImageVM().getPath(),
                 ivSinglePicture,
                 R.drawable.ic_image_404_big);
             itemView.setOnClickListener(v -> onTrendingNowClickListener.onSingleBannerClick());
@@ -271,9 +273,5 @@ public class TrendingNowAdapter extends RecyclerView.Adapter {
         public void onProductItemClick(ProductsVM productItemVM) {
             onTrendingNowClickListener.onProductItemClick(productItemVM);
         }
-    }
-
-    public void setJWPlayerListener(VideoViewPagerAdapter.JWPlayerListener jwPlayerListener) {
-        this.jwPlayerListener = jwPlayerListener;
     }
 }

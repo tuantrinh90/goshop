@@ -1,24 +1,42 @@
 package com.goshop.app.data.model.response;
 
-import com.goshop.app.data.model.response.common.OrderMetaData;
+import com.google.gson.annotations.SerializedName;
+
+import com.goshop.app.data.model.response.common.CancelData;
+import com.goshop.app.data.model.response.common.ReturnData;
 
 public class OrderMetadataResponse {
 
     /**
-     * order : {"cancel":{"reason":[{"id":1,"value":"Product Damage"},{"id":2,"value":"Wrong
-     * Item"}],"product_resolution":[{"id":1,"value":"Order Cancel"}]},
-     * "return":{"reason":[{"id":1,"value":"ProductDamage"},{"id":2,"value":"Wrong Item Sent"}],
-     * "product_resolution":[{"id":1,"value":"Order Return"}]}}
+     * cancel : {"reason":[{"id":"Product is taking too long to be delivered.","value":"Product
+     * is taking too long to be delivered."},{"id":"Want to buy something else.","value":"Want to
+     * buy something else."},{"id":"Cash not available for COD.","value":"Cash not available for
+     * COD."}],"product_handling":[{"id":"Order Cancellation.","value":"Order Cancellation."}]}
+     * return : {"resolution":[{"id":"Refund","value":"Refund"},{"id":"Replace",
+     * "value":"Replace"}],"condition":[{"id":"Damaged","value":"Damaged"},{"id":"Open",
+     * "value":"Open"}],"reason":[{"id":"Not as expected","value":"Not as expected"},
+     * {"id":"Broken","value":"Broken"}]}
      */
 
-    private OrderMetaData order;
+    private CancelData cancel;
 
-    public OrderMetaData getOrder() {
-        return order;
+    @SerializedName("return")
+    private ReturnData returnX;
+
+    public CancelData getCancel() {
+        return cancel;
     }
 
-    public void setOrder(OrderMetaData order) {
-        this.order = order;
+    public void setCancel(CancelData cancel) {
+        this.cancel = cancel;
+    }
+
+    public ReturnData getReturnX() {
+        return returnX;
+    }
+
+    public void setReturnX(ReturnData returnX) {
+        this.returnX = returnX;
     }
 
 }

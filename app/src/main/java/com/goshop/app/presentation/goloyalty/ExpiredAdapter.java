@@ -76,7 +76,7 @@ public class ExpiredAdapter extends RecyclerView.Adapter {
                 itemView.getContext(),
                 dealsVM.getImageUrl(),
                 ivExpiredThumb,
-                R.drawable.ic_image_404_big);
+                R.drawable.ic_image_404_small);
             tvExpiredName.setText(dealsVM.getName());
             tvExpiredDetail.setText(dealsVM.getDetail());
             tvExpiredTime.setText(dealsVM.getTime());

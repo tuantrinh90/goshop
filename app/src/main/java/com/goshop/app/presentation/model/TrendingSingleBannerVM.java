@@ -1,21 +1,19 @@
 package com.goshop.app.presentation.model;
 
-import com.goshop.app.presentation.model.widget.CarouselItemsVM;
-
 public class TrendingSingleBannerVM extends TrendingNowModel {
 
-    private CarouselItemsVM carouselItemsVM;
+    private BannerImageVM bannerImageVM;
 
-    public TrendingSingleBannerVM(CarouselItemsVM carouselItemsVM) {
+    public TrendingSingleBannerVM(BannerImageVM bannerImageVM) {
         super(TrendingNowModel.VIEW_TYPE_SINGLE_BANNER);
-        this.carouselItemsVM = carouselItemsVM;
+        this.bannerImageVM = bannerImageVM;
     }
 
-    public CarouselItemsVM getCarouselItemsVM() {
-        return carouselItemsVM;
+    public BannerImageVM getBannerImageVM() {
+        return bannerImageVM;
     }
 
-    public void setCarouselItemsVM(CarouselItemsVM carouselItemsVM) {
-        this.carouselItemsVM = carouselItemsVM;
+    public void setBannerImageVM(BannerImageVM bannerImageVM) {
+        this.bannerImageVM = bannerImageVM;
     }
 }

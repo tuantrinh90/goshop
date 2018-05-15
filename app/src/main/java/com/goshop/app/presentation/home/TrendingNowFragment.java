@@ -4,6 +4,7 @@ import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.CustomPagerIndicator;
 import com.goshop.app.common.view.irecyclerview.IRecyclerView;
+import com.goshop.app.presentation.model.BannerImageVM;
 import com.goshop.app.presentation.model.BannerVm;
 import com.goshop.app.presentation.model.TrendingNowModel;
 import com.goshop.app.presentation.model.widget.ProductsVM;
@@ -142,21 +143,19 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        unbinder.unbind();
-        trendingNowAdapter.onDestroyView();
-    }
-
-    @Override
     public void onBannerRequestSuccess(List<BannerVm> bannerVms) {
-        mPresenter.getOnAirSchedule(getContext());
+
+        if(bannerVms.size()>1&&bannerVms.get(1) != null) {
+            mPresenter.getOnAirSchedule(bannerVms.get(1).getBannerImageVMS());
+        } else {
+            mPresenter.getOnAirSchedule(new ArrayList<>());
+        }
         if (!isHeaderAdded) {
             bannerVmList.addAll(bannerVms);
             isHeaderAdded = true;
             addHeaderView();
             bannerViewPager
-                .setAdapter(new HomeBannerAdapter(bannerVmList, this));
+                .setAdapter(new HomeBannerAdapter(bannerVmList.get(0).getBannerImageVMS(), this));
             customPagerIndicator.setViewPager(bannerViewPager);
             BannerAutoPlayHelper bannerAutoPlayHelper = new BannerAutoPlayHelper(
                 bannerViewPager, 2000);
@@ -167,20 +166,20 @@ public class TrendingNowFragment extends BaseFragment<TrendingNowContract.Presen
     }
 
     @Override
-    public void onBannerItemClick(BannerVm bannerVm) {
-        startBannerLinkScreen(bannerVm);
+    public void onBannerItemClick(BannerImageVM bannerImageVM) {
+        startBannerLinkScreen(bannerImageVM);
     }
 
-    private void startBannerLinkScreen(BannerVm bannerVm) {
+    private void startBannerLinkScreen(BannerImageVM bannerImageVM) {
         Intent intent = null;
-        switch (bannerVm.getType()) {
+        switch (bannerImageVM.getLink()) {
             case BANNER_TYPE_BRAND:
                 intent = new Intent(getActivity(), PromotionSkuActivity.class);
-                intent.putExtra(PROMOTION_BANNER_URL, bannerVm);
+                intent.putExtra(PROMOTION_BANNER_URL, bannerImageVM);
                 break;
             case BANNER_TYPE_EVENT:
                 intent = new Intent(getActivity(), PromotionBannerActivity.class);
-                intent.putExtra(PROMOTION_BANNER_URL, bannerVm);
+                intent.putExtra(PROMOTION_BANNER_URL, bannerImageVM);
                 break;
         }
         if (intent != null) {

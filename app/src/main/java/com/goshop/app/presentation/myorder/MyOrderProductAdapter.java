@@ -127,7 +127,7 @@ public class MyOrderProductAdapter extends RecyclerView.Adapter {
                 itemView.getContext(),
                 productVM.getThumb(),
                 ivOrderProductThumb,
-                R.drawable.ic_image_404_big);
+                R.drawable.ic_image_404_small);
             tvOrderProductTitle.setText(productVM.getTitle());
             tvOrderProductOld.setText( productVM.getPriceOld());
             tvOrderProductOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);

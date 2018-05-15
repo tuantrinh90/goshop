@@ -27,8 +27,8 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
     @BindView(R.id.et_return_order_email)
     CustomAnimEditText etReturnOrderEmail;
 
-    @BindView(R.id.et_return_order_handing)
-    CustomAnimEditText etReturnOrderHanding;
+    @BindView(R.id.tv_return_order_handing)
+    RobotoRegularTextView tvReturnOrderHanding;
 
     @BindView(R.id.et_return_order_mobile)
     CustomAnimEditText etReturnOrderMobile;
@@ -39,8 +39,8 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
     @BindView(R.id.tv_btn_return_order)
     RobotoMediumTextView tvBtnReturnOrder;
 
-    @BindView(R.id.tv_return_detail_reason)
-    RobotoRegularTextView tvReturnDetailReason;
+    @BindView(R.id.et_return_detail_reason)
+    CustomAnimEditText etReturnDetailReason;
 
     @BindView(R.id.tv_return_reason)
     RobotoRegularTextView tvReturnReason;
@@ -50,8 +50,6 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
     private String reasonDetail = "";
 
     private List<ProfileMetaVM> reasonCodes;
-
-    private List<ProfileMetaVM> reasonDetails;
 
     private String currentPopType = "";
 
@@ -69,7 +67,6 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
     @Override
     public void inject() {
         reasonCodes = new ArrayList<>();
-        reasonDetails = new ArrayList<>();
         hideRightMenu();
         initPresenter();
     }
@@ -83,8 +80,7 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
         return getResources().getString(R.string.order_return);
     }
 
-    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_return_order, R.id.tv_return_reason, R.id
-        .tv_return_detail_reason})
+    @OnClick({R.id.imageview_left_menu, R.id.tv_btn_return_order, R.id.tv_return_reason })
     public void onReturnOrderClick(View view) {
         switch (view.getId()) {
             case R.id.imageview_left_menu:
@@ -95,10 +91,9 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
                 String name = etReturnOrderName.getText();
                 String email = etReturnOrderEmail.getText();
                 String mobile = etReturnOrderMobile.getText();
-                String handing = etReturnOrderHanding.getText();
-                if (TextUtils.isEmpty(name)) {
-                    etReturnOrderName
-                        .setErrorMessage(getResources().getString(R.string.empty_error));
+                String handing = tvReturnOrderHanding.getText().toString();
+                if(TextUtils.isEmpty(name)) {
+                    etReturnOrderName.setErrorMessage(getResources().getString(R.string.empty_error));
                     return;
                 }
 
@@ -122,13 +117,6 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
                 currentPopType = PopWindowUtil.REASON_CODE;
                 PopWindowUtil.showSingleChoosePop(tvReturnReason,
                     getResources().getString(R.string.choose_reason_code), reasonCodes, this);
-                break;
-            case R.id.tv_return_detail_reason:
-                EditTextUtil.eidtLoseFocus(view);
-                currentPopType = PopWindowUtil.REASON_DETAIL;
-                PopWindowUtil.showSingleChoosePop(tvReturnDetailReason,
-                    getResources().getString(R.string.choose_reason_detail), reasonDetails, this);
-
                 break;
         }
     }
@@ -155,12 +143,6 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
     }
 
     @Override
-    public void setReasonDetail(List<ProfileMetaVM> reasonDetails) {
-        this.reasonDetails.clear();
-        this.reasonDetails = reasonDetails;
-    }
-
-    @Override
     public void onPopItemClick(int position) {
         if (!TextUtils.isEmpty(currentPopType)) {
             switch (currentPopType) {
@@ -168,11 +150,6 @@ public class ReturnOrderActivity extends BaseActivity<ReturnOrderContract.Presen
                     reasonCodes = PopWindowUtil.updateSinglePopDatas(position, reasonCodes);
                     reasonCode = reasonCodes.get(position).getValue();
                     tvReturnReason.setText(reasonCode);
-                    break;
-                case PopWindowUtil.REASON_DETAIL:
-                    reasonDetails = PopWindowUtil.updateSinglePopDatas(position, reasonDetails);
-                    reasonDetail = reasonDetails.get(position).getValue();
-                    tvReturnDetailReason.setText(reasonDetail);
                     break;
             }
         }

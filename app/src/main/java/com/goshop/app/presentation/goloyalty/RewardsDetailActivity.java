@@ -123,14 +123,10 @@ public class RewardsDetailActivity extends BaseActivity<RewardsDetailContract.Pr
             rewardsDetailVM.getPromtionImageDefault());
         nestedScrollView.setVisibility(View.VISIBLE);
         tvRewardsMerchantName.setText(rewardsDetailVM.getDealMerchantVM().getMerchantName());
-        tvPromoDetails.setText(rewardsDetailVM.getDealDescription());
         tvPromoDetailsSummary.setText(rewardsDetailVM.getDealDescription());
-        tvPromoTerms.setText(rewardsDetailVM.getDealDescription());
         tvPromoTermsSummary.setText(rewardsDetailVM.getDealDescription());
         tvPromotionTitle.setText(rewardsDetailVM.getDealName());
-        tvRewardsDetailTime.setText(DateFormater
-            .formaterDDMMMYYYY(rewardsDetailVM.getDealStartDt()) + " - " +
-            DateFormater.formaterDDMMMYYYY(rewardsDetailVM.getDealEndDt()));
+        tvRewardsDetailTime.setText(DateFormater.getDealTimePeriod(rewardsDetailVM.getDealStartDt(),rewardsDetailVM.getDealEndDt()) );
         // TODO: 2018/5/3 this need decide
         tvRewardsDetailLocation
             .setText(rewardsDetailVM.getDealLocationVMs().get(0).getLocationName());

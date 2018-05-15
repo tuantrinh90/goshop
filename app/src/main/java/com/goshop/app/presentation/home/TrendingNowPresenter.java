@@ -8,17 +8,15 @@ import com.goshop.app.data.model.response.Response;
 import com.goshop.app.domian.AccountRepository;
 import com.goshop.app.domian.ProductRepository;
 import com.goshop.app.presentation.mapper.TrendingMapper;
+import com.goshop.app.presentation.model.BannerImageVM;
 import com.goshop.app.presentation.model.TrendingHorizontalProductsVM;
 import com.goshop.app.presentation.model.TrendingNowModel;
 import com.goshop.app.presentation.model.TrendingSingleBannerVM;
 import com.goshop.app.presentation.model.TrendingVideoVM;
-import com.goshop.app.presentation.model.widget.CarouselItemsVM;
 import com.goshop.app.presentation.model.widget.ProductPriceRMVM;
 import com.goshop.app.presentation.model.widget.ProductPriceVM;
 import com.goshop.app.presentation.model.widget.ProductsVM;
 import com.goshop.app.presentation.model.widget.VideoPlayerItemsVM;
-
-import android.content.Context;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -40,7 +38,6 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
         this.accountRepository = accountRepository;
         this.productRepository = productRepository;
     }
-
 
     @Override
     public void getHomeBanner() {
@@ -67,7 +64,7 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
             }));
     }
 
-    public void getOnAirSchedule(Context context) {
+    public void getOnAirSchedule(List<BannerImageVM> bannerImageVMS) {
         HashMap<String, Object> params = new HashMap<>();
         params.put(Const.REQUEST_PARAM_WEBSITE_ID, Const.WEBSITE_ID);
         params.put(Const.REQUEST_PARAM_STORE_ID, Const.STORE_ID);
@@ -78,6 +75,11 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
                     // TODO: 2018/4/25  hard code need api return
                     trendingNowModels.add(new TrendingVideoVM("On Air", "TV Schedule",
                         TrendingMapper.transformOnAirSchedule(response)));
+                    if (!bannerImageVMS.isEmpty()) {
+                        for (BannerImageVM bannerImageVM : bannerImageVMS) {
+                            trendingNowModels.add(getSingleBanner(bannerImageVM));
+                        }
+                    }
                     mView.onAirScheduleRequestSuccess(trendingNowModels);
                     mView.hideLoadingBar();
                 }
@@ -96,11 +98,11 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
     }
 
     private void getMockData() {
-        trendingNowModels.add(getSingleBanner());
+//        trendingNowModels.add(getSingleBanner());
         trendingNowModels.add(getHorizontalProductsVM("Trending Now"));
-        trendingNowModels.add(getSingleBanner());
+//        trendingNowModels.add(getSingleBanner());
         trendingNowModels.add(getHorizontalProductsVM("Best Seller"));
-        trendingNowModels.add(getSingleBanner());
+//        trendingNowModels.add(getSingleBanner());
         trendingNowModels.add(getHorizontalProductsVM("TV Special"));
     }
 
@@ -127,10 +129,8 @@ public class TrendingNowPresenter extends RxPresenter<TrendingNowContract.View> 
     }
 
     //TODO(helen) this is mock data
-    private TrendingSingleBannerVM getSingleBanner() {
-        CarouselItemsVM itemsVM = new CarouselItemsVM("http://a.hiphotos.baidu" +
-            ".com/image/pic/item/4e4a20a4462309f788a28152790e0cf3d6cad6a4.jpg");
-        return new TrendingSingleBannerVM(itemsVM);
+    private TrendingSingleBannerVM getSingleBanner(BannerImageVM bannerImageVM) {
+        return new TrendingSingleBannerVM(bannerImageVM);
     }
 
     //TODO(helen) this is mock data
