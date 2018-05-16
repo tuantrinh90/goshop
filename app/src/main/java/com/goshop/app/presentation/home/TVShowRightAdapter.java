@@ -1,6 +1,5 @@
 package com.goshop.app.presentation.home;
 
-import com.bumptech.glide.Glide;
 import com.goshop.app.R;
 import com.goshop.app.common.view.RobotoMediumTextView;
 import com.goshop.app.presentation.model.TVShowVM;
@@ -38,11 +37,17 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
 
     public void updateCurrentVMS(int position) {
         currentPosition = position;
+
         for (int i = 0; i < tvShowVMS.size(); i++) {
-            boolean isSelected = tvShowVMS.get(i).isCurrent() ? true : false;
-            tvShowVMS.get(i).setCurrent(isSelected);
+            //boolean isSelected = tvShowVMS.get(i).isCurrent() ? true : false;
+            tvShowVMS.get(i).setCurrent(position == i);
         }
-        notifyItemChanged(position);
+        notifyDataSetChanged();
+
+//        tvShowVMS.get(currentPosition).setCurrent(false);
+//        tvShowVMS.get(position).setCurrent(true);
+//        currentPosition = position;
+//        notifyItemChanged(currentPosition);
     }
 
     public int getCurrentPosition() {

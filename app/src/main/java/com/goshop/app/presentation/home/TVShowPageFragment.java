@@ -1,5 +1,17 @@
 package com.goshop.app.presentation.home;
 
+import android.content.Context;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+
+import com.goshop.app.GoShopApplication;
 import com.goshop.app.R;
 import com.goshop.app.base.BaseFragment;
 import com.goshop.app.common.view.RobotoRegularTextView;
@@ -10,24 +22,20 @@ import com.goshop.app.widget.listener.OnChannelItemClickListener;
 import com.goshop.app.widget.listener.OnTVShowItemsClickListener;
 import com.longtailvideo.jwplayer.JWPlayerView;
 
-import android.content.Context;
-import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.design.widget.AppBarLayout;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
+import org.mightyfrog.widget.CenteringRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.Unbinder;
+import injection.components.DaggerPresenterComponent;
+import injection.modules.PresenterModule;
 
 public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presenter> implements
-    TVShowPageContract.View, OnTVShowItemsClickListener, OnChannelItemClickListener,
-    TVShowLeftAdapter.JWPlayerListener {
+        TVShowPageContract.View, OnTVShowItemsClickListener, OnChannelItemClickListener,
+        TVShowLeftAdapter.JWPlayerListener {
 
     @BindView(R.id.appbarlayout_tvshow)
     AppBarLayout appBarLayoutTvShow;
@@ -41,13 +49,15 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     RecyclerView recyclerviewCalendar;
 
     @BindView(R.id.recyclerview_left)
-    RecyclerView recyclerviewLeft;
+    CenteringRecyclerView recyclerviewLeft;
 
     @BindView(R.id.recyclerview_right)
-    RecyclerView recyclerviewRight;
+    CenteringRecyclerView recyclerviewRight;
 
     @BindView(R.id.tv_calandar)
     RobotoRegularTextView tvCalandar;
+
+    Unbinder unbinder;
 
     private TVShowCalendarAdapter calendarAdapter;
 
@@ -74,6 +84,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
     private List<TVShowVM> tvShowVMDatas;
 
+    private int currentLast, currentPos;
     private MainPageActivity mainPageActivity;
 
     public static TVShowPageFragment getInstance() {
@@ -83,9 +94,10 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container,
-        @Nullable Bundle savedInstanceState) {
+                             @Nullable Bundle savedInstanceState) {
         View rootView = super.onCreateView(inflater, container, savedInstanceState);
         assert rootView != null;
+        unbinder = ButterKnife.bind(this, rootView);
         return rootView;
     }
 
@@ -103,6 +115,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             mainPageActivity = (MainPageActivity) context;
         }
     }
+
 
     private void initData() {
         //TODO wait for api
@@ -145,6 +158,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         recyclerviewLeft.setAdapter(leftAdapter);
         recyclerviewRight.setAdapter(rightAdapter);
 
+
         channelAdapter.setOnChannelItemClickListener(this);
         rightAdapter.setOnTVShowRightItemClickListener(this);
         calendarAdapter.setOnCalendarItemClickListener(this);
@@ -152,12 +166,12 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     }
 
     private void initRecyclerViewListener() {
+
         recyclerviewLeft.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 int firstItemPosition = leftManager.findFirstVisibleItemPosition();
-                int lastItemPosition = leftManager.findLastVisibleItemPosition();
                 if (move) {
                     move = false;
                     int n = leftIndex - firstItemPosition;
@@ -168,69 +182,63 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
                 } else {
                     switch (newState) {
                         case RecyclerView.SCROLL_STATE_IDLE:
-                            View childView = leftManager
-                                .findViewByPosition(firstItemPosition);
-                            int childViewHeight = childView.getHeight();
-                            int childViewTop = childView.getTop();
-                            if (Math.abs(childViewTop) == recyclerView.getPaddingTop() || Math
-                                .abs(childViewTop) == recyclerView.getPaddingTop() * 2) {
-                            } else if (Math.abs(childViewTop) >= childViewHeight / 2.0f) {
-                                int nextPosition = firstItemPosition + 1;
-                                scollRightToPosition(nextPosition);
-                                rightAdapter.updateCurrentVMS(nextPosition);
-                                calendarAdapter
-                                    .updateSelectCalendar(tvShowVMDatas.get(nextPosition).getDay());
-                            } else {
-                                scollRightToPosition(firstItemPosition);
-                                rightAdapter.updateCurrentVMS(firstItemPosition);
-                                calendarAdapter.updateSelectCalendar(
-                                    tvShowVMDatas.get(firstItemPosition).getDay());
-                            }
+                            moveScrollItemLeftListToRight();
+//                                    View childView = leftManager
+//                                            .findViewByPosition(firstItemPosition);
+//                                    int childViewHeight = childView.getHeight();
+//                                    int childViewTop = childView.getTop();
+//                                    Log.d("tuan", "childViewHeight + childViewTop:  " + childViewHeight + "," + childViewTop);
+//                                    if (Math.abs(childViewTop) == recyclerView.getPaddingTop() || Math
+//                                            .abs(childViewTop) == recyclerView.getPaddingTop() * 2) {
+//                                    } else if (Math.abs(childViewTop) >= childViewHeight / 2.0f) {
+//                                        int nextPosition = firstItemPosition + 1;
+//                                        Log.d("tuan", "firstItemPosition + nextPosition:  " + firstItemPosition + "," + nextPosition);
+//                                        Log.d("tuan", "lastItemPosition:  " + lastItemPosition);
+//                                        scollRightToPosition(nextPosition);
+//                                        rightAdapter.updateCurrentVMS(nextPosition);
+//                                        calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(nextPosition).getDay());
+//                                    } else {
+//                                        scollRightToPosition(firstItemPosition);
+//                                        rightAdapter.updateCurrentVMS(firstItemPosition);
+//                                        calendarAdapter.updateSelectCalendar(
+//                                                tvShowVMDatas.get(firstItemPosition).getDay());
+//                                    }
                             break;
                     }
                 }
-                if (firstItemPosition == 0 && rightAdapter.getCurrentPosition() != 0) {
-                    rightAdapter.updateCurrentVMS(firstItemPosition);
-                    scollRightToPosition(firstItemPosition);
-                    calendarAdapter
-                        .updateSelectCalendar(tvShowVMDatas.get(firstItemPosition).getDay());
-                } else if (lastItemPosition == tvShowVMDatas.size() - 1 && rightAdapter
-                    .getCurrentPosition() != 0) {
-                    rightAdapter.updateCurrentVMS(lastItemPosition);
-                    scollRightToPosition(lastItemPosition);
-                    calendarAdapter
-                        .updateSelectCalendar(tvShowVMDatas.get(lastItemPosition).getDay());
-                }
             }
+
         });
 
         recyclerviewRight.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-                if (moveRight) {
-                    moveRight = false;
-                    int n = rightIndex - rightManager.findFirstVisibleItemPosition();
-                    if (0 <= n && n < recyclerviewRight.getChildCount()) {
-                        int top = recyclerviewRight.getChildAt(n).getTop();
-                        recyclerviewRight.smoothScrollBy(0, top);
-                    }
+//                if (moveRight) {
+//                    moveRight = false;
+                int n = rightIndex - rightManager.findFirstVisibleItemPosition();
+                if (0 <= n && n < recyclerviewRight.getChildCount()) {
+                    int top = recyclerviewRight.getChildAt(n).getTop();
+                    recyclerviewRight.smoothScrollBy(0, top);
                 }
             }
+//            }
+//
         });
     }
 
+
     private void appBarLayoutListener() {
         appBarLayoutTvShow
-            .addOnOffsetChangedListener((AppBarLayout appBarLayout, int verticalOffset) -> {
-                    if (Math.abs(verticalOffset) >= appBarLayoutTvShow.getTotalScrollRange()) {
-                        tvCalandar.setVisibility(View.VISIBLE);
-                        tvCalandar.setText(currentDay);
-                    } else {
-                        tvCalandar.setVisibility(View.GONE);
-                    }
-                }
-            );
+                .addOnOffsetChangedListener((AppBarLayout appBarLayout, int verticalOffset) -> {
+                            if (Math.abs(verticalOffset) >= appBarLayoutTvShow.getTotalScrollRange()) {
+                                tvCalandar.setVisibility(View.VISIBLE);
+                                tvCalandar.setText(currentDay);
+                            } else {
+                                tvCalandar.setVisibility(View.GONE);
+                            }
+                        }
+                );
     }
 
     private void scollRightToPosition(int position) {
@@ -240,17 +248,67 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         if (position <= firstItem) {
             recyclerviewRight.smoothScrollToPosition(position);
         } else if (position <= lastItem) {
-            int top = recyclerviewRight.getChildAt(position - firstItem).getTop();
-            recyclerviewRight.smoothScrollBy(0, top);
+            int n = rightIndex - firstItem;
+            if (0 <= n && n < recyclerviewRight.getChildCount()) {
+                int top = recyclerviewRight.getChildAt(n).getTop();
+                recyclerviewRight.smoothScrollBy(0, top);
+            }
         } else {
             recyclerviewRight.smoothScrollToPosition(position);
             moveRight = true;
         }
     }
 
+    private void moveScrollItemLeftListToRight() {
+        int firstItemPosition = leftManager.findFirstVisibleItemPosition();
+        int lastItemPosition = leftManager.findLastVisibleItemPosition();
+
+        if (firstItemPosition == 0 && rightAdapter.getCurrentPosition() != 0) {
+            rightAdapter.updateCurrentVMS(firstItemPosition);
+            recyclerviewRight.scrollToPosition(firstItemPosition);
+            calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(firstItemPosition).getDay());
+
+        } else if (lastItemPosition == tvShowVMDatas.size() && rightAdapter.getCurrentPosition() != 0) {
+            rightAdapter.updateCurrentVMS(lastItemPosition);
+            recyclerviewRight.scrollToPosition(lastItemPosition);
+            calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(lastItemPosition).getDay());
+
+        } else if (0 < firstItemPosition && lastItemPosition == firstItemPosition + 1) {
+            rightAdapter.updateCurrentVMS(lastItemPosition);
+            recyclerviewRight.scrollToPosition(lastItemPosition);
+            calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(lastItemPosition).getDay());
+
+        } else {
+            if (currentLast <= lastItemPosition && rightAdapter.getCurrentPosition() != 0) {
+                currentPos = (int) Math.ceil((firstItemPosition + lastItemPosition) / 2);
+                recyclerviewRight.head(currentPos);
+                rightAdapter.updateCurrentVMS(currentPos);
+                calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(currentPos).getDay());
+            } else {
+                currentPos = (int) Math.floor((firstItemPosition + lastItemPosition) / 2);
+                recyclerviewRight.head(currentPos);
+                rightAdapter.updateCurrentVMS(currentPos);
+                calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(currentPos).getDay());
+            }
+
+            currentLast = lastItemPosition;
+        }
+    }
+
+
     @Override
     public void inject() {
-        initPresenterComponent().inject(this);
+        DaggerPresenterComponent.builder()
+                .applicationComponent(GoShopApplication.getApplicationComponent())
+                .presenterModule(new PresenterModule(this))
+                .build()
+                .inject(this);
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        unbinder.unbind();
     }
 
     @Override
@@ -262,6 +320,11 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         rightAdapter.setUpdateDatas(tvShowVMDatas);
         for (TVShowVM tvShowVM : tvShowVMDatas) {
             if (tvShowVM.getDay().equals(currentDay)) {
+//                recyclerviewLeft.head(tvShowVMDatas.indexOf(tvShowVM));
+//                rightAdapter.updateCurrentVMS(tvShowVMDatas.indexOf(tvShowVM));
+//                recyclerviewRight.head(tvShowVMDatas.indexOf(tvShowVM));
+//                //scollRightToPosition(tvShowVMDatas.indexOf(tvShowVM));
+//                calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(tvShowVMDatas.indexOf(tvShowVM)).getDay());
                 moveLeftToPosition(tvShowVMDatas.indexOf(tvShowVM));
                 break;
             }
@@ -270,23 +333,43 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 
     private void moveLeftToPosition(int index) {
         leftIndex = index;
-        int firstItem = leftManager.findFirstVisibleItemPosition();
-        int lastItem = leftManager.findLastVisibleItemPosition();
-        if (index <= firstItem) {
+        int firstItemL = leftManager.findFirstVisibleItemPosition();
+        int lastItemL = leftManager.findLastVisibleItemPosition();
+
+        if (index <= firstItemL) {
             recyclerviewLeft.smoothScrollToPosition(index);
-        } else if (index <= lastItem) {
-            int top = recyclerviewLeft.getChildAt(index - firstItem).getTop();
-            recyclerviewLeft.smoothScrollBy(0, top);
+        } else if (index <= lastItemL) {
+            int topLeft = recyclerviewLeft.getChildAt(index - firstItemL).getTop();
+            recyclerviewLeft.smoothScrollBy(0, topLeft);
+
         } else {
             recyclerviewLeft.smoothScrollToPosition(index);
             move = true;
         }
-        if (!isSelectScroll) {
-            isSelectScroll = false;
-            rightAdapter.updateCurrentVMS(index);
-            scollRightToPosition(index);
-            calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(index).getDay());
-        }
+
+        //recyclerviewRight.head(index);
+        scollRightToPosition(index);
+        rightAdapter.updateCurrentVMS(index);
+        calendarAdapter.updateSelectCalendar(index);
+
+//        int firstItem = leftManager.findFirstVisibleItemPosition();
+//        int lastItem = leftManager.findLastVisibleItemPosition();
+//        if (index <= firstItem) {
+//            recyclerviewLeft.smoothScrollToPosition(index);
+//        } else if (index <= lastItem) {
+//            int top = recyclerviewLeft.getChildAt(index - firstItem).getTop();
+//            recyclerviewLeft.smoothScrollBy(0, top);
+//        } else {
+//            recyclerviewLeft.smoothScrollToPosition(index);
+//            move = true;
+//        }
+//        if (!isSelectScroll) {
+//            isSelectScroll = false;
+//            rightAdapter.updateCurrentVMS(index);
+//            recyclerviewRight.head(index);
+//            //scollRightToPosition(index);
+//            calendarAdapter.updateSelectCalendar(index);
+//        }
     }
 
     @Override
@@ -311,5 +394,4 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             mainPageActivity.onJWPlayerViewFullscreen(isFullScreen, jwPlayerView);
         }
     }
-
 }

@@ -135,6 +135,7 @@ dependencies {
     compile appDependencies.pushwoosh
     compile appDependencies.firebase_jobdispatcher
     annotationProcessor appDependencies.daggerComiler
+    compile appDependencies.centeringrecyclerview
     compile(appDependencies.permissionsdispatcher) {
         exclude module: "support-v13"
     }

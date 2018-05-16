@@ -8,13 +8,16 @@ import com.goshop.app.utils.JWEventHandler;
 import com.goshop.app.utils.KeepScreenOnHandler;
 import com.longtailvideo.jwplayer.JWPlayerView;
 import com.longtailvideo.jwplayer.media.playlists.PlaylistItem;
+
 import android.app.Activity;
 import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
 import java.util.List;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -28,8 +31,10 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
 
     private Activity activity;
 
+    private int currentPosition;
+
     public TVShowLeftAdapter(Activity activity,
-        List<TVShowVM> tvShowVMS) {
+                             List<TVShowVM> tvShowVMS) {
         this(tvShowVMS);
         this.activity = activity;
     }
@@ -48,10 +53,25 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
         notifyDataSetChanged();
     }
 
+    public int getCurrentPosition() {
+        return currentPosition;
+    }
+
+    public void updateCurrentVMS(int position) {
+        currentPosition = position;
+
+        for (int i = 0; i < tvShowVMS.size(); i++) {
+            tvShowVMS.get(i).setCurrent(position == i);
+        }
+        notifyDataSetChanged();
+
+    }
+
+
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
-            .inflate(R.layout.item_tv_show_left, viewGroup, false);
+                .inflate(R.layout.item_tv_show_left, viewGroup, false);
         return new TVShowLeftViewHolder(view);
     }
 
@@ -109,9 +129,9 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
     private void initJwPlayerView(JWPlayerView jwPlayerView, TVShowVM tvShowVM, int position) {
         jwPlayerView.setTag(tvShowVM.getImageUrl());
         PlaylistItem pi = new PlaylistItem.Builder()
-            .title(tvShowVM.getTitle())
-            .file(tvShowVM.getImageUrl())
-            .build();
+                .title(tvShowVM.getTitle())
+                .file(tvShowVM.getImageUrl())
+                .build();
         jwPlayerView.addOnFullscreenListener(b -> {
             if (jwPlayerListener != null) {
                 jwPlayerListener.onFullscreen(b, jwPlayerView);
