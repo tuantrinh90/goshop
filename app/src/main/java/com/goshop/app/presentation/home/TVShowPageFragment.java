@@ -162,7 +162,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
                 int firstItemPosition = leftManager.findFirstVisibleItemPosition();
-                int lastItemPosition = leftManager.findLastVisibleItemPosition();
                 if (move) {
                     move = false;
                     int n = leftIndex - firstItemPosition;
@@ -195,18 +194,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
 //                                                tvShowVMDatas.get(firstItemPosition).getDay());
 //                                    }
                             break;
-                    }
-                    if (firstItemPosition == 0 && rightAdapter.getCurrentPosition() != 0) {
-                        rightAdapter.updateCurrentVMS(firstItemPosition);
-                        scollRightToPosition(firstItemPosition);
-                        calendarAdapter
-                                .updateSelectCalendar(tvShowVMDatas.get(firstItemPosition).getDay());
-                    } else if (lastItemPosition == tvShowVMDatas.size() - 1 && rightAdapter
-                            .getCurrentPosition() != 0) {
-                        rightAdapter.updateCurrentVMS(lastItemPosition);
-                        scollRightToPosition(lastItemPosition);
-                        calendarAdapter
-                                .updateSelectCalendar(tvShowVMDatas.get(lastItemPosition).getDay());
                     }
                 }
             }
