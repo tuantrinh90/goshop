@@ -36,14 +36,15 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
     }
 
     public void updateCurrentVMS(int position) {
-        currentPosition = position;
 
         for (int i = 0; i < tvShowVMS.size(); i++) {
             //boolean isSelected = tvShowVMS.get(i).isCurrent() ? true : false;
-            tvShowVMS.get(i).setCurrent(position == i);
+            tvShowVMS.get(currentPosition).setCurrent(false);
+            tvShowVMS.get(position).setCurrent(true);
         }
-        notifyDataSetChanged();
-
+        notifyItemChanged(currentPosition);
+        notifyItemChanged(position);
+        currentPosition = position;
 //        tvShowVMS.get(currentPosition).setCurrent(false);
 //        tvShowVMS.get(position).setCurrent(true);
 //        currentPosition = position;

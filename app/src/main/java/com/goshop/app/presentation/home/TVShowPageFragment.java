@@ -205,16 +205,16 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
                 super.onScrollStateChanged(recyclerView, newState);
-//                if (moveRight) {
-//                    moveRight = false;
+                if (moveRight) {
+                    moveRight = false;
                 int n = rightIndex - rightManager.findFirstVisibleItemPosition();
                 if (0 <= n && n < recyclerviewRight.getChildCount()) {
                     int top = recyclerviewRight.getChildAt(n).getTop();
                     recyclerviewRight.smoothScrollBy(0, top);
                 }
             }
-//            }
-//
+            }
+
         });
     }
 
@@ -265,13 +265,13 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             recyclerviewRight.scrollToPosition(lastItemPosition);
             calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(lastItemPosition).getDay());
 
-        } else if (0 < firstItemPosition && lastItemPosition == firstItemPosition + 1) {
+        } else if (0 < firstItemPosition && lastItemPosition == firstItemPosition + 1 && rightAdapter.getCurrentPosition() != 0) {
             rightAdapter.updateCurrentVMS(lastItemPosition);
             recyclerviewRight.scrollToPosition(lastItemPosition);
             calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(lastItemPosition).getDay());
 
         } else {
-            if (currentLast <= lastItemPosition && rightAdapter.getCurrentPosition() != 0) {
+            if (currentLast < lastItemPosition && rightAdapter.getCurrentPosition() != 0) {
                 currentPos = (int) Math.ceil((firstItemPosition + lastItemPosition) / 2);
                 recyclerviewRight.head(currentPos);
                 rightAdapter.updateCurrentVMS(currentPos);
@@ -329,10 +329,12 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             move = true;
         }
 
-        //recyclerviewRight.head(index);
-        scollRightToPosition(index);
-        rightAdapter.updateCurrentVMS(index);
-        calendarAdapter.updateSelectCalendar(index);
+        if (!isSelectScroll) {
+            isSelectScroll = false;
+            rightAdapter.updateCurrentVMS(index);
+            scollRightToPosition(index);
+            calendarAdapter.updateSelectCalendar(index);
+        }
 
 //        int firstItem = leftManager.findFirstVisibleItemPosition();
 //        int lastItem = leftManager.findLastVisibleItemPosition();
