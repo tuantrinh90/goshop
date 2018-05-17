@@ -15,6 +15,7 @@
         android:paddingLeft="@dimen/size_16"
         android:paddingRight="@dimen/size_16" />
 
+
     <!--Calendar List-->
     <android.support.design.widget.CoordinatorLayout
         android:layout_width="match_parent"
@@ -59,6 +60,7 @@
             android:layout_height="wrap_content"
             app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
@@ -77,6 +79,7 @@
                     android:layout_toLeftOf="@id/recyclerview_right"
                     tools:ignore="RtlHardcoded" />
             </RelativeLayout>
+
 
             <com.goshop.app.common.view.RobotoRegularTextView
                 android:id="@+id/tv_calandar"
