@@ -49,7 +49,6 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.item_tv_show_right, viewGroup, false);
-
         return new TVShowRightViewHolder(view);
     }
 

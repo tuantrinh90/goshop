@@ -82,6 +82,7 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     private float rate;
 
     private float scale;
+
     private float currentScale;
 
     private boolean scrollCheck = false;
@@ -147,7 +148,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         recyclerviewCalendar.setLayoutManager(calendarManager);
         recyclerviewLeft.setLayoutManager(leftManager);
         recyclerviewRight.setLayoutManager(rightManager);
-
         channelAdapter = new ChannelAdapter(new ArrayList<>());
         calendarAdapter = new TVShowCalendarAdapter(new ArrayList<>(), currentDay);
         leftAdapter = new TVShowLeftAdapter(getActivity(), new ArrayList<>());
@@ -156,7 +156,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         recyclerviewCalendar.setAdapter(calendarAdapter);
         recyclerviewLeft.setAdapter(leftAdapter);
         recyclerviewRight.setAdapter(rightAdapter);
-
         channelAdapter.setOnChannelItemClickListener(this);
         rightAdapter.setOnTVShowRightItemClickListener(this);
         calendarAdapter.setOnCalendarItemClickListener(this);
@@ -181,7 +180,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
                         case RecyclerView.SCROLL_STATE_IDLE:
                             moveScrollItemLeftListToRight();
                             break;
-
                     }
                 }
             }
@@ -189,14 +187,12 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             @Override
             public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
-
                 int firstItemPosition = leftManager.findFirstVisibleItemPosition();
                 count += dy;
                 View view = leftManager.findViewByPosition(firstItemPosition);
                 float heightItem = view.getHeight();
                 scale = count / heightItem;
                 rate = scale - ((int) (count / heightItem));
-
                 if (currentScale > scale) {
                     scrollCheck = true;
                 } else {
@@ -205,8 +201,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
                 currentScale = scale;
             }
         });
-
-
         recyclerviewRight.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrollStateChanged(RecyclerView recyclerView, int newState) {
@@ -224,7 +218,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         });
     }
 
-
     private void appBarLayoutListener() {
         appBarLayoutTvShow
                 .addOnOffsetChangedListener((AppBarLayout appBarLayout, int verticalOffset) -> {
@@ -236,7 +229,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
                             }
                         }
                 );
-
     }
 
     private void scollRightToPosition(int position) {
@@ -255,8 +247,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             recyclerviewRight.smoothScrollToPosition(position);
             moveRight = true;
         }
-
-
     }
 
     /**
@@ -265,7 +255,6 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
     private void moveScrollItemLeftListToRight() {
         int firstItemPosition = leftManager.findFirstVisibleItemPosition();
         int lastItemPosition = leftManager.findLastVisibleItemPosition();
-
         int currentRate;
         if (lastItemPosition == (tvShowVMDatas.size() - 1)) {
             if ((lastItemPosition - firstItemPosition) % 2 == 0) {
@@ -276,21 +265,17 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
             rightAdapter.updateCurrentVMS(currentRate);
             recyclerviewRight.scrollToPosition(currentRate);
             calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(currentRate).getDay());
-
         } else {
             if (scrollCheck) {
                 currentRate = (int) (rate <= 0.5 ? Math.floor(scale) : Math.ceil(scale));
             } else {
                 currentRate = (int) (rate >= 0.5 ? Math.ceil(scale) : Math.floor(scale));
             }
-
             recyclerviewRight.head(currentRate);
             rightAdapter.updateCurrentVMS(currentRate);
             calendarAdapter.updateSelectCalendar(tvShowVMDatas.get(currentRate).getDay());
-
         }
     }
-
 
     @Override
     public void inject() {
@@ -316,22 +301,18 @@ public class TVShowPageFragment extends BaseFragment<TVShowPageContract.Presente
         leftIndex = index;
         int firstItemL = leftManager.findFirstVisibleItemPosition();
         int lastItemL = leftManager.findLastVisibleItemPosition();
-
         if (index <= firstItemL) {
             recyclerviewLeft.smoothScrollToPosition(index);
         } else if (index <= lastItemL) {
             int topLeft = recyclerviewLeft.getChildAt(index - firstItemL).getTop();
             recyclerviewLeft.smoothScrollBy(0, topLeft);
-
         } else {
             recyclerviewLeft.smoothScrollToPosition(index);
             move = true;
         }
-
         rightAdapter.updateCurrentVMS(index);
         scollRightToPosition(index);
         calendarAdapter.updateSelectCalendar(index);
-
     }
 
     @Override
