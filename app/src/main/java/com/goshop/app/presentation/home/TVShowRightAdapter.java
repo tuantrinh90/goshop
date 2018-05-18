@@ -39,7 +39,6 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
         if (position != currentPosition) {
             tvShowVMS.get(currentPosition).setCurrent(false);
             tvShowVMS.get(position).setCurrent(true);
-
             notifyItemChanged(currentPosition);
             notifyItemChanged(position);
             currentPosition = position;
