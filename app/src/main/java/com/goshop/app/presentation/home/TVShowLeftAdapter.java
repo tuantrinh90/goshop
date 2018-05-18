@@ -31,8 +31,6 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
 
     private Activity activity;
 
-    private int currentPosition;
-
     public TVShowLeftAdapter(Activity activity,
                              List<TVShowVM> tvShowVMS) {
         this(tvShowVMS);
@@ -52,21 +50,6 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
         this.tvShowVMS = tvShowVMS;
         notifyDataSetChanged();
     }
-
-    public int getCurrentPosition() {
-        return currentPosition;
-    }
-
-    public void updateCurrentVMS(int position) {
-        currentPosition = position;
-
-        for (int i = 0; i < tvShowVMS.size(); i++) {
-            tvShowVMS.get(i).setCurrent(position == i);
-        }
-        notifyDataSetChanged();
-
-    }
-
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
@@ -117,8 +100,7 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
             initJwPlayerView(jwPlayerView, tvShowVM, position);
             tvTvShowLeftTime.setText(tvShowVM.getDuration());
             tvTvShowTitle.setText(tvShowVM.getTitle());
-            tvBtnTvShowBuy.setOnClickListener(v -> {
-            });
+            tvBtnTvShowBuy.setOnClickListener(v -> {});
             tvTvShowPriceOld.setText(tvShowVM.getPriceOld());
             tvTvShowPriceOld.getPaint().setFlags(Paint.STRIKE_THRU_TEXT_FLAG);
             tvTvShowPriceNow.setText(tvShowVM.getPriceNow());
@@ -149,7 +131,6 @@ public class TVShowLeftAdapter extends RecyclerView.Adapter {
     }
 
     public interface JWPlayerListener {
-
         void onFullscreen(boolean isFullScreen, JWPlayerView jwPlayerView);
     }
 }
