@@ -1,16 +1,16 @@
 package com.goshop.app.presentation.home;
 
-import com.goshop.app.R;
-import com.goshop.app.common.view.RobotoMediumTextView;
-import com.goshop.app.presentation.model.TVShowVM;
-import com.goshop.app.utils.GlideUtils;
-import com.goshop.app.widget.listener.OnTVShowItemsClickListener;
-
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+
+import com.goshop.app.R;
+import com.goshop.app.common.view.RobotoMediumTextView;
+import com.goshop.app.presentation.model.TVShowVM;
+import com.goshop.app.utils.GlideUtils;
+import com.goshop.app.widget.listener.OnTVShowItemsClickListener;
 
 import java.util.List;
 
@@ -36,23 +36,14 @@ public class TVShowRightAdapter extends RecyclerView.Adapter {
     }
 
     public void updateCurrentVMS(int position) {
-
-        for (int i = 0; i < tvShowVMS.size(); i++) {
-            //boolean isSelected = tvShowVMS.get(i).isCurrent() ? true : false;
+        if (position != currentPosition) {
             tvShowVMS.get(currentPosition).setCurrent(false);
             tvShowVMS.get(position).setCurrent(true);
-        }
-        notifyItemChanged(currentPosition);
-        notifyItemChanged(position);
-        currentPosition = position;
-//        tvShowVMS.get(currentPosition).setCurrent(false);
-//        tvShowVMS.get(position).setCurrent(true);
-//        currentPosition = position;
-//        notifyItemChanged(currentPosition);
-    }
 
-    public int getCurrentPosition() {
-        return currentPosition;
+            notifyItemChanged(currentPosition);
+            notifyItemChanged(position);
+            currentPosition = position;
+        }
     }
 
     @Override
